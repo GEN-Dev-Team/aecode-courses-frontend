@@ -1,1 +1,90 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --gray-1: #b4bbbf;
+  --gray-2: #cad5da;
+  --gray-3: #eff9fe;
+  --orange-1: #7a3717;
+  --orange-2: #ce7b2d;
+  --orange-3: #e4a025;
+  --yellow-1: #e9c31e;
+  --yellow-2: #ebd417;
+  --yellow-3: #ece956;
+  --green-1: #115e32;
+  --green-2: #3d813f;
+  --green-3: #8bc751;
+  --green-4: #bed747;
+  --sky-blue-1: #0066a6;
+  --sky-blue-2: #2484c6;
+  --sky-blue-3: #33a3dc;
+  --blue-1: #14257c;
+  --blue-2: #203aa5;
+  --blue-3: #3659c9;
+  --purple-1: #2a1d68;
+  --purple-2: #381187;
+  --purple-3: #7837dd;
+  --purple-4: #8f60ea;
+}
+
+@font-face {
+  font-family: "ruberoid-medium";
+  src: url("assets/fonts/Ruberoid/Ruberoid-Medium.otf") format("opentype");
+}
+@font-face {
+  font-family: "ruberoid-light";
+  src: url("assets/fonts/Ruberoid/Ruberoid-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ruberoid-regular";
+  src: url("assets/fonts/Ruberoid/Ruberoid-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ruberoid-semibold";
+  src: url("assets/fonts/Ruberoid/Ruberoid-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "plusjakartasans-extralight";
+  src: url("assets/fonts/Plus-Jakarta/PlusJakartaSans-ExtraLight.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "plusjakartasans-light";
+  src: url("assets/fonts/Plus-Jakarta/PlusJakartaSans-Light.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "plusjakartasans-medium";
+  src: url("assets/fonts/Plus-Jakarta/PlusJakartaSans-Medium.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "plusjakartasans-regular";
+  src: url("assets/fonts/Plus-Jakarta/PlusJakartaSans-Regular.ttf")
+    format("truetype");
+}
+
+@font-face {
+  font-family: "plusjakartasans-semibold";
+  src: url("assets/fonts/Plus-Jakarta/PlusJakartaSans-SemiBold.ttf")
+    format("truetype");
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-family: "plusjakartasans-extralight";
+}
