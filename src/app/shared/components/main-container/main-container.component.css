@@ -1,0 +1,4 @@
+.main-container {
+  width: clamp(300px, 100%, 1440px);
+  margin-inline: auto;
+}

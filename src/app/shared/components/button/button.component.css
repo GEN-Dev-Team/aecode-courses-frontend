@@ -1,0 +1,17 @@
+.header-button {
+  width: 100%;
+  height: 40px;
+  padding: 0 20px;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--purple-2);
+  font-size: 16px;
+  font-family: "ruberoid-medium";
+  color: white;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: transform 0.1s ease-in-out;
+  }
+}
