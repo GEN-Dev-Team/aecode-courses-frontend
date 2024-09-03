@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  base: 'https://shaman-backend.onrender.com',
+  base: 'https://webcoursesback.onrender.com',
 };
