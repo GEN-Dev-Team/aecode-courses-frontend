@@ -1,0 +1,39 @@
+<form [formGroup]="loginForm" class="login-form">
+  <span>Comencemos</span>
+  <span>Ingresar o crear una cuenta con:</span>
+
+  <div class="form-control">
+    <label for="email" class="label">Email</label>
+    <input
+      formControlName="email"
+      type="email"
+      placeholder="johnsondoe@nomail.com"
+    />
+  </div>
+
+  <div class="form-control">
+    <label for="passwordHash">PasswordHash</label>
+    <input
+      formControlName="passwordHash"
+      type="passwordHash"
+      placeholder="********"
+    />
+  </div>
+
+  <div class="form-control">
+    <label for="username">Username</label>
+    <input formControlName="username" type="text" />
+  </div>
+
+  <div class="form-control">
+    <label for="firstName">First Name</label>
+    <input formControlName="firstName" type="text" />
+  </div>
+
+  <div class="form-control">
+    <label for="lastName">Last Name</label>
+    <input formControlName="lastName" type="text" />
+  </div>
+
+  <button type="submit" (click)="onSubmit()">Submit</button>
+</form>
