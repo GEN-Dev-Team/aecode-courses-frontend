@@ -18,8 +18,9 @@
     <main class="course-content">
       <aside class="course-details-aside">
         <app-button class="button-start-here"> ¡COMIENZA AQUÍ! </app-button>
-
-        <app-course-unit />
+        @for (module of course.modules; track module.moduleId) {
+        <app-course-unit [module]="module" (unit_video)="(unit_url_video)" />
+        }
       </aside>
 
       <div class="course-media-container">
@@ -27,7 +28,7 @@
           class="course-media"
           width="100%"
           height="100%"
-          src="https://www.youtube.com/embed/zqLEO5tIuYs"
+          [src]="unit_url_video"
           title="YouTube video player"
           frameborder="0"
           allow="accelerometer;autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
