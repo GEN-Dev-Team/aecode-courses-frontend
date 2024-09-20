@@ -1,0 +1,15 @@
+<div class="form-container">
+  <app-square-icon class="close-button" (click)="closeModal()" />
+
+  <span class="form-message">{{ userMessage }}</span>
+
+  <p class="form-description">
+    Ingresa tu nombre y correo electronico para recibir información sobre tu
+    pregunta
+  </p>
+
+  <input type="text" class="form-input" placeholder="Nombre y Apellido" />
+  <input type="text" class="form-input" placeholder="Correo Electrónico" />
+
+  <button (click)="closeModal()" class="form-button">Enviar</button>
+</div>

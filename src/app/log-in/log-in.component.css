@@ -64,9 +64,11 @@
           margin-inline-start: 10px;
         }
 
-        & span {
-          color: #000;
-          text-align: center;
+        & input {
+          width: 400px;
+          height: 40px;
+          border: none;
+          outline: none;
           font-family: "plusjakartasans-medium";
           font-size: 16px;
           font-style: normal;

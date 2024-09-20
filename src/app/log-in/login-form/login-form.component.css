@@ -1,8 +1,37 @@
+@keyframes slideIn {
+  from {
+    transform: translateX(+100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
 .login-form {
   width: 500px;
+  height: 100%;
+  padding: 40px;
   display: flex;
   flex-flow: column nowrap;
-  gap: 20px;
+  gap: 30px;
+  border: 1px solid white;
+  background: white;
+  border-radius: 10px 0 0 10px;
+  position: fixed;
+  right: 0;
+  z-index: 2;
+  font-family: "plusjakartasans-medium";
+  animation: slideIn 0.5s ease-in-out forwards;
+
+  .start-title {
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  .start-subtitle {
+    font-size: 20px;
+    font-family: "ruberoid-medium";
+  }
 
   .form-control {
     width: 380px;
@@ -11,16 +40,15 @@
     position: relative;
 
     .label {
-      width: 44px;
       height: 20px;
+      padding: 0px 12px;
       background-color: white;
       color: #bdbdbd;
       text-align: center;
-      font-family: "Plus Jakarta Sans";
       font-size: 10px;
       font-style: normal;
       font-weight: 400;
-      line-height: 22.53px; /* 225.3% */
+      line-height: 22.53px;
       position: absolute;
       top: -19%;
       left: 5%;
@@ -31,23 +59,56 @@
       height: 100%;
       border-radius: 8px;
       border: 1px solid #bdbdbd;
-      font-family: "Plus Jakarta Sans";
+      font-family: "plusjakartasans-medium";
       font-size: 16px;
-      font-style: normal;
-      font-weight: 400;
-      line-height: 22.53px; /* 225.3% */
-      padding-left: 44px;
-      padding-right: 44px;
+      padding-left: 16px;
 
       &:focus {
-        outline: none; /* Elimina el borde predeterminado */
-        border: 2px solid #4a90e2; /* Cambia el color y estilo del borde */
-        box-shadow: 0 0 5px rgba(74, 144, 226, 0.5); /* Añade un efecto de sombra */
+        outline: none;
+        border: 2px solid #424242;
+      }
+
+      &:focus + .label {
+        color: #424242;
       }
 
       &::placeholder {
         color: #bdbdbd;
+        font-family: "plusjakartasans-light";
       }
     }
   }
+
+  .login-text {
+    text-align: center;
+    font-size: 13px;
+
+    span {
+      color: black;
+      font-family: "plusjakartasans-extrabold";
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  .terms-text {
+    text-align: center;
+    font-size: 13px;
+    padding-inline: 27px;
+
+    span {
+      font-family: "plusjakartasans-bold";
+      color: var(--purple-2);
+      cursor: pointer;
+    }
+  }
+}
+
+.background-overlay {
+  width: 100%;
+  height: 100dvh;
+  position: fixed;
+  background-color: black;
+  opacity: 0.69;
+  z-index: 1;
 }

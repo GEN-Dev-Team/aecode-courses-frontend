@@ -1,39 +1,68 @@
-<form [formGroup]="loginForm" class="login-form">
-  <span>Comencemos</span>
-  <span>Ingresar o crear una cuenta con:</span>
+<form [formGroup]="isSignInForm ? signInForm : loginForm" class="login-form">
+  <span class="start-title">Comencemos</span>
+  @if (isSignInForm) {
+  <span class="start-subtitle">Crea una cuenta con:</span>
+
+  } @else {
+  <span class="start-subtitle">Inicia sesión con:</span>
+
+  } @if (isSignInForm) {
+  <div class="form-control">
+    <input
+      formControlName="fullName"
+      id="fullName"
+      type="text"
+      placeholder="johnson Rojas"
+    />
+    <label for="fullName" class="label">Nombre completo</label>
+  </div>
+  }
 
   <div class="form-control">
-    <label for="email" class="label">Email</label>
     <input
       formControlName="email"
+      id="email"
       type="email"
       placeholder="johnsondoe@nomail.com"
     />
+    <label for="email" class="label">Correo</label>
   </div>
 
   <div class="form-control">
-    <label for="passwordHash">PasswordHash</label>
     <input
       formControlName="passwordHash"
-      type="passwordHash"
+      id="passwordHash"
+      type="text"
       placeholder="********"
     />
+    <label for="passwordHash" class="label">Contraseña</label>
   </div>
 
+  @if (isSignInForm) {
   <div class="form-control">
-    <label for="username">Username</label>
-    <input formControlName="username" type="text" />
+    <input id="passwordHashConfirm" type="text" placeholder="********" />
+    <label for="passwordHashConfirm" class="label">Confirmar</label>
   </div>
+  }
 
-  <div class="form-control">
-    <label for="firstName">First Name</label>
-    <input formControlName="firstName" type="text" />
-  </div>
+  <app-button (click)="createUser()"> ACCEDER</app-button>
 
-  <div class="form-control">
-    <label for="lastName">Last Name</label>
-    <input formControlName="lastName" type="text" />
-  </div>
+  @if (isSignInForm) {
+  <span class="login-text"
+    >¿Ya tienes una cuenta?
+    <span (click)="logIn()">INICIAR SESION AQUI</span></span
+  >
+  } @else {
+  <span class="login-text"
+    >¿No tienes una cuenta?
+    <span (click)="signIn()">CREAR UNA CUENTA AQUI</span></span
+  >
 
-  <button type="submit" (click)="onSubmit()">Submit</button>
+  }
+
+  <span class="terms-text"
+    >Al crear una cuenta en AECODE, aceptas los
+    <span>Términos de Servicio y Políticas de Privacidad</span></span
+  >
 </form>
+<div class="background-overlay" (click)="closeModal()"></div>

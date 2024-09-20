@@ -1,1 +1,8 @@
-<p>modal works!</p>
+@if (isOpen) {
+<div class="modal-container">
+  <div class="modal-content">
+    <ng-content />
+  </div>
+  <div class="background-overlay"></div>
+</div>
+}
