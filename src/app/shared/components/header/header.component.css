@@ -46,6 +46,58 @@
           text-decoration: none;
           color: var(--purple-2);
         }
+
+        .language-button {
+          display: flex;
+          flex-flow: row wrap;
+          align-items: center;
+          gap: 8px;
+          font-family: "ruberoid-semibold";
+          font-size: 15px;
+          color: var(--purple-2);
+          cursor: pointer;
+
+          :nth-child(1) {
+            display: flex;
+            align-items: center;
+          }
+        }
+
+        .user-logged {
+          display: flex;
+          flex-flow: row nowrap;
+          gap: 20px;
+          align-items: center;
+
+          .separator {
+            width: 1px;
+            height: 44px;
+            background: #8c9295;
+          }
+
+          .user-profile {
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            gap: 15px;
+
+            .user-profile-img {
+              width: 44px;
+              aspect-ratio: 1 / 1;
+              border-radius: 50%;
+              border: solid 1px var(--gray-1);
+            }
+
+            .profile-dropdown-button {
+              color: var(--purple-2);
+              text-align: center;
+              font-size: 9px;
+              font-weight: 450;
+              cursor: pointer;
+              user-select: none;
+            }
+          }
+        }
       }
     }
   }

@@ -1,4 +1,3 @@
-<app-login-form />
 <div class="login-container">
   <div class="login-content">
     <img class="login-logo" src="/assets/images/aecode-logo.webp" alt="" />
@@ -15,16 +14,31 @@
 
     <span class="login-subtitle">Descubre como AECODE puede servirte</span>
 
-    <a class="sendbar" href="https://aecodemap.my.canva.site/" target="_blank">
+    <button class="sendbar">
       <div class="sendbar-text">
         <img src="/assets/images/login-view/brain-img.svg" alt="Brain image" />
-        <span>Soy estudiante de x ciclo y me interesa el BIM, Python...</span>
+        <input
+          type="text"
+          placeholder="¡Escribe aquí cualquier duda que tengas!"
+          id="message-input"
+        />
       </div>
-      <div class="send-icon-container">
+      <div class="send-icon-container" (click)="sendMessage()">
         <app-send-icon />
       </div>
-    </a>
+    </button>
   </div>
 
-  <app-social-media />
+  <app-social-media (isOpen)="openModal = $event" />
 </div>
+
+<app-modal [isOpen]="openModal">
+  <app-course-list (openModal)="openModal = $event" />
+
+  <!-- <app-content-blocked (isClosed)="openModal = $event" /> -->
+  <!-- <app-confirmation  (isClosed)="openModal = $event"/> -->
+</app-modal>
+
+<app-modal [isOpen]="openForm">
+  <app-form (openModal)="openForm = $event" [userMessage]="userMessage" />
+</app-modal>

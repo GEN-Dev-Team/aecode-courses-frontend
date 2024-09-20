@@ -1,3 +1,9 @@
+<app-login-form
+  [hidden]="!openLoginForm"
+  (closeLoginForm)="openLoginForm = $event"
+  (userLoggedIn)="isUserLoggedIn = $event"
+/>
+
 <header class="header-container">
   <div class="header-content">
     <a class="header-logo hover-animation" href="/">
@@ -30,14 +36,34 @@
           href="/#initiatives"
           >INICIATIVAS</a
         >
+        <span
+          (click)="changeLanguage()"
+          id="language-button"
+          class="language-button hover-animation"
+        >
+          <app-language-icon /> ES
+        </span>
+
+        @if (!isUserLoggedIn) {
         <app-button
           class="header-button hover-animation"
           data-section="header-container"
           data-value="Acceder"
           href=""
+          (click)="openLoginForm = true"
         >
           Acceder
         </app-button>
+        } @else {
+        <div class="user-logged">
+          <app-notification-icon />
+          <div class="separator"></div>
+          <div class="user-profile">
+            <div class="user-profile-img"></div>
+            <span class="profile-dropdown-button hover-animation">▼</span>
+          </div>
+        </div>
+        }
       </ul>
     </div>
   </div>
