@@ -7,6 +7,7 @@ import { CourseListComponent } from '../courses/course-list/course-list.componen
 import { FormComponent } from './form/form.component';
 import { ContentBlockedComponent } from '../shared/components/content-blocked/content-blocked.component';
 import { ConfirmationComponent } from '../shared/components/confirmation/confirmation.component';
+import { CourseContentComponent } from '../courses/course-content/course-content.component';
 
 @Component({
   selector: 'app-log-in',
@@ -20,12 +21,13 @@ import { ConfirmationComponent } from '../shared/components/confirmation/confirm
     FormComponent,
     ContentBlockedComponent,
     ConfirmationComponent,
+    CourseContentComponent,
   ],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css',
 })
 export class LogInComponent {
-  openModal = false;
+  openModal = true;
   openForm = false;
   userMessage = '';
 
