@@ -1,20 +1,8 @@
-/* General reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-}
 
-/* Fondo principal */
 .modal-background {
   width: 1440px;
   height: 792px;
   background: #EEF3F8;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .curso-content-wrapper {
@@ -22,7 +10,7 @@
   justify-content: space-between;
   gap: 20px;
   padding-top: 79px;
-  padding-bottom: 38px; /* Espacio entre las cajas y los botones */
+  padding-bottom: 38px;
   padding-left: 38px;
   padding-right: 38px;
 }
@@ -33,42 +21,52 @@
   height: 581px;
   flex: 1;
   background-color: #fff;
-  padding: 30px;
+  padding: 40px;
   border-radius: 8px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
   color: #3b2073;
 }
 
+/*Titulo de que aprenderas*/
 h3:nth-of-type(1) {
   color: #381187;
-  margin-bottom: 10px;
-  margin-top: 10px;
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: 20px;
+  font-size: 20px;
+  font-family:"ruberoid-medium";
+  margin: 0;
+  max-height: 20px;
 }
+/*Titulo de casos practicos*/
 h3:nth-of-type(2) {
-  color: #40197a;
-  margin-bottom: 16px;
-  margin-top: 15px;
+  color: #381187;
+  font-family:"ruberoid-medium";
+  font-size: 20px;
+  margin: 0;
+  max-height: 20px;
 }
+/*Titulo de Este curso incluye*/
 h3:nth-of-type(3) {
-  color: #40197a;
-  margin-bottom: 15px;
+  color: #381187;
+  font-family:"ruberoid-medium";
+  font-size: 20px;
+  margin: 0;
+  max-height: 20px;
+
 }
+/*Toitulo de Reconocimiento profesional*/
 
 h3:nth-of-type(4) {
-  color: #40197a;
-  margin-bottom: 15px;
+  color: #381187;
+  font-family:"ruberoid-medium";
+  font-size: 20px;
+  margin: 0;
+  max-height: 20px;
 }
 
 p {
   color: #212121;
-font-size: 16px;
-font-style: normal;
-font-weight: 300;
-line-height: 23px;
+  font-size: 16px;
+  font-family:"plusjakartasans-light";
+  margin: 12px 0;
 }
 
 ul {
@@ -77,51 +75,51 @@ ul {
 }
 /*CASOS PRACTICOS*/
 .casos-list{
+  margin-left: 10px;
   display: flex;
   flex-flow:row wrap ;
-  padding-top: 15px;
-  gap: 10px 70px; /*Para sseparar lo li*/
-  list-style-type: disc; /* Establecer viñetas como puntos */
+  gap: 10px 50px;
+  list-style-type: disc;
   margin-bottom: 17px;
+  padding:0;
 }
 
 .casos-list li {
   display: list-item;
+  font-family:"plusjakartasans-medium";
   list-style-type: none;
   color: #212121;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 23px;
   margin: 0;
-  padding-inline-start: 0;
-
 }
+.casos-list li:last-child {
+  margin-left: 6px;
+}
+
 .casos-list li::before {
   content: "\2022"; /* Círculo */
   font-size: 20px;
-  margin-right: 5px; /* Ajustar el espacio entre el marcador y el texto */
+  margin-right: 5px;
   fill: #381187;
 }
+
 /*Este curso incluye*/
 .incluye-list{
+  margin-left: 10px;
   display: flex;
   flex-flow:row wrap ;
-  gap: 10px 90px; /* Espacio entre elementos: 10px de arriba/abajo y 30px de izquierda/derecha */
+  gap: 10px 80px;
   padding: 0;
-  list-style-type: disc; /* Establecer viñetas como puntos */
+  list-style-type: disc;
 }
 
 .incluye-list li {
-  display: list-item;  /* Asegurar que actúan como items de lista */
+  font-family:"plusjakartasans-medium";
+  display: list-item;
   list-style-type: none;
   color: #212121;
   font-size: 16px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 23px; /* 143.75% */
-  align-items: center; /* Alinear el texto verticalmente en el centro */
-  padding-left: 0; /* Eliminar espacio adicional a la izquierda */
+  padding-left: 0;
   margin-left: 0;
 }
 .incluye-list li:last-child {
@@ -130,50 +128,49 @@ ul {
 .incluye-list li::before {
   content: "\2022"; /* Círculo */
   font-size: 20px;
-  margin-right: 5px; /* Ajustar el espacio entre el marcador y el texto */
+  margin-right: 5px;
   fill: #381187;
 }
 
 
 /*RECONOCIMIENTO PROFESIONAL*/
 .reconocimiento-list{
+  margin-left: 10px;
   display: grid;
-  gap:15px; /* Espacio entre elementos: 10px de arriba/abajo y 30px de izquierda/derecha */
+  gap:5px;
   padding: 0;
-  list-style-type: disc; /* Establecer viñetas como puntos */
+  margin-top: 12px;
+  list-style-type: disc;
 }
 
 .reconocimiento-list li {
+  font-family:"plusjakartasans-light";
   list-style-type: none;
   color: #212121;
-  font-size: 16px;
-  line-height: 23px; /* 143.75% */
   width: 812px;
 }
 .reconocimiento-list li:nth-child(1)::before {
   width: 812px;
   content: "\2022"; /* Círculo */
   font-size: 20px;
-  margin-right: 5px; /* Ajustar el espacio entre el marcador y el texto */
+  margin-right: 5px;
   fill: #381187;
-  font-weight: 600;
 }
 
 .reconocimiento-list li:nth-child(2)::before {
   width: 733px;
   content: "\2022"; /* Círculo */
   font-size: 20px;
-  margin-right: 5px; /* Ajustar el espacio entre el marcador y el texto */
+  margin-right: 5px;
   fill: #381187;
-  font-weight: 600;
 }
 .reconocimiento-list::marker{
-  color: #212121; /* Cambia el color si lo necesitas */
-  font-size: 16px; /* Ajusta el tamaño del marcador */
+  color: #212121;
+  font-size: 16px;
 }
 
 
-/* Caja de imagen */
+/* Contenedor de la imagen */
 .curso-imagen {
   width: 452px;
   height: 581px;
@@ -192,63 +189,8 @@ ul {
   height: 562px;
 }
 
-/* Botones (están fuera de las cajas blancas) */
 .botones {
   display: flex;
   gap: 20px;
   justify-content: center;
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .curso-content-wrapper {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .curso-imagen {
-      margin-top: 20px;
-  }
-
-  .curso-contenido {
-      text-align: center;
-  }
-
-  .botones {
-      flex-direction: column;
-      gap: 10px;
-  }
-}
-
-@media (max-width: 768px) {
-  .curso-contenido, .curso-imagen {
-      width: 100%;
-      padding: 20px;
-  }
-
-  h2, h3 {
-      font-size: 1.5rem;
-  }
-
-  p, li {
-      font-size: 1rem;
-  }
-
-  .curso-imagen img {
-      max-width: 250px;
-  }
-}
-
-@media (max-width: 430px) {
-  h2, h3 {
-      font-size: 1.2rem;
-  }
-
-  p, li {
-      font-size: 0.9rem;
-  }
-
-  .curso-imagen img {
-      max-width: 200px;
-  }
 }
