@@ -4,6 +4,7 @@ import { CaretDownIconComponent } from '../../../shared/icons/caret-down-icon/ca
 import { PadlockIconComponent } from '../../../shared/icons/padlock-icon/padlock-icon.component';
 import { NgClass } from '@angular/common';
 import { IModule } from '../../interface/Module';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-course-unit',
@@ -19,11 +20,16 @@ import { IModule } from '../../interface/Module';
 })
 export class CourseUnitComponent {
   @Input() module!: IModule;
-  @Output() unit_video = new EventEmitter<string>();
+  @Output() unit_video = new EventEmitter<SafeResourceUrl>();
+  safeUrl: SafeResourceUrl | undefined;
 
   showItems = false;
 
+  constructor(private sanitizer: DomSanitizer) {}
+
   selectUnitVideo(url: string) {
-    this.unit_video.emit(url);
+    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    console.log('Hijo:', this.safeUrl);
+    this.unit_video.emit(this.safeUrl);
   }
 }
