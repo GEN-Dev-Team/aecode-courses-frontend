@@ -19,7 +19,10 @@
       <aside class="course-details-aside">
         <app-button class="button-start-here"> ¡COMIENZA AQUÍ! </app-button>
         @for (module of course.modules; track module.moduleId) {
-        <app-course-unit [module]="module" (unit_video)="(unit_url_video)" />
+        <app-course-unit
+          [module]="module"
+          (unit_video)="onUnitVideoChange($event)"
+        />
         }
       </aside>
 
@@ -43,5 +46,6 @@
         </div>
       </div>
     </main>
+    <p>{{ unit_url_video }}</p>
   </div>
 </div>

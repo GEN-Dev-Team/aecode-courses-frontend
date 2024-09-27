@@ -4,6 +4,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { CourseUnitComponent } from './course-unit/course-unit.component';
 import { CourseService } from '../course.service';
 import { ICourse } from '../interface/Course';
+import { SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-course-detail',
@@ -14,7 +15,7 @@ import { ICourse } from '../interface/Course';
 })
 export class CourseDetailComponent {
   course!: ICourse;
-  unit_url_video: string = '';
+  unit_url_video!: SafeResourceUrl;
   constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {
@@ -28,5 +29,10 @@ export class CourseDetailComponent {
       this.course = response;
       console.log('course:', response);
     });
+  }
+
+  onUnitVideoChange(url: SafeResourceUrl) {
+    this.unit_url_video = url;
+    console.log('Padre:', this.unit_url_video); // Aquí se debería ver el SafeResourceUrl
   }
 }
