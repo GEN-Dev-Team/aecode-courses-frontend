@@ -1,3 +1,7 @@
+@if (showContentModal) {
+<app-course-content (isClosed)="closeModal($event)" />
+
+} @else {
 <div class="content-blocked-container">
   <div class="icon-container">
     <img src="/assets/images/blocked-icon.svg" alt="" />
@@ -10,5 +14,6 @@
     previamente.
   </p>
 
-  <app-button (click)="closeModal()">COMENZAR</app-button>
+  <app-button (click)="openContentModal()">COMENZAR</app-button>
 </div>
+}

@@ -5,17 +5,26 @@ import { CourseUnitComponent } from './course-unit/course-unit.component';
 import { CourseService } from '../course.service';
 import { ICourse } from '../interface/Course';
 import { SafeResourceUrl } from '@angular/platform-browser';
+import { ModalComponent } from '../../shared/components/modal/modal.component';
+import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
-  imports: [MainContainerComponent, ButtonComponent, CourseUnitComponent],
+  imports: [
+    MainContainerComponent,
+    ButtonComponent,
+    CourseUnitComponent,
+    ModalComponent,
+    ContentBlockedComponent,
+  ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css',
 })
 export class CourseDetailComponent {
   course!: ICourse;
   unit_url_video!: SafeResourceUrl;
+  showBlockedModal = true;
   constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {

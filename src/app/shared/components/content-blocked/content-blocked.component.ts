@@ -1,17 +1,24 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
+import { CourseContentComponent } from '../../../courses/course-content/course-content.component';
 
 @Component({
   selector: 'app-content-blocked',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, CourseContentComponent],
   templateUrl: './content-blocked.component.html',
   styleUrl: './content-blocked.component.css',
 })
 export class ContentBlockedComponent {
+  showContentModal = false;
   @Output() isClosed = new EventEmitter<boolean>();
 
-  closeModal() {
-    this.isClosed.emit(false);
+  closeModal(event: boolean) {
+    console.log(event);
+    this.isClosed.emit(event);
+  }
+
+  openContentModal() {
+    this.showContentModal = true;
   }
 }

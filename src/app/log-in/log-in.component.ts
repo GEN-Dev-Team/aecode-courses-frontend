@@ -27,7 +27,7 @@ import { CourseContentComponent } from '../courses/course-content/course-content
   styleUrl: './log-in.component.css',
 })
 export class LogInComponent {
-  openModal = true;
+  openModal = false;
   openForm = false;
   userMessage = '';
 
