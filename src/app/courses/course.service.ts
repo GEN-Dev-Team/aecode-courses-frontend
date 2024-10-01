@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environment/environment';
-import { ICourse } from '../interface/Course';
+import { environment } from '../../environment/environment';
+import { ICourse } from './interface/Course';
 import { HttpClient } from '@angular/common/http';
 
 const base_url = environment.base;
@@ -9,7 +9,7 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class CourseService {
-  api_url = base_url + '/courses';
+  api_url = base_url + '/course';
 
   constructor(private http: HttpClient) {}
 
@@ -26,7 +26,7 @@ export class CourseService {
   }
 
   updateCourse(course: ICourse) {
-    return this.http.put<ICourse>(`${this.api_url}/${course.id}`, course);
+    return this.http.put<ICourse>(`${this.api_url}/${course.courseId}`, course);
   }
 
   deleteCourse(id: number) {
