@@ -3,6 +3,6 @@
   <div class="modal-content">
     <ng-content />
   </div>
-  <div class="background-overlay"></div>
+  <div (click)="closeModal()" class="background-overlay"></div>
 </div>
 }

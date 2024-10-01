@@ -49,3 +49,7 @@
     <p>{{ unit_url_video }}</p>
   </div>
 </div>
+
+<app-modal (isClosed)="showBlockedModal = $event" [isOpen]="showBlockedModal">
+  <app-content-blocked (isClosed)="showBlockedModal = $event" />
+</app-modal>

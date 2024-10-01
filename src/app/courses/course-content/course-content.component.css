@@ -1,8 +1,17 @@
+.close-button {
+  top: 21px;
+  right: 16px;
+  border-radius: 0 10px 0 10px;
+  position: absolute;
+  cursor: pointer;
+}
 
 .modal-background {
   width: 1440px;
   height: 792px;
-  background: #EEF3F8;
+  background: #eef3f8;
+  position: relative;
+  border-radius: 10px;
 }
 
 .curso-content-wrapper {
@@ -31,14 +40,14 @@
 h3:nth-of-type(1) {
   color: #381187;
   font-size: 20px;
-  font-family:"ruberoid-medium";
+  font-family: "ruberoid-medium";
   margin: 0;
   max-height: 20px;
 }
 /*Titulo de casos practicos*/
 h3:nth-of-type(2) {
   color: #381187;
-  font-family:"ruberoid-medium";
+  font-family: "ruberoid-medium";
   font-size: 20px;
   margin: 0;
   max-height: 20px;
@@ -46,17 +55,16 @@ h3:nth-of-type(2) {
 /*Titulo de Este curso incluye*/
 h3:nth-of-type(3) {
   color: #381187;
-  font-family:"ruberoid-medium";
+  font-family: "ruberoid-medium";
   font-size: 20px;
   margin: 0;
   max-height: 20px;
-
 }
 /*Toitulo de Reconocimiento profesional*/
 
 h3:nth-of-type(4) {
   color: #381187;
-  font-family:"ruberoid-medium";
+  font-family: "ruberoid-medium";
   font-size: 20px;
   margin: 0;
   max-height: 20px;
@@ -65,7 +73,7 @@ h3:nth-of-type(4) {
 p {
   color: #212121;
   font-size: 16px;
-  font-family:"plusjakartasans-light";
+  font-family: "plusjakartasans-light";
   margin: 12px 0;
 }
 
@@ -74,19 +82,19 @@ ul {
   margin-bottom: 15px;
 }
 /*CASOS PRACTICOS*/
-.casos-list{
+.casos-list {
   margin-left: 10px;
   display: flex;
-  flex-flow:row wrap ;
+  flex-flow: row wrap;
   gap: 10px 50px;
   list-style-type: disc;
   margin-bottom: 17px;
-  padding:0;
+  padding: 0;
 }
 
 .casos-list li {
   display: list-item;
-  font-family:"plusjakartasans-medium";
+  font-family: "plusjakartasans-medium";
   list-style-type: none;
   color: #212121;
   font-size: 16px;
@@ -104,17 +112,17 @@ ul {
 }
 
 /*Este curso incluye*/
-.incluye-list{
+.incluye-list {
   margin-left: 10px;
   display: flex;
-  flex-flow:row wrap ;
+  flex-flow: row wrap;
   gap: 10px 80px;
   padding: 0;
   list-style-type: disc;
 }
 
 .incluye-list li {
-  font-family:"plusjakartasans-medium";
+  font-family: "plusjakartasans-medium";
   display: list-item;
   list-style-type: none;
   color: #212121;
@@ -132,19 +140,18 @@ ul {
   fill: #381187;
 }
 
-
 /*RECONOCIMIENTO PROFESIONAL*/
-.reconocimiento-list{
+.reconocimiento-list {
   margin-left: 10px;
   display: grid;
-  gap:5px;
+  gap: 5px;
   padding: 0;
   margin-top: 12px;
   list-style-type: disc;
 }
 
 .reconocimiento-list li {
-  font-family:"plusjakartasans-light";
+  font-family: "plusjakartasans-light";
   list-style-type: none;
   color: #212121;
   width: 812px;
@@ -164,11 +171,10 @@ ul {
   margin-right: 5px;
   fill: #381187;
 }
-.reconocimiento-list::marker{
+.reconocimiento-list::marker {
   color: #212121;
   font-size: 16px;
 }
-
 
 /* Contenedor de la imagen */
 .curso-imagen {
@@ -193,4 +199,9 @@ ul {
   display: flex;
   gap: 20px;
   justify-content: center;
+}
+
+.contact-button {
+  text-decoration: none;
+  color: white;
 }
