@@ -25,7 +25,7 @@ export class LoginFormComponent {
   signInForm: FormGroup;
   usersList: ILogin[] = [];
   login!: ILogin;
-  isSignInForm: boolean = true;
+  isSignInForm: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -39,44 +39,41 @@ export class LoginFormComponent {
 
     this.signInForm = this.fb.group({
       userId: new FormControl(0),
-      fullName: new FormControl(''),
+      fullname: new FormControl(''),
       email: new FormControl(''),
       passwordHash: new FormControl(''),
-    });
-  }
-
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    this.getUsers();
-  }
-
-  getUsers() {
-    this.logInService.getUsers().subscribe((response) => {
-      this.usersList = response;
-      console.log(this.usersList);
     });
   }
 
   createUser() {
     console.log('signinForm:', this.signInForm.value);
     console.log('loginForm:', this.loginForm.value);
-    if (this.isSignInForm) {
+    const password = document.getElementById(
+      'passwordHash'
+    ) as HTMLInputElement;
+    const passwordConfirm = document.getElementById(
+      'passwordHashConfirm'
+    ) as HTMLInputElement;
+
+    if (password.value !== passwordConfirm.value) {
+      console.log('Contraseñas incorrectas');
+    } else {
       this.logInService
         .createUser(this.signInForm.value)
         .subscribe((response) => {
-          console.log(response);
           this.isSignInForm = false;
-        });
-    } else {
-      this.logInService
-        .logInUser(this.loginForm.value)
-        .subscribe((response) => {
-          console.log(response);
-          this.localStorage.setItem('user', response);
-          this.userLoggedIn.emit(true);
+          this.signInForm.reset();
         });
     }
+  }
+
+  logInUser() {
+    console.log('loginForm:', this.loginForm.value);
+    this.logInService.logInUser(this.loginForm.value).subscribe((response) => {
+      console.log(response);
+      this.localStorage.setItem('user', response);
+      this.userLoggedIn.emit(true);
+    });
   }
 
   closeModal() {
