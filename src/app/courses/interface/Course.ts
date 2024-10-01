@@ -1,8 +1,10 @@
+import { IModule } from './Module';
+
 export interface ICourse {
-  id: number;
-  name: string;
+  courseId: number;
+  title: string;
   description: string;
+  instructor: string;
   image: string;
-  price: number;
-  category: string;
+  modules: IModule[];
 }

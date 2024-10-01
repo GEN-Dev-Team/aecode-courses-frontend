@@ -18,7 +18,7 @@ import { NotificationIconComponent } from '../../icons/notification-icon/notific
 })
 export class HeaderComponent {
   isUserLoggedIn = false;
-  openLoginForm = false;
+  openLoginForm = true;
 
   changeLanguage() {
     const languageBtn = document.querySelector(

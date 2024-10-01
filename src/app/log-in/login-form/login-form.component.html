@@ -9,12 +9,12 @@
   } @if (isSignInForm) {
   <div class="form-control">
     <input
-      formControlName="fullName"
-      id="fullName"
+      formControlName="fullname"
+      id="fullname"
       type="text"
       placeholder="johnson Rojas"
     />
-    <label for="fullName" class="label">Nombre completo</label>
+    <label for="fullname" class="label">Nombre completo</label>
   </div>
   }
 
@@ -45,7 +45,9 @@
   </div>
   }
 
-  <app-button (click)="createUser()"> ACCEDER</app-button>
+  <app-button (click)="isSignInForm ? signIn() : logInUser()">
+    ACCEDER</app-button
+  >
 
   @if (isSignInForm) {
   <span class="login-text"

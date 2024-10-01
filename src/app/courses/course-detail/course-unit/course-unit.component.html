@@ -5,9 +5,9 @@
     [ngClass]="{ 'course-unit-title-dropdown': !showItems }"
   >
     <span class="course-unit"
-      >UNIDAD 1:
+      >UNIDAD {{ module.moduleId }}:
       <span class="course-text">
-        Historia y evolución en la ingeniería civil
+        {{ module.title }}
       </span></span
     >
 
@@ -19,25 +19,19 @@
   </div>
 
   <ul class="course-item-list" [hidden]="!showItems">
-    <li class="course-item">
+    @for (class of module.classes; track class.classId) {
+    <li class="course-item" (click)="selectUnitVideo(class.videoUrl)">
       <app-padlock-icon />
       <span>
-        1.1. Historia y evolución del lenguaje de programación Python
+        {{ module.moduleId }}.{{ class.orderNumber }}. {{ class.title }}
       </span>
-      <span> <span>•</span> 20:24 min</span>
+      <span> <span>•</span> {{ class.durationMinutes }} min</span>
     </li>
-
-    <li class="course-item">
-      <app-padlock-icon />
-      <span>
-        1.1. Historia y evolución del lenguaje de programación Python
-      </span>
-      <span> <span>•</span> 20:24 min</span>
-    </li>
+    }
 
     <div class="course-unit-test">
       <app-padlock-icon />
-      <span>EVALUA LO APRENDIDO - TEST U1</span>
+      <span>EVALUA LO APRENDIDO - TEST U{{ module.moduleId }}</span>
     </div>
   </ul>
 </div>
