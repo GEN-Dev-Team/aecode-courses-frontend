@@ -32,6 +32,15 @@
   <app-social-media (isOpen)="openModal = $event" />
 </div>
 
+<app-modal [isOpen]="openModal">
+  <!--<app-course-list (openModal)="openModal = $event" /> -->
+
+  <!-- <app-content-blocked (isClosed)="openModal = $event" /> -->
+  <!-- <app-confirmation  (isClosed)="openModal = $event"/> -->
+   <!-- <app-course-content (isClosed)="openModal = $event"/>-->
+   <app-class-question (isClosed)="openModal = $event"/>
+</app-modal>
+
 <app-modal [isOpen]="openForm">
   <app-form (openModal)="openForm = $event" [userMessage]="userMessage" />
 </app-modal>

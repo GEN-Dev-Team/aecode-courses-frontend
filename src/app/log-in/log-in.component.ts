@@ -8,6 +8,7 @@ import { FormComponent } from './form/form.component';
 import { ContentBlockedComponent } from '../shared/components/content-blocked/content-blocked.component';
 import { ConfirmationComponent } from '../shared/components/confirmation/confirmation.component';
 import { CourseContentComponent } from '../courses/course-content/course-content.component';
+import { ClassQuestionComponent } from '../courses/course-detail/class-question/class-question.component';
 
 @Component({
   selector: 'app-log-in',
@@ -22,6 +23,7 @@ import { CourseContentComponent } from '../courses/course-content/course-content
     ContentBlockedComponent,
     ConfirmationComponent,
     CourseContentComponent,
+    ClassQuestionComponent
   ],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css',
