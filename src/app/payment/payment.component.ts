@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { PaymentCardComponent } from "./payment-card/payment-card.component";
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [],
+  imports: [PaymentCardComponent],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css'
 })

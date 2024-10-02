@@ -9,6 +9,7 @@ import { ContentBlockedComponent } from '../shared/components/content-blocked/co
 import { ConfirmationComponent } from '../shared/components/confirmation/confirmation.component';
 import { CourseContentComponent } from '../courses/course-content/course-content.component';
 import { ClassQuestionComponent } from '../courses/course-detail/class-question/class-question.component';
+import { PaymentCardComponent } from '../payment/payment-card/payment-card.component';
 
 @Component({
   selector: 'app-log-in',
@@ -23,7 +24,8 @@ import { ClassQuestionComponent } from '../courses/course-detail/class-question/
     ContentBlockedComponent,
     ConfirmationComponent,
     CourseContentComponent,
-    ClassQuestionComponent
+    ClassQuestionComponent,
+    PaymentCardComponent
   ],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css',
