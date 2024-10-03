@@ -7,6 +7,12 @@ import { ICourse } from '../interface/Course';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
+import { HouseIconComponent } from '../icons/house-icon/house-icon.component';
+import { CaretRightIconComponent } from '../icons/caret-right-icon/caret-right-icon.component';
+import { CaretUpIconComponent } from '../../shared/icons/caret-up-icon/caret-up-icon.component';
+import { NextIconComponent } from '../icons/next-icon/next-icon.component';
+import { PrevIconComponent } from '../icons/prev-icon/prev-icon.component';
+import { CaretDownIconComponent } from '../icons/caret-down-icon/caret-down-icon.component';
 
 @Component({
   selector: 'app-course-detail',
@@ -17,6 +23,12 @@ import { ContentBlockedComponent } from '../../shared/components/content-blocked
     CourseUnitComponent,
     ModalComponent,
     ContentBlockedComponent,
+    HouseIconComponent,
+    CaretRightIconComponent,
+    CaretUpIconComponent,
+    CaretDownIconComponent,
+    NextIconComponent,
+    PrevIconComponent,
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css',
@@ -24,7 +36,7 @@ import { ContentBlockedComponent } from '../../shared/components/content-blocked
 export class CourseDetailComponent {
   course!: ICourse;
   unit_url_video!: SafeResourceUrl;
-  showBlockedModal = true;
+  showBlockedModal = false;
   constructor(private courseService: CourseService) {}
 
   ngOnInit(): void {

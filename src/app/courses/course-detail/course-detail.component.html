@@ -1,6 +1,6 @@
 <div class="course-detail-container">
   <div class="course-detail-content">
-    <div class="course-header">
+    <div class="course-aside">
       <div class="course-title">
         <span class="course-name">PROGRAMACIÓN DIGITAL:</span>
         <span class="course-words"
@@ -8,14 +8,6 @@
         >
       </div>
 
-      <div class="course-options">
-        <app-button> BROCHURE </app-button>
-        <app-button> ROADMAP </app-button>
-        <app-button> DESBLOQUEAR </app-button>
-      </div>
-    </div>
-
-    <main class="course-content">
       <aside class="course-details-aside">
         <app-button class="button-start-here"> ¡COMIENZA AQUÍ! </app-button>
         @for (module of course.modules; track module.moduleId) {
@@ -25,6 +17,42 @@
         />
         }
       </aside>
+    </div>
+
+    <main class="course-content">
+      <div class="course-header">
+        <div class="first-header-group">
+          <app-house-icon class="home-icon" />
+          <app-caret-right-icon class="caret-r-icon" />
+          <span>Unidad 1</span>
+          <app-caret-right-icon class="caret-r-icon" />
+          <span>Historia y evolucion en la programación</span>
+        </div>
+
+        <div class="second-header-group">
+          <div class="second-header-button">
+            <app-prev-icon class="second-header-icon" />
+            <span>Anterior</span>
+          </div>
+
+          <div class="second-header-button">
+            <span>Siguiente</span>
+            <app-next-icon class="second-header-icon" />
+          </div>
+        </div>
+      </div>
+
+      <div class="course-options">
+        <app-button>
+          <a href="https://aecodemap.my.canva.site/" target="_blank"
+            >BROCHURE</a
+          >
+        </app-button>
+        <app-button>
+          <a href="https://aecodemap.my.canva.site/" target="_blank">ROADMAP</a>
+        </app-button>
+        <app-button> DESBLOQUEAR </app-button>
+      </div>
 
       <div class="course-media-container">
         <iframe
@@ -38,15 +66,35 @@
           allowfullscreen
         >
         </iframe>
+      </div>
 
-        <div class="buttons-container">
-          <app-button> ¿Qué aprenderemos hoy? </app-button>
+      <div class="buttons-container">
+        <app-button> ¿Qué aprenderemos hoy? </app-button>
 
-          <app-button> Acceso al material de clase </app-button>
+        <app-button> Acceso al material de clase </app-button>
+      </div>
+
+      <div class="course-class-details">
+        <div class="header">
+          <div class="header-items">
+            <span>Recursos</span>
+            <span>Descripción</span>
+          </div>
+
+          <div class="translate">
+            <span>Traducir texto: Inglés</span>
+            <app-caret-down-icon class="caret-icon" />
+          </div>
+        </div>
+        <div class="separator"></div>
+        <div class="detail-text">
+          Lorem Ipsum es simplemente el texto de relleno de las imprentas y
+          archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de
+          las mezcló de tal manera que logró hacer un libro de textos especimen.
+          <span> VER MAS...</span>
         </div>
       </div>
     </main>
-    <p>{{ unit_url_video }}</p>
   </div>
 </div>
 
