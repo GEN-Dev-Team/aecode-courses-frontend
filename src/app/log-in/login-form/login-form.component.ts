@@ -25,7 +25,7 @@ export class LoginFormComponent {
   signInForm: FormGroup;
   usersList: ILogin[] = [];
   login!: ILogin;
-  isSignInForm: boolean = false;
+  isSignInForm: boolean = true;
 
   constructor(
     private fb: FormBuilder,
