@@ -13,6 +13,8 @@ import { CaretUpIconComponent } from '../../shared/icons/caret-up-icon/caret-up-
 import { NextIconComponent } from '../icons/next-icon/next-icon.component';
 import { PrevIconComponent } from '../icons/prev-icon/prev-icon.component';
 import { CaretDownIconComponent } from '../icons/caret-down-icon/caret-down-icon.component';
+import { AuthService } from '../../core/services/auth.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-course-detail',
@@ -29,6 +31,7 @@ import { CaretDownIconComponent } from '../icons/caret-down-icon/caret-down-icon
     CaretDownIconComponent,
     NextIconComponent,
     PrevIconComponent,
+    NgIf,
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css',
@@ -37,12 +40,19 @@ export class CourseDetailComponent {
   course!: ICourse;
   unit_url_video!: SafeResourceUrl;
   showBlockedModal = false;
-  constructor(private courseService: CourseService) {}
+  isUserLogged: boolean = false;
+
+  constructor(
+    private courseService: CourseService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.getCourse(1);
+    this.isUserLogged = this.authService.isLoggedIn();
+    console.log(this.isUserLogged);
   }
 
   getCourse(id: number) {

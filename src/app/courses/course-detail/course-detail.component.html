@@ -20,7 +20,7 @@
     </div>
 
     <main class="course-content">
-      <div class="course-header">
+      <div class="course-header" *ngIf="isUserLogged">
         <div class="first-header-group">
           <app-house-icon class="home-icon" />
           <app-caret-right-icon class="caret-r-icon" />
@@ -42,7 +42,7 @@
         </div>
       </div>
 
-      <div class="course-options">
+      <div class="course-options" *ngIf="!isUserLogged">
         <app-button>
           <a href="https://aecodemap.my.canva.site/" target="_blank"
             >BROCHURE</a
@@ -68,13 +68,13 @@
         </iframe>
       </div>
 
-      <div class="buttons-container">
+      <div class="buttons-container" *ngIf="!isUserLogged">
         <app-button> ¿Qué aprenderemos hoy? </app-button>
 
         <app-button> Acceso al material de clase </app-button>
       </div>
 
-      <div class="course-class-details">
+      <div class="course-class-details" *ngIf="isUserLogged">
         <div class="header">
           <div class="header-items">
             <span>Recursos</span>

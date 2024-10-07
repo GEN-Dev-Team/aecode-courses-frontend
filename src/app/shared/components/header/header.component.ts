@@ -3,6 +3,7 @@ import { ButtonComponent } from '../button/button.component';
 import { LoginFormComponent } from '../../../log-in/login-form/login-form.component';
 import { LanguageIconComponent } from '../../icons/language-icon/language-icon.component';
 import { NotificationIconComponent } from '../../icons/notification-icon/notification-icon.component';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,14 @@ import { NotificationIconComponent } from '../../icons/notification-icon/notific
 export class HeaderComponent {
   isUserLoggedIn = false;
   openLoginForm = false;
+
+  constructor(private authService: AuthService) {}
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.isUserLoggedIn = this.authService.isLoggedIn();
+  }
 
   changeLanguage() {
     const languageBtn = document.querySelector(

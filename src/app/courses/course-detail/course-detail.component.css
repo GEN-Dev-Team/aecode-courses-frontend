@@ -57,7 +57,6 @@
         flex-flow: row wrap;
         justify-content: space-between;
         align-self: flex-end;
-        display: none;
 
         a {
           text-decoration: none;
@@ -131,7 +130,6 @@
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-evenly;
-        display: none;
       }
 
       .course-class-details {
