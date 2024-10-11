@@ -5,7 +5,7 @@
     [ngClass]="{ 'course-unit-title-dropdown': !showItems }"
   >
     <span class="course-unit"
-      >UNIDAD {{ module.moduleId }}:
+      >MÓDULO {{ module.moduleId - 1 }}:
       <span class="course-text">
         {{ module.title }}
       </span></span
@@ -36,7 +36,8 @@
       }
 
       <span>
-        {{ module.moduleId }}.{{ class.orderNumber }}. {{ class.title }}
+        <!-- {{ module.moduleId }}.{{ class.orderNumber }}.  -->
+        {{ class.title }}
       </span>
       <span> <span>•</span> {{ class.durationMinutes }} min</span>
     </label>
@@ -44,7 +45,10 @@
 
     <div class="course-unit-test">
       <app-padlock-icon />
-      <span>EVALUA LO APRENDIDO - TEST U{{ module.moduleId }}</span>
+      @if (module.moduleId === 1) { <span>TRABAJO INTRODUCTORIO</span> } @else {
+      <span>EVALUA LO APRENDIDO - TEST U{{ module.moduleId - 1 }}</span>
+
+      }
     </div>
   </ul>
 </div>

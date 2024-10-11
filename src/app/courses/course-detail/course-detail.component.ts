@@ -63,6 +63,8 @@ export class CourseDetailComponent implements OnInit {
   getCourse(id: number) {
     this.courseService.getCourse(id).subscribe((response) => {
       this.course = response;
+      this.course.modules.sort((a, b) => a.orderNumber - b.orderNumber);
+      console.log(this.course);
     });
   }
 
