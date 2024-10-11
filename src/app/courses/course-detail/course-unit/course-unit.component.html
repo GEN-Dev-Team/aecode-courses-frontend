@@ -20,13 +20,26 @@
 
   <ul class="course-item-list" [hidden]="!showItems">
     @for (class of module.classes; track class.classId) {
-    <li class="course-item" (click)="selectUnitVideo(class.videoUrl)">
+    <label
+      for="{{ class.classId }}"
+      class="course-item"
+      (click)="selectUnitVideo(class.videoUrl)"
+    >
+      @if (module.moduleId === 1) {
+      <input
+        class="course-item-checkbox"
+        type="checkbox"
+        id="{{ class.classId }}"
+      />
+      } @else {
       <app-padlock-icon />
+      }
+
       <span>
         {{ module.moduleId }}.{{ class.orderNumber }}. {{ class.title }}
       </span>
       <span> <span>•</span> {{ class.durationMinutes }} min</span>
-    </li>
+    </label>
     }
 
     <div class="course-unit-test">
@@ -35,3 +48,7 @@
     </div>
   </ul>
 </div>
+
+<app-modal [isOpen]="showBlockedModal" (isClosed)="showBlockedModal = $event">
+  <app-content-blocked (isClosed)="showBlockedModal = $event" />
+</app-modal>

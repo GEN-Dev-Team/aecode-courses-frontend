@@ -92,6 +92,7 @@
     background: var(--gray-3);
     box-shadow: 0px 2px 10.3px 0px var(--purple-1);
     color: #643dce;
+    cursor: pointer;
 
     &:hover {
       box-shadow: 0px 2px 10.3px 0px #381187b8;

@@ -45,9 +45,9 @@
   </div>
   }
 
-  <app-button (click)="isSignInForm ? signIn() : logInUser()">
-    ACCEDER</app-button
-  >
+  <app-button (click)="isSignInForm ? createUser() : logInUser()">
+    @if(isSignInForm){CREAR} @else {ACCEDER}
+  </app-button>
 
   @if (isSignInForm) {
   <span class="login-text"
