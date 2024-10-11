@@ -33,17 +33,15 @@ export class HeaderComponent {
   }
 
   changeLanguage() {
-    const languageBtn = document.querySelector(
-      '#language-button'
-    ) as HTMLElement;
-
-    if (languageBtn.textContent === 'ES') {
-      languageBtn.textContent = 'EN';
-    } else {
-      languageBtn.textContent = 'ES';
-    }
-
-    this.change(languageBtn.textContent!.trim());
+    // const languageBtn = document.querySelector(
+    //   '#language-button'
+    // ) as HTMLElement;
+    // if (languageBtn.textContent === 'ES') {
+    //   languageBtn.textContent = 'EN';
+    // } else {
+    //   languageBtn.textContent = 'ES';
+    // }
+    // this.change(languageBtn.textContent!.trim());
   }
 
   change = async (language: string) => {
