@@ -9,7 +9,7 @@ import { ILogin } from '../interface/Login';
 import { UserService } from '../user.service';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { NgClass } from '@angular/common';
-import { LocalStorageService } from '../../core/services/storage/local-storage.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login-form',
@@ -30,7 +30,7 @@ export class LoginFormComponent {
   constructor(
     private fb: FormBuilder,
     private logInService: UserService,
-    private localStorage: LocalStorageService
+    private authService: AuthService
   ) {
     this.loginForm = this.fb.group({
       email: new FormControl(''),
@@ -46,8 +46,6 @@ export class LoginFormComponent {
   }
 
   createUser() {
-    console.log('signinForm:', this.signInForm.value);
-    console.log('loginForm:', this.loginForm.value);
     const password = document.getElementById(
       'passwordHash'
     ) as HTMLInputElement;
@@ -60,19 +58,16 @@ export class LoginFormComponent {
     } else {
       this.logInService
         .createUser(this.signInForm.value)
-        .subscribe((response) => {
-          this.isSignInForm = false;
-          this.signInForm.reset();
-        });
+        .subscribe((response) => {});
+      this.isSignInForm = false;
     }
   }
 
   logInUser() {
-    console.log('loginForm:', this.loginForm.value);
     this.logInService.logInUser(this.loginForm.value).subscribe((response) => {
-      console.log(response);
-      this.localStorage.setItem('user', response);
+      this.authService.login(response); // Actualizar el estado de autenticación
       this.userLoggedIn.emit(true);
+      this.closeModal();
     });
   }
 
@@ -82,9 +77,11 @@ export class LoginFormComponent {
 
   logIn() {
     this.isSignInForm = false;
+    this.loginForm.reset();
   }
 
   signIn() {
     this.isSignInForm = true;
+    this.signInForm.reset();
   }
 }

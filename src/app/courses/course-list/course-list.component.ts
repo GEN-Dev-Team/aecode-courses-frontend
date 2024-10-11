@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { SquareIconComponent } from '../../shared/icons/square-icon/square-icon.component';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SeparatorIconComponent } from '../../shared/icons/separator-icon/separator-icon.component';
 import { CourseService } from '../course.service';
 
@@ -14,12 +14,16 @@ import { CourseService } from '../course.service';
 export class CourseListComponent {
   @Output() openModal = new EventEmitter<boolean>();
 
-  constructor(private courseService: CourseService) {}
+  constructor(private courseService: CourseService, private router: Router) {}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.getCourses();
+    // this.getCourses();
+  }
+
+  goToCourse(id: number) {
+    this.router.navigate(['/course-detail', id]);
   }
 
   getCourses() {

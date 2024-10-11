@@ -5,6 +5,8 @@ import { PadlockIconComponent } from '../../../shared/icons/padlock-icon/padlock
 import { NgClass } from '@angular/common';
 import { IModule } from '../../interface/Module';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ModalComponent } from '../../../shared/components/modal/modal.component';
+import { ContentBlockedComponent } from '../../../shared/components/content-blocked/content-blocked.component';
 
 @Component({
   selector: 'app-course-unit',
@@ -14,6 +16,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
     CaretDownIconComponent,
     PadlockIconComponent,
     NgClass,
+    ModalComponent,
+    ContentBlockedComponent,
   ],
   templateUrl: './course-unit.component.html',
   styleUrl: './course-unit.component.css',
@@ -22,14 +26,20 @@ export class CourseUnitComponent {
   @Input() module!: IModule;
   @Output() unit_video = new EventEmitter<SafeResourceUrl>();
   safeUrl: SafeResourceUrl | undefined;
+  showBlockedModal = false;
 
   showItems = false;
 
   constructor(private sanitizer: DomSanitizer) {}
 
   selectUnitVideo(url: string) {
-    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-    console.log('Hijo:', this.safeUrl);
-    this.unit_video.emit(this.safeUrl);
+    if (this.module.moduleId === 1) {
+      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+      this.unit_video.emit(this.safeUrl);
+      console.log('Video disponible');
+    } else {
+      console.log('Video no disponible');
+      this.showBlockedModal = true;
+    }
   }
 }

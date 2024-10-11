@@ -1,26 +1,33 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private isLoggedInStatus: boolean = false;
+  private isLoggedInStatus = new BehaviorSubject<boolean>(this.hasToken());
 
-  constructor() {
-    const token = localStorage.getItem('user');
-    this.isLoggedInStatus = !!token;
+  constructor() {}
+
+  // Método para verificar si hay token en el localStorage
+  private hasToken(): boolean {
+    return !!localStorage.getItem('user');
   }
 
-  isLoggedIn(): boolean {
-    return this.isLoggedInStatus;
+  // Observable que el componente puede suscribirse para obtener el estado
+  isLoggedIn$(): Observable<boolean> {
+    return this.isLoggedInStatus.asObservable();
   }
-  login(token: string): void {
+
+  // Lógica de inicio de sesión
+  login(token: any): void {
     localStorage.setItem('user', token);
-    this.isLoggedInStatus = true;
+    this.isLoggedInStatus.next(true); // Emitir que el usuario está loggeado
   }
 
+  // Lógica de cierre de sesión
   logout(): void {
     localStorage.removeItem('user');
-    this.isLoggedInStatus = false;
+    this.isLoggedInStatus.next(false); // Emitir que el usuario ya no está loggeado
   }
 }
