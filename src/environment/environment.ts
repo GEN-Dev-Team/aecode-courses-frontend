@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  base: 'https://webcoursesback.onrender.com',
+  base: 'https://backend-productodigital.onrender.com',
 };

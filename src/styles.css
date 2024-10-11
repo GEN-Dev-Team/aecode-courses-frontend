@@ -6,7 +6,7 @@
 
 :root {
   --gray-1: #b4bbbf;
-  --gray-2: #cad5da;
+  --gray-2: #e4e4e4;
   --gray-3: #eff9fe;
   --orange-1: #7a3717;
   --orange-2: #ce7b2d;
@@ -102,5 +102,3 @@ body {
   margin: 0;
   padding: 0;
 }
-
-
