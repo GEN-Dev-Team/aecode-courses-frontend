@@ -4,7 +4,7 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { CourseUnitComponent } from './course-unit/course-unit.component';
 import { CourseService } from '../course.service';
 import { ICourse } from '../interface/Course';
-import { SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
 import { HouseIconComponent } from '../icons/house-icon/house-icon.component';
@@ -40,14 +40,15 @@ import { ActivatedRoute } from '@angular/router';
 export class CourseDetailComponent implements OnInit {
   course_id: number = -1;
   course!: ICourse;
-  unit_url_video!: SafeResourceUrl;
+  unit_url_video: SafeResourceUrl = '';
   showBlockedModal = false;
   isUserLogged: boolean = false;
 
   constructor(
     private courseService: CourseService,
     private authService: AuthService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -58,17 +59,28 @@ export class CourseDetailComponent implements OnInit {
 
     this.course_id = this.route.snapshot.params['id'];
     this.getCourse(this.course_id);
+    this.unit_url_video = this.sanitizer.bypassSecurityTrustResourceUrl(
+      'https://www.youtube.com/embed/psmL5TV8DLg'
+    );
   }
 
   getCourse(id: number) {
     this.courseService.getCourse(id).subscribe((response) => {
       this.course = response;
       this.course.modules.sort((a, b) => a.orderNumber - b.orderNumber);
-      console.log(this.course);
+      this.course.modules.forEach((module) => {
+        module.classes.sort((a, b) => a.orderNumber - b.orderNumber);
+      });
     });
   }
 
   onUnitVideoChange(url: SafeResourceUrl) {
     this.unit_url_video = url;
+  }
+
+  callIntroVideo() {
+    this.unit_url_video = this.sanitizer.bypassSecurityTrustResourceUrl(
+      'https://www.youtube.com/embed/psmL5TV8DLg'
+    );
   }
 }
