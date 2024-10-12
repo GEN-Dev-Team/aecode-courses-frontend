@@ -25,7 +25,7 @@
       class="course-item"
       (click)="selectUnitVideo(class.videoUrl)"
     >
-      @if (module.moduleId === 1) {
+      @if ((module.moduleId === 2 && class.orderNumber < 4)) {
       <input
         class="course-item-checkbox"
         type="checkbox"

@@ -33,10 +33,24 @@ export class CourseUnitComponent {
   constructor(private sanitizer: DomSanitizer) {}
 
   selectUnitVideo(url: string) {
-    if (this.module.moduleId === 1) {
-      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+    if (this.module.orderNumber === 1) {
+      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+        'https://www.youtube.com/embed/TmiPLKkhMhk'
+      );
       this.unit_video.emit(this.safeUrl);
       console.log('Video disponible');
+    } else if (this.module.orderNumber === 2) {
+      this.module.classes.forEach((classItem) => {
+        if (classItem.orderNumber === 3) {
+          this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+            'https://www.youtube.com/embed/OnM6X9aJLRI'
+          );
+          this.unit_video.emit(this.safeUrl);
+        } else {
+          this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('');
+          this.unit_video.emit(this.safeUrl);
+        }
+      });
     } else {
       console.log('Video no disponible');
       this.showBlockedModal = true;

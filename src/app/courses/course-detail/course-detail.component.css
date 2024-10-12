@@ -33,6 +33,7 @@
           font-size: 20px;
           font-family: "ruberoid-semibold";
           color: var(--purple-2);
+          text-transform: uppercase;
         }
 
         .course-words {
