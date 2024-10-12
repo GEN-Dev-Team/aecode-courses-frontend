@@ -61,13 +61,16 @@
         <div class="user-logged">
           <app-notification-icon />
           <div class="separator"></div>
-          <div class="user-profile">
+          <div (click)="showProfileMenuHandler()" class="user-profile">
             <img
               src="assets/images/login-view/user-profile-img.webp"
               class="user-profile-img"
               alt=""
             />
             <span class="profile-dropdown-button hover-animation">▼</span>
+            @if (showProfileMenu) {
+            <app-view-profile class="profile-dropdown" />
+            }
           </div>
         </div>
         }

@@ -80,6 +80,14 @@
             flex-flow: row nowrap;
             align-items: center;
             gap: 15px;
+            cursor: pointer;
+            position: relative;
+
+            .profile-dropdown {
+              position: absolute;
+              right: 0;
+              top: 100%;
+            }
 
             .user-profile-img {
               width: 44px;

@@ -16,6 +16,9 @@
         <app-course-unit
           [module]="module"
           (unit_video)="onUnitVideoChange($event)"
+          (module_id)="onModuleIdChange($event)"
+          (class_name)="onClassNameChange($event)"
+          (class_description)="onClassDescriptionChange($event)"
         />
         }
       </aside>
@@ -26,9 +29,9 @@
         <div class="first-header-group">
           <app-house-icon class="home-icon" />
           <app-caret-right-icon class="caret-r-icon" />
-          <span>MODULO 1</span>
+          <span>MODULO {{ module_id }}</span>
           <app-caret-right-icon class="caret-r-icon" />
-          <span>Historia y evolucion en la programación</span>
+          <span>{{ class_name }}</span>
         </div>
 
         <div class="second-header-group">
@@ -90,10 +93,7 @@
         </div>
         <div class="separator"></div>
         <div class="detail-text">
-          Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-          archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de
-          las mezcló de tal manera que logró hacer un libro de textos especimen.
-          <span> VER MAS...</span>
+          {{ class_description }}
         </div>
       </div>
     </main>
