@@ -25,7 +25,7 @@
       class="course-item"
       (click)="selectUnitVideo(class.videoUrl)"
     >
-      @if ((module.moduleId === 2 && class.orderNumber < 4)) {
+      @if (youtubeRegex.test(class.videoUrl)) {
       <input
         class="course-item-checkbox"
         type="checkbox"
@@ -43,9 +43,10 @@
     </label>
     }
 
-    <div class="course-unit-test">
+    <div (click)="evaluation()" class="course-unit-test">
       <app-padlock-icon />
-      @if (module.moduleId === 1) { <span>TRABAJO INTRODUCTORIO</span> } @else {
+      @if (module.moduleId === 1) { <span>PREGUNTAS INTRODUCTORIAS</span> }
+      @else {
       <span>EVALUA LO APRENDIDO - TEST U{{ module.moduleId - 1 }}</span>
 
       }
@@ -56,3 +57,7 @@
 <app-modal [isOpen]="showBlockedModal" (isClosed)="showBlockedModal = $event">
   <app-content-blocked (isClosed)="showBlockedModal = $event" />
 </app-modal>
+
+<!-- <app-modal [isOpen]="showEvaluation" (isClosed)="showEvaluation = $event">
+  <app-confirmation [ev_url]="{{ module.test.description }}" />
+</app-modal> -->

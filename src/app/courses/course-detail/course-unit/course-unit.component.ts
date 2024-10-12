@@ -7,6 +7,7 @@ import { IModule } from '../../interface/Module';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
 import { ContentBlockedComponent } from '../../../shared/components/content-blocked/content-blocked.component';
+import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
 
 @Component({
   selector: 'app-course-unit',
@@ -18,6 +19,7 @@ import { ContentBlockedComponent } from '../../../shared/components/content-bloc
     NgClass,
     ModalComponent,
     ContentBlockedComponent,
+    ConfirmationComponent,
   ],
   templateUrl: './course-unit.component.html',
   styleUrl: './course-unit.component.css',
@@ -25,35 +27,27 @@ import { ContentBlockedComponent } from '../../../shared/components/content-bloc
 export class CourseUnitComponent {
   @Input() module!: IModule;
   @Output() unit_video = new EventEmitter<SafeResourceUrl>();
+  @Output() module_title = new EventEmitter<SafeResourceUrl>();
+  @Output() class_name = new EventEmitter<SafeResourceUrl>();
+  youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
+
   safeUrl: SafeResourceUrl | undefined;
   showBlockedModal = false;
-
   showItems = false;
+  showEvaluation = false;
 
   constructor(private sanitizer: DomSanitizer) {}
 
   selectUnitVideo(url: string) {
-    if (this.module.orderNumber === 1) {
-      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-        'https://www.youtube.com/embed/TmiPLKkhMhk'
-      );
+    if (this.youtubeRegex.test(url)) {
+      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
       this.unit_video.emit(this.safeUrl);
-      console.log('Video disponible');
-    } else if (this.module.orderNumber === 2) {
-      this.module.classes.forEach((classItem) => {
-        if (classItem.orderNumber === 3) {
-          this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-            'https://www.youtube.com/embed/OnM6X9aJLRI'
-          );
-          this.unit_video.emit(this.safeUrl);
-        } else {
-          this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl('');
-          this.unit_video.emit(this.safeUrl);
-        }
-      });
     } else {
-      console.log('Video no disponible');
       this.showBlockedModal = true;
     }
+  }
+
+  evaluation() {
+    this.showEvaluation = !this.showEvaluation;
   }
 }

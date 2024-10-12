@@ -1,14 +1,16 @@
-<div class="content-blocked-container">
+<div class="content-confirmation-container">
   <div class="icon-container">
     <app-acc-created-icon />
   </div>
 
-  <h1 class="subtitle">¡Genial, Johnson! Tu cuenta fue creada con éxito</h1>
+  <h1 class="subtitle">!Felicidades por introducirte a la Ingeniería 4.0!</h1>
 
   <p class="message">
-    Gracias por ser parte de la comunidad de aprendizaje más grande del sector
-    AEC
+    Ahora responde estás preguntas muy necesarias que serán la base
+    para brindarte una mejor experiencia adecuada a tus necesidades.
   </p>
 
-  <app-button (click)="closeModal()">COMENZAR</app-button>
+  <app-button class="ev-button"
+    ><a [href]="ev_url" target="_blank">COMENZAR</a></app-button
+  >
 </div>

@@ -1,6 +1,5 @@
-.content-blocked-container {
+.content-confirmation-container {
   width: 460px;
-  height: 368px;
   padding: 30px 40px 46px;
   flex-shrink: 0;
   border-radius: 10px;
@@ -38,5 +37,12 @@
     font-style: normal;
     font-weight: 400;
     line-height: 25px;
+  }
+
+  .ev-button {
+    a {
+      text-decoration: none;
+      color: white;
+    }
   }
 }

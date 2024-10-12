@@ -106,6 +106,7 @@
       border: 1px solid var(--purple-2);
       border-radius: 6px;
       color: var(--purple-2);
+      cursor: pointer;
 
       span {
         font-size: 14px;
