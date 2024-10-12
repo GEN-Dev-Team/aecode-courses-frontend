@@ -43,6 +43,9 @@ export class CourseDetailComponent implements OnInit {
   unit_url_video: SafeResourceUrl = '';
   showBlockedModal = false;
   isUserLogged: boolean = false;
+  module_id = 0;
+  class_name = '¡Bienvenido al curso!';
+  class_description = '¡Bienvenido al curso!';
 
   constructor(
     private courseService: CourseService,
@@ -58,10 +61,18 @@ export class CourseDetailComponent implements OnInit {
     });
 
     this.course_id = this.route.snapshot.params['id'];
+    if (this.course_id == 1) {
+      this.unit_url_video = this.sanitizer.bypassSecurityTrustResourceUrl(
+        'https://www.youtube.com/embed/psmL5TV8DLg'
+      );
+    }
+    if (this.course_id == 2) {
+      this.unit_url_video = this.sanitizer.bypassSecurityTrustResourceUrl(
+        'https://www.youtube.com/embed/iLymJT74ukA'
+      );
+    }
+
     this.getCourse(this.course_id);
-    this.unit_url_video = this.sanitizer.bypassSecurityTrustResourceUrl(
-      'https://www.youtube.com/embed/psmL5TV8DLg'
-    );
   }
 
   getCourse(id: number) {
@@ -78,6 +89,15 @@ export class CourseDetailComponent implements OnInit {
 
   onUnitVideoChange(url: SafeResourceUrl) {
     this.unit_url_video = url;
+  }
+  onModuleIdChange(value: number) {
+    this.module_id = value;
+  }
+  onClassNameChange(value: string) {
+    this.class_name = value;
+  }
+  onClassDescriptionChange(value: string) {
+    this.class_description = value;
   }
 
   callIntroVideo() {

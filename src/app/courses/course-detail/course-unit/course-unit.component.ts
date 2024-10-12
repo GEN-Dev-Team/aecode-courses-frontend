@@ -27,8 +27,9 @@ import { ConfirmationComponent } from '../../../shared/components/confirmation/c
 export class CourseUnitComponent {
   @Input() module!: IModule;
   @Output() unit_video = new EventEmitter<SafeResourceUrl>();
-  @Output() module_title = new EventEmitter<SafeResourceUrl>();
-  @Output() class_name = new EventEmitter<SafeResourceUrl>();
+  @Output() module_id = new EventEmitter<number>();
+  @Output() class_name = new EventEmitter<string>();
+  @Output() class_description = new EventEmitter<string>();
   youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
 
   safeUrl: SafeResourceUrl | undefined;
@@ -38,10 +39,13 @@ export class CourseUnitComponent {
 
   constructor(private sanitizer: DomSanitizer) {}
 
-  selectUnitVideo(url: string) {
+  selectUnitVideo(url: string, name: string, description: string) {
     if (this.youtubeRegex.test(url)) {
       this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
       this.unit_video.emit(this.safeUrl);
+      this.module_id.emit(this.module.orderNumber);
+      this.class_name.emit(name);
+      this.class_description.emit(description);
     } else {
       this.showBlockedModal = true;
     }

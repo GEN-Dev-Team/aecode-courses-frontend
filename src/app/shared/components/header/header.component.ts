@@ -4,6 +4,7 @@ import { LoginFormComponent } from '../../../log-in/login-form/login-form.compon
 import { LanguageIconComponent } from '../../icons/language-icon/language-icon.component';
 import { NotificationIconComponent } from '../../icons/notification-icon/notification-icon.component';
 import { AuthService } from '../../../core/services/auth.service';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +14,7 @@ import { AuthService } from '../../../core/services/auth.service';
     LoginFormComponent,
     LanguageIconComponent,
     NotificationIconComponent,
+    ViewProfileComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -20,6 +22,7 @@ import { AuthService } from '../../../core/services/auth.service';
 export class HeaderComponent {
   isUserLoggedIn = false;
   openLoginForm = false;
+  showProfileMenu = false;
 
   constructor(private authService: AuthService) {}
 
@@ -59,4 +62,12 @@ export class HeaderComponent {
       textToChange.innerHTML = texts[section!][value!];
     }
   };
+
+  showProfileMenuHandler() {
+    this.showProfileMenu = !this.showProfileMenu;
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 }

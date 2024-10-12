@@ -23,7 +23,7 @@
     <label
       for="{{ class.classId }}"
       class="course-item"
-      (click)="selectUnitVideo(class.videoUrl)"
+      (click)="selectUnitVideo(class.videoUrl, class.title, class.description)"
     >
       @if (youtubeRegex.test(class.videoUrl)) {
       <input
@@ -48,7 +48,6 @@
       @if (module.moduleId === 1) { <span>PREGUNTAS INTRODUCTORIAS</span> }
       @else {
       <span>EVALUA LO APRENDIDO - TEST U{{ module.moduleId - 1 }}</span>
-
       }
     </div>
   </ul>
@@ -57,7 +56,7 @@
 <app-modal [isOpen]="showBlockedModal" (isClosed)="showBlockedModal = $event">
   <app-content-blocked (isClosed)="showBlockedModal = $event" />
 </app-modal>
-
-<!-- <app-modal [isOpen]="showEvaluation" (isClosed)="showEvaluation = $event">
-  <app-confirmation [ev_url]="{{ module.test.description }}" />
+<!-- 
+<app-modal [isOpen]="showEvaluation" (isClosed)="showEvaluation = $event">
+  <app-confirmation [ev_url]="module.test.description" />
 </app-modal> -->
