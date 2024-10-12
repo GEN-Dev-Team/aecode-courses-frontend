@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { AccCreatedIconComponent } from '../../icons/acc-created-icon/acc-created-icon.component';
 
@@ -10,9 +10,6 @@ import { AccCreatedIconComponent } from '../../icons/acc-created-icon/acc-create
   styleUrl: './confirmation.component.css',
 })
 export class ConfirmationComponent {
-  @Output() openModal = new EventEmitter<boolean>();
-
-  closeModal() {
-    this.openModal.emit(false);
-  }
+  showContentModal = false;
+  @Input() ev_url!: string;
 }
