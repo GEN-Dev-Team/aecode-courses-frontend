@@ -9,7 +9,9 @@
       </div>
 
       <aside class="course-details-aside">
-        <app-button class="button-start-here"> ¡COMIENZA AQUÍ! </app-button>
+        <app-button (click)="callIntroVideo()" class="button-start-here">
+          ¡COMIENZA AQUÍ!
+        </app-button>
         @for (module of course.modules; track module.moduleId) {
         <app-course-unit
           [module]="module"
