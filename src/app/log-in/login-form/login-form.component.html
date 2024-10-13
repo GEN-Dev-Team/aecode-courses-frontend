@@ -32,16 +32,28 @@
     <input
       formControlName="passwordHash"
       id="passwordHash"
-      type="text"
+      type="password"
       placeholder="********"
     />
     <label for="passwordHash" class="label">Contraseña</label>
+    <img
+      (click)="hidePassword(false)"
+      src="assets\images\login-view\eye.svg"
+      alt="Mostrar contraseña"
+      id="toggle-password"
+    />
   </div>
 
   @if (isSignInForm) {
   <div class="form-control">
-    <input id="passwordHashConfirm" type="text" placeholder="********" />
+    <input id="passwordHashConfirm" type="password" placeholder="********" />
     <label for="passwordHashConfirm" class="label">Confirmar</label>
+    <img
+      (click)="hidePassword(true)"
+      src="assets\images\login-view\eye.svg"
+      alt="Mostrar contraseña"
+      id="toggle-password-confirm"
+    />
   </div>
   }
 
