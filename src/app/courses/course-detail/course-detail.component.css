@@ -10,16 +10,16 @@
     margin-inline: auto;
     display: flex;
     flex-flow: row nowrap;
+    gap: 30px;
 
     .course-aside {
-      flex: 1;
+      width: 100%;
+      max-width: 400px;
       display: flex;
       flex-flow: column nowrap;
       gap: 20px;
 
       .course-details-aside {
-        width: clamp(100px, 100%, 400px);
-
         .button-start-here {
           width: 100%;
         }
@@ -45,7 +45,7 @@
     }
 
     .course-content {
-      flex: 2;
+      width: 100%;
       display: flex;
       flex-flow: column nowrap;
       justify-content: space-between;
@@ -53,11 +53,11 @@
       padding-top: 15px;
 
       .course-options {
-        width: clamp(100px, 100%, 500px);
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
         align-self: flex-end;
+        gap: 60px;
 
         a {
           text-decoration: none;

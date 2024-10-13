@@ -7,8 +7,8 @@ import { IModule } from '../../interface/Module';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
 import { ContentBlockedComponent } from '../../../shared/components/content-blocked/content-blocked.component';
-import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
 import { AuthService } from '../../../core/services/auth.service';
+import { TestComponent } from '../test/test.component';
 
 @Component({
   selector: 'app-course-unit',
@@ -20,7 +20,7 @@ import { AuthService } from '../../../core/services/auth.service';
     NgClass,
     ModalComponent,
     ContentBlockedComponent,
-    ConfirmationComponent,
+    TestComponent,
   ],
   templateUrl: './course-unit.component.html',
   styleUrl: './course-unit.component.css',
@@ -33,7 +33,7 @@ export class CourseUnitComponent {
   @Output() class_description = new EventEmitter<string>();
   youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
 
-  safeUrl: SafeResourceUrl | undefined;
+  safeUrl!: SafeResourceUrl;
   showBlockedModal = false;
   showItems = false;
   showEvaluation = false;

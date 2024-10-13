@@ -56,7 +56,9 @@
 <app-modal [isOpen]="showBlockedModal" (isClosed)="showBlockedModal = $event">
   <app-content-blocked (isClosed)="showBlockedModal = $event" />
 </app-modal>
-<!-- 
+
+@if (module?.test?.description) {
 <app-modal [isOpen]="showEvaluation" (isClosed)="showEvaluation = $event">
-  <app-confirmation [ev_url]="module.test.description" />
-</app-modal> -->
+  <app-test [ev_url]="module.test.description" />
+</app-modal>
+}

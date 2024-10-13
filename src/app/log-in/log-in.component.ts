@@ -6,7 +6,6 @@ import { ModalComponent } from '../shared/components/modal/modal.component';
 import { CourseListComponent } from '../courses/course-list/course-list.component';
 import { FormComponent } from './form/form.component';
 import { ContentBlockedComponent } from '../shared/components/content-blocked/content-blocked.component';
-import { ConfirmationComponent } from '../shared/components/confirmation/confirmation.component';
 import { CourseContentComponent } from '../courses/course-content/course-content.component';
 import { ClassQuestionComponent } from '../courses/course-detail/class-question/class-question.component';
 import { PaymentCardComponent } from '../payment/payment-card/payment-card.component';
@@ -22,10 +21,9 @@ import { PaymentCardComponent } from '../payment/payment-card/payment-card.compo
     CourseListComponent,
     FormComponent,
     ContentBlockedComponent,
-    ConfirmationComponent,
     CourseContentComponent,
     ClassQuestionComponent,
-    PaymentCardComponent
+    PaymentCardComponent,
   ],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css',

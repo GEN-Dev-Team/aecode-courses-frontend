@@ -68,6 +68,7 @@ export class LoginFormComponent {
       this.authService.login(response); // Actualizar el estado de autenticación
       this.userLoggedIn.emit(true);
       this.closeModal();
+      console.log(response);
     });
   }
 
