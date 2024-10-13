@@ -84,4 +84,16 @@ export class LoginFormComponent {
     this.isSignInForm = true;
     this.signInForm.reset();
   }
+
+  hidePassword(isConfirm: boolean) {
+    const passwordField = document.getElementById(
+      isConfirm ? 'passwordHashConfirm' : 'passwordHash'
+    ) as HTMLInputElement;
+
+    if (passwordField.type === 'password') {
+      passwordField.type = 'text';
+    } else {
+      passwordField.type = 'password';
+    }
+  }
 }

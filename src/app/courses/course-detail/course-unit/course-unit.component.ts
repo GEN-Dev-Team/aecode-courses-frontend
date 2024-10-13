@@ -8,6 +8,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
 import { ContentBlockedComponent } from '../../../shared/components/content-blocked/content-blocked.component';
 import { ConfirmationComponent } from '../../../shared/components/confirmation/confirmation.component';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-course-unit',
@@ -36,11 +37,19 @@ export class CourseUnitComponent {
   showBlockedModal = false;
   showItems = false;
   showEvaluation = false;
+  isUserLogged = false;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(
+    private sanitizer: DomSanitizer,
+    private authService: AuthService
+  ) {
+    this.authService.isLoggedIn$().subscribe((isLogged) => {
+      this.isUserLogged = isLogged;
+    });
+  }
 
   selectUnitVideo(url: string, name: string, description: string) {
-    if (this.youtubeRegex.test(url)) {
+    if (this.youtubeRegex.test(url) && this.isUserLogged) {
       this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
       this.unit_video.emit(this.safeUrl);
       this.module_id.emit(this.module.orderNumber);

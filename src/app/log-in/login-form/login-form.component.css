@@ -77,6 +77,15 @@
         font-family: "plusjakartasans-light";
       }
     }
+
+    img {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      z-index: 0;
+    }
   }
 
   .login-text {
