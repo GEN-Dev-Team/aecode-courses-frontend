@@ -21,7 +21,7 @@ export class AuthService {
 
   // Lógica de inicio de sesión
   login(token: any): void {
-    localStorage.setItem('user', token);
+    localStorage.setItem('user', JSON.stringify(token));
     this.isLoggedInStatus.next(true); // Emitir que el usuario está loggeado
   }
 

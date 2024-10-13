@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
+import { consumerBeforeComputation } from '@angular/core/primitives/signals';
 
 @Component({
   selector: 'app-view-profile',
@@ -9,7 +10,10 @@ import { AuthService } from '../../../../core/services/auth.service';
   styleUrl: './view-profile.component.css',
 })
 export class ViewProfileComponent {
-  constructor(private authService: AuthService) {}
+  userData = JSON.parse(localStorage.getItem('user') || '{}');
+  constructor(private authService: AuthService) {
+    this.userData;
+  }
 
   @Output() isClosed = new EventEmitter<boolean>();
 

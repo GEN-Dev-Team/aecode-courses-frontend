@@ -82,8 +82,6 @@ export class CourseDetailComponent implements OnInit {
       this.course.modules.forEach((module) => {
         module.classes.sort((a, b) => a.orderNumber - b.orderNumber);
       });
-
-      console.log(this.course);
     });
   }
 
