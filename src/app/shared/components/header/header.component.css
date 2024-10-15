@@ -1,10 +1,3 @@
-.hover-animation {
-  &:hover {
-    transform: scale(1.05);
-    transition: transform 0.1s ease-in-out;
-  }
-}
-
 .header-container {
   width: 100%;
   background-color: var(--gray-3);

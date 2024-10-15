@@ -3,11 +3,17 @@ import { SquareIconComponent } from '../../shared/icons/square-icon/square-icon.
 import { Router, RouterLink } from '@angular/router';
 import { SeparatorIconComponent } from '../../shared/icons/separator-icon/separator-icon.component';
 import { CourseService } from '../course.service';
+import { ZoomInDirective } from '../../shared/directives/animations/zoom-in.directive';
 
 @Component({
   selector: 'app-course-list',
   standalone: true,
-  imports: [SquareIconComponent, RouterLink, SeparatorIconComponent],
+  imports: [
+    SquareIconComponent,
+    RouterLink,
+    SeparatorIconComponent,
+    ZoomInDirective,
+  ],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.css',
 })

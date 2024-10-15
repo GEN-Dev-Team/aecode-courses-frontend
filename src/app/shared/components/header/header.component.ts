@@ -5,6 +5,7 @@ import { LanguageIconComponent } from '../../icons/language-icon/language-icon.c
 import { NotificationIconComponent } from '../../icons/notification-icon/notification-icon.component';
 import { AuthService } from '../../../core/services/auth.service';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { ZoomInDirective } from '../../directives/animations/zoom-in.directive';
 
 @Component({
   selector: 'app-header',
@@ -15,6 +16,7 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
     LanguageIconComponent,
     NotificationIconComponent,
     ViewProfileComponent,
+    ZoomInDirective,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
