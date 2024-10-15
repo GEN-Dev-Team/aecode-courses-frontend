@@ -6,7 +6,7 @@
 
 <header class="header-container">
   <div class="header-content">
-    <a class="header-logo hover-animation" href="/">
+    <a class="header-logo" ZoomIn href="/">
       <img src="assets/images/aecode-logo.webp" alt="" />
     </a>
 
@@ -16,7 +16,8 @@
 
       <ul class="header-list">
         <a
-          class="header-item hover-animation"
+          class="header-item"
+          ZoomIn
           data-section="header-container"
           data-value="CONOCENOS"
           href="https://aecodemap.my.canva.site/conocenos"
@@ -24,7 +25,8 @@
           >CONOCENOS</a
         >
         <a
-          class="header-item hover-animation"
+          class="header-item"
+          ZoomIn
           data-section="header-container"
           data-value="COMUNIDAD"
           href="https://aecodemap.my.canva.site/aecode-community"
@@ -32,7 +34,8 @@
           >COMUNIDAD</a
         >
         <a
-          class="header-item hover-animation"
+          class="header-item"
+          ZoomIn
           data-section="header-container"
           data-value="INICIATIVAS"
           href="https://aecodemap.my.canva.site/iniciativas"
@@ -42,14 +45,16 @@
         <span
           (click)="changeLanguage()"
           id="language-button"
-          class="language-button hover-animation"
+          class="language-button"
+          ZoomIn
         >
           <app-language-icon /> ES
         </span>
 
         @if (!isUserLoggedIn) {
         <app-button
-          class="header-button hover-animation"
+          class="header-button"
+          ZoomIn
           data-section="header-container"
           data-value="Acceder"
           href=""
@@ -59,15 +64,15 @@
         </app-button>
         } @else {
         <div class="user-logged">
-          <app-notification-icon />
+          <app-notification-icon ZoomIn />
           <div class="separator"></div>
-          <div (click)="showProfileMenuHandler()" class="user-profile">
+          <div ZoomIn (click)="showProfileMenuHandler()" class="user-profile">
             <img
               src="assets/images/login-view/user-profile-img.webp"
               class="user-profile-img"
               alt=""
             />
-            <span class="profile-dropdown-button hover-animation">▼</span>
+            <span class="profile-dropdown-button" ZoomIn>▼</span>
             @if (showProfileMenu) {
             <app-view-profile class="profile-dropdown" />
             }
