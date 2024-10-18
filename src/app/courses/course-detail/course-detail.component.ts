@@ -14,7 +14,7 @@ import { NextIconComponent } from '../icons/next-icon/next-icon.component';
 import { PrevIconComponent } from '../icons/prev-icon/prev-icon.component';
 import { CaretDownIconComponent } from '../icons/caret-down-icon/caret-down-icon.component';
 import { AuthService } from '../../core/services/auth.service';
-import { NgIf } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -33,6 +33,7 @@ import { ActivatedRoute } from '@angular/router';
     NextIconComponent,
     PrevIconComponent,
     NgIf,
+    NgClass,
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css',
@@ -44,6 +45,7 @@ export class CourseDetailComponent implements OnInit {
   showBlockedModal = false;
   isUserLogged: boolean = false;
   module_id = 0;
+  isDescription = true;
   class_name = '¡Bienvenido al curso!';
   class_description = '¡Bienvenido al curso!';
 

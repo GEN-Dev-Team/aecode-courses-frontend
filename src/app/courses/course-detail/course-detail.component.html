@@ -15,6 +15,7 @@
         @for (module of course.modules; track module.moduleId) {
         <app-course-unit
           [module]="module"
+          [courseLength]="course.modules.length"
           (unit_video)="onUnitVideoChange($event)"
           (module_id)="onModuleIdChange($event)"
           (class_name)="onClassNameChange($event)"
@@ -82,8 +83,16 @@
       <div class="course-class-details" *ngIf="isUserLogged">
         <div class="header">
           <div class="header-items">
-            <span>Recursos</span>
-            <span>Descripción</span>
+            <span
+              (click)="isDescription = true"
+              [ngClass]="isDescription ? 'selected' : ''"
+              >Descripción</span
+            >
+            <span
+              (click)="isDescription = false"
+              [ngClass]="!isDescription ? 'selected' : ''"
+              >Recursos</span
+            >
           </div>
 
           <div class="translate">
@@ -93,7 +102,10 @@
         </div>
         <div class="separator"></div>
         <div class="detail-text">
+          @if(isDescription) {
           {{ class_description }}
+
+          } @else { Recurso descargable aun no disponible! }
         </div>
       </div>
     </main>

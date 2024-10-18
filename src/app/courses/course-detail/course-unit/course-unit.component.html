@@ -1,4 +1,10 @@
-<div class="course-unit-container">
+<div
+  class="course-unit-container"
+  [ngClass]="{
+    first: module.moduleId === 1,
+    last: module.moduleId === courseLength
+  }"
+>
   <div
     (click)="showItems = !showItems"
     class="course-unit-title"

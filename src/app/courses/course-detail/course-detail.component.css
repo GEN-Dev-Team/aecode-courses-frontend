@@ -155,10 +155,15 @@
 
             span {
               color: #636364;
+              cursor: pointer;
 
               &:hover {
                 color: (var(--purple-2));
               }
+            }
+
+            .selected {
+              color: var(--purple-2);
             }
           }
 

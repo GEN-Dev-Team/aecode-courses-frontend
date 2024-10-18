@@ -27,6 +27,7 @@ import { TestComponent } from '../test/test.component';
 })
 export class CourseUnitComponent {
   @Input() module!: IModule;
+  @Input() courseLength!: number;
   @Output() unit_video = new EventEmitter<SafeResourceUrl>();
   @Output() module_id = new EventEmitter<number>();
   @Output() class_name = new EventEmitter<string>();
