@@ -1,0 +1,18 @@
+<label class="course-session" (click)="selectUnitVideo(courseSession.videoUrl)">
+  @if (youtubeRegex.test(courseSession.videoUrl)) {
+  <input
+    class="course-session-checkbox"
+    type="checkbox"
+    course
+    [checked]="true"
+  />
+  } @else {
+  <app-padlock-icon />
+  }
+
+  <span>
+    {{ courseSession.title }}
+  </span>
+
+  <span> <span>•</span> {{ videoDuration }} min</span>
+</label>

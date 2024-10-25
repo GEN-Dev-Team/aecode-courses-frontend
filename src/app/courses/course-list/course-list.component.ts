@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { SquareIconComponent } from '../../shared/icons/square-icon/square-icon.component';
 import { Router, RouterLink } from '@angular/router';
 import { SeparatorIconComponent } from '../../shared/icons/separator-icon/separator-icon.component';
-import { CourseService } from '../course.service';
+import { CourseService } from '../services/course.service';
 import { ZoomInDirective } from '../../shared/directives/animations/zoom-in.directive';
 
 @Component({

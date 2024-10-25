@@ -1,14 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
+import { IUnit } from '../../interface/Unit';
 import { CaretUpIconComponent } from '../../../shared/icons/caret-up-icon/caret-up-icon.component';
 import { CaretDownIconComponent } from '../../../shared/icons/caret-down-icon/caret-down-icon.component';
 import { PadlockIconComponent } from '../../../shared/icons/padlock-icon/padlock-icon.component';
-import { NgClass } from '@angular/common';
-import { IModule } from '../../interface/Module';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { AuthService } from '../../../core/services/auth.service';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
 import { ContentBlockedComponent } from '../../../shared/components/content-blocked/content-blocked.component';
-import { AuthService } from '../../../core/services/auth.service';
-import { TestComponent } from '../test/test.component';
+import { CourseSessionComponent } from '../course-session/course-session.component';
 
 @Component({
   selector: 'app-course-unit',
@@ -17,51 +15,25 @@ import { TestComponent } from '../test/test.component';
     CaretUpIconComponent,
     CaretDownIconComponent,
     PadlockIconComponent,
-    NgClass,
     ModalComponent,
     ContentBlockedComponent,
-    TestComponent,
+    CourseSessionComponent,
   ],
   templateUrl: './course-unit.component.html',
   styleUrl: './course-unit.component.css',
 })
 export class CourseUnitComponent {
-  @Input() module!: IModule;
-  @Input() courseLength!: number;
-  @Output() unit_video = new EventEmitter<SafeResourceUrl>();
-  @Output() module_id = new EventEmitter<number>();
-  @Output() class_name = new EventEmitter<string>();
-  @Output() class_description = new EventEmitter<string>();
-  youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
+  @Input() unit!: IUnit;
 
-  safeUrl!: SafeResourceUrl;
+  authService = inject(AuthService);
+
   showBlockedModal = false;
-  showItems = false;
-  showEvaluation = false;
-  isUserLogged = false;
+  isUserLogged: boolean = true;
+  showSessions: boolean = false;
 
-  constructor(
-    private sanitizer: DomSanitizer,
-    private authService: AuthService
-  ) {
+  ngOnInit(): void {
     this.authService.isLoggedIn$().subscribe((isLogged) => {
       this.isUserLogged = isLogged;
     });
-  }
-
-  selectUnitVideo(url: string, name: string, description: string) {
-    if (this.youtubeRegex.test(url) && this.isUserLogged) {
-      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-      this.unit_video.emit(this.safeUrl);
-      this.module_id.emit(this.module.orderNumber);
-      this.class_name.emit(name);
-      this.class_description.emit(description);
-    } else {
-      this.showBlockedModal = true;
-    }
-  }
-
-  evaluation() {
-    this.showEvaluation = !this.showEvaluation;
   }
 }

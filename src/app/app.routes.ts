@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { LogInComponent } from './log-in/log-in.component';
+import { HomeComponent } from './home/home.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { PaymentComponent } from './payment/payment.component';
 import { NoMobileComponent } from './no-mobile/no-mobile.component';
@@ -8,7 +8,7 @@ export const routes: Routes = [
   {
     path: '',
     title: 'AECODE COURSES',
-    component: LogInComponent,
+    component: HomeComponent,
   },
   {
     path: 'course-detail/:id',

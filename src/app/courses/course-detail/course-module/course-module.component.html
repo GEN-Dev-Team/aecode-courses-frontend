@@ -1,0 +1,40 @@
+<div class="course-unit-container">
+  <div
+    (click)="showItems = !showItems"
+    class="course-unit-title"
+    [ngClass]="{ 'course-unit-title-dropdown': !showItems }"
+  >
+    <span class="course-unit"
+      >MÓDULO {{ module.orderNumber }}:
+      <span class="course-text">
+        {{ module.title }}
+      </span></span
+    >
+
+    @if (showItems) {
+    <app-caret-up-icon />
+    } @else {
+    <app-caret-down-icon />
+    }
+  </div>
+
+  <ul class="course-item-list" [hidden]="!showItems">
+    @for (unit of module.units; track unit.unitId) {
+    <app-course-unit [unit]="unit" />
+    }
+
+    <div (click)="evaluation()" class="course-unit-test">
+      <app-padlock-icon />
+      @if (module.moduleId === 1) { <span>PREGUNTAS INTRODUCTORIAS</span> }
+      @else {
+      <span>EVALUA LO APRENDIDO - TEST U{{ module.moduleId - 1 }}</span>
+      }
+    </div>
+  </ul>
+</div>
+
+@if (module?.relatedWork?.formUrl) {
+<app-modal [isOpen]="showEvaluation" (isClosed)="showEvaluation = $event">
+  <app-test [ev_url]="module.relatedWork.formUrl" />
+</app-modal>
+}
