@@ -2,7 +2,7 @@
   max-width: 897px;
   width: 100%;
   max-height: 647px;
-  height:100%;
+  height: 100%;
   background-color: white;
   border: 1px solid #e0e0e0;
   border-radius: 8px;
@@ -23,15 +23,15 @@
   border: 0;
   border-top: 1px solid #e0e0e0;
   width: 100%;
-  margin:0;
+  margin: 0;
 }
 
 .question-body {
   flex: 1;
   font-size: 16px;
   color: #555;
-  .form{
-    gap:20px;
+  .form {
+    gap: 20px;
   }
 }
 
@@ -47,11 +47,10 @@
 .option {
   display: flex;
   align-items: center;
-  margin-bottom: 25px;
+  margin-bottom: 18px;
   font-size: 16px;
   color: #212121;
-    font-family: "plusjakartasans-medium";
-
+  font-family: "plusjakartasans-medium";
 }
 
 .option input {
@@ -77,13 +76,13 @@
   margin-top: 15px;
 }
 
-
 .skip-btn {
   border: none;
   background-color: transparent;
   color: #381187;
-  font-family:  "plusjakartasans-bold";
+  font-family: "plusjakartasans-bold";
   font-size: 17px;
+  cursor: pointer;
 }
 
 .submit-btn {

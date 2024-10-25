@@ -8,19 +8,13 @@
         >
       </div>
 
+      @if (isUserLogged) {
+      <app-button class="button-start-here"> ¡COMIENZA AQUÍ! </app-button>
+      }
+
       <aside class="course-details-aside">
-        <app-button (click)="callIntroVideo()" class="button-start-here">
-          ¡COMIENZA AQUÍ!
-        </app-button>
         @for (module of course.modules; track module.moduleId) {
-        <app-course-unit
-          [module]="module"
-          [courseLength]="course.modules.length"
-          (unit_video)="onUnitVideoChange($event)"
-          (module_id)="onModuleIdChange($event)"
-          (class_name)="onClassNameChange($event)"
-          (class_description)="onClassDescriptionChange($event)"
-        />
+        <app-course-module [module]="module" />
         }
       </aside>
     </div>
@@ -32,7 +26,7 @@
           <app-caret-right-icon class="caret-r-icon" />
           <span>MODULO {{ module_id }}</span>
           <app-caret-right-icon class="caret-r-icon" />
-          <span>{{ class_name }}</span>
+          <span>{{ courseSessionSubject.title }}</span>
         </div>
 
         <div class="second-header-group">
@@ -60,19 +54,10 @@
         <app-button> DESBLOQUEAR </app-button>
       </div>
 
-      <div class="course-media-container">
-        <iframe
-          class="course-media"
-          width="100%"
-          height="100%"
-          [src]="unit_url_video"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer;autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen
-        >
-        </iframe>
-      </div>
+      <app-youtube-player
+        [unit_url_video]="courseSessionSubject.videoUrl"
+        [session_id]="courseSessionSubject.sessionId"
+      />
 
       <div class="buttons-container" *ngIf="!isUserLogged">
         <app-button> ¿Qué aprenderemos hoy? </app-button>
@@ -103,7 +88,7 @@
         <div class="separator"></div>
         <div class="detail-text">
           @if(isDescription) {
-          {{ class_description }}
+          {{ courseSessionSubject.description }}
 
           } @else { Recurso descargable aun no disponible! }
         </div>

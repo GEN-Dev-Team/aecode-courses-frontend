@@ -1,10 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { MainContainerComponent } from '../../shared/components/main-container/main-container.component';
 import { ButtonComponent } from '../../shared/components/button/button.component';
-import { CourseUnitComponent } from './course-unit/course-unit.component';
-import { CourseService } from '../course.service';
+import { CourseModuleComponent } from './course-module/course-module.component';
+import { CourseService } from '../services/course.service';
 import { ICourse } from '../interface/Course';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
 import { HouseIconComponent } from '../icons/house-icon/house-icon.component';
@@ -16,6 +15,9 @@ import { CaretDownIconComponent } from '../icons/caret-down-icon/caret-down-icon
 import { AuthService } from '../../core/services/auth.service';
 import { NgClass, NgIf } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
+import { CourseSessionService } from '../services/course-session.service';
+import { ISession } from '../interface/Session';
 
 @Component({
   selector: 'app-course-detail',
@@ -23,7 +25,7 @@ import { ActivatedRoute } from '@angular/router';
   imports: [
     MainContainerComponent,
     ButtonComponent,
-    CourseUnitComponent,
+    CourseModuleComponent,
     ModalComponent,
     ContentBlockedComponent,
     HouseIconComponent,
@@ -34,45 +36,35 @@ import { ActivatedRoute } from '@angular/router';
     PrevIconComponent,
     NgIf,
     NgClass,
+    YoutubePlayerComponent,
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css',
 })
 export class CourseDetailComponent implements OnInit {
+  route: ActivatedRoute = inject(ActivatedRoute);
+  courseService: CourseService = inject(CourseService);
+  authService: AuthService = inject(AuthService);
+  courseSession: CourseSessionService = inject(CourseSessionService);
+
   course_id: number = -1;
   course!: ICourse;
-  unit_url_video: SafeResourceUrl = '';
+  courseSessionSubject!: ISession;
   showBlockedModal = false;
-  isUserLogged: boolean = false;
+  isUserLogged: boolean = true;
   module_id = 0;
   isDescription = true;
-  class_name = '¡Bienvenido al curso!';
-  class_description = '¡Bienvenido al curso!';
-
-  constructor(
-    private courseService: CourseService,
-    private authService: AuthService,
-    private route: ActivatedRoute,
-    private sanitizer: DomSanitizer
-  ) {}
+  urlDelVideo: string = 'https://www.youtube.com/embed/psmL5TV8DLg';
 
   ngOnInit(): void {
-    // Suscribirse al estado de inicio de sesión
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLogged = loggedInStatus;
     });
-
     this.course_id = this.route.snapshot.params['id'];
-    if (this.course_id == 1) {
-      this.unit_url_video = this.sanitizer.bypassSecurityTrustResourceUrl(
-        'https://www.youtube.com/embed/psmL5TV8DLg'
-      );
-    }
-    if (this.course_id == 2) {
-      this.unit_url_video = this.sanitizer.bypassSecurityTrustResourceUrl(
-        'https://www.youtube.com/embed/iLymJT74ukA'
-      );
-    }
+
+    this.courseSession.courseSession$.subscribe((session) => {
+      this.courseSessionSubject = session;
+    });
 
     this.getCourse(this.course_id);
   }
@@ -82,27 +74,9 @@ export class CourseDetailComponent implements OnInit {
       this.course = response;
       this.course.modules.sort((a, b) => a.orderNumber - b.orderNumber);
       this.course.modules.forEach((module) => {
-        module.classes.sort((a, b) => a.orderNumber - b.orderNumber);
+        module.units.sort((a, b) => a.orderNumber - b.orderNumber);
+        console.log(this.course);
       });
     });
-  }
-
-  onUnitVideoChange(url: SafeResourceUrl) {
-    this.unit_url_video = url;
-  }
-  onModuleIdChange(value: number) {
-    this.module_id = value;
-  }
-  onClassNameChange(value: string) {
-    this.class_name = value;
-  }
-  onClassDescriptionChange(value: string) {
-    this.class_description = value;
-  }
-
-  callIntroVideo() {
-    this.unit_url_video = this.sanitizer.bypassSecurityTrustResourceUrl(
-      'https://www.youtube.com/embed/psmL5TV8DLg'
-    );
   }
 }

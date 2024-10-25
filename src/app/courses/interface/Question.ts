@@ -1,8 +1,8 @@
 import { IAnswer } from './Answer';
 
 export interface IQuestion {
-  questionId: number;
   testId: number;
+  sessionId: number;
   questionText: string;
-  answers: IAnswer[];
+  sessionanswers: IAnswer[];
 }

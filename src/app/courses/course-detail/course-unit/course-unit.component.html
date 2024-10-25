@@ -1,70 +1,36 @@
-<div
-  class="course-unit-container"
-  [ngClass]="{
-    first: module.moduleId === 1,
-    last: module.moduleId === courseLength
-  }"
+<label
+  for="{{ unit.unitId }}"
+  class="course-item"
+  (click)="showSessions = !showSessions"
 >
-  <div
-    (click)="showItems = !showItems"
-    class="course-unit-title"
-    [ngClass]="{ 'course-unit-title-dropdown': !showItems }"
-  >
-    <span class="course-unit"
-      >MÓDULO {{ module.orderNumber }}:
-      <span class="course-text">
-        {{ module.title }}
-      </span></span
-    >
+  @if (isUserLogged) {
+  <input
+    (click)="showSessions = !showSessions"
+    class="course-item-checkbox"
+    type="checkbox"
+    id="{{ unit.unitId }}"
+  />
+  } @else {
+  <app-padlock-icon />
+  }
 
-    @if (showItems) {
-    <app-caret-up-icon />
-    } @else {
-    <app-caret-down-icon />
-    }
-  </div>
+  <span>
+    {{ unit.title }}
+  </span>
 
-  <ul class="course-item-list" [hidden]="!showItems">
-    @for (class of module.classes; track class.classId) {
-    <label
-      for="{{ class.classId }}"
-      class="course-item"
-      (click)="selectUnitVideo(class.videoUrl, class.title, class.description)"
-    >
-      @if (youtubeRegex.test(class.videoUrl) && isUserLogged) {
-      <input
-        class="course-item-checkbox"
-        type="checkbox"
-        id="{{ class.classId }}"
-      />
-      } @else {
-      <app-padlock-icon />
-      }
+  @if (showSessions) {
+  <app-caret-up-icon class="unit-caret" />
+  } @else {
+  <app-caret-down-icon class="unit-caret" />
+  }
+</label>
 
-      <span>
-        <!-- {{ module.moduleId }}.{{ class.orderNumber }}.  -->
-        {{ class.title }}
-      </span>
-      <span> <span>•</span> {{ class.durationMinutes }} min</span>
-    </label>
-    }
-
-    <div (click)="evaluation()" class="course-unit-test">
-      <app-padlock-icon />
-      @if (module.moduleId === 1) { <span>PREGUNTAS INTRODUCTORIAS</span> }
-      @else {
-      <span>EVALUA LO APRENDIDO - TEST U{{ module.moduleId - 1 }}</span>
-      }
-    </div>
-  </ul>
-</div>
+<ul class="course-item-sessions" [hidden]="!showSessions">
+  @for (session of unit.sessions; track session.sessionId) {
+  <app-course-session [courseSession]="session" />
+  }
+</ul>
 
 <app-modal [isOpen]="showBlockedModal" (isClosed)="showBlockedModal = $event">
   <app-content-blocked (isClosed)="showBlockedModal = $event" />
 </app-modal>
-
-@if (module?.test?.description) {
-<app-modal [isOpen]="showEvaluation" (isClosed)="showEvaluation = $event">
-  <app-test [ev_url]="module.test.description" />
-</app-modal>
-}

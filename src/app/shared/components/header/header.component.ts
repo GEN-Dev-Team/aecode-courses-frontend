@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
-import { LoginFormComponent } from '../../../log-in/login-form/login-form.component';
+import { LoginFormComponent } from '../../../home/login-form/login-form.component';
 import { LanguageIconComponent } from '../../icons/language-icon/language-icon.component';
 import { NotificationIconComponent } from '../../icons/notification-icon/notification-icon.component';
 import { AuthService } from '../../../core/services/auth.service';
@@ -29,9 +29,6 @@ export class HeaderComponent {
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLoggedIn = loggedInStatus;
     });

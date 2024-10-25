@@ -11,7 +11,7 @@ import { ClassQuestionComponent } from '../courses/course-detail/class-question/
 import { PaymentCardComponent } from '../payment/payment-card/payment-card.component';
 
 @Component({
-  selector: 'app-log-in',
+  selector: 'app-home',
   standalone: true,
   imports: [
     MainContainerComponent,
@@ -25,10 +25,10 @@ import { PaymentCardComponent } from '../payment/payment-card/payment-card.compo
     ClassQuestionComponent,
     PaymentCardComponent,
   ],
-  templateUrl: './log-in.component.html',
-  styleUrl: './log-in.component.css',
+  templateUrl: './home.component.html',
+  styleUrl: './home.component.css',
 })
-export class LogInComponent {
+export class HomeComponent {
   openModal = false;
   openForm = false;
   userMessage = '';

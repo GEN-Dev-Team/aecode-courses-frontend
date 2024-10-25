@@ -1,13 +1,12 @@
-.course-item {
-  width: 100%;
+.course-session {
   margin-bottom: 16px;
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: center;
   gap: 10px;
   cursor: pointer;
 
-  .course-item-checkbox {
+  .course-session-checkbox {
     appearance: none;
     border-radius: 2px;
     border: 2px solid var(--purple-2);
@@ -17,12 +16,12 @@
     cursor: pointer;
   }
 
-  .course-item-checkbox:checked {
+  .course-session-checkbox:checked {
     background-color: var(--purple-2);
     border-color: var(--purple-2);
   }
 
-  .course-item-checkbox:checked::after {
+  .course-session-checkbox:checked::after {
     content: "";
     position: absolute;
     left: 50%;
@@ -39,7 +38,22 @@
     font-family: "plusjakartasans-medium";
   }
 
-  .unit-caret {
+  :nth-child(2) {
+    width: 72%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  :nth-child(3) {
     margin-left: auto;
+    font-family: "plusjakartasans-light";
+    color: #b4bbbf;
+    font-size: 10px;
+
+    span {
+      margin-inline-end: 4px;
+      color: var(--purple-2);
+    }
   }
 }

@@ -1,11 +1,6 @@
-import { IQuestion } from './Question';
-
 export interface ITest {
-  testId: number;
+  workId: number;
   moduleId: number;
+  formUrl: string;
   title: string;
-  description: string;
-  totalQuestions: number;
-  passingScore: number;
-  questions: IQuestion[];
 }

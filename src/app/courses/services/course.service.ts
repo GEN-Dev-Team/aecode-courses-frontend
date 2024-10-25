@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environment/environment';
-import { ICourse } from './interface/Course';
+import { environment } from '../../../environment/environment';
+import { ICourse } from '../interface/Course';
 import { HttpClient } from '@angular/common/http';
 
 const base_url = environment.base;
