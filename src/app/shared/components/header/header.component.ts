@@ -32,6 +32,8 @@ export class HeaderComponent {
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLoggedIn = loggedInStatus;
     });
+
+    this.authService.logout();
   }
 
   changeLanguage() {
