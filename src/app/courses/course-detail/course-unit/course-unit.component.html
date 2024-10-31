@@ -1,15 +1,8 @@
-<label
-  for="{{ unit.unitId }}"
-  class="course-item"
-  (click)="showSessions = !showSessions"
->
-  @if (isUserLogged) {
-  <input
-    (click)="showSessions = !showSessions"
-    class="course-item-checkbox"
-    type="checkbox"
-    id="{{ unit.unitId }}"
-  />
+<label for="{{ unit.unitId }}" class="course-item" (click)="onClick()">
+  @if (isUserLogged && usserAccess) {
+  <div class="course-item-checkbox" [ngClass]="{ checked: false }">
+    <app-input-check-icon class="course-item-icon" />
+  </div>
   } @else {
   <app-padlock-icon />
   }

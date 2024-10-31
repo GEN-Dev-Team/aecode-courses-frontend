@@ -9,5 +9,8 @@ export interface ISession {
   resourceText: string;
   resourceDocument: string;
   orderNumber: number;
+  taskName: string;
+  taskUrl: string;
+  htmlContent: string;
   classquestions: IQuestion[];
 }

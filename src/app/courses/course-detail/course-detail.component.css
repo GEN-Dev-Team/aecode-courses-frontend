@@ -14,9 +14,10 @@
 
     .course-details-aside {
       border-radius: 6px;
-      overflow: hidden;
+      overflow-y: auto;
       border: 1px solid #cad5da;
       border-bottom: none;
+      max-height: 797px;
 
       .button-start-here {
         width: 100%;
@@ -180,6 +181,7 @@
         }
 
         .detail-text {
+          padding: 0 26px 0 12px;
           font-family: "plusjakartasans-light";
           font-size: 14px;
           color: black;
@@ -187,6 +189,34 @@
           span {
             font-family: "plusjakartasans-medium";
             color: #381187;
+          }
+
+          .resource-title {
+            font-family: "ruberoid-bold";
+            color: var(--purple-2);
+            font-size: 1.25rem;
+          }
+
+          .separator {
+            border-top: 1px solid #cad5da;
+          }
+
+          .resource-items {
+            font-family: "plusjakartasans-medium";
+            display: flex;
+            flex-flow: row nowrap;
+            align-items: center;
+            cursor: pointer;
+            text-decoration: none;
+            color: black;
+
+            .first-icon {
+              margin-right: 10px;
+            }
+
+            .last-icon {
+              margin-left: auto;
+            }
           }
         }
       }

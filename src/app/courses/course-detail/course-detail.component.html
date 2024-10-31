@@ -8,8 +8,10 @@
         >
       </div>
 
-      @if (isUserLogged) {
-      <app-button class="button-start-here"> ¡COMIENZA AQUÍ! </app-button>
+      @if (!isUserLogged) {
+      <app-button (click)="playCourseVideo()" class="button-start-here">
+        ¡COMIENZA AQUÍ!
+      </app-button>
       }
 
       <aside class="course-details-aside">
@@ -57,6 +59,7 @@
       <app-youtube-player
         [unit_url_video]="courseSessionSubject.videoUrl"
         [session_id]="courseSessionSubject.sessionId"
+        [course_intro_video]="courseIntroVideo"
       />
 
       <div class="buttons-container" *ngIf="!isUserLogged">
@@ -90,7 +93,40 @@
           @if(isDescription) {
           {{ courseSessionSubject.description }}
 
-          } @else { Recurso descargable aun no disponible! }
+          } @else {
+
+          <h2 class="resource-title">Archivos de la clase</h2>
+          <a
+            class="resource-items"
+            href="{{ apiUrl }}{{ courseSessionSubject.resourceDocument }}"
+            target="_blank"
+          >
+            <app-pdf-icon class="first-icon" />
+            <p>
+              @if (courseSessionSubject.resourceDocument) {
+              {{ courseSessionSubject.resourceDocument }}} @else { ¡Recurso no
+              disponible! }
+            </p>
+            <app-download-icon class="last-icon" />
+          </a>
+
+          <div class="separator"></div>
+
+          <h2 class="resource-title">Materiales de Apoyo</h2>
+          <a
+            class="resource-items"
+            href="{{ courseSessionSubject.taskUrl }}"
+            target="_blank"
+          >
+            <app-world-icon class="first-icon" />
+            <p>
+              @if (courseSessionSubject.taskName) {
+              {{ courseSessionSubject.taskName }}} @else { Material no
+              disponible! }
+            </p>
+            <app-link-icon class="last-icon" />
+          </a>
+          }
         </div>
       </div>
     </main>
