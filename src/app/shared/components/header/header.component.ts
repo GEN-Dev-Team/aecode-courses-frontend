@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { LoginFormComponent } from '../../../home/login-form/login-form.component';
 import { LanguageIconComponent } from '../../icons/language-icon/language-icon.component';
@@ -6,6 +6,7 @@ import { NotificationIconComponent } from '../../icons/notification-icon/notific
 import { AuthService } from '../../../core/services/auth.service';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ZoomInDirective } from '../../directives/animations/zoom-in.directive';
+import { UserService } from '../../../home/user.service';
 
 @Component({
   selector: 'app-header',
@@ -25,15 +26,19 @@ export class HeaderComponent {
   isUserLoggedIn = false;
   openLoginForm = false;
   showProfileMenu = false;
+  userId = JSON.parse(localStorage.getItem('user') || '{}').userId;
 
-  constructor(private authService: AuthService) {}
+  authService: AuthService = inject(AuthService);
+  logInService: UserService = inject(UserService);
 
   ngOnInit(): void {
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLoggedIn = loggedInStatus;
     });
 
-    this.authService.logout();
+    this.logInService.getUser(this.userId).subscribe((response) => {
+      this.authService.setUserDetails(response);
+    });
   }
 
   changeLanguage() {

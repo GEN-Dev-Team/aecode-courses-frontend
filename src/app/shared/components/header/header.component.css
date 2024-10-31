@@ -75,6 +75,7 @@
             gap: 15px;
             cursor: pointer;
             position: relative;
+            z-index: 1;
 
             .profile-dropdown {
               position: absolute;

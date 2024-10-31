@@ -7,30 +7,28 @@
   cursor: pointer;
 
   .course-session-checkbox {
-    appearance: none;
     border-radius: 2px;
     border: 2px solid var(--purple-2);
     width: 17px;
     height: 17px;
     position: relative;
     cursor: pointer;
+    background-color: transparent;
+    position: relative;
+
+    .course-session-icon {
+      width: 12.189px;
+      height: 9.302px;
+      flex-shrink: 0;
+      position: absolute;
+      top: -25%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
   }
 
-  .course-session-checkbox:checked {
+  .checked {
     background-color: var(--purple-2);
-    border-color: var(--purple-2);
-  }
-
-  .course-session-checkbox:checked::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg) translateX(-120%) translateY(-30%);
   }
 
   span {

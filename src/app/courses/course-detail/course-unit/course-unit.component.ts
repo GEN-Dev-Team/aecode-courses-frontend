@@ -7,6 +7,12 @@ import { AuthService } from '../../../core/services/auth.service';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
 import { ContentBlockedComponent } from '../../../shared/components/content-blocked/content-blocked.component';
 import { CourseSessionComponent } from '../course-session/course-session.component';
+import { CourseSessionService } from '../../services/course-session.service';
+import { ISession } from '../../interface/Session';
+import { InputCheckIconComponent } from '../../icons/input-check-icon/input-check-icon.component';
+import { NgClass } from '@angular/common';
+import { ICourse } from '../../interface/Course';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-course-unit',
@@ -18,6 +24,8 @@ import { CourseSessionComponent } from '../course-session/course-session.compone
     ModalComponent,
     ContentBlockedComponent,
     CourseSessionComponent,
+    InputCheckIconComponent,
+    NgClass,
   ],
   templateUrl: './course-unit.component.html',
   styleUrl: './course-unit.component.css',
@@ -26,14 +34,53 @@ export class CourseUnitComponent {
   @Input() unit!: IUnit;
 
   authService = inject(AuthService);
+  route: ActivatedRoute = inject(ActivatedRoute);
+  courseSessionService = inject(CourseSessionService);
 
   showBlockedModal = false;
   isUserLogged: boolean = true;
   showSessions: boolean = false;
+  sessionObject!: ISession;
+  usserAccess: boolean = false;
+  course_id: number = this.route.snapshot.params['id'];
 
   ngOnInit(): void {
     this.authService.isLoggedIn$().subscribe((isLogged) => {
       this.isUserLogged = isLogged;
     });
+
+    this.courseSessionService.courseSession$.subscribe((session) => {
+      this.sessionObject = session;
+    });
+
+    this.authService
+      .getUserDetails()
+      .usercourseaccess.forEach((course: ICourse) => {
+        if (course.courseId === Number(this.course_id)) {
+          this.usserAccess = true;
+        }
+      });
+  }
+
+  onClick() {
+    if (this.usserAccess) {
+      this.showSessions = !this.showSessions;
+
+      this.sessionObject = {
+        sessionId: 0,
+        unitId: 0,
+        title: '',
+        videoUrl: this.unit.videoUrl,
+        description: '',
+        resourceText: '',
+        resourceDocument: '',
+        orderNumber: 0,
+        taskName: '',
+        taskUrl: '',
+        htmlContent: '',
+        classquestions: [],
+      };
+      this.courseSessionService.setCourseSessionDetails(this.sessionObject);
+    }
   }
 }

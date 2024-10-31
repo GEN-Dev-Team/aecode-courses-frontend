@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ICourse } from '../../courses/interface/Course';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,22 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('user');
     this.isLoggedInStatus.next(false); // Emitir que el usuario ya no está loggeado
+  }
+
+  getUserDetails(): any {
+    return JSON.parse(localStorage.getItem('user') || '{}');
+  }
+
+  setUserDetails(user: any): void {
+    this.logout();
+    localStorage.setItem('user', JSON.stringify(user));
+    this.isLoggedInStatus.next(true);
+  }
+
+  hasAccesToCourse(courseId: number): boolean {
+    const user = this.getUserDetails();
+    return user.usercourseaccess.some(
+      (course: ICourse) => course.courseId === courseId
+    );
   }
 }

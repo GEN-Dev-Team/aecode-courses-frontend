@@ -1,11 +1,14 @@
 <label class="course-session" (click)="selectUnitVideo(courseSession.videoUrl)">
-  @if (youtubeRegex.test(courseSession.videoUrl)) {
-  <input
+  @if (youtubeRegex.test(courseSession.videoUrl) && this.isUserLogged) {
+  <div
     class="course-session-checkbox"
-    type="checkbox"
-    course
-    [checked]="true"
-  />
+    [ngClass]="{ checked: selectedVideoIsCompleted }"
+  >
+    <app-input-check-icon
+      class="course-session-icon"
+      [hidden]="!selectedVideoIsCompleted"
+    />
+  </div>
   } @else {
   <app-padlock-icon />
   }
@@ -16,3 +19,7 @@
 
   <span> <span>•</span> {{ videoDuration }} min</span>
 </label>
+
+<app-modal (isClosed)="showBlockedModal = $event" [isOpen]="showBlockedModal">
+  <app-content-blocked (isClosed)="showBlockedModal = $event" />
+</app-modal>

@@ -17,6 +17,6 @@ export class ProgressSessionService {
   }
 
   getBySessionId(sessionId: number) {
-    return this.http.get<IProgressSession[]>(`${this.api_url}/${sessionId}`);
+    return this.http.get<IProgressSession>(`${this.api_url}/${sessionId}`);
   }
 }

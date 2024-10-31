@@ -18,6 +18,11 @@ import { ActivatedRoute } from '@angular/router';
 import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
 import { CourseSessionService } from '../services/course-session.service';
 import { ISession } from '../interface/Session';
+import { LinkIconComponent } from '../icons/link-icon/link-icon.component';
+import { PdfIconComponent } from '../icons/pdf-icon/pdf-icon.component';
+import { DownloadIconComponent } from '../icons/download-icon/download-icon.component';
+import { WorldIconComponent } from '../icons/world-icon/world-icon.component';
+import { environment } from '../../../environment/environment';
 
 @Component({
   selector: 'app-course-detail',
@@ -37,6 +42,10 @@ import { ISession } from '../interface/Session';
     NgIf,
     NgClass,
     YoutubePlayerComponent,
+    LinkIconComponent,
+    PdfIconComponent,
+    DownloadIconComponent,
+    WorldIconComponent,
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css',
@@ -47,6 +56,8 @@ export class CourseDetailComponent implements OnInit {
   authService: AuthService = inject(AuthService);
   courseSession: CourseSessionService = inject(CourseSessionService);
 
+  apiUrl = environment.base;
+
   course_id: number = -1;
   course!: ICourse;
   courseSessionSubject!: ISession;
@@ -54,7 +65,7 @@ export class CourseDetailComponent implements OnInit {
   isUserLogged: boolean = true;
   module_id = 0;
   isDescription = true;
-  urlDelVideo: string = 'https://www.youtube.com/embed/psmL5TV8DLg';
+  courseIntroVideo = '';
 
   ngOnInit(): void {
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
@@ -75,8 +86,15 @@ export class CourseDetailComponent implements OnInit {
       this.course.modules.sort((a, b) => a.orderNumber - b.orderNumber);
       this.course.modules.forEach((module) => {
         module.units.sort((a, b) => a.orderNumber - b.orderNumber);
-        console.log(this.course);
       });
+
+      console.log(this.course);
+
+      this.courseIntroVideo = this.course.videoUrl;
     });
+  }
+
+  playCourseVideo() {
+    this.courseIntroVideo = this.course.videoUrl;
   }
 }

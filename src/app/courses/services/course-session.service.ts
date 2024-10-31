@@ -15,6 +15,9 @@ export class CourseSessionService {
     resourceText: '',
     resourceDocument: '',
     orderNumber: 0,
+    taskName: '',
+    taskUrl: '',
+    htmlContent: '',
     classquestions: [],
   });
   constructor() {}

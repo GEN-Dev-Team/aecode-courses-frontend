@@ -23,6 +23,7 @@ declare global {
 export class YoutubePlayerComponent {
   @Input() unit_url_video: string = '';
   @Input() session_id: number = -1;
+  @Input() course_intro_video: string = '';
 
   sanitizer: DomSanitizer = inject(DomSanitizer);
   route: ActivatedRoute = inject(ActivatedRoute);
@@ -30,7 +31,6 @@ export class YoutubePlayerComponent {
     ProgressSessionService
   );
 
-  course_id: number = -1;
   userId: number = -1;
   showQuestionModal = false;
   progressSession!: IProgressSession;
@@ -46,17 +46,9 @@ export class YoutubePlayerComponent {
 
     this.userId = JSON.parse(localStorage.getItem('user') || '{}').userId;
 
-    this.course_id = this.route.snapshot.params['id'];
-    if (this.course_id == 1) {
-      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-        'https://www.youtube.com/embed/psmL5TV8DLg'
-      );
-    }
-    if (this.course_id == 2) {
-      this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-        'https://www.youtube.com/embed/iLymJT74ukA'
-      );
-    }
+    this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.course_intro_video
+    );
   }
 
   ngOnChanges(): void {
@@ -124,7 +116,7 @@ export class YoutubePlayerComponent {
         ) {
           console.log('El video terminara en 5 segundos.');
           console.log(this.progressSession);
-          // this.postProgressSession(this.session_id, this.userId);
+          this.postProgressSession(this.session_id, this.userId);
           this.hasReached90Percent = true;
           this.showQuestionModal = true;
         }
