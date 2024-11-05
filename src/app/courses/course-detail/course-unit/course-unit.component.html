@@ -20,7 +20,7 @@
 
 <ul class="course-item-sessions" [hidden]="!showSessions">
   @for (session of unit.sessions; track session.sessionId) {
-  <app-course-session [courseSession]="session" />
+  <app-course-session [courseSession]="session" [moduleId]="unit.moduleId" />
   }
 </ul>
 

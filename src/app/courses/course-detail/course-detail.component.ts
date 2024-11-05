@@ -77,18 +77,21 @@ export class CourseDetailComponent implements OnInit {
       this.courseSessionSubject = session;
     });
 
+    this.courseSession.module_id$.subscribe((id) => {
+      this.module_id = id;
+    });
+
     this.getCourse(this.course_id);
   }
 
   getCourse(id: number) {
     this.courseService.getCourse(id).subscribe((response) => {
       this.course = response;
+
       this.course.modules.sort((a, b) => a.orderNumber - b.orderNumber);
       this.course.modules.forEach((module) => {
         module.units.sort((a, b) => a.orderNumber - b.orderNumber);
       });
-
-      console.log(this.course);
 
       this.courseIntroVideo = this.course.videoUrl;
     });

@@ -4,7 +4,8 @@
       <div class="course-title">
         <span class="course-name">{{ course.title }}:</span>
         <span class="course-words"
-          >Innovación, Digitalización y Automatización</span
+          >@if (course_id === 1) { Innovación, Digitalización y Automatización }
+          @else {Aplicado a la Ingeniería Civil}</span
         >
       </div>
 
@@ -26,9 +27,11 @@
         <div class="first-header-group">
           <app-house-icon class="home-icon" />
           <app-caret-right-icon class="caret-r-icon" />
-          <span>MODULO {{ module_id }}</span>
+          <span class="course-session-module">MODULO {{ module_id }}</span>
           <app-caret-right-icon class="caret-r-icon" />
-          <span>{{ courseSessionSubject.title }}</span>
+          <span class="course-session-title">{{
+            courseSessionSubject.title
+          }}</span>
         </div>
 
         <div class="second-header-group">
@@ -91,24 +94,30 @@
         <div class="separator"></div>
         <div class="detail-text">
           @if(isDescription) {
-          {{ courseSessionSubject.description }}
+
+          <div [innerHTML]="courseSessionSubject.htmlContent"></div>
 
           } @else {
 
           <h2 class="resource-title">Archivos de la clase</h2>
           <a
+            *ngIf="courseSessionSubject.resourceDocument"
             class="resource-items"
-            href="{{ apiUrl }}{{ courseSessionSubject.resourceDocument }}"
+            [href]="apiUrl + courseSessionSubject.resourceDocument"
             target="_blank"
           >
             <app-pdf-icon class="first-icon" />
             <p>
-              @if (courseSessionSubject.resourceDocument) {
-              {{ courseSessionSubject.resourceDocument }}} @else { ¡Recurso no
-              disponible! }
+              {{ courseSessionSubject.resourceDocument }}
             </p>
             <app-download-icon class="last-icon" />
           </a>
+          <p
+            *ngIf="!courseSessionSubject.resourceDocument"
+            class="resource-items"
+          >
+            ¡Recurso no disponible!
+          </p>
 
           <div class="separator"></div>
 

@@ -13,11 +13,15 @@
     gap: 30px;
 
     .course-details-aside {
+      display: flex;
+      flex-direction: column;
       border-radius: 6px;
       overflow-y: auto;
       border: 1px solid #cad5da;
       border-bottom: none;
-      max-height: 797px;
+      border-top: none;
+      max-height: 700px;
+      gap: 5px;
 
       .button-start-here {
         width: 100%;
@@ -79,21 +83,32 @@
         .first-header-group {
           display: flex;
           flex-flow: row nowrap;
-          align-items: center;
           gap: 16px;
 
           .home-icon {
             width: 18px;
             height: 18px;
+            margin-top: 2px;
+            flex-shrink: 0;
           }
 
           .caret-r-icon {
             width: 9.073px;
             height: 15px;
+            margin-top: 2px;
+            flex-shrink: 0;
           }
 
-          span {
+          .course-session-module {
             line-height: 24px;
+            flex-shrink: 0;
+          }
+
+          .course-session-title {
+            display: flex;
+            flex-flow: row nowrap;
+            flex-shrink: 1;
+            height: auto;
           }
         }
 

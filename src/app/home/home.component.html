@@ -32,7 +32,7 @@
   <app-social-media (isOpen)="openModal = $event" />
 </div>
 
-<app-modal [isOpen]="openModal">
+<app-modal [isOpen]="openModal" (isClosed)="openModal = $event">
   <app-course-list (openModal)="openModal = $event" />
 </app-modal>
 
