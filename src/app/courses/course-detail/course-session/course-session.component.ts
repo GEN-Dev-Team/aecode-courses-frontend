@@ -32,6 +32,7 @@ import { InputCheckIconComponent } from '../../icons/input-check-icon/input-chec
 })
 export class CourseSessionComponent {
   @Input() courseSession!: ISession;
+  @Input() moduleId!: number;
 
   courseSessionService: CourseSessionService = inject(CourseSessionService);
   authService: AuthService = inject(AuthService);
@@ -56,6 +57,7 @@ export class CourseSessionComponent {
     sessionId: -1,
     completed: false,
   };
+  module_id: number = 0;
 
   ngOnInit(): void {
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
@@ -83,6 +85,7 @@ export class CourseSessionComponent {
       this.courseSessionService.setCourseSessionDetails(
         this.courseSessionSelected
       );
+      this.courseSessionService.setModuleId(this.moduleId - 1);
     } else {
       this.showBlockedModal = true;
     }
