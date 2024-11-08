@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
-import { consumerBeforeComputation } from '@angular/core/primitives/signals';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-profile',
@@ -10,13 +10,20 @@ import { consumerBeforeComputation } from '@angular/core/primitives/signals';
   styleUrl: './view-profile.component.css',
 })
 export class ViewProfileComponent {
-  userData = JSON.parse(localStorage.getItem('user') || '{}');
-  constructor(private authService: AuthService) {
-    this.userData;
-  }
-
   @Output() isClosed = new EventEmitter<boolean>();
 
+  authService: AuthService = inject(AuthService);
+  route: Router = inject(Router);
+
+  userData = JSON.parse(localStorage.getItem('user') || '{}');
+
+  isAdminLogged: boolean = this.userData.role === 'admin';
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    console.log(this.isAdminLogged);
+  }
   closeModal() {
     this.isClosed.emit(false);
   }
@@ -24,5 +31,9 @@ export class ViewProfileComponent {
   logOut() {
     this.authService.logout();
     this.closeModal();
+  }
+
+  redirectToAdminView() {
+    this.route.navigate(['/admin-panel']);
   }
 }

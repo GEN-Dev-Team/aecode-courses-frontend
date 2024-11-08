@@ -1,0 +1,20 @@
+<li class="side-bar-item-container" (click)="onClick()">
+  @switch (name) { @case ('Administradores') {
+  <app-admin-icon class="icon" />
+  } @case ('Usuarios') {
+  <app-user-icon class="icon" />
+  } @case ('Cursos') {
+  <app-course-icon class="icon" />
+  } @case ('Modulos') {
+  <app-module-icon class="icon" />
+  } @case ('Unidades') {
+  <app-unit-icon class="icon" />
+  } @case ('Sesiones') {
+  <app-session-icon class="icon" />
+  } @case ('Dashboard') {
+  <app-dashboard-icon class="icon" />
+  } @case ('Costos') {
+  <app-cost-icon class="icon" />
+  } }
+  {{ name }}
+</li>

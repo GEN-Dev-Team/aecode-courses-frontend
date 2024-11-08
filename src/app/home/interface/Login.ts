@@ -5,6 +5,7 @@ export interface ILogin {
   userId: number;
   fullname: string;
   email: string;
+  rol: string;
   passwordHash: string;
   userprogresssessions?: IProgressSession[];
   usercourseaccess?: ICourse[];
