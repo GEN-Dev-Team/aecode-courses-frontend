@@ -24,8 +24,9 @@
     }
 
     <div (click)="evaluation()" class="course-unit-test">
+      @if (module.relatedworks === null) {
       <app-padlock-icon />
-      @if (module.moduleId === 1) { <span>PREGUNTAS INTRODUCTORIAS</span> }
+      } @if (module.moduleId === 1) { <span>PREGUNTAS INTRODUCTORIAS</span> }
       @else {
       <span>EVALUA LO APRENDIDO - TEST U{{ module.moduleId - 1 }}</span>
       }
@@ -33,8 +34,10 @@
   </ul>
 </div>
 
-@if (module?.relatedWork?.formUrl) {
-<app-modal [isOpen]="showEvaluation" (isClosed)="showEvaluation = $event">
-  <app-test [ev_url]="module.relatedWork.formUrl" />
+<app-modal
+  *ngIf="module.relatedworks?.formUrl"
+  [isOpen]="showEvaluation"
+  (isClosed)="showEvaluation = $event"
+>
+  <app-test [ev_url]="module.relatedworks.formUrl" />
 </app-modal>
-}

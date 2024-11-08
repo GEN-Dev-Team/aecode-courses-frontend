@@ -71,7 +71,7 @@ export class CourseDetailComponent implements OnInit {
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLogged = loggedInStatus;
     });
-    this.course_id = this.route.snapshot.params['id'];
+    this.course_id = parseInt(this.route.snapshot.params['id']);
 
     this.courseSession.courseSession$.subscribe((session) => {
       this.courseSessionSubject = session;
@@ -94,6 +94,7 @@ export class CourseDetailComponent implements OnInit {
       });
 
       this.courseIntroVideo = this.course.videoUrl;
+      console.log(this.course);
     });
   }
 

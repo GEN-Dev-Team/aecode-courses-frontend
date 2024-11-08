@@ -35,11 +35,15 @@ export class CourseSessionService {
   module_id$ = this.module_id.asObservable();
 
   setCourseSessionDetails(session: ISession) {
-    this.http
-      .get<ISession>(this.url + '/' + session.sessionId)
-      .subscribe((response) => {
-        this.courseSessionSubject.next(response);
-      });
+    if (session.sessionId > 0) {
+      this.http
+        .get<ISession>(this.url + '/' + session.sessionId)
+        .subscribe((response) => {
+          this.courseSessionSubject.next(response);
+        });
+    } else {
+      this.courseSessionSubject.next(session);
+    }
   }
 
   setModuleId(id: number) {

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CaretUpIconComponent } from '../../../shared/icons/caret-up-icon/caret-up-icon.component';
 import { CaretDownIconComponent } from '../../../shared/icons/caret-down-icon/caret-down-icon.component';
 import { PadlockIconComponent } from '../../../shared/icons/padlock-icon/padlock-icon.component';
-import { NgClass } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { IModule } from '../../interface/Module';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
@@ -22,6 +22,7 @@ import { CourseUnitComponent } from '../course-unit/course-unit.component';
     ContentBlockedComponent,
     TestComponent,
     CourseUnitComponent,
+    NgIf,
   ],
   templateUrl: './course-module.component.html',
   styleUrl: './course-module.component.css',

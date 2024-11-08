@@ -7,5 +7,5 @@ export interface IModule {
   title: string;
   orderNumber: number;
   units: IUnit[];
-  relatedWork: ITest;
+  relatedworks: ITest;
 }
