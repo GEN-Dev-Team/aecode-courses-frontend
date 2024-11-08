@@ -1,0 +1,18 @@
+<div class="admin-panel-container">
+  <app-admin-side-bar />
+
+  <div class="main-container">
+    <div class="admin-panel-header">
+      <label for="search" class="search-input">
+        <app-search-icon class="icon" />
+        <input id="search" type="text" placeholder="Buscar" />
+      </label>
+      <div class="filter-button"><app-filter-icon class="icon" /> Filtros</div>
+      <div class="add-item-button">
+        <app-add-icon class="icon" /> Agregar Usuario
+      </div>
+    </div>
+
+    <app-admin-table />
+  </div>
+</div>

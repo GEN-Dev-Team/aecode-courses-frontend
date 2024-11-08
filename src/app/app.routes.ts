@@ -3,6 +3,8 @@ import { HomeComponent } from './home/home.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { PaymentComponent } from './payment/payment.component';
 import { NoMobileComponent } from './no-mobile/no-mobile.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { adminAuthGuard } from './core/guards/admin-auth.guard';
 
 export const routes: Routes = [
   {
@@ -19,6 +21,12 @@ export const routes: Routes = [
     path: 'payment',
     title: 'AECODE PAGOS',
     component: PaymentComponent,
+  },
+  {
+    path: 'admin-panel',
+    title: 'ADMIN PANEL',
+    component: AdminPanelComponent,
+    // canActivate: [adminAuthGuard],
   },
   {
     path: 'no-mobile',

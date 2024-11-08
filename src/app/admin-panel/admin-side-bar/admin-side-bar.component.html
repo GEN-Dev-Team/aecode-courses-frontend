@@ -1,0 +1,6 @@
+<div class="admin-side-bar-container">
+  @for (item of sideBarList; track item.name) {
+  <app-side-bar-item [name]="item.name" [link]="item.link" />
+
+  }
+</div>

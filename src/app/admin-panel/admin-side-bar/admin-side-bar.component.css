@@ -1,0 +1,8 @@
+.admin-side-bar-container {
+  padding: 43px 0 0 24px;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 15px;
+  background-color: var(--purple-2);
+}
