@@ -1,0 +1,83 @@
+.form-container {
+  display: flex;
+  width: 1071px;
+  padding: 30px 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 37px;
+  background-color: white;
+  border-radius: 8px;
+
+  span {
+    margin-right: auto;
+    font-family: "ruberoid-bold";
+    font-size: 20px;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
+
+    .form-control {
+      width: 499px;
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 4px;
+      font-size: 14px;
+
+      label {
+        font-family: "plusjakartasans-semibold";
+      }
+
+      input {
+        font-family: "plusjakartasans-regular";
+        height: 40px;
+        padding: 8px 12px;
+        gap: 12px;
+        border-radius: 6px;
+        border: 1px solid #d5d9e2;
+
+        &::content {
+          font-family: "plusjakartasans-regular";
+        }
+      }
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    font-size: 16px;
+
+    .cancel-button,
+    .send-button {
+      display: flex;
+      height: 44px;
+      padding: 12px 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      border-radius: 6px;
+      border: 1px solid var(--purple-2);
+      background-color: white;
+      font-family: "plusjakartasans-semibold";
+      color: var(--purple-2);
+      fill: var(--purple-2);
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--purple-2);
+        color: white;
+        fill: white;
+      }
+    }
+
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

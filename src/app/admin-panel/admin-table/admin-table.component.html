@@ -1,1 +1,34 @@
-<div class="admin-table-container"></div>
+<div class="table-wrapper">
+  <table class="admin-table-container">
+    <thead>
+      <tr>
+        <th></th>
+        @for (header of dataHeaders; track header) {
+        <th>{{ header }}</th>
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of dataList; track getItem(item)) {
+      <tr>
+        <td class="option-data">
+          <div (click)="openOptions(getItem(item))" class="option-button">
+            <app-options-icon />
+
+            @if (showOptionsMap[getItem(item)]) {
+            <div class="option-dropdown">
+              <span>Editar</span>
+              <span>Eliminar</span>
+            </div>
+            }
+          </div>
+        </td>
+
+        @for (key of objectKeys(item); track key) {
+        <td>{{ item[key] }}</td>
+        }
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

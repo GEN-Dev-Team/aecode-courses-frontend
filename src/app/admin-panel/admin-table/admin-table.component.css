@@ -1,0 +1,58 @@
+.table-wrapper {
+  width: 100%;
+
+  .admin-table-container {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "plusjakartasans-light";
+    color: #636364;
+
+    tr {
+      height: 60px;
+    }
+
+    tbody {
+      tr {
+        border-bottom: 2px dotted #ccc;
+
+        td {
+          min-width: 100px;
+          text-align: center;
+        }
+      }
+
+      .option-data {
+        width: 40px;
+        .option-button {
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          border-radius: 4.364px;
+          background: #eceef2;
+          box-shadow: 0px 2px 4px 0px rgba(52, 64, 84, 0.04);
+          position: relative;
+
+          .option-dropdown {
+            width: fit-content;
+            padding: 25px;
+            display: flex;
+            flex-flow: column nowrap;
+            font-family: "ruberoid-medium";
+            color: black;
+            gap: 24px;
+            border-radius: 6px;
+            border: 1px solid var(--gray-2);
+            background-color: white;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            right: 100%;
+          }
+        }
+      }
+    }
+  }
+}

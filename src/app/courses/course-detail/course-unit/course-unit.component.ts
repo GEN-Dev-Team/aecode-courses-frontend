@@ -13,6 +13,7 @@ import { InputCheckIconComponent } from '../../icons/input-check-icon/input-chec
 import { NgClass } from '@angular/common';
 import { ICourse } from '../../interface/Course';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-course-unit',
@@ -69,7 +70,7 @@ export class CourseUnitComponent {
       this.sessionObject = {
         sessionId: 0,
         unitId: 0,
-        title: '',
+        title: this.unit.title,
         videoUrl: this.unit.videoUrl,
         description: '',
         resourceText: '',
@@ -81,6 +82,7 @@ export class CourseUnitComponent {
         classquestions: [],
       };
       this.courseSessionService.setCourseSessionDetails(this.sessionObject);
+      this.courseSessionService.setModuleId(this.unit.moduleId - 1);
     }
   }
 }

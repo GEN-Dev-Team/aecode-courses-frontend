@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { SideBarItemComponent } from './side-bar-item/side-bar-item.component';
-import { AdminTableComponent } from '../admin-table/admin-table.component';
 
 interface ISideBarItem {
   name: string;
-  link: string;
+  getEndpoint: string;
+  postEndpoint: string;
 }
 @Component({
   selector: 'app-admin-side-bar',
@@ -15,13 +15,19 @@ interface ISideBarItem {
 })
 export class AdminSideBarComponent {
   sideBarList: ISideBarItem[] = [
-    { name: 'Administradores', link: '/admins' },
-    { name: 'Usuarios', link: '/users' },
-    { name: 'Cursos', link: '/courses' },
-    { name: 'Modulos', link: '/modules' },
-    { name: 'Unidades', link: '/units' },
-    { name: 'Sesiones', link: '/sessions' },
-    { name: 'Dashboard', link: '/dashboard' },
-    { name: 'Costos', link: '/costs' },
+    {
+      name: 'Administradores',
+      getEndpoint: '/userprofile/list',
+      postEndpoint: '/userprofile/register',
+    },
+    {
+      name: 'Usuarios',
+      getEndpoint: '/userprofile/list',
+      postEndpoint: '/userprofile/register',
+    },
+    { name: 'Cursos', getEndpoint: '/course', postEndpoint: '/course' },
+    { name: 'Modulos', getEndpoint: '/module', postEndpoint: '/module' },
+    { name: 'Unidades', getEndpoint: '/unit', postEndpoint: '/unit' },
+    { name: 'Sesiones', getEndpoint: '/session', postEndpoint: '/session' },
   ];
 }

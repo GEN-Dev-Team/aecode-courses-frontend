@@ -1,7 +1,6 @@
 import { Component, inject, Input } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { ClassQuestionComponent } from '../class-question/class-question.component';
 import { ProgressSessionService } from '../../services/progress-session.service';
 import { IProgressSession } from '../../interface/ProgressSession';
 
@@ -16,7 +15,7 @@ declare global {
 @Component({
   selector: 'app-youtube-player',
   standalone: true,
-  imports: [ClassQuestionComponent],
+  imports: [],
   templateUrl: './youtube-player.component.html',
   styleUrls: ['./youtube-player.component.css'],
 })

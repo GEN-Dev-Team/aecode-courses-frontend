@@ -1,0 +1,21 @@
+<div class="form-container">
+  <span>Crear Administrador</span>
+
+  <form [formGroup]="form">
+    @for (item of headerList; track item) {
+    <div class="form-control">
+      <label [for]="item">{{ item }}</label>
+      <input [formControlName]="item" [id]="item" type="text" />
+    </div>
+    }
+  </form>
+
+  <div class="buttons">
+    <button class="cancel-button" (click)="closeForm()">
+      <app-cancel-icon class="icon" /> Cancelar
+    </button>
+    <button class="send-button" (click)="sendForm()">
+      <app-save-icon class="icon" /> Guardar
+    </button>
+  </div>
+</div>
