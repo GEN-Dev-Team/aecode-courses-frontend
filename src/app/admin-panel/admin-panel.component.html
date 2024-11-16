@@ -8,7 +8,7 @@
         <input id="search" type="text" placeholder="Buscar" />
       </label>
       <div class="filter-button"><app-filter-icon class="icon" /> Filtros</div>
-      <div class="add-item-button">
+      <div class="add-item-button" (click)="openModal()">
         <app-add-icon class="icon" /> Agregar Usuario
       </div>
     </div>
@@ -16,3 +16,7 @@
     <app-admin-table />
   </div>
 </div>
+
+<app-modal (isClosed)="showModalForm = $event" [isOpen]="showModalForm">
+  <app-table-form (isClosed)="showModalForm = $event" />
+</app-modal>

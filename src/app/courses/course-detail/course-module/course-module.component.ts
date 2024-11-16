@@ -65,7 +65,7 @@ export class CourseModuleComponent {
       this.sessionObject = {
         sessionId: 0,
         unitId: 0,
-        title: '',
+        title: this.module.title,
         videoUrl: this.module.videoUrl,
         description: '',
         resourceText: '',
@@ -77,6 +77,7 @@ export class CourseModuleComponent {
         classquestions: [],
       };
       this.courseSessionService.setCourseSessionDetails(this.sessionObject);
+      this.courseSessionService.setModuleId(this.module.moduleId - 1);
     }
   }
 }

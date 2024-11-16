@@ -36,9 +36,11 @@ export class HeaderComponent {
       this.isUserLoggedIn = loggedInStatus;
     });
 
-    this.logInService.getUser(this.userId).subscribe((response) => {
-      this.authService.setUserDetails(response);
-    });
+    if (this.userId) {
+      this.logInService.getUser(this.userId).subscribe((response) => {
+        this.authService.setUserDetails(response);
+      });
+    }
   }
 
   changeLanguage() {

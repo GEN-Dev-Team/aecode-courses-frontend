@@ -1,3 +1,4 @@
+@if (course$ | async; as course) {
 <div class="course-detail-container">
   <div class="course-detail-content">
     <div class="course-aside">
@@ -27,7 +28,7 @@
         <div class="first-header-group">
           <app-house-icon class="home-icon" />
           <app-caret-right-icon class="caret-r-icon" />
-          <span class="course-session-module">MODULO {{ module_id }}</span>
+          <span class="course-session-module">MODULO {{ module_id + 1 }}</span>
           <app-caret-right-icon class="caret-r-icon" />
           <span class="course-session-title">{{
             courseSessionSubject.title
@@ -145,3 +146,5 @@
 <app-modal (isClosed)="showBlockedModal = $event" [isOpen]="showBlockedModal">
   <app-content-blocked (isClosed)="showBlockedModal = $event" />
 </app-modal>
+
+}

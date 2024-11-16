@@ -1,4 +1,6 @@
 .admin-side-bar-container {
+  width: 100%;
+  max-width: 300px;
   padding: 43px 0 0 24px;
   height: 100%;
   display: flex;
