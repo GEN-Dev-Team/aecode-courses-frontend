@@ -9,6 +9,7 @@ import { ContentBlockedComponent } from '../shared/components/content-blocked/co
 import { CourseContentComponent } from '../courses/course-content/course-content.component';
 import { ClassQuestionComponent } from '../courses/course-detail/class-question/class-question.component';
 import { PaymentCardComponent } from '../payment/payment-card/payment-card.component';
+import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
 
 @Component({
   selector: 'app-home',
