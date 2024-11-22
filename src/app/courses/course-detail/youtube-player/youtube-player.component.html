@@ -11,9 +11,7 @@
     allowfullscreen
   ></iframe>
 
-  <!-- <app-class-question
-    [hidden]="!showQuestionModal"
-    (isClosed)="showQuestionModal = $event"
-    class="class-question"
-  /> -->
+  @if (showTest) {
+  <app-class-question class="class-question" />
+  }
 </div>
