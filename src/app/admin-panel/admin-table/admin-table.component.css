@@ -36,20 +36,28 @@
           position: relative;
 
           .option-dropdown {
-            width: fit-content;
-            padding: 25px;
+            width: 110px;
+            padding-block: 10px;
             display: flex;
             flex-flow: column nowrap;
             font-family: "ruberoid-medium";
             color: black;
-            gap: 24px;
+            gap: 12px;
             border-radius: 6px;
             border: 1px solid var(--gray-2);
             background-color: white;
             position: absolute;
-            z-index: 1;
+            z-index: 0;
             top: 50%;
             right: 100%;
+
+            span {
+              height: 30px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              cursor: pointer;
+            }
           }
         }
       }

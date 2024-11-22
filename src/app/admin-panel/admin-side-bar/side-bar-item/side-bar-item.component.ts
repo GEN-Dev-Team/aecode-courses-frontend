@@ -29,6 +29,7 @@ export class SideBarItemComponent {
   @Input() name: string = '';
   @Input() getEndpoint: string = '';
   @Input() postEndpoint: string = '';
+  @Input() endpoint: string = '';
 
   adminService: AdminService = inject(AdminService);
 
@@ -36,6 +37,7 @@ export class SideBarItemComponent {
     if (this.getEndpoint == '/userprofile/list') {
       this.adminService.setGetEndpoint(this.getEndpoint);
       this.adminService.setPostEndpoint(this.postEndpoint);
+      this.adminService.setEndpoint(this.endpoint);
       this.adminService.getDataList();
     }
   }
@@ -43,6 +45,7 @@ export class SideBarItemComponent {
   onClick() {
     this.adminService.setGetEndpoint(this.getEndpoint);
     this.adminService.setPostEndpoint(this.postEndpoint);
+    this.adminService.setEndpoint(this.endpoint);
     this.adminService.getDataList();
   }
 }

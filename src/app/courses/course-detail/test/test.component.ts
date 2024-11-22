@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
 import { AccCreatedIconComponent } from '../../../shared/icons/acc-created-icon/acc-created-icon.component';
+import { ProgressSessionService } from '../../services/course-progress.service';
+import { IProgressRW } from '../../interface/CourseProgress';
 
 @Component({
   selector: 'app-test',
@@ -12,4 +14,24 @@ import { AccCreatedIconComponent } from '../../../shared/icons/acc-created-icon/
 export class TestComponent {
   showContentModal = false;
   @Input() ev_url: string = '';
+  @Input() testId: number = -1;
+
+  courseProgressService: ProgressSessionService = inject(
+    ProgressSessionService
+  );
+
+  createRWProgress() {
+    const rwItem: IProgressRW = {
+      progressId: -1,
+      userId: JSON.parse(localStorage.getItem('user') || '{}').userId,
+      workId: this.testId,
+      completed: true,
+    };
+
+    console.log(rwItem);
+
+    this.courseProgressService.createRWProgress(rwItem).subscribe({
+      next: (data) => {},
+    });
+  }
 }

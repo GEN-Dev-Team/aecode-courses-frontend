@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { SaveIconComponent } from '../icons/save-icon/save-icon.component';
 import { CancelIconComponent } from '../icons/cancel-icon/cancel-icon.component';
 import { AdminService } from '../services/admin.service';
@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './table-form.component.css',
 })
 export class TableFormComponent {
+  @Input() updateForm: boolean = false;
+  @Input() itemId: number = -1;
   @Output() isClosed = new EventEmitter<boolean>();
 
   adminService: AdminService = inject(AdminService);
@@ -22,9 +24,20 @@ export class TableFormComponent {
 
   ngOnInit(): void {
     this.adminService.dataList$.subscribe((res) => {
-      this.headerList = Object.keys(res[0]);
+      this.headerList = Object.keys(res[0]).filter(
+        (key) => typeof res[0][key] !== 'object'
+      );
       this.createForm(); // Crear el formulario solo después de tener las claves
     });
+  }
+
+  ngOnChanges(): void {
+    if (this.updateForm && this.itemId !== -1) {
+      this.adminService.getItemById(this.itemId).subscribe((itemData) => {
+        this.form.patchValue(itemData); // Llenar el formulario con los datos recibidos
+        console.log('nuevo form:', itemData);
+      });
+    }
   }
 
   createForm() {
@@ -49,7 +62,13 @@ export class TableFormComponent {
       })
     );
 
-    this.adminService.createItem(filteredFormValue);
+    console.log('se envia:', filteredFormValue);
+
+    if (this.updateForm) {
+      this.adminService.updateItem(filteredFormValue);
+    } else {
+      this.adminService.createItem(filteredFormValue);
+    }
 
     this.form.reset();
   }

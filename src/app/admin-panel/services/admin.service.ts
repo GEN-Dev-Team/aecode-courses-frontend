@@ -11,12 +11,14 @@ const base_url = environment.base;
 export class AdminService {
   private getEndpoint = new BehaviorSubject<string>('');
   private postEndpoint = new BehaviorSubject<string>('');
+  private endpoint = new BehaviorSubject<string>('');
   private dataList = new BehaviorSubject<any[]>([]);
 
   http: HttpClient = inject(HttpClient);
 
   getEndpoint$ = this.getEndpoint.asObservable();
   postEndpoint$ = this.postEndpoint.asObservable();
+  endpoint$ = this.endpoint.asObservable();
   dataList$ = this.dataList.asObservable();
 
   setGetEndpoint(value: string) {
@@ -25,6 +27,10 @@ export class AdminService {
 
   setPostEndpoint(value: string) {
     this.postEndpoint.next(value);
+  }
+
+  setEndpoint(value: string) {
+    this.endpoint.next(value);
   }
 
   getDataList() {
@@ -43,6 +49,12 @@ export class AdminService {
     });
   }
 
+  getItemById(id: number) {
+    const url = `${base_url}${this.endpoint.getValue()}/${id}`;
+
+    return this.http.get<any>(url);
+  }
+
   createItem(value: any) {
     const url = `${base_url}${this.postEndpoint.getValue()}`;
 
@@ -54,6 +66,34 @@ export class AdminService {
       },
       error: (err) => {
         console.error('Error al crear el item:', err);
+      },
+    });
+  }
+
+  updateItem(value: any) {
+    const url = `${base_url}${this.endpoint.getValue()}`;
+    console.log(url);
+
+    this.http.put(url, value).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (err) => {
+        console.error('Error al actualizar el item:', err);
+      },
+    });
+  }
+
+  deleteItem(id: number) {
+    const url = `${base_url}${this.endpoint.getValue()}/${id}`;
+    console.log(url);
+
+    this.http.delete(url).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (err) => {
+        console.error('Error al eliminar el item:', err);
       },
     });
   }

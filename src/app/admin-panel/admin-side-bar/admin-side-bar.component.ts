@@ -5,6 +5,7 @@ interface ISideBarItem {
   name: string;
   getEndpoint: string;
   postEndpoint: string;
+  endpoint: string;
 }
 @Component({
   selector: 'app-admin-side-bar',
@@ -19,15 +20,37 @@ export class AdminSideBarComponent {
       name: 'Administradores',
       getEndpoint: '/userprofile/list',
       postEndpoint: '/userprofile/register',
+      endpoint: '/userprofile',
     },
     {
       name: 'Usuarios',
       getEndpoint: '/userprofile/list',
       postEndpoint: '/userprofile/register',
+      endpoint: '/userprofile',
     },
-    { name: 'Cursos', getEndpoint: '/course', postEndpoint: '/course' },
-    { name: 'Modulos', getEndpoint: '/module', postEndpoint: '/module' },
-    { name: 'Unidades', getEndpoint: '/unit', postEndpoint: '/unit' },
-    { name: 'Sesiones', getEndpoint: '/session', postEndpoint: '/session' },
+    {
+      name: 'Cursos',
+      getEndpoint: '/course',
+      postEndpoint: '/course',
+      endpoint: '/course',
+    },
+    {
+      name: 'Modulos',
+      getEndpoint: '/module',
+      postEndpoint: '/module',
+      endpoint: '/module',
+    },
+    {
+      name: 'Unidades',
+      getEndpoint: '/unit',
+      postEndpoint: '/unit',
+      endpoint: '/unit',
+    },
+    {
+      name: 'Sesiones',
+      getEndpoint: '/session',
+      postEndpoint: '/session',
+      endpoint: '/session',
+    },
   ];
 }

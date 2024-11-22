@@ -13,6 +13,8 @@ import { ICourse } from '../../interface/Course';
 import { ActivatedRoute } from '@angular/router';
 import { ISession } from '../../interface/Session';
 import { CourseSessionService } from '../../services/course-session.service';
+import { InputCheckIconComponent } from '../../icons/input-check-icon/input-check-icon.component';
+import { ProgressSessionService } from '../../services/course-progress.service';
 
 @Component({
   selector: 'app-course-module',
@@ -26,6 +28,7 @@ import { CourseSessionService } from '../../services/course-session.service';
     TestComponent,
     CourseUnitComponent,
     NgIf,
+    InputCheckIconComponent,
   ],
   templateUrl: './course-module.component.html',
   styleUrl: './course-module.component.css',
@@ -36,6 +39,9 @@ export class CourseModuleComponent {
   authService: AuthService = inject(AuthService);
   route: ActivatedRoute = inject(ActivatedRoute);
   courseSessionService: CourseSessionService = inject(CourseSessionService);
+  courseProgressService: ProgressSessionService = inject(
+    ProgressSessionService
+  );
 
   safeUrl!: SafeResourceUrl;
   showItems = false;
@@ -52,6 +58,7 @@ export class CourseModuleComponent {
           this.usserAccess = true;
         }
       });
+    // this.checkModuleTestStatus();
   }
 
   evaluation() {
@@ -79,5 +86,12 @@ export class CourseModuleComponent {
       this.courseSessionService.setCourseSessionDetails(this.sessionObject);
       this.courseSessionService.setModuleId(this.module.moduleId - 1);
     }
+  }
+
+  checkModuleTestStatus() {
+    console.log(
+      this.module.moduleId,
+      this.courseProgressService.checkRWProgress(this.module)
+    );
   }
 }

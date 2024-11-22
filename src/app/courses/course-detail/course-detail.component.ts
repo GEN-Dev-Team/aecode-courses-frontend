@@ -69,7 +69,6 @@ export class CourseDetailComponent implements OnInit {
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLogged = loggedInStatus;
     });
-    // this.course_id = parseInt(this.route.snapshot.params['id']);
 
     this.courseSession.courseSession$.subscribe((session) => {
       this.courseSessionSubject = session;
@@ -79,25 +78,7 @@ export class CourseDetailComponent implements OnInit {
       this.module_id = id;
     });
 
-    // this.getCourse(this.course_id);
-  }
-
-  // getCourse(id: number) {
-  //   this.courseService.getCourse(id).subscribe((response) => {
-  //     this.course = response;
-
-  //     this.course.modules.sort((a, b) => a.orderNumber - b.orderNumber);
-  //     this.course.modules.forEach((module) => {
-  //       module.units.sort((a, b) => a.orderNumber - b.orderNumber);
-  //     });
-
-  //     this.courseIntroVideo = this.course.videoUrl;
-  //     console.log(this.course);
-  //   });
-  // }
-
-  playCourseVideo() {
-    this.course$.subscribe((response) => {
+    this.courseService.getCourse(this.course_id).subscribe((response) => {
       this.courseIntroVideo = response.videoUrl;
     });
   }

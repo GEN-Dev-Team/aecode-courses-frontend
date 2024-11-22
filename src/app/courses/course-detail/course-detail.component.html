@@ -11,9 +11,7 @@
       </div>
 
       @if (!isUserLogged) {
-      <app-button (click)="playCourseVideo()" class="button-start-here">
-        ¡COMIENZA AQUÍ!
-      </app-button>
+      <app-button class="button-start-here"> ¡COMIENZA AQUÍ! </app-button>
       }
 
       <aside class="course-details-aside">
@@ -63,16 +61,19 @@
       <app-youtube-player
         [unit_url_video]="courseSessionSubject.videoUrl"
         [session_id]="courseSessionSubject.sessionId"
-        [course_intro_video]="courseIntroVideo"
+        [courseIntroVideo]="courseIntroVideo"
       />
 
-      <div class="buttons-container" *ngIf="!isUserLogged">
+      @if (!isUserLogged) {
+      <div class="buttons-container">
         <app-button> ¿Qué aprenderemos hoy? </app-button>
 
         <app-button> Acceso al material de clase </app-button>
       </div>
 
-      <div class="course-class-details" *ngIf="isUserLogged">
+      } @else {
+      <div class="course-class-details">
+        @if (courseSessionSubject.htmlContent) {
         <div class="header">
           <div class="header-items">
             <span
@@ -138,7 +139,9 @@
           </a>
           }
         </div>
+        }
       </div>
+      }
     </main>
   </div>
 </div>
