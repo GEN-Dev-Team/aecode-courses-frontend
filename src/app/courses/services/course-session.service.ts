@@ -14,7 +14,6 @@ export class CourseSessionService {
   url = base_url + '/session';
 
   private module_id = new BehaviorSubject<number>(0);
-
   private courseSessionSubject = new BehaviorSubject<ISession>({
     sessionId: 0,
     unitId: 0,
@@ -29,10 +28,9 @@ export class CourseSessionService {
     htmlContent: '',
     classquestions: [],
   });
-  constructor() {}
 
-  courseSession$ = this.courseSessionSubject.asObservable();
   module_id$ = this.module_id.asObservable();
+  courseSession$ = this.courseSessionSubject.asObservable();
 
   setCourseSessionDetails(session: ISession) {
     if (session.sessionId > 0) {

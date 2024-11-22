@@ -52,6 +52,27 @@
         font-size: 14px;
         font-family: "plusjakartasans-semibold";
       }
+
+      .module-item-checkbox {
+        border-radius: 2px;
+        border: 2px solid var(--purple-2);
+        width: 17px;
+        height: 17px;
+        position: relative;
+        cursor: pointer;
+        background-color: transparent;
+        position: relative;
+
+        .module-item-icon {
+          width: 12.189px;
+          height: 9.302px;
+          flex-shrink: 0;
+          position: absolute;
+          top: -25%;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
     }
   }
 }

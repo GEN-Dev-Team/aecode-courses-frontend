@@ -24,8 +24,13 @@
     }
 
     <div (click)="evaluation()" class="course-unit-test">
-      @if (module.relatedworks === null) {
+      <!-- module.relatedworks === null -->
+      @if (module.relatedworks === null ) {
       <app-padlock-icon />
+      } @else {
+      <div class="module-item-checkbox" [ngClass]="{ checked: false }">
+        <app-input-check-icon class="module-item-icon" />
+      </div>
       } @if (module.moduleId === 1) { <span>PREGUNTAS INTRODUCTORIAS</span> }
       @else {
       <span>EVALUA LO APRENDIDO - TEST U{{ module.moduleId }}</span>
@@ -39,5 +44,8 @@
   [isOpen]="showEvaluation"
   (isClosed)="showEvaluation = $event"
 >
-  <app-test [ev_url]="module.relatedworks.formUrl" />
+  <app-test
+    [ev_url]="module.relatedworks.formUrl"
+    [testId]="module.relatedworks.workId"
+  />
 </app-modal>

@@ -17,8 +17,8 @@
 
             @if (showOptionsMap[getItem(item)]) {
             <div class="option-dropdown">
-              <span>Editar</span>
-              <span>Eliminar</span>
+              <span (click)="editItem(getItem(item))">Editar</span>
+              <span (click)="deleteItem(getItem(item))">Eliminar</span>
             </div>
             }
           </div>
@@ -32,3 +32,11 @@
     </tbody>
   </table>
 </div>
+
+<app-modal (isClosed)="showModalForm = $event" [isOpen]="showModalForm">
+  <app-table-form
+    (isClosed)="showModalForm = $event"
+    [updateForm]="updateForm"
+    [itemId]="itemId"
+  />
+</app-modal>

@@ -1,7 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
 import { PadlockIconComponent } from '../../../shared/icons/padlock-icon/padlock-icon.component';
-import { CaretDownIconComponent } from '../../../shared/icons/caret-down-icon/caret-down-icon.component';
-import { CaretUpIconComponent } from '../../../shared/icons/caret-up-icon/caret-up-icon.component';
 import { ISession } from '../../interface/Session';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CourseSessionService } from '../../services/course-session.service';
@@ -9,8 +7,8 @@ import { AuthService } from '../../../core/services/auth.service';
 import { ModalComponent } from '../../../shared/components/modal/modal.component';
 import { ContentBlockedComponent } from '../../../shared/components/content-blocked/content-blocked.component';
 import { NgClass } from '@angular/common';
-import { ProgressSessionService } from '../../services/progress-session.service';
-import { IProgressSession } from '../../interface/ProgressSession';
+import { ProgressSessionService } from '../../services/course-progress.service';
+import { IProgressSession } from '../../interface/CourseProgress';
 import { ILogin } from '../../../home/interface/Login';
 import { UserService } from '../../../home/user.service';
 import { InputCheckIconComponent } from '../../icons/input-check-icon/input-check-icon.component';
@@ -20,8 +18,6 @@ import { InputCheckIconComponent } from '../../icons/input-check-icon/input-chec
   standalone: true,
   imports: [
     PadlockIconComponent,
-    CaretDownIconComponent,
-    CaretUpIconComponent,
     ModalComponent,
     ContentBlockedComponent,
     NgClass,

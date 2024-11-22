@@ -25,7 +25,7 @@ import { TableFormComponent } from './table-form/table-form.component';
 export class AdminPanelComponent {
   showModalForm: boolean = false;
 
-  openModal() {
+  createItem() {
     this.showModalForm = true;
   }
 }
