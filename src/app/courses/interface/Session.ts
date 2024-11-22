@@ -1,4 +1,4 @@
-import { IQuestion } from './Question';
+import { ISessionTest } from './Test';
 
 export interface ISession {
   sessionId: number;
@@ -12,5 +12,5 @@ export interface ISession {
   taskName: string;
   taskUrl: string;
   htmlContent: string;
-  classquestions: IQuestion[];
+  sessiontests: ISessionTest[];
 }

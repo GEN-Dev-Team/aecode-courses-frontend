@@ -16,10 +16,16 @@ export class ProgressSessionService {
   module_url = base_url + '/module';
 
   createSessionProgress(progressSession: IProgressSession) {
-    return this.http.post<IProgressSession>(
-      `${this.progress_session_url}`,
-      progressSession
-    );
+    if (!this.isSessionCompleted(progressSession.sessionId)) {
+      console.log('Session not completed yet');
+      return this.http.post<IProgressSession>(
+        `${this.progress_session_url}`,
+        progressSession
+      );
+    } else {
+      console.log('Session completed already');
+      return this.getSessionProgressById(progressSession.sessionId);
+    }
   }
 
   getSessionProgressById(sessionId: number) {
@@ -51,6 +57,16 @@ export class ProgressSessionService {
       return userTestProgressList.some(
         (progress: IProgressRW) =>
           progress.workId === moduleItem.relatedworks.workId
+      );
+    }
+  }
+
+  isSessionCompleted(sessionId: number) {
+    const userData = JSON.parse(localStorage.getItem('user') || '{}');
+
+    if (userData.userprogresssessions !== null) {
+      return userData.userprogresssessions.some(
+        (progress: IProgressSession) => progress.sessionId === sessionId
       );
     }
   }

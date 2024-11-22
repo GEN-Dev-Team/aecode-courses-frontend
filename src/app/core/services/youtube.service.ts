@@ -1,9 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ProgressSessionService } from '../../courses/services/course-progress.service';
-import { IProgressSession } from '../../courses/interface/CourseProgress';
 import { ISession } from '../../courses/interface/Session';
 import { CourseSessionService } from '../../courses/services/course-session.service';
+import { SessionTestService } from '../../courses/course-detail/class-question/session-test.service';
+import { Subject } from 'rxjs/internal/Subject';
+import { Observable } from 'rxjs/internal/Observable';
+import { BehaviorSubject } from 'rxjs';
+import { IProgressSession } from '../../courses/interface/CourseProgress';
 
 declare var YT: any;
 
@@ -19,7 +23,7 @@ declare global {
 export class YoutubeService {
   private player: any;
   private videoDuration: number = 0;
-  private fiveSecondsToFinish: boolean = false;
+  private fiveSecondsToFinishSubject = new BehaviorSubject<boolean>(false);
 
   sanitizer: DomSanitizer = inject(DomSanitizer);
   progressSessionService: ProgressSessionService = inject(
@@ -27,9 +31,14 @@ export class YoutubeService {
   );
   courseSessionProgressService: CourseSessionService =
     inject(CourseSessionService);
+  sessionTestService: SessionTestService = inject(SessionTestService);
 
   courseSessionObject!: ISession;
   userId: number = JSON.parse(localStorage.getItem('user') || '{}').userId;
+  questionAnswered = false;
+
+  fiveSecondsToFinish$: Observable<boolean> =
+    this.fiveSecondsToFinishSubject.asObservable();
 
   initializePlayer(videoId: string): void {
     // Cargar la API de YouTube
@@ -56,11 +65,11 @@ export class YoutubeService {
   onPlayerReady(event: any): void {
     // Obtener la duración total del video
     this.videoDuration = this.player.getDuration();
-    // console.log(
-    //   'El video está listo. Duración total:',
-    //   this.videoDuration,
-    //   'segundos.'
-    // );
+    console.log(
+      'El video está listo. Duración total:',
+      this.videoDuration,
+      'segundos.'
+    );
     // Iniciar el seguimiento del progreso del video
     this.trackVideoProgress();
   }
@@ -70,6 +79,7 @@ export class YoutubeService {
     setInterval(() => {
       if (
         this.player &&
+        !this.fiveSecondsToFinishSubject.getValue() &&
         this.player.getPlayerState() === YT.PlayerState.PLAYING
       ) {
         const currentTime = this.player.getCurrentTime();
@@ -77,12 +87,14 @@ export class YoutubeService {
 
         if (
           timeRemaining <= 5 &&
-          !this.fiveSecondsToFinish &&
+          !this.questionAnswered &&
           this.userId &&
           this.courseSessionObject.sessionId
         ) {
-          // console.log('El video está a punto de terminar en 5 segundos.');
-          this.fiveSecondsToFinish = true;
+          console.log('El video está a punto de terminar en 5 segundos.');
+          this.player.pauseVideo();
+          this.questionAnswered = true;
+          this.setVideoGoingToFinish(true);
 
           // Guardar el progreso del video
           const progressItem: IProgressSession = {
@@ -121,5 +133,9 @@ export class YoutubeService {
       /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:embed\/|v\/|watch\?v=|.*\/)|youtu\.be\/)([^&?\/\s]{11})/;
     const match = url.match(regExp);
     return match ? match[1] : null;
+  }
+
+  setVideoGoingToFinish(state: boolean) {
+    this.fiveSecondsToFinishSubject.next(state);
   }
 }

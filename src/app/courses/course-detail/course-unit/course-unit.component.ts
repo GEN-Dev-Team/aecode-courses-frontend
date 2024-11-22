@@ -79,7 +79,7 @@ export class CourseUnitComponent {
         taskName: '',
         taskUrl: '',
         htmlContent: '',
-        classquestions: [],
+        sessiontests: [],
       };
       this.courseSessionService.setCourseSessionDetails(this.sessionObject);
       this.courseSessionService.setModuleId(this.unit.moduleId - 1);

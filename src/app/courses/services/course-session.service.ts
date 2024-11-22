@@ -26,7 +26,7 @@ export class CourseSessionService {
     taskName: '',
     taskUrl: '',
     htmlContent: '',
-    classquestions: [],
+    sessiontests: [],
   });
 
   module_id$ = this.module_id.asObservable();
