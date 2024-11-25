@@ -73,6 +73,10 @@
           transform: translateX(-50%);
         }
       }
+
+      .checked {
+        background-color: var(--purple-2);
+      }
     }
   }
 }

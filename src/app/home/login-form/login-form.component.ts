@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -8,13 +8,13 @@ import {
 import { ILogin } from '../interface/Login';
 import { UserService } from '../user.service';
 import { ButtonComponent } from '../../shared/components/button/button.component';
-import { NgClass } from '@angular/common';
 import { AuthService } from '../../core/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonComponent, NgClass],
+  imports: [ReactiveFormsModule, ButtonComponent],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css',
 })
@@ -26,6 +26,8 @@ export class LoginFormComponent {
   usersList: ILogin[] = [];
   login!: ILogin;
   isSignInForm: boolean = true;
+
+  toastService: ToastrService = inject(ToastrService);
 
   constructor(
     private fb: FormBuilder,
@@ -41,6 +43,7 @@ export class LoginFormComponent {
       userId: new FormControl(0),
       fullname: new FormControl(''),
       email: new FormControl(''),
+      status: new FormControl('activo'),
       passwordHash: new FormControl(''),
     });
   }
@@ -54,7 +57,7 @@ export class LoginFormComponent {
     ) as HTMLInputElement;
 
     if (password.value !== passwordConfirm.value) {
-      console.log('Contraseñas incorrectas');
+      this.toastService.error('Las contraseñas no coinciden', 'Error');
     } else {
       this.logInService
         .createUser(this.signInForm.value)
@@ -64,12 +67,17 @@ export class LoginFormComponent {
   }
 
   logInUser() {
-    this.logInService.logInUser(this.loginForm.value).subscribe((response) => {
-      this.authService.login(response); // Actualizar el estado de autenticación
-      this.userLoggedIn.emit(true);
-      this.closeModal();
-      console.log(response);
-    });
+    this.logInService.logInUser(this.loginForm.value).subscribe(
+      (response) => {
+        this.authService.login(response); // Actualizar el estado de autenticación
+        this.userLoggedIn.emit(true);
+        this.closeModal();
+        console.log(response);
+      },
+      (error) => {
+        this.toastService.error('Credenciales incorrectas', 'Error');
+      }
+    );
   }
 
   closeModal() {

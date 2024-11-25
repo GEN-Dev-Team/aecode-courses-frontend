@@ -23,12 +23,7 @@ export class TableFormComponent {
   headerList: any[] = [];
 
   ngOnInit(): void {
-    this.adminService.dataList$.subscribe((res) => {
-      this.headerList = Object.keys(res[0]).filter(
-        (key) => typeof res[0][key] !== 'object'
-      );
-      this.createForm(); // Crear el formulario solo después de tener las claves
-    });
+    this.setFormData();
   }
 
   ngOnChanges(): void {
@@ -65,16 +60,29 @@ export class TableFormComponent {
     console.log('se envia:', filteredFormValue);
 
     if (this.updateForm) {
-      this.adminService.updateItem(filteredFormValue);
+      this.adminService.updateItem(filteredFormValue, this.itemId);
     } else {
       this.adminService.createItem(filteredFormValue);
     }
 
-    this.form.reset();
+    this.closeForm();
   }
 
   closeForm() {
     this.form.reset;
     this.isClosed.emit(false);
+  }
+
+  setFormData() {
+    this.adminService.dataList$.subscribe((value) => {
+      if (value && value.length > 0) {
+        this.headerList = Object.keys(value[0]).filter(
+          (key) => typeof value[0][key] !== 'object'
+        );
+        this.headerList.shift();
+      }
+
+      this.createForm(); // Crear el formulario solo después de tener las claves
+    });
   }
 }

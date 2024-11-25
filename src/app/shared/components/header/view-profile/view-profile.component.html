@@ -30,7 +30,7 @@
       </svg>
       <span>Perfil</span>
     </li>
-    @if (isAdminLogged) {
+    @if (userData.rol ==='admin') {
     <li (click)="redirectToAdminView()">
       <svg
         xmlns="http://www.w3.org/2000/svg"

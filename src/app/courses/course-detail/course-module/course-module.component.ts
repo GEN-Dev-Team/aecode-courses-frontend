@@ -49,6 +49,7 @@ export class CourseModuleComponent {
   usserAccess: boolean = false;
   course_id: number = this.route.snapshot.params['id'];
   sessionObject!: ISession;
+  testCompleted: boolean = false;
 
   ngOnInit(): void {
     this.authService
@@ -58,7 +59,7 @@ export class CourseModuleComponent {
           this.usserAccess = true;
         }
       });
-    // this.checkModuleTestStatus();
+    this.checkModuleTestStatus();
   }
 
   evaluation() {
@@ -89,9 +90,8 @@ export class CourseModuleComponent {
   }
 
   checkModuleTestStatus() {
-    console.log(
-      this.module.moduleId,
-      this.courseProgressService.checkRWProgress(this.module)
-    );
+    if (this.courseProgressService.checkRWProgress(this.module)) {
+      this.testCompleted = true;
+    }
   }
 }

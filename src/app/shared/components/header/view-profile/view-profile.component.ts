@@ -17,12 +17,9 @@ export class ViewProfileComponent {
 
   userData = JSON.parse(localStorage.getItem('user') || '{}');
 
-  isAdminLogged: boolean = this.userData.role === 'admin';
-
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    console.log(this.isAdminLogged);
   }
   closeModal() {
     this.isClosed.emit(false);

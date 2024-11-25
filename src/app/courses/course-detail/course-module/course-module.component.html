@@ -24,11 +24,10 @@
     }
 
     <div (click)="evaluation()" class="course-unit-test">
-      <!-- module.relatedworks === null -->
       @if (module.relatedworks === null ) {
       <app-padlock-icon />
       } @else {
-      <div class="module-item-checkbox" [ngClass]="{ checked: false }">
+      <div class="module-item-checkbox" [class.checked]="testCompleted">
         <app-input-check-icon class="module-item-icon" />
       </div>
       } @if (module.moduleId === 1) { <span>PREGUNTAS INTRODUCTORIAS</span> }
