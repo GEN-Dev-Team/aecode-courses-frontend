@@ -66,20 +66,23 @@ export class AdminService {
       },
       error: (err) => {
         console.error('Error al crear el item:', err);
+        this.getDataList();
       },
     });
   }
 
-  updateItem(value: any) {
-    const url = `${base_url}${this.endpoint.getValue()}`;
+  async updateItem(value: any, id: number) {
+    const url = `${base_url}${this.endpoint.getValue()}/${id}`;
     console.log(url);
+    console.log(this.endpoint.getValue());
 
-    this.http.put(url, value).subscribe({
+    this.http.patch(url, value).subscribe({
       next: (data) => {
         console.log(data);
       },
       error: (err) => {
         console.error('Error al actualizar el item:', err);
+        this.getDataList();
       },
     });
   }

@@ -27,15 +27,7 @@ export class AdminTableComponent {
   showOptionsMap: { [key: string]: boolean } = {};
 
   ngOnInit(): void {
-    this.adminService.dataList$.subscribe((value) => {
-      this.dataList = value;
-      this.dataHeaders = Object.keys(value[0]);
-      this.idField = this.dataHeaders[0];
-
-      this.dataHeaders = Object.keys(value[0]).filter(
-        (key) => typeof value[0][key] !== 'object'
-      );
-    });
+    this.setDataTable();
   }
 
   objectKeys(obj: any): string[] {
@@ -66,5 +58,19 @@ export class AdminTableComponent {
   deleteItem(itemId: number) {
     this.adminService.deleteItem(itemId);
     console.log(itemId);
+  }
+
+  setDataTable() {
+    this.adminService.dataList$.subscribe((value) => {
+      if (value && value.length > 0) {
+        this.dataList = value;
+        this.dataHeaders = Object.keys(value[0]);
+        this.idField = this.dataHeaders[0];
+
+        this.dataHeaders = Object.keys(value[0]).filter(
+          (key) => typeof value[0][key] !== 'object'
+        );
+      }
+    });
   }
 }

@@ -26,7 +26,7 @@ export const routes: Routes = [
     path: 'admin-panel',
     title: 'ADMIN PANEL',
     component: AdminPanelComponent,
-    // canActivate: [adminAuthGuard],
+    canActivate: [adminAuthGuard],
   },
   {
     path: 'no-mobile',
