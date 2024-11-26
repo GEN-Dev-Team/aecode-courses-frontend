@@ -58,15 +58,18 @@ export class CourseSessionComponent {
   ngOnInit(): void {
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLogged = loggedInStatus;
-      this.userService.getUser(this.userId).subscribe((response) => {
-        this.userDetails = response;
 
-        this.userDetails.userprogresssessions?.forEach((progressSession) => {
-          if (progressSession.sessionId == this.courseSession.sessionId) {
-            this.selectedVideoIsCompleted = progressSession.completed;
-          }
+      if (this.isUserLogged) {
+        this.userService.getUser(this.userId).subscribe((response) => {
+          this.userDetails = response;
+
+          this.userDetails.userprogresssessions?.forEach((progressSession) => {
+            if (progressSession.sessionId == this.courseSession.sessionId) {
+              this.selectedVideoIsCompleted = progressSession.completed;
+            }
+          });
         });
-      });
+      }
     });
 
     this.courseSessionService.courseSession$.subscribe((session) => {

@@ -31,7 +31,10 @@ export class ClassQuestionComponent {
   ngOnInit(): void {
     this.courseSessionObject$.subscribe((session) => {
       this.sessionId = session.sessionId;
-      this.courseSessionTestObject = session.sessiontests;
+
+      if (session.sessiontests) {
+        this.courseSessionTestObject = session.sessiontests;
+      }
     });
   }
 
