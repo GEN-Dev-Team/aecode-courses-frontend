@@ -32,15 +32,7 @@ export class HeaderComponent {
   logInService: UserService = inject(UserService);
 
   ngOnInit(): void {
-    this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
-      this.isUserLoggedIn = loggedInStatus;
-    });
-
-    if (this.userId) {
-      this.logInService.getUser(this.userId).subscribe((response) => {
-        this.authService.setUserDetails(response);
-      });
-    }
+    this.setUser();
   }
 
   changeLanguage() {
@@ -77,5 +69,17 @@ export class HeaderComponent {
 
   logout() {
     this.authService.logout();
+  }
+
+  setUser() {
+    this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
+      this.isUserLoggedIn = loggedInStatus;
+    });
+
+    if (this.isUserLoggedIn) {
+      this.logInService.getUser(this.userId).subscribe((response) => {
+        this.authService.setUserDetails(response);
+      });
+    }
   }
 }

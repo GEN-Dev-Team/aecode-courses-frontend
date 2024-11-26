@@ -102,8 +102,8 @@
           } @else {
 
           <h2 class="resource-title">Archivos de la clase</h2>
+          @if (courseSessionSubject.resourceDocument) {
           <a
-            *ngIf="courseSessionSubject.resourceDocument"
             class="resource-items"
             [href]="apiUrl + courseSessionSubject.resourceDocument"
             target="_blank"
@@ -114,16 +114,14 @@
             </p>
             <app-download-icon class="last-icon" />
           </a>
-          <p
-            *ngIf="!courseSessionSubject.resourceDocument"
-            class="resource-items"
-          >
-            ¡Recurso no disponible!
-          </p>
+          } @else {
+          <p class="resource-items">¡Recurso no disponible!</p>
+          }
 
           <div class="separator"></div>
 
           <h2 class="resource-title">Materiales de Apoyo</h2>
+          @if (courseSessionSubject.taskUrl) {
           <a
             class="resource-items"
             href="{{ courseSessionSubject.taskUrl }}"
@@ -137,7 +135,9 @@
             </p>
             <app-link-icon class="last-icon" />
           </a>
-          }
+          } @else {
+          <p class="resource-items">¡Material no disponible!</p>
+          } }
         </div>
         }
       </div>

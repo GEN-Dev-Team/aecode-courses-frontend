@@ -50,16 +50,23 @@ export class CourseModuleComponent {
   course_id: number = this.route.snapshot.params['id'];
   sessionObject!: ISession;
   testCompleted: boolean = false;
+  isUserLogged: boolean = false;
 
   ngOnInit(): void {
-    this.authService
-      .getUserDetails()
-      .usercourseaccess.forEach((course: ICourse) => {
-        if (course.courseId === Number(this.course_id)) {
-          this.usserAccess = true;
-        }
-      });
-    this.checkModuleTestStatus();
+    this.authService.isLoggedIn$().subscribe((isLogged) => {
+      this.isUserLogged = isLogged;
+    });
+
+    if (this.isUserLogged) {
+      this.authService
+        .getUserDetails()
+        .usercourseaccess.forEach((course: ICourse) => {
+          if (course.courseId === Number(this.course_id)) {
+            this.usserAccess = true;
+          }
+        });
+      this.checkModuleTestStatus();
+    }
   }
 
   evaluation() {

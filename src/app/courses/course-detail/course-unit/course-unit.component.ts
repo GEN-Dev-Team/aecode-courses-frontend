@@ -54,13 +54,15 @@ export class CourseUnitComponent {
       this.sessionObject = session;
     });
 
-    this.authService
-      .getUserDetails()
-      .usercourseaccess.forEach((course: ICourse) => {
-        if (course.courseId === Number(this.course_id)) {
-          this.usserAccess = true;
-        }
-      });
+    if (this.isUserLogged) {
+      this.authService
+        .getUserDetails()
+        .usercourseaccess.forEach((course: ICourse) => {
+          if (course.courseId === Number(this.course_id)) {
+            this.usserAccess = true;
+          }
+        });
+    }
   }
 
   onClick() {

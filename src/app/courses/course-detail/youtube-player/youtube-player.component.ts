@@ -2,6 +2,9 @@ import { ChangeDetectorRef, Component, inject, Input } from '@angular/core';
 import { SafeResourceUrl } from '@angular/platform-browser';
 import { YoutubeService } from '../../../core/services/youtube.service';
 import { ClassQuestionComponent } from '../class-question/class-question.component';
+import { Observable } from 'rxjs';
+import { ISession } from '../../interface/Session';
+import { CourseSessionService } from '../../services/course-session.service';
 
 declare var YT: any;
 
@@ -25,7 +28,10 @@ export class YoutubePlayerComponent {
 
   youtubePlayerService: YoutubeService = inject(YoutubeService);
   cdRef: ChangeDetectorRef = inject(ChangeDetectorRef);
+  courseSessionService: CourseSessionService = inject(CourseSessionService);
 
+  courseSessionObject$: Observable<ISession> =
+    this.courseSessionService.courseSession$;
   safeUrl: SafeResourceUrl = this.youtubePlayerService.getSafeUrl('');
   videoId: string | null = null;
   showTest: boolean = false;
@@ -37,7 +43,13 @@ export class YoutubePlayerComponent {
     });
   }
   ngAfterViewInit(): void {
-    this.initializeYoutubePlayer();
+    this.courseSessionObject$.subscribe((session) => {
+      if (session.sessiontests) {
+        this.initializeYoutubePlayer();
+      } else {
+        console.log('Seccion sin test');
+      }
+    });
   }
 
   ngOnChanges(): void {
@@ -49,8 +61,6 @@ export class YoutubePlayerComponent {
       //   this.unit_url_video
       // );
     } else console.log('Video no encontrado.');
-
-    // Session test trigger
   }
 
   initializeYoutubePlayer() {
