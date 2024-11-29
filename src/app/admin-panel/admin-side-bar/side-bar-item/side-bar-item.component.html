@@ -1,5 +1,9 @@
-<li class="side-bar-item-container" (click)="onClick()">
-  @switch (name) { @case ('Administradores') {
+<li
+  class="side-bar-item-container"
+  [class.selected]="isSelected"
+  (click)="onClick()"
+>
+  @switch (endpointItem.name) { @case ('Administradores') {
   <app-admin-icon class="icon" />
   } @case ('Usuarios') {
   <app-user-icon class="icon" />
@@ -16,5 +20,5 @@
   } @case ('Costos') {
   <app-cost-icon class="icon" />
   } }
-  {{ name }}
+  {{ endpointItem.name }}
 </li>

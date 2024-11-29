@@ -8,6 +8,7 @@ import { SessionIconComponent } from '../../icons/session-icon/session-icon.comp
 import { DashboardIconComponent } from '../../icons/dashboard-icon/dashboard-icon.component';
 import { CostIconComponent } from '../../icons/cost-icon/cost-icon.component';
 import { AdminService } from '../../services/admin.service';
+import { IEndpointItem } from '../admin-side-bar.component';
 
 @Component({
   selector: 'app-side-bar-item',
@@ -26,26 +27,18 @@ import { AdminService } from '../../services/admin.service';
   styleUrl: './side-bar-item.component.css',
 })
 export class SideBarItemComponent {
-  @Input() name: string = '';
-  @Input() getEndpoint: string = '';
-  @Input() postEndpoint: string = '';
-  @Input() endpoint: string = '';
+  @Input() endpointItem!: IEndpointItem;
+  @Input() isSelected: boolean = false;
 
   adminService: AdminService = inject(AdminService);
 
   ngOnInit(): void {
-    if (this.getEndpoint == '/userprofile/list') {
-      this.adminService.setGetEndpoint(this.getEndpoint);
-      this.adminService.setPostEndpoint(this.postEndpoint);
-      this.adminService.setEndpoint(this.endpoint);
-      this.adminService.getDataList();
-    }
+    this.adminService.getDataList();
   }
 
   onClick() {
-    this.adminService.setGetEndpoint(this.getEndpoint);
-    this.adminService.setPostEndpoint(this.postEndpoint);
-    this.adminService.setEndpoint(this.endpoint);
+    this.isSelected = true;
+    this.adminService.setEndpointItem(this.endpointItem);
     this.adminService.getDataList();
   }
 }

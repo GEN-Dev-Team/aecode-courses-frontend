@@ -77,7 +77,7 @@ export class TableFormComponent {
     this.adminService.dataList$.subscribe((value) => {
       if (value && value.length > 0) {
         this.headerList = Object.keys(value[0]).filter(
-          (key) => typeof value[0][key] !== 'object'
+          (key) => typeof value[0][key] !== 'object' || value[0][key] === null
         );
         this.headerList.shift();
       }

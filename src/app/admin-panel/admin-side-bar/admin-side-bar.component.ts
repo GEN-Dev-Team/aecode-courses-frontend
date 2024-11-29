@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SideBarItemComponent } from './side-bar-item/side-bar-item.component';
 
-interface ISideBarItem {
+export interface IEndpointItem {
   name: string;
   getEndpoint: string;
   postEndpoint: string;
@@ -15,7 +15,9 @@ interface ISideBarItem {
   styleUrl: './admin-side-bar.component.css',
 })
 export class AdminSideBarComponent {
-  sideBarList: ISideBarItem[] = [
+  selectedItem = 'Administradores';
+
+  sideBarList: IEndpointItem[] = [
     {
       name: 'Administradores',
       getEndpoint: '/userprofile/list',
@@ -53,4 +55,8 @@ export class AdminSideBarComponent {
       endpoint: '/session',
     },
   ];
+
+  selectItem(item: IEndpointItem) {
+    this.selectedItem = item.name;
+  }
 }
