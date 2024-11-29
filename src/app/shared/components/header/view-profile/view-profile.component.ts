@@ -33,4 +33,8 @@ export class ViewProfileComponent {
   redirectToAdminView() {
     this.route.navigate(['/admin-panel']);
   }
+
+  redirectToProfile() {
+    this.route.navigate(['/profile/' + this.userData.userId]);
+  }
 }
