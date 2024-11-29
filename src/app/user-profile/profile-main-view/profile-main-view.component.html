@@ -1,0 +1,100 @@
+<div class="profile-container">
+  <div class="bento-box">
+    <div class="row-1">
+      <div class="profile-img">
+        <img
+          src="https://cdn.decrypt.co/resize/1024/height/512/wp-content/uploads/2024/11/chillguy-1-gID_7.jpg"
+          alt=""
+        />
+
+        <div class="change-prof-img-button">
+          <app-camera-icon />
+        </div>
+      </div>
+
+      <div class="profile-data">
+        <h1>Tus datos</h1>
+
+        <div class="data-container">
+          <div class="data-item">
+            <label for="fullname">Nombres</label>
+            <input type="text" id="fullname" [value]="userData.fullname" />
+          </div>
+          <div class="data-item">
+            <label for="email">Correo</label>
+            <input type="text" id="email" [value]="userData.email" />
+          </div>
+          <div class="data-item">
+            <label for="phone">Teléfono</label>
+            <input
+              type="text"
+              id="phone"
+              disabled
+              placeholder="+51 000 000 000"
+            />
+          </div>
+          <div class="data-item">
+            <label for="genre">Género</label>
+
+            <div class="radio-container">
+              <label for="masculino">
+                <input disabled type="radio" id="masculino" name="genero" />
+                <label>Masculino</label>
+              </label>
+              <label for="femenino">
+                <input disabled type="radio" id="femenino" name="genero" />
+                <label>Femenino</label>
+              </label>
+            </div>
+          </div>
+          <div class="data-item">
+            <label for="dob">Cumpleaños</label>
+            <input disabled type="date" id="dob" placeholder="dd/mm/aaaa" />
+          </div>
+          <div class="data-item">
+            <label>Experiencia</label>
+
+            <div class="radio-container">
+              <label for="yes">
+                <input type="radio" id="yes" name="experience" />
+                <label>Sí</label>
+              </label>
+              <label for="no" for="no">
+                <input type="radio" id="no" name="experience" />
+                <label>No</label>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row-2">
+      <div class="box-1">
+        <h1>Cambiar contraseña</h1>
+
+        <div class="data-item">
+          <label>Contraseña</label>
+          <input
+            type="text"
+            placeholder="*********"
+            [value]="userData.passwordHash"
+            id="passwordHash"
+          />
+        </div>
+        <div class="data-item">
+          <label>Confirmar Contraseña</label>
+          <input
+            type="text"
+            placeholder="*********"
+            [value]="userData.passwordHash"
+            id="confirmPasswordHash"
+          />
+        </div>
+        <button>Actualizar</button>
+      </div>
+
+      <div class="box-2"></div>
+    </div>
+  </div>
+</div>

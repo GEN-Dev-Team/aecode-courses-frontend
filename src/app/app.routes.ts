@@ -5,6 +5,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { NoMobileComponent } from './no-mobile/no-mobile.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { adminAuthGuard } from './core/guards/admin-auth.guard';
+import { ProfileMainViewComponent } from './user-profile/profile-main-view/profile-main-view.component';
 
 export const routes: Routes = [
   {
@@ -16,6 +17,11 @@ export const routes: Routes = [
     path: 'course-detail/:id',
     title: 'AECODE COURSES',
     component: CourseDetailComponent,
+  },
+  {
+    path: 'profile/:id',
+    title: 'PROFILE',
+    component: ProfileMainViewComponent,
   },
   {
     path: 'payment',
