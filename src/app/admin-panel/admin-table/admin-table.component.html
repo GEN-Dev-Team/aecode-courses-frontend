@@ -12,7 +12,10 @@
       @for (item of dataList; track getItem(item)) {
       <tr>
         <td class="option-data">
-          <div (click)="openOptions(getItem(item))" class="option-button">
+          <div
+            (click)="openOptions(getItem(item), $event)"
+            class="option-button"
+          >
             <app-options-icon />
 
             @if (showOptionsMap[getItem(item)]) {

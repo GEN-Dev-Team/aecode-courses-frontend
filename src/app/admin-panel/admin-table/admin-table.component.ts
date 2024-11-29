@@ -1,4 +1,10 @@
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  HostListener,
+  inject,
+  ViewChild,
+} from '@angular/core';
 import { OptionsIconComponent } from '../icons/options-icon/options-icon.component';
 import { AdminService } from '../services/admin.service';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
@@ -13,6 +19,7 @@ import { TableFormComponent } from '../table-form/table-form.component';
 })
 export class AdminTableComponent {
   adminService: AdminService = inject(AdminService);
+  elRef: ElementRef = inject(ElementRef);
 
   dataList: any[] = [];
   dataHeaders: any[] = [];
@@ -38,14 +45,23 @@ export class AdminTableComponent {
     return item[this.idField];
   }
 
-  openOptions(itemId: string) {
-    if (this.showOptionsMap[itemId]) {
-      this.showOptionsMap[itemId] = false;
-    } else {
+  openOptions(itemId: string, event: Event) {
+    event.stopPropagation();
+    for (let id in this.showOptionsMap) {
+      this.showOptionsMap[id] = false;
+    }
+    this.showOptionsMap[itemId] = true;
+  }
+
+  @HostListener('document:click', ['$event.target'])
+  onDocumentClick(targetElement: HTMLElement) {
+    const isClickInsideOption = targetElement.closest('.option-dropdown');
+
+    if (!isClickInsideOption) {
+      // Cierra todos los dropdowns si se hace clic fuera
       for (let id in this.showOptionsMap) {
         this.showOptionsMap[id] = false;
       }
-      this.showOptionsMap[itemId] = true;
     }
   }
 

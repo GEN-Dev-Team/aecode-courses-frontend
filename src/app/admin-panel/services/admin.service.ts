@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { environment } from '../../../environment/environment';
+import { IEndpointItem } from '../admin-side-bar/admin-side-bar.component';
 
 const base_url = environment.base;
 
@@ -9,38 +10,41 @@ const base_url = environment.base;
   providedIn: 'root',
 })
 export class AdminService {
-  private getEndpoint = new BehaviorSubject<string>('');
-  private postEndpoint = new BehaviorSubject<string>('');
-  private endpoint = new BehaviorSubject<string>('');
   private dataList = new BehaviorSubject<any[]>([]);
+
+  private endpointItem = new BehaviorSubject<IEndpointItem>({
+    name: 'Administradores',
+    getEndpoint: '/userprofile/list',
+    postEndpoint: '/userprofile/register',
+    endpoint: '/userprofile',
+  });
 
   http: HttpClient = inject(HttpClient);
 
-  getEndpoint$ = this.getEndpoint.asObservable();
-  postEndpoint$ = this.postEndpoint.asObservable();
-  endpoint$ = this.endpoint.asObservable();
   dataList$ = this.dataList.asObservable();
 
-  setGetEndpoint(value: string) {
-    this.getEndpoint.next(value);
+  endpointItem$ = this.endpointItem.asObservable();
+
+  setEndpointItem(item: IEndpointItem) {
+    this.endpointItem.next(item);
   }
 
-  setPostEndpoint(value: string) {
-    this.postEndpoint.next(value);
-  }
-
-  setEndpoint(value: string) {
-    this.endpoint.next(value);
+  getEndpointIem() {
+    return this.endpointItem.getValue();
   }
 
   getDataList() {
-    const url = `${base_url}${this.getEndpoint.getValue()}`;
-    console.log(url);
+    const url = `${base_url}${this.endpointItem.getValue().getEndpoint}`;
 
     this.http.get<any[]>(url).subscribe({
       next: (data) => {
+        if (this.endpointItem.getValue().name == 'Administradores') {
+          data = this.filterByUserRole(data, 'admin');
+        } else if (this.endpointItem.getValue().name == 'Usuarios') {
+          data = this.filterByUserRole(data, 'user');
+        }
+
         this.dataList.next(data);
-        console.log(data);
       },
 
       error: (err) => {
@@ -50,13 +54,13 @@ export class AdminService {
   }
 
   getItemById(id: number) {
-    const url = `${base_url}${this.endpoint.getValue()}/${id}`;
+    const url = `${base_url}${this.endpointItem.getValue().endpoint}/${id}`;
 
     return this.http.get<any>(url);
   }
 
   createItem(value: any) {
-    const url = `${base_url}${this.postEndpoint.getValue()}`;
+    const url = `${base_url}${this.endpointItem.getValue().postEndpoint}`;
 
     console.log(url);
 
@@ -71,10 +75,10 @@ export class AdminService {
     });
   }
 
-  async updateItem(value: any, id: number) {
-    const url = `${base_url}${this.endpoint.getValue()}/${id}`;
+  updateItem(value: any, id: number) {
+    const url = `${base_url}${this.endpointItem.getValue().endpoint}/${id}`;
     console.log(url);
-    console.log(this.endpoint.getValue());
+    console.log(this.endpointItem.getValue().endpoint);
 
     this.http.patch(url, value).subscribe({
       next: (data) => {
@@ -88,16 +92,34 @@ export class AdminService {
   }
 
   deleteItem(id: number) {
-    const url = `${base_url}${this.endpoint.getValue()}/${id}`;
+    const url = `${base_url}${this.endpointItem.getValue().endpoint}/${id}`;
     console.log(url);
 
     this.http.delete(url).subscribe({
       next: (data) => {
         console.log(data);
+        this.getDataList();
       },
       error: (err) => {
         console.error('Error al eliminar el item:', err);
       },
     });
+  }
+
+  isUserList(dataList: any[]) {
+    const objectAtributes: String[] = Object.keys(dataList[0]);
+
+    let isUserList = false;
+
+    objectAtributes.some((key) => {
+      if (key === 'rol') {
+        isUserList = true;
+      }
+    });
+    return isUserList;
+  }
+
+  filterByUserRole(dataList: any[], role: string) {
+    return dataList.filter((item) => item.rol === role);
   }
 }

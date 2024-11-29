@@ -18,5 +18,62 @@
 </div>
 
 <app-modal (isClosed)="showModalForm = $event" [isOpen]="showModalForm">
+  @if(this.endpoinItem.name === 'Administradores') {
+  <div class="add-admin-form-container">
+    <h1 class="tittle">Agregar administrador</h1>
+
+    <div class="user-container">
+      <label> Usuarios</label>
+      <div (click)="openUserDropdown()" class="dropdown-button">
+        <input
+          class="value-input"
+          type="text"
+          placeholder="Buscar usuario..."
+          value="{{ userData.fullname }}"
+          (input)="onSearch($event)"
+        />
+        @if(showUserDropdown){ <app-caret-up-icon />} @else {
+        <app-caret-down-icon />
+        }
+      </div>
+
+      @if(showUserDropdown) {
+      <ul class="dropdown">
+        @for (user of searchResult; track user) {
+        <li (click)="setUser(user)">{{ user.fullname }}</li>
+        }
+      </ul>
+      }
+    </div>
+
+    <div class="role-container">
+      <label for="">Rol</label>
+      <div (click)="openRoleDropdown()" class="dropdown-button">
+        <input type="text" class="value-input" value="{{ userData.rol }}" />
+        @if(showRoleDropdown){ <app-caret-up-icon />} @else {
+        <app-caret-down-icon />
+        }
+      </div>
+
+      @if(showRoleDropdown) {
+      <ul class="dropdown">
+        <li (click)="setUserRole('user')">user</li>
+        <li (click)="setUserRole('admin')">admin</li>
+      </ul>
+      }
+    </div>
+
+    <div class="buttons">
+      <button class="cancel-button" (click)="closeForm()">
+        <app-cancel-icon class="icon" /> Cancelar
+      </button>
+      <button class="send-button" (click)="sendForm()">
+        <app-save-icon class="icon" /> Guardar
+      </button>
+    </div>
+  </div>
+
+  } @else {
   <app-table-form (isClosed)="showModalForm = $event" />
+  }
 </app-modal>

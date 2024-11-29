@@ -26,7 +26,7 @@ export class UserService {
   }
 
   updateUser(login: ILogin) {
-    return this.http.put<ILogin>(`${this.api_url}/${login.email}`, login);
+    return this.http.patch<ILogin>(`${this.api_url}/${login.userId}`, login);
   }
 
   deleteUser(id: number) {

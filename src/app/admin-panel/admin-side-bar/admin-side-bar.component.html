@@ -1,10 +1,9 @@
 <div class="admin-side-bar-container">
   @for (item of sideBarList; track item.name) {
   <app-side-bar-item
-    [name]="item.name"
-    [getEndpoint]="item.getEndpoint"
-    [postEndpoint]="item.postEndpoint"
-    [endpoint]="item.endpoint"
+    (click)="selectItem(item)"
+    [endpointItem]="item"
+    [isSelected]="selectedItem === item.name"
   />
   }
 </div>
