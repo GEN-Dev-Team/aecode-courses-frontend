@@ -1,15 +1,22 @@
 <div class="profile-container">
+  @if (userDetails$ | async; as userData) {
   <div class="bento-box">
-    <div class="row-1">
+    <form class="row-1" [formGroup]="userDataForm">
       <div class="profile-img">
-        <img
-          src="https://cdn.decrypt.co/resize/1024/height/512/wp-content/uploads/2024/11/chillguy-1-gID_7.jpg"
-          alt=""
-        />
+        @if(profileImgUrl != '') {
+        <img [src]="profileImgUrl" alt="" />
 
-        <div class="change-prof-img-button">
+        }
+        <label for="profilepicture" class="change-prof-img-button">
           <app-camera-icon />
-        </div>
+        </label>
+        <input
+          hidden
+          id="profilepicture"
+          type="file"
+          accept="image/*"
+          (change)="showProfileImg($event)"
+        />
       </div>
 
       <div class="profile-data">
@@ -18,18 +25,18 @@
         <div class="data-container">
           <div class="data-item">
             <label for="fullname">Nombres</label>
-            <input type="text" id="fullname" [value]="userData.fullname" />
+            <input formControlName="fullname" type="text" id="fullname" />
           </div>
           <div class="data-item">
             <label for="email">Correo</label>
-            <input type="text" id="email" [value]="userData.email" />
+            <input formControlName="email" type="text" id="email" />
           </div>
           <div class="data-item">
             <label for="phone">Teléfono</label>
             <input
               type="text"
               id="phone"
-              disabled
+              formControlName="phoneNumber"
               placeholder="+51 000 000 000"
             />
           </div>
@@ -37,37 +44,66 @@
             <label for="genre">Género</label>
 
             <div class="radio-container">
-              <label for="masculino">
-                <input disabled type="radio" id="masculino" name="genero" />
-                <label>Masculino</label>
+              <label>
+                <input
+                  formControlName="gender"
+                  name="gender"
+                  type="radio"
+                  id="masculino"
+                  value="masculino"
+                />
+                <label for="masculino">Masculino</label>
               </label>
-              <label for="femenino">
-                <input disabled type="radio" id="femenino" name="genero" />
-                <label>Femenino</label>
+              <label>
+                <input
+                  formControlName="gender"
+                  name="gender"
+                  type="radio"
+                  id="femenino"
+                  value="femenino"
+                />
+                <label for="femenino">Femenino</label>
               </label>
             </div>
           </div>
           <div class="data-item">
             <label for="dob">Cumpleaños</label>
-            <input disabled type="date" id="dob" placeholder="dd/mm/aaaa" />
+            <input
+              formControlName="birthdate"
+              type="date"
+              id="dob"
+              placeholder="dd/mm/aaaa"
+            />
           </div>
           <div class="data-item">
             <label>Experiencia</label>
 
             <div class="radio-container">
-              <label for="yes">
-                <input type="radio" id="yes" name="experience" />
-                <label>Sí</label>
+              <label>
+                <input
+                  formControlName="experience"
+                  name="experience"
+                  type="radio"
+                  id="yes"
+                  value="yes"
+                />
+                <label for="yes">Sí</label>
               </label>
-              <label for="no" for="no">
-                <input type="radio" id="no" name="experience" />
-                <label>No</label>
+              <label>
+                <input
+                  formControlName="experience"
+                  name="experience"
+                  type="radio"
+                  id="no"
+                  value="no"
+                />
+                <label for="no">No</label>
               </label>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
 
     <div class="row-2">
       <div class="box-1">
@@ -75,26 +111,19 @@
 
         <div class="data-item">
           <label>Contraseña</label>
-          <input
-            type="text"
-            placeholder="*********"
-            [value]="userData.passwordHash"
-            id="passwordHash"
-          />
+          <input type="text" placeholder="*********" id="passwordHash" />
         </div>
         <div class="data-item">
           <label>Confirmar Contraseña</label>
-          <input
-            type="text"
-            placeholder="*********"
-            [value]="userData.passwordHash"
-            id="confirmPasswordHash"
-          />
+          <input type="text" placeholder="*********" id="confirmPasswordHash" />
         </div>
-        <button>Actualizar</button>
+        <button (click)="sendUserData()">Actualizar</button>
       </div>
 
       <div class="box-2"></div>
     </div>
   </div>
+  } @else {
+  <h1>Loading...</h1>
+  }
 </div>
