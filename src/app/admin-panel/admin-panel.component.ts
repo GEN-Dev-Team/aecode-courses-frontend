@@ -14,7 +14,7 @@ import { CancelIconComponent } from './icons/cancel-icon/cancel-icon.component';
 import { SaveIconComponent } from './icons/save-icon/save-icon.component';
 import { CaretDownIconComponent } from '../shared/icons/caret-down-icon/caret-down-icon.component';
 import { CaretUpIconComponent } from '../shared/icons/caret-up-icon/caret-up-icon.component';
-import { ILogin } from '../home/interface/Login';
+import { defaultLogInData, ILogin } from '../home/interface/Login';
 import { UserService } from '../home/user.service';
 
 @Component({
@@ -43,14 +43,7 @@ export class AdminPanelComponent {
   showModalForm: boolean = false;
   showUserDropdown: boolean = false;
   showRoleDropdown: boolean = false;
-  userData: ILogin = {
-    userId: -1,
-    fullname: '',
-    email: '',
-    passwordHash: '',
-    rol: '',
-    status: '',
-  };
+  userData: ILogin = defaultLogInData;
 
   endpoinItem: IEndpointItem = {
     name: '',
@@ -111,14 +104,7 @@ export class AdminPanelComponent {
 
   closeForm() {
     this.showModalForm = false;
-    this.userData = {
-      userId: -1,
-      fullname: '',
-      email: '',
-      passwordHash: '',
-      rol: '',
-      status: '',
-    };
+    this.userData = defaultLogInData;
   }
 
   sendForm() {

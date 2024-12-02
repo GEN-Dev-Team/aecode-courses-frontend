@@ -8,10 +8,36 @@ export interface ILogin {
   userId: number;
   fullname: string;
   email: string;
+  passwordHash: string;
   rol: string;
   status: string;
-  passwordHash: string;
+  birthdate: Date;
+  phoneNumber: string;
+  gender: string;
+  experience: string;
   userprogresssessions?: IProgressSession[];
   usercourseaccess?: ICourse[];
   userprogressrw?: IProgressRW[];
 }
+
+export interface IUserDetails {
+  detailsId: number;
+  userId: number;
+  profilepicture: string;
+}
+
+export const defaultLogInData: ILogin = {
+  userId: 0,
+  fullname: '',
+  email: '',
+  passwordHash: '',
+  rol: '',
+  status: '',
+  birthdate: new Date(),
+  phoneNumber: '',
+  gender: '',
+  experience: '',
+  userprogresssessions: [],
+  usercourseaccess: [],
+  userprogressrw: [],
+};
