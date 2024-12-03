@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environment/environment';
-import { ILogin, IUserDetails } from './interface/Login';
+import { defaultLogInData, ILogin, IUserDetails } from './interface/Login';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 const base_url = environment.base;
 
@@ -43,18 +43,29 @@ export class UserService {
     return this.http.post<IUserDetails>(`${this.api_url_details}/`, login);
   }
 
-  getUserDetailsList() {
-    return this.http.get<IUserDetails[]>(`${this.api_url_details}/`);
-  }
-
-  getUserDetailsById(id: string): Observable<IUserDetails> {
+  getUserDetailsById(id: number): Observable<IUserDetails> {
     return this.http.get<IUserDetails>(`${this.api_url_details}/${id}`);
   }
 
-  updateUserDetailsById(login: IUserDetails) {
-    return this.http.patch<IUserDetails>(
-      `${this.api_url_details}/${login.userId}`,
-      login
+  updateUserPassword(
+    userId: number,
+    currentPassword: string,
+    newPassword: string
+  ) {
+    const params = {
+      id: userId,
+      currentPassword: currentPassword,
+      newPassword: newPassword,
+    };
+
+    console.log(params);
+
+    return this.http.patch(
+      `${this.api_url}/${userId}/change-password`,
+      {},
+      {
+        params,
+      }
     );
   }
 }
