@@ -1,10 +1,13 @@
 <div class="profile-container">
-  @if (userDetails$ | async; as userData) {
+  @if (userData$ | async; as userData) {
   <div class="bento-box">
     <form class="row-1" [formGroup]="userDataForm">
       <div class="profile-img">
-        @if(profileImgUrl != '') {
-        <img [src]="profileImgUrl" alt="" />
+        @if(userDetails$ | async; as userDetails) {
+        <img
+          [src]="profileImgUrl"
+          alt="{{ userData.fullname }} profile image"
+        />
 
         }
         <label for="profilepicture" class="change-prof-img-button">
@@ -103,27 +106,79 @@
           </div>
         </div>
       </div>
+
+      <button class="edit-button" (click)="sendUserData()">EDITAR</button>
     </form>
 
-    <div class="row-2">
+    <form [formGroup]="userChangePasswordForm" class="row-2">
       <div class="box-1">
         <h1>Cambiar contraseña</h1>
 
+        @if (changePassword) {
         <div class="data-item">
-          <label>Contraseña</label>
-          <input type="text" placeholder="*********" id="passwordHash" />
+          <label> Nueva contraseña </label>
+          <input
+            formControlName="newPassword"
+            name="newPassword"
+            type="text"
+            placeholder="*********"
+            id="passwordHash"
+          />
         </div>
+        } @else {
+        <div class="data-item">
+          <label> Contraseña </label>
+          <input
+            formControlName="passwordHash"
+            name="passwordHash"
+            type="text"
+            placeholder="*********"
+            id="passwordHash"
+          />
+        </div>
+        } @if(changePassword) {
         <div class="data-item">
           <label>Confirmar Contraseña</label>
-          <input type="text" placeholder="*********" id="confirmPasswordHash" />
+          <input
+            formControlName="confirmPassword"
+            name="confirmPassword"
+            type="text"
+            placeholder="*********"
+            id="confirmPasswordHash"
+          />
         </div>
-        <button (click)="sendUserData()">Actualizar</button>
+        } @if(changePassword) {
+        <button (click)="sendChangePasswordForm()">ACTUALIZAR</button> } @else {
+        <button (click)="changePassword = true">CAMBIAR CONTRASEÑA</button> }
       </div>
 
       <div class="box-2"></div>
-    </div>
+    </form>
   </div>
   } @else {
   <h1>Loading...</h1>
   }
 </div>
+
+<app-modal [isOpen]="showMessageModal" (isClosed)="showMessageModal = $event">
+  @if (showChangePasswordError) {
+  <app-message
+    title="¡Oh no, un error!"
+    message="Las contraseñas no coinciden"
+    (isClosed)="showMessageModal = $event"
+  />
+  }@else { @if(dataUpdated){
+  <app-message
+    title="¡Felicidades!"
+    message="Tus datos fueron actualizados correctamente"
+    (isClosed)="showMessageModal = $event"
+    (isClosed)="dataUpdated = $event"
+  />
+  } @else {
+  <app-message
+    title="¡Felicidades!"
+    message="Tu contraseña fue actualizada correctamente"
+    (isClosed)="showMessageModal = $event"
+  />
+  } }
+</app-modal>
