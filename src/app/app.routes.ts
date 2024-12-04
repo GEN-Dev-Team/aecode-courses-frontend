@@ -6,6 +6,8 @@ import { NoMobileComponent } from './no-mobile/no-mobile.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { adminAuthGuard } from './core/guards/admin-auth.guard';
 import { ProfileMainViewComponent } from './user-profile/profile-main-view/profile-main-view.component';
+import { CourseListComponent } from './courses/course-list/course-list.component';
+import { CoursesComponent } from './courses/courses.component';
 
 export const routes: Routes = [
   {
@@ -14,9 +16,16 @@ export const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'course-detail/:id',
+    path: 'courses',
     title: 'AECODE COURSES',
-    component: CourseDetailComponent,
+    component: CoursesComponent,
+    children: [
+      {
+        path: 'course-detail/:id',
+        title: 'AECODE COURSES',
+        component: CourseDetailComponent,
+      },
+    ],
   },
   {
     path: 'profile/:id',
