@@ -4,22 +4,23 @@ import { Router, RouterLink } from '@angular/router';
 import { SeparatorIconComponent } from '../../shared/icons/separator-icon/separator-icon.component';
 import { CourseService } from '../services/course.service';
 import { ZoomInDirective } from '../../shared/directives/animations/zoom-in.directive';
+import { CourseItemComponent } from '../course-item/course-item.component';
+import { CourseAsideComponent } from '../course-aside/course-aside.component';
 
 @Component({
   selector: 'app-course-list',
   standalone: true,
   imports: [
     SquareIconComponent,
-    RouterLink,
     SeparatorIconComponent,
     ZoomInDirective,
+    CourseItemComponent,
+    CourseAsideComponent,
   ],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.css',
 })
 export class CourseListComponent {
-  @Output() openModal = new EventEmitter<boolean>();
-
   constructor(private courseService: CourseService, private router: Router) {}
 
   ngOnInit(): void {
@@ -36,9 +37,5 @@ export class CourseListComponent {
     this.courseService.getCourses().subscribe((response) => {
       console.log(response);
     });
-  }
-
-  closeModal() {
-    this.openModal.emit(false);
   }
 }
