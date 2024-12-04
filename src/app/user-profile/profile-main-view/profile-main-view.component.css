@@ -17,6 +17,7 @@
     gap: 8px;
     font-family: "plusjakartasans-semibold";
     font-size: 14px;
+    position: relative;
 
     input {
       border-radius: 5px;
@@ -55,6 +56,15 @@
         font-family: "plusjakartasans-regular";
         margin-inline-start: 10px;
       }
+    }
+
+    .edit-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 55%;
+      right: 5%;
     }
   }
 
@@ -140,6 +150,10 @@
     }
 
     .box-2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
       background-color: #eef3f8;
       padding: 30px 40px 50px;
     }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environment/environment';
-import { defaultLogInData, ILogin, IUserDetails } from './interface/Login';
+import { ILogin, IUserDetails } from './interface/Login';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 const base_url = environment.base;
 
@@ -58,8 +58,6 @@ export class UserService {
       newPassword: newPassword,
     };
 
-    console.log(params);
-
     return this.http.patch(
       `${this.api_url}/${userId}/change-password`,
       {},
@@ -67,5 +65,15 @@ export class UserService {
         params,
       }
     );
+  }
+
+  updateUserDetails(userId: number, file: File) {
+    const formData = new FormData();
+
+    formData.append('file', file, file.name);
+    formData.append('data', '');
+
+    // Enviar la solicitud PATCH con el archivo adjunto
+    return this.http.patch(`${this.api_url_details}/${userId}`, formData);
   }
 }

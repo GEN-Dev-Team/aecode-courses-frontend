@@ -8,6 +8,7 @@ import { AsyncPipe } from '@angular/common';
 import { environment } from '../../../environment/environment';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { MessageComponent } from '../../shared/components/message/message.component';
+import { EditIconComponent } from '../../shared/icons/edit-icon/edit-icon.component';
 
 @Component({
   selector: 'app-profile-main-view',
@@ -18,6 +19,7 @@ import { MessageComponent } from '../../shared/components/message/message.compon
     AsyncPipe,
     ModalComponent,
     MessageComponent,
+    EditIconComponent,
   ],
   templateUrl: './profile-main-view.component.html',
   styleUrl: './profile-main-view.component.css',
@@ -38,34 +40,13 @@ export class ProfileMainViewComponent {
     this.userData.userId
   );
 
+  editUserData: boolean = false;
   changePassword: boolean = false;
   showChangePasswordError: boolean = false;
   showMessageModal: boolean = false;
   dataUpdated: boolean = false;
   profileImgUrl: string = '';
-
-  // userDataForm = this.fb.group({
-  //   userId: new FormControl(0),
-  //   fullname: new FormControl(''),
-  //   email: new FormControl(''),
-  //   birthdate: new FormControl(''),
-  //   phoneNumber: new FormControl(''),
-  //   gender: new FormControl(''),
-  //   experience: new FormControl(''),
-  // });
-
-  // userProfileImageForm = this.fb.group({
-  //   detailsId: new FormControl(0),
-  //   userId: new FormControl(0),
-  //   profilepicture: new FormControl(''),
-  // });
-
-  // userChangePasswordForm = this.fb.group({
-  //   userId: new FormControl(0),
-  //   passwordHash: new FormControl(''),
-  //   newPassword: new FormControl(''),
-  //   confirmPassword: new FormControl(''),
-  // });
+  profileImgFile: File = new File([], '');
 
   userDataForm = this.fb.group({
     userId: new FormControl(this.userData.userId),
@@ -91,13 +72,7 @@ export class ProfileMainViewComponent {
   });
 
   ngOnInit(): void {
-    this.userData$.subscribe((response) => {
-      this.userData = response;
-    });
-
-    this.userDetails$.subscribe((response) => {
-      this.profileImgUrl = this.base_url + response.profilepicture;
-    });
+    this.initSubscibtionsAndForms();
   }
 
   sendUserData() {
@@ -115,7 +90,7 @@ export class ProfileMainViewComponent {
       profilepicture: this.profileImgUrl,
     });
 
-    // this.sendUserChangeImgProfile();
+    this.sendUserChangeImgProfile();
 
     this.userService.updateUser(this.userDataForm.value as any).subscribe(
       (response) => {
@@ -124,43 +99,14 @@ export class ProfileMainViewComponent {
       (error) => {
         this.showMessageModal = true;
         this.dataUpdated = true;
+        this.editUserData = false;
+        this.disableUserForms();
+        this.userDataForm.reset();
+        this.userDataForm.patchValue({
+          userId: this.userData.userId,
+        });
       }
     );
-  }
-
-  sendUserChangeImgProfile() {
-    // this.userChangePasswordForm.patchValue({
-    //   userId: this.userData.userId,
-    //   passwordHash: this.userData.passwordHash,
-    //   newPassword: this.profileImgUrl,
-    // });
-
-    console.log(this.userChangePasswordForm.value);
-  }
-
-  showProfileImg(event: any) {
-    const input = event.target as HTMLInputElement;
-
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-
-      // console.log(input);
-      // console.log(input.files);
-      // console.log(input.files[0]);
-
-      if (!file.type.startsWith('image/')) {
-        alert('Por favor, selecciona un archivo de imagen válido.');
-        input.value = '';
-        return;
-      }
-
-      // Leer el archivo como URL de datos
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.profileImgUrl = reader.result as string;
-      };
-      reader.readAsDataURL(file);
-    }
   }
 
   sendChangePasswordForm() {
@@ -190,6 +136,86 @@ export class ProfileMainViewComponent {
       this.showMessageModal = true;
       this.showChangePasswordError = true;
     }
+  }
+
+  sendUserChangeImgProfile() {
+    this.userService
+      .updateUserDetails(this.userData.userId, this.profileImgFile)
+      .subscribe(
+        (response) => {
+          console.log('User profile image updated:', response);
+
+          this.dataUpdated = true;
+          this.showMessageModal = true;
+        },
+        (error) => {
+          if (error.status === 200) {
+            console.log('User profile image updated:', error);
+            this.dataUpdated = true;
+            this.showMessageModal = true;
+            this.editUserData = false;
+          } else {
+            console.log('Error updating user profile image:', error);
+          }
+        }
+      );
+  }
+
+  initSubscibtionsAndForms() {
+    this.userData$.subscribe((response) => {
+      this.userData = response;
+    });
+
+    this.userDetails$.subscribe((response) => {
+      this.profileImgUrl = this.base_url + response.profilepicture;
+    });
+
+    this.disableUserForms();
+  }
+
+  showProfileImg(event: any) {
+    const input = event.target as HTMLInputElement;
+    // Verificar si se ha seleccionado un archivo y asigna el archivo de tipo File
+    if (event.target.files.length > 0) {
+      this.profileImgFile = event.target.files[0];
+    }
+
+    // Verificar si se ha seleccionado un archivo y obtener la url
+    if (input.files && input.files[0]) {
+      const file = input.files[0];
+
+      if (!file.type.startsWith('image/')) {
+        alert('Por favor, selecciona un archivo de imagen válido.');
+        input.value = '';
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.profileImgUrl = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  activateEditUserData() {
+    this.editUserData = true;
+    this.userDataForm.enable();
+  }
+
+  enableUserForms() {
+    this.userDataForm.enable();
+    this.userChangePasswordForm.enable();
+  }
+
+  disableUserForms() {
+    this.userDataForm.disable();
+    this.userChangePasswordForm.disable();
+  }
+
+  activateChangePassword() {
+    this.changePassword = true;
+    this.userChangePasswordForm.enable();
   }
 
   convertDateToISO(dateString: string): string {
