@@ -1,11 +1,22 @@
 import { Component } from '@angular/core';
 import { CourseListComponent } from './course-list/course-list.component';
 import { CourseAsideComponent } from './course-aside/course-aside.component';
+import { SearchToolIconComponent } from '../shared/icons/search-tool-icon/search-tool-icon.component';
+import { SearchIconComponent } from '../admin-panel/icons/search-icon/search-icon.component';
+import { CourseSearchIconComponent } from '../shared/icons/course-search-icon/course-search-icon.component';
+import { PlatformCourseListComponent } from './platform-course-list/platform-course-list.component';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [CourseListComponent, CourseAsideComponent],
+  imports: [
+    CourseListComponent,
+    CourseAsideComponent,
+    SearchToolIconComponent,
+    SearchIconComponent,
+    CourseSearchIconComponent,
+    PlatformCourseListComponent,
+  ],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',
 })
