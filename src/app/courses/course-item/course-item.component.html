@@ -1,32 +1,44 @@
-<div class="course-item-container">
-  <div class="course-image">
-    <img src="assets\images\course-test-img.svg" alt="" />
+<div
+  class="course-item-container"
+  [class.platform-course-item-container]="isPlatformCourse"
+>
+  <div class="course-presentation-container">
+    <img class="course-img" src="assets\images\course-test-img.svg" alt="" />
 
-    <span class="course-status"> </span>
+    <span class="course-status">30%</span>
 
     <div class="course-tags">
       <div class="course-icons">
-        <div><img src="" alt="" /></div>
-        <div><img src="" alt="" /></div>
+        <div class="icon-container"><img src="" alt="" /></div>
+        <div class="icon-container"><img src="" alt="" /></div>
       </div>
 
-      <div class="course-content-details">
-        <svg></svg>
-        <span class="detail-description"></span>
-      </div>
-      <div class="course-content-details">
-        <svg></svg>
-        <span class="detail-description"></span>
+      <div class="course-details-cointainer">
+        <div class="course-details-content">
+          <app-course-session-icon />
+          <span class="detail-description">24 sesiones</span>
+        </div>
+        <div class="course-details-content">
+          <app-watch-icon />
+          <span class="detail-description"> 24 horas</span>
+        </div>
       </div>
     </div>
   </div>
 
+  @if(isPlatformCourse) {
+  <div class="platform-course-details">
+    <h2 class="course-title">Programación digital</h2>
+    <button class="reserve-button"><app-gift-icon /> Get free</button>
+    <button class="reserve-button">Ver más</button>
+  </div>
+
+  } @else {
   <div class="course-details">
     <h2 class="course-title">
       Desarrollo e Implementación de Inteligencia Artificial en AEC
     </h2>
-
-    <button>Reservar Curso</button>
+    <button class="reserve-button">Reservar Curso</button>
 
     <div class="course-level">
       <app-level-icon />
@@ -38,4 +50,6 @@
       <span class="course-new-price">$249</span>
     </div>
   </div>
+
+  }
 </div>

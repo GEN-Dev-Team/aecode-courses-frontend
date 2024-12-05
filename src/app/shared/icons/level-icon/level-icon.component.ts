@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
       height="21"
       viewBox="0 0 20 21"
       fill="none"
+      class="icon"
     >
       <rect y="0.5" width="20" height="20" rx="2" fill="#381187" />
       <path
@@ -19,6 +20,11 @@ import { Component } from '@angular/core';
       />
     </svg>
   `,
-  styles: ``,
+  styles: `
+    .icon {
+      display:flex;
+      align-self:center;
+    }
+  `,
 })
 export class LevelIconComponent {}

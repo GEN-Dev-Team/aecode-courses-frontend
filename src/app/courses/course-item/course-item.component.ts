@@ -1,11 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { LevelIconComponent } from '../../shared/icons/level-icon/level-icon.component';
+import { WatchIconComponent } from '../../shared/icons/watch-icon/watch-icon.component';
+import { CourseSessionIconComponent } from '../../shared/icons/course-session-icon/course-session-icon.component';
+import { GiftIconComponent } from '../../shared/icons/gift-icon/gift-icon.component';
 
 @Component({
   selector: 'app-course-item',
   standalone: true,
-  imports: [LevelIconComponent],
+  imports: [
+    LevelIconComponent,
+    WatchIconComponent,
+    CourseSessionIconComponent,
+    GiftIconComponent,
+  ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
 })
-export class CourseItemComponent {}
+export class CourseItemComponent {
+  @Input() isPlatformCourse: boolean = false;
+}

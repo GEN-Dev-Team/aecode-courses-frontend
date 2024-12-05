@@ -1,6 +1,7 @@
 .course-aside-container {
   width: 100%;
   background: #eef3f8;
+  box-shadow: 2px 4px 6px 0px #b4bbbf;
 }
 
 .aside-dropdown-button,
@@ -33,6 +34,7 @@
   gap: 12px;
   position: relative;
   background: #eef3f8;
+  box-shadow: 2px 5px 6px 0px #b4bbbf;
 
   .aside-dropdown-item {
     gap: 25px;
