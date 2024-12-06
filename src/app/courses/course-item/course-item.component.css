@@ -77,6 +77,10 @@
           align-items: center;
           gap: 2px;
           font-size: 12px;
+
+          .icon {
+            fill: var(--purple-2);
+          }
         }
       }
     }
@@ -145,6 +149,7 @@
     background: var(--purple-2);
     font-size: 16px;
     font-family: "plusjakartasans-semibold";
+    cursor: pointer;
   }
 }
 

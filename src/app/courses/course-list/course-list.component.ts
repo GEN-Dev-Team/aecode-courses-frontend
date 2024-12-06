@@ -23,16 +23,6 @@ import { CourseAsideComponent } from '../course-aside/course-aside.component';
 export class CourseListComponent {
   constructor(private courseService: CourseService, private router: Router) {}
 
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    // this.getCourses();
-  }
-
-  goToCourse(id: number) {
-    this.router.navigate(['/course-detail', id]);
-  }
-
   getCourses() {
     this.courseService.getCourses().subscribe((response) => {
       console.log(response);
