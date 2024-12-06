@@ -5,6 +5,8 @@ import { SearchToolIconComponent } from '../shared/icons/search-tool-icon/search
 import { SearchIconComponent } from '../admin-panel/icons/search-icon/search-icon.component';
 import { CourseSearchIconComponent } from '../shared/icons/course-search-icon/course-search-icon.component';
 import { PlatformCourseListComponent } from './platform-course-list/platform-course-list.component';
+import { CourseLandingDetailComponent } from './course-landing-detail/course-landing-detail.component';
+import { CourseMainComponent } from './course-main/course-main.component';
 
 @Component({
   selector: 'app-courses',
@@ -16,6 +18,8 @@ import { PlatformCourseListComponent } from './platform-course-list/platform-cou
     SearchIconComponent,
     CourseSearchIconComponent,
     PlatformCourseListComponent,
+    CourseLandingDetailComponent,
+    CourseMainComponent,
   ],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',

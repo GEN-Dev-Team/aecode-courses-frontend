@@ -1,23 +1,11 @@
 <div class="courses-container">
   <app-course-aside />
 
-  <div class="main-container">
-    <div class="title-container">
-      <h1 class="main-title">¿Qué aprenderemos hoy?</h1>
-      <div class="punto-container">
-        <div class="punto"></div>
-      </div>
-    </div>
+  @if (true) {
+  <app-course-landing-detail />
 
-    <div class="search-container">
-      <app-search-tool-icon />
-      <input class="search-input" type="text" placeholder="¿Qué buscamos?" />
-      <app-course-search-icon class="search-icon" />
-    </div>
+  } @else {
+  <app-course-main />
 
-    <app-platform-course-list />
-
-    <app-course-list />
-    <app-course-list />
-  </div>
+  }
 </div>
