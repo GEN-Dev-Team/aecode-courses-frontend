@@ -21,7 +21,11 @@
       </p>
 
       <div class="video-container">
-        <video class="course-video"></video>
+        <img
+          class="course-video"
+          src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+          alt=""
+        />
         <button class="access-button">Accede a la Masterclass</button>
       </div>
     </div>
@@ -31,7 +35,7 @@
     <div class="row-1">
       <div class="col-1">
         <div class="plan-estudio-container">
-          <div class="plan-title">
+          <div class="section-title plan-title">
             <h2>PLAN DE ESTUDIOS</h2>
             <div class="plan-tags">
               <div class="tag-item">
@@ -47,38 +51,132 @@
             </div>
           </div>
 
+          <div class="unit-item" (click)="openUnit(1)">
+            <span> U1: Introducción al BIM 4D </span>
+            @if(showDropdownUnit) {
+            <app-caret-up-icon class="icon" />
+            } @else {
+            <app-caret-down-icon class="icon" />
+
+            }
+          </div>
+          @if (showDropdownUnit) {
+          <ul class="plan-list">
+            <li>Contexto nacional BIM 4D</li>
+            <li>Plan BIM y proyecciones de implementacion BIM</li>
+            <li>Requerimientos BIM 4D en TDR's de proyectos</li>
+            <li>BIM 4D: usos beneficios y proósito</li>
+          </ul>
+          }
+
           <div></div>
         </div>
 
-        <div class="row-2">
-          <h2 class="section-title">HERRAMIENTAS</h2>
+        <div class="tools-container">
+          <h2 class="section-title tools-title">HERRAMIENTAS</h2>
+
+          <div class="slider-wrapper">
+            <div class="slider">
+              <img
+                class="tool-img"
+                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+                alt=""
+              />
+              <img
+                class="tool-img"
+                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+                alt=""
+              /><img
+                class="tool-img"
+                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+                alt=""
+              />
+              <img
+                class="tool-img"
+                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+                alt=""
+              /><img
+                class="tool-img"
+                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+                alt=""
+              />
+
+              <img
+                class="tool-img"
+                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+                alt=""
+              />
+              <img
+                class="tool-img"
+                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+                alt=""
+              /><img
+                class="tool-img"
+                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+                alt=""
+              />
+              <img
+                class="tool-img"
+                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+                alt=""
+              /><img
+                class="tool-img"
+                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
+                alt=""
+              />
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="col-2">
-        <h3>INVERSION</h3>
+      <div class="invest-container">
+        <h3 class="invest-title">INVERSION</h3>
 
-        <div>
-          <span>Regular</span>
-          <span>Especial</span>
+        <div class="invest-options">
+          <span (click)="investOptionSelected = !investOptionSelected"
+            >Regular @if (!investOptionSelected) {
+            <div class="invest-line"></div>
+            }
+          </span>
+          <span (click)="investOptionSelected = !investOptionSelected"
+            >Especial @if (investOptionSelected) {
+            <div class="invest-line"></div>
+            }
+          </span>
         </div>
 
-        <div>
-          <div>
-            <span> Inversion: </span>
-            <span> 140$ </span>
+        <div class="invest-content">
+          <div class="investDetail">
+            <div class="invest-item">
+              <span> Inversion: </span>
+              <span> 140$ </span>
+            </div>
+            <div class="invest-item">
+              <span> Cupón de descuento: </span>
+              <input class="cupon-input" type="text" />
+            </div>
+            <div class="invest-item">
+              <span> Descuento: </span>
+              <span> -41$ </span>
+            </div>
+            <div class="invest-item">
+              <span> Total: </span>
+              <span> 99$ </span>
+            </div>
           </div>
-          <div>
-            <span> Inversion: </span>
-            <span> 140$ </span>
-          </div>
-          <div>
-            <span> Inversion: </span>
-            <span> 140$ </span>
-          </div>
-          <div>
-            <span> Inversion: </span>
-            <span> 140$ </span>
+
+          <button class="invest-button">PAGAR</button>
+
+          <span class="invest-question">¿BUSCAS FINANCIAMIENTO?</span>
+          <span class="invest-question-info"
+            >Fraccionamiento de 2 a 4 cuotas</span
+          >
+
+          <div class="invest-whatsapp-button">
+            SOLICITAR
+            <div class="whatsapp-button">
+              <img src="assets\images\whatsapp-icon.png" alt="" />
+            </div>
           </div>
         </div>
       </div>

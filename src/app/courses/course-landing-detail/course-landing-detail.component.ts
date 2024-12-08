@@ -7,6 +7,7 @@ import { UnitIconComponent } from '../../admin-panel/icons/unit-icon/unit-icon.c
 import { CourseIconComponent } from '../../admin-panel/icons/course-icon/course-icon.component';
 import { UnitCourseIconComponent } from '../../shared/icons/unit-course-icon/unit-course-icon.component';
 import { CaretUpIconComponent } from '../../shared/icons/caret-up-icon/caret-up-icon.component';
+import { CaretDownIconComponent } from '../../shared/icons/caret-down-icon/caret-down-icon.component';
 
 @Component({
   selector: 'app-course-landing-detail',
@@ -20,8 +21,16 @@ import { CaretUpIconComponent } from '../../shared/icons/caret-up-icon/caret-up-
     CourseIconComponent,
     UnitCourseIconComponent,
     CaretUpIconComponent,
+    CaretDownIconComponent,
   ],
   templateUrl: './course-landing-detail.component.html',
   styleUrl: './course-landing-detail.component.css',
 })
-export class CourseLandingDetailComponent {}
+export class CourseLandingDetailComponent {
+  investOptionSelected: boolean = false;
+  showDropdownUnit: boolean = false;
+
+  openUnit(id: number) {
+    this.showDropdownUnit = !this.showDropdownUnit;
+  }
+}
