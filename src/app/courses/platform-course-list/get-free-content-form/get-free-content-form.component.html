@@ -1,0 +1,32 @@
+<form action="" class="free-content-form-container">
+  <h3 class="subtitle-form">
+    Actualizaciones, guías temáticas, sobre el curso que elijas
+  </h3>
+
+  <div class="input-container">
+    <input type="text" placeholder="Nombres" />
+    <input type="text" placeholder="Apellidos" />
+    <input type="text" placeholder="Correo" />
+  </div>
+
+  <h3 class="subtitle-form">Material semana de:</h3>
+
+  <div class="course-input" (click)="isProgrammingSelected = false">
+    <div class="course-select">
+      @if(!isProgrammingSelected) {
+      <app-check-get-free-form-icon />
+      }
+    </div>
+    <label for="engineering-course">INGENIERIA 4.0</label>
+  </div>
+  <div class="course-input" (click)="isProgrammingSelected = true">
+    <div class="course-select">
+      @if(isProgrammingSelected) {
+      <app-check-get-free-form-icon />
+      }
+    </div>
+    <label for="programming-course">PROGRAMACION DIGITAL</label>
+  </div>
+
+  <button class="send-button" (click)="sendForm()">ENVIAR</button>
+</form>
