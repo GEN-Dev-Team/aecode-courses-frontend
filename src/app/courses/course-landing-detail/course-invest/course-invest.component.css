@@ -1,0 +1,151 @@
+.invest-container {
+  width: 100%;
+  border-radius: 0px 0px 4px 4px;
+  background: #eef3f8;
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.25);
+
+  .invest-title {
+    padding: 12px 25px;
+    text-align: center;
+    margin: 0;
+    color: var(--purple-2);
+    font-family: "plusjakartasans-bold";
+    font-size: 20px;
+    border-radius: 4px 4px 0px 0px;
+    border: 1px solid #fff;
+    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  .invest-options {
+    display: flex;
+    flex-flow: row nowrap;
+
+    span {
+      width: 50%;
+      padding-block: 17px;
+      font-family: "plusjakartasans-semibold";
+      font-size: 20px;
+      text-align: center;
+      border-bottom: 1px solid #8f60ea;
+      cursor: pointer;
+      position: relative;
+
+      .invest-line {
+        width: 100%;
+        height: 3px;
+        border-radius: 4px;
+        opacity: 0.8;
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        background-color: var(--purple-2);
+      }
+    }
+  }
+
+  .invest-content {
+    padding: 36px 20px;
+
+    .investDetail {
+      .invest-item {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        font-family: "plusjakartasans-semibold";
+        margin-bottom: 30px;
+        font-size: 18px;
+
+        .cupon-input {
+          width: 100px;
+          height: 29px;
+          border-radius: 2px;
+          border: 1px solid #99a3a8;
+          background: white;
+          outline: none;
+          padding-inline: 8px;
+          font-family: "plusjakartasans-semibold";
+        }
+      }
+    }
+
+    .invest-button {
+      width: 100%;
+      padding: 12px 20px;
+      margin-block: 23px;
+      text-align: center;
+      gap: 8px;
+      border-radius: 4px;
+      color: white;
+      background: var(--purple-2);
+      font-family: "plusjakartasans-semibold";
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .invest-question {
+      display: flex;
+      justify-content: center;
+      margin-block: 10px 5px;
+      font-family: "plusjakartasans-semibold";
+      font-size: 16px;
+    }
+
+    .invest-question-info {
+      display: flex;
+      justify-content: center;
+      color: #636364;
+      font-family: "plusjakartasans-regular";
+      font-size: 16px;
+    }
+
+    .invest-whatsapp-button {
+      display: flex;
+      width: 170px;
+      height: 50px;
+      margin-inline: auto;
+      margin-top: 23px;
+      padding: 10px 58px 10px 26px;
+      align-items: center;
+      border-radius: 4px;
+      border: 2px solid #fff;
+      background: linear-gradient(
+        270deg,
+        rgba(255, 255, 255, 0.1) 57.6%,
+        rgba(255, 255, 255, 0.02) 91.06%
+      );
+      box-shadow: 0px 0px 6.8px 0px #b4bbbf;
+      backdrop-filter: blur(25px);
+      font-family: "plusjakartasans-semibold";
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+
+      .whatsapp-button {
+        width: 55px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: linear-gradient(
+          180deg,
+          #d6dceb 10%,
+          rgba(255, 255, 255) 100%
+        );
+        flex-shrink: 0;
+        position: absolute;
+        right: -10%;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 1px solid white;
+        box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.15);
+
+        img {
+          width: 30px;
+          aspect-ratio: 1/1;
+        }
+      }
+    }
+  }
+}

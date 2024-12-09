@@ -1,0 +1,49 @@
+<div class="invest-container">
+  <h3 class="invest-title">INVERSION</h3>
+
+  <div class="invest-options">
+    <span (click)="investOptionSelected = !investOptionSelected"
+      >Regular @if (!investOptionSelected) {
+      <div class="invest-line"></div>
+      }
+    </span>
+    <span (click)="investOptionSelected = !investOptionSelected"
+      >Especial @if (investOptionSelected) {
+      <div class="invest-line"></div>
+      }
+    </span>
+  </div>
+
+  <div class="invest-content">
+    <div class="investDetail">
+      <div class="invest-item">
+        <span> Inversion: </span>
+        <span> 140$ </span>
+      </div>
+      <div class="invest-item">
+        <span> Cupón de descuento: </span>
+        <input class="cupon-input" type="text" />
+      </div>
+      <div class="invest-item">
+        <span> Descuento: </span>
+        <span> -41$ </span>
+      </div>
+      <div class="invest-item">
+        <span> Total: </span>
+        <span> 99$ </span>
+      </div>
+    </div>
+
+    <button class="invest-button">PAGAR</button>
+
+    <span class="invest-question">¿BUSCAS FINANCIAMIENTO?</span>
+    <span class="invest-question-info">Fraccionamiento de 2 a 4 cuotas</span>
+
+    <div class="invest-whatsapp-button">
+      SOLICITAR
+      <div class="whatsapp-button">
+        <img src="assets\images\whatsapp-icon.png" alt="" />
+      </div>
+    </div>
+  </div>
+</div>
