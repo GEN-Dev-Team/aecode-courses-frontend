@@ -8,6 +8,7 @@ import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject } from 'rxjs';
 import { IProgressSession } from '../../courses/interface/CourseProgress';
+import { BrowserService } from './browser.service';
 
 declare var YT: any;
 
@@ -25,6 +26,7 @@ export class YoutubeService {
   private videoDuration: number = 0;
   private fiveSecondsToFinishSubject = new BehaviorSubject<boolean>(false);
 
+  browserService: BrowserService = inject(BrowserService);
   sanitizer: DomSanitizer = inject(DomSanitizer);
   progressSessionService: ProgressSessionService = inject(
     ProgressSessionService
@@ -42,24 +44,26 @@ export class YoutubeService {
 
   initializePlayer(videoId: string): void {
     // Cargar la API de YouTube
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.body.appendChild(tag);
+    if (this.browserService.isBrowser()) {
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
 
-    // Esperar a que la API esté lista
-    window['onYouTubeIframeAPIReady'] = () => {
-      this.player = new YT.Player('videoIframe', {
-        videoId: videoId, // ID del video
-        events: {
-          onReady: (event: any) => this.onPlayerReady(event),
-          onStateChange: (event: any) => this.onPlayerStateChange(event),
-        },
+      // Esperar a que la API esté lista
+      window['onYouTubeIframeAPIReady'] = () => {
+        this.player = new YT.Player('videoIframe', {
+          videoId: videoId, // ID del video
+          events: {
+            onReady: (event: any) => this.onPlayerReady(event),
+            onStateChange: (event: any) => this.onPlayerStateChange(event),
+          },
+        });
+      };
+
+      this.courseSessionProgressService.courseSession$?.subscribe((session) => {
+        this.courseSessionObject = session;
       });
-    };
-
-    this.courseSessionProgressService.courseSession$?.subscribe((session) => {
-      this.courseSessionObject = session;
-    });
+    }
   }
 
   onPlayerReady(event: any): void {

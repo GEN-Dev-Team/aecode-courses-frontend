@@ -11,15 +11,24 @@ export class BrowserService {
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
-  isBrowser(): boolean {
-    return isPlatformBrowser(this.platformId);
-  }
-
   navigateAndScroll(route: string, scrollPosition: number = 0): void {
     this.router.navigate([route]).then(() => {
       if (isPlatformBrowser(this.platformId)) {
         window.scrollTo(0, scrollPosition);
       }
     });
+  }
+
+  isBrowser(): boolean {
+    return typeof window !== 'undefined';
+  }
+
+  getDocument(): Document | null {
+    return this.isBrowser() ? document : null;
+  }
+
+  getElementById(id: string): HTMLElement | null {
+    const doc = this.getDocument();
+    return doc ? doc.getElementById(id) : null;
   }
 }

@@ -9,6 +9,7 @@ import { OptionsIconComponent } from '../icons/options-icon/options-icon.compone
 import { AdminService } from '../services/admin.service';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { TableFormComponent } from '../table-form/table-form.component';
+import { BrowserService } from '../../core/services/browser.service';
 
 @Component({
   selector: 'app-admin-table',
@@ -18,6 +19,7 @@ import { TableFormComponent } from '../table-form/table-form.component';
   styleUrl: './admin-table.component.css',
 })
 export class AdminTableComponent {
+  browserService: BrowserService = inject(BrowserService);
   adminService: AdminService = inject(AdminService);
   elRef: ElementRef = inject(ElementRef);
 
@@ -55,12 +57,14 @@ export class AdminTableComponent {
 
   @HostListener('document:click', ['$event.target'])
   onDocumentClick(targetElement: HTMLElement) {
-    const isClickInsideOption = targetElement.closest('.option-dropdown');
+    if (this.browserService.isBrowser()) {
+      const isClickInsideOption = targetElement.closest('.option-dropdown');
 
-    if (!isClickInsideOption) {
-      // Cierra todos los dropdowns si se hace clic fuera
-      for (let id in this.showOptionsMap) {
-        this.showOptionsMap[id] = false;
+      if (!isClickInsideOption) {
+        // Cierra todos los dropdowns si se hace clic fuera
+        for (let id in this.showOptionsMap) {
+          this.showOptionsMap[id] = false;
+        }
       }
     }
   }

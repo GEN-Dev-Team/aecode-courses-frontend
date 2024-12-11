@@ -22,13 +22,14 @@
 
       <div class="video-container">
         <img
+          (click)="showIntroVideo = true"
           class="course-video"
           src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
           alt=""
         />
-        <button class="access-button" (click)="showIntroVideo = true">
-          Accede a la Masterclass
-        </button>
+        <a class="access-button" target="_blank" href=""
+          >Accede a la Masterclass</a
+        >
       </div>
     </div>
   </div>
@@ -195,12 +196,16 @@
           </li>
         </ul>
 
-        <div class="asesor-button">
+        <a
+          class="asesor-button"
+          target="_blank"
+          href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola%20AECODE.%20Necesito%20informaci%C3%B3n%20para%20poder%20fraccionar%20un%20curso%20en%20cuotas"
+        >
           Quiero conversar con un Asesor
           <div class="whatsapp-button">
             <img src="assets\images\whatsapp-icon.png" alt="" />
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>

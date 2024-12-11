@@ -11,7 +11,7 @@ import {
 @Component({
   selector: 'app-payment-card',
   standalone: true,
-  imports: [CommonModule, ButtonComponent, NgxPayPalModule],
+  imports: [CommonModule, NgxPayPalModule],
   templateUrl: './payment-card.component.html',
   styleUrl: './payment-card.component.css',
 })
