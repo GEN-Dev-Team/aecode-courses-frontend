@@ -27,3 +27,13 @@
     z-index: -1;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .courses-container {
+    .courses-overlay {
+      padding: 19px 14px;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+  }
+}

@@ -167,3 +167,10 @@
   justify-content: space-between;
   align-items: center;
 }
+
+@media screen and (max-width: 768px) {
+  .course-item-container {
+    width: 100%;
+    max-width: inherit;
+  }
+}

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NoMobileComponent } from './no-mobile.component';
+import { ProfileIconComponent } from './profile-icon.component';
 
-describe('NoMobileComponent', () => {
-  let component: NoMobileComponent;
-  let fixture: ComponentFixture<NoMobileComponent>;
+describe('ProfileIconComponent', () => {
+  let component: ProfileIconComponent;
+  let fixture: ComponentFixture<ProfileIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NoMobileComponent]
+      imports: [ProfileIconComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(NoMobileComponent);
+    fixture = TestBed.createComponent(ProfileIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

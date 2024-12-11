@@ -34,18 +34,25 @@
   background: #eef3f8;
 
   .aside-dropdown-item {
-    gap: 25px;
+    gap: 20px;
     text-decoration: none;
+    fill: var(--purple-2);
+  }
+
+  .mobile-item {
+    display: none;
   }
 
   .conocenos-button {
     padding: 8px 20px;
-    margin-inline: 29px;
+    margin-inline: 20px;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 8px;
     align-items: center;
     border-radius: 4px;
+    fill: white;
     background-color: var(--purple-2);
     font-size: 16px;
     color: white;
@@ -91,6 +98,66 @@
       fill: white;
       color: white;
       background-color: var(--purple-2);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .course-aside-container {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  .aside-dropdown-button {
+    display: none;
+  }
+
+  .course-aside-list {
+    padding: 19px 20px;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    background: #eef3f8;
+
+    .aside-dropdown-item {
+      width: 56px;
+      padding: 0;
+      flex-flow: column nowrap;
+      justify-content: space-between;
+      gap: 1px;
+      font-family: "plusjakartasans-medium";
+      font-size: 10px;
+      fill: #99a3a8;
+      color: #99a3a8;
+    }
+
+    .mobile-order-shaman {
+      order: 2;
+    }
+
+    .mobile-order-about-us {
+      order: 1;
+    }
+
+    .mobile-item {
+      display: inherit;
+    }
+
+    .conocenos-button {
+      padding: 0;
+      margin-inline: 0;
+      flex-flow: column nowrap;
+      background-color: transparent;
+      font-size: 10px;
+      fill: #99a3a8;
+      color: #99a3a8;
+      font-family: "plusjakartasans-medium";
+    }
+
+    .theme-button {
+      display: none;
     }
   }
 }
