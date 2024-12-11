@@ -3,6 +3,7 @@ import { CourseSessionIconComponent } from '../../../shared/icons/course-session
 import { WatchIconComponent } from '../../../shared/icons/watch-icon/watch-icon.component';
 import { Router } from '@angular/router';
 import { CourseService } from '../../services/course.service';
+import { BrowserService } from '../../../core/services/browser.service';
 
 @Component({
   selector: 'app-free-module',
@@ -13,12 +14,15 @@ import { CourseService } from '../../services/course.service';
 })
 export class FreeModuleComponent {
   router: Router = inject(Router);
+  browserService: BrowserService = inject(BrowserService);
   courseService: CourseService = inject(CourseService);
 
   redirectToCourse(courseId: number) {
-    this.router.navigate([`courses/course-detail/${courseId}`]);
     this.courseService.setShowMasiveCourseBackground(false);
     this.courseService.setShowMasiveCourseModule(true);
-    window.scrollTo(0, 0);
+    this.browserService.navigateAndScroll(
+      `courses/course-detail/${courseId}`,
+      0
+    );
   }
 }
