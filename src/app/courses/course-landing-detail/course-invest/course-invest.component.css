@@ -116,6 +116,7 @@
       );
       box-shadow: 0px 0px 6.8px 0px #b4bbbf;
       backdrop-filter: blur(25px);
+      text-decoration: none;
       font-family: "plusjakartasans-semibold";
       font-size: 16px;
       cursor: pointer;

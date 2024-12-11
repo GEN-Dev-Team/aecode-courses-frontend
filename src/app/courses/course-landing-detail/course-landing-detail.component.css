@@ -42,7 +42,7 @@
         .course-video {
           width: 100%;
           aspect-ratio: 16/9;
-          background-color: red;
+          cursor: pointer;
         }
 
         .access-button {
@@ -53,6 +53,7 @@
           background: var(--purple-2);
           color: white;
           font-size: 16px;
+          text-decoration: none;
           cursor: pointer;
         }
       }
@@ -280,6 +281,7 @@
           color: var(--purple-2);
           font-family: "plusjakartasans-semibold";
           font-size: 16px;
+          text-decoration: none;
           cursor: pointer;
           position: relative;
 

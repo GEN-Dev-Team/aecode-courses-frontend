@@ -51,21 +51,21 @@ export class HeaderComponent {
     // this.change(languageBtn.textContent!.trim());
   }
 
-  change = async (language: string) => {
-    const requestJson = await fetch(`/assets/languages/${language}.json`);
-    const texts = await requestJson.json();
+  // change = async (language: string) => {
+  //   const requestJson = await fetch(`/assets/languages/${language}.json`);
+  //   const texts = await requestJson.json();
 
-    const textsToChange = Array.from(
-      document.querySelectorAll('[data-section]')
-    );
+  //   const textsToChange = Array.from(
+  //     document.querySelectorAll('[data-section]')
+  //   );
 
-    for (const textToChange of textsToChange) {
-      const section = textToChange.getAttribute('data-section');
-      const value = textToChange.getAttribute('data-value');
+  //   for (const textToChange of textsToChange) {
+  //     const section = textToChange.getAttribute('data-section');
+  //     const value = textToChange.getAttribute('data-value');
 
-      textToChange.innerHTML = texts[section!][value!];
-    }
-  };
+  //     textToChange.innerHTML = texts[section!][value!];
+  //   }
+  // };
 
   showProfileMenuHandler() {
     this.showProfileMenu = !this.showProfileMenu;
