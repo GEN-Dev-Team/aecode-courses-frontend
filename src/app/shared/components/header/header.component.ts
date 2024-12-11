@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { LoginFormComponent } from '../../../home/login-form/login-form.component';
-import { LanguageIconComponent } from '../../icons/language-icon/language-icon.component';
 import { NotificationIconComponent } from '../../icons/notification-icon/notification-icon.component';
 import { AuthService } from '../../../core/services/auth.service';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
@@ -14,7 +13,6 @@ import { UserService } from '../../../home/user.service';
   imports: [
     ButtonComponent,
     LoginFormComponent,
-    LanguageIconComponent,
     NotificationIconComponent,
     ViewProfileComponent,
     ZoomInDirective,
