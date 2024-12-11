@@ -27,12 +27,10 @@ export class CoursesComponent {
   ngOnInit(): void {
     this.courseService.showAsyncCourseDetails$.subscribe((state) => {
       this.showAsyncCourseDetails = state;
-      window.scrollTo(0, 0);
     });
 
     this.courseService.showMasiveCourseDetails$.subscribe((state) => {
       this.showMasiveCourseDetails = state;
-      window.scrollTo(0, 0);
     });
 
     this.courseService.showMasiveCourseBackground$.subscribe((state) => {

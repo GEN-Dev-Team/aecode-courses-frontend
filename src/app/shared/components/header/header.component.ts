@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { afterNextRender, Component, inject } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { LoginFormComponent } from '../../../home/login-form/login-form.component';
 import { NotificationIconComponent } from '../../icons/notification-icon/notification-icon.component';
@@ -24,10 +24,16 @@ export class HeaderComponent {
   isUserLoggedIn = false;
   openLoginForm = false;
   showProfileMenu = false;
-  userId = JSON.parse(localStorage.getItem('user') || '{}').userId;
+  userId = 0;
 
   authService: AuthService = inject(AuthService);
   logInService: UserService = inject(UserService);
+
+  constructor() {
+    afterNextRender(() => {
+      this.userId = JSON.parse(localStorage.getItem('user') || '{}').userId;
+    });
+  }
 
   ngOnInit(): void {
     this.setUser();
