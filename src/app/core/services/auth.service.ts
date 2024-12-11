@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { afterNextRender, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ICourse } from '../../courses/interface/Course';
 
@@ -12,7 +12,7 @@ export class AuthService {
 
   // Método para verificar si hay token en el localStorage
   private hasToken(): boolean {
-    return !!localStorage.getItem('user');
+    return false;
   }
 
   // Observable que el componente puede suscribirse para obtener el estado

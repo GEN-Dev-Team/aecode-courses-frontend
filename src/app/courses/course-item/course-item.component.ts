@@ -22,11 +22,13 @@ export class CourseItemComponent {
   showCourseDetails(courseId: number) {
     this.router.navigate([`courses/course-detail/${courseId}`]);
     this.courseService.setShowAsyncCourseDetails(true);
+    window.scrollTo(0, 0);
   }
 
   showMasiveCourseDetails(courseId: number) {
     this.router.navigate([`courses/course-detail/${courseId}`]);
     this.courseService.setShowMasiveCourseDetails(true);
     this.courseService.setShowMasiveCourseBackground(true);
+    window.scrollTo(0, 0);
   }
 }
