@@ -25,6 +25,11 @@ export const routes: Routes = [
         title: 'AECODE COURSES',
         component: CourseDetailComponent,
       },
+      {
+        path: 'course-landing/:id',
+        title: 'AECODE COURSES',
+        component: CourseDetailComponent,
+      },
     ],
   },
   {
@@ -41,7 +46,7 @@ export const routes: Routes = [
     path: 'admin-panel',
     title: 'ADMIN PANEL',
     component: AdminPanelComponent,
-    canActivate: [adminAuthGuard],
+    // canActivate: [adminAuthGuard],
   },
   {
     path: 'no-mobile',

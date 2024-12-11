@@ -1,11 +1,21 @@
 <div class="courses-container">
-  <app-course-aside />
-
-  @if (false) {
-  <app-course-landing-detail />
-
-  } @else {
-  <app-course-main />
+  @if (showMasiveCourseBackground) {
+  <div class="masive-course-bg"></div>
 
   }
+
+  <div class="courses-overlay">
+    <app-course-aside />
+
+    @if (showAsyncCourseDetails) {
+    <app-course-landing-detail />
+
+    } @else { @if (showMasiveCourseDetails) {
+    <app-masive-course-detail />
+
+    } @else {
+    <app-course-main />
+
+    } }
+  </div>
 </div>

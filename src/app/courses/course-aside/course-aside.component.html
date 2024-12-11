@@ -12,40 +12,51 @@
     <app-caret-up-icon-light />
     }
   </button>
-</div>
 
-@if(showAsideList) {
-<div class="course-aside-list">
-  <button ZoomIn class class="aside-dropdown-item">
-    <app-inicio-icon />
-    <span>Inicio</span>
-  </button>
+  @if(showAsideList) {
+  <div class="course-aside-list">
+    <button ZoomIn class class="aside-dropdown-item" (click)="goToCourseList()">
+      <app-inicio-icon />
+      <span>Inicio</span>
+    </button>
 
-  <button ZoomIn class="conocenos-button">
-    <app-plus-icon />
-    <span>Conócenos</span>
-  </button>
-
-  <button class="theme-button">
-    <div
+    <a
       ZoomIn
-      class="theme-option"
-      [class.theme-selected]="!isDarkTheme"
-      (click)="isDarkTheme = false"
+      class
+      class="aside-dropdown-item"
+      href="https://shamanai.aecode.ai/"
+      target="_blank"
     >
-      <app-sun-icon />
-      <span>Light</span>
-    </div>
+      <app-shaman-icon />
+      <span>Shaman</span>
+    </a>
 
-    <div
-      ZoomIn
-      class="theme-option"
-      [class.theme-selected]="isDarkTheme"
-      (click)="isDarkTheme = true"
-    >
-      <app-moon-icon />
-      <span>Dark</span>
-    </div>
-  </button>
+    <button ZoomIn class="conocenos-button">
+      <app-plus-icon />
+      <span>Conócenos</span>
+    </button>
+
+    <button class="theme-button">
+      <div
+        ZoomIn
+        class="theme-option"
+        [class.theme-selected]="!isDarkTheme"
+        (click)="isDarkTheme = false"
+      >
+        <app-sun-icon />
+        <span>Light</span>
+      </div>
+
+      <div
+        ZoomIn
+        class="theme-option"
+        [class.theme-selected]="isDarkTheme"
+        (click)="isDarkTheme = true"
+      >
+        <app-moon-icon />
+        <span>Dark</span>
+      </div>
+    </button>
+  </div>
+  }
 </div>
-}

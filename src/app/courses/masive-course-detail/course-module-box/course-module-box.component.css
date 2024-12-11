@@ -1,0 +1,118 @@
+.course-item-container {
+  width: 100%;
+  max-width: 261px;
+  border-radius: 6px;
+  background: #eef3f8;
+  box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.11);
+
+  .course-presentation-container {
+    height: 212px;
+    border-radius: 6px 6px 0px 0px;
+    background: lightgray 50% / cover no-repeat;
+    color: var(--purple-2);
+    font-family: "plusjakartasans-semibold";
+    position: relative;
+    overflow: hidden;
+
+    .course-img {
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .course-status {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 29px;
+      border-radius: 4px;
+      background: #eef3f8;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+        3px 0px 9.5px 0px rgba(219, 201, 255, 0.71) inset;
+      font-size: 16px;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+
+    .course-tags {
+      width: 100%;
+      padding: 10px 0 10px 16px;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      .course-icons {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 11px;
+
+        .icon-container {
+          width: 25px;
+          height: 25px;
+          background-color: #eef3f8;
+          border-radius: 50%;
+          box-shadow: 0px 0px 7.7px 0px #dbc9ff inset;
+          filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.56));
+        }
+      }
+
+      .course-details-cointainer {
+        padding: 6px 12px;
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 6px;
+        border-radius: 4px 0px 0px 4px;
+        background: #eef3f8;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+          3px 0px 9.5px 0px rgba(219, 201, 255, 0.71) inset;
+
+        .course-details-content {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          gap: 2px;
+          font-size: 11px;
+
+          .icon {
+            fill: var(--purple-2);
+          }
+        }
+      }
+    }
+  }
+
+  .course-details {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 28px;
+    padding: 10px 15px;
+  }
+
+  .course-title {
+    margin: 0;
+    font-size: 16px;
+    font-family: "ruberoid-semibold";
+    line-height: 25px;
+  }
+
+  .reserve-button {
+    width: 100%;
+    text-align: center;
+    gap: 8px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    padding: 7px 13px;
+    background: var(--purple-2);
+    font-size: 16px;
+    font-family: "plusjakartasans-semibold";
+    cursor: pointer;
+  }
+}

@@ -2,6 +2,7 @@
   width: 100%;
   max-width: 642px;
   padding: 60px;
+  border-radius: 6px;
   background-color: white;
 
   .subtitle-form {

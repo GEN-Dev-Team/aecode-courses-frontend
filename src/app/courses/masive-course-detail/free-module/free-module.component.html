@@ -1,7 +1,4 @@
-<div
-  class="course-item-container"
-  [class.platform-course-item-container]="isPlatformCourse"
->
+<div class="course-item-container">
   <div class="course-presentation-container">
     <img class="course-img" src="assets\images\course-test-img.svg" alt="" />
 
@@ -22,37 +19,22 @@
           <app-watch-icon class="icon" />
           <span class="detail-description"> 24 horas</span>
         </div>
+
+        <div class="course-price">
+          <span class="course-old-price">$299</span>
+          <span class="course-new-price">$0.00</span>
+        </div>
       </div>
     </div>
-  </div>
 
-  @if(isPlatformCourse) {
-  <div class="platform-course-details">
-    <h2 class="course-title">Programación digital</h2>
-    <button class="reserve-button" (click)="showMasiveCourseDetails(1)">
-      Ver más
+    <button class="reserve-button" (click)="redirectToCourse(1)">
+      Acceso Libre
     </button>
   </div>
 
-  } @else {
   <div class="course-details">
     <h2 class="course-title">
       Desarrollo e Implementación de Inteligencia Artificial en AEC
     </h2>
-    <button class="reserve-button" (click)="showCourseDetails(1)">
-      Acceder
-    </button>
-
-    <div class="course-level">
-      <app-level-icon />
-      <span>Intermedio</span>
-    </div>
-
-    <div class="course-price">
-      <span class="course-old-price">$299</span>
-      <span class="course-new-price">$249</span>
-    </div>
   </div>
-
-  }
 </div>

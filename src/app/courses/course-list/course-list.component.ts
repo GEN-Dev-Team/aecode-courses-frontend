@@ -1,22 +1,12 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { SquareIconComponent } from '../../shared/icons/square-icon/square-icon.component';
-import { Router, RouterLink } from '@angular/router';
-import { SeparatorIconComponent } from '../../shared/icons/separator-icon/separator-icon.component';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
-import { ZoomInDirective } from '../../shared/directives/animations/zoom-in.directive';
 import { CourseItemComponent } from '../course-item/course-item.component';
-import { CourseAsideComponent } from '../course-aside/course-aside.component';
 
 @Component({
   selector: 'app-course-list',
   standalone: true,
-  imports: [
-    SquareIconComponent,
-    SeparatorIconComponent,
-    ZoomInDirective,
-    CourseItemComponent,
-    CourseAsideComponent,
-  ],
+  imports: [CourseItemComponent],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.css',
 })
