@@ -5,15 +5,20 @@
   <div class="course-presentation-container">
     <img class="course-img" src="assets\images\course-test-img.svg" alt="" />
 
-    <span class="course-status">30%</span>
+    <span class="course-status" [class.static-course-status]="!isPlatformCourse"
+      >30%</span
+    >
 
     <div class="course-tags">
-      <div class="course-icons">
+      <div class="course-icons" [class.static-course-icons]="!isPlatformCourse">
         <div class="icon-container"><img src="" alt="" /></div>
         <div class="icon-container"><img src="" alt="" /></div>
       </div>
 
-      <div class="course-details-cointainer">
+      <div
+        class="course-details-cointainer"
+        [class.static-course-details-cointainer]="!isPlatformCourse"
+      >
         <div class="course-details-content">
           <app-course-session-icon class="icon" />
           <span class="detail-description">24 sesiones</span>
