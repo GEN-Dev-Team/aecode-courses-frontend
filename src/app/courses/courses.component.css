@@ -31,8 +31,8 @@
 @media screen and (max-width: 768px) {
   .courses-container {
     .courses-overlay {
-      padding: 19px 14px;
-      grid-template-columns: 1fr;
+      padding: 19px 14px 80px;
+      grid-template-columns: 100%;
       gap: 0;
     }
   }
