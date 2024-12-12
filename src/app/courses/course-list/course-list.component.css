@@ -27,3 +27,28 @@
     justify-content: space-between;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .course-list-container {
+    padding: 20px 16px;
+
+    .course-list-title {
+      font-size: 14px;
+      align-items: center;
+
+      .see-all-button {
+        cursor: pointer;
+        text-decoration: underline;
+        font-size: 16px;
+        text-wrap: nowrap;
+      }
+    }
+
+    .course-list-content {
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 5px;
+      overflow-x: scroll;
+    }
+  }
+}

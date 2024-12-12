@@ -11,8 +11,6 @@ import { CaretDownIconLightComponent } from '../../shared/icons/caret-down-icon-
 import { ShamanIconComponent } from '../../shared/icons/shaman-icon/shaman-icon.component';
 import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
-import { UserIconComponent } from '../../admin-panel/icons/user-icon/user-icon.component';
-import { AdminIconComponent } from '../../admin-panel/icons/admin-icon/admin-icon.component';
 import { ProfileIconComponent } from '../../shared/icons/profile-icon/profile-icon.component';
 
 @Component({
@@ -27,8 +25,6 @@ import { ProfileIconComponent } from '../../shared/icons/profile-icon/profile-ic
     MoonIconComponent,
     CaretDownIconLightComponent,
     ShamanIconComponent,
-    UserIconComponent,
-    AdminIconComponent,
     ProfileIconComponent,
   ],
   templateUrl: './course-aside.component.html',
