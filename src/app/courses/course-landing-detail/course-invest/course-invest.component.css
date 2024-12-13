@@ -103,6 +103,7 @@
       display: flex;
       width: 170px;
       height: 50px;
+      color: black;
       margin-inline: auto;
       margin-top: 23px;
       padding: 10px 58px 10px 26px;
@@ -145,6 +146,35 @@
         img {
           width: 30px;
           aspect-ratio: 1/1;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .invest-container {
+    .invest-title {
+      padding: 12px 25px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .invest-options {
+      display: flex;
+      flex-flow: row nowrap;
+
+      span {
+        width: 50%;
+        font-size: 16px;
+      }
+    }
+
+    .invest-content {
+      .investDetail {
+        .invest-item {
+          margin-bottom: 30px;
+          font-size: 16px;
         }
       }
     }

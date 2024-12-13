@@ -1,6 +1,7 @@
-import { afterNextRender, Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ICourse } from '../../courses/interface/Course';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root',
@@ -8,28 +9,27 @@ import { ICourse } from '../../courses/interface/Course';
 export class AuthService {
   private isLoggedInStatus = new BehaviorSubject<boolean>(this.hasToken());
 
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  // Método para verificar si hay token en el localStorage
   private hasToken(): boolean {
+    if (isPlatformBrowser(this.platformId)) {
+      return !!localStorage.getItem('user');
+    }
     return false;
   }
 
-  // Observable que el componente puede suscribirse para obtener el estado
   isLoggedIn$(): Observable<boolean> {
     return this.isLoggedInStatus.asObservable();
   }
 
-  // Lógica de inicio de sesión
   login(token: any): void {
     localStorage.setItem('user', JSON.stringify(token));
-    this.isLoggedInStatus.next(true); // Emitir que el usuario está loggeado
+    this.isLoggedInStatus.next(true);
   }
 
-  // Lógica de cierre de sesión
   logout(): void {
     localStorage.removeItem('user');
-    this.isLoggedInStatus.next(false); // Emitir que el usuario ya no está loggeado
+    this.isLoggedInStatus.next(false);
   }
 
   getUserDetails(): any {

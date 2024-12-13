@@ -7,6 +7,7 @@ import { CaretDownIconComponent } from '../../shared/icons/caret-down-icon/caret
 import { CourseInvestComponent } from './course-invest/course-invest.component';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { CourseExtraInformationComponent } from './course-extra-information/course-extra-information.component';
 
 @Component({
   selector: 'app-course-landing-detail',
@@ -19,6 +20,7 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
     CaretDownIconComponent,
     CourseInvestComponent,
     ModalComponent,
+    CourseExtraInformationComponent,
   ],
   templateUrl: './course-landing-detail.component.html',
   styleUrl: './course-landing-detail.component.css',
