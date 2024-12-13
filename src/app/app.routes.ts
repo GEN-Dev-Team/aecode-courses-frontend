@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
-import { adminAuthGuard } from './core/guards/admin-auth.guard';
 import { ProfileMainViewComponent } from './user-profile/profile-main-view/profile-main-view.component';
 import { CoursesComponent } from './courses/courses.component';
 
@@ -16,18 +15,11 @@ export const routes: Routes = [
     path: 'courses',
     title: 'AECODE COURSES',
     component: CoursesComponent,
-    children: [
-      {
-        path: 'course-detail/:id',
-        title: 'AECODE COURSES',
-        component: CourseDetailComponent,
-      },
-      {
-        path: 'course-landing/:id',
-        title: 'AECODE COURSES',
-        component: CourseDetailComponent,
-      },
-    ],
+  },
+  {
+    path: 'course-detail/:id',
+    title: 'AECODE COURSES',
+    component: CourseDetailComponent,
   },
   {
     path: 'profile/:id',

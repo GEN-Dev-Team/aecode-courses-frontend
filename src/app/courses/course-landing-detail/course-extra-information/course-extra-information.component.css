@@ -1,0 +1,227 @@
+.section-title {
+  width: 100%;
+  padding: 17px 25px;
+  margin: 0;
+  display: flex;
+  color: white;
+  font-family: "plusjakartasans-bold";
+  font-size: 24px;
+  border-radius: 6px 6px 0 0;
+  background: var(--purple-2);
+}
+
+.extra-information-container {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 50px;
+  padding-bottom: 22px;
+
+  .section-description {
+    width: 100%;
+    height: 100px;
+    padding: 15px 25px 20px 25px;
+    margin: 0;
+    border-radius: 0px 0px 2px 2px;
+    background: #eef3f8;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    line-height: 20px;
+  }
+
+  .horarios-container {
+    .horarios-description {
+      width: 100%;
+      height: 100px;
+      padding: 20px 32px 32px 28px;
+      margin: 0;
+      border-radius: 0px 0px 2px 2px;
+      background-color: #eef3f8;
+      color: var(--purple-2);
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      font-family: "plusjakartasans-semibold";
+      font-size: 18px;
+    }
+  }
+
+  .benefits-schedule-container {
+    display: grid;
+    grid-template-columns: auto 340px;
+    gap: 19px;
+
+    .benefits-container {
+      .benefits-content {
+        width: 100%;
+        height: 100px;
+        border-radius: 0px 0px 2px 2px;
+        border: 1px solid #fff;
+        background: #eef3f8;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        .benefits-list {
+          display: grid;
+          grid-template-columns: auto auto;
+
+          li {
+            margin-bottom: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  .question-container {
+    border-radius: 6px;
+    background-color: var(--purple-2);
+
+    .question-content {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      padding-right: 0px;
+
+      .question-list {
+        list-style: none;
+        color: white;
+        fill: white;
+        margin: 0px 25px 25px;
+        padding: 0;
+
+        li {
+          display: flex;
+          flex-flow: row nowrap;
+          gap: 17px;
+          margin: 0px 0px 7px 0px;
+        }
+      }
+
+      .asesor-button {
+        display: flex;
+        width: 240px;
+        height: 56px;
+        margin-top: 23px;
+        padding: 10px 58px 10px 30px;
+        align-items: center;
+        border-radius: 4px;
+        background: #eef3f8;
+        border: 1px solid #fff;
+        box-shadow: 0px 0px 3px 0px #fff;
+        color: var(--purple-2);
+        font-family: "plusjakartasans-semibold";
+        font-size: 16px;
+        text-decoration: none;
+        cursor: pointer;
+        position: relative;
+
+        .whatsapp-button {
+          width: 82px;
+          height: 82px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          background: linear-gradient(
+            180deg,
+            #cfd5e3 15%,
+            rgba(255, 255, 255) 91.06%
+          );
+          flex-shrink: 0;
+          position: absolute;
+          right: -10%;
+          top: 50%;
+          transform: translateY(-50%);
+          border: 1px solid white;
+          box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.15);
+
+          img {
+            width: 43px;
+            aspect-ratio: 1/1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .section-title {
+    padding: 12px 10px;
+    font-size: 16px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .extra-information-container {
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 25px;
+
+    .section-description {
+      width: 100%;
+      height: auto;
+      padding: 8px 12px;
+      margin: 0;
+    }
+
+    .horarios-container {
+      .horarios-description {
+        height: auto;
+        padding: 13px 52px 26px 14px;
+      }
+    }
+
+    .benefits-schedule-container {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 19px;
+
+      .benefits-container {
+        .benefits-content {
+          height: auto;
+
+          .benefits-list {
+            display: flex;
+            flex-flow: column nowrap;
+            padding-inline: 25px;
+
+            li {
+              margin-bottom: 4px;
+            }
+          }
+        }
+      }
+    }
+
+    .question-container {
+      border-radius: 4px;
+
+      .question-content {
+        display: flex;
+        flex-flow: column nowrap;
+
+        .question-list {
+          margin: 0px 8px 25px;
+          padding: 0;
+        }
+
+        .asesor-button {
+          width: 152px;
+          height: fit-content;
+          padding: 2px 22px 5px 10px;
+          margin: 15px auto;
+          border-radius: 4px;
+          font-size: 12px;
+
+          .whatsapp-button {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            right: -10%;
+            top: 50%;
+
+            img {
+              width: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

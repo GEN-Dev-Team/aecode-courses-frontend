@@ -200,119 +200,6 @@
         }
       }
     }
-
-    .horarios-container {
-      .horarios-description {
-        width: 100%;
-        height: 100px;
-        padding: 20px 32px 32px 28px;
-        margin: 0;
-        border-radius: 0px 0px 2px 2px;
-        background-color: #eef3f8;
-        color: var(--purple-2);
-        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        font-family: "plusjakartasans-semibold";
-        font-size: 18px;
-      }
-    }
-
-    .benefits-schedule-container {
-      display: grid;
-      grid-template-columns: auto 340px;
-      gap: 19px;
-
-      .benefits-container {
-        .benefits-content {
-          width: 100%;
-          height: 100px;
-          border-radius: 0px 0px 2px 2px;
-          border: 1px solid #fff;
-          background: #eef3f8;
-          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
-          .benefits-list {
-            display: grid;
-            grid-template-columns: auto auto;
-
-            li {
-              margin-bottom: 3px;
-            }
-          }
-        }
-      }
-    }
-
-    .question-container {
-      border-radius: 6px;
-      background-color: var(--purple-2);
-
-      .question-content {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        padding-right: 53px;
-
-        .question-list {
-          list-style: none;
-          color: white;
-          fill: white;
-          margin: 0px 25px 25px;
-          padding: 0;
-
-          li {
-            display: flex;
-            flex-flow: row nowrap;
-            gap: 17px;
-            margin: 0px 0px 7px 0px;
-          }
-        }
-
-        .asesor-button {
-          display: flex;
-          width: 240px;
-          height: 56px;
-          margin-top: 23px;
-          padding: 10px 58px 10px 30px;
-          align-items: center;
-          border-radius: 4px;
-          background: #eef3f8;
-          border: 1px solid #fff;
-          box-shadow: 0px 0px 3px 0px #fff;
-          color: var(--purple-2);
-          font-family: "plusjakartasans-semibold";
-          font-size: 16px;
-          text-decoration: none;
-          cursor: pointer;
-          position: relative;
-
-          .whatsapp-button {
-            width: 82px;
-            height: 82px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 50%;
-            background: linear-gradient(
-              180deg,
-              #cfd5e3 15%,
-              rgba(255, 255, 255) 91.06%
-            );
-            flex-shrink: 0;
-            position: absolute;
-            right: -10%;
-            top: 50%;
-            transform: translateY(-50%);
-            border: 1px solid white;
-            box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.15);
-
-            img {
-              width: 43px;
-              aspect-ratio: 1/1;
-            }
-          }
-        }
-      }
-    }
   }
 }
 
@@ -328,4 +215,149 @@
 .intro-video {
   width: 1068px;
   aspect-ratio: 16/9;
+}
+
+@media screen and (max-width: 768px) {
+  .course-landing-detail-container {
+    .course-landing-presentation {
+      padding: 20px 14px;
+      margin-bottom: 25px;
+
+      .course-landing-title {
+        margin: 0;
+        font-size: 20px;
+      }
+
+      .course-landing-subtitle {
+        font-size: 16px;
+      }
+
+      .course-landing-presentation-box {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 47px;
+
+        .course-description {
+          max-height: 144px;
+          text-overflow: ellipsis;
+          overflow-y: hidden;
+          font-size: 14px;
+        }
+
+        .video-container {
+          .access-button {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .course-landing-details-box {
+      padding-inline: 0;
+      gap: 35px;
+      font-size: 12px;
+
+      .section-title {
+        width: 100%;
+        padding: 11px 10px;
+        font-size: 16px;
+        border-radius: 4px 4px 0 0;
+      }
+
+      .row-1 {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 35px;
+
+        .col-1 {
+          .plan-estudio-container {
+            margin-bottom: 35px;
+
+            .plan-title {
+              width: 100%;
+              justify-content: space-between;
+              align-items: center;
+              text-wrap: nowrap;
+
+              h2 {
+                margin: 0;
+                font-size: 16px;
+              }
+
+              .plan-tags {
+                gap: 5px;
+                font-size: 10px;
+
+                .tag-item {
+                  display: flex;
+                  flex-flow: row nowrap;
+                  align-items: center;
+                  gap: 4px;
+                }
+
+                .icon {
+                  display: flex;
+                  width: 12px;
+                }
+
+                .session-icon,
+                .watch-icon {
+                  display: flex;
+                  width: 16px;
+                }
+              }
+            }
+
+            .unit-item {
+              padding: 10px;
+              font-size: 14px;
+              align-items: center;
+
+              .icon {
+                width: 13px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+            }
+
+            .plan-list {
+              padding: 13px 28px;
+
+              li {
+                margin-bottom: 5px;
+              }
+            }
+          }
+
+          .tools-container {
+            .tools-title {
+              border-radius: 4px;
+            }
+
+            .slider-wrapper {
+              width: 100%;
+              max-width: 692px;
+              margin: 43px 0 0 0;
+
+              .slider {
+                gap: 34px;
+                animation: slider 20s linear infinite;
+
+                .tool-img {
+                  width: 40px;
+                  height: 40px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .intro-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+  }
 }
