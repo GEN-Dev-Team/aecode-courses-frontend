@@ -1,23 +1,12 @@
+@if (secondaryCourseData$ | async; as secondaryCourseData) {
 <main class="course-landing-detail-container">
   <div class="course-landing-presentation">
-    <h2 class="course-landing-title">Simulación y Planificación BIM 4D</h2>
+    <h2 class="course-landing-title">{{ secondaryCourseData[0].title }}</h2>
     <h3 class="course-landing-subtitle">¡Este curso es para ti!</h3>
 
     <div class="course-landing-presentation-box">
       <p class="course-description">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta magnam
-        atque id temporibus nam minima explicabo sint corrupti esse, enim
-        assumenda velit quibusdam fugit! Consectetur natus earum esse
-        voluptatibus minus, praesentium totam quod possimus, ducimus facere
-        illum sunt? Veritatis eligendi voluptatibus cupiditate nemo sint commodi
-        eveniet quos, assumenda praesentium sequi distinctio nihil vel accusamus
-        ipsam laboriosam quam aliquam corporis quibusdam necessitatibus expedita
-        harum asperiores sed sunt quod? Soluta totam quas obcaecati
-        reprehenderit! Temporibus, delectus incidunt tempora soluta ea, unde
-        minima inventore pariatur voluptatibus, nemo quaerat tenetur impedit
-        doloremque alias facere repellat laudantium at amet voluptates magni
-        deleniti? Debitis perferendis voluptate similique impedit accusamus
-        excepturi.
+        {{ secondaryCourseData[0].description }}
       </p>
 
       <div class="video-container">
@@ -148,3 +137,7 @@
     class="intro-video"
   ></iframe>
 </app-modal>
+
+} @else {
+<h1>Loading secondary course...</h1>
+}
