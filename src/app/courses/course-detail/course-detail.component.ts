@@ -22,13 +22,15 @@ import { DownloadIconComponent } from '../icons/download-icon/download-icon.comp
 import { WorldIconComponent } from '../icons/world-icon/world-icon.component';
 import { environment } from '../../../environment/environment';
 import { Observable } from 'rxjs';
+import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
+import { CourseModuleBoxComponent } from '../masive-course-detail/course-module-box/course-module-box.component';
+import { CourseUnitComponent } from './course-unit/course-unit.component';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
   imports: [
     ButtonComponent,
-    CourseModuleComponent,
     ModalComponent,
     ContentBlockedComponent,
     HouseIconComponent,
@@ -44,6 +46,9 @@ import { Observable } from 'rxjs';
     DownloadIconComponent,
     WorldIconComponent,
     AsyncPipe,
+    CourseOverlayComponent,
+    CourseModuleBoxComponent,
+    CourseUnitComponent,
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css',
@@ -66,6 +71,7 @@ export class CourseDetailComponent implements OnInit {
   courseIntroVideo = '';
 
   ngOnInit(): void {
+    console.log('Renderizado de course-detail');
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLogged = loggedInStatus;
     });

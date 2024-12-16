@@ -1,36 +1,43 @@
-<div class="course-item-container">
-  <div class="course-presentation-container">
-    <img class="course-img" src="assets\images\course-test-img.svg" alt="" />
+<div class="module-list">
+  @for (moduleItem of course.modules.slice(1); track moduleItem) {
+  <div class="course-item-container">
+    <div class="course-presentation-container">
+      <img class="course-img" src="assets\images\course-test-img.svg" alt="" />
 
-    <span class="course-status">30%</span>
+      <span class="course-status">30%</span>
 
-    <div class="course-tags">
-      <div class="course-icons">
-        <div class="icon-container"><img src="" alt="" /></div>
-        <div class="icon-container"><img src="" alt="" /></div>
-      </div>
-
-      <div class="course-details-cointainer">
-        <div class="course-details-content">
-          <app-course-session-icon class="icon" />
-          <span class="detail-description">24 sesiones</span>
+      <div class="course-tags">
+        <div class="course-icons">
+          <div class="icon-container"><img src="" alt="" /></div>
+          <div class="icon-container"><img src="" alt="" /></div>
         </div>
-        <div class="course-details-content">
-          <app-watch-icon class="icon" />
-          <span class="detail-description"> 24 hrs</span>
+
+        <div class="course-details-cointainer">
+          <div class="course-details-content">
+            <app-course-session-icon class="icon" />
+            <span class="detail-description"
+              >{{ moduleItem.units.length }} sesiones</span
+            >
+          </div>
+          <div class="course-details-content">
+            <app-watch-icon class="icon" />
+            <span class="detail-description"> 24 hrs</span>
+          </div>
         </div>
       </div>
     </div>
+
+    <div class="course-details">
+      <h2 class="course-title">{{ moduleItem.title }}</h2>
+
+      <button
+        class="reserve-button"
+        (click)="redirectToCourse(moduleItem.moduleId)"
+      >
+        Acceder
+      </button>
+    </div>
   </div>
 
-  <div class="course-details">
-    <h2 class="course-title">Automatización BIM con Dynamo, Python y C#</h2>
-
-    <!-- 
-      <div class="course-price">
-        <span class="course-old-price">$299</span>
-        <span class="course-new-price">$249</span>
-      </div> -->
-    <button class="reserve-button">Acceder</button>
-  </div>
+  }
 </div>

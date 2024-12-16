@@ -97,6 +97,10 @@
       gap: 44px;
 
       .col-1 {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+
         .plan-estudio-container {
           margin-bottom: 50px;
 

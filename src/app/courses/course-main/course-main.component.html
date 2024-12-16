@@ -15,7 +15,9 @@
   <app-platform-course-list />
 
   <div class="course-main-list">
-    <app-course-list />
-    <app-course-list />
+    @for (courseListItem of coursesList; track courseListItem) {
+    <app-course-list [listTitle]="courseListItem.name" />
+
+    }
   </div>
 </main>

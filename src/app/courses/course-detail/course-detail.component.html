@@ -1,155 +1,192 @@
-@if (course$ | async; as course) {
-<div class="course-detail-container">
-  <div class="course-detail-content">
-    <div class="course-aside">
-      <div class="course-title">
-        <span class="course-name">{{ course.title }}:</span>
-        <span class="course-words"
-          >@if (course_id === 1) { Innovación, Digitalización y Automatización }
-          @else if (course_id === 2) {Aplicado a la Ingeniería Civil}</span
-        >
-      </div>
+<app-course-overlay>
+  @if (course$ | async; as course) {
+  <main class="masive-course-container">
+    <h1 class="masive-course-title">INGENIERIA 4.0</h1>
+    <div class="text-container">
+      <h2 class="masive-course-module-subtitle">
+        Módulo I: Desarrollo e Implementación de Inteligencia Artificial en AEC
+      </h2>
 
-      @if (!isUserLogged) {
-      <app-button class="button-start-here"> ¡COMIENZA AQUÍ! </app-button>
-      }
-
-      <aside class="course-details-aside">
-        @for (module of course.modules; track module.moduleId) {
-        <app-course-module [module]="module" />
-        }
-      </aside>
+      <span>Esto es para ti si...</span>
+      <ul>
+        <li>
+          Quieres salir de la burbuja y quieres explorar conceptos más
+          actualizados y demandados en los proyectos de ingeniería
+        </li>
+        <li>
+          Qué es lo que en los próximos años demandaran en las convocatorias
+          laborales
+        </li>
+        <li>
+          Quieres conocer las tecnologías y tendencias aplicadas a la
+          contrucción e ingeniería pero no dar ese salto abrupto, sino ir desde
+          0 y tener la base y fundamentos
+        </li>
+      </ul>
     </div>
-
-    <main class="course-content">
-      <div class="course-header" *ngIf="isUserLogged">
-        <div class="first-header-group">
-          <app-house-icon class="home-icon" />
-          <app-caret-right-icon class="caret-r-icon" />
-          <span class="course-session-module">MODULO {{ module_id + 1 }}</span>
-          <app-caret-right-icon class="caret-r-icon" />
-          <span class="course-session-title">{{
-            courseSessionSubject.title
-          }}</span>
-        </div>
-
-        <div class="second-header-group">
-          <div class="second-header-button">
-            <app-prev-icon class="second-header-icon" />
-            <span>Anterior</span>
-          </div>
-
-          <div class="second-header-button">
-            <span>Siguiente</span>
-            <app-next-icon class="second-header-icon" />
-          </div>
-        </div>
-      </div>
-
-      <div class="course-options" *ngIf="!isUserLogged">
-        <app-button>
-          <a href="https://aecodemap.my.canva.site/" target="_blank"
-            >BROCHURE</a
-          >
-        </app-button>
-        <app-button>
-          <a href="https://aecodemap.my.canva.site/" target="_blank">ROADMAP</a>
-        </app-button>
-        <app-button> DESBLOQUEAR </app-button>
-      </div>
-
-      <app-youtube-player
-        [unit_url_video]="courseSessionSubject.videoUrl"
-        [session_id]="courseSessionSubject.sessionId"
-        [courseIntroVideo]="courseIntroVideo"
-      />
-
-      @if (!isUserLogged) {
-      <div class="buttons-container">
-        <app-button> ¿Qué aprenderemos hoy? </app-button>
-
-        <app-button> Acceso al material de clase </app-button>
-      </div>
-
-      } @else {
-      <div class="course-class-details">
-        @if (courseSessionSubject.htmlContent) {
-        <div class="header">
-          <div class="header-items">
-            <span
-              (click)="isDescription = true"
-              [ngClass]="isDescription ? 'selected' : ''"
-              >Descripción</span
-            >
-            <span
-              (click)="isDescription = false"
-              [ngClass]="!isDescription ? 'selected' : ''"
-              >Recursos</span
+    <div class="course-detail-container">
+      <div class="course-detail-content">
+        <div class="course-aside">
+          <div class="course-title">
+            <span class="course-name">{{ course.title }}:</span>
+            <span class="course-words"
+              >@if (course_id === 1) { Innovación, Digitalización
+              y Automatización } @else if (course_id === 2) {Aplicado a la
+              Ingeniería Civil}</span
             >
           </div>
 
-          <div class="translate">
-            <span>Traducir texto: Inglés</span>
-            <app-caret-down-icon class="caret-icon" />
-          </div>
-        </div>
-        <div class="separator"></div>
-        <div class="detail-text">
-          @if(isDescription) {
-
-          <div [innerHTML]="courseSessionSubject.htmlContent"></div>
-
-          } @else {
-
-          <h2 class="resource-title">Archivos de la clase</h2>
-          @if (courseSessionSubject.resourceDocument) {
-          <a
-            class="resource-items"
-            [href]="apiUrl + courseSessionSubject.resourceDocument"
-            target="_blank"
-          >
-            <app-pdf-icon class="first-icon" />
-            <p>
-              {{ courseSessionSubject.resourceDocument }}
-            </p>
-            <app-download-icon class="last-icon" />
-          </a>
-          } @else {
-          <p class="resource-items">¡Recurso no disponible!</p>
+          @if (!isUserLogged) {
+          <app-button class="button-start-here"> ¡COMIENZA AQUÍ! </app-button>
           }
 
-          <div class="separator"></div>
-
-          <h2 class="resource-title">Materiales de Apoyo</h2>
-          @if (courseSessionSubject.taskUrl) {
-          <a
-            class="resource-items"
-            href="{{ courseSessionSubject.taskUrl }}"
-            target="_blank"
-          >
-            <app-world-icon class="first-icon" />
-            <p>
-              @if (courseSessionSubject.taskName) {
-              {{ courseSessionSubject.taskName }}} @else { Material no
-              disponible! }
-            </p>
-            <app-link-icon class="last-icon" />
-          </a>
-          } @else {
-          <p class="resource-items">¡Material no disponible!</p>
-          } }
+          <aside class="course-details-aside">
+            @for (unit of course.modules[1].units; track unit) {
+            <app-course-unit [unit]="unit" />
+            }
+          </aside>
         </div>
-        }
+
+        <main class="course-content">
+          <div class="course-header" *ngIf="isUserLogged">
+            <div class="first-header-group">
+              <app-house-icon class="home-icon" />
+              <app-caret-right-icon class="caret-r-icon" />
+              <span class="course-session-module"
+                >MODULO {{ module_id + 1 }}</span
+              >
+              <app-caret-right-icon class="caret-r-icon" />
+              <span class="course-session-title">{{
+                courseSessionSubject.title
+              }}</span>
+            </div>
+
+            <div class="second-header-group">
+              <div class="second-header-button">
+                <app-prev-icon class="second-header-icon" />
+                <span>Anterior</span>
+              </div>
+
+              <div class="second-header-button">
+                <span>Siguiente</span>
+                <app-next-icon class="second-header-icon" />
+              </div>
+            </div>
+          </div>
+
+          <div class="course-options" *ngIf="!isUserLogged">
+            <app-button>
+              <a href="https://aecodemap.my.canva.site/" target="_blank"
+                >BROCHURE</a
+              >
+            </app-button>
+            <app-button>
+              <a href="https://aecodemap.my.canva.site/" target="_blank"
+                >ROADMAP</a
+              >
+            </app-button>
+            <app-button> DESBLOQUEAR </app-button>
+          </div>
+
+          <app-youtube-player
+            [unit_url_video]="courseSessionSubject.videoUrl"
+            [session_id]="courseSessionSubject.sessionId"
+            [courseIntroVideo]="courseIntroVideo"
+          />
+
+          @if (!isUserLogged) {
+          <div class="buttons-container">
+            <app-button> ¿Qué aprenderemos hoy? </app-button>
+
+            <app-button> Acceso al material de clase </app-button>
+          </div>
+
+          } @else {
+          <div class="course-class-details">
+            @if (courseSessionSubject.htmlContent) {
+            <div class="header">
+              <div class="header-items">
+                <span
+                  (click)="isDescription = true"
+                  [ngClass]="isDescription ? 'selected' : ''"
+                  >Descripción</span
+                >
+                <span
+                  (click)="isDescription = false"
+                  [ngClass]="!isDescription ? 'selected' : ''"
+                  >Recursos</span
+                >
+              </div>
+
+              <div class="translate">
+                <span>Traducir texto: Inglés</span>
+                <app-caret-down-icon class="caret-icon" />
+              </div>
+            </div>
+            <div class="separator"></div>
+            <div class="detail-text">
+              @if(isDescription) {
+
+              <div [innerHTML]="courseSessionSubject.htmlContent"></div>
+
+              } @else {
+
+              <h2 class="resource-title">Archivos de la clase</h2>
+              @if (courseSessionSubject.resourceDocument) {
+              <a
+                class="resource-items"
+                [href]="apiUrl + courseSessionSubject.resourceDocument"
+                target="_blank"
+              >
+                <app-pdf-icon class="first-icon" />
+                <p>
+                  {{ courseSessionSubject.resourceDocument }}
+                </p>
+                <app-download-icon class="last-icon" />
+              </a>
+              } @else {
+              <p class="resource-items">¡Recurso no disponible!</p>
+              }
+
+              <div class="separator"></div>
+
+              <h2 class="resource-title">Materiales de Apoyo</h2>
+              @if (courseSessionSubject.taskUrl) {
+              <a
+                class="resource-items"
+                href="{{ courseSessionSubject.taskUrl }}"
+                target="_blank"
+              >
+                <app-world-icon class="first-icon" />
+                <p>
+                  @if (courseSessionSubject.taskName) {
+                  {{ courseSessionSubject.taskName }}} @else { Material no
+                  disponible! }
+                </p>
+                <app-link-icon class="last-icon" />
+              </a>
+              } @else {
+              <p class="resource-items">¡Material no disponible!</p>
+              } }
+            </div>
+            }
+          </div>
+          }
+        </main>
       </div>
-      }
-    </main>
-  </div>
-</div>
+    </div>
+
+    <h2 class="module-title">
+      Módulos Tecnológicos introductorios a tu alcance
+    </h2>
+
+    <app-course-module-box [course]="course" />
+  </main>
+  } @else {
+  <h1>Loading...</h1>
+  }
+</app-course-overlay>
 
 <app-modal (isClosed)="showBlockedModal = $event" [isOpen]="showBlockedModal">
   <app-content-blocked (isClosed)="showBlockedModal = $event" />
 </app-modal>
-
-} @else {
-<h1>Loading...</h1>
-}

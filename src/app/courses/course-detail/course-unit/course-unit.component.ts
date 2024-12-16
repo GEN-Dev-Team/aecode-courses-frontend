@@ -40,29 +40,27 @@ export class CourseUnitComponent {
 
   showBlockedModal = false;
   isUserLogged: boolean = true;
-  showSessions: boolean = false;
+  showSessions: boolean = true;
   sessionObject!: ISession;
-  usserAccess: boolean = false;
+  usserAccess: boolean = true;
   course_id: number = this.route.snapshot.params['id'];
 
   ngOnInit(): void {
-    this.authService.isLoggedIn$().subscribe((isLogged) => {
-      this.isUserLogged = isLogged;
-    });
-
-    this.courseSessionService.courseSession$.subscribe((session) => {
-      this.sessionObject = session;
-    });
-
-    if (this.isUserLogged) {
-      this.authService
-        .getUserDetails()
-        .usercourseaccess.forEach((course: ICourse) => {
-          if (course.courseId === Number(this.course_id)) {
-            this.usserAccess = true;
-          }
-        });
-    }
+    // this.authService.isLoggedIn$().subscribe((isLogged) => {
+    //   this.isUserLogged = isLogged;
+    // });
+    // this.courseSessionService.courseSession$.subscribe((session) => {
+    //   this.sessionObject = session;
+    // });
+    // if (this.isUserLogged) {
+    //   this.authService
+    //     .getUserDetails()
+    //     .usercourseaccess.forEach((course: ICourse) => {
+    //       if (course.courseId === Number(this.course_id)) {
+    //         this.usserAccess = true;
+    //       }
+    //     });
+    // }
   }
 
   onClick() {

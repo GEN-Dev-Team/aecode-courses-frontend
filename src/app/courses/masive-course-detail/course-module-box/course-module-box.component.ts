@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CourseSessionIconComponent } from '../../../shared/icons/course-session-icon/course-session-icon.component';
 import { WatchIconComponent } from '../../../shared/icons/watch-icon/watch-icon.component';
+import { ICourse } from '../../interface/Course';
+import { BrowserService } from '../../../core/services/browser.service';
+import { CourseService } from '../../services/course.service';
 
 @Component({
   selector: 'app-course-module-box',
@@ -9,4 +12,16 @@ import { WatchIconComponent } from '../../../shared/icons/watch-icon/watch-icon.
   templateUrl: './course-module-box.component.html',
   styleUrl: './course-module-box.component.css',
 })
-export class CourseModuleBoxComponent {}
+export class CourseModuleBoxComponent {
+  @Input() course!: ICourse;
+
+  browserService: BrowserService = inject(BrowserService);
+  courseService: CourseService = inject(CourseService);
+  redirectToCourse(moduleId: number) {
+    this.courseService.setShowMasiveCourseBackground(false);
+    this.browserService.navigateAndScroll(
+      `courses/masive-course-detail/module/${moduleId}`,
+      0
+    );
+  }
+}

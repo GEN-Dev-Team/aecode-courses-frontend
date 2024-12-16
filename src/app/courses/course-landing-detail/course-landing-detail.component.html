@@ -1,143 +1,126 @@
-@if (secondaryCourseData$ | async; as secondaryCourseData) {
-<main class="course-landing-detail-container">
-  <div class="course-landing-presentation">
-    <h2 class="course-landing-title">{{ secondaryCourseData[0].title }}</h2>
-    <h3 class="course-landing-subtitle">¡Este curso es para ti!</h3>
+<app-course-overlay>
+  @if (secondaryCourseData$ | async; as secondaryCourseData) {
+  <main class="course-landing-detail-container">
+    <div class="course-landing-presentation">
+      <h2 class="course-landing-title">{{ secondaryCourseData.title }}</h2>
+      <h3 class="course-landing-subtitle">¡Este curso es para ti!</h3>
 
-    <div class="course-landing-presentation-box">
-      <p class="course-description">
-        {{ secondaryCourseData[0].description }}
-      </p>
+      <div class="course-landing-presentation-box">
+        <p class="course-description">
+          {{ secondaryCourseData.description }}
+        </p>
 
-      <div class="video-container">
-        <img
-          (click)="showIntroVideo = true"
-          class="course-video"
-          src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-          alt=""
+        <div class="video-container">
+          <img
+            (click)="showIntroVideo = true"
+            class="course-video"
+            src="{{ secondaryCourseData.principalimage }}"
+            alt=""
+          />
+          <a
+            class="access-button"
+            target="_blank"
+            href="{{ secondaryCourseData.exterallink }}"
+            >Accede a la Masterclass</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="course-landing-details-box">
+      <div class="row-1">
+        <div class="col-1">
+          <div class="plan-estudio-container">
+            <div class="section-title plan-title">
+              <h2>PLAN DE ESTUDIOS</h2>
+              <div class="plan-tags">
+                <div class="tag-item">
+                  <app-course-session-icon class="session-icon" />
+                  @if (courseSessionsNumber$ | async; as sessions) {
+                  {{ sessions }} sesiones }
+                </div>
+                <div class="tag-item">
+                  <app-watch-icon class="watch-icon" /> 24 hrs
+                </div>
+                <div class="tag-item">
+                  <app-unit-course-icon class="icon" />
+                  @if (courseUnitsNumber$ | async; as units) {
+                  {{ units }} unidades }
+                </div>
+              </div>
+            </div>
+
+            @for (studyplanItem of secondaryCourseData.studyplans; track
+            studyplanItem) {
+            <div
+              class="unit-item"
+              (click)="openUnit(studyplanItem.studyplanId)"
+            >
+              <span> {{ studyplanItem.unit }}</span>
+              @if(showDropdownUnit) {
+              <app-caret-up-icon class="icon" />
+              } @else {
+              <app-caret-down-icon class="icon" />
+
+              }
+            </div>
+
+            @if (showDropdownUnit) {
+            <ul class="plan-list">
+              @for (sessionItem of studyplanItem.sessions; track sessionItem) {
+              <li>{{ sessionItem }}</li>
+              }
+            </ul>
+
+            } }
+          </div>
+
+          <div class="tools-container">
+            <h2 class="section-title tools-title">HERRAMIENTAS</h2>
+
+            <div class="slider-wrapper">
+              <div class="slider">
+                @for (item of loopList; track item) { @for( toolItem of
+                secondaryCourseData.tools; track toolItem) {
+                <img
+                  class="tool-img"
+                  [src]="url_base + toolItem.picture"
+                  alt="{{ toolItem.name }} icon image"
+                />
+                } }
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <app-course-invest
+          [coursePrice]="secondaryCourseData.price"
+          [courseTitle]="secondaryCourseData.title"
         />
-        <a class="access-button" target="_blank" href=""
-          >Accede a la Masterclass</a
-        >
-      </div>
-    </div>
-  </div>
-
-  <div class="course-landing-details-box">
-    <div class="row-1">
-      <div class="col-1">
-        <div class="plan-estudio-container">
-          <div class="section-title plan-title">
-            <h2>PLAN DE ESTUDIOS</h2>
-            <div class="plan-tags">
-              <div class="tag-item">
-                <app-course-session-icon class="session-icon" /> 24 sesión
-              </div>
-              <div class="tag-item">
-                <app-watch-icon class="watch-icon" /> 24 hrs
-              </div>
-              <div class="tag-item">
-                <app-unit-course-icon class="icon" />
-                Unidades
-              </div>
-            </div>
-          </div>
-
-          <div class="unit-item" (click)="openUnit(1)">
-            <span> U1: Introducción al BIM 4D </span>
-            @if(showDropdownUnit) {
-            <app-caret-up-icon class="icon" />
-            } @else {
-            <app-caret-down-icon class="icon" />
-
-            }
-          </div>
-          @if (showDropdownUnit) {
-          <ul class="plan-list">
-            <li>Contexto nacional BIM 4D</li>
-            <li>Plan BIM y proyecciones de implementacion BIM</li>
-            <li>Requerimientos BIM 4D en TDR's de proyectos</li>
-            <li>BIM 4D: usos beneficios y proósito</li>
-          </ul>
-          }
-
-          <div></div>
-        </div>
-
-        <div class="tools-container">
-          <h2 class="section-title tools-title">HERRAMIENTAS</h2>
-
-          <div class="slider-wrapper">
-            <div class="slider">
-              <img
-                class="tool-img"
-                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-                alt=""
-              />
-              <img
-                class="tool-img"
-                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-                alt=""
-              /><img
-                class="tool-img"
-                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-                alt=""
-              />
-              <img
-                class="tool-img"
-                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-                alt=""
-              /><img
-                class="tool-img"
-                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-                alt=""
-              />
-
-              <img
-                class="tool-img"
-                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-                alt=""
-              />
-              <img
-                class="tool-img"
-                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-                alt=""
-              /><img
-                class="tool-img"
-                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-                alt=""
-              />
-              <img
-                class="tool-img"
-                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-                alt=""
-              /><img
-                class="tool-img"
-                src="https://www.app-consultoria.com/wp-content/uploads/2019/10/4d-bim-project-simulation-basics-750x420.png"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
       </div>
 
-      <app-course-invest />
+      <app-course-extra-information
+        [courseAchievements]="secondaryCourseData.achievement"
+        [courseBenefits]="secondaryCourseData.benefits"
+        [courseFaqs]="secondaryCourseData.freqquests"
+        [courseSchedule]="secondaryCourseData.schedule"
+      />
     </div>
+  </main>
 
-    <app-course-extra-information />
-  </div>
-</main>
+  <app-modal [isOpen]="showIntroVideo" (isClosed)="showIntroVideo = $event">
+    @if (youtubeVideo$ | async; as youtubeVideo) {
+    <iframe
+      [src]="youtubeVideo"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      class="intro-video"
+    ></iframe>
+    }
+  </app-modal>
 
-<app-modal [isOpen]="showIntroVideo" (isClosed)="showIntroVideo = $event">
-  <iframe
-    [src]="youtubeVideo"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-    class="intro-video"
-  ></iframe>
-</app-modal>
-
-} @else {
-<h1>Loading secondary course...</h1>
-}
+  } @else {
+  <h1>Loading secondary course...</h1>
+  }
+</app-course-overlay>

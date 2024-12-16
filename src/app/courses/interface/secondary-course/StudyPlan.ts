@@ -1,6 +1,6 @@
 export interface IStudyPlan {
-  studyplanId: Number;
-  seccourseId: Number;
-  unit: String;
+  studyplanId: number;
+  seccourseId: number;
+  unit: string;
   sessions: String[];
 }

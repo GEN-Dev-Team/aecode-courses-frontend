@@ -1,5 +1,5 @@
 export interface ITool {
-  toolId: Number;
-  name: String;
-  picture: String;
+  toolId: number;
+  name: string;
+  picture: string;
 }
