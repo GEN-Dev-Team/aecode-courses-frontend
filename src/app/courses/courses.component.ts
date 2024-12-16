@@ -1,40 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { CourseAsideComponent } from './course-aside/course-aside.component';
-import { CourseLandingDetailComponent } from './course-landing-detail/course-landing-detail.component';
+import { Component } from '@angular/core';
 import { CourseMainComponent } from './course-main/course-main.component';
-import { CourseService } from './services/course.service';
-import { MasiveCourseDetailComponent } from './masive-course-detail/masive-course-detail.component';
+import { CourseOverlayComponent } from '../shared/layouts/course-overlay/course-overlay.component';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [
-    CourseAsideComponent,
-    CourseLandingDetailComponent,
-    CourseMainComponent,
-    MasiveCourseDetailComponent,
-  ],
+  imports: [CourseMainComponent, CourseOverlayComponent],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.css',
 })
-export class CoursesComponent {
-  courseService: CourseService = inject(CourseService);
-
-  showAsyncCourseDetails: boolean = false;
-  showMasiveCourseDetails: boolean = false;
-  showMasiveCourseBackground: boolean = false;
-
-  ngOnInit(): void {
-    this.courseService.showAsyncCourseDetails$.subscribe((state) => {
-      this.showAsyncCourseDetails = state;
-    });
-
-    this.courseService.showMasiveCourseDetails$.subscribe((state) => {
-      this.showMasiveCourseDetails = state;
-    });
-
-    this.courseService.showMasiveCourseBackground$.subscribe((state) => {
-      this.showMasiveCourseBackground = state;
-    });
-  }
-}
+export class CoursesComponent {}

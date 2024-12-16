@@ -1,8 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FreeModuleComponent } from './free-module/free-module.component';
 import { CourseModuleBoxComponent } from './course-module-box/course-module-box.component';
-import { CourseDetailComponent } from '../course-detail/course-detail.component';
 import { CourseService } from '../services/course.service';
+import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
+import { Observable } from 'rxjs';
+import { ICourse } from '../interface/Course';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-masive-course-detail',
@@ -10,7 +13,8 @@ import { CourseService } from '../services/course.service';
   imports: [
     FreeModuleComponent,
     CourseModuleBoxComponent,
-    CourseDetailComponent,
+    CourseOverlayComponent,
+    AsyncPipe,
   ],
   templateUrl: './masive-course-detail.component.html',
   styleUrl: './masive-course-detail.component.css',
@@ -18,11 +22,9 @@ import { CourseService } from '../services/course.service';
 export class MasiveCourseDetailComponent {
   courseService: CourseService = inject(CourseService);
 
-  showMasiveCourseModule: boolean = false;
+  course$: Observable<ICourse> = this.courseService.getCourse(1);
 
   ngOnInit(): void {
-    this.courseService.showMasiveCourseModule$.subscribe((state) => {
-      this.showMasiveCourseModule = state;
-    });
+    this.course$.subscribe((course) => console.log(course));
   }
 }

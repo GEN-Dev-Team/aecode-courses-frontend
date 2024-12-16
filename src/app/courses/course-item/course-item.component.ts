@@ -22,18 +22,15 @@ export class CourseItemComponent {
   router: Router = inject(Router);
 
   showCourseDetails(courseId: number) {
-    this.courseService.setShowAsyncCourseDetails(true);
     this.browserService.navigateAndScroll(
-      `courses/course-detail/${courseId}`,
+      `courses/secondary-course-detail/${courseId}`,
       0
     );
   }
 
   showMasiveCourseDetails(courseId: number) {
-    this.courseService.setShowMasiveCourseDetails(true);
-    this.courseService.setShowMasiveCourseBackground(true);
     this.browserService.navigateAndScroll(
-      `courses/course-detail/${courseId}`,
+      `courses/masive-course-detail/${courseId}`,
       0
     );
   }

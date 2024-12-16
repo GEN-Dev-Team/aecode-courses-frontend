@@ -1,5 +1,5 @@
 export interface IFAQ {
-  freqquestId: Number;
-  questionText: String;
-  answerText: String;
+  freqquestId: number;
+  questionText: string;
+  answerText: string;
 }

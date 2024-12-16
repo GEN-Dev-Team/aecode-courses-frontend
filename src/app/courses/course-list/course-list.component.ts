@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { CourseItemComponent } from '../course-item/course-item.component';
@@ -11,6 +11,8 @@ import { CourseItemComponent } from '../course-item/course-item.component';
   styleUrl: './course-list.component.css',
 })
 export class CourseListComponent {
+  @Input() listTitle: string = '';
+
   constructor(private courseService: CourseService, private router: Router) {}
 
   getCourses() {

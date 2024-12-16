@@ -16,4 +16,10 @@ import { CourseListComponent } from '../course-list/course-list.component';
   templateUrl: './course-main.component.html',
   styleUrl: './course-main.component.css',
 })
-export class CourseMainComponent {}
+export class CourseMainComponent {
+  coursesList = [
+    { id: 1, name: 'CURSOS MODALIDAD ASINCRÓNICOS' },
+    { id: 2, name: 'CURSOS MODALIDAD EN VIVO' },
+    { id: 3, name: 'CURSOS PROXIMOS' },
+  ];
+}

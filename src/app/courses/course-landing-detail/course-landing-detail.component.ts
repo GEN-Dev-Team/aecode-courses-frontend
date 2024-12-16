@@ -9,9 +9,11 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CourseExtraInformationComponent } from './course-extra-information/course-extra-information.component';
 import { SecondaryCourseService } from '../services/secondary-course.service';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
 import { AsyncPipe } from '@angular/common';
+import { environment } from '../../../environment/environment';
+import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
 
 @Component({
   selector: 'app-course-landing-detail',
@@ -26,6 +28,7 @@ import { AsyncPipe } from '@angular/common';
     ModalComponent,
     CourseExtraInformationComponent,
     AsyncPipe,
+    CourseOverlayComponent,
   ],
   templateUrl: './course-landing-detail.component.html',
   styleUrl: './course-landing-detail.component.css',
@@ -36,18 +39,30 @@ export class CourseLandingDetailComponent {
     SecondaryCourseService
   );
 
-  secondaryCourseData$: Observable<ISecondaryCourse[]> =
-    this.secondaryCourseService.getAllSecondaryCourses();
+  secondaryCourseData$: Observable<ISecondaryCourse> =
+    this.secondaryCourseService.getSecondaryCourseById(1);
 
+  url_base = environment.base;
+  loopList: number[] = [1, 2, 3];
   showDropdownUnit: boolean = false;
   showIntroVideo: boolean = false;
-  youtubeVideo: SafeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
-    'https://www.youtube.com/embed/NmkY4JgS21A'
+
+  youtubeVideo$: Observable<SafeResourceUrl> = this.secondaryCourseData$.pipe(
+    map((data) => this.sanitizer.bypassSecurityTrustResourceUrl(data.videoUrl))
+  );
+
+  courseUnitsNumber$: Observable<number> = this.secondaryCourseData$.pipe(
+    map((data) => data.studyplans.length)
+  );
+  courseSessionsNumber$: Observable<number> = this.secondaryCourseData$.pipe(
+    map((data) =>
+      data.studyplans.reduce((acc, session) => acc + session.sessions.length, 0)
+    )
   );
 
   ngOnInit(): void {
     this.secondaryCourseData$.subscribe((data) => {
-      console.log(data);
+      console.log('Secondary course data: ', data);
     });
   }
 

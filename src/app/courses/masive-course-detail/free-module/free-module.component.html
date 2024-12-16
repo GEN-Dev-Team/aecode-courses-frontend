@@ -13,7 +13,9 @@
       <div class="course-details-cointainer">
         <div class="course-details-content">
           <app-course-session-icon class="icon" />
-          <span class="detail-description">24 sesiones</span>
+          <span class="detail-description">
+            {{ freeModule.units.length }} sesiones</span
+          >
         </div>
         <div class="course-details-content">
           <app-watch-icon class="icon" />
@@ -27,14 +29,14 @@
       </div>
     </div>
 
-    <button class="reserve-button" (click)="redirectToCourse(1)">
+    <button class="reserve-button" (click)="redirectToCourse()">
       Acceso Libre
     </button>
   </div>
 
   <div class="course-details">
     <h2 class="course-title">
-      Desarrollo e Implementación de Inteligencia Artificial en AEC
+      {{ freeModule.title }}
     </h2>
   </div>
 </div>

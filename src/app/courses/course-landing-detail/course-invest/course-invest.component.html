@@ -2,13 +2,13 @@
   <h3 class="invest-title">INVERSION</h3>
 
   <div class="invest-options">
-    <span (click)="investOptionSelected = !investOptionSelected"
-      >Regular @if (!investOptionSelected) {
+    <span (click)="selectStudentOption(false)"
+      >Regular @if (!studentOptionSelected) {
       <div class="invest-line"></div>
       }
     </span>
-    <span (click)="investOptionSelected = !investOptionSelected"
-      >Especial @if (investOptionSelected) {
+    <span (click)="selectStudentOption(true)"
+      >Estudiante @if (studentOptionSelected) {
       <div class="invest-line"></div>
       }
     </span>
@@ -18,23 +18,41 @@
     <div class="investDetail">
       <div class="invest-item">
         <span> Inversion: </span>
-        <span> 140$ </span>
+        <span>
+          @if (!studentOptionSelected) {
+          {{ coursePrice }}
+
+          } @else {
+          {{ studentCoursePrice }}
+
+          }
+        </span>
       </div>
+
       <div class="invest-item">
         <span> Cupón de descuento: </span>
         <input class="cupon-input" type="text" />
       </div>
+
       <div class="invest-item">
         <span> Descuento: </span>
-        <span> -41$ </span>
+        <span> -{{ courseDiscount }}$ </span>
       </div>
+
       <div class="invest-item">
         <span> Total: </span>
-        <span> 99$ </span>
+        <span> {{ coursePrice - courseDiscount }}$ </span>
       </div>
     </div>
 
-    <button class="invest-button">PAGAR</button>
+    <a
+      class="invest-button"
+      target="_blank"
+      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el curso '{{
+        courseTitle
+      }}'."
+      >PAGAR</a
+    >
 
     <span class="invest-question">¿BUSCAS FINANCIAMIENTO?</span>
     <span class="invest-question-info">Fraccionamiento de 2 a 4 cuotas</span>
@@ -42,7 +60,9 @@
     <a
       class="invest-whatsapp-button"
       target="_blank"
-      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola%20AECODE.%20Quiero%20conversar%20con%20un%20asesor%20%F0%9F%99%8C"
+      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Necesito informaci%C3%B3n para poder fraccionar el curso '{{
+        courseTitle
+      }}'  en cuotas."
     >
       SOLICITAR
       <div class="whatsapp-button">

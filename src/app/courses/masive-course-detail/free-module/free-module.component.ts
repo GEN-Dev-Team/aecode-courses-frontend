@@ -1,9 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CourseSessionIconComponent } from '../../../shared/icons/course-session-icon/course-session-icon.component';
 import { WatchIconComponent } from '../../../shared/icons/watch-icon/watch-icon.component';
-import { Router } from '@angular/router';
 import { CourseService } from '../../services/course.service';
 import { BrowserService } from '../../../core/services/browser.service';
+import { IModule } from '../../interface/Module';
 
 @Component({
   selector: 'app-free-module',
@@ -13,15 +13,15 @@ import { BrowserService } from '../../../core/services/browser.service';
   styleUrl: './free-module.component.css',
 })
 export class FreeModuleComponent {
-  router: Router = inject(Router);
+  @Input() freeModule!: IModule;
+
   browserService: BrowserService = inject(BrowserService);
   courseService: CourseService = inject(CourseService);
 
-  redirectToCourse(courseId: number) {
+  redirectToCourse() {
     this.courseService.setShowMasiveCourseBackground(false);
-    this.courseService.setShowMasiveCourseModule(true);
     this.browserService.navigateAndScroll(
-      `courses/course-detail/${courseId}`,
+      `courses/masive-course-detail/module/${this.freeModule.moduleId}`,
       0
     );
   }

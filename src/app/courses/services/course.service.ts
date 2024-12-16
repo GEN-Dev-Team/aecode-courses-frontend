@@ -14,31 +14,9 @@ export class CourseService {
 
   http: HttpClient = inject(HttpClient);
 
-  showAsyncCourseDetails = new BehaviorSubject<boolean>(false);
-  showMasiveCourseDetails = new BehaviorSubject<boolean>(false);
   showMasiveCourseBackground = new BehaviorSubject<boolean>(false);
-  showMasiveCourseModule = new BehaviorSubject<boolean>(false);
 
-  showAsyncCourseDetails$ = this.showAsyncCourseDetails.asObservable();
-  showMasiveCourseDetails$ = this.showMasiveCourseDetails.asObservable();
   showMasiveCourseBackground$ = this.showMasiveCourseBackground.asObservable();
-  showMasiveCourseModule$ = this.showMasiveCourseModule.asObservable();
-
-  setShowAsyncCourseDetails(state: boolean) {
-    this.showAsyncCourseDetails.next(state);
-  }
-
-  getShowAsyncCourseDetails() {
-    return this.showAsyncCourseDetails.getValue();
-  }
-
-  setShowMasiveCourseDetails(state: boolean) {
-    this.showMasiveCourseDetails.next(state);
-  }
-
-  getShowMasiveCourseDetails() {
-    return this.showMasiveCourseDetails.getValue();
-  }
 
   setShowMasiveCourseBackground(state: boolean) {
     this.showMasiveCourseBackground.next(state);
@@ -48,19 +26,8 @@ export class CourseService {
     return this.showMasiveCourseBackground.getValue();
   }
 
-  setShowMasiveCourseModule(state: boolean) {
-    this.showMasiveCourseModule.next(state);
-  }
-
-  getShowMasiveCourseModule() {
-    return this.showMasiveCourseModule.getValue();
-  }
-
   resetAllStates() {
-    this.showAsyncCourseDetails.next(false);
-    this.showMasiveCourseDetails.next(false);
     this.showMasiveCourseBackground.next(false);
-    this.showMasiveCourseModule.next(false);
   }
 
   getCourses() {

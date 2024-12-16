@@ -4,6 +4,8 @@ import { CourseDetailComponent } from './courses/course-detail/course-detail.com
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ProfileMainViewComponent } from './user-profile/profile-main-view/profile-main-view.component';
 import { CoursesComponent } from './courses/courses.component';
+import { CourseLandingDetailComponent } from './courses/course-landing-detail/course-landing-detail.component';
+import { MasiveCourseDetailComponent } from './courses/masive-course-detail/masive-course-detail.component';
 
 export const routes: Routes = [
   {
@@ -17,7 +19,17 @@ export const routes: Routes = [
     component: CoursesComponent,
   },
   {
-    path: 'course-detail/:id',
+    path: 'courses/secondary-course-detail/:id',
+    title: 'AECODE COURSES',
+    component: CourseLandingDetailComponent,
+  },
+  {
+    path: 'courses/masive-course-detail/:id',
+    title: 'AECODE COURSES',
+    component: MasiveCourseDetailComponent,
+  },
+  {
+    path: 'courses/masive-course-detail/module/:id',
     title: 'AECODE COURSES',
     component: CourseDetailComponent,
   },

@@ -2,11 +2,7 @@
   <div class="what-to-learn-container">
     <h2 class="section-title">¿QUE LOGRARAS?</h2>
     <p class="section-description">
-      Integrar cronogramas con modelos 3D para generar simulaciones 4D precisas,
-      automatizarás procesos de planificación con herramientas avanzadas como
-      Synchro y Navisworks, y serás capaz de comunicar el progreso de tus
-      proyectos mediante animaciones constructivas impactantes, optimizando
-      tiempos y recursos de manera eficiente.
+      {{ courseAchievements }}
     </p>
   </div>
 
@@ -15,12 +11,10 @@
       <h2 class="section-title">BENEFICIOS</h2>
       <div class="benefits-content">
         <ul class="benefits-list">
-          <li>Certificación por x horas</li>
-          <li>Oportunidad de convertirte en Colaborador</li>
-          <li>Grabaciones y materiales descargables</li>
-          <li>Acceso a la Comunidad exclusiva de AECODE</li>
-          <li>Descuento en otros programas o cursos</li>
-          <li>Asistencia para consultas</li>
+          @for(benefitItem of courseBenefits; track benefitItem) {
+          <li>{{ benefitItem }}</li>
+
+          }
         </ul>
       </div>
     </div>
@@ -28,7 +22,7 @@
     <div class="horarios-container">
       <h2 class="section-title">HORARIOS</h2>
       <div class="horarios-description">
-        Todos los miercoles de 8 a 10am Zona horaria: GMT-5
+        {{ courseSchedule }}
       </div>
     </div>
   </div>
@@ -37,25 +31,10 @@
     <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
     <div class="question-content">
       <ul class="question-list">
-        <li><app-caret-up-icon /> ¿Qué tipo de trabajo tengo que presentar?</li>
-        <li>
-          <app-caret-up-icon />
-          ¿Qué requisitos necesito cumplir para obtener el certificado?
-        </li>
-        <li>
-          <app-caret-up-icon />
-          ¿Es posible acceder a unidades independientes?
-        </li>
-        <li>
-          <app-caret-up-icon />
-          ¿Hay descuentos adicionales por ser colaborador o referenciar a
-          alguien?
-        </li>
-        <li>
-          <app-caret-up-icon />
-          ¿Qué pasa si no llego a presentar mi proyecto, pierdo la
-          certificacion?
-        </li>
+        @for (faqItem of courseFaqs; track faqItem) {
+        <li><app-caret-up-icon /> {{ faqItem.questionText }}</li>
+
+        }
       </ul>
 
       <a
