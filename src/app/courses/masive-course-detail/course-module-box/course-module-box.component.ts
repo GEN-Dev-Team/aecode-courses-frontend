@@ -4,6 +4,7 @@ import { WatchIconComponent } from '../../../shared/icons/watch-icon/watch-icon.
 import { ICourse } from '../../interface/Course';
 import { BrowserService } from '../../../core/services/browser.service';
 import { CourseService } from '../../services/course.service';
+import { CourseSessionService } from '../../services/course-session.service';
 
 @Component({
   selector: 'app-course-module-box',
@@ -17,10 +18,14 @@ export class CourseModuleBoxComponent {
 
   browserService: BrowserService = inject(BrowserService);
   courseService: CourseService = inject(CourseService);
+  courseSessionService: CourseSessionService = inject(CourseSessionService);
+
   redirectToCourse(moduleId: number) {
+    this.courseSessionService.setModuleSelected(moduleId);
+
     this.courseService.setShowMasiveCourseBackground(false);
     this.browserService.navigateAndScroll(
-      `courses/masive-course-detail/module/${moduleId}`,
+      `courses/masive-course-detail/${this.course.courseId}/module/${moduleId}`,
       0
     );
   }

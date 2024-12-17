@@ -6,3 +6,10 @@ export interface ICourse {
   videoUrl: string;
   modules: IModule[];
 }
+
+export const defaultCourse: ICourse = {
+  courseId: 0,
+  title: '',
+  videoUrl: '',
+  modules: [],
+};

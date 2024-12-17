@@ -92,7 +92,7 @@ export class CourseModuleComponent {
         sessiontests: [],
       };
       this.courseSessionService.setCourseSessionDetails(this.sessionObject);
-      this.courseSessionService.setModuleId(this.module.moduleId - 1);
+      this.courseSessionService.setModuleSelected(this.module.moduleId - 1);
     }
   }
 
