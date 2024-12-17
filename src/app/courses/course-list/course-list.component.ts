@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { CourseItemComponent } from '../course-item/course-item.component';
+import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
 
 @Component({
   selector: 'app-course-list',
@@ -12,6 +13,7 @@ import { CourseItemComponent } from '../course-item/course-item.component';
 })
 export class CourseListComponent {
   @Input() listTitle: string = '';
+  @Input() secondaryCourseList: ISecondaryCourse[] = [];
 
   constructor(private courseService: CourseService, private router: Router) {}
 

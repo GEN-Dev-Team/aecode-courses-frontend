@@ -5,6 +5,7 @@ import { CourseSessionIconComponent } from '../../shared/icons/course-session-ic
 import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { BrowserService } from '../../core/services/browser.service';
+import { defaultCourse, ICourse } from '../interface/Course';
 
 @Component({
   selector: 'app-course-item',
@@ -15,6 +16,7 @@ import { BrowserService } from '../../core/services/browser.service';
 })
 export class CourseItemComponent {
   @Input() isPlatformCourse: boolean = false;
+  @Input() course: any = {};
 
   browserService: BrowserService = inject(BrowserService);
   courseService: CourseService = inject(CourseService);

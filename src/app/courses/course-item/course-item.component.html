@@ -33,18 +33,22 @@
 
   @if(isPlatformCourse) {
   <div class="platform-course-details">
-    <h2 class="course-title">Programación digital</h2>
-    <button class="reserve-button" (click)="showMasiveCourseDetails(1)">
+    <h2 class="course-title">{{ course.title }}</h2>
+    <button
+      class="reserve-button"
+      (click)="showMasiveCourseDetails(course.courseId)"
+    >
       Ver más
     </button>
   </div>
 
   } @else {
   <div class="course-details">
-    <h2 class="course-title">
-      Desarrollo e Implementación de Inteligencia Artificial en AEC
-    </h2>
-    <button class="reserve-button" (click)="showCourseDetails(1)">
+    <h2 class="course-title">{{ course.title }}</h2>
+    <button
+      class="reserve-button"
+      (click)="showCourseDetails(course.seccourseId)"
+    >
       Acceder
     </button>
 

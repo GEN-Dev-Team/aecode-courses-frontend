@@ -16,7 +16,10 @@
 
   <div class="course-main-list">
     @for (courseListItem of coursesList; track courseListItem) {
-    <app-course-list [listTitle]="courseListItem.name" />
+    <app-course-list
+      [listTitle]="courseListItem.name"
+      [secondaryCourseList]="courseListItem.list"
+    />
 
     }
   </div>
