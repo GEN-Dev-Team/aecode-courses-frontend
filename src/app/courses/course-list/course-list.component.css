@@ -23,8 +23,10 @@
 
   .course-list-content {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    flex-flow: row nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
   }
 }
 

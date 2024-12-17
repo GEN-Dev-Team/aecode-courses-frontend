@@ -1,12 +1,14 @@
 <div class="course-list-container">
   <div class="course-list-title">
     <span>{{ listTitle }}</span>
-    <span class="see-all-button">Ver todo</span>
+    <span hidden class="see-all-button">Ver todo</span>
   </div>
 
   <div class="course-list-content">
-    <app-course-item />
-    <app-course-item />
-    <app-course-item />
+    @for (secondaryCourseItem of secondaryCourseList; track secondaryCourseItem)
+    {
+    <app-course-item [course]="secondaryCourseItem" />
+
+    }
   </div>
 </div>

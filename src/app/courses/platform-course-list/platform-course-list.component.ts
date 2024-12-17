@@ -1,9 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CourseItemComponent } from '../course-item/course-item.component';
 import { GiftIconComponent } from '../../shared/icons/gift-icon/gift-icon.component';
 import { ZoomInDirective } from '../../shared/directives/animations/zoom-in.directive';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { GetFreeContentFormComponent } from './get-free-content-form/get-free-content-form.component';
+import { Observable } from 'rxjs';
+import { ICourse } from '../interface/Course';
+import { CourseService } from '../services/course.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-platform-course-list',
@@ -14,10 +18,21 @@ import { GetFreeContentFormComponent } from './get-free-content-form/get-free-co
     ZoomInDirective,
     ModalComponent,
     GetFreeContentFormComponent,
+    AsyncPipe,
   ],
   templateUrl: './platform-course-list.component.html',
   styleUrl: './platform-course-list.component.css',
 })
 export class PlatformCourseListComponent {
   showFreeContentForm: boolean = false;
+
+  courseService: CourseService = inject(CourseService);
+
+  masiveCourseList$: Observable<ICourse[]> = this.courseService.getCourses();
+
+  ngOnInit(): void {
+    this.masiveCourseList$.subscribe((data) =>
+      console.log('Masive course list: ', data)
+    );
+  }
 }
