@@ -29,7 +29,7 @@ export const routes: Routes = [
     component: MasiveCourseDetailComponent,
   },
   {
-    path: 'courses/masive-course-detail/module/:id',
+    path: 'courses/masive-course-detail/:courseId/module/:moduleId',
     title: 'AECODE COURSES',
     component: CourseDetailComponent,
   },

@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ButtonComponent } from '../../shared/components/button/button.component';
-import { CourseModuleComponent } from './course-module/course-module.component';
 import { CourseService } from '../services/course.service';
 import { ICourse } from '../interface/Course';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
@@ -25,6 +24,7 @@ import { Observable } from 'rxjs';
 import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
 import { CourseModuleBoxComponent } from '../masive-course-detail/course-module-box/course-module-box.component';
 import { CourseUnitComponent } from './course-unit/course-unit.component';
+import { defaultModule, IModule } from '../interface/Module';
 
 @Component({
   selector: 'app-course-detail',
@@ -57,35 +57,42 @@ export class CourseDetailComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   courseService: CourseService = inject(CourseService);
   authService: AuthService = inject(AuthService);
-  courseSession: CourseSessionService = inject(CourseSessionService);
+  courseSessionService: CourseSessionService = inject(CourseSessionService);
 
   apiUrl = environment.base;
 
-  course_id: number = Number(this.route.snapshot.params['id']);
-  course$: Observable<ICourse> = this.courseService.getCourse(this.course_id);
+  course_id: number = Number(this.route.snapshot.params['courseId']);
+  module_id: number = Number(this.route.snapshot.params['moduleId']);
   courseSessionSubject!: ISession;
   showBlockedModal = false;
   isUserLogged: boolean = true;
-  module_id = 0;
   isDescription = true;
   courseIntroVideo = '';
 
+  course$: Observable<ICourse> = this.courseService.getCourse(this.course_id);
+  moduleSelected$: Observable<IModule> =
+    this.courseSessionService.moduleSelected$;
+
   ngOnInit(): void {
-    console.log('Renderizado de course-detail');
+    this.courseDetailsInit();
+  }
+
+  courseDetailsInit() {
+    console.log('Course Id: ', this.course_id);
+    console.log('Module Id: ', this.module_id);
+
+    this.courseSessionService.setModuleSelected(this.module_id);
+
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLogged = loggedInStatus;
     });
 
-    this.courseSession.courseSession$.subscribe((session) => {
-      this.courseSessionSubject = session;
-    });
-
-    this.courseSession.module_id$.subscribe((id) => {
-      this.module_id = id;
-    });
-
     this.courseService.getCourse(this.course_id).subscribe((response) => {
       this.courseIntroVideo = response.videoUrl;
+    });
+
+    this.courseSessionService.courseSession$.subscribe((session) => {
+      this.courseSessionSubject = session;
     });
   }
 }

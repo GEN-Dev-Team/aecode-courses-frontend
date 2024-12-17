@@ -84,7 +84,6 @@ export class CourseSessionComponent {
       this.courseSessionService.setCourseSessionDetails(
         this.courseSessionSelected
       );
-      this.courseSessionService.setModuleId(this.moduleId - 1);
     } else {
       this.showBlockedModal = true;
     }

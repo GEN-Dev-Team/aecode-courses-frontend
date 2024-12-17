@@ -64,25 +64,25 @@ export class CourseUnitComponent {
   }
 
   onClick() {
-    if (this.usserAccess) {
-      this.showSessions = !this.showSessions;
+    // if (this.usserAccess) {
+    this.showSessions = !this.showSessions;
 
-      this.sessionObject = {
-        sessionId: 0,
-        unitId: 0,
-        title: this.unit.title,
-        videoUrl: this.unit.videoUrl,
-        description: '',
-        resourceText: '',
-        resourceDocument: '',
-        orderNumber: 0,
-        taskName: '',
-        taskUrl: '',
-        htmlContent: '',
-        sessiontests: [],
-      };
-      this.courseSessionService.setCourseSessionDetails(this.sessionObject);
-      this.courseSessionService.setModuleId(this.unit.moduleId - 1);
-    }
+    this.sessionObject = {
+      sessionId: 0,
+      unitId: 0,
+      title: this.unit.title,
+      videoUrl: this.unit.videoUrl,
+      description: '',
+      resourceText: '',
+      resourceDocument: '',
+      orderNumber: 0,
+      taskName: '',
+      taskUrl: '',
+      htmlContent: '',
+      sessiontests: [],
+    };
+    this.courseSessionService.setCourseSessionDetails(this.sessionObject);
+    // this.courseSessionService.setModuleSelected(this.unit.moduleId - 1);
+    // }
   }
 }

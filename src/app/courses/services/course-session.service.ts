@@ -1,8 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { ISession } from '../interface/Session';
+import { defaultSession, ISession } from '../interface/Session';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environment/environment';
+import { defaultModule, IModule } from '../interface/Module';
+import { defaultCourse } from '../interface/Course';
+import { CourseService } from './course.service';
 
 const base_url = environment.base;
 
@@ -13,24 +16,13 @@ export class CourseSessionService {
   http: HttpClient = inject(HttpClient);
   url = base_url + '/session';
 
-  private module_id = new BehaviorSubject<number>(0);
-  private courseSessionSubject = new BehaviorSubject<ISession>({
-    sessionId: 0,
-    unitId: 0,
-    title: '',
-    videoUrl: '',
-    description: '',
-    resourceText: '',
-    resourceDocument: '',
-    orderNumber: 0,
-    taskName: '',
-    taskUrl: '',
-    htmlContent: '',
-    sessiontests: [],
-  });
+  courseService: CourseService = inject(CourseService);
 
-  module_id$ = this.module_id.asObservable();
+  private moduleSelected = new BehaviorSubject<IModule>(defaultModule);
+  private courseSessionSubject = new BehaviorSubject<ISession>(defaultSession);
+
   courseSession$ = this.courseSessionSubject.asObservable();
+  moduleSelected$ = this.moduleSelected.asObservable();
 
   setCourseSessionDetails(session: ISession) {
     if (session.sessionId > 0) {
@@ -44,7 +36,15 @@ export class CourseSessionService {
     }
   }
 
-  setModuleId(id: number) {
-    this.module_id.next(id);
+  setModuleSelected(moduleId: number) {
+    const moduleSelected = this.courseService.getModuleById(moduleId);
+
+    moduleSelected.subscribe((module) => {
+      this.moduleSelected.next(module);
+    });
+  }
+
+  getModuleSelected(): IModule {
+    return this.moduleSelected.getValue();
   }
 }

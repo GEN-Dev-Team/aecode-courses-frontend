@@ -2,7 +2,8 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environment/environment';
 import { ICourse } from '../interface/Course';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { IModule } from '../interface/Module';
 
 const base_url = environment.base;
 
@@ -11,6 +12,7 @@ const base_url = environment.base;
 })
 export class CourseService {
   api_url = base_url + '/course';
+  api_url_module = base_url + '/module';
 
   http: HttpClient = inject(HttpClient);
 
@@ -48,5 +50,9 @@ export class CourseService {
 
   deleteCourse(id: number) {
     return this.http.delete<ICourse>(`${this.api_url}/${id}`);
+  }
+
+  getModuleById(moduleId: number): Observable<IModule> {
+    return this.http.get<IModule>(`${this.api_url_module}/${moduleId}`);
   }
 }

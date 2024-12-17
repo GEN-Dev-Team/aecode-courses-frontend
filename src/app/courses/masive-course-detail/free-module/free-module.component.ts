@@ -21,7 +21,7 @@ export class FreeModuleComponent {
   redirectToCourse() {
     this.courseService.setShowMasiveCourseBackground(false);
     this.browserService.navigateAndScroll(
-      `courses/masive-course-detail/module/${this.freeModule.moduleId}`,
+      `courses/masive-course-detail/${this.freeModule.courseId}/module/${this.freeModule.moduleId}`,
       0
     );
   }

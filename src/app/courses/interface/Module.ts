@@ -10,3 +10,13 @@ export interface IModule {
   units: IUnit[];
   relatedworks: ITest;
 }
+
+export const defaultModule: IModule = {
+  moduleId: 0,
+  courseId: 0,
+  title: '',
+  videoUrl: '',
+  orderNumber: 0,
+  units: [],
+  relatedworks: {} as ITest,
+};

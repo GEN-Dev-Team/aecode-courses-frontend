@@ -2,9 +2,11 @@
   @if (course$ | async; as course) {
   <main class="masive-course-container">
     <h1 class="masive-course-title">INGENIERIA 4.0</h1>
+
+    @if (moduleSelected$ | async; as module) {
     <div class="text-container">
       <h2 class="masive-course-module-subtitle">
-        Módulo I: Desarrollo e Implementación de Inteligencia Artificial en AEC
+        Módulo {{ module.orderNumber }}: {{ module.title }}
       </h2>
 
       <span>Esto es para ti si...</span>
@@ -41,7 +43,7 @@
           }
 
           <aside class="course-details-aside">
-            @for (unit of course.modules[1].units; track unit) {
+            @for (unit of module.units; track unit) {
             <app-course-unit [unit]="unit" />
             }
           </aside>
@@ -175,6 +177,8 @@
         </main>
       </div>
     </div>
+
+    }
 
     <h2 class="module-title">
       Módulos Tecnológicos introductorios a tu alcance
