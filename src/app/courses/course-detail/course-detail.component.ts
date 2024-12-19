@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ButtonComponent } from '../../shared/components/button/button.component';
 import { CourseService } from '../services/course.service';
 import { ICourse } from '../interface/Course';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
@@ -10,7 +9,7 @@ import { NextIconComponent } from '../icons/next-icon/next-icon.component';
 import { PrevIconComponent } from '../icons/prev-icon/prev-icon.component';
 import { CaretDownIconComponent } from '../icons/caret-down-icon/caret-down-icon.component';
 import { AuthService } from '../../core/services/auth.service';
-import { AsyncPipe, NgClass, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
 import { CourseSessionService } from '../services/course-session.service';
@@ -24,13 +23,13 @@ import { Observable } from 'rxjs';
 import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
 import { CourseModuleBoxComponent } from '../masive-course-detail/course-module-box/course-module-box.component';
 import { CourseUnitComponent } from './course-unit/course-unit.component';
-import { defaultModule, IModule } from '../interface/Module';
+import { IModule } from '../interface/Module';
+import { LoaderComponent } from '../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
   imports: [
-    ButtonComponent,
     ModalComponent,
     ContentBlockedComponent,
     HouseIconComponent,
@@ -38,7 +37,6 @@ import { defaultModule, IModule } from '../interface/Module';
     CaretDownIconComponent,
     NextIconComponent,
     PrevIconComponent,
-    NgIf,
     NgClass,
     YoutubePlayerComponent,
     LinkIconComponent,
@@ -49,6 +47,7 @@ import { defaultModule, IModule } from '../interface/Module';
     CourseOverlayComponent,
     CourseModuleBoxComponent,
     CourseUnitComponent,
+    LoaderComponent,
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css',
@@ -93,6 +92,10 @@ export class CourseDetailComponent implements OnInit {
 
     this.courseSessionService.courseSession$.subscribe((session) => {
       this.courseSessionSubject = session;
+    });
+
+    this.courseSessionService.moduleSelected$.subscribe((module) => {
+      this.module_id = module.moduleId;
     });
   }
 }

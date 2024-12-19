@@ -2,8 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CourseSessionIconComponent } from '../../shared/icons/course-session-icon/course-session-icon.component';
 import { WatchIconComponent } from '../../shared/icons/watch-icon/watch-icon.component';
 import { UnitCourseIconComponent } from '../../shared/icons/unit-course-icon/unit-course-icon.component';
-import { CaretUpIconComponent } from '../../shared/icons/caret-up-icon/caret-up-icon.component';
-import { CaretDownIconComponent } from '../../shared/icons/caret-down-icon/caret-down-icon.component';
+
 import { CourseInvestComponent } from './course-invest/course-invest.component';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
@@ -14,6 +13,8 @@ import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course
 import { AsyncPipe } from '@angular/common';
 import { environment } from '../../../environment/environment';
 import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
+import { CourseLandingUnitComponent } from './course-landing-unit/course-landing-unit.component';
+import { LoaderComponent } from '../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-course-landing-detail',
@@ -22,13 +23,13 @@ import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/cour
     CourseSessionIconComponent,
     WatchIconComponent,
     UnitCourseIconComponent,
-    CaretUpIconComponent,
-    CaretDownIconComponent,
     CourseInvestComponent,
     ModalComponent,
     CourseExtraInformationComponent,
     AsyncPipe,
     CourseOverlayComponent,
+    CourseLandingUnitComponent,
+    LoaderComponent,
   ],
   templateUrl: './course-landing-detail.component.html',
   styleUrl: './course-landing-detail.component.css',
@@ -44,7 +45,6 @@ export class CourseLandingDetailComponent {
 
   url_base = environment.base;
   loopList: number[] = [1, 2, 3];
-  showDropdownUnit: boolean = false;
   showIntroVideo: boolean = false;
 
   youtubeVideo$: Observable<SafeResourceUrl> = this.secondaryCourseData$.pipe(
@@ -60,13 +60,15 @@ export class CourseLandingDetailComponent {
     )
   );
 
+  courseHoursNumber$: Observable<number> = this.secondaryCourseData$.pipe(
+    map((data) =>
+      data.studyplans.reduce((acc, session) => acc + session.hours, 0)
+    )
+  );
+
   ngOnInit(): void {
     this.secondaryCourseData$.subscribe((data) => {
       console.log('Secondary course data: ', data);
     });
-  }
-
-  openUnit(id: number) {
-    this.showDropdownUnit = !this.showDropdownUnit;
   }
 }

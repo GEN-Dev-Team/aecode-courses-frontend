@@ -20,12 +20,7 @@
         <span> Inversion: </span>
         <span>
           @if (!studentOptionSelected) {
-          {{ coursePrice }}
-
-          } @else {
-          {{ studentCoursePrice }}
-
-          }
+          {{ priceRegular }}$ } @else { {{ priceAcademy }}$ }
         </span>
       </div>
 
@@ -36,12 +31,15 @@
 
       <div class="invest-item">
         <span> Descuento: </span>
-        <span> -{{ courseDiscount }}$ </span>
+        <span> -{{ discount }}$ </span>
       </div>
 
       <div class="invest-item">
         <span> Total: </span>
-        <span> {{ coursePrice - courseDiscount }}$ </span>
+        <span>
+          @if (!studentOptionSelected) { {{ priceRegular - discount }}$ } @else
+          { {{ priceAcademy - discount }}$ }
+        </span>
       </div>
     </div>
 

@@ -5,6 +5,7 @@ import { ICourse } from '../../interface/Course';
 import { BrowserService } from '../../../core/services/browser.service';
 import { CourseService } from '../../services/course.service';
 import { CourseSessionService } from '../../services/course-session.service';
+import { environment } from '../../../../environment/environment';
 
 @Component({
   selector: 'app-course-module-box',
@@ -19,6 +20,8 @@ export class CourseModuleBoxComponent {
   browserService: BrowserService = inject(BrowserService);
   courseService: CourseService = inject(CourseService);
   courseSessionService: CourseSessionService = inject(CourseSessionService);
+
+  base_url: string = environment.base;
 
   redirectToCourse(moduleId: number) {
     this.courseSessionService.setModuleSelected(moduleId);

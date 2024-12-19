@@ -5,7 +5,10 @@ import { CourseSessionIconComponent } from '../../shared/icons/course-session-ic
 import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { BrowserService } from '../../core/services/browser.service';
-import { defaultCourse, ICourse } from '../interface/Course';
+import { IStudyPlan } from '../interface/secondary-course/StudyPlan';
+import { environment } from '../../../environment/environment';
+import { IModule } from '../interface/Module';
+import { IUnit } from '../interface/Unit';
 
 @Component({
   selector: 'app-course-item',
@@ -15,13 +18,38 @@ import { defaultCourse, ICourse } from '../interface/Course';
   styleUrl: './course-item.component.css',
 })
 export class CourseItemComponent {
-  @Input() isPlatformCourse: boolean = false;
+  @Input() isMasiveCourse: boolean = false;
   @Input() course: any = {};
 
-  browserService: BrowserService = inject(BrowserService);
   courseService: CourseService = inject(CourseService);
-
+  browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
+
+  base_url: string = environment.base;
+  secondaryCourseMainImgUrl = '';
+  secondaryCourseSessions: number = 0;
+
+  ngOnInit() {
+    if (!this.isMasiveCourse) {
+      console.log('Curso secundario renderizado:', this.course);
+
+      this.secondaryCourseMainImgUrl =
+        environment.base + this.course.principalimage;
+      this.course.studyplans.forEach((studyplan: IStudyPlan) => {
+        this.secondaryCourseSessions += studyplan.sessions.length;
+      });
+    } else {
+      console.log('Curso secundario renderizado:', this.course);
+
+      this.secondaryCourseMainImgUrl =
+        environment.base + this.course.coverimage;
+      this.course.modules.forEach((module: IModule) => {
+        module.units.forEach((unit: IUnit) => {
+          this.secondaryCourseSessions += unit.sessions.length;
+        });
+      });
+    }
+  }
 
   showCourseDetails(courseId: number) {
     this.browserService.navigateAndScroll(

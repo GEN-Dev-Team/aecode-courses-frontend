@@ -19,7 +19,7 @@
         </div>
         <div class="course-details-content">
           <app-watch-icon class="icon" />
-          <span class="detail-description"> 24 horas</span>
+          <span class="detail-description"> {{ freeModule.hours }} horas</span>
         </div>
 
         <div class="course-price">
@@ -36,7 +36,7 @@
 
   <div class="course-details">
     <h2 class="course-title">
-      {{ freeModule.title }}
+      M{{ freeModule.orderNumber }}: {{ freeModule.title }}
     </h2>
   </div>
 </div>

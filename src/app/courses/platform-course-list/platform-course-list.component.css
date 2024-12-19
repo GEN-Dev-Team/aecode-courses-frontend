@@ -1,6 +1,7 @@
 .course-platform-list-container {
   width: 100%;
   max-width: 1116px;
+  min-height: 413px;
   padding: 30px 24px;
   margin-bottom: 30px;
   border-radius: 6px;
@@ -22,8 +23,11 @@
 
   .coure-platform-list-content {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    min-height: 273px;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 27px;
+    align-items: center;
   }
 
   .get-free-button {

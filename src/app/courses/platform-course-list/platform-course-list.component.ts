@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { ICourse } from '../interface/Course';
 import { CourseService } from '../services/course.service';
 import { AsyncPipe } from '@angular/common';
+import { LoaderComponent } from '../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-platform-course-list',
@@ -19,6 +20,7 @@ import { AsyncPipe } from '@angular/common';
     ModalComponent,
     GetFreeContentFormComponent,
     AsyncPipe,
+    LoaderComponent,
   ],
   templateUrl: './platform-course-list.component.html',
   styleUrl: './platform-course-list.component.css',

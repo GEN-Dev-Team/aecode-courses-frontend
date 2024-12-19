@@ -8,13 +8,12 @@ import { afterNextRender, Component, Input } from '@angular/core';
   styleUrl: './course-invest.component.css',
 })
 export class CourseInvestComponent {
-  @Input() coursePrice: number = 0;
+  @Input() priceAcademy: number = 0;
+  @Input() priceRegular: number = 0;
   @Input() courseTitle: string = '';
 
   studentOptionSelected: boolean = false;
-  courseDiscount: number = 41;
-  studentCoursePrice: number = 130;
-  finalPrice = this.coursePrice - this.courseDiscount;
+  discount: number = 40;
 
   selectStudentOption(status: boolean) {
     this.studentOptionSelected = status;

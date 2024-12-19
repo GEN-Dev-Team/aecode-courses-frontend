@@ -9,6 +9,7 @@ import { environment } from '../../../environment/environment';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { MessageComponent } from '../../shared/components/message/message.component';
 import { EditIconComponent } from '../../shared/icons/edit-icon/edit-icon.component';
+import { LoaderComponent } from '../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-profile-main-view',
@@ -20,6 +21,7 @@ import { EditIconComponent } from '../../shared/icons/edit-icon/edit-icon.compon
     ModalComponent,
     MessageComponent,
     EditIconComponent,
+    LoaderComponent,
   ],
   templateUrl: './profile-main-view.component.html',
   styleUrl: './profile-main-view.component.css',

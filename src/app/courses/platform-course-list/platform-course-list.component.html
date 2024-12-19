@@ -4,10 +4,10 @@
   <div class="coure-platform-list-content">
     @if (masiveCourseList$ | async; as masiveCourseList) { @for
     (masiveCourseItem of masiveCourseList; track masiveCourseItem) {
-    <app-course-item [course]="masiveCourseItem" [isPlatformCourse]="true" />
+    <app-course-item [course]="masiveCourseItem" [isMasiveCourse]="true" />
 
     } } @else {
-    <h1>Loading masive course list...</h1>
+    <app-loader />
     }
   </div>
 
