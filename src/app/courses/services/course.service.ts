@@ -28,10 +28,6 @@ export class CourseService {
     return this.showMasiveCourseBackground.getValue();
   }
 
-  resetAllStates() {
-    this.showMasiveCourseBackground.next(false);
-  }
-
   getCourses() {
     return this.http.get<ICourse[]>(`${this.api_url}`);
   }

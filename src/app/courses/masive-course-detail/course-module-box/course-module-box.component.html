@@ -1,15 +1,23 @@
 <div class="module-list">
-  @for (moduleItem of course.modules.slice(1); track moduleItem) {
+  @for (moduleItem of course.modules; track moduleItem) {
   <div class="course-item-container">
     <div class="course-presentation-container">
       <img class="course-img" src="assets\images\course-test-img.svg" alt="" />
 
-      <span class="course-status">30%</span>
+      <span class="course-status">{{ moduleItem.percentage }}%</span>
 
       <div class="course-tags">
         <div class="course-icons">
-          <div class="icon-container"><img src="" alt="" /></div>
-          <div class="icon-container"><img src="" alt="" /></div>
+          @for (toolItem of course.tools; track toolItem) {
+
+          <div class="icon-container">
+            <img
+              src="{{ base_url }}{{ toolItem.picture }}"
+              alt="{{ toolItem.name }}"
+            />
+          </div>
+
+          }
         </div>
 
         <div class="course-details-cointainer">
@@ -21,14 +29,16 @@
           </div>
           <div class="course-details-content">
             <app-watch-icon class="icon" />
-            <span class="detail-description"> 24 hrs</span>
+            <span class="detail-description"> {{ moduleItem.hours }} hrs</span>
           </div>
         </div>
       </div>
     </div>
 
     <div class="course-details">
-      <h2 class="course-title">{{ moduleItem.title }}</h2>
+      <h2 class="course-title">
+        M{{ moduleItem.orderNumber }}: {{ moduleItem.title }}
+      </h2>
 
       <button
         class="reserve-button"

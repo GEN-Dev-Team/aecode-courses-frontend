@@ -80,6 +80,12 @@
       background: var(--purple-2);
     }
 
+    .units-list {
+      display: flex;
+      flex-flow: column nowrap;
+      gap: 10px;
+    }
+
     .section-description {
       width: 100%;
       height: 100px;

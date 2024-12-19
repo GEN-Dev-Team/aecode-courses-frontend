@@ -1,6 +1,4 @@
 <div class="courses-container">
-  <div class="masive-course-bg"></div>
-
   <app-course-overlay>
     @if(course$ | async; as course) {
     <main class="masive-course-container">
@@ -58,7 +56,7 @@
       <app-course-module-box [course]="course" />
     </main>
     } @else {
-    <h1 style="text-align: center; color: white">Loading masive course...</h1>
+    <app-loader />
     }
   </app-course-overlay>
 </div>

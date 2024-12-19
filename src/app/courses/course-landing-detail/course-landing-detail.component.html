@@ -35,44 +35,29 @@
               <h2>PLAN DE ESTUDIOS</h2>
               <div class="plan-tags">
                 <div class="tag-item">
+                  <app-unit-course-icon class="icon" />
+                  @if (courseUnitsNumber$ | async; as units) {
+                  {{ units }} unidades }
+                </div>
+                <div class="tag-item">
                   <app-course-session-icon class="session-icon" />
                   @if (courseSessionsNumber$ | async; as sessions) {
                   {{ sessions }} sesiones }
                 </div>
                 <div class="tag-item">
-                  <app-watch-icon class="watch-icon" /> 24 hrs
-                </div>
-                <div class="tag-item">
-                  <app-unit-course-icon class="icon" />
-                  @if (courseUnitsNumber$ | async; as units) {
-                  {{ units }} unidades }
+                  <app-watch-icon class="watch-icon" />
+                  @if (courseHoursNumber$ | async; as units) {
+                  {{ units }} hrs }
                 </div>
               </div>
             </div>
 
-            @for (studyplanItem of secondaryCourseData.studyplans; track
-            studyplanItem) {
-            <div
-              class="unit-item"
-              (click)="openUnit(studyplanItem.studyplanId)"
-            >
-              <span> {{ studyplanItem.unit }}</span>
-              @if(showDropdownUnit) {
-              <app-caret-up-icon class="icon" />
-              } @else {
-              <app-caret-down-icon class="icon" />
-
+            <div class="units-list">
+              @for (studyplanItem of secondaryCourseData.studyplans; track
+              studyplanItem) {
+              <app-course-landing-unit [studyplanItem]="studyplanItem" />
               }
             </div>
-
-            @if (showDropdownUnit) {
-            <ul class="plan-list">
-              @for (sessionItem of studyplanItem.sessions; track sessionItem) {
-              <li>{{ sessionItem }}</li>
-              }
-            </ul>
-
-            } }
           </div>
 
           <div class="tools-container">
@@ -94,7 +79,8 @@
         </div>
 
         <app-course-invest
-          [coursePrice]="secondaryCourseData.price"
+          [priceAcademy]="secondaryCourseData.priceAcademy"
+          [priceRegular]="secondaryCourseData.priceRegular"
           [courseTitle]="secondaryCourseData.title"
         />
       </div>
@@ -121,6 +107,6 @@
   </app-modal>
 
   } @else {
-  <h1>Loading secondary course...</h1>
+  <app-loader />
   }
 </app-course-overlay>

@@ -1,8 +1,20 @@
 .course-aside-container {
-  width: 100%;
+  width: 245px;
+  height: 100%;
+  padding-left: 24px;
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.course-aside-content {
+  width: 221px;
+  height: 100vh;
+  margin-top: 100px;
   background: #eef3f8;
-  box-shadow: 2px 1px 6px 0px #b4bbbf;
-  position: relative;
+  box-shadow: -2px 1px 6px 0px #b4bbbf;
+  position: fixed;
 }
 
 .aside-dropdown-button,
@@ -27,7 +39,7 @@
 
 .course-aside-list {
   width: 100%;
-  padding-block: 12px 730px;
+  padding-block: 12px;
   display: flex;
   flex-flow: column nowrap;
   gap: 12px;
@@ -77,7 +89,7 @@
     fill: black;
     border-radius: 28px;
     position: absolute;
-    bottom: 21px;
+    top: 80%;
     left: 50%;
     transform: translateX(-50%);
 

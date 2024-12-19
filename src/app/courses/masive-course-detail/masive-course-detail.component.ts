@@ -6,6 +6,8 @@ import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/cour
 import { Observable } from 'rxjs';
 import { ICourse } from '../interface/Course';
 import { AsyncPipe } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { LoaderComponent } from '../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-masive-course-detail',
@@ -15,16 +17,24 @@ import { AsyncPipe } from '@angular/common';
     CourseModuleBoxComponent,
     CourseOverlayComponent,
     AsyncPipe,
+    LoaderComponent,
   ],
   templateUrl: './masive-course-detail.component.html',
   styleUrl: './masive-course-detail.component.css',
 })
 export class MasiveCourseDetailComponent {
   courseService: CourseService = inject(CourseService);
+  route: ActivatedRoute = inject(ActivatedRoute);
 
-  course$: Observable<ICourse> = this.courseService.getCourse(1);
+  urlCourseId: number = Number(this.route.snapshot.params['courseId']);
+
+  course$: Observable<ICourse> = this.courseService.getCourse(this.urlCourseId);
 
   ngOnInit(): void {
-    this.course$.subscribe((course) => console.log(course));
+    this.courseService.setShowMasiveCourseBackground(true);
+  }
+
+  ngOnDestroy(): void {
+    this.courseService.setShowMasiveCourseBackground(false);
   }
 }

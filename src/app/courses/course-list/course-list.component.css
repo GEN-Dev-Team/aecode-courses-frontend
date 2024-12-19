@@ -1,6 +1,7 @@
 .course-list-container {
   width: 100%;
   max-width: 1116px;
+  min-height: 493px;
   padding: 30px 24px;
   border-radius: 6px;
   border: 1px solid rgba(153, 163, 168, 0.3);

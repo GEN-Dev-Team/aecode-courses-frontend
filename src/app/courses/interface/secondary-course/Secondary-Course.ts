@@ -7,7 +7,8 @@ export interface ISecondaryCourse {
   title: string;
   principalimage: string;
   description: string;
-  price: number;
+  priceAcademy: number;
+  priceRegular: number;
   toolIds: number[];
   freqquestIds: number[];
   studyplans: IStudyPlan[];
@@ -15,6 +16,7 @@ export interface ISecondaryCourse {
   freqquests: IFAQ[];
   level: string;
   mode: string;
+  hours: number;
   benefits: string[];
   schedule: string;
   achievement: string;
@@ -27,7 +29,8 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   title: '',
   principalimage: '',
   description: '',
-  price: 0,
+  priceAcademy: 0,
+  priceRegular: 0,
   toolIds: [],
   freqquestIds: [],
   studyplans: [],
@@ -35,6 +38,7 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   freqquests: [],
   level: '',
   mode: '',
+  hours: 0,
   benefits: [],
   schedule: '',
   achievement: '',

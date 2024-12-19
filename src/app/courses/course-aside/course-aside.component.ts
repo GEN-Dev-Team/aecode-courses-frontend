@@ -39,6 +39,5 @@ export class CourseAsideComponent {
 
   goToCourseList() {
     this.router.navigate(['courses']);
-    this.courseService.resetAllStates();
   }
 }

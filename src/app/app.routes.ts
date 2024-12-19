@@ -24,7 +24,7 @@ export const routes: Routes = [
     component: CourseLandingDetailComponent,
   },
   {
-    path: 'courses/masive-course-detail/:id',
+    path: 'courses/masive-course-detail/:courseId',
     title: 'AECODE COURSES',
     component: MasiveCourseDetailComponent,
   },
