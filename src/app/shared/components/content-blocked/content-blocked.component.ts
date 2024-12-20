@@ -14,7 +14,6 @@ export class ContentBlockedComponent {
   @Output() isClosed = new EventEmitter<boolean>();
 
   closeModal(event: boolean) {
-    console.log(event);
     this.isClosed.emit(event);
   }
 

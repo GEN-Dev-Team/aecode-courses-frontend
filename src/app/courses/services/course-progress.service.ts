@@ -3,6 +3,7 @@ import { environment } from '../../../environment/environment';
 import { HttpClient } from '@angular/common/http';
 import { IProgressRW, IProgressSession } from '../interface/CourseProgress';
 import { IModule } from '../interface/Module';
+import { AuthService } from '../../core/services/auth.service';
 
 const base_url = environment.base;
 @Injectable({
@@ -10,6 +11,7 @@ const base_url = environment.base;
 })
 export class ProgressSessionService {
   http: HttpClient = inject(HttpClient);
+  authService: AuthService = inject(AuthService);
 
   progress_session_url = base_url + '/progressSession';
   rw_session_url = base_url + '/progressRW';
@@ -62,7 +64,7 @@ export class ProgressSessionService {
   }
 
   isSessionCompleted(sessionId: number) {
-    const userData = JSON.parse(localStorage.getItem('user') || '{}');
+    const userData = this.authService.getUserDetails();
 
     if (userData.userprogresssessions !== null) {
       return userData.userprogresssessions.some(

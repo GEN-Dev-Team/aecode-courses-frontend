@@ -111,9 +111,7 @@ export class AdminPanelComponent {
     this.showModalForm = false;
 
     this.userService.updateUser(this.userData).subscribe(
-      (response) => {
-        console.log(response);
-      },
+      (response) => {},
       (error) => {
         this.adminService.getDataList();
       }

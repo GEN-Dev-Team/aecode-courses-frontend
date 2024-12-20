@@ -16,10 +16,4 @@ export class CourseListComponent {
   @Input() secondaryCourseList: ISecondaryCourse[] = [];
 
   constructor(private courseService: CourseService, private router: Router) {}
-
-  getCourses() {
-    this.courseService.getCourses().subscribe((response) => {
-      console.log(response);
-    });
-  }
 }

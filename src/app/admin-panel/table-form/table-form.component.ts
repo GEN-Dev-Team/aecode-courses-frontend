@@ -30,7 +30,6 @@ export class TableFormComponent {
     if (this.updateForm && this.itemId !== -1) {
       this.adminService.getItemById(this.itemId).subscribe((itemData) => {
         this.form.patchValue(itemData); // Llenar el formulario con los datos recibidos
-        console.log('nuevo form:', itemData);
       });
     }
   }
@@ -56,8 +55,6 @@ export class TableFormComponent {
         );
       })
     );
-
-    console.log('se envia:', filteredFormValue);
 
     if (this.updateForm) {
       this.adminService.updateItem(filteredFormValue, this.itemId);

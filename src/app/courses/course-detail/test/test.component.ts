@@ -3,6 +3,7 @@ import { ButtonComponent } from '../../../shared/components/button/button.compon
 import { AccCreatedIconComponent } from '../../../shared/icons/acc-created-icon/acc-created-icon.component';
 import { ProgressSessionService } from '../../services/course-progress.service';
 import { IProgressRW } from '../../interface/CourseProgress';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-test',
@@ -19,11 +20,12 @@ export class TestComponent {
   courseProgressService: ProgressSessionService = inject(
     ProgressSessionService
   );
+  authService: AuthService = inject(AuthService);
 
   createRWProgress() {
     const rwItem: IProgressRW = {
       progressId: -1,
-      userId: JSON.parse(localStorage.getItem('user') || '{}').userId,
+      userId: this.authService.getUserDetails().userId,
       workId: this.testId,
       completed: true,
     };

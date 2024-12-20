@@ -47,7 +47,6 @@ export class CourseMainComponent implements OnInit {
     //Add 'implements OnInit' to the class.
     this.secondaryCourseList$.subscribe((data) => {
       const courseList = data;
-      console.log('Secondary course list: ', data);
 
       courseList.forEach((course) => {
         if (course.mode === 'ASINCRONO') {
@@ -62,10 +61,6 @@ export class CourseMainComponent implements OnInit {
       this.coursesList[0].list = this.asyncCourseLit;
       this.coursesList[1].list = this.syncCourseLit;
       this.coursesList[2].list = this.comingSoonCourseLit;
-
-      console.log('Async course list: ', this.asyncCourseLit);
-      console.log('Sync course list: ', this.syncCourseLit);
-      console.log('Coming soon course list: ', this.comingSoonCourseLit);
     });
   }
 }

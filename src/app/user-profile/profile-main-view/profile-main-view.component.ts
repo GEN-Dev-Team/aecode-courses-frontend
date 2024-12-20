@@ -10,6 +10,7 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { MessageComponent } from '../../shared/components/message/message.component';
 import { EditIconComponent } from '../../shared/icons/edit-icon/edit-icon.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-profile-main-view',
@@ -31,16 +32,13 @@ export class ProfileMainViewComponent {
 
   fb: FormBuilder = inject(FormBuilder);
   userService: UserService = inject(UserService);
+  authService: AuthService = inject(AuthService);
 
-  userData = JSON.parse(localStorage.getItem('user') || '{}');
+  userData!: ILogin;
+  userDetails!: IUserDetails;
 
-  userData$: Observable<ILogin> = this.userService.getUser(
-    this.userData.userId
-  );
-
-  userDetails$: Observable<IUserDetails> = this.userService.getUserDetailsById(
-    this.userData.userId
-  );
+  userData$!: Observable<ILogin>;
+  userDetails$!: Observable<IUserDetails>;
 
   editUserData: boolean = false;
   changePassword: boolean = false;
@@ -51,35 +49,37 @@ export class ProfileMainViewComponent {
   profileImgFile: File = new File([], '');
 
   userDataForm = this.fb.group({
-    userId: new FormControl(this.userData.userId),
-    fullname: new FormControl(this.userData.fullname),
-    email: new FormControl(this.userData.email),
-    birthdate: new FormControl(this.convertDateToISO(this.userData.birthdate)),
-    phoneNumber: new FormControl(this.userData.phoneNumber),
-    gender: new FormControl(this.userData.gender),
-    experience: new FormControl(this.userData.experience),
+    userId: new FormControl(0),
+    fullname: new FormControl(''),
+    email: new FormControl(''),
+    birthdate: new FormControl(''),
+    phoneNumber: new FormControl(''),
+    gender: new FormControl(''),
+    experience: new FormControl(''),
   });
 
   userProfileImageForm = this.fb.group({
     detailsId: new FormControl(0),
-    userId: new FormControl(this.userData.userId),
-    profilepicture: new FormControl(this.userData.userId),
+    userId: new FormControl(0),
+    profilepicture: new FormControl(''),
   });
 
   userChangePasswordForm = this.fb.group({
-    userId: new FormControl(this.userData.userId),
-    passwordHash: new FormControl(this.userData.passwordHash),
-    newPassword: new FormControl(this.userData.passwordHash),
+    userId: new FormControl(0),
+    passwordHash: new FormControl(''),
+    newPassword: new FormControl(''),
     confirmPassword: new FormControl(''),
   });
 
   ngOnInit(): void {
-    this.initSubscibtionsAndForms();
+    this.initProfileViewData();
+
+    console.log(this.userDataForm.value);
+    console.log(this.userProfileImageForm.value);
+    console.log(this.userChangePasswordForm.value);
   }
 
   sendUserData() {
-    this.userDataForm.patchValue(this.userDataForm.value);
-
     this.userDataForm.patchValue({
       birthdate: this.convertISOToSpanishDate(
         this.userDataForm.value.birthdate
@@ -87,7 +87,7 @@ export class ProfileMainViewComponent {
     });
 
     this.userProfileImageForm.patchValue({
-      detailsId: this.userData.detailsId,
+      detailsId: this.userData.userId,
       userId: this.userData.userId,
       profilepicture: this.profileImgUrl,
     });
@@ -95,9 +95,7 @@ export class ProfileMainViewComponent {
     this.sendUserChangeImgProfile();
 
     this.userService.updateUser(this.userDataForm.value as any).subscribe(
-      (response) => {
-        console.log(response);
-      },
+      (response) => {},
       (error) => {
         this.showMessageModal = true;
         this.dataUpdated = true;
@@ -145,59 +143,64 @@ export class ProfileMainViewComponent {
       .updateUserDetails(this.userData.userId, this.profileImgFile)
       .subscribe(
         (response) => {
-          console.log('User profile image updated:', response);
-
           this.dataUpdated = true;
           this.showMessageModal = true;
         },
         (error) => {
           if (error.status === 200) {
-            console.log('User profile image updated:', error);
             this.dataUpdated = true;
             this.showMessageModal = true;
             this.editUserData = false;
           } else {
-            console.log('Error updating user profile image:', error);
           }
         }
       );
   }
 
-  initSubscibtionsAndForms() {
+  initProfileViewData() {
+    this.userData = this.authService.getUserDetails();
+
+    this.userService
+      .getUserDetailsImgById(this.userData.userId)
+      .subscribe((response) => {
+        this.userDetails = response;
+        this.profileImgUrl = this.base_url + response.profilepicture;
+      });
+
+    this.userData$ = this.userService.getUser(this.userData.userId);
+
+    this.userDetails$ = this.userService.getUserDetailsImgById(
+      this.userData.userId
+    );
+
     this.userData$.subscribe((response) => {
       this.userData = response;
     });
 
-    this.userDetails$.subscribe((response) => {
-      this.profileImgUrl = this.base_url + response.profilepicture;
-    });
+    this.setUserChangePasswordForm();
+    this.setUserDataForm();
+    this.setUserProfileImageForm();
 
     this.disableUserForms();
   }
 
-  showProfileImg(event: any) {
-    const input = event.target as HTMLInputElement;
-    // Verificar si se ha seleccionado un archivo y asigna el archivo de tipo File
-    if (event.target.files.length > 0) {
-      this.profileImgFile = event.target.files[0];
+  showProfileImg(event: Event) {
+    const input = event.target as HTMLInputElement | null;
+
+    if (!input || !input.files) {
+      return;
     }
 
-    // Verificar si se ha seleccionado un archivo y obtener la url
-    if (input.files && input.files[0]) {
-      const file = input.files[0];
-
-      if (!file.type.startsWith('image/')) {
-        alert('Por favor, selecciona un archivo de imagen válido.');
-        input.value = '';
-        return;
-      }
-
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.profileImgUrl = reader.result as string;
-      };
-      reader.readAsDataURL(file);
+    const file = input.files[0];
+    if (!file.type.startsWith('image/')) {
+      return;
     }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.profileImgUrl = reader.result as string;
+    };
+    reader.readAsDataURL(file);
   }
 
   activateEditUserData() {
@@ -233,5 +236,34 @@ export class ProfileMainViewComponent {
 
     // Devolver la fecha en formato dd/MM/yyyy
     return `${day}/${month}/${year}`;
+  }
+
+  setUserProfileImageForm() {
+    this.userProfileImageForm.patchValue({
+      detailsId: this.userData.userId,
+      userId: this.userData.userId,
+      profilepicture: this.profileImgUrl,
+    });
+  }
+
+  setUserDataForm() {
+    this.userDataForm.patchValue({
+      userId: this.userData.userId,
+      fullname: this.userData.fullname,
+      email: this.userData.email,
+      birthdate: this.convertISOToSpanishDate(this.userData.birthdate),
+      phoneNumber: this.userData.phoneNumber,
+      gender: this.userData.gender,
+      experience: this.userData.experience,
+    });
+  }
+
+  setUserChangePasswordForm() {
+    this.userChangePasswordForm.patchValue({
+      userId: this.userData.userId,
+      passwordHash: this.userData.passwordHash,
+      newPassword: this.userData.passwordHash,
+      confirmPassword: this.userData.passwordHash,
+    });
   }
 }

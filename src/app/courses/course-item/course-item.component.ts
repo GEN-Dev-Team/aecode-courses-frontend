@@ -31,16 +31,12 @@ export class CourseItemComponent {
 
   ngOnInit() {
     if (!this.isMasiveCourse) {
-      console.log('Curso secundario renderizado:', this.course);
-
       this.secondaryCourseMainImgUrl =
         environment.base + this.course.principalimage;
       this.course.studyplans.forEach((studyplan: IStudyPlan) => {
         this.secondaryCourseSessions += studyplan.sessions.length;
       });
     } else {
-      console.log('Curso secundario renderizado:', this.course);
-
       this.secondaryCourseMainImgUrl =
         environment.base + this.course.coverimage;
       this.course.modules.forEach((module: IModule) => {

@@ -1,13 +1,16 @@
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { inject, Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ICourse } from '../../courses/interface/Course';
 import { isPlatformBrowser } from '@angular/common';
+import { BrowserService } from './browser.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private isLoggedInStatus = new BehaviorSubject<boolean>(this.hasToken());
+
+  browserService: BrowserService = inject(BrowserService);
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
@@ -23,29 +26,43 @@ export class AuthService {
   }
 
   login(token: any): void {
-    localStorage.setItem('user', JSON.stringify(token));
-    this.isLoggedInStatus.next(true);
+    if (this.browserService.isBrowser()) {
+      localStorage.setItem('user', JSON.stringify(token));
+      this.isLoggedInStatus.next(true);
+    }
   }
 
   logout(): void {
-    localStorage.removeItem('user');
-    this.isLoggedInStatus.next(false);
+    if (this.browserService.isBrowser()) {
+      localStorage.removeItem('user');
+      this.isLoggedInStatus.next(false);
+    }
   }
 
   getUserDetails(): any {
-    return JSON.parse(localStorage.getItem('user') || '{}');
+    if (this.browserService.isBrowser()) {
+      return JSON.parse(localStorage.getItem('user') || '{}');
+    }
+
+    return null;
   }
 
   setUserDetails(user: any): void {
-    this.logout();
-    localStorage.setItem('user', JSON.stringify(user));
-    this.isLoggedInStatus.next(true);
+    if (this.browserService.isBrowser()) {
+      this.logout();
+      localStorage.setItem('user', JSON.stringify(user));
+      this.isLoggedInStatus.next(true);
+    }
   }
 
   hasAccesToCourse(courseId: number): boolean {
-    const user = this.getUserDetails();
-    return user.usercourseaccess.some(
-      (course: ICourse) => course.courseId === courseId
-    );
+    if (this.browserService.isBrowser()) {
+      const user = this.getUserDetails();
+      return user.usercourseaccess.some(
+        (course: ICourse) => course.courseId === courseId
+      );
+    }
+
+    return false;
   }
 }

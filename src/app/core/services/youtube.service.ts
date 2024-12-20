@@ -9,6 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject } from 'rxjs';
 import { IProgressSession } from '../../courses/interface/CourseProgress';
 import { BrowserService } from './browser.service';
+import { AuthService } from './auth.service';
 
 declare var YT: any;
 
@@ -27,6 +28,7 @@ export class YoutubeService {
   private fiveSecondsToFinishSubject = new BehaviorSubject<boolean>(false);
 
   browserService: BrowserService = inject(BrowserService);
+  authService: AuthService = inject(AuthService);
   sanitizer: DomSanitizer = inject(DomSanitizer);
   progressSessionService: ProgressSessionService = inject(
     ProgressSessionService
@@ -36,7 +38,7 @@ export class YoutubeService {
   sessionTestService: SessionTestService = inject(SessionTestService);
 
   courseSessionObject!: ISession;
-  userId: number = JSON.parse(localStorage.getItem('user') || '{}').userId;
+  userId: number = this.authService.getUserDetails().userId;
   questionAnswered = false;
 
   fiveSecondsToFinish$: Observable<boolean> =

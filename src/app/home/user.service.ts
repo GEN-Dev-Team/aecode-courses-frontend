@@ -43,7 +43,7 @@ export class UserService {
     return this.http.post<IUserDetails>(`${this.api_url_details}/`, login);
   }
 
-  getUserDetailsById(id: number): Observable<IUserDetails> {
+  getUserDetailsImgById(id: number): Observable<IUserDetails> {
     return this.http.get<IUserDetails>(`${this.api_url_details}/${id}`);
   }
 

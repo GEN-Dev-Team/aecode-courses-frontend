@@ -67,10 +67,4 @@ export class CourseLandingDetailComponent {
       data.studyplans.reduce((acc, session) => acc + session.hours, 0)
     )
   );
-
-  ngOnInit(): void {
-    this.secondaryCourseData$.subscribe((data) => {
-      console.log('Secondary course data: ', data);
-    });
-  }
 }
