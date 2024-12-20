@@ -77,9 +77,6 @@ export class CourseDetailComponent implements OnInit {
   }
 
   courseDetailsInit() {
-    console.log('Course Id: ', this.course_id);
-    console.log('Module Id: ', this.module_id);
-
     this.courseSessionService.setModuleSelected(this.module_id);
 
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {

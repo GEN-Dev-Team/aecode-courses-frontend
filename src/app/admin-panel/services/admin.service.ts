@@ -62,12 +62,8 @@ export class AdminService {
   createItem(value: any) {
     const url = `${base_url}${this.endpointItem.getValue().postEndpoint}`;
 
-    console.log(url);
-
     this.http.post(url, value).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
+      next: (data) => {},
       error: (err) => {
         console.error('Error al crear el item:', err);
         this.getDataList();
@@ -77,13 +73,9 @@ export class AdminService {
 
   updateItem(value: any, id: number) {
     const url = `${base_url}${this.endpointItem.getValue().endpoint}/${id}`;
-    console.log(url);
-    console.log(this.endpointItem.getValue().endpoint);
 
     this.http.patch(url, value).subscribe({
-      next: (data) => {
-        console.log(data);
-      },
+      next: (data) => {},
       error: (err) => {
         console.error('Error al actualizar el item:', err);
         this.getDataList();
@@ -93,11 +85,9 @@ export class AdminService {
 
   deleteItem(id: number) {
     const url = `${base_url}${this.endpointItem.getValue().endpoint}/${id}`;
-    console.log(url);
 
     this.http.delete(url).subscribe({
       next: (data) => {
-        console.log(data);
         this.getDataList();
       },
       error: (err) => {

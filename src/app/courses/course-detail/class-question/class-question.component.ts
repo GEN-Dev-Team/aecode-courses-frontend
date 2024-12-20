@@ -46,11 +46,9 @@ export class ClassQuestionComponent {
     if (this.selectedQuestion) {
       // Verificamos si la respuesta seleccionada es correcta
       if (this.selectedQuestion.correct) {
-        console.log('Respuesta correcta:', this.selectedQuestion);
         alert('¡Respuesta correcta!');
         this.closeModal();
       } else {
-        console.log('Respuesta incorrecta:', this.selectedQuestion);
         alert('Respuesta incorrecta');
       }
     } else {

@@ -36,7 +36,7 @@ export class CourseSessionComponent {
   progressSessionService: ProgressSessionService = inject(
     ProgressSessionService
   );
-  userId = JSON.parse(localStorage.getItem('user') || '{}').userId;
+  userId = 0;
 
   youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
   safeUrl!: SafeResourceUrl;
@@ -56,6 +56,8 @@ export class CourseSessionComponent {
   module_id: number = 0;
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserDetails().userId;
+
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLogged = loggedInStatus;
 

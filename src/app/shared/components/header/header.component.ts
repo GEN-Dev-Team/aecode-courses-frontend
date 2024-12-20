@@ -24,16 +24,10 @@ export class HeaderComponent {
   isUserLoggedIn = false;
   openLoginForm = false;
   showProfileMenu = false;
-  userId = 0;
+  userId: number = 0;
 
   authService: AuthService = inject(AuthService);
   logInService: UserService = inject(UserService);
-
-  constructor() {
-    afterNextRender(() => {
-      this.userId = JSON.parse(localStorage.getItem('user') || '{}').userId;
-    });
-  }
 
   ngOnInit(): void {
     this.setUser();
@@ -76,6 +70,8 @@ export class HeaderComponent {
   }
 
   setUser() {
+    this.userId = this.authService.getUserDetails().userId;
+
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLoggedIn = loggedInStatus;
     });

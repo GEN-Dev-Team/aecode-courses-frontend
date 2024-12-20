@@ -12,6 +12,8 @@ import { ShamanIconComponent } from '../../shared/icons/shaman-icon/shaman-icon.
 import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { ProfileIconComponent } from '../../shared/icons/profile-icon/profile-icon.component';
+import { BrowserService } from '../../core/services/browser.service';
+import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-course-aside',
@@ -33,11 +35,21 @@ import { ProfileIconComponent } from '../../shared/icons/profile-icon/profile-ic
 export class CourseAsideComponent {
   router: Router = inject(Router);
   courseService: CourseService = inject(CourseService);
+  authService: AuthService = inject(AuthService);
 
   isDarkTheme: boolean = false;
   showAsideList: boolean = true;
+  userId: number = 0;
+
+  ngOnInit(): void {
+    this.userId = this.authService.getUserDetails().userId;
+  }
 
   goToCourseList() {
     this.router.navigate(['courses']);
+  }
+
+  goToProfileView() {
+    this.router.navigate(['profile/' + this.userId]);
   }
 }

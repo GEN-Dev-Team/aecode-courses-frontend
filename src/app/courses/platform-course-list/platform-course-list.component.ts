@@ -31,10 +31,4 @@ export class PlatformCourseListComponent {
   courseService: CourseService = inject(CourseService);
 
   masiveCourseList$: Observable<ICourse[]> = this.courseService.getCourses();
-
-  ngOnInit(): void {
-    this.masiveCourseList$.subscribe((data) =>
-      console.log('Masive course list: ', data)
-    );
-  }
 }
