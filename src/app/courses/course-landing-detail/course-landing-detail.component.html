@@ -10,11 +10,10 @@
           {{ secondaryCourseData.description }}
         </p>
 
-        <div class="video-container">
+        <div class="video-container" (click)="showIntroVideo = true">
           <img
-            (click)="showIntroVideo = true"
             class="course-video"
-            src="{{ secondaryCourseData.principalimage }}"
+            src="{{ url_base }}{{ secondaryCourseData.principalimage }}"
             alt=""
           />
           <a
@@ -23,6 +22,8 @@
             href="{{ secondaryCourseData.exterallink }}"
             >Accede a la Masterclass</a
           >
+
+          <app-play-icon class="play-icon" />
         </div>
       </div>
     </div>

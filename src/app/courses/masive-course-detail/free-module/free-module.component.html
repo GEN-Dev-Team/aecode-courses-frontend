@@ -6,8 +6,15 @@
 
     <div class="course-tags">
       <div class="course-icons">
-        <div class="icon-container"><img src="" alt="" /></div>
-        <div class="icon-container"><img src="" alt="" /></div>
+        @for (toolItem of courseTools; track toolItem) {
+        <div class="icon-container">
+          <img
+            src="{{ base_url }}{{ toolItem.picture }}"
+            alt="{{ toolItem.name }}"
+          />
+        </div>
+
+        }
       </div>
 
       <div class="course-details-cointainer">

@@ -9,19 +9,43 @@
   gap: 40px;
   position: relative;
 
-  .masive-course-bg {
+  .masive-course-bg-container {
     width: 100%;
     height: 594px;
-    opacity: 0.95;
-    background: linear-gradient(
-      178deg,
-      rgba(93, 40, 175, 0.72) -45.35%,
-      rgba(74, 28, 155, 0.81) -10.33%,
-      rgba(56, 17, 135, 0.9) 61.83%
-    );
     position: absolute;
     top: 0;
     z-index: -1;
+
+    .masive-course-bg-content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      .bg-gradient {
+        width: 100%;
+        height: 100%;
+        opacity: 0.95;
+        background: linear-gradient(
+          178deg,
+          rgba(93, 40, 175, 0.72) -45.35%,
+          rgba(74, 28, 155, 0.81) -10.33%,
+          rgba(56, 17, 135, 0.9) 61.83%
+        );
+        position: absolute;
+        top: 0;
+        z-index: -1;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: absolute;
+        top: 0;
+        z-index: -2;
+      }
+    }
   }
 }
 

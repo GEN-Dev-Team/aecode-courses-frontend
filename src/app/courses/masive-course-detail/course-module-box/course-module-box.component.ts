@@ -6,6 +6,7 @@ import { BrowserService } from '../../../core/services/browser.service';
 import { CourseService } from '../../services/course.service';
 import { CourseSessionService } from '../../services/course-session.service';
 import { environment } from '../../../../environment/environment';
+import { defaultSession } from '../../interface/Session';
 
 @Component({
   selector: 'app-course-module-box',
@@ -25,6 +26,7 @@ export class CourseModuleBoxComponent {
 
   redirectToCourse(moduleId: number) {
     this.courseSessionService.setModuleSelected(moduleId);
+    this.courseSessionService.setCourseSessionDetails(defaultSession);
 
     this.courseService.setShowMasiveCourseBackground(false);
     this.browserService.navigateAndScroll(
