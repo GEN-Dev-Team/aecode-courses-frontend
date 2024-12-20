@@ -3,12 +3,15 @@
   padding-bottom: 10px;
   display: flex;
   flex-flow: row nowrap;
+  align-items: stretch;
   gap: 20px;
   overflow: auto;
 
   .course-item-container {
     width: 100%;
     max-width: 261px;
+    display: flex;
+    flex-flow: column nowrap;
     border-radius: 6px;
     background: #eef3f8;
     box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.11);
@@ -62,12 +65,23 @@
           gap: 11px;
 
           .icon-container {
-            width: 25px;
-            height: 25px;
+            width: 33px;
+            height: 33px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: #eef3f8;
             border-radius: 50%;
             box-shadow: 0px 0px 7.7px 0px #dbc9ff inset;
             filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.56));
+            overflow: hidden;
+
+            img {
+              width: 65%;
+              height: 65%;
+              object-fit: cover;
+              object-position: center;
+            }
           }
         }
 
@@ -97,9 +111,11 @@
     }
 
     .course-details {
+      flex: 1;
       display: flex;
       flex-flow: column nowrap;
-      gap: 24px;
+      gap: 28px;
+      justify-content: space-between;
       padding: 10px 15px;
       text-wrap: pretty;
     }

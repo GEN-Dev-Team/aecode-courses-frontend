@@ -48,7 +48,10 @@
           </p>
         </div>
 
-        <app-free-module [freeModule]="course.modules[0]" />
+        <app-free-module
+          [freeModule]="course.modules[0]"
+          [courseTools]="course.tools"
+        />
       </div>
 
       <h2>Módulos Tecnológicos introductorios a tu alcance</h2>

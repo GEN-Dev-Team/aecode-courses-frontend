@@ -15,6 +15,7 @@ import { environment } from '../../../environment/environment';
 import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
 import { CourseLandingUnitComponent } from './course-landing-unit/course-landing-unit.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
+import { PlayIconComponent } from '../../shared/icons/play-icon/play-icon.component';
 
 @Component({
   selector: 'app-course-landing-detail',
@@ -30,6 +31,7 @@ import { LoaderComponent } from '../../shared/components/loader/loader.component
     CourseOverlayComponent,
     CourseLandingUnitComponent,
     LoaderComponent,
+    PlayIconComponent,
   ],
   templateUrl: './course-landing-detail.component.html',
   styleUrl: './course-landing-detail.component.css',
