@@ -16,6 +16,7 @@ import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/cour
 import { CourseLandingUnitComponent } from './course-landing-unit/course-landing-unit.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { PlayIconComponent } from '../../shared/icons/play-icon/play-icon.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-course-landing-detail',
@@ -41,9 +42,12 @@ export class CourseLandingDetailComponent {
   secondaryCourseService: SecondaryCourseService = inject(
     SecondaryCourseService
   );
+  router: ActivatedRoute = inject(ActivatedRoute);
+
+  secCourseId = 0;
 
   secondaryCourseData$: Observable<ISecondaryCourse> =
-    this.secondaryCourseService.getSecondaryCourseById(1);
+    this.secondaryCourseService.getSecondaryCourseById(this.secCourseId);
 
   url_base = environment.base;
   loopList: number[] = [1, 2, 3];
@@ -67,4 +71,11 @@ export class CourseLandingDetailComponent {
       data.studyplans.reduce((acc, session) => acc + session.hours, 0)
     )
   );
+
+  ngOnInit(): void {
+    this.secCourseId = Number(this.router.snapshot.paramMap.get('secCourseId'));
+
+    this.secondaryCourseData$ =
+      this.secondaryCourseService.getSecondaryCourseById(this.secCourseId);
+  }
 }

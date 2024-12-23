@@ -19,7 +19,7 @@ export const routes: Routes = [
     component: CoursesComponent,
   },
   {
-    path: 'courses/secondary-course-detail/:id',
+    path: 'courses/secondary-course-detail/:secCourseId',
     title: 'AECODE COURSES',
     component: CourseLandingDetailComponent,
   },

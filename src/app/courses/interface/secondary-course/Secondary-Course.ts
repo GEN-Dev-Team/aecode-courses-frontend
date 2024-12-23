@@ -9,6 +9,7 @@ export interface ISecondaryCourse {
   description: string;
   priceAcademy: number;
   priceRegular: number;
+  percentage: number;
   toolIds: number[];
   freqquestIds: number[];
   studyplans: IStudyPlan[];
@@ -31,6 +32,7 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   description: '',
   priceAcademy: 0,
   priceRegular: 0,
+  percentage: 0,
   toolIds: [],
   freqquestIds: [],
   studyplans: [],
