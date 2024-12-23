@@ -71,16 +71,28 @@
           />
         </main>
 
-        @if (!isUserLogged) {
+        @if (!isUserLogged && module.orderNumber !== 0) {
         <div class="course-price-container">
-          <span class="original-price">${{ course.price }}</span>
-          <span class="discounted-price">{{ course.price }} USD</span>
+          <span class="original-price">${{ module.price }}</span>
+          <a
+            class="discounted-price"
+            target="_blank"
+            href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
+              course.title
+            }} - Módulo {{ module.orderNumber }}&quot;* a un costo de {{
+              (module.price * (100 - module.percentage)) / 100
+            }} USD. ¿Podrías indicarme como proceder?"
+          >
+            {{ (module.price * (100 - module.percentage)) / 100 }} USD</a
+          >
         </div>
 
         }
         <div
           class="course-class-details"
-          [class.course-class-details-user-logged]="isUserLogged"
+          [class.course-class-details-user-logged]="
+            isUserLogged || module.orderNumber == 0
+          "
         >
           <div class="header">
             <div class="header-items">

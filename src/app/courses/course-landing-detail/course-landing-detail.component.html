@@ -10,7 +10,8 @@
           {{ secondaryCourseData.description }}
         </p>
 
-        <div class="video-container" (click)="showIntroVideo = true">
+        <!-- (click)="showIntroVideo = true" -->
+        <div class="video-container">
           <img
             class="course-video"
             src="{{ url_base }}{{ secondaryCourseData.principalimage }}"
@@ -23,7 +24,7 @@
             >Accede a la Masterclass</a
           >
 
-          <app-play-icon class="play-icon" />
+          <!-- <app-play-icon class="play-icon" /> -->
         </div>
       </div>
     </div>

@@ -17,7 +17,6 @@
     .text-container {
       height: fit-content;
       padding: 20px 25px;
-      margin-bottom: 50px;
       background-color: white;
       border-radius: 6px;
       border: 1px solid#fff;
@@ -35,10 +34,16 @@
       }
     }
 
+    .margin-bottom {
+      margin-bottom: 50px;
+    }
+
     .masive-course-detail-container {
       display: grid;
-      grid-template-columns: 593px 481px;
+      grid-template-columns: 593px auto;
       column-gap: 30px;
+      align-items: stretch;
+      margin-bottom: 50px;
 
       p {
         margin: 0;

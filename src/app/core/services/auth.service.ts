@@ -58,9 +58,11 @@ export class AuthService {
   hasAccesToCourse(courseId: number): boolean {
     if (this.browserService.isBrowser()) {
       const user = this.getUserDetails();
-      return user.usercourseaccess.some(
-        (course: ICourse) => course.courseId === courseId
-      );
+      if (user.usercourseaccess) {
+        return user.usercourseaccess.some(
+          (course: ICourse) => course.courseId === courseId
+        );
+      }
     }
 
     return false;

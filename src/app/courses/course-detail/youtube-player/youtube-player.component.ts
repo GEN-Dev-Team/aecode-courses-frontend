@@ -37,6 +37,7 @@ export class YoutubePlayerComponent {
   showTest: boolean = false;
 
   ngOnInit(): void {
+    this.unit_url_video = this.courseIntroVideo;
     this.youtubePlayerService.fiveSecondsToFinish$.subscribe((value) => {
       this.showTest = value;
       this.cdRef.detectChanges(); // Forzar la detección de cambios cuando se cambie el valor de showTest

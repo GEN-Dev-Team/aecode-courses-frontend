@@ -6,6 +6,7 @@ import { BrowserService } from '../../../core/services/browser.service';
 import { IModule } from '../../interface/Module';
 import { ITool } from '../../interface/secondary-course/Tool';
 import { environment } from '../../../../environment/environment';
+import { ICourse } from '../../interface/Course';
 
 @Component({
   selector: 'app-free-module',
@@ -15,19 +16,10 @@ import { environment } from '../../../../environment/environment';
   styleUrl: './free-module.component.css',
 })
 export class FreeModuleComponent {
-  @Input() freeModule!: IModule;
-  @Input() courseTools!: ITool[];
+  @Input() course!: ICourse;
 
   browserService: BrowserService = inject(BrowserService);
   courseService: CourseService = inject(CourseService);
 
   base_url = environment.base;
-
-  redirectToCourse() {
-    this.courseService.setShowMasiveCourseBackground(false);
-    this.browserService.navigateAndScroll(
-      `courses/masive-course-detail/${this.freeModule.courseId}/module/${this.freeModule.moduleId}`,
-      0
-    );
-  }
 }
