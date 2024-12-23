@@ -119,6 +119,7 @@
       height: 38px;
       padding: 8px 20px;
       align-items: center;
+      justify-content: center;
       border-radius: 4px;
       border: 1px solid var(--MORADO, #381187);
       position: absolute;

@@ -4,7 +4,7 @@
     <main class="masive-course-container">
       <h1 class="masive-course-title">INGENIERIA 4.0</h1>
 
-      <div class="text-container">
+      <div class="text-container margin-bottom">
         <span>Esto es para ti si...</span>
         <ul>
           <li>
@@ -48,13 +48,33 @@
           </p>
         </div>
 
-        <app-free-module
-          [freeModule]="course.modules[0]"
-          [courseTools]="course.tools"
-        />
+        <app-free-module [course]="course" />
       </div>
 
       <h2>Módulos Tecnológicos introductorios a tu alcance</h2>
+
+      <div class="text-container margin-bottom">
+        <p>
+          Descubre los módulos que la comunidad AECODE y expertos han elaborado
+          para ti, de una manera sencilla, fácil y detallada conocerás los
+          conceptos primordiales que te permitirán acceder a todo lo necesario
+          para sobrevivir en el mundo de la ingeniería real moderna
+        </p>
+
+        <ul>
+          <li>Certificado por cada modulo</li>
+          <li>
+            Certificado por todo el programa si adquieres todos los módulos
+          </li>
+          <li>Guías descargables</li>
+          <li>Roadmaps descargables</li>
+        </ul>
+
+        <p>
+          Hoy todos los videos introductorios de todos los modulos estan
+          disponibles para ti. ¿Qué esperas?
+        </p>
+      </div>
 
       <app-course-module-box [course]="course" />
     </main>

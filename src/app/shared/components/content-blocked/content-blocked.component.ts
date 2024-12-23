@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { CourseContentComponent } from '../../../courses/course-content/course-content.component';
 
@@ -10,8 +10,11 @@ import { CourseContentComponent } from '../../../courses/course-content/course-c
   styleUrl: './content-blocked.component.css',
 })
 export class ContentBlockedComponent {
-  showContentModal = false;
+  @Input() message: string =
+    'El siguiente contenido se desbloqueará próximamente.';
   @Output() isClosed = new EventEmitter<boolean>();
+
+  showContentModal = false;
 
   closeModal(event: boolean) {
     this.isClosed.emit(event);

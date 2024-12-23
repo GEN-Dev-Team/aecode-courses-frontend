@@ -43,14 +43,29 @@
       </div>
     </div>
 
+    @if(!studentOptionSelected) {
     <a
       class="invest-button"
       target="_blank"
-      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el curso '{{
+      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
         courseTitle
-      }}'."
+      }}&quot;* a un costo de {{
+        priceRegular - discount
+      }} USD. ¿Podrías indicarme como proceder?"
       >PAGAR</a
     >
+    } @else {
+    <a
+      class="invest-button"
+      target="_blank"
+      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
+        courseTitle
+      }}&quot;* a un costo de {{
+        priceAcademy - discount
+      }} USD. ¿Podrías indicarme como proceder?"
+      >PAGAR</a
+    >
+    }
 
     <span class="invest-question">¿BUSCAS FINANCIAMIENTO?</span>
     <span class="invest-question-info">Fraccionamiento de 2 a 4 cuotas</span>
@@ -58,9 +73,9 @@
     <a
       class="invest-whatsapp-button"
       target="_blank"
-      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Necesito informaci%C3%B3n para poder fraccionar el curso '{{
+      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Necesito informaci%C3%B3n para poder fraccionar el programa de *&quot;{{
         courseTitle
-      }}'  en cuotas."
+      }}&quot;*  en cuotas."
     >
       SOLICITAR
       <div class="whatsapp-button">

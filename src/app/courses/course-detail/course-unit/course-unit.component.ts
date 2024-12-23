@@ -14,6 +14,7 @@ import { NgClass } from '@angular/common';
 import { ICourse } from '../../interface/Course';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { IModule } from '../../interface/Module';
 
 @Component({
   selector: 'app-course-unit',
@@ -39,32 +40,40 @@ export class CourseUnitComponent {
   courseSessionService = inject(CourseSessionService);
 
   showBlockedModal = false;
-  isUserLogged: boolean = true;
+  isUserLogged: boolean = false;
   showSessions: boolean = true;
   sessionObject!: ISession;
-  usserAccess: boolean = true;
-  course_id: number = this.route.snapshot.params['id'];
+  userHasAccess: boolean = false;
+  course_id: number = this.route.snapshot.params['courseId'];
+  blockedMessage: string =
+    'Para acceder al contenido completo del curso, es necesario que te suscribas previamente.';
+  moduleSelected!: IModule;
 
   ngOnInit(): void {
-    // this.authService.isLoggedIn$().subscribe((isLogged) => {
-    //   this.isUserLogged = isLogged;
-    // });
-    // this.courseSessionService.courseSession$.subscribe((session) => {
-    //   this.sessionObject = session;
-    // });
-    // if (this.isUserLogged) {
-    //   this.authService
-    //     .getUserDetails()
-    //     .usercourseaccess.forEach((course: ICourse) => {
-    //       if (course.courseId === Number(this.course_id)) {
-    //         this.usserAccess = true;
-    //       }
-    //     });
-    // }
+    this.authService.isLoggedIn$().subscribe((isLogged) => {
+      this.isUserLogged = isLogged;
+    });
+    this.courseSessionService.courseSession$.subscribe((session) => {
+      this.sessionObject = session;
+    });
+
+    this.courseSessionService.moduleSelected$.subscribe((module) => {
+      this.moduleSelected = module;
+    });
+
+    if (this.isUserLogged) {
+      this.authService
+        .getUserDetails()
+        .usercourseaccess.forEach((course: ICourse) => {
+          if (course.courseId === Number(this.course_id)) {
+            this.userHasAccess = true;
+          }
+        });
+    }
   }
 
   onClick() {
-    if (this.usserAccess) {
+    if (this.userHasAccess || this.moduleSelected.orderNumber == 0) {
       this.showSessions = !this.showSessions;
 
       this.sessionObject = {
@@ -82,6 +91,8 @@ export class CourseUnitComponent {
         sessiontests: [],
       };
       this.courseSessionService.setCourseSessionDetails(this.sessionObject);
+    } else {
+      this.showBlockedModal = true;
     }
   }
 }

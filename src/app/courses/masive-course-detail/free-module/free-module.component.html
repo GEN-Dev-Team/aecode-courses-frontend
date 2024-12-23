@@ -1,12 +1,12 @@
 <div class="course-item-container">
   <div class="course-presentation-container">
-    <img class="course-img" src="assets\images\course-test-img.svg" alt="" />
+    <img class="course-img" src="{{ course.coverimage }}" alt="" />
 
-    <span class="course-status">30%</span>
+    <span class="course-status">{{ course.percentage }}%</span>
 
     <div class="course-tags">
       <div class="course-icons">
-        @for (toolItem of courseTools; track toolItem) {
+        @for (toolItem of course.tools; track toolItem) {
         <div class="icon-container">
           <img
             src="{{ base_url }}{{ toolItem.picture }}"
@@ -21,29 +21,37 @@
         <div class="course-details-content">
           <app-course-session-icon class="icon" />
           <span class="detail-description">
-            {{ freeModule.units.length }} sesiones</span
+            {{ course.modules.length }} módulos</span
           >
         </div>
         <div class="course-details-content">
           <app-watch-icon class="icon" />
-          <span class="detail-description"> {{ freeModule.hours }} horas</span>
+          <span class="detail-description"> {{ course.hours }} horas</span>
         </div>
 
         <div class="course-price">
-          <span class="course-old-price">$299</span>
-          <span class="course-new-price">$0.00</span>
+          <span class="course-old-price">${{ course.price }}</span>
+          <span class="course-new-price"
+            >${{ (course.price * (100 - course.percentage)) / 100 }}</span
+          >
         </div>
       </div>
     </div>
 
-    <button class="reserve-button" (click)="redirectToCourse()">
-      Acceso Libre
-    </button>
+    <a
+      class="reserve-button"
+      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
+        course.title
+      }}&quot;* a un costo de {{
+        (course.price * (100 - course.percentage)) / 100
+      }} USD. ¿Podrías indicarme como proceder?"
+      target="_blank"
+    >
+      Obtener paquete
+    </a>
   </div>
 
   <div class="course-details">
-    <h2 class="course-title">
-      M{{ freeModule.orderNumber }}: {{ freeModule.title }}
-    </h2>
+    <h2 class="course-title">Curso completo: {{ course.title }}</h2>
   </div>
 </div>

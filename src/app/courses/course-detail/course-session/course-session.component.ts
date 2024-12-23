@@ -12,6 +12,9 @@ import { IProgressSession } from '../../interface/CourseProgress';
 import { ILogin } from '../../../home/interface/Login';
 import { UserService } from '../../../home/user.service';
 import { InputCheckIconComponent } from '../../icons/input-check-icon/input-check-icon.component';
+import { ActivatedRoute } from '@angular/router';
+import { IModule } from '../../interface/Module';
+import { ICourse } from '../../interface/Course';
 
 @Component({
   selector: 'app-course-session',
@@ -33,6 +36,7 @@ export class CourseSessionComponent {
   courseSessionService: CourseSessionService = inject(CourseSessionService);
   authService: AuthService = inject(AuthService);
   userService: UserService = inject(UserService);
+  route: ActivatedRoute = inject(ActivatedRoute);
   progressSessionService: ProgressSessionService = inject(
     ProgressSessionService
   );
@@ -40,12 +44,14 @@ export class CourseSessionComponent {
 
   youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+$/;
   safeUrl!: SafeResourceUrl;
+  course_id: number = this.route.snapshot.params['courseId'];
   sanitizer: DomSanitizer = inject(DomSanitizer);
   courseSessionSelected!: ISession;
   userDetails!: ILogin;
   videoDuration = 0;
   isUserLogged: boolean = false;
   showBlockedModal: boolean = false;
+  userHasAccess: boolean = false;
   selectedVideoIsCompleted: boolean = false;
   sessionProgress: IProgressSession = {
     progressId: -1,
@@ -54,6 +60,9 @@ export class CourseSessionComponent {
     completed: false,
   };
   module_id: number = 0;
+  blockedMessage: string =
+    'Para acceder al contenido completo del curso, es necesario que te suscribas previamente.';
+  moduleSelected!: IModule;
 
   ngOnInit(): void {
     this.userId = this.authService.getUserDetails().userId;
@@ -77,10 +86,26 @@ export class CourseSessionComponent {
     this.courseSessionService.courseSession$.subscribe((session) => {
       this.courseSessionSelected = session;
     });
+
+    this.courseSessionService.moduleSelected$.subscribe((module) => {
+      this.moduleSelected = module;
+    });
+    if (this.isUserLogged) {
+      this.authService
+        .getUserDetails()
+        .usercourseaccess.forEach((course: ICourse) => {
+          if (course.courseId === Number(this.course_id)) {
+            this.userHasAccess = true;
+          }
+        });
+    }
   }
 
   selectUnitVideo(url: string) {
-    if (this.youtubeRegex.test(url) && this.isUserLogged) {
+    if (
+      (this.youtubeRegex.test(url) && this.userHasAccess) ||
+      this.moduleSelected.orderNumber == 0
+    ) {
       this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
       this.courseSessionSelected = this.courseSession;
       this.courseSessionService.setCourseSessionDetails(
