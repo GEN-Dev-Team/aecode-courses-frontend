@@ -31,14 +31,15 @@
 
       <div class="invest-item">
         <span> Descuento: </span>
-        <span> -{{ discount }}$ </span>
+        @if (!studentOptionSelected) { {{ (priceRegular * discount) / 100 }}$ }
+        @else { {{ (priceAcademy * discount) / 100 }}$ }
       </div>
 
       <div class="invest-item">
         <span> Total: </span>
         <span>
-          @if (!studentOptionSelected) { {{ priceRegular - discount }}$ } @else
-          { {{ priceAcademy - discount }}$ }
+          @if (!studentOptionSelected) {
+          {{ finalPriceRegular }}$ } @else { {{ finalPriceAcademy }}$ }
         </span>
       </div>
     </div>
@@ -50,7 +51,7 @@
       href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
         courseTitle
       }}&quot;* a un costo de {{
-        priceRegular - discount
+        finalPriceRegular
       }} USD. ¿Podrías indicarme como proceder?"
       >PAGAR</a
     >
@@ -61,7 +62,7 @@
       href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
         courseTitle
       }}&quot;* a un costo de {{
-        priceAcademy - discount
+        finalPriceAcademy
       }} USD. ¿Podrías indicarme como proceder?"
       >PAGAR</a
     >
