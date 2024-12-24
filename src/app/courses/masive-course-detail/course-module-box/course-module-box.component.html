@@ -2,7 +2,11 @@
   @for (moduleItem of course.modules; track moduleItem) {
   <div class="course-item-container">
     <div class="course-presentation-container">
-      <img class="course-img" src="assets\images\course-test-img.svg" alt="" />
+      <img
+        class="course-img"
+        src="{{ base_url }}{{ course.coverimage }}"
+        alt=""
+      />
 
       <span class="course-status">{{ moduleItem.percentage }}%</span>
 
