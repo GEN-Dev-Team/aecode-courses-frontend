@@ -2,7 +2,7 @@
   <app-course-overlay>
     @if(course$ | async; as course) {
     <main class="masive-course-container">
-      <h1 class="masive-course-title">INGENIERIA 4.0</h1>
+      <h1 class="masive-course-title">{{ course.title }}</h1>
 
       <div class="text-container margin-bottom">
         <span>Esto es para ti si...</span>
