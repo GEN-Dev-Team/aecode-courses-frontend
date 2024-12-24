@@ -1,9 +1,10 @@
-import { afterNextRender, Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-course-invest',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './course-invest.component.html',
   styleUrl: './course-invest.component.css',
 })
@@ -22,9 +23,11 @@ export class CourseInvestComponent {
   }
 
   ngOnInit(): void {
-    this.finalPriceAcademy =
-      this.priceAcademy - (this.priceAcademy * this.discount) / 100;
-    this.finalPriceRegular =
-      this.priceRegular - (this.priceRegular * this.discount) / 100;
+    this.finalPriceAcademy = Math.round(
+      this.priceAcademy - (this.priceAcademy * this.discount) / 100
+    );
+    this.finalPriceRegular = Math.round(
+      this.priceRegular - (this.priceRegular * this.discount) / 100
+    );
   }
 }
