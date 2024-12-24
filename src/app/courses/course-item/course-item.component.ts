@@ -9,11 +9,17 @@ import { IStudyPlan } from '../interface/secondary-course/StudyPlan';
 import { environment } from '../../../environment/environment';
 import { IModule } from '../interface/Module';
 import { IUnit } from '../interface/Unit';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-course-item',
   standalone: true,
-  imports: [LevelIconComponent, WatchIconComponent, CourseSessionIconComponent],
+  imports: [
+    LevelIconComponent,
+    WatchIconComponent,
+    CourseSessionIconComponent,
+    CommonModule,
+  ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
 })

@@ -67,6 +67,7 @@ export class CourseDetailComponent implements OnInit {
   isUserLogged: boolean = true;
   isDescription = true;
   courseIntroVideo = '';
+  finalPrice = 0;
 
   course$: Observable<ICourse> = this.courseService.getCourse(this.course_id);
   moduleSelected$: Observable<IModule> =
@@ -93,6 +94,9 @@ export class CourseDetailComponent implements OnInit {
 
     this.courseSessionService.moduleSelected$.subscribe((module) => {
       this.module_id = module.moduleId;
+      this.finalPrice = Math.round(
+        (module.price * (100 - module.percentage)) / 100
+      );
     });
   }
 }

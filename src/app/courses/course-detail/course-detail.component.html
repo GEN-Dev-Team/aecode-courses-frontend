@@ -80,10 +80,10 @@
             href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
               course.title
             }} - Módulo {{ module.orderNumber }}&quot;* a un costo de {{
-              (module.price * (100 - module.percentage)) / 100
+              finalPrice
             }} USD. ¿Podrías indicarme como proceder?"
           >
-            {{ (module.price * (100 - module.percentage)) / 100 }} USD</a
+            {{ finalPrice }} USD</a
           >
         </div>
 

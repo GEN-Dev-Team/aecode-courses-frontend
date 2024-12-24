@@ -54,23 +54,29 @@
   } @else {
   <div class="course-details">
     <h2 class="course-title">{{ course.title }}</h2>
-    <button
-      class="reserve-button"
-      (click)="showCourseDetails(course.seccourseId)"
-    >
-      Acceder
-    </button>
 
-    <div class="course-level">
-      <app-level-icon class="icon" />
-      <span>{{ course.level }}</span>
-    </div>
-
-    <div class="course-price">
-      <span class="course-old-price">${{ course.priceRegular }}</span>
-      <span class="course-new-price"
-        >${{ (course.priceRegular * (100 - course.percentage)) / 100 }}</span
+    <div class="course-footer">
+      <button
+        class="reserve-button"
+        (click)="showCourseDetails(course.seccourseId)"
       >
+        Acceder
+      </button>
+
+      <div class="course-level">
+        <app-level-icon class="icon" />
+        <span>{{ course.level }}</span>
+      </div>
+
+      <div class="course-price">
+        <span class="course-old-price">${{ course.priceRegular }}</span>
+        <span class="course-new-price"
+          >${{
+            (course.priceRegular * (100 - course.percentage)) / 100
+              | number : "1.0-0"
+          }}</span
+        >
+      </div>
     </div>
   </div>
 
