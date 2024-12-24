@@ -32,7 +32,10 @@
         <div class="course-price">
           <span class="course-old-price">${{ course.price }}</span>
           <span class="course-new-price"
-            >${{ (course.price * (100 - course.percentage)) / 100 }}</span
+            >${{
+              (course.price * (100 - course.percentage)) / 100
+                | number : "1.0-0"
+            }}</span
           >
         </div>
       </div>
@@ -43,7 +46,7 @@
       href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
         course.title
       }}&quot;* a un costo de {{
-        (course.price * (100 - course.percentage)) / 100
+        finalPrice
       }} USD. ¿Podrías indicarme como proceder?"
       target="_blank"
     >
