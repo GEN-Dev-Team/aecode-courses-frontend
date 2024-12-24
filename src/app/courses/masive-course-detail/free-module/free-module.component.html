@@ -1,6 +1,10 @@
 <div class="course-item-container">
   <div class="course-presentation-container">
-    <img class="course-img" src="{{ course.coverimage }}" alt="" />
+    <img
+      class="course-img"
+      src="{{ base_url }}{{ course.coverimage }}"
+      alt=""
+    />
 
     <span class="course-status">{{ course.percentage }}%</span>
 
