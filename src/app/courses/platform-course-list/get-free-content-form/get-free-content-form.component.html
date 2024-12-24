@@ -13,20 +13,27 @@
 
   <div class="course-input" (click)="isProgrammingSelected = false">
     <div class="course-select">
-      @if(!isProgrammingSelected) {
+      <!-- @if(!isProgrammingSelected) { -->
       <app-check-get-free-form-icon />
-      }
+      <!-- } -->
     </div>
     <label for="engineering-course">INGENIERIA 4.0</label>
   </div>
   <div class="course-input" (click)="isProgrammingSelected = true">
     <div class="course-select">
-      @if(isProgrammingSelected) {
-      <app-check-get-free-form-icon />
-      }
+      <!-- @if(isProgrammingSelected) { -->
+      <!-- <app-check-get-free-form-icon /> -->
+      <!-- } -->
     </div>
     <label for="programming-course">PROGRAMACION DIGITAL</label>
   </div>
 
-  <button ZoomIn class="send-button" (click)="sendForm()">ENVIAR</button>
+  <a
+    href="https://drive.google.com/file/d/1atFI1wKwt9OforT5pIM52K21mKUMR2B4/view?usp=drive_link"
+    target="_blank"
+    ZoomIn
+    class="send-button"
+    (click)="sendForm()"
+    >ENVIAR</a
+  >
 </form>
