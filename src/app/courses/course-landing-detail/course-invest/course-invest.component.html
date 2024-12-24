@@ -31,8 +31,9 @@
 
       <div class="invest-item">
         <span> Descuento: </span>
-        @if (!studentOptionSelected) { {{ (priceRegular * discount) / 100 }}$ }
-        @else { {{ (priceAcademy * discount) / 100 }}$ }
+        @if (!studentOptionSelected) {
+        {{ (priceRegular * discount) / 100 | number : "1.0-0" }}$ } @else {
+        {{ (priceAcademy * discount) / 100 | number : "1.0-0" }}$ }
       </div>
 
       <div class="invest-item">
