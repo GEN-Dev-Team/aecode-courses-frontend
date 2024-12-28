@@ -5,6 +5,7 @@ import { ClassQuestionComponent } from '../class-question/class-question.compone
 import { Observable } from 'rxjs';
 import { ISession } from '../../interface/Session';
 import { CourseSessionService } from '../../services/course-session.service';
+import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 
 declare var YT: any;
 
@@ -17,7 +18,7 @@ declare global {
 @Component({
   selector: 'app-youtube-player',
   standalone: true,
-  imports: [ClassQuestionComponent],
+  imports: [ClassQuestionComponent, LoaderComponent],
   templateUrl: './youtube-player.component.html',
   styleUrls: ['./youtube-player.component.css'],
 })
@@ -56,12 +57,14 @@ export class YoutubePlayerComponent {
   ngOnChanges(): void {
     if (this.unit_url_video) {
       this.safeUrl = this.youtubePlayerService.getSafeUrl(this.unit_url_video);
-
-      // console.log(
-      //   'Video url sended to player from ngOnChanges:',
-      //   this.unit_url_video
-      // );
-    } else console.log('Video no encontrado.');
+    } else if (this.courseIntroVideo) {
+      this.safeUrl = this.youtubePlayerService.getSafeUrl(
+        this.courseIntroVideo
+      );
+    } else {
+      this.safeUrl = ''; // No hay video disponible
+      console.log('Video no encontrado.');
+    }
   }
 
   initializeYoutubePlayer() {

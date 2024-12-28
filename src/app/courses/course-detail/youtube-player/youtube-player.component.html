@@ -1,3 +1,4 @@
+@if(safeUrl) {
 <div class="course-media-container">
   <iframe
     id="videoIframe"
@@ -10,8 +11,11 @@
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen
   ></iframe>
-
   @if (showTest) {
   <app-class-question class="class-question" />
   }
 </div>
+
+} @else {
+<app-loader />
+}

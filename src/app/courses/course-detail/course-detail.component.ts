@@ -18,13 +18,13 @@ import { LinkIconComponent } from '../icons/link-icon/link-icon.component';
 import { PdfIconComponent } from '../icons/pdf-icon/pdf-icon.component';
 import { DownloadIconComponent } from '../icons/download-icon/download-icon.component';
 import { WorldIconComponent } from '../icons/world-icon/world-icon.component';
-import { environment } from '../../../environment/environment';
 import { Observable } from 'rxjs';
 import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
 import { CourseModuleBoxComponent } from '../masive-course-detail/course-module-box/course-module-box.component';
 import { CourseUnitComponent } from './course-unit/course-unit.component';
 import { IModule } from '../interface/Module';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
+import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 
 @Component({
   selector: 'app-course-detail',
@@ -48,6 +48,7 @@ import { LoaderComponent } from '../../shared/components/loader/loader.component
     CourseModuleBoxComponent,
     CourseUnitComponent,
     LoaderComponent,
+    AddBaseUrlPipe,
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css',
@@ -58,15 +59,14 @@ export class CourseDetailComponent implements OnInit {
   authService: AuthService = inject(AuthService);
   courseSessionService: CourseSessionService = inject(CourseSessionService);
 
-  apiUrl = environment.base;
-
   course_id: number = Number(this.route.snapshot.params['courseId']);
   module_id: number = Number(this.route.snapshot.params['moduleId']);
   courseSessionSubject!: ISession;
   showBlockedModal = false;
   isUserLogged: boolean = true;
+  userHasAccessToCourse: boolean = true;
+  userHasAccessToModule: boolean = true;
   isDescription = true;
-  courseIntroVideo = '';
   finalPrice = 0;
 
   course$: Observable<ICourse> = this.courseService.getCourse(this.course_id);
@@ -84,10 +84,6 @@ export class CourseDetailComponent implements OnInit {
       this.isUserLogged = loggedInStatus;
     });
 
-    this.courseService.getCourse(this.course_id).subscribe((response) => {
-      this.courseIntroVideo = response.videoUrl;
-    });
-
     this.courseSessionService.courseSession$.subscribe((session) => {
       this.courseSessionSubject = session;
     });
@@ -97,6 +93,15 @@ export class CourseDetailComponent implements OnInit {
       this.finalPrice = Math.round(
         (module.price * (100 - module.percentage)) / 100
       );
+      this.userHasAccessToCourse = this.authService.hasAccesToCourse(
+        this.course_id
+      );
+      this.userHasAccessToModule = this.authService.hasAccesToModule(
+        this.module_id
+      );
     });
+
+    console.log('Access to course:', this.userHasAccessToCourse);
+    console.log('Access to module:', this.userHasAccessToModule);
   }
 }

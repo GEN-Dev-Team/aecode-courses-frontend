@@ -12,6 +12,7 @@ export interface IModule {
   orderNumber: number;
   units: IUnit[];
   relatedworks: ITest;
+  moduleimage: string;
 }
 
 export const defaultModule: IModule = {
@@ -25,4 +26,5 @@ export const defaultModule: IModule = {
   orderNumber: 0,
   units: [],
   relatedworks: {} as ITest,
+  moduleimage: '',
 };

@@ -2,18 +2,18 @@
   <div class="course-presentation-container">
     <img
       class="course-img"
-      src="{{ base_url }}{{ course.coverimage }}"
+      src="{{ course.moduleimage | addBaseUrl }}"
       alt=""
     />
 
-    <span class="course-status">{{ course.percentage }}%</span>
+    <span class="course-status">{{ course.percentage }}% </span>
 
     <div class="course-tags">
       <div class="course-icons">
         @for (toolItem of course.tools; track toolItem) {
         <div class="icon-container">
           <img
-            src="{{ base_url }}{{ toolItem.picture }}"
+            src="{{ toolItem.picture | addBaseUrl }}"
             alt="{{ toolItem.name }}"
           />
         </div>

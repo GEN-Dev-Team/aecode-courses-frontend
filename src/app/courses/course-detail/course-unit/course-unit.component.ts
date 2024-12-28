@@ -44,6 +44,7 @@ export class CourseUnitComponent {
   showSessions: boolean = true;
   sessionObject!: ISession;
   userHasAccess: boolean = false;
+  userHasAccessToModule: boolean = false;
   course_id: number = this.route.snapshot.params['courseId'];
   blockedMessage: string =
     'Para acceder al contenido completo del curso, es necesario que te suscribas previamente.';
@@ -69,11 +70,19 @@ export class CourseUnitComponent {
             this.userHasAccess = true;
           }
         });
+
+      this.userHasAccessToModule = this.authService.hasAccesToModule(
+        this.moduleSelected.moduleId
+      );
     }
   }
 
   onClick() {
-    if (this.userHasAccess || this.moduleSelected.orderNumber == 0) {
+    if (
+      this.userHasAccess ||
+      this.moduleSelected.orderNumber == 0 ||
+      this.userHasAccessToModule
+    ) {
       this.showSessions = !this.showSessions;
 
       this.sessionObject = {

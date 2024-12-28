@@ -10,6 +10,7 @@ import { environment } from '../../../environment/environment';
 import { IModule } from '../interface/Module';
 import { IUnit } from '../interface/Unit';
 import { CommonModule } from '@angular/common';
+import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 
 @Component({
   selector: 'app-course-item',
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
     WatchIconComponent,
     CourseSessionIconComponent,
     CommonModule,
+    AddBaseUrlPipe,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
@@ -31,7 +33,6 @@ export class CourseItemComponent {
   browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
 
-  base_url: string = environment.base;
   secondaryCourseMainImgUrl = '';
   secondaryCourseSessions: number = 0;
 

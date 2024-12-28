@@ -1,5 +1,6 @@
 import { ICourse } from '../../courses/interface/Course';
 import {
+  IModuleAccess,
   IProgressRW,
   IProgressSession,
 } from '../../courses/interface/CourseProgress';
@@ -18,6 +19,7 @@ export interface ILogin {
   userprogresssessions?: IProgressSession[];
   usercourseaccess?: ICourse[];
   userprogressrw?: IProgressRW[];
+  usermoduleaccess?: IModuleAccess[];
 }
 
 export interface IUserDetails {

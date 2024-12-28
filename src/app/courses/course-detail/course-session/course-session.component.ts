@@ -52,6 +52,7 @@ export class CourseSessionComponent {
   isUserLogged: boolean = false;
   showBlockedModal: boolean = false;
   userHasAccess: boolean = false;
+  userHasAccessToModule: boolean = false;
   selectedVideoIsCompleted: boolean = false;
   sessionProgress: IProgressSession = {
     progressId: -1,
@@ -90,6 +91,7 @@ export class CourseSessionComponent {
     this.courseSessionService.moduleSelected$.subscribe((module) => {
       this.moduleSelected = module;
     });
+
     if (this.isUserLogged) {
       this.authService
         .getUserDetails()
@@ -98,13 +100,18 @@ export class CourseSessionComponent {
             this.userHasAccess = true;
           }
         });
+
+      this.userHasAccessToModule = this.authService.hasAccesToModule(
+        this.moduleSelected.moduleId
+      );
     }
   }
 
   selectUnitVideo(url: string) {
     if (
       (this.youtubeRegex.test(url) && this.userHasAccess) ||
-      this.moduleSelected.orderNumber == 0
+      this.moduleSelected.orderNumber == 0 ||
+      this.userHasAccessToModule
     ) {
       this.safeUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
       this.courseSessionSelected = this.courseSession;

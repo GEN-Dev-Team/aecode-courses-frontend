@@ -5,13 +5,13 @@ import { ICourse } from '../../interface/Course';
 import { BrowserService } from '../../../core/services/browser.service';
 import { CourseService } from '../../services/course.service';
 import { CourseSessionService } from '../../services/course-session.service';
-import { environment } from '../../../../environment/environment';
 import { defaultSession } from '../../interface/Session';
+import { AddBaseUrlPipe } from '../../../core/pipes/add-base-url.pipe';
 
 @Component({
   selector: 'app-course-module-box',
   standalone: true,
-  imports: [CourseSessionIconComponent, WatchIconComponent],
+  imports: [CourseSessionIconComponent, WatchIconComponent, AddBaseUrlPipe],
   templateUrl: './course-module-box.component.html',
   styleUrl: './course-module-box.component.css',
 })
@@ -21,8 +21,6 @@ export class CourseModuleBoxComponent {
   browserService: BrowserService = inject(BrowserService);
   courseService: CourseService = inject(CourseService);
   courseSessionService: CourseSessionService = inject(CourseSessionService);
-
-  base_url: string = environment.base;
 
   redirectToCourse(moduleId: number) {
     this.courseSessionService.setModuleSelected(moduleId);

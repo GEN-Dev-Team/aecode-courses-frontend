@@ -1,6 +1,6 @@
 <label class="course-session" (click)="selectUnitVideo(courseSession.videoUrl)">
   @if ((this.youtubeRegex.test(courseSession.videoUrl) && this.userHasAccess) ||
-  this.moduleSelected.orderNumber == 0 ) {
+  this.moduleSelected.orderNumber == 0 || userHasAccessToModule) {
   <div
     class="course-session-checkbox"
     [ngClass]="{ checked: selectedVideoIsCompleted }"
@@ -24,7 +24,7 @@
 </label>
 
 <app-modal (isClosed)="showBlockedModal = $event" [isOpen]="showBlockedModal">
-  @if(!userHasAccess) {
+  @if(!userHasAccess || !userHasAccessToModule) {
   <app-content-blocked
     [message]="blockedMessage"
     (isClosed)="showBlockedModal = $event"

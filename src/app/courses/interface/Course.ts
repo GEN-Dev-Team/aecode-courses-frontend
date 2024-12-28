@@ -6,12 +6,15 @@ export interface ICourse {
   title: string;
   subtitle: string;
   coverimage: string;
+  moduleimage: string;
+  gift: string;
   videoUrl: string;
   percentage: number;
   price: number;
   hours: number;
   modules: IModule[];
   tools: ITool[];
+  urlkit: string;
 }
 
 export const defaultCourse: ICourse = {
@@ -19,10 +22,13 @@ export const defaultCourse: ICourse = {
   title: '',
   subtitle: '',
   coverimage: '',
+  moduleimage: '',
+  gift: '',
   videoUrl: '',
   percentage: 0,
   price: 0,
   hours: 0,
   modules: [],
   tools: [],
+  urlkit: '',
 };
