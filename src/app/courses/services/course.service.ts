@@ -17,8 +17,10 @@ export class CourseService {
   http: HttpClient = inject(HttpClient);
 
   showMasiveCourseBackground = new BehaviorSubject<boolean>(false);
+  masiveCourseBackgroundGift = new BehaviorSubject<string>('');
 
   showMasiveCourseBackground$ = this.showMasiveCourseBackground.asObservable();
+  masiveCourseBackgroundGift$ = this.masiveCourseBackgroundGift.asObservable();
 
   setShowMasiveCourseBackground(state: boolean) {
     this.showMasiveCourseBackground.next(state);
@@ -26,6 +28,14 @@ export class CourseService {
 
   getShowMasiveCourseBackground() {
     return this.showMasiveCourseBackground.getValue();
+  }
+
+  setMasiveCourseBackgroundGift(gift: string) {
+    this.masiveCourseBackgroundGift.next(gift);
+  }
+
+  getMasiveCourseBackgroundGift() {
+    return this.masiveCourseBackgroundGift.getValue();
   }
 
   getCourses() {

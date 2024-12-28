@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { ICourse } from '../../courses/interface/Course';
 import { isPlatformBrowser } from '@angular/common';
 import { BrowserService } from './browser.service';
+import { IModule } from '../../courses/interface/Module';
 
 @Injectable({
   providedIn: 'root',
@@ -61,6 +62,19 @@ export class AuthService {
       if (user.usercourseaccess) {
         return user.usercourseaccess.some(
           (course: ICourse) => course.courseId === courseId
+        );
+      }
+    }
+
+    return false;
+  }
+
+  hasAccesToModule(moduleId: number): boolean {
+    if (this.browserService.isBrowser()) {
+      const user = this.getUserDetails();
+      if (user.usermoduleaccess) {
+        return user.usermoduleaccess.some(
+          (module: IModule) => module.moduleId === moduleId
         );
       }
     }

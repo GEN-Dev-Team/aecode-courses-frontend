@@ -13,7 +13,6 @@
     filter: blur(30px);
     position: absolute;
     top: 0;
-    display: none;
   }
 
   .header-wrapper {
@@ -22,7 +21,7 @@
     position: relative;
 
     .header-content {
-      width: clamp(300px, 100%, 1440px);
+      width: clamp(375px, 100%, 1440px);
       padding: 11px 35px;
       margin-inline: auto;
       display: flex;
@@ -127,12 +126,25 @@
 
 @media screen and (max-width: 768px) {
   .header-container {
-    .header-content {
-      padding: 18px 15px;
+    width: 100%;
 
-      .header-logo {
-        img {
-          height: 15px;
+    .box-shadow-effect {
+      width: 100%;
+      height: 120%;
+      position: absolute;
+      top: 0;
+    }
+
+    .header-wrapper {
+      width: 100%;
+
+      .header-content {
+        padding: 15px;
+
+        .header-logo {
+          img {
+            height: 15px;
+          }
         }
       }
     }

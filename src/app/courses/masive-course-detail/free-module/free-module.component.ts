@@ -3,14 +3,19 @@ import { CourseSessionIconComponent } from '../../../shared/icons/course-session
 import { WatchIconComponent } from '../../../shared/icons/watch-icon/watch-icon.component';
 import { CourseService } from '../../services/course.service';
 import { BrowserService } from '../../../core/services/browser.service';
-import { environment } from '../../../../environment/environment';
 import { ICourse } from '../../interface/Course';
 import { CommonModule } from '@angular/common';
+import { AddBaseUrlPipe } from '../../../core/pipes/add-base-url.pipe';
 
 @Component({
   selector: 'app-free-module',
   standalone: true,
-  imports: [CourseSessionIconComponent, WatchIconComponent, CommonModule],
+  imports: [
+    CourseSessionIconComponent,
+    WatchIconComponent,
+    CommonModule,
+    AddBaseUrlPipe,
+  ],
   templateUrl: './free-module.component.html',
   styleUrl: './free-module.component.css',
 })
@@ -20,7 +25,6 @@ export class FreeModuleComponent {
   browserService: BrowserService = inject(BrowserService);
   courseService: CourseService = inject(CourseService);
 
-  base_url = environment.base;
   finalPrice = 0;
 
   ngOnInit(): void {

@@ -1,5 +1,6 @@
 <label for="{{ unit.unitId }}" class="course-item" (click)="onClick()">
-  @if (this.userHasAccess || this.moduleSelected.orderNumber == 0) {
+  @if ( this.userHasAccess || this.moduleSelected.orderNumber == 0 ||
+  userHasAccessToModule) {
   <div class="course-item-checkbox" [ngClass]="{ checked: false }">
     <app-input-check-icon class="course-item-icon" />
   </div>
@@ -25,7 +26,7 @@
 </ul>
 
 <app-modal [isOpen]="showBlockedModal" (isClosed)="showBlockedModal = $event">
-  @if(!userHasAccess) {
+  @if(!userHasAccess || !userHasAccessToModule) {
   <app-content-blocked
     [message]="blockedMessage"
     (isClosed)="showBlockedModal = $event"

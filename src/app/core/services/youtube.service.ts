@@ -38,7 +38,7 @@ export class YoutubeService {
   sessionTestService: SessionTestService = inject(SessionTestService);
 
   courseSessionObject!: ISession;
-  userId: number = this.authService.getUserDetails().userId;
+  userId: number = -1;
   questionAnswered = false;
 
   fiveSecondsToFinish$: Observable<boolean> =
@@ -47,6 +47,8 @@ export class YoutubeService {
   initializePlayer(videoId: string): void {
     // Cargar la API de YouTube
     if (this.browserService.isBrowser()) {
+      this.userId = this.authService.getUserDetails().userId;
+
       const tag = document.createElement('script');
       tag.src = 'https://www.youtube.com/iframe_api';
       document.body.appendChild(tag);
@@ -81,8 +83,16 @@ export class YoutubeService {
   }
 
   trackVideoProgress(): void {
-    // Revisa cada segundo el estado de progreso del video
-    setInterval(() => {
+    // Verificar que los objetos requeridos estén inicializados antes de configurar el seguimiento
+    if (!this.player || !this.userId || !this.courseSessionObject?.sessionId) {
+      console.log(
+        'Player, userId o sessionId no están inicializados. No se puede rastrear el progreso del video.'
+      );
+      return;
+    }
+
+    // Usar setInterval para revisar el estado de progreso del video cada segundo
+    const intervalId = setInterval(() => {
       if (
         this.player &&
         !this.fiveSecondsToFinishSubject.getValue() &&
@@ -91,18 +101,16 @@ export class YoutubeService {
         const currentTime = this.player.getCurrentTime();
         const timeRemaining = this.videoDuration - currentTime;
 
-        if (
-          timeRemaining <= 5 &&
-          !this.questionAnswered &&
-          this.userId &&
-          this.courseSessionObject.sessionId
-        ) {
+        // Verificar si el video está a 5 segundos de terminar
+        if (timeRemaining <= 5 && !this.questionAnswered) {
           console.log('El video está a punto de terminar en 5 segundos.');
+
+          // Pausar el video y actualizar el estado para evitar múltiples ejecuciones
           this.player.pauseVideo();
           this.questionAnswered = true;
           this.setVideoGoingToFinish(true);
 
-          // Guardar el progreso del video
+          // Crear el progreso del video
           const progressItem: IProgressSession = {
             progressId: 0,
             userId: this.userId,
@@ -110,12 +118,20 @@ export class YoutubeService {
             completed: true,
           };
 
-          // console.log('Progreso del video:', progressItem);
+          // Guardar el progreso del video
           this.progressSessionService
             .createSessionProgress(progressItem)
-            .subscribe((response) => {
-              console.log('Progreso del video guardado:', response);
+            .subscribe({
+              next: (response) => {
+                console.log('Progreso del video guardado:', response);
+              },
+              error: (err) => {
+                console.error('Error al guardar el progreso del video:', err);
+              },
             });
+
+          // Limpiar el intervalo después de completar la acción
+          clearInterval(intervalId);
         }
       }
     }, 1000); // Revisa cada segundo

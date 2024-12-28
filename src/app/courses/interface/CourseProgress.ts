@@ -11,3 +11,9 @@ export interface IProgressRW {
   workId: number;
   completed: boolean;
 }
+
+export interface IModuleAccess {
+  accessId: number;
+  userId: number;
+  moduleId: number;
+}

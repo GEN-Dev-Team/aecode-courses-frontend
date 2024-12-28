@@ -1,7 +1,7 @@
 <app-course-overlay>
   @if (course$ | async; as course) {
   <main class="masive-course-container">
-    <h1 class="masive-course-title">INGENIERIA 4.0</h1>
+    <h1 class="masive-course-title">{{ course.title }}</h1>
     <h3 class="masive-course-subtitle">
       {{ course.subtitle }}
     </h3>
@@ -67,11 +67,12 @@
           <app-youtube-player
             [unit_url_video]="courseSessionSubject.videoUrl"
             [session_id]="courseSessionSubject.sessionId"
-            [courseIntroVideo]="courseIntroVideo"
+            [courseIntroVideo]="course.videoUrl"
           />
         </main>
 
-        @if (!isUserLogged && module.orderNumber !== 0) {
+        @if (module.orderNumber !== 0 && ( !userHasAccessToModule ||
+        !userHasAccessToCourse)) {
         <div class="course-price-container">
           <span class="original-price">${{ module.price }}</span>
           <a
@@ -125,7 +126,7 @@
             @if (courseSessionSubject.resourceDocument) {
             <a
               class="resource-items"
-              [href]="apiUrl + courseSessionSubject.resourceDocument"
+              [href]="courseSessionSubject.resourceDocument | addBaseUrl"
               target="_blank"
             >
               <app-pdf-icon class="first-icon" />

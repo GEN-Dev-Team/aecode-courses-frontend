@@ -14,7 +14,7 @@
         @for (toolItem of course.tools; track toolItem) {
         <div class="icon-container">
           <img
-            src="{{ base_url }}{{ toolItem.picture }}"
+            src="{{ toolItem.picture | addBaseUrl }}"
             alt="{{ toolItem.name }}"
           />
         </div>

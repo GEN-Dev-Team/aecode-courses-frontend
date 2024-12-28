@@ -7,11 +7,11 @@
   cursor: pointer;
 
   .course-session-checkbox {
+    flex-shrink: 0;
     border-radius: 2px;
     border: 2px solid var(--purple-2);
     width: 17px;
     height: 17px;
-    position: relative;
     cursor: pointer;
     background-color: transparent;
     position: relative;

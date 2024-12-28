@@ -4,7 +4,7 @@
     <div class="course-presentation-container">
       <img
         class="course-img"
-        src="{{ base_url }}{{ course.coverimage }}"
+        src="{{ moduleItem.moduleimage | addBaseUrl }}"
         alt=""
       />
 
@@ -16,7 +16,7 @@
 
           <div class="icon-container">
             <img
-              src="{{ base_url }}{{ toolItem.picture }}"
+              src="{{ toolItem.picture | addBaseUrl }}"
               alt="{{ toolItem.name }}"
             />
           </div>

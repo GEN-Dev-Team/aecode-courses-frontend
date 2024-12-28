@@ -12,6 +12,7 @@
     max-width: 261px;
     display: flex;
     flex-flow: column nowrap;
+    flex-shrink: 0;
     border-radius: 6px;
     background: #eef3f8;
     box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.11);
