@@ -1,5 +1,5 @@
-import { ICourse } from '../../courses/interface/Course';
 import {
+  ICoureAccess,
   IModuleAccess,
   IProgressRW,
   IProgressSession,
@@ -17,7 +17,7 @@ export interface ILogin {
   gender: string;
   experience: string;
   userprogresssessions?: IProgressSession[];
-  usercourseaccess?: ICourse[];
+  usercourseaccess?: ICoureAccess[];
   userprogressrw?: IProgressRW[];
   usermoduleaccess?: IModuleAccess[];
 }

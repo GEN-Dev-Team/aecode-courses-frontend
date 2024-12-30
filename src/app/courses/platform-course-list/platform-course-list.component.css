@@ -21,7 +21,7 @@
     z-index: -1;
   }
 
-  .coure-platform-list-content {
+  .course-platform-list-content {
     display: flex;
     min-height: 273px;
     flex-flow: row nowrap;
@@ -52,6 +52,7 @@
 
 @media screen and (max-width: 768px) {
   .course-platform-list-container {
+    min-height: auto;
     padding: 14px 10px;
     margin-bottom: 20px;
 
@@ -67,7 +68,7 @@
       z-index: -1;
     }
 
-    .coure-platform-list-content {
+    .course-platform-list-content {
       flex-flow: column nowrap;
       gap: 10px;
     }

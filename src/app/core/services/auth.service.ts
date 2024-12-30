@@ -4,12 +4,21 @@ import { ICourse } from '../../courses/interface/Course';
 import { isPlatformBrowser } from '@angular/common';
 import { BrowserService } from './browser.service';
 import { IModule } from '../../courses/interface/Module';
+import {
+  ICoureAccess,
+  IModuleAccess,
+} from '../../courses/interface/CourseProgress';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private isLoggedInStatus = new BehaviorSubject<boolean>(this.hasToken());
+  private accessToCourse = new BehaviorSubject<boolean>(false);
+  private accessToModule = new BehaviorSubject<boolean>(false);
+
+  accessToCourse$ = this.accessToCourse.asObservable();
+  accessToModule$ = this.accessToModule.asObservable();
 
   browserService: BrowserService = inject(BrowserService);
 
@@ -56,29 +65,46 @@ export class AuthService {
     }
   }
 
-  hasAccesToCourse(courseId: number): boolean {
+  setAccessToCourse(courseId: number): void {
     if (this.browserService.isBrowser()) {
       const user = this.getUserDetails();
+
       if (user.usercourseaccess) {
-        return user.usercourseaccess.some(
-          (course: ICourse) => course.courseId === courseId
-        );
+        user.usercourseaccess.forEach((element: ICoureAccess) => {
+          if (element.courseId == courseId) {
+            this.accessToCourse.next(true);
+            return;
+          }
+        });
       }
     }
-
-    return false;
   }
 
-  hasAccesToModule(moduleId: number): boolean {
-    if (this.browserService.isBrowser()) {
+  getAccessToCourse(): boolean {
+    return this.accessToCourse.getValue();
+  }
+
+  setAccessToModule(moduelId: number): void {
+    if (this.getAccessToCourse()) {
+      this.accessToModule.next(true);
+      return;
+    } else {
       const user = this.getUserDetails();
       if (user.usermoduleaccess) {
-        return user.usermoduleaccess.some(
-          (module: IModule) => module.moduleId === moduleId
-        );
+        user.usermoduleaccess.forEach((element: IModuleAccess) => {
+          if (element.moduleId == moduelId) {
+            this.accessToModule.next(true);
+            return;
+          } else {
+            this.accessToModule.next(false);
+            return;
+          }
+        });
       }
     }
+  }
 
-    return false;
+  getAccessToModule(): boolean {
+    return this.accessToModule.getValue();
   }
 }

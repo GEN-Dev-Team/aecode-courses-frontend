@@ -30,18 +30,17 @@
             ZoomIn
             data-section="header-container"
             data-value="Acceder"
-            href=""
             (click)="openLoginForm = true"
           >
             Acceder
           </app-button>
           } @else {
           <div class="user-logged">
-            <app-notification-icon ZoomIn />
+            <app-notification-icon class="notification-icon" ZoomIn />
             <div class="separator"></div>
             <div (click)="showProfileMenuHandler()" class="user-profile">
               <img
-                src="assets/images/login-view/user-profile-img.webp"
+                [src]="userProfileImg | addBaseUrl"
                 class="user-profile-img"
                 alt=""
               />

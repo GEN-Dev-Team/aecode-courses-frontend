@@ -6,6 +6,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ZoomInDirective } from '../../directives/animations/zoom-in.directive';
 import { UserService } from '../../../home/user.service';
+import { AddBaseUrlPipe } from '../../../core/pipes/add-base-url.pipe';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +17,7 @@ import { UserService } from '../../../home/user.service';
     NotificationIconComponent,
     ViewProfileComponent,
     ZoomInDirective,
+    AddBaseUrlPipe,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -25,6 +27,7 @@ export class HeaderComponent {
   openLoginForm = false;
   showProfileMenu = false;
   userId: number = 0;
+  userProfileImg: string = 'assets/images/login-view/user-profile-img.webp';
 
   authService: AuthService = inject(AuthService);
   logInService: UserService = inject(UserService);
