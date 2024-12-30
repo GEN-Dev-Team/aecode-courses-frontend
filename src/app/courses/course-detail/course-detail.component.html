@@ -71,8 +71,7 @@
           />
         </main>
 
-        @if (module.orderNumber !== 0 && ( !userHasAccessToModule ||
-        !userHasAccessToCourse)) {
+        @if (module.orderNumber !== 0 && !userHasAccessToModule) {
         <div class="course-price-container">
           <span class="original-price">${{ module.price }}</span>
           <a
@@ -92,7 +91,7 @@
         <div
           class="course-class-details"
           [class.course-class-details-user-logged]="
-            isUserLogged || module.orderNumber == 0
+            module.orderNumber == 0 || userHasAccessToModule
           "
         >
           <div class="header">

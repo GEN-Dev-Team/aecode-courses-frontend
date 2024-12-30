@@ -63,7 +63,6 @@ export class CourseDetailComponent implements OnInit {
   module_id: number = Number(this.route.snapshot.params['moduleId']);
   courseSessionSubject!: ISession;
   showBlockedModal = false;
-  isUserLogged: boolean = true;
   userHasAccessToCourse: boolean = true;
   userHasAccessToModule: boolean = true;
   isDescription = true;
@@ -80,10 +79,6 @@ export class CourseDetailComponent implements OnInit {
   courseDetailsInit() {
     this.courseSessionService.setModuleSelected(this.module_id);
 
-    this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
-      this.isUserLogged = loggedInStatus;
-    });
-
     this.courseSessionService.courseSession$.subscribe((session) => {
       this.courseSessionSubject = session;
     });
@@ -93,15 +88,17 @@ export class CourseDetailComponent implements OnInit {
       this.finalPrice = Math.round(
         (module.price * (100 - module.percentage)) / 100
       );
-      this.userHasAccessToCourse = this.authService.hasAccesToCourse(
-        this.course_id
-      );
-      this.userHasAccessToModule = this.authService.hasAccesToModule(
-        this.module_id
-      );
     });
 
-    console.log('Access to course:', this.userHasAccessToCourse);
-    console.log('Access to module:', this.userHasAccessToModule);
+    this.authService.setAccessToCourse(this.course_id);
+    this.authService.setAccessToModule(this.module_id);
+
+    this.authService.accessToCourse$.subscribe((accessToCourse) => {
+      this.userHasAccessToCourse = accessToCourse;
+    });
+
+    this.authService.accessToModule$.subscribe((accessToModule) => {
+      this.userHasAccessToModule = accessToModule;
+    });
   }
 }

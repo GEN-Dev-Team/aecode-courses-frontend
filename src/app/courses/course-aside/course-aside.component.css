@@ -4,7 +4,7 @@
   padding-left: 24px;
   background: white;
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
 }
 
@@ -117,10 +117,17 @@
 @media screen and (max-width: 768px) {
   .course-aside-container {
     width: 100%;
+    height: 93px;
     position: fixed;
-    bottom: 0;
-    left: 0;
+    padding-left: 0;
     z-index: 1;
+  }
+
+  .course-aside-content {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    position: relative;
   }
 
   .aside-dropdown-button {
@@ -128,6 +135,7 @@
   }
 
   .course-aside-list {
+    height: 100%;
     padding: 19px 20px;
     flex-flow: row nowrap;
     justify-content: space-between;

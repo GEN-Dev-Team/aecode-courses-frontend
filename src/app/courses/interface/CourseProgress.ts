@@ -1,3 +1,9 @@
+export interface ICoureAccess {
+  accessId: number;
+  userId: number;
+  courseId: number;
+}
+
 export interface IProgressSession {
   progressId: number;
   userId: number;

@@ -43,9 +43,9 @@ export class CourseUnitComponent {
   isUserLogged: boolean = false;
   showSessions: boolean = true;
   sessionObject!: ISession;
-  userHasAccess: boolean = false;
   userHasAccessToModule: boolean = false;
   course_id: number = this.route.snapshot.params['courseId'];
+  module_id: number = this.route.snapshot.params['moduleId'];
   blockedMessage: string =
     'Para acceder al contenido completo del curso, es necesario que te suscribas previamente.';
   moduleSelected!: IModule;
@@ -62,27 +62,13 @@ export class CourseUnitComponent {
       this.moduleSelected = module;
     });
 
-    if (this.isUserLogged) {
-      this.authService
-        .getUserDetails()
-        .usercourseaccess.forEach((course: ICourse) => {
-          if (course.courseId === Number(this.course_id)) {
-            this.userHasAccess = true;
-          }
-        });
-
-      this.userHasAccessToModule = this.authService.hasAccesToModule(
-        this.moduleSelected.moduleId
-      );
-    }
+    this.authService.accessToModule$.subscribe((accessToModule) => {
+      this.userHasAccessToModule = accessToModule;
+    });
   }
 
   onClick() {
-    if (
-      this.userHasAccess ||
-      this.moduleSelected.orderNumber == 0 ||
-      this.userHasAccessToModule
-    ) {
+    if (this.moduleSelected.orderNumber == 0 || this.userHasAccessToModule) {
       this.showSessions = !this.showSessions;
 
       this.sessionObject = {

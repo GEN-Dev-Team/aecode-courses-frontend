@@ -36,27 +36,12 @@
       }
 
       .header-options {
-        .dropdown-text {
-          display: none;
-        }
-
-        .dropdown-button {
-          display: none;
-        }
-
         .header-list {
           display: flex;
           flex-flow: row wrap;
           align-items: center;
           gap: 91px;
           margin: 0;
-
-          .header-item {
-            font-size: 16px;
-            font-family: "ruberoid-semibold";
-            text-decoration: none;
-            color: var(--purple-2);
-          }
 
           .language-button {
             display: flex;
@@ -79,6 +64,11 @@
             flex-flow: row nowrap;
             gap: 20px;
             align-items: center;
+
+            .notification-icon {
+              width: 22px;
+              cursor: pointer;
+            }
 
             .separator {
               width: 1px;
@@ -106,6 +96,8 @@
                 aspect-ratio: 1 / 1;
                 border-radius: 50%;
                 border: solid 1px var(--gray-1);
+                object-fit: contain;
+                object-position: center;
               }
 
               .profile-dropdown-button {
@@ -144,6 +136,39 @@
         .header-logo {
           img {
             height: 15px;
+          }
+        }
+
+        .header-options {
+          .header-list {
+            .language-button {
+              display: flex;
+            }
+
+            .user-logged {
+              gap: 11px;
+
+              .notification-icon {
+                width: 17px;
+              }
+
+              .separator {
+                height: 27px;
+              }
+
+              .user-profile {
+                gap: 6px;
+
+                .user-profile-img {
+                  width: 20px;
+                  height: 20px;
+                }
+
+                .profile-dropdown-button {
+                  font-size: 9px;
+                }
+              }
+            }
           }
         }
       }

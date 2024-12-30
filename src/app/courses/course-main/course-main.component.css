@@ -128,7 +128,7 @@
 
 @media screen and (max-width: 768px) {
   .main-container {
-    padding-block: 20px;
+    padding-block: 20px 122px;
 
     .title-container {
       max-width: 280px;

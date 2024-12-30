@@ -170,6 +170,10 @@
     font-family: "plusjakartasans-semibold";
     cursor: pointer;
   }
+
+  .platform-reserve-button {
+    margin-bottom: 0px;
+  }
 }
 
 /* Platform course styles */
@@ -269,7 +273,7 @@
 
     .course-details {
       padding: 12px 10px 15px 10px;
-      gap: 10px;
+      gap: 0px;
 
       .course-level {
         font-size: 12px;
@@ -313,8 +317,8 @@
   /* Platform course styles */
 
   .platform-course-item-container {
-    width: 100%;
-    max-width: 315px;
+    min-width: 315px;
+    min-height: auto;
     margin: 0px auto;
   }
 
