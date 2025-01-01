@@ -10,13 +10,14 @@ import { CourseExtraInformationComponent } from './course-extra-information/cour
 import { SecondaryCourseService } from '../services/secondary-course.service';
 import { map, Observable } from 'rxjs';
 import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { environment } from '../../../environment/environment';
 import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
 import { CourseLandingUnitComponent } from './course-landing-unit/course-landing-unit.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { PlayIconComponent } from '../../shared/icons/play-icon/play-icon.component';
 import { ActivatedRoute } from '@angular/router';
+import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 
 @Component({
   selector: 'app-course-landing-detail',
@@ -33,6 +34,7 @@ import { ActivatedRoute } from '@angular/router';
     CourseLandingUnitComponent,
     LoaderComponent,
     PlayIconComponent,
+    AddBaseUrlPipe,
   ],
   templateUrl: './course-landing-detail.component.html',
   styleUrl: './course-landing-detail.component.css',

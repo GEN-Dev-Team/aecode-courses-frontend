@@ -7,6 +7,10 @@ import { ViewProfileComponent } from './view-profile/view-profile.component';
 import { ZoomInDirective } from '../../directives/animations/zoom-in.directive';
 import { UserService } from '../../../home/user.service';
 import { AddBaseUrlPipe } from '../../../core/pipes/add-base-url.pipe';
+import { IUserDetails } from '../../../home/interface/Login';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+import { environment } from '../../../../environment/environment';
 
 @Component({
   selector: 'app-header',
@@ -17,20 +21,22 @@ import { AddBaseUrlPipe } from '../../../core/pipes/add-base-url.pipe';
     NotificationIconComponent,
     ViewProfileComponent,
     ZoomInDirective,
-    AddBaseUrlPipe,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
+  authService: AuthService = inject(AuthService);
+  logInService: UserService = inject(UserService);
+  userService: UserService = inject(UserService);
+
   isUserLoggedIn = false;
   openLoginForm = false;
   showProfileMenu = false;
   userId: number = 0;
   userProfileImg: string = 'assets/images/login-view/user-profile-img.webp';
-
-  authService: AuthService = inject(AuthService);
-  logInService: UserService = inject(UserService);
+  userDetailsData!: Observable<IUserDetails>;
+  base_url = environment.base;
 
   ngOnInit(): void {
     this.setUser();
@@ -74,6 +80,17 @@ export class HeaderComponent {
 
   setUser() {
     this.userId = this.authService.getUserDetails().userId;
+
+    this.userService
+      .getUserDetailsImgById(this.userId)
+      .subscribe((response) => {
+        if (response.profilepicture) {
+          this.userProfileImg = this.base_url + response.profilepicture;
+        } else {
+          this.userProfileImg =
+            'assets/images/login-view/user-profile-img.webp';
+        }
+      });
 
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLoggedIn = loggedInStatus;
