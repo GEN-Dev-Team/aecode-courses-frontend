@@ -91,13 +91,19 @@
                 top: 100%;
               }
 
-              .user-profile-img {
+              .user-profile-img-container {
                 width: 44px;
-                aspect-ratio: 1 / 1;
+                height: 44px;
                 border-radius: 50%;
                 border: solid 1px var(--gray-1);
-                object-fit: contain;
-                object-position: center;
+
+                .user-profile-img {
+                  width: 100%;
+                  aspect-ratio: 1/1;
+                  border-radius: 50%;
+                  object-fit: cover;
+                  object-position: center;
+                }
               }
 
               .profile-dropdown-button {
@@ -159,7 +165,7 @@
               .user-profile {
                 gap: 6px;
 
-                .user-profile-img {
+                .user-profile-img-container {
                   width: 20px;
                   height: 20px;
                 }
