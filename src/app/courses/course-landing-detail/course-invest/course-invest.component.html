@@ -1,0 +1,88 @@
+<div class="invest-container">
+  <h3 class="invest-title">INVERSION</h3>
+
+  <div class="invest-options">
+    <span (click)="selectStudentOption(false)"
+      >Regular @if (!studentOptionSelected) {
+      <div class="invest-line"></div>
+      }
+    </span>
+    <span (click)="selectStudentOption(true)"
+      >Estudiante @if (studentOptionSelected) {
+      <div class="invest-line"></div>
+      }
+    </span>
+  </div>
+
+  <div class="invest-content">
+    <div class="investDetail">
+      <div class="invest-item">
+        <span> Inversion: </span>
+        <span>
+          @if (!studentOptionSelected) {
+          {{ priceRegular }}$ } @else { {{ priceAcademy }}$ }
+        </span>
+      </div>
+
+      <div class="invest-item">
+        <span> Cupón de descuento: </span>
+        <input class="cupon-input" type="text" />
+      </div>
+
+      <div class="invest-item">
+        <span> Descuento: </span>
+        @if (!studentOptionSelected) {
+        {{ (priceRegular * discount) / 100 | number : "1.0-0" }}$ } @else {
+        {{ (priceAcademy * discount) / 100 | number : "1.0-0" }}$ }
+      </div>
+
+      <div class="invest-item">
+        <span> Total: </span>
+        <span>
+          @if (!studentOptionSelected) {
+          {{ finalPriceRegular }}$ } @else { {{ finalPriceAcademy }}$ }
+        </span>
+      </div>
+    </div>
+
+    @if(!studentOptionSelected) {
+    <a
+      class="invest-button"
+      target="_blank"
+      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
+        courseTitle
+      }}&quot;* a un costo de {{
+        finalPriceRegular
+      }} USD. ¿Podrías indicarme como proceder?"
+      >PAGAR</a
+    >
+    } @else {
+    <a
+      class="invest-button"
+      target="_blank"
+      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
+        courseTitle
+      }}&quot;* a un costo de {{
+        finalPriceAcademy
+      }} USD. ¿Podrías indicarme como proceder?"
+      >PAGAR</a
+    >
+    }
+
+    <span class="invest-question">¿BUSCAS FINANCIAMIENTO?</span>
+    <span class="invest-question-info">Fraccionamiento de 2 a 4 cuotas</span>
+
+    <a
+      class="invest-whatsapp-button"
+      target="_blank"
+      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Necesito informaci%C3%B3n para poder fraccionar el programa de *&quot;{{
+        courseTitle
+      }}&quot;*  en cuotas."
+    >
+      SOLICITAR
+      <div class="whatsapp-button">
+        <img src="assets\images\whatsapp-icon.png" alt="" />
+      </div>
+    </a>
+  </div>
+</div>

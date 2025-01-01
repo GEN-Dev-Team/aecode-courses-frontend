@@ -8,6 +8,8 @@ import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject } from 'rxjs';
 import { IProgressSession } from '../../courses/interface/CourseProgress';
+import { BrowserService } from './browser.service';
+import { AuthService } from './auth.service';
 
 declare var YT: any;
 
@@ -25,6 +27,8 @@ export class YoutubeService {
   private videoDuration: number = 0;
   private fiveSecondsToFinishSubject = new BehaviorSubject<boolean>(false);
 
+  browserService: BrowserService = inject(BrowserService);
+  authService: AuthService = inject(AuthService);
   sanitizer: DomSanitizer = inject(DomSanitizer);
   progressSessionService: ProgressSessionService = inject(
     ProgressSessionService
@@ -34,7 +38,7 @@ export class YoutubeService {
   sessionTestService: SessionTestService = inject(SessionTestService);
 
   courseSessionObject!: ISession;
-  userId: number = JSON.parse(localStorage.getItem('user') || '{}').userId;
+  userId: number = -1;
   questionAnswered = false;
 
   fiveSecondsToFinish$: Observable<boolean> =
@@ -42,24 +46,28 @@ export class YoutubeService {
 
   initializePlayer(videoId: string): void {
     // Cargar la API de YouTube
-    const tag = document.createElement('script');
-    tag.src = 'https://www.youtube.com/iframe_api';
-    document.body.appendChild(tag);
+    if (this.browserService.isBrowser()) {
+      this.userId = this.authService.getUserDetails().userId;
 
-    // Esperar a que la API esté lista
-    window['onYouTubeIframeAPIReady'] = () => {
-      this.player = new YT.Player('videoIframe', {
-        videoId: videoId, // ID del video
-        events: {
-          onReady: (event: any) => this.onPlayerReady(event),
-          onStateChange: (event: any) => this.onPlayerStateChange(event),
-        },
+      const tag = document.createElement('script');
+      tag.src = 'https://www.youtube.com/iframe_api';
+      document.body.appendChild(tag);
+
+      // Esperar a que la API esté lista
+      window['onYouTubeIframeAPIReady'] = () => {
+        this.player = new YT.Player('videoIframe', {
+          videoId: videoId, // ID del video
+          events: {
+            onReady: (event: any) => this.onPlayerReady(event),
+            onStateChange: (event: any) => this.onPlayerStateChange(event),
+          },
+        });
+      };
+
+      this.courseSessionProgressService.courseSession$?.subscribe((session) => {
+        this.courseSessionObject = session;
       });
-    };
-
-    this.courseSessionProgressService.courseSession$?.subscribe((session) => {
-      this.courseSessionObject = session;
-    });
+    }
   }
 
   onPlayerReady(event: any): void {
@@ -75,8 +83,16 @@ export class YoutubeService {
   }
 
   trackVideoProgress(): void {
-    // Revisa cada segundo el estado de progreso del video
-    setInterval(() => {
+    // Verificar que los objetos requeridos estén inicializados antes de configurar el seguimiento
+    if (!this.player || !this.userId || !this.courseSessionObject?.sessionId) {
+      console.log(
+        'Player, userId o sessionId no están inicializados. No se puede rastrear el progreso del video.'
+      );
+      return;
+    }
+
+    // Usar setInterval para revisar el estado de progreso del video cada segundo
+    const intervalId = setInterval(() => {
       if (
         this.player &&
         !this.fiveSecondsToFinishSubject.getValue() &&
@@ -85,18 +101,16 @@ export class YoutubeService {
         const currentTime = this.player.getCurrentTime();
         const timeRemaining = this.videoDuration - currentTime;
 
-        if (
-          timeRemaining <= 5 &&
-          !this.questionAnswered &&
-          this.userId &&
-          this.courseSessionObject.sessionId
-        ) {
+        // Verificar si el video está a 5 segundos de terminar
+        if (timeRemaining <= 5 && !this.questionAnswered) {
           console.log('El video está a punto de terminar en 5 segundos.');
+
+          // Pausar el video y actualizar el estado para evitar múltiples ejecuciones
           this.player.pauseVideo();
           this.questionAnswered = true;
           this.setVideoGoingToFinish(true);
 
-          // Guardar el progreso del video
+          // Crear el progreso del video
           const progressItem: IProgressSession = {
             progressId: 0,
             userId: this.userId,
@@ -104,12 +118,20 @@ export class YoutubeService {
             completed: true,
           };
 
-          // console.log('Progreso del video:', progressItem);
+          // Guardar el progreso del video
           this.progressSessionService
             .createSessionProgress(progressItem)
-            .subscribe((response) => {
-              console.log('Progreso del video guardado:', response);
+            .subscribe({
+              next: (response) => {
+                console.log('Progreso del video guardado:', response);
+              },
+              error: (err) => {
+                console.error('Error al guardar el progreso del video:', err);
+              },
             });
+
+          // Limpiar el intervalo después de completar la acción
+          clearInterval(intervalId);
         }
       }
     }, 1000); // Revisa cada segundo

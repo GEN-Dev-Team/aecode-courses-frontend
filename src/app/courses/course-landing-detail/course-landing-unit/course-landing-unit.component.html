@@ -1,0 +1,18 @@
+<div class="unit-item" (click)="openUnit()">
+  <span> {{ studyplanItem.unit }}</span>
+  @if(showDropdownUnit) {
+  <app-caret-up-icon class="icon" />
+  } @else {
+  <app-caret-down-icon class="icon" />
+
+  }
+</div>
+
+@if (showDropdownUnit) {
+<ul class="plan-list">
+  @for (sessionItem of studyplanItem.sessions; track sessionItem) {
+  <li>{{ sessionItem }}</li>
+  }
+</ul>
+
+}

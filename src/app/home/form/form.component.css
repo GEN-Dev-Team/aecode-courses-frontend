@@ -1,6 +1,6 @@
 .form-container {
-  width: 677px;
-  height: 498px;
+  width: clamp(300px, 90%, 677px);
+  height: clamp(352px, 100%, 498px);
   display: flex;
   flex-flow: column nowrap;
   padding: 67px 58px 56px;
@@ -64,6 +64,51 @@
     &:hover {
       transform: scale(1.05);
       transition: transform 0.1s ease-in-out;
+    }
+  }
+}
+
+@media screen {
+  .form-container {
+    /* width: 337px;
+    height: 352px; */
+    padding: 40px 20px;
+    border-radius: 6px;
+    margin-inline: auto;
+
+    .close-button {
+      top: 21px;
+      right: 16px;
+      border-radius: 0 10px 0 10px;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .form-message {
+      font-size: 25px;
+    }
+
+    .form-description {
+      margin: 21px 0px 24px 0px;
+      font-size: 12px;
+    }
+
+    .form-input {
+      height: 38px;
+      padding: 5px 14px;
+      margin-bottom: 16px;
+
+      &::placeholder {
+        color: #424242;
+        font-size: 12px;
+      }
+    }
+
+    .form-button {
+      width: 252px;
+      height: 32px;
+      padding: 0 20px;
+      margin-top: 30px;
     }
   }
 }

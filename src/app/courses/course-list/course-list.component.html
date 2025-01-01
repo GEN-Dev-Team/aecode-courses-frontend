@@ -1,55 +1,14 @@
 <div class="course-list-container">
-  <app-square-icon class="close-button" (click)="closeModal()" />
-  <h1 class="course-list-title">ESCOGE TU CAMINO</h1>
+  <div class="course-list-title">
+    <span>{{ listTitle }}</span>
+    <span hidden class="see-all-button">Ver todo</span>
+  </div>
 
   <div class="course-list-content">
-    <div class="course-card">
-      <span class="course-title">INGENIERIA 4.0</span>
-      <span class="course-title-keywords"
-        >Innovacion, Digitalización y Automatizacion</span
-      >
-      <app-separator-icon class="course-separator" />
+    @for (secondaryCourseItem of secondaryCourseList; track secondaryCourseItem)
+    {
+    <app-course-item [course]="secondaryCourseItem" />
 
-      <div class="course-content">
-        <p class="course-description">
-          El sector AEC está pasando por un proceso de evolución tecnológica. No
-          te quedes atrás en este cambio.
-        </p>
-
-        <img
-          class="course-img"
-          src="assets/images/courses/ingenieria-4.0-img.webp"
-          alt=""
-        />
-      </div>
-
-      <button ZoomIn (click)="goToCourse(1)" class="course-button">
-        Entrar
-      </button>
-    </div>
-
-    <div class="course-card course-card-2">
-      <span class="course-title">PROGRAMACION DIGITAL</span>
-      <span class="course-title-keywords"
-        >Innovacion, Digitalización y Automatizacion</span
-      >
-      <app-separator-icon class="course-separator-2" />
-
-      <div class="course-content">
-        <img src="assets/images/courses/programacion-digital-img.webp" alt="" />
-        <p class="course-description">
-          ¿Sabías que el 70% de las tareas en el sector AEC pueden ser
-          automatizadas? Aprovecha la oportunidad.
-        </p>
-      </div>
-
-      <button
-        ZoomIn
-        (click)="goToCourse(2)"
-        class="course-button course-button-2"
-      >
-        Entrar
-      </button>
-    </div>
+    }
   </div>
 </div>

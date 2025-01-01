@@ -1,0 +1,84 @@
+<div
+  class="course-item-container"
+  [class.platform-course-item-container]="isMasiveCourse"
+>
+  <div class="course-presentation-container">
+    <img class="course-img" src="{{ secondaryCourseMainImgUrl }}" alt="" />
+
+    <span class="course-status" [class.static-course-status]="!isMasiveCourse"
+      >{{ course.percentage }}%</span
+    >
+
+    <div class="course-tags">
+      <div class="course-icons" [class.static-course-icons]="!isMasiveCourse">
+        @for (toolItem of course.tools; track toolItem) {
+        <div class="icon-container">
+          <img
+            src="{{ toolItem.picture | addBaseUrl }}"
+            alt="{{ toolItem.name }}"
+          />
+        </div>
+
+        }
+      </div>
+
+      <div
+        class="course-details-cointainer"
+        [class.static-course-details-cointainer]="!isMasiveCourse"
+      >
+        <div class="course-details-content">
+          <app-course-session-icon class="icon" />
+          <span class="detail-description"
+            >{{ secondaryCourseSessions }} sesiones</span
+          >
+        </div>
+        <div class="course-details-content">
+          <app-watch-icon class="icon" />
+          <span class="detail-description"> {{ course.hours }} horas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if(isMasiveCourse) {
+  <div class="platform-course-details">
+    <h2 class="course-title">{{ course.title }}</h2>
+    <button
+      class="reserve-button platform-reserve-button"
+      (click)="showMasiveCourseDetails(course.courseId)"
+    >
+      Ver más
+    </button>
+  </div>
+
+  } @else {
+  <div class="course-details">
+    <h2 class="course-title">{{ course.title }}</h2>
+
+    <div class="course-footer">
+      <button
+        class="reserve-button"
+        (click)="showCourseDetails(course.seccourseId)"
+      >
+        Acceder al curso
+      </button>
+
+      <div class="course-level">
+        <app-level-icon class="icon" />
+        <span>{{ course.level }}</span>
+      </div>
+
+      <div class="course-price">
+        <span class="course-old-price">${{ course.priceRegular }}</span>
+        <span class="course-new-price"
+          >${{
+            (course.priceRegular * (100 - course.percentage)) / 100
+              | number : "1.0-0"
+          }}</span
+        >
+      </div>
+    </div>
+  </div>
+
+  }
+</div>

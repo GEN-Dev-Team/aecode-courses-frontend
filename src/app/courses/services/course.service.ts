@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environment/environment';
 import { ICourse } from '../interface/Course';
 import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { IModule } from '../interface/Module';
 
 const base_url = environment.base;
 
@@ -10,8 +12,31 @@ const base_url = environment.base;
 })
 export class CourseService {
   api_url = base_url + '/course';
+  api_url_module = base_url + '/module';
 
-  constructor(private http: HttpClient) {}
+  http: HttpClient = inject(HttpClient);
+
+  showMasiveCourseBackground = new BehaviorSubject<boolean>(false);
+  masiveCourseBackgroundGift = new BehaviorSubject<string>('');
+
+  showMasiveCourseBackground$ = this.showMasiveCourseBackground.asObservable();
+  masiveCourseBackgroundGift$ = this.masiveCourseBackgroundGift.asObservable();
+
+  setShowMasiveCourseBackground(state: boolean) {
+    this.showMasiveCourseBackground.next(state);
+  }
+
+  getShowMasiveCourseBackground() {
+    return this.showMasiveCourseBackground.getValue();
+  }
+
+  setMasiveCourseBackgroundGift(gift: string) {
+    this.masiveCourseBackgroundGift.next(gift);
+  }
+
+  getMasiveCourseBackgroundGift() {
+    return this.masiveCourseBackgroundGift.getValue();
+  }
 
   getCourses() {
     return this.http.get<ICourse[]>(`${this.api_url}`);
@@ -31,5 +56,9 @@ export class CourseService {
 
   deleteCourse(id: number) {
     return this.http.delete<ICourse>(`${this.api_url}/${id}`);
+  }
+
+  getModuleById(moduleId: number): Observable<IModule> {
+    return this.http.get<IModule>(`${this.api_url_module}/${moduleId}`);
   }
 }

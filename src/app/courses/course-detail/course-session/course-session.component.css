@@ -1,17 +1,17 @@
 .course-session {
   margin-bottom: 16px;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   align-items: center;
   gap: 10px;
   cursor: pointer;
 
   .course-session-checkbox {
+    flex-shrink: 0;
     border-radius: 2px;
     border: 2px solid var(--purple-2);
     width: 17px;
     height: 17px;
-    position: relative;
     cursor: pointer;
     background-color: transparent;
     position: relative;
@@ -36,18 +36,25 @@
     font-family: "plusjakartasans-medium";
   }
 
-  :nth-child(2) {
-    width: 72%;
+  .course-session-title {
+    width: 100%;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  :nth-child(3) {
-    margin-left: auto;
+  .course-session-duration {
+    display: flex;
+    flex-flow: row nowrap;
+    text-wrap: nowrap;
+    align-items: center;
     font-family: "plusjakartasans-light";
     color: #b4bbbf;
     font-size: 10px;
+
+    .duration-separator {
+      margin-bottom: 3px;
+    }
 
     span {
       margin-inline-end: 4px;

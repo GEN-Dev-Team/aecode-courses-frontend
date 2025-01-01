@@ -15,7 +15,7 @@
   <div class="linea"></div>
 
   <ul class="menu-options">
-    <li>
+    <li (click)="redirectToProfile()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="15"
@@ -30,7 +30,7 @@
       </svg>
       <span>Perfil</span>
     </li>
-    @if (userData.rol ==='admin') {
+    <!-- @if (userData.rol ==='admin') { -->
     <li (click)="redirectToAdminView()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,8 @@
       </svg>
       <span>Administrar y Gestionar</span>
     </li>
-    }
+    <!-- } -->
+
     <!-- <li>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +102,7 @@
     </li>
    
     -->
-    <li>
+    <li (click)="logOut()">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="17"
@@ -130,7 +131,7 @@
           </clipPath>
         </defs>
       </svg>
-      <span (click)="logOut()">Cerrar sesión</span>
+      <span>Cerrar sesión</span>
     </li>
   </ul>
 </div>

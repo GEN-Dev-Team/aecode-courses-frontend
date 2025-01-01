@@ -1,6 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ButtonComponent } from '../../shared/components/button/button.component';
-import { CourseModuleComponent } from './course-module/course-module.component';
 import { CourseService } from '../services/course.service';
 import { ICourse } from '../interface/Course';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
@@ -11,7 +9,7 @@ import { NextIconComponent } from '../icons/next-icon/next-icon.component';
 import { PrevIconComponent } from '../icons/prev-icon/prev-icon.component';
 import { CaretDownIconComponent } from '../icons/caret-down-icon/caret-down-icon.component';
 import { AuthService } from '../../core/services/auth.service';
-import { AsyncPipe, NgClass, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
 import { CourseSessionService } from '../services/course-session.service';
@@ -20,15 +18,18 @@ import { LinkIconComponent } from '../icons/link-icon/link-icon.component';
 import { PdfIconComponent } from '../icons/pdf-icon/pdf-icon.component';
 import { DownloadIconComponent } from '../icons/download-icon/download-icon.component';
 import { WorldIconComponent } from '../icons/world-icon/world-icon.component';
-import { environment } from '../../../environment/environment';
 import { Observable } from 'rxjs';
+import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
+import { CourseModuleBoxComponent } from '../masive-course-detail/course-module-box/course-module-box.component';
+import { CourseUnitComponent } from './course-unit/course-unit.component';
+import { IModule } from '../interface/Module';
+import { LoaderComponent } from '../../shared/components/loader/loader.component';
+import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 
 @Component({
   selector: 'app-course-detail',
   standalone: true,
   imports: [
-    ButtonComponent,
-    CourseModuleComponent,
     ModalComponent,
     ContentBlockedComponent,
     HouseIconComponent,
@@ -36,7 +37,6 @@ import { Observable } from 'rxjs';
     CaretDownIconComponent,
     NextIconComponent,
     PrevIconComponent,
-    NgIf,
     NgClass,
     YoutubePlayerComponent,
     LinkIconComponent,
@@ -44,6 +44,11 @@ import { Observable } from 'rxjs';
     DownloadIconComponent,
     WorldIconComponent,
     AsyncPipe,
+    CourseOverlayComponent,
+    CourseModuleBoxComponent,
+    CourseUnitComponent,
+    LoaderComponent,
+    AddBaseUrlPipe,
   ],
   templateUrl: './course-detail.component.html',
   styleUrl: './course-detail.component.css',
@@ -52,34 +57,48 @@ export class CourseDetailComponent implements OnInit {
   route: ActivatedRoute = inject(ActivatedRoute);
   courseService: CourseService = inject(CourseService);
   authService: AuthService = inject(AuthService);
-  courseSession: CourseSessionService = inject(CourseSessionService);
+  courseSessionService: CourseSessionService = inject(CourseSessionService);
 
-  apiUrl = environment.base;
-
-  course_id: number = Number(this.route.snapshot.params['id']);
-  course$: Observable<ICourse> = this.courseService.getCourse(this.course_id);
+  course_id: number = Number(this.route.snapshot.params['courseId']);
+  module_id: number = Number(this.route.snapshot.params['moduleId']);
   courseSessionSubject!: ISession;
   showBlockedModal = false;
-  isUserLogged: boolean = true;
-  module_id = 0;
+  userHasAccessToCourse: boolean = true;
+  userHasAccessToModule: boolean = true;
   isDescription = true;
-  courseIntroVideo = '';
+  finalPrice = 0;
+
+  course$: Observable<ICourse> = this.courseService.getCourse(this.course_id);
+  moduleSelected$: Observable<IModule> =
+    this.courseSessionService.moduleSelected$;
 
   ngOnInit(): void {
-    this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
-      this.isUserLogged = loggedInStatus;
-    });
+    this.courseDetailsInit();
+  }
 
-    this.courseSession.courseSession$.subscribe((session) => {
+  courseDetailsInit() {
+    this.courseSessionService.setModuleSelected(this.module_id);
+
+    this.courseSessionService.courseSession$.subscribe((session) => {
       this.courseSessionSubject = session;
     });
 
-    this.courseSession.module_id$.subscribe((id) => {
-      this.module_id = id;
+    this.courseSessionService.moduleSelected$.subscribe((module) => {
+      this.module_id = module.moduleId;
+      this.finalPrice = Math.round(
+        (module.price * (100 - module.percentage)) / 100
+      );
     });
 
-    this.courseService.getCourse(this.course_id).subscribe((response) => {
-      this.courseIntroVideo = response.videoUrl;
+    this.authService.setAccessToCourse(this.course_id);
+    this.authService.setAccessToModule(this.module_id);
+
+    this.authService.accessToCourse$.subscribe((accessToCourse) => {
+      this.userHasAccessToCourse = accessToCourse;
+    });
+
+    this.authService.accessToModule$.subscribe((accessToModule) => {
+      this.userHasAccessToModule = accessToModule;
     });
   }
 }

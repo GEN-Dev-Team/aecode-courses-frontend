@@ -14,3 +14,18 @@ export interface ISession {
   htmlContent: string;
   sessiontests: ISessionTest[];
 }
+
+export const defaultSession: ISession = {
+  sessionId: 0,
+  unitId: 0,
+  title: '',
+  videoUrl: '',
+  description: '',
+  resourceText: '',
+  resourceDocument: '',
+  orderNumber: 0,
+  taskName: '',
+  taskUrl: '',
+  htmlContent: '',
+  sessiontests: [],
+};

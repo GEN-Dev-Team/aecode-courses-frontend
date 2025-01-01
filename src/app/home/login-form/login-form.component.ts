@@ -10,6 +10,7 @@ import { UserService } from '../user.service';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { AuthService } from '../../core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { BrowserService } from '../../core/services/browser.service';
 
 @Component({
   selector: 'app-login-form',
@@ -21,13 +22,15 @@ import { ToastrService } from 'ngx-toastr';
 export class LoginFormComponent {
   @Output() closeLoginForm = new EventEmitter<boolean>();
   @Output() userLoggedIn = new EventEmitter<boolean>();
+
+  browserService: BrowserService = inject(BrowserService);
+  toastService: ToastrService = inject(ToastrService);
+
   loginForm: FormGroup;
   signInForm: FormGroup;
   usersList: ILogin[] = [];
   login!: ILogin;
   isSignInForm: boolean = true;
-
-  toastService: ToastrService = inject(ToastrService);
 
   constructor(
     private fb: FormBuilder,
@@ -49,10 +52,10 @@ export class LoginFormComponent {
   }
 
   createUser() {
-    const password = document.getElementById(
+    const password = this.browserService.getElementById(
       'passwordHash'
     ) as HTMLInputElement;
-    const passwordConfirm = document.getElementById(
+    const passwordConfirm = this.browserService.getElementById(
       'passwordHashConfirm'
     ) as HTMLInputElement;
 
@@ -72,7 +75,6 @@ export class LoginFormComponent {
         this.authService.login(response); // Actualizar el estado de autenticación
         this.userLoggedIn.emit(true);
         this.closeModal();
-        console.log(response);
       },
       (error) => {
         this.toastService.error('Credenciales incorrectas', 'Error');
@@ -95,7 +97,7 @@ export class LoginFormComponent {
   }
 
   hidePassword(isConfirm: boolean) {
-    const passwordField = document.getElementById(
+    const passwordField = this.browserService.getElementById(
       isConfirm ? 'passwordHashConfirm' : 'passwordHash'
     ) as HTMLInputElement;
 

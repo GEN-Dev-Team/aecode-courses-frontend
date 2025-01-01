@@ -1,3 +1,9 @@
+export interface ICoureAccess {
+  accessId: number;
+  userId: number;
+  courseId: number;
+}
+
 export interface IProgressSession {
   progressId: number;
   userId: number;
@@ -10,4 +16,10 @@ export interface IProgressRW {
   userId: number;
   workId: number;
   completed: boolean;
+}
+
+export interface IModuleAccess {
+  accessId: number;
+  userId: number;
+  moduleId: number;
 }

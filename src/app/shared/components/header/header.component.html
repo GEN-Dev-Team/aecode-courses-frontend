@@ -3,45 +3,18 @@
   (closeLoginForm)="openLoginForm = $event"
   (userLoggedIn)="isUserLoggedIn = $event"
 />
-
 <header class="header-container">
-  <div class="header-content">
-    <a class="header-logo" ZoomIn href="/">
-      <img src="assets/images/aecode-logo.webp" alt="" />
-    </a>
+  <div class="box-shadow-effect"></div>
 
-    <div class="header-options">
-      <!-- <input id="dropdown" type="checkbox" class="dropdown-button" /> -->
-      <!-- <label for="dropdown" class="dropdown-text">dropdown</label> -->
+  <div class="header-wrapper">
+    <div class="header-content">
+      <a class="header-logo" ZoomIn href="/">
+        <img src="assets/images/aecode-logo.webp" alt="" />
+      </a>
 
-      <ul class="header-list">
-        <a
-          class="header-item"
-          ZoomIn
-          data-section="header-container"
-          data-value="CONOCENOS"
-          href="https://aecodemap.my.canva.site/conocenos"
-          target="_blank"
-          >CONOCENOS</a
-        >
-        <a
-          class="header-item"
-          ZoomIn
-          data-section="header-container"
-          data-value="COMUNIDAD"
-          href="https://aecodemap.my.canva.site/aecode-community"
-          target="_blank"
-          >COMUNIDAD</a
-        >
-        <a
-          class="header-item"
-          ZoomIn
-          data-section="header-container"
-          data-value="INICIATIVAS"
-          href="https://aecodemap.my.canva.site/iniciativas"
-          target="_blank"
-          >INICIATIVAS</a
-        >
+      <div class="header-options">
+        <ul class="header-list">
+          <!--
         <span
           (click)="changeLanguage()"
           id="language-button"
@@ -49,37 +22,34 @@
           ZoomIn
         >
           <app-language-icon /> ES
-        </span>
+        </span> -->
 
-        @if (!isUserLoggedIn) {
-        <app-button
-          class="header-button"
-          ZoomIn
-          data-section="header-container"
-          data-value="Acceder"
-          href=""
-          (click)="openLoginForm = true"
-        >
-          Acceder
-        </app-button>
-        } @else {
-        <div class="user-logged">
-          <app-notification-icon ZoomIn />
-          <div class="separator"></div>
-          <div (click)="showProfileMenuHandler()" class="user-profile">
-            <img
-              src="assets/images/login-view/user-profile-img.webp"
-              class="user-profile-img"
-              alt=""
-            />
-            <span class="profile-dropdown-button" ZoomIn>▼</span>
-            @if (showProfileMenu) {
-            <app-view-profile class="profile-dropdown" />
-            }
+          @if (!isUserLoggedIn) {
+          <app-button
+            class="header-button"
+            ZoomIn
+            data-section="header-container"
+            data-value="Acceder"
+            (click)="openLoginForm = true"
+          >
+            Acceder
+          </app-button>
+          } @else {
+          <div class="user-logged">
+            <app-notification-icon class="notification-icon" ZoomIn />
+            <div class="separator"></div>
+            <div (click)="showProfileMenuHandler()" class="user-profile">
+              <img [src]="userProfileImg" class="user-profile-img" alt="" />
+
+              <span class="profile-dropdown-button" ZoomIn>▼</span>
+              @if (showProfileMenu) {
+              <app-view-profile class="profile-dropdown" />
+              }
+            </div>
           </div>
-        </div>
-        }
-      </ul>
+          }
+        </ul>
+      </div>
     </div>
   </div>
 </header>

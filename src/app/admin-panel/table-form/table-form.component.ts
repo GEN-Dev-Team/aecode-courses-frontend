@@ -30,7 +30,6 @@ export class TableFormComponent {
     if (this.updateForm && this.itemId !== -1) {
       this.adminService.getItemById(this.itemId).subscribe((itemData) => {
         this.form.patchValue(itemData); // Llenar el formulario con los datos recibidos
-        console.log('nuevo form:', itemData);
       });
     }
   }
@@ -57,8 +56,6 @@ export class TableFormComponent {
       })
     );
 
-    console.log('se envia:', filteredFormValue);
-
     if (this.updateForm) {
       this.adminService.updateItem(filteredFormValue, this.itemId);
     } else {
@@ -77,7 +74,7 @@ export class TableFormComponent {
     this.adminService.dataList$.subscribe((value) => {
       if (value && value.length > 0) {
         this.headerList = Object.keys(value[0]).filter(
-          (key) => typeof value[0][key] !== 'object'
+          (key) => typeof value[0][key] !== 'object' || value[0][key] === null
         );
         this.headerList.shift();
       }

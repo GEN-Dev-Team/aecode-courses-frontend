@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 import { Router } from '@angular/router';
+import { ILogin } from '../../../../home/interface/Login';
 
 @Component({
   selector: 'app-view-profile',
@@ -15,11 +16,10 @@ export class ViewProfileComponent {
   authService: AuthService = inject(AuthService);
   route: Router = inject(Router);
 
-  userData = JSON.parse(localStorage.getItem('user') || '{}');
+  userData!: ILogin;
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
+    this.userData = this.authService.getUserDetails();
   }
   closeModal() {
     this.isClosed.emit(false);
@@ -32,5 +32,9 @@ export class ViewProfileComponent {
 
   redirectToAdminView() {
     this.route.navigate(['/admin-panel']);
+  }
+
+  redirectToProfile() {
+    this.route.navigate([`/profile/${this.userData.userId}`]);
   }
 }

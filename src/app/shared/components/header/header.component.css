@@ -1,102 +1,113 @@
 .header-container {
   width: 100%;
   background-color: var(--gray-3);
+  position: fixed;
+  top: 0;
+  z-index: 1;
 
-  .header-content {
-    width: clamp(300px, 100%, 1440px);
-    padding: 11px 35px;
-    margin-inline: auto;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
+  .box-shadow-effect {
+    width: 100%;
+    height: 120%;
+    opacity: 0.32;
+    background: #4465ee;
+    filter: blur(30px);
+    position: absolute;
+    top: 0;
+  }
 
-    .header-logo {
-      img {
-        height: 25px;
-      }
-    }
+  .header-wrapper {
+    width: 100%;
+    background-color: var(--gray-3);
+    position: relative;
 
-    .header-options {
-      .dropdown-text {
-        display: none;
-      }
+    .header-content {
+      width: clamp(375px, 100%, 1440px);
+      padding: 11px 35px;
+      margin-inline: auto;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
 
-      .dropdown-button {
-        display: none;
-      }
-
-      .header-list {
-        display: flex;
-        flex-flow: row wrap;
-        align-items: center;
-        gap: 91px;
-        margin: 0;
-
-        .header-item {
-          font-size: 16px;
-          font-family: "ruberoid-semibold";
-          text-decoration: none;
-          color: var(--purple-2);
+      .header-logo {
+        img {
+          height: 25px;
         }
+      }
 
-        .language-button {
+      .header-options {
+        .header-list {
           display: flex;
           flex-flow: row wrap;
           align-items: center;
-          gap: 8px;
-          font-family: "ruberoid-semibold";
-          font-size: 15px;
-          color: var(--purple-2);
-          cursor: pointer;
+          gap: 91px;
+          margin: 0;
 
-          :nth-child(1) {
+          .language-button {
             display: flex;
+            flex-flow: row wrap;
             align-items: center;
-          }
-        }
+            gap: 8px;
+            font-family: "ruberoid-semibold";
+            font-size: 15px;
+            color: var(--purple-2);
+            cursor: pointer;
 
-        .user-logged {
-          display: flex;
-          flex-flow: row nowrap;
-          gap: 20px;
-          align-items: center;
-
-          .separator {
-            width: 1px;
-            height: 44px;
-            background: #8c9295;
+            :nth-child(1) {
+              display: flex;
+              align-items: center;
+            }
           }
 
-          .user-profile {
+          .user-logged {
             display: flex;
             flex-flow: row nowrap;
+            gap: 20px;
             align-items: center;
-            gap: 15px;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
 
-            .profile-dropdown {
-              position: absolute;
-              right: 0;
-              top: 100%;
-            }
-
-            .user-profile-img {
-              width: 44px;
-              aspect-ratio: 1 / 1;
-              border-radius: 50%;
-              border: solid 1px var(--gray-1);
-            }
-
-            .profile-dropdown-button {
-              color: var(--purple-2);
-              text-align: center;
-              font-size: 9px;
-              font-weight: 450;
+            .notification-icon {
+              width: 22px;
               cursor: pointer;
-              user-select: none;
+            }
+
+            .separator {
+              width: 1px;
+              height: 44px;
+              background: #8c9295;
+            }
+
+            .user-profile {
+              display: flex;
+              flex-flow: row nowrap;
+              align-items: center;
+              gap: 15px;
+              cursor: pointer;
+              position: relative;
+              z-index: 1;
+
+              .profile-dropdown {
+                position: absolute;
+                right: 0;
+                top: 100%;
+              }
+
+              .user-profile-img {
+                width: 44px;
+                aspect-ratio: 1 / 1;
+                border-radius: 50%;
+                border: solid 1px var(--gray-1);
+                object-fit: contain;
+                object-position: center;
+              }
+
+              .profile-dropdown-button {
+                color: var(--purple-2);
+                text-align: center;
+                font-size: 9px;
+                font-weight: 450;
+                cursor: pointer;
+                user-select: none;
+              }
             }
           }
         }
@@ -105,31 +116,60 @@
   }
 }
 
-@media (width < 1000px) {
+@media screen and (max-width: 768px) {
   .header-container {
-    position: relative;
+    width: 100%;
 
-    .header-content {
-      .header-options {
-        .dropdown-button {
-          &:checked + .dropdown-text + .header-list {
-            display: flex;
+    .box-shadow-effect {
+      width: 100%;
+      height: 120%;
+      position: absolute;
+      top: 0;
+    }
+
+    .header-wrapper {
+      width: 100%;
+
+      .header-content {
+        padding: 15px;
+
+        .header-logo {
+          img {
+            height: 15px;
           }
         }
 
-        .dropdown-text {
-          display: block;
-        }
+        .header-options {
+          .header-list {
+            .language-button {
+              display: flex;
+            }
 
-        .header-list {
-          padding: 20px;
-          display: none;
-          flex-flow: column wrap;
-          background-color: var(--gray-3);
-          gap: 20px;
-          position: absolute;
-          top: 50%;
-          right: 0%;
+            .user-logged {
+              gap: 11px;
+
+              .notification-icon {
+                width: 17px;
+              }
+
+              .separator {
+                height: 27px;
+              }
+
+              .user-profile {
+                gap: 6px;
+
+                .user-profile-img {
+                  width: 20px;
+                  height: 20px;
+                }
+
+                .profile-dropdown-button {
+                  font-size: 9px;
+                }
+              }
+            }
+          }
         }
       }
     }

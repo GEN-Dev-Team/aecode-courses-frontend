@@ -1,33 +1,46 @@
 export abstract class StorageService implements Storage {
-  constructor(protected readonly api: Storage) {}
+  constructor(protected readonly api: Storage | null) {}
+
   get length(): number {
-    return this.api.length;
+    if (this.api) {
+      return this.api.length;
+    }
+    return 0;
   }
 
   clear(): void {
-    this.api.clear();
-  }
-  getItem<T>(key: string): T | null {
-    const data = this.api.getItem(key);
-
-    if (data !== null) {
-      return JSON.parse(data) as T;
+    if (this.api) {
+      this.api.clear();
     }
+  }
 
+  getItem<T>(key: string): T | null {
+    if (this.api) {
+      const data = this.api.getItem(key);
+      if (data !== null) {
+        return JSON.parse(data) as T;
+      }
+    }
     return null;
   }
 
   key(index: number): string | null {
-    return this.api.key(index);
+    if (this.api) {
+      return this.api.key(index);
+    }
+    return null;
   }
 
   removeItem(key: string): void {
-    this.api.removeItem(key);
+    if (this.api) {
+      this.api.removeItem(key);
+    }
   }
 
   setItem(key: string, value: unknown): void {
-    const data = JSON.stringify(value);
-
-    this.api.setItem(key, data);
+    if (this.api) {
+      const data = JSON.stringify(value);
+      this.api.setItem(key, data);
+    }
   }
 }
