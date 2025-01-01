@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 import { Router } from '@angular/router';
 import { ILogin } from '../../../../home/interface/Login';
@@ -12,6 +12,8 @@ import { ILogin } from '../../../../home/interface/Login';
 })
 export class ViewProfileComponent {
   @Output() isClosed = new EventEmitter<boolean>();
+  @Input() profileImgUrl: string =
+    'assets/images/login-view/user-profile-img.webp';
 
   authService: AuthService = inject(AuthService);
   route: Router = inject(Router);

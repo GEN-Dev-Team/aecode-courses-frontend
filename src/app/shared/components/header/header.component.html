@@ -39,11 +39,16 @@
             <app-notification-icon class="notification-icon" ZoomIn />
             <div class="separator"></div>
             <div (click)="showProfileMenuHandler()" class="user-profile">
-              <img [src]="userProfileImg" class="user-profile-img" alt="" />
+              <div class="user-profile-img-container">
+                <img [src]="userProfileImg" class="user-profile-img" alt="" />
+              </div>
 
               <span class="profile-dropdown-button" ZoomIn>▼</span>
               @if (showProfileMenu) {
-              <app-view-profile class="profile-dropdown" />
+              <app-view-profile
+                [profileImgUrl]="userProfileImg"
+                class="profile-dropdown"
+              />
               }
             </div>
           </div>

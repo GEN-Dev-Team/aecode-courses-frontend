@@ -12,6 +12,22 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+
+  .user-profile-img-container {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: solid 1px var(--gray-1);
+    margin-right: 9px;
+
+    .profile-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
 }
 
 /* Imagen de perfil */
@@ -20,7 +36,6 @@
   height: 64.383px;
   border-radius: 64.383px;
   object-fit: cover;
-  margin-right: 9px;
 }
 
 /* Información del perfil */
