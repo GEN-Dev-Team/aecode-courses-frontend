@@ -39,11 +39,8 @@
             <app-notification-icon class="notification-icon" ZoomIn />
             <div class="separator"></div>
             <div (click)="showProfileMenuHandler()" class="user-profile">
-              <img
-                [src]="userProfileImg | addBaseUrl"
-                class="user-profile-img"
-                alt=""
-              />
+              <img [src]="userProfileImg" class="user-profile-img" alt="" />
+
               <span class="profile-dropdown-button" ZoomIn>▼</span>
               @if (showProfileMenu) {
               <app-view-profile class="profile-dropdown" />
