@@ -1,7 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { CaretUpIconComponent } from '../../shared/icons/caret-up-icon/caret-up-icon.component';
 import { CaretUpIconLightComponent } from '../../shared/icons/caret-up-icon-light/caret-up-icon-light.component';
-import { ButtonComponent } from '../../shared/components/button/button.component';
 import { ZoomInDirective } from '../../shared/directives/animations/zoom-in.directive';
 import { PlusIconComponent } from '../../shared/icons/plus-icon/plus-icon.component';
 import { InicioIconComponent } from '../../shared/icons/inicio-icon/inicio-icon.component';
@@ -12,7 +10,6 @@ import { ShamanIconComponent } from '../../shared/icons/shaman-icon/shaman-icon.
 import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { ProfileIconComponent } from '../../shared/icons/profile-icon/profile-icon.component';
-import { BrowserService } from '../../core/services/browser.service';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
@@ -40,6 +37,7 @@ export class CourseAsideComponent {
   isDarkTheme: boolean = false;
   showAsideList: boolean = true;
   userId: number = 0;
+  itemSelected: number = 0;
 
   ngOnInit(): void {
     this.userId = this.authService.getUserDetails().userId;
@@ -51,5 +49,9 @@ export class CourseAsideComponent {
 
   goToProfileView() {
     this.router.navigate(['profile/' + this.userId]);
+  }
+
+  selectItem(item: number) {
+    this.itemSelected = item;
   }
 }

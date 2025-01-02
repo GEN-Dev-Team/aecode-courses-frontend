@@ -18,9 +18,9 @@
     <div class="course-aside-list">
       <button
         ZoomIn
-        class
+        [class.item-selected]="itemSelected == 0"
         class="aside-dropdown-item"
-        (click)="goToCourseList()"
+        (click)="goToCourseList(); selectItem(0)"
       >
         <app-inicio-icon />
         <span>Inicio</span>
@@ -28,9 +28,9 @@
 
       <button
         ZoomIn
-        class
+        [class.item-selected]="itemSelected == 1"
         class="aside-dropdown-item mobile-item"
-        (click)="goToProfileView()"
+        (click)="goToProfileView(); selectItem(1)"
       >
         <app-profile-icon />
         <span>Perfil</span>
@@ -38,7 +38,6 @@
 
       <a
         ZoomIn
-        class
         class="aside-dropdown-item mobile-order-shaman"
         href="https://shamanai.aecode.ai/"
         target="_blank"
