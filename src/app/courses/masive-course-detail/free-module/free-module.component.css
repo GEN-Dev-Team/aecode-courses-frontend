@@ -166,3 +166,80 @@
     line-height: 25px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .course-item-container {
+    border-radius: 4px;
+
+    .course-presentation-container {
+      flex: auto;
+      height: 185px;
+      border-radius: 4px 0px 0px 4px;
+
+      .course-img {
+        height: 100%;
+      }
+
+      .course-status {
+        width: 46px;
+        height: 27px;
+        font-size: 14px;
+        right: 8px;
+        top: 8px;
+      }
+
+      .course-tags {
+        padding: 10px 0 16px 19px;
+
+        .course-icons {
+          gap: 14px;
+
+          .icon-container {
+            width: 29px;
+            height: 29px;
+          }
+        }
+
+        .course-details-cointainer {
+          padding: 6px 20px 6px 7px;
+          gap: 18px;
+
+          .course-details-content {
+            gap: 4px;
+            font-size: 10px;
+          }
+
+          .course-price {
+            width: 81px;
+            height: 29px;
+            top: -140%;
+
+            .course-old-price {
+              font-size: 14px;
+              top: -80%;
+            }
+
+            .course-new-price {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+
+      .reserve-button {
+        font-size: 14px;
+        top: 9px;
+        left: 9px;
+      }
+    }
+
+    .course-details {
+      padding: 10px 16px;
+    }
+
+    .course-title {
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+}
