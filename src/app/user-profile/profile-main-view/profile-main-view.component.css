@@ -115,6 +115,11 @@
         right: 0;
         z-index: 1;
         cursor: pointer;
+
+        .camera-icon {
+          width: 35px;
+          display: flex;
+        }
       }
     }
 
@@ -178,29 +183,13 @@
 
 @media screen and (max-width: 768px) {
   .profile-container {
-    padding: 94px 40px;
-
-    h1 {
-      font-family: "ruberoid-bold";
-      font-size: 20px;
-      margin-top: 0px;
-    }
+    padding: 79px 19px 146px;
 
     .data-item {
-      min-width: 300px;
-      display: flex;
-      flex-flow: column nowrap;
-      gap: 8px;
-      font-family: "plusjakartasans-semibold";
-      font-size: 14px;
-      position: relative;
+      width: 100%;
 
       input {
-        border-radius: 5px;
-        border: 1px solid#cad5da;
-        background: white;
-        padding: 12px 20px;
-        font-family: "plusjakartasans-regular";
+        padding: 10px;
         font-size: 12px;
 
         &:focus {
@@ -225,12 +214,7 @@
         }
 
         label {
-          display: flex;
-          flex-flow: row nowrap;
-          align-items: center;
           font-size: 12px;
-          font-family: "plusjakartasans-regular";
-          margin-inline-start: 10px;
         }
       }
 
@@ -245,60 +229,37 @@
     }
 
     .bento-box {
-      display: grid;
-      grid-template-rows: auto auto;
-      gap: 56px;
-      width: 100%;
+      gap: 50px;
     }
 
     .row-1 {
-      background-color: #eef3f8;
-      border-radius: 10px;
-      padding: 30px 36px;
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      gap: 60px;
-      position: relative;
+      background-color: transparent;
+      padding: 0px;
+      flex-flow: column nowrap;
+      gap: 22px;
 
       .profile-img {
-        width: 148px;
-        height: 148px;
-        border-radius: 50%;
-        border: 3px solid white;
-        flex-shrink: 0;
-        position: relative;
-
-        img {
-          width: 100%;
-          aspect-ratio: 1/1;
-          border-radius: 50%;
-          object-fit: cover;
-          object-position: center;
-        }
+        width: 84px;
+        height: 84px;
+        margin-right: auto;
 
         .change-prof-img-button {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          width: 44.656px;
-          height: 44.749px;
-          flex-shrink: 0;
-          background-color: white;
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          z-index: 1;
-          cursor: pointer;
+          width: 23px;
+          height: 23px;
+          background-color: #eef3f8;
+
+          .camera-icon {
+            width: 17px;
+          }
         }
       }
 
       .profile-data {
         .data-container {
+          width: 100%;
           display: flex;
           flex-flow: row wrap;
-          gap: 25px 31px;
+          gap: 20px;
         }
       }
 
@@ -311,44 +272,24 @@
     }
 
     .row-2 {
-      display: grid;
-      grid-template-columns: 386px auto;
-      gap: 39px;
-
-      div {
-        border-radius: 10px;
-        margin-bottom: 24px;
-      }
+      grid-template-columns: 1fr;
+      gap: 30px;
 
       .box-1 {
         background-color: #eef3f8;
-        padding: 30px;
+        padding: 20px;
       }
 
       .box-2 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         gap: 24px;
         background-color: #eef3f8;
-        padding: 30px 40px 50px;
+        padding: 20px;
       }
     }
 
     button {
-      width: 100%;
-      height: 37px;
-      border: none;
-      display: flex;
-      padding: 8px 20px;
-      justify-content: center;
-      align-items: center;
-      border-radius: 6px;
-      color: #fff;
-      font-family: "ruberoid-semibold";
-      font-size: 12px;
-      background: #381187;
-      cursor: pointer;
+      border-radius: 4px;
+      font-size: 14px;
     }
   }
 }

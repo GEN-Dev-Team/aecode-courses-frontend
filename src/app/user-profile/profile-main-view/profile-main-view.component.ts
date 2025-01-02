@@ -45,7 +45,7 @@ export class ProfileMainViewComponent {
   showChangePasswordError: boolean = false;
   showMessageModal: boolean = false;
   dataUpdated: boolean = false;
-  profileImgUrl: string = '';
+  profileImgUrl: string = 'assets/images/login-view/user-profile-img.webp';
   profileImgFile: File = new File([], '');
 
   userDataForm = this.fb.group({
@@ -164,7 +164,9 @@ export class ProfileMainViewComponent {
       .getUserDetailsImgById(this.userData.userId)
       .subscribe((response) => {
         this.userDetails = response;
-        this.profileImgUrl = this.base_url + response.profilepicture;
+        if (this.userDetails.profilepicture) {
+          this.profileImgUrl = this.base_url + this.userDetails.profilepicture;
+        }
       });
 
     this.userData$ = this.userService.getUser(this.userData.userId);
