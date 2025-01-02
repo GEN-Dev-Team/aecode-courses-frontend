@@ -113,7 +113,13 @@
               <app-caret-down-icon class="caret-icon" />
             </div>
           </div>
-          <div class="separator"></div>
+          <div class="details-separator">
+            <div
+              class="option-chosen"
+              [class.first-option]="isDescription"
+              [class.second-option]="!isDescription"
+            ></div>
+          </div>
           <div class="detail-text">
             @if(isDescription) {
 
