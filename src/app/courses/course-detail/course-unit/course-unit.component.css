@@ -38,6 +38,42 @@
   }
 
   .unit-caret {
+    width: 15px;
+    display: flex;
     margin-left: auto;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .course-item {
+    margin-bottom: 0;
+
+    .course-item-checkbox {
+      flex-shrink: 0;
+
+      .course-item-icon {
+        top: -10%;
+      }
+    }
+
+    span {
+      font-size: 14px;
+      text-wrap: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .unit-caret {
+      width: 12px;
+      flex-shrink: 0;
+    }
+  }
+
+  .course-item-sessions {
+    margin-block: 14px 0px;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 14px;
   }
 }
