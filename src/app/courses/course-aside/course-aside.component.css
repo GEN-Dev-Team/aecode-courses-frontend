@@ -179,5 +179,10 @@
     .theme-button {
       display: none;
     }
+
+    .item-selected {
+      color: var(--purple-2);
+      fill: var(--purple-2);
+    }
   }
 }
