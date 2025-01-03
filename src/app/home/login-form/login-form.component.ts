@@ -11,11 +11,12 @@ import { ButtonComponent } from '../../shared/components/button/button.component
 import { AuthService } from '../../core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { BrowserService } from '../../core/services/browser.service';
+import { SquareIconComponent } from '../../shared/icons/square-icon/square-icon.component';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonComponent],
+  imports: [ReactiveFormsModule, ButtonComponent, SquareIconComponent],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css',
 })
