@@ -183,7 +183,7 @@
 
 @media screen and (max-width: 768px) {
   .profile-container {
-    padding: 79px 19px 146px;
+    padding: 79px 19px 143px;
 
     .data-item {
       width: 100%;
@@ -284,6 +284,11 @@
         gap: 24px;
         background-color: #eef3f8;
         padding: 20px;
+        margin-bottom: 0px;
+
+        h1 {
+          margin: 0;
+        }
       }
     }
 
