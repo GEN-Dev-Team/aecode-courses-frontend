@@ -4,6 +4,14 @@
   padding: 60px;
   border-radius: 6px;
   background-color: white;
+  position: relative;
+
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
 
   .subtitle-form {
     font-family: "ruberoid-medium";
@@ -35,10 +43,8 @@
         font-size: "plusjakartasans-regular";
       }
     }
-
-    &:nth-child(3) {
-      grid-column: span 2;
-      width: 100%;
+    .input-email {
+      grid-column: 1 / -1;
     }
   }
 
@@ -64,6 +70,10 @@
       align-items: center;
       border-radius: 2px;
       border: 1px solid black;
+
+      .check-icon {
+        width: 24px;
+      }
     }
 
     label {
@@ -93,94 +103,52 @@
 
 @media screen and (max-width: 768px) {
   .free-content-form-container {
-    width: 100%;
-    max-width: 642px;
-    padding: 60px;
-    border-radius: 6px;
-    background-color: white;
+    max-width: 348px;
+    padding: 30px 25px;
+    border-radius: 4px;
+    margin-top: -30%;
+
+    .close-button {
+      display: flex;
+      width: 12px;
+    }
 
     .subtitle-form {
-      font-family: "ruberoid-medium";
-      font-size: 25px;
+      margin-top: 0;
+      font-size: 16px;
     }
 
     .input-container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 30px 20px;
+      gap: 16px;
+      margin-bottom: 16px;
 
       input {
-        padding: 14px 22px;
-        border-radius: 6px;
-        border: 1px solid var(--Gris-lineas, #cad5da);
-        font-size: "plusjakartasans-regular";
-        color: #424242;
-        font-size: 14px;
-        outline: none;
-
-        &:focus {
-          border: 1px solid #424242;
-        }
-
-        &::placeholder {
-          color: var(--Gris-lineas, #cad5da);
-          color: #424242;
-          font-size: 14px;
-          font-size: "plusjakartasans-regular";
-        }
-      }
-
-      &:nth-child(3) {
-        grid-column: span 2;
         width: 100%;
+        padding: 7px;
+        border-radius: 4px;
       }
     }
 
     .course-input {
-      padding: 14px 20px;
-      margin-bottom: 30px;
-      color: #424242;
-      font-family: "plusjakartasans-regular";
-      font-size: 14px;
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      gap: 12px;
-      border-radius: 6px;
-      border: 1px solid var(--Gris-lineas, #cad5da);
-      cursor: pointer;
+      padding: 7px;
+      margin-bottom: 16px;
+      border-radius: 4px;
 
       .course-select {
-        width: 31px;
-        height: 31px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 2px;
-        border: 1px solid black;
-      }
+        width: 14px;
+        height: 14px;
 
-      label {
-        color: #424242;
-        font-family: "plusjakartasans-regular";
-        font-size: 14px;
-        cursor: pointer;
+        .check-icon {
+          width: 12px;
+        }
       }
     }
 
     .send-button {
-      display: flex;
-      justify-content: center;
-      width: 381px;
-      margin-inline: auto;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 6px;
-      background: var(--purple-2);
-      color: white;
-      font-family: "ruberoid-medium";
-      font-size: 16px;
-      cursor: pointer;
+      width: 252px;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-size: 14px;
     }
   }
 }
