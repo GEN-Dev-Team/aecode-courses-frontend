@@ -23,6 +23,13 @@
   font-family: "plusjakartasans-medium";
   animation: slideIn 0.5s ease-in-out forwards;
 
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
+
   .start-title {
     font-size: 13px;
     text-transform: uppercase;
@@ -120,4 +127,69 @@
   background-color: black;
   opacity: 0.69;
   z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .login-form {
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    gap: 25px;
+    border-radius: 6px;
+    animation: slideIn 0.5s ease-in-out forwards;
+
+    .close-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+
+    .start-title {
+      font-size: 12px;
+    }
+
+    .start-subtitle {
+      font-size: 18px;
+    }
+
+    .form-control {
+      width: 100%;
+      height: 46px;
+
+      .label {
+        height: 18px;
+        padding: 0px 8px;
+        top: -30%;
+        left: 3%;
+      }
+
+      input {
+        font-size: 10px;
+        padding-left: 13px;
+
+        &:focus {
+          border: 1px solid #424242;
+        }
+      }
+    }
+
+    .login-text {
+      font-size: 12px;
+    }
+
+    .terms-text {
+      font-size: 12px;
+      padding-inline: 0;
+    }
+  }
+
+  .background-overlay {
+    width: 100%;
+    height: 100dvh;
+    position: fixed;
+    background-color: black;
+    opacity: 0.69;
+    z-index: 1;
+  }
 }

@@ -1,4 +1,6 @@
 <form [formGroup]="isSignInForm ? signInForm : loginForm" class="login-form">
+  <app-square-icon class="close-button" (click)="closeModal()" />
+
   <span class="start-title">Comencemos</span>
   @if (isSignInForm) {
   <span class="start-subtitle">Crea una cuenta con:</span>
