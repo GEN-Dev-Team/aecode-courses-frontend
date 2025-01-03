@@ -38,3 +38,36 @@
     line-height: 25px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .content-blocked-container {
+    width: 80%;
+    height: 50%;
+    margin-inline: auto;
+    padding: 29px 14px;
+    border-radius: 6px;
+
+    .icon-container {
+      width: 52px;
+      height: 52px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .subtitle {
+      font-size: 18px;
+      margin-block: 15px 5px;
+    }
+
+    .message {
+      color: #212121;
+      text-align: center;
+      margin-block: 0px 15px;
+      font-size: 12px;
+      line-height: 15px;
+    }
+  }
+}
