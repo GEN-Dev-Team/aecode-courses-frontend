@@ -43,8 +43,9 @@ export class ProfileMainViewComponent {
 
   editUserData: boolean = false;
   changePassword: boolean = false;
-  showChangePasswordError: boolean = false;
-  showMessageModal: boolean = false;
+  showChangePasswordError: boolean = true;
+  //
+  showMessageModal: boolean = true;
   dataUpdated: boolean = false;
   profileImgUrl: string = 'assets/images/login-view/user-profile-img.webp';
   profileImgFile: File = new File([], '');

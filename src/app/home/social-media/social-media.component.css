@@ -107,10 +107,11 @@
     height: 80px;
     display: flex;
     flex-direction: column;
-    margin-top: 26px;
+    margin-top: 0px;
     gap: 26px;
 
     .home-button {
+      width: 100%;
       margin-top: 30px;
     }
 
