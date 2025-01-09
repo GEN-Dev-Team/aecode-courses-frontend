@@ -1,4 +1,4 @@
-<form action="" class="free-content-form-container">
+<form [formGroup]="getFreeForm" class="free-content-form-container">
   <app-square-icon class="close-button" (click)="sendForm()" />
 
   <h3 class="subtitle-form">
@@ -6,22 +6,33 @@
   </h3>
 
   <div class="input-container">
-    <input type="text" placeholder="Nombres" />
-    <input type="text" placeholder="Apellidos" />
-    <input type="text" placeholder="Correo" class="input-email" />
+    <input formControlName="name" type="text" placeholder="Nombre" />
+    <input formControlName="lastName" type="text" placeholder="Apellido" />
+    <input
+      formControlName="email"
+      type="text"
+      placeholder="Correo"
+      class="input-email"
+    />
   </div>
 
-  <h3 class="subtitle-form">Material semana de:</h3>
+  <h3 class="subtitle-form">Material semanal de:</h3>
 
-  <div class="course-input" (click)="isProgrammingSelected = false">
+  <div
+    class="course-input"
+    (click)="isEngineeringSelected = !isEngineeringSelected"
+  >
     <div class="course-select">
-      @if(!isProgrammingSelected) {
+      @if(isEngineeringSelected) {
       <app-check-get-free-form-icon class="check-icon" />
       }
     </div>
     <label for="engineering-course">INGENIERIA 4.0</label>
   </div>
-  <div class="course-input" (click)="isProgrammingSelected = true">
+  <div
+    class="course-input"
+    (click)="isProgrammingSelected = !isProgrammingSelected"
+  >
     <div class="course-select">
       @if(isProgrammingSelected) {
       <app-check-get-free-form-icon class="check-icon" />
