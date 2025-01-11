@@ -1,7 +1,11 @@
 <div class="course-aside-container">
-  <div class="course-aside-content">
+  <div
+    class="course-aside-content"
+    [class.course-aside-content-collapsed]="!showAsideList"
+  >
     <button
       class="aside-dropdown-button"
+      [class.aside-dropdown-buttom-collapsed]="!showAsideList"
       (click)="showAsideList = !showAsideList"
     >
       @if(showAsideList) {
