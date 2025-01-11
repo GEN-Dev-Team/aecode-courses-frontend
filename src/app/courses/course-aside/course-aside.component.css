@@ -33,6 +33,16 @@
   border: none;
 }
 
+.aside-dropdown-buttom-collapsed {
+  background: #eef3f8;
+  box-shadow: -2px 1px 6px 0px #b4bbbf;
+}
+
+.course-aside-content-collapsed {
+  background: transparent;
+  box-shadow: none;
+}
+
 .aside-dropdown-button {
   justify-content: space-between;
 }

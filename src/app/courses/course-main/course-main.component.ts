@@ -26,9 +26,9 @@ interface listToRender {
 })
 export class CourseMainComponent implements OnInit {
   coursesList: listToRender[] = [
-    { id: 1, name: 'CURSOS MODALIDAD ASINCRÓNICOS', list: [] },
     { id: 2, name: 'CURSOS MODALIDAD EN VIVO', list: [] },
     { id: 3, name: 'CURSOS PROXIMOS', list: [] },
+    { id: 1, name: 'CURSOS MODALIDAD ASINCRÓNICOS', list: [] },
   ];
 
   asyncCourseLit: ISecondaryCourse[] = [];

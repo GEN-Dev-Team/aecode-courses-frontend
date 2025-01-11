@@ -36,8 +36,8 @@
         3px 0px 9.5px 0px rgba(219, 201, 255, 0.71) inset;
       font-size: 16px;
       position: absolute;
-      right: 10px;
-      top: 10px;
+      right: 0px;
+      bottom: 55px;
     }
 
     .course-tags {
@@ -208,8 +208,7 @@
         width: 42px;
         height: 25px;
         font-size: 14px;
-        right: 8px;
-        top: 8px;
+        bottom: 40px;
       }
 
       .static-course-status {
