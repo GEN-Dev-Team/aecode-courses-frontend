@@ -11,74 +11,34 @@ import { Component } from '@angular/core';
       height="20"
       viewBox="0 0 20 20"
       fill="none"
-      class="icon"
     >
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M2 0C0.895431 0 0 0.895431 0 2V18C0 19.1046 0.895431 20 2 20H18C19.1046 20 20 19.1046 20 18V2C20 0.895431 19.1046 0 18 0H2ZM4 10C4 9.44771 3.55228 9 3 9C2.44772 9 2 9.44771 2 10L2 17C2 17.5523 2.44772 18 3 18C3.55229 18 4 17.5523 4 17L4 10Z"
-        fill="#381187"
-      />
-      <path
-        d="M10 17L10 6"
-        stroke="url(#paint0_linear_2188_4007)"
-        stroke-width="2"
-        stroke-linecap="round"
-      />
-      <path
-        d="M3 17L3 10"
-        stroke="url(#paint1_linear_2188_4007)"
-        stroke-width="2"
-        stroke-linecap="round"
-      />
-      <path
-        d="M17 17L17 3"
-        stroke="url(#paint2_linear_2188_4007)"
-        stroke-width="2"
-        stroke-linecap="round"
-      />
+      <g clip-path="url(#clip0_2198_7908)">
+        <path
+          d="M18 0.5H2C1.17157 0.5 0.5 1.17157 0.5 2V18C0.5 18.8284 1.17157 19.5 2 19.5H18C18.8284 19.5 19.5 18.8284 19.5 18V2C19.5 1.17157 18.8284 0.5 18 0.5Z"
+          stroke="#381187"
+        />
+        <path
+          d="M5.83979 10H3.16021C3.07173 10 3 10.0844 3 10.1886V16.8114C3 16.9156 3.07173 17 3.16021 17H5.83979C5.92827 17 6 16.9156 6 16.8114V10.1886C6 10.0844 5.92827 10 5.83979 10Z"
+          fill="#381187"
+        />
+        <path
+          d="M11.3398 6H8.66021C8.57173 6 8.5 6.13266 8.5 6.29631V16.7037C8.5 16.8673 8.57173 17 8.66021 17H11.3398C11.4283 17 11.5 16.8673 11.5 16.7037V6.29631C11.5 6.13266 11.4283 6 11.3398 6Z"
+          fill="#381187"
+        />
+        <path
+          d="M16.8398 3H14.1602C14.0717 3 14 3.16884 14 3.37712V16.6229C14 16.8312 14.0717 17 14.1602 17H16.8398C16.9283 17 17 16.8312 17 16.6229V3.37712C17 3.16884 16.9283 3 16.8398 3Z"
+          fill="#381187"
+        />
+      </g>
       <defs>
-        <linearGradient
-          id="paint0_linear_2188_4007"
-          x1="10.0835"
-          y1="16.1133"
-          x2="11.1543"
-          y2="9.00649"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-color="#852FFF" />
-          <stop offset="1" stop-color="#B664DB" />
-        </linearGradient>
-        <linearGradient
-          id="paint1_linear_2188_4007"
-          x1="3.08346"
-          y1="16.4357"
-          x2="3.52292"
-          y2="11.8527"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-color="#852FFF" />
-          <stop offset="1" stop-color="#B664DB" />
-        </linearGradient>
-        <linearGradient
-          id="paint2_linear_2188_4007"
-          x1="17.0835"
-          y1="15.8715"
-          x2="18.7946"
-          y2="6.94922"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-color="#852FFF" />
-          <stop offset="1" stop-color="#B664DB" />
-        </linearGradient>
+        <clipPath id="clip0_2198_7908">
+          <rect width="20" height="20" fill="white" />
+        </clipPath>
       </defs>
     </svg>
   `,
   styles: `
-    .icon {
-      display:flex;
-      align-self:center;
-    }
+ 
   `,
 })
 export class HighLevelIconComponent {}
