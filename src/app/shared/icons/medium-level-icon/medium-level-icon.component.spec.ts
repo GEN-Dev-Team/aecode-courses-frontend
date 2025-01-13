@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LevelIconComponent } from './level-icon.component';
+import { MediumLevelIconComponent } from './medium-level-icon.component';
 
-describe('LevelIconComponent', () => {
-  let component: LevelIconComponent;
-  let fixture: ComponentFixture<LevelIconComponent>;
+describe('MediumLevelIconComponent', () => {
+  let component: MediumLevelIconComponent;
+  let fixture: ComponentFixture<MediumLevelIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LevelIconComponent]
+      imports: [MediumLevelIconComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(LevelIconComponent);
+    fixture = TestBed.createComponent(MediumLevelIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
