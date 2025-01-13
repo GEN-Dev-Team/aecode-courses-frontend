@@ -10,7 +10,7 @@
           {{ secondaryCourseData.description }}
         </p>
 
-        <div class="video-container" (click)="showIntroVideo = true">
+        <div class="video-container" (click)="showCourseVideo()">
           <img
             class="course-video"
             src="{{ secondaryCourseData.principalimage | addBaseUrl }}"

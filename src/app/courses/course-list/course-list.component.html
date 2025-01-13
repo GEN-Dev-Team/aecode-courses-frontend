@@ -3,12 +3,13 @@
     <span>{{ listTitle }}</span>
     <span hidden class="see-all-button">Ver todo</span>
   </div>
-
   <div class="course-list-content">
-    @for (secondaryCourseItem of secondaryCourseList; track secondaryCourseItem)
-    {
+    @if (secondaryCourseList.length > 0) { @for (secondaryCourseItem of
+    secondaryCourseList; track secondaryCourseItem) {
     <app-course-item [course]="secondaryCourseItem" />
 
+    } } @else {
+    <app-loader />
     }
   </div>
 </div>

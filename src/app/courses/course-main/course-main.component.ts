@@ -6,6 +6,7 @@ import { CourseListComponent } from '../course-list/course-list.component';
 import { SecondaryCourseService } from '../services/secondary-course.service';
 import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
 import { Observable } from 'rxjs';
+import { FadeOutDirective } from '../../shared/directives/animations/fade-out.directive';
 
 interface listToRender {
   id: number;
@@ -20,6 +21,7 @@ interface listToRender {
     CourseSearchIconComponent,
     PlatformCourseListComponent,
     CourseListComponent,
+    FadeOutDirective,
   ],
   templateUrl: './course-main.component.html',
   styleUrl: './course-main.component.css',

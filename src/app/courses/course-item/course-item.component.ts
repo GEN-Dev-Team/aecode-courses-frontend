@@ -1,5 +1,4 @@
 import { Component, inject, Input } from '@angular/core';
-import { LevelIconComponent } from '../../shared/icons/level-icon/level-icon.component';
 import { WatchIconComponent } from '../../shared/icons/watch-icon/watch-icon.component';
 import { CourseSessionIconComponent } from '../../shared/icons/course-session-icon/course-session-icon.component';
 import { Router } from '@angular/router';
@@ -11,16 +10,21 @@ import { IModule } from '../interface/Module';
 import { IUnit } from '../interface/Unit';
 import { CommonModule } from '@angular/common';
 import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
+import { BasicLevelIconComponent } from '../../shared/icons/basic-level-icon/basic-level-icon.component';
+import { MediumLevelIconComponent } from '../../shared/icons/medium-level-icon/medium-level-icon.component';
+import { HighLevelIconComponent } from '../../shared/icons/high-level-icon/high-level-icon.component';
 
 @Component({
   selector: 'app-course-item',
   standalone: true,
   imports: [
-    LevelIconComponent,
     WatchIconComponent,
     CourseSessionIconComponent,
     CommonModule,
     AddBaseUrlPipe,
+    BasicLevelIconComponent,
+    MediumLevelIconComponent,
+    HighLevelIconComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',

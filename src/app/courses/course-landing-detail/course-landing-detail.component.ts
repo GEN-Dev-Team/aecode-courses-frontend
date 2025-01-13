@@ -18,6 +18,7 @@ import { LoaderComponent } from '../../shared/components/loader/loader.component
 import { PlayIconComponent } from '../../shared/icons/play-icon/play-icon.component';
 import { ActivatedRoute } from '@angular/router';
 import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-course-landing-detail',
@@ -45,8 +46,9 @@ export class CourseLandingDetailComponent {
     SecondaryCourseService
   );
   router: ActivatedRoute = inject(ActivatedRoute);
+  toastService = inject(ToastrService);
 
-  secCourseId = 0;
+  secCourseId = Number(this.router.snapshot.paramMap.get('secCourseId'));
 
   secondaryCourseData$: Observable<ISecondaryCourse> =
     this.secondaryCourseService.getSecondaryCourseById(this.secCourseId);
@@ -54,9 +56,13 @@ export class CourseLandingDetailComponent {
   url_base = environment.base;
   loopList: number[] = [1, 2, 3];
   showIntroVideo: boolean = false;
+  url: string = '';
 
   youtubeVideo$: Observable<SafeResourceUrl> = this.secondaryCourseData$.pipe(
-    map((data) => this.sanitizer.bypassSecurityTrustResourceUrl(data.videoUrl))
+    map((data) => {
+      this.url = data.videoUrl;
+      return this.sanitizer.bypassSecurityTrustResourceUrl(data.videoUrl);
+    })
   );
 
   courseUnitsNumber$: Observable<number> = this.secondaryCourseData$.pipe(
@@ -74,10 +80,11 @@ export class CourseLandingDetailComponent {
     )
   );
 
-  ngOnInit(): void {
-    this.secCourseId = Number(this.router.snapshot.paramMap.get('secCourseId'));
-
-    this.secondaryCourseData$ =
-      this.secondaryCourseService.getSecondaryCourseById(this.secCourseId);
+  showCourseVideo() {
+    if (this.url) {
+      this.showIntroVideo = true;
+    } else {
+      this.toastService.warning('¡Video no disponible!');
+    }
   }
 }

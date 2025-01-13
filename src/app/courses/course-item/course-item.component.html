@@ -64,7 +64,14 @@
       </button>
 
       <div class="course-level">
-        <app-level-icon class="icon" />
+        @switch (course.level) { @case('BASICO') {
+        <app-basic-level-icon class="icon" />
+        } @case('INTERMEDIO') {
+        <app-medium-level-icon class="icon" />
+        } @case('AVANZADO') {
+        <app-high-level-icon class="icon" />
+        }}
+
         <span>{{ course.level }}</span>
       </div>
 
