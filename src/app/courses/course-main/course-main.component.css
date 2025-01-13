@@ -97,8 +97,7 @@
   top: 50%;
   left: 0;
   transform: translateY(-50%);
-  animation: moveRight 1.5s ease-in-out forwards,
-    fadeOut 0.5s ease-out 1.5s forwards;
+  animation: moveRight 1.5s ease-in-out forwards;
 }
 
 .punto {
@@ -114,15 +113,6 @@
   }
   to {
     left: 90%;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 
@@ -188,8 +178,7 @@
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    animation: moveRight 1.5s ease-in-out forwards,
-      fadeOut 0.5s ease-out 1.5s forwards;
+    animation: moveRight 1.5s ease-in-out forwards;
   }
 }
 
