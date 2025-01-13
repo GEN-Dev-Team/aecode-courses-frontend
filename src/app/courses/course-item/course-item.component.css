@@ -92,10 +92,6 @@
           align-items: center;
           gap: 2px;
           font-size: 12px;
-
-          .icon {
-            fill: var(--purple-2);
-          }
         }
       }
     }
@@ -116,6 +112,13 @@
       flex-flow: row nowrap;
       align-items: center;
       gap: 8px;
+
+      .icon {
+        fill: var(--purple-2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }
 
     .course-price {
