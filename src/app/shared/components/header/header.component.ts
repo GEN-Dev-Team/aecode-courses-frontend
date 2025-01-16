@@ -79,27 +79,29 @@ export class HeaderComponent {
   }
 
   setUser() {
-    this.userId = this.authService.getUserDetails().userId;
+    if (this.authService.getUserDetails() !== null) {
+      this.userId = this.authService.getUserDetails().userId;
 
-    this.userService
-      .getUserDetailsImgById(this.userId)
-      .subscribe((response) => {
-        if (response.profilepicture) {
-          this.userProfileImg = this.base_url + response.profilepicture;
-        } else {
-          this.userProfileImg =
-            'assets/images/login-view/user-profile-img.webp';
-        }
+      this.userService
+        .getUserDetailsImgById(this.userId)
+        .subscribe((response) => {
+          if (response.profilepicture) {
+            this.userProfileImg = this.base_url + response.profilepicture;
+          } else {
+            this.userProfileImg =
+              'assets/images/login-view/user-profile-img.webp';
+          }
+        });
+
+      this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
+        this.isUserLoggedIn = loggedInStatus;
       });
 
-    this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
-      this.isUserLoggedIn = loggedInStatus;
-    });
-
-    if (this.isUserLoggedIn) {
-      this.logInService.getUser(this.userId).subscribe((response) => {
-        this.authService.setUserDetails(response);
-      });
+      if (this.isUserLoggedIn) {
+        this.logInService.getUser(this.userId).subscribe((response) => {
+          this.authService.setUserDetails(response);
+        });
+      }
     }
   }
 }
