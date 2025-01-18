@@ -13,6 +13,7 @@ import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 import { BasicLevelIconComponent } from '../../shared/icons/basic-level-icon/basic-level-icon.component';
 import { MediumLevelIconComponent } from '../../shared/icons/medium-level-icon/medium-level-icon.component';
 import { HighLevelIconComponent } from '../../shared/icons/high-level-icon/high-level-icon.component';
+import { ShoppingCartIconComponent } from '../icons/shopping-cart-icon/shopping-cart-icon.component';
 
 @Component({
   selector: 'app-course-item',
@@ -25,6 +26,7 @@ import { HighLevelIconComponent } from '../../shared/icons/high-level-icon/high-
     BasicLevelIconComponent,
     MediumLevelIconComponent,
     HighLevelIconComponent,
+    ShoppingCartIconComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
