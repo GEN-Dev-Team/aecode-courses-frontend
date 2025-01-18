@@ -185,8 +185,6 @@
   }
 }
 
-/* Platform course styles */
-
 .platform-course-item-container {
   width: 520px;
   min-height: 273px;
@@ -199,6 +197,11 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+
+  .course-item-button-small {
+    height: 33px;
+    padding-inline: 20px;
+  }
 }
 
 @media screen and (max-width: 768px) {
