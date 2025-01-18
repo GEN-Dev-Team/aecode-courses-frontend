@@ -6,6 +6,7 @@ import { ProfileMainViewComponent } from './user-profile/profile-main-view/profi
 import { CoursesComponent } from './courses/courses.component';
 import { CourseLandingDetailComponent } from './courses/course-landing-detail/course-landing-detail.component';
 import { MasiveCourseDetailComponent } from './courses/masive-course-detail/masive-course-detail.component';
+import { PaymentComponent } from './payment/payment.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,12 @@ export const routes: Routes = [
     path: 'admin-panel',
     title: 'ADMIN PANEL',
     component: AdminPanelComponent,
+    // canActivate: [adminAuthGuard],
+  },
+  {
+    path: 'payment',
+    title: 'PAYMENT',
+    component: PaymentComponent,
     // canActivate: [adminAuthGuard],
   },
 ];

@@ -185,4 +185,8 @@ export class GetFreeContentFormComponent {
     };
     return fieldNames[fieldName] || fieldName;
   }
+
+  closeForm() {
+    this.isClosed.emit(false);
+  }
 }

@@ -81,18 +81,12 @@
           Card
         </button> -->
 
-        <button
-          class="payment-btn yape-plin"
-          (click)="showPaymentMethod('yape-plin')"
-        >
+        <button class="payment-btn yape-plin">
           <img src="assets\images\courses\yape.png" alt="Yape Icon" />
           <img src="assets\images\courses\plin.png" alt="Plin Icon" />
         </button>
 
-        <button
-          class="payment-btn paypal"
-          (click)="showPaymentMethod('paypal')"
-        >
+        <button class="payment-btn paypal">
           <img src="assets\images\courses\paypal.png" alt="PayPal Icon" />
         </button>
       </div>
@@ -120,6 +114,5 @@
       </div>
       <p class="note">Cobraremos {{ total | currency }} en tu tarjeta</p>
     </div>
-    <ngx-paypal [config]="payPalConfig"></ngx-paypal>
   </div>
 </div>
