@@ -27,42 +27,60 @@ interface listToRender {
   styleUrl: './course-main.component.css',
 })
 export class CourseMainComponent implements OnInit {
-  coursesList: listToRender[] = [
-    { id: 2, name: 'CURSOS MODALIDAD EN VIVO', list: [] },
-    { id: 3, name: 'CURSOS PROXIMOS', list: [] },
-    { id: 1, name: 'CURSOS MODALIDAD ASINCRÓNICOS', list: [] },
-  ];
-
-  asyncCourseLit: ISecondaryCourse[] = [];
-  syncCourseLit: ISecondaryCourse[] = [];
-  comingSoonCourseLit: ISecondaryCourse[] = [];
-
   secondaryCourseService: SecondaryCourseService = inject(
     SecondaryCourseService
   );
+
+  coursesList: listToRender[] = [
+    { id: 2, name: 'CURSOS - ENERO', list: [] },
+    { id: 3, name: 'CURSOS - FEBRERO', list: [] },
+    { id: 1, name: 'CURSOS PRÓXIMOS', list: [] },
+  ];
+
+  filteredCoursesList: listToRender[] = [];
 
   secondaryCourseList$: Observable<ISecondaryCourse[]> =
     this.secondaryCourseService.getAllSecondaryCourses();
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.secondaryCourseList$.subscribe((data) => {
-      const courseList = data;
+      const asyncCourses = data.filter((course) => course.mode === 'ASINCRONO');
+      const syncCourses = data.filter((course) => course.mode === 'EN_VIVO');
+      const comingSoonCourses = data.filter(
+        (course) => course.mode === 'SINCRONO'
+      );
 
-      courseList.forEach((course) => {
-        if (course.mode === 'ASINCRONO') {
-          this.asyncCourseLit.push(course);
-        } else if (course.mode === 'EN_VIVO') {
-          this.syncCourseLit.push(course);
-        } else {
-          this.comingSoonCourseLit.push(course);
-        }
-      });
+      this.coursesList[0].list = asyncCourses;
+      this.coursesList[1].list = syncCourses;
+      this.coursesList[2].list = comingSoonCourses;
 
-      this.coursesList[0].list = this.asyncCourseLit;
-      this.coursesList[1].list = this.syncCourseLit;
-      this.coursesList[2].list = this.comingSoonCourseLit;
+      // Inicializamos la lista filtrada con los valores originales
+      this.resetFilteredCourses();
     });
+  }
+
+  onSearch(event: Event): void {
+    const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
+
+    if (!searchTerm) {
+      this.resetFilteredCourses();
+      return;
+    }
+
+    // Filtrar listas por coincidencia en el título de los cursos
+    this.filteredCoursesList = this.coursesList
+      .map((group) => ({
+        ...group,
+        list: group.list.filter((course) =>
+          course.title.toLowerCase().includes(searchTerm)
+        ),
+      }))
+      .filter((group) => group.list.length > 0); // Elimina grupos vacíos
+
+    console.log(this.filteredCoursesList);
+  }
+
+  private resetFilteredCourses(): void {
+    this.filteredCoursesList = JSON.parse(JSON.stringify(this.coursesList));
   }
 }

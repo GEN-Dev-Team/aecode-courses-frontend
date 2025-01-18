@@ -8,14 +8,19 @@
 
   <div class="search-container">
     <app-search-tool-icon class="search-tool-icon" />
-    <input class="search-input" type="text" placeholder="¿Qué buscamos?" />
+    <input
+      class="search-input"
+      type="text"
+      placeholder="¿Qué buscamos?"
+      (input)="onSearch($event)"
+    />
     <app-course-search-icon class="search-icon" />
   </div>
 
   <app-platform-course-list />
 
   <div class="course-main-list">
-    @for (courseListItem of coursesList; track courseListItem) {
+    @for (courseListItem of filteredCoursesList; track courseListItem) {
     <app-course-list
       [listTitle]="courseListItem.name"
       [secondaryCourseList]="courseListItem.list"
