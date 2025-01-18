@@ -18,11 +18,6 @@
     color: var(--purple-2);
     font-family: "ruberoid-semibold";
     font-size: 20px;
-
-    .see-all-button {
-      cursor: pointer;
-      text-decoration: underline;
-    }
   }
 
   .course-list-content {
@@ -45,13 +40,6 @@
     .course-list-title {
       font-size: 14px;
       align-items: center;
-
-      .see-all-button {
-        cursor: pointer;
-        text-decoration: underline;
-        font-size: 16px;
-        text-wrap: nowrap;
-      }
     }
 
     .course-list-content {
