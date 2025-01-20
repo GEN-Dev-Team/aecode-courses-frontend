@@ -1,1 +1,75 @@
-<app-payment-card />
+<app-main-layout>
+  <div class="payment-container">
+    <div class="payment-method">
+      <h2 class="payment-title">Pagar con Paypal O Tarjeta</h2>
+
+      <div class="payment-method-content">
+        <!-- <img
+          src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Commons_QR_code.png"
+          alt=""
+        />
+
+        <div>
+          <p>
+            Escanea el código QR con Yape. Ingresa el monto, confirma los
+            detalles y listo. ¡Es fácil, rápido y seguro!"
+          </p>
+          <span>Berenisse de la cruz</span>
+          <span>912215429</span>
+        </div> -->
+
+        <p>Para seguir con tu compra deberás iniciar sesión en Paypal</p>
+        <p class="payment-method-description">
+          Después del pago, permanece atento a tu email para recibir los datos
+          de acceso al producto (verifica también la casilla de SPAM) para
+          recibir los datos de acceso al producto (verifica también la casilla
+          de SPAM)
+        </p>
+      </div>
+
+      <div class="payment-method-options-details">
+        <div class="payment-method-options">
+          <button class="payment-method-buttons">
+            <app-card-icon />
+            <span class="payment-method-text">Card</span>
+            <app-paypal-icon />
+          </button>
+
+          <button class="payment-method-buttons payment-method-buttons-yape">
+            <img src="/assets/images/payment/plin-icon.png" alt="" />
+            <img src="/assets/images/payment/yape-icon.png" alt="" />
+          </button>
+        </div>
+
+        <p class="payment-terms">
+          Al hacer clic en “Completar Compra” acepto las
+          <strong>condiciones de uso, la política de privacidad</strong> y
+          recibir novedades y promociones
+        </p>
+      </div>
+    </div>
+
+    <div class="payment-info">
+      <h1 class="payment-info-title">Programación Digital</h1>
+
+      <p class="payment-info-subtitle">
+        Suscripción al curso para un estudiante
+      </p>
+
+      <p class="payment-info-description">
+        Disfruta las ventajas del programa especializado es simplemente el texto
+        de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el
+        texto de relleno estándar de las industrias desde el año 1500, cuando un
+        impresor
+      </p>
+
+      <button class="payment-info-total">
+        <span>Total a pagar</span>
+        <span>$ 150 USD</span>
+      </button>
+
+      <p class="payment-info-reminder">Cobraremos $ 150 USD en tu tarjeta</p>
+      <div #paymentRef></div>
+    </div>
+  </div>
+</app-main-layout>

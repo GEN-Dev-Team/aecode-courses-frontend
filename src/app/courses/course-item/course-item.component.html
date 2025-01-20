@@ -84,7 +84,9 @@
 
         <button
           class="course-item-button"
-          (click)="showCourseDetails(course.seccourseId)"
+          (click)="
+            goToPay((course.priceRegular * (100 - course.percentage)) / 100)
+          "
         >
           <app-shopping-cart-icon class="shop-cart-icon" /> Comprar ${{
             (course.priceRegular * (100 - course.percentage)) / 100
