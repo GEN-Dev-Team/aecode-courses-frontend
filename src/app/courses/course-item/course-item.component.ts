@@ -73,4 +73,8 @@ export class CourseItemComponent {
       0
     );
   }
+
+  goToPay(price: any) {
+    this.router.navigate(['payment']);
+  }
 }
