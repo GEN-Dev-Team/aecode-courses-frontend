@@ -3,6 +3,7 @@ import { MainLayoutComponent } from '../shared/layouts/main-layout/main-layout.c
 import { BrowserService } from '../core/services/browser.service';
 import { PaypallIconComponent } from '../shared/icons/paypal-icon/paypal-icon.component';
 import { CardIconComponent } from '../shared/icons/card-icon/card-icon.component';
+import { PaymentService } from './services/payment.service';
 
 @Component({
   selector: 'app-payment',
@@ -12,11 +13,14 @@ import { CardIconComponent } from '../shared/icons/card-icon/card-icon.component
   styleUrl: './payment.component.css',
 })
 export class PaymentComponent {
-  @Input() amount = 100;
+  @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
   browserService: BrowserService = inject(BrowserService);
+  paymentService: PaymentService = inject(PaymentService);
 
-  @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
+  paymentDetails = this.paymentService.paymentDetails;
+
+  isPaypalMethod = false;
 
   ngOnInit(): void {
     // this.amount = this.payment.totalAmount;
@@ -35,7 +39,7 @@ export class PaymentComponent {
               purchase_units: [
                 {
                   amount: {
-                    value: this.amount.toString(),
+                    value: this.paymentDetails().amount.toString(),
                     currency_code: 'USD',
                   },
                 },
