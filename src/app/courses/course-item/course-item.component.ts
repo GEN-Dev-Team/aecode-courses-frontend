@@ -14,6 +14,7 @@ import { BasicLevelIconComponent } from '../../shared/icons/basic-level-icon/bas
 import { MediumLevelIconComponent } from '../../shared/icons/medium-level-icon/medium-level-icon.component';
 import { HighLevelIconComponent } from '../../shared/icons/high-level-icon/high-level-icon.component';
 import { ShoppingCartIconComponent } from '../icons/shopping-cart-icon/shopping-cart-icon.component';
+import { PaymentService } from '../../payment/services/payment.service';
 
 @Component({
   selector: 'app-course-item',
@@ -38,6 +39,7 @@ export class CourseItemComponent {
   courseService: CourseService = inject(CourseService);
   browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
+  paymentService: PaymentService = inject(PaymentService);
 
   secondaryCourseMainImgUrl = '';
   secondaryCourseSessions: number = 0;
@@ -75,6 +77,11 @@ export class CourseItemComponent {
   }
 
   goToPay(price: any) {
+    const rounded_price = Math.round(price);
     this.router.navigate(['payment']);
+    this.paymentService.paymentDetails.set({
+      courseName: this.course.title,
+      amount: rounded_price,
+    });
   }
 }

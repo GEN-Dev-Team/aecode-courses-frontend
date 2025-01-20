@@ -35,6 +35,28 @@ h2 {
       }
     }
 
+    .payment-method-qr {
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 30px;
+      font-family: "plusjakartasans-light";
+
+      img {
+        flex-shrink: 0;
+        width: 235px;
+        aspect-ratio: 1/1;
+      }
+
+      .payment-method-name {
+        font-family: "plusjakartasans-semibold";
+        margin-block: 40px 15px;
+      }
+
+      .payment-method-phone {
+        font-family: "plusjakartasans-light";
+      }
+    }
+
     .payment-method-options-details {
       .payment-method-options {
         display: flex;
