@@ -13,6 +13,8 @@ import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 import { BasicLevelIconComponent } from '../../shared/icons/basic-level-icon/basic-level-icon.component';
 import { MediumLevelIconComponent } from '../../shared/icons/medium-level-icon/medium-level-icon.component';
 import { HighLevelIconComponent } from '../../shared/icons/high-level-icon/high-level-icon.component';
+import { ShoppingCartIconComponent } from '../icons/shopping-cart-icon/shopping-cart-icon.component';
+import { PaymentService } from '../../payment/services/payment.service';
 
 @Component({
   selector: 'app-course-item',
@@ -25,6 +27,7 @@ import { HighLevelIconComponent } from '../../shared/icons/high-level-icon/high-
     BasicLevelIconComponent,
     MediumLevelIconComponent,
     HighLevelIconComponent,
+    ShoppingCartIconComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
@@ -36,6 +39,7 @@ export class CourseItemComponent {
   courseService: CourseService = inject(CourseService);
   browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
+  paymentService: PaymentService = inject(PaymentService);
 
   secondaryCourseMainImgUrl = '';
   secondaryCourseSessions: number = 0;
@@ -70,5 +74,14 @@ export class CourseItemComponent {
       `courses/masive-course-detail/${courseId}`,
       0
     );
+  }
+
+  goToPay(price: any) {
+    const rounded_price = Math.round(price);
+    this.router.navigate(['payment']);
+    this.paymentService.paymentDetails.set({
+      courseName: this.course.title,
+      amount: rounded_price,
+    });
   }
 }

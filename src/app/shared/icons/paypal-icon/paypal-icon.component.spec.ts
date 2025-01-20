@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PaymentCardComponent } from './payment-card.component';
+import { PaypallIconComponent } from './paypall-icon.component';
 
-describe('PaymentCardComponent', () => {
-  let component: PaymentCardComponent;
-  let fixture: ComponentFixture<PaymentCardComponent>;
+describe('PaypallIconComponent', () => {
+  let component: PaypallIconComponent;
+  let fixture: ComponentFixture<PaypallIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PaymentCardComponent]
+      imports: [PaypallIconComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PaymentCardComponent);
+    fixture = TestBed.createComponent(PaypallIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

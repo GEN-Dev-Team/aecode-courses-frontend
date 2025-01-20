@@ -13,8 +13,5 @@ import { LoaderComponent } from '../../shared/components/loader/loader.component
   styleUrl: './course-list.component.css',
 })
 export class CourseListComponent {
-  @Input() listTitle: string = '';
   @Input() secondaryCourseList: ISecondaryCourse[] = [];
-
-  constructor(private courseService: CourseService, private router: Router) {}
 }

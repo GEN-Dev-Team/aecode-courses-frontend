@@ -44,7 +44,7 @@
   <div class="platform-course-details">
     <h2 class="course-title">{{ course.title }}</h2>
     <button
-      class="reserve-button platform-reserve-button"
+      class="course-item-button course-item-button-small"
       (click)="showMasiveCourseDetails(course.courseId)"
     >
       Ver más
@@ -56,33 +56,43 @@
     <h2 class="course-title">{{ course.title }}</h2>
 
     <div class="course-footer">
-      <button
-        class="reserve-button"
-        (click)="showCourseDetails(course.seccourseId)"
-      >
-        Acceder al curso
-      </button>
+      <div class="course-footer-details">
+        <div class="course-level">
+          @switch (course.level) { @case('BASICO') {
+          <app-basic-level-icon class="icon" />
+          } @case('INTERMEDIO') {
+          <app-medium-level-icon class="icon" />
+          } @case('AVANZADO') {
+          <app-high-level-icon class="icon" />
+          }}
 
-      <div class="course-level">
-        @switch (course.level) { @case('BASICO') {
-        <app-basic-level-icon class="icon" />
-        } @case('INTERMEDIO') {
-        <app-medium-level-icon class="icon" />
-        } @case('AVANZADO') {
-        <app-high-level-icon class="icon" />
-        }}
+          <span>{{ course.level }}</span>
+        </div>
 
-        <span>{{ course.level }}</span>
+        <span class="course-old-price"
+          >Normal <span class="price">${{ course.priceRegular }}</span></span
+        >
       </div>
 
-      <div class="course-price">
-        <span class="course-old-price">${{ course.priceRegular }}</span>
-        <span class="course-new-price"
-          >${{
+      <div class="buttons-container">
+        <button
+          class="course-item-button"
+          (click)="showCourseDetails(course.seccourseId)"
+        >
+          Acceder al curso
+        </button>
+
+        <button
+          class="course-item-button"
+          (click)="
+            goToPay((course.priceRegular * (100 - course.percentage)) / 100)
+          "
+        >
+          <app-shopping-cart-icon class="shop-cart-icon" /> Comprar ${{
             (course.priceRegular * (100 - course.percentage)) / 100
               | number : "1.0-0"
-          }}</span
-        >
+          }}
+        </button>
       </div>
     </div>
   </div>

@@ -20,12 +20,6 @@
   <app-platform-course-list />
 
   <div class="course-main-list">
-    @for (courseListItem of filteredCoursesList; track courseListItem) {
-    <app-course-list
-      [listTitle]="courseListItem.name"
-      [secondaryCourseList]="courseListItem.list"
-    />
-
-    }
+    <app-course-list [secondaryCourseList]="filteredCoursesList" />
   </div>
 </main>
