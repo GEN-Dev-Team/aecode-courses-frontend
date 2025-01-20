@@ -81,6 +81,7 @@
     border: none;
     font-family: "plusjakartasans-semibold";
     cursor: pointer;
+    text-decoration: none;
   }
 
   .theme-button {

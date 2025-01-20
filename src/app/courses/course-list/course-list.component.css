@@ -18,22 +18,16 @@
     color: var(--purple-2);
     font-family: "ruberoid-semibold";
     font-size: 20px;
-
-    .see-all-button {
-      cursor: pointer;
-      text-decoration: underline;
-    }
   }
 
   .course-list-content {
     width: 100%;
-    display: flex;
-    flex-flow: row nowrap;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
     align-items: stretch;
     justify-content: space-evenly;
     flex: 1;
     gap: 20px;
-    overflow-x: auto;
     padding-bottom: 30px;
   }
 }
@@ -46,18 +40,9 @@
     .course-list-title {
       font-size: 14px;
       align-items: center;
-
-      .see-all-button {
-        cursor: pointer;
-        text-decoration: underline;
-        font-size: 16px;
-        text-wrap: nowrap;
-      }
     }
 
     .course-list-content {
-      display: flex;
-      flex-flow: row nowrap;
       gap: 5px;
       overflow-x: scroll;
     }
