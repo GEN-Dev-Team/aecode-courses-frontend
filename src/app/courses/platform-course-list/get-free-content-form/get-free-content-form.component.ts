@@ -141,17 +141,13 @@ export class GetFreeContentFormComponent {
           };
         }
 
-        console.log(emailObject);
-        console.log('Is progra selected: ', this.isProgrammingSelected);
-        console.log('Is eng selected: ', this.isEngineeringSelected);
-
-        this.emailSenderService.sendEmail(emailObject).subscribe(
-          (response) => {},
-          (error) => {
-            this.toastService.success('Formulario enviado con éxito.', 'Éxito');
-            this.isClosed.emit(false);
-          }
-        );
+        // this.emailSenderService.sendEmail(emailObject).subscribe(
+        //   (response) => {},
+        //   (error) => {
+        //     this.toastService.success('Formulario enviado con éxito.', 'Éxito');
+        //     this.isClosed.emit(false);
+        //   }
+        // );
       } else {
         this.toastService.error('Seleccione al menos un curso.', 'Error');
       }

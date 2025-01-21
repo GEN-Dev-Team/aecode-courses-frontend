@@ -1,4 +1,4 @@
-<div class="form-container">
+<form [formGroup]="initialForm" class="form-container">
   <app-square-icon class="close-button" (click)="closeModal()" />
 
   <span class="form-message">{{ userMessage }}</span>
@@ -8,8 +8,18 @@
     pregunta
   </p>
 
-  <input type="text" class="form-input" placeholder="Nombre y Apellido" />
-  <input type="text" class="form-input" placeholder="Correo Electrónico" />
+  <input
+    formControlName="full_name"
+    type="text"
+    class="form-input"
+    placeholder="Nombre y Apellido"
+  />
+  <input
+    formControlName="email"
+    type="text"
+    class="form-input"
+    placeholder="Correo Electrónico"
+  />
 
-  <button (click)="closeModal()" class="form-button">Enviar</button>
-</div>
+  <button (click)="sendMessage()" class="form-button">Enviar</button>
+</form>
