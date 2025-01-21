@@ -27,11 +27,13 @@ export class HomeComponent {
   userMessage = '';
 
   sendMessage() {
-    const messageInput = this.browserService.getElementById(
-      'message-input'
-    ) as HTMLInputElement;
+    if (this.browserService.isBrowser()) {
+      const messageInput = this.browserService.getElementById(
+        'message-input'
+      ) as HTMLInputElement;
 
-    this.openForm = true;
-    this.userMessage = messageInput.value;
+      this.openForm = true;
+      this.userMessage = messageInput.value;
+    }
   }
 }
