@@ -2,40 +2,49 @@
   class="course-item-container"
   [class.platform-course-item-container]="isMasiveCourse"
 >
+  <div
+    class="course-item-mode"
+    [class.async-course-button]="course.level == 'AVANZADO'"
+    [class.coming-soon-course-button]="course.level == 'BASICO'"
+  >
+    @switch (course.level) { @case ('BASICO') {
+    <app-coming-soon-course-icon class="icon" />
+    PRÓXIMOS } @case ('INTERMEDIO') {
+    <app-sync-course-icon class="icon" />
+    EN VIVO } @case ('AVANZADO') {
+    <app-async-course-icon class="icon" />
+    ASINCRÓNICOS } }
+  </div>
+
+  @if (course.level === 'AVANZADO') {
+  <div class="course-off-mode">
+    <app-offerbg-icon class="icon" />
+    <span>50% OFF</span>
+  </div>
+  }
+
+  <h3 class="course-program-title">
+    Gestión de Proyectos y Productividad con Inteligencia Artificial
+  </h3>
+
   <div class="course-presentation-container">
     <img class="course-img" src="{{ secondaryCourseMainImgUrl }}" alt="" />
 
-    <span class="course-status" [class.static-course-status]="!isMasiveCourse"
-      >{{ course.percentage }}%</span
-    >
-
     <div class="course-tags">
-      <div class="course-icons" [class.static-course-icons]="!isMasiveCourse">
-        @for (toolItem of course.tools; track toolItem) {
-        <div class="icon-container">
-          <img
-            src="{{ toolItem.picture | addBaseUrl }}"
-            alt="{{ toolItem.name }}"
-          />
-        </div>
-
-        }
+      <div
+        class="course-tags-cointainer course-tags-date"
+        [class.static-course-icons]="!isMasiveCourse"
+      >
+        <app-watch-icon class="icon" />
+        INICIO: 14 DE ENERO
       </div>
 
       <div
-        class="course-details-cointainer"
-        [class.static-course-details-cointainer]="!isMasiveCourse"
+        class="course-tags-cointainer"
+        [class.static-course-icons]="!isMasiveCourse"
       >
-        <div class="course-details-content">
-          <app-course-session-icon class="icon" />
-          <span class="detail-description"
-            >{{ secondaryCourseSessions }} sesiones</span
-          >
-        </div>
-        <div class="course-details-content">
-          <app-watch-icon class="icon" />
-          <span class="detail-description"> {{ course.hours }} horas</span>
-        </div>
+        <app-course-session-icon class="icon" />
+        CERTIFICADO POR 20 HRS
       </div>
     </div>
   </div>
@@ -55,43 +64,53 @@
   <div class="course-details">
     <h2 class="course-title">{{ course.title }}</h2>
 
+    <p class="course-description">
+      Aprende de forma detallada como funciona la ioioioio Inteligencia
+      artificial en en sector AEC...
+    </p>
+
     <div class="course-footer">
       <div class="course-footer-details">
         <div class="course-level">
-          @switch (course.level) { @case('BASICO') {
-          <app-basic-level-icon class="icon" />
-          } @case('INTERMEDIO') {
-          <app-medium-level-icon class="icon" />
-          } @case('AVANZADO') {
-          <app-high-level-icon class="icon" />
-          }}
+          <app-course-session-icon class="icon" />
 
           <span>{{ course.level }}</span>
         </div>
 
+        @if (course.level === 'AVANZADO') {
         <span class="course-old-price"
           >Normal <span class="price">${{ course.priceRegular }}</span></span
         >
+        }
       </div>
 
       <div class="buttons-container">
         <button
           class="course-item-button"
+          [class.async-course-button]="course.level == 'AVANZADO'"
+          [class.coming-soon-course-button]="course.level == 'BASICO'"
           (click)="showCourseDetails(course.seccourseId)"
         >
+          <app-access-to-course-icon class="shop-cart-icon" />
+
           Acceder al curso
         </button>
 
         <button
           class="course-item-button"
+          [class.async-course-button]="course.level == 'AVANZADO'"
+          [class.coming-soon-course-button]="course.level == 'BASICO'"
           (click)="
             goToPay((course.priceRegular * (100 - course.percentage)) / 100)
           "
         >
-          <app-shopping-cart-icon class="shop-cart-icon" /> Comprar ${{
-            (course.priceRegular * (100 - course.percentage)) / 100
-              | number : "1.0-0"
-          }}
+          <app-shopping-cart-icon class="shop-cart-icon" /> Añadir
+          <span>
+            ${{
+              (course.priceRegular * (100 - course.percentage)) / 100
+                | number : "1.0-0"
+            }}
+          </span>
         </button>
       </div>
     </div>
