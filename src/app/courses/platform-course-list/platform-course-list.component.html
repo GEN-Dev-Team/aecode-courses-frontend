@@ -10,15 +10,4 @@
     <app-loader />
     }
   </div>
-
-  <button ZoomIn class="get-free-button" (click)="showFreeContentForm = true">
-    <app-gift-icon /> GET FREE LEARNING MATERIALS
-  </button>
 </div>
-
-<app-modal
-  [isOpen]="showFreeContentForm"
-  (isClosed)="showFreeContentForm = $event"
->
-  <app-get-free-content-form (isClosed)="showFreeContentForm = $event" />
-</app-modal>

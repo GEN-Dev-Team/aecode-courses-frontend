@@ -1,11 +1,8 @@
 .courses-overlay {
   width: 100%;
-  height: 100vh;
   max-width: 1440px;
   margin-inline: auto;
-  padding: 100px 24px 32px;
-  display: grid;
-  grid-template-columns: 221px auto;
+  padding: 66px 24px 32px;
   gap: 40px;
   position: relative;
 
@@ -52,7 +49,5 @@
 @media screen and (max-width: 768px) {
   .courses-overlay {
     padding: 60px 14px 80px;
-    grid-template-columns: 100%;
-    gap: 0;
   }
 }

@@ -40,23 +40,34 @@
           display: flex;
           flex-flow: row wrap;
           align-items: center;
-          gap: 91px;
+          gap: 50px;
           margin: 0;
+          padding: 0;
+          list-style: none;
 
-          .language-button {
-            display: flex;
-            flex-flow: row wrap;
-            align-items: center;
-            gap: 8px;
-            font-family: "ruberoid-semibold";
-            font-size: 15px;
+          .header-item {
             color: var(--purple-2);
+            font-family: "ruberoid-medium";
+            font-size: 20px;
+            text-decoration: none;
             cursor: pointer;
+          }
 
-            :nth-child(1) {
-              display: flex;
-              align-items: center;
-            }
+          .cart-icon {
+            width: 25px;
+            cursor: pointer;
+            fill: var(--purple-2);
+          }
+
+          .notification-icon {
+            width: 33px;
+            cursor: pointer;
+          }
+
+          .separator {
+            width: 1px;
+            height: 44px;
+            background: #8c9295;
           }
 
           .user-logged {
@@ -64,17 +75,6 @@
             flex-flow: row nowrap;
             gap: 20px;
             align-items: center;
-
-            .notification-icon {
-              width: 22px;
-              cursor: pointer;
-            }
-
-            .separator {
-              width: 1px;
-              height: 44px;
-              background: #8c9295;
-            }
 
             .user-profile {
               display: flex;
@@ -147,10 +147,6 @@
 
         .header-options {
           .header-list {
-            .language-button {
-              display: flex;
-            }
-
             .user-logged {
               gap: 11px;
 
