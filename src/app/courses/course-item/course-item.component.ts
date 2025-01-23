@@ -15,6 +15,11 @@ import { MediumLevelIconComponent } from '../../shared/icons/medium-level-icon/m
 import { HighLevelIconComponent } from '../../shared/icons/high-level-icon/high-level-icon.component';
 import { ShoppingCartIconComponent } from '../icons/shopping-cart-icon/shopping-cart-icon.component';
 import { PaymentService } from '../../payment/services/payment.service';
+import { ComnigSoonCourseIconComponent } from '../../shared/icons/comnig-soon-course-icon/comnig-soon-course-icon.component';
+import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/sync-course-icon.component';
+import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/async-course-icon.component';
+import { AccessToCourseIconComponent } from '../../shared/icons/access-to-course-icon/access-to-course-icon.component';
+import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-icon.component';
 
 @Component({
   selector: 'app-course-item',
@@ -24,10 +29,12 @@ import { PaymentService } from '../../payment/services/payment.service';
     CourseSessionIconComponent,
     CommonModule,
     AddBaseUrlPipe,
-    BasicLevelIconComponent,
-    MediumLevelIconComponent,
-    HighLevelIconComponent,
     ShoppingCartIconComponent,
+    ComnigSoonCourseIconComponent,
+    SyncCourseIconComponent,
+    AsyncCourseIconComponent,
+    AccessToCourseIconComponent,
+    OfferbgIconComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',

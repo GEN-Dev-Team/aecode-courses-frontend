@@ -83,46 +83,6 @@
     cursor: pointer;
     text-decoration: none;
   }
-
-  .theme-button {
-    width: 100%;
-    max-width: 186px;
-    height: 44px;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 11px;
-    background-color: white;
-    border: 1px solid #b4bbbf;
-    font-family: "plusjakartasans-medium";
-    font-size: 12px;
-    fill: black;
-    border-radius: 28px;
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translateX(-50%);
-
-    .theme-option {
-      width: 90px;
-      height: 28px;
-      display: flex;
-      flex-flow: row nowrap;
-      gap: 9px;
-      align-items: center;
-      justify-content: center;
-      border-radius: 20px;
-      border: 0px solid var(--Gris-2, #b4bbbf);
-      cursor: pointer;
-    }
-
-    .theme-selected {
-      fill: white;
-      color: white;
-      background-color: var(--purple-2);
-    }
-  }
 }
 
 @media screen and (max-width: 768px) {
