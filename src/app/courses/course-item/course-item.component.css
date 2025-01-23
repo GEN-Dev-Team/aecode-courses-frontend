@@ -1,5 +1,4 @@
 .course-item-container {
-  width: 342px;
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -186,8 +185,6 @@
 }
 
 .platform-course-item-container {
-  width: 520px;
-  min-height: 273px;
   box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.11);
 }
 

@@ -11,6 +11,8 @@ import { IUserDetails } from '../../../home/interface/Login';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { environment } from '../../../../environment/environment';
+import { ShoppingCartIconComponent } from '../../../courses/icons/shopping-cart-icon/shopping-cart-icon.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -21,6 +23,7 @@ import { environment } from '../../../../environment/environment';
     NotificationIconComponent,
     ViewProfileComponent,
     ZoomInDirective,
+    ShoppingCartIconComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -29,8 +32,9 @@ export class HeaderComponent {
   authService: AuthService = inject(AuthService);
   logInService: UserService = inject(UserService);
   userService: UserService = inject(UserService);
+  route: Router = inject(Router);
 
-  isUserLoggedIn = false;
+  isUserLoggedIn = true;
   openLoginForm = false;
   showProfileMenu = false;
   userId: number = 0;
@@ -39,43 +43,7 @@ export class HeaderComponent {
   base_url = environment.base;
 
   ngOnInit(): void {
-    this.setUser();
-  }
-
-  changeLanguage() {
-    // const languageBtn = document.querySelector(
-    //   '#language-button'
-    // ) as HTMLElement;
-    // if (languageBtn.textContent === 'ES') {
-    //   languageBtn.textContent = 'EN';
-    // } else {
-    //   languageBtn.textContent = 'ES';
-    // }
-    // this.change(languageBtn.textContent!.trim());
-  }
-
-  // change = async (language: string) => {
-  //   const requestJson = await fetch(`/assets/languages/${language}.json`);
-  //   const texts = await requestJson.json();
-
-  //   const textsToChange = Array.from(
-  //     document.querySelectorAll('[data-section]')
-  //   );
-
-  //   for (const textToChange of textsToChange) {
-  //     const section = textToChange.getAttribute('data-section');
-  //     const value = textToChange.getAttribute('data-value');
-
-  //     textToChange.innerHTML = texts[section!][value!];
-  //   }
-  // };
-
-  showProfileMenuHandler() {
-    this.showProfileMenu = !this.showProfileMenu;
-  }
-
-  logout() {
-    this.authService.logout();
+    // this.setUser();
   }
 
   setUser() {
@@ -103,5 +71,21 @@ export class HeaderComponent {
         });
       }
     }
+  }
+
+  showProfileMenuHandler() {
+    this.showProfileMenu = !this.showProfileMenu;
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+
+  redirectToCoursesView() {
+    this.route.navigate(['/courses']);
+  }
+
+  redirectToCartView() {
+    this.route.navigate(['/cart']);
   }
 }

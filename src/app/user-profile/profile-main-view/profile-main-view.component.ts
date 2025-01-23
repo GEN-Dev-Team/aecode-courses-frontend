@@ -11,7 +11,6 @@ import { MessageComponent } from '../../shared/components/message/message.compon
 import { EditIconComponent } from '../../shared/icons/edit-icon/edit-icon.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { AuthService } from '../../core/services/auth.service';
-import { CourseAsideComponent } from '../../courses/course-aside/course-aside.component';
 
 @Component({
   selector: 'app-profile-main-view',
