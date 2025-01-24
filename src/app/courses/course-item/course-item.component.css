@@ -52,18 +52,6 @@
     }
   }
 
-  .course-program-title {
-    width: 312px;
-    color: #eef3f8;
-    font-family: "ruberoid-semibold";
-    font-size: 20px;
-    position: absolute;
-    left: 21px;
-    top: 20%;
-    transform: translateY(-50%);
-    z-index: 1;
-  }
-
   .course-presentation-container {
     height: 236px;
     border-radius: 6px 6px 0px 0px;
