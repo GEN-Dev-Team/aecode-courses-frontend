@@ -19,7 +19,7 @@
           <a
             class="access-button"
             target="_blank"
-            href="{{ secondaryCourseData.exterallink }}"
+            href="{{ secondaryCourseData.brochureUrl }}"
             >Brochure</a
           >
 
@@ -80,9 +80,9 @@
         </div>
 
         <app-course-invest
-          [priceAcademy]="secondaryCourseData.priceAcademy"
+          [priceAcademy]="secondaryCourseData.priceRegular"
           [priceRegular]="secondaryCourseData.priceRegular"
-          [discount]="secondaryCourseData.percentage"
+          [discount]="secondaryCourseData.discountPercentage"
           [courseTitle]="secondaryCourseData.title"
         />
       </div>
@@ -91,7 +91,7 @@
         [courseAchievements]="secondaryCourseData.achievement"
         [courseBenefits]="secondaryCourseData.benefits"
         [courseFaqs]="secondaryCourseData.freqquests"
-        [courseSchedule]="secondaryCourseData.schedule"
+        [courseSchedule]="secondaryCourseData.schedules[0]"
       />
     </div>
   </main>

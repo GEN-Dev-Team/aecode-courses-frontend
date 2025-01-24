@@ -4,28 +4,24 @@
 >
   <div
     class="course-item-mode"
-    [class.async-course-button]="course.level == 'AVANZADO'"
-    [class.coming-soon-course-button]="course.level == 'BASICO'"
+    [class.async-course-button]="course.mode == 'ASINCRONO'"
+    [class.coming-soon-course-button]="course.mode == 'SINCRONO'"
   >
-    @switch (course.level) { @case ('BASICO') {
+    @switch (course.mode) { @case ('SINCRONO') {
     <app-coming-soon-course-icon class="icon" />
-    PRÓXIMOS } @case ('INTERMEDIO') {
+    PRÓXIMOS } @case ('EN_VIVO') {
     <app-sync-course-icon class="icon" />
-    EN VIVO } @case ('AVANZADO') {
+    EN VIVO } @case ('ASINCRONO') {
     <app-async-course-icon class="icon" />
     ASINCRÓNICOS } }
   </div>
 
-  @if (course.level === 'AVANZADO') {
+  @if (course.isOnSale) {
   <div class="course-off-mode">
     <app-offerbg-icon class="icon" />
-    <span>50% OFF</span>
+    <span>{{ course.discountPercentage }}% OFF</span>
   </div>
   }
-
-  <h3 class="course-program-title">
-    Gestión de Proyectos y Productividad con Inteligencia Artificial
-  </h3>
 
   <div class="course-presentation-container">
     <img class="course-img" src="{{ secondaryCourseMainImgUrl }}" alt="" />
@@ -36,7 +32,7 @@
         [class.static-course-icons]="!isMasiveCourse"
       >
         <app-watch-icon class="icon" />
-        INICIO: 14 DE ENERO
+        INICIO: {{ course.startDate }}
       </div>
 
       <div
@@ -44,7 +40,7 @@
         [class.static-course-icons]="!isMasiveCourse"
       >
         <app-course-session-icon class="icon" />
-        CERTIFICADO POR 20 HRS
+        {{ course.certificateDate }}
       </div>
     </div>
   </div>
@@ -65,8 +61,7 @@
     <h2 class="course-title">{{ course.title }}</h2>
 
     <p class="course-description">
-      Aprende de forma detallada como funciona la ioioioio Inteligencia
-      artificial en en sector AEC...
+      {{ course.description }}
     </p>
 
     <div class="course-footer">
@@ -74,10 +69,10 @@
         <div class="course-level">
           <app-course-session-icon class="icon" />
 
-          <span>{{ course.level }}</span>
+          <span>{{ course.mode }}</span>
         </div>
 
-        @if (course.level === 'AVANZADO') {
+        @if (course.isOnSale) {
         <span class="course-old-price"
           >Normal <span class="price">${{ course.priceRegular }}</span></span
         >
@@ -87,8 +82,8 @@
       <div class="buttons-container">
         <button
           class="course-item-button"
-          [class.async-course-button]="course.level == 'AVANZADO'"
-          [class.coming-soon-course-button]="course.level == 'BASICO'"
+          [class.async-course-button]="course.mode == 'ASINCRONO'"
+          [class.coming-soon-course-button]="course.mode == 'SINCRONO'"
           (click)="showCourseDetails(course.seccourseId)"
         >
           <app-access-to-course-icon class="shop-cart-icon" />
@@ -98,16 +93,18 @@
 
         <button
           class="course-item-button"
-          [class.async-course-button]="course.level == 'AVANZADO'"
-          [class.coming-soon-course-button]="course.level == 'BASICO'"
+          [class.async-course-button]="course.mode == 'ASINCRONO'"
+          [class.coming-soon-course-button]="course.mode == 'SINCRONO'"
           (click)="
-            goToPay((course.priceRegular * (100 - course.percentage)) / 100)
+            goToPay(
+              (course.priceRegular * (100 - course.discountPercentage)) / 100
+            )
           "
         >
           <app-shopping-cart-icon class="shop-cart-icon" /> Añadir
           <span>
             ${{
-              (course.priceRegular * (100 - course.percentage)) / 100
+              (course.priceRegular * (100 - course.discountPercentage)) / 100
                 | number : "1.0-0"
             }}
           </span>

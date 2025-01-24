@@ -10,9 +10,6 @@ import { IModule } from '../interface/Module';
 import { IUnit } from '../interface/Unit';
 import { CommonModule } from '@angular/common';
 import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
-import { BasicLevelIconComponent } from '../../shared/icons/basic-level-icon/basic-level-icon.component';
-import { MediumLevelIconComponent } from '../../shared/icons/medium-level-icon/medium-level-icon.component';
-import { HighLevelIconComponent } from '../../shared/icons/high-level-icon/high-level-icon.component';
 import { ShoppingCartIconComponent } from '../icons/shopping-cart-icon/shopping-cart-icon.component';
 import { PaymentService } from '../../payment/services/payment.service';
 import { ComnigSoonCourseIconComponent } from '../../shared/icons/comnig-soon-course-icon/comnig-soon-course-icon.component';
@@ -20,6 +17,7 @@ import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/syn
 import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/async-course-icon.component';
 import { AccessToCourseIconComponent } from '../../shared/icons/access-to-course-icon/access-to-course-icon.component';
 import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-icon.component';
+import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
 
 @Component({
   selector: 'app-course-item',
