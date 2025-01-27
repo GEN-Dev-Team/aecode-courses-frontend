@@ -2,6 +2,8 @@
   "name": "aecode-courses-frontend",
   "version": "0.0.0",
   "scripts": {
+    "generate-routes": "node generate-routes.js",
+    "prerender": "bun run generate-routes && ng build --configuration=production",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",

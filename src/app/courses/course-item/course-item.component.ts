@@ -17,7 +17,6 @@ import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/syn
 import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/async-course-icon.component';
 import { AccessToCourseIconComponent } from '../../shared/icons/access-to-course-icon/access-to-course-icon.component';
 import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-icon.component';
-import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
 
 @Component({
   selector: 'app-course-item',

@@ -60,10 +60,9 @@
     font-size: 12px;
     fill: black;
     border-radius: 28px;
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translateX(-50%);
+    position: fixed;
+    bottom: 20px;
+    left: 0;
 
     .theme-option {
       width: 90px;
@@ -85,16 +84,10 @@
     }
   }
 
-  .invest-whatsapp-button {
-    display: flex;
-    width: 170px;
-    height: 50px;
-    color: black;
-    margin-inline: auto;
-    margin-top: 23px;
-    padding: 10px 58px 10px 26px;
-    align-items: center;
-    border-radius: 4px;
+  .whatsapp-button {
+    width: 98px;
+    height: 84px;
+    padding: 7px;
     border: 2px solid #fff;
     background: linear-gradient(
       270deg,
@@ -103,36 +96,15 @@
     );
     box-shadow: 0px 0px 6.8px 0px #b4bbbf;
     backdrop-filter: blur(25px);
-    text-decoration: none;
-    font-family: "plusjakartasans-semibold";
-    font-size: 16px;
     cursor: pointer;
-    position: relative;
+    position: fixed;
+    bottom: 20px;
+    right: 0;
+    border-radius: 50% 0 0 50%;
 
-    .whatsapp-button {
-      width: 55px;
-      height: 55px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      background: linear-gradient(
-        180deg,
-        #d6dceb 10%,
-        rgba(255, 255, 255) 100%
-      );
-      flex-shrink: 0;
-      position: absolute;
-      right: -10%;
-      top: 50%;
-      transform: translateY(-50%);
-      border: 1px solid white;
-      box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.15);
-
-      img {
-        width: 30px;
-        aspect-ratio: 1/1;
-      }
+    img {
+      height: 100%;
+      aspect-ratio: 1/1;
     }
   }
 }

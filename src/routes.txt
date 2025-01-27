@@ -1,0 +1,4 @@
+/courses
+/admin-panel
+/payment
+/courses/secondary-course-detail/1
