@@ -16,18 +16,10 @@
             "outputPath": "dist/aecode-courses-frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css",
-              "node_modules/ngx-toastr/toastr.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css", "node_modules/ngx-toastr/toastr.css"],
             "scripts": [],
             "server": "src/main.server.ts",
             "prerender": true,
@@ -49,6 +41,9 @@
                   "maximumError": "2mb"
                 }
               ],
+              "prerender": {
+                "routesFile": "src/routes.txt"
+              },
               "outputHashing": "all"
             },
             "development": {
