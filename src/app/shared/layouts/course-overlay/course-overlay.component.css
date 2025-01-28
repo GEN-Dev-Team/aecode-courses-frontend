@@ -46,65 +46,61 @@
   }
 
   .theme-button {
-    width: 100%;
-    max-width: 186px;
-    height: 44px;
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 11px;
-    background-color: white;
-    border: 1px solid #b4bbbf;
+    border-radius: 0px 50px 50px 0px;
+    border: 1px solid #fff;
+    background: #eef3f8;
+    box-shadow: 0px 0px 7.8px 3px rgba(44, 34, 175, 0.5);
+    padding: 24px 15px;
     font-family: "plusjakartasans-medium";
     font-size: 12px;
-    fill: black;
-    border-radius: 28px;
     position: fixed;
     bottom: 20px;
     left: 0;
 
-    .theme-option {
-      width: 90px;
-      height: 28px;
+    .theme-content {
+      background-color: var(--purple-2);
+      border-radius: 20px;
       display: flex;
       flex-flow: row nowrap;
-      gap: 9px;
       align-items: center;
       justify-content: center;
-      border-radius: 20px;
-      border: 0px solid var(--Gris-2, #b4bbbf);
-      cursor: pointer;
-    }
+      gap: 10px;
+      padding: 4px 5px;
 
-    .theme-selected {
-      fill: white;
-      color: white;
-      background-color: var(--purple-2);
+      .theme-option {
+        width: 27px;
+        height: 27px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        cursor: pointer;
+        fill: white;
+      }
+
+      .theme-selected {
+        background-color: #eef3f8;
+        fill: var(--purple-2);
+      }
     }
   }
 
   .whatsapp-button {
-    width: 98px;
-    height: 84px;
-    padding: 7px;
-    border: 2px solid #fff;
-    background: linear-gradient(
-      270deg,
-      rgba(255, 255, 255, 0.1) 57.6%,
-      rgba(255, 255, 255, 0.02) 91.06%
-    );
-    box-shadow: 0px 0px 6.8px 0px #b4bbbf;
-    backdrop-filter: blur(25px);
-    cursor: pointer;
+    flex-shrink: 0;
+    border-radius: 50px 0px 0px 50px;
+    border: 1px solid #fff;
+    background: #eef3f8;
+    box-shadow: 0px 0px 7.8px 3px rgba(44, 34, 175, 0.5);
     position: fixed;
     bottom: 20px;
     right: 0;
-    border-radius: 50% 0 0 50%;
+    padding: 7px 20px 7px 7px;
 
-    img {
-      height: 100%;
-      aspect-ratio: 1/1;
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
