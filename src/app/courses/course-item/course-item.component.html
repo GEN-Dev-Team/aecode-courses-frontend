@@ -12,11 +12,11 @@
     PRÓXIMOS } @case ('EN_VIVO') {
     <app-sync-course-icon class="icon" />
     EN VIVO } @case ('ASINCRONO') {
-    <app-async-course-icon class="icon" />
+    <app-async-course-icon class="icon async-icon" />
     ASINCRÓNICOS } }
   </div>
 
-  @if (course.isOnSale) {
+  @if (course.isOnSale && course.discountPercentage > 0) {
   <div class="course-off-mode">
     <app-offerbg-icon class="icon" />
     <span>{{ course.discountPercentage }}% OFF</span>
@@ -32,7 +32,9 @@
         [class.static-course-icons]="!isMasiveCourse"
       >
         <app-watch-icon class="icon" />
-        INICIO: {{ course.startDate }}
+        @if (course.mode === 'ASINCRONO') { DISPONIBLE 24/7 } @else { INICIO:
+        {{ course.startDate }}
+        }
       </div>
 
       <div
@@ -40,7 +42,7 @@
         [class.static-course-icons]="!isMasiveCourse"
       >
         <app-course-session-icon class="icon" />
-        {{ course.certificateDate }}
+        CERTIFICADO POR {{ course.certificateDate }} HRS
       </div>
     </div>
   </div>
@@ -69,10 +71,10 @@
         <div class="course-level">
           <app-course-session-icon class="icon" />
 
-          <span>{{ course.mode }}</span>
+          <span>{{ course.module }}</span>
         </div>
 
-        @if (course.isOnSale) {
+        @if (course.isOnSale && course.discountPercentage > 0) {
         <span class="course-old-price"
           >Normal <span class="price">${{ course.priceRegular }}</span></span
         >
@@ -84,7 +86,7 @@
           class="course-item-button"
           [class.async-course-button]="course.mode == 'ASINCRONO'"
           [class.coming-soon-course-button]="course.mode == 'SINCRONO'"
-          (click)="showCourseDetails(course.seccourseId)"
+          (click)="showCourseDetails(course)"
         >
           <app-access-to-course-icon class="shop-cart-icon" />
 
@@ -103,10 +105,12 @@
         >
           <app-shopping-cart-icon class="shop-cart-icon" /> Añadir
           <span>
-            ${{
+            @if(course.isOnSale && course.discountPercentage > 0) { ${{
               (course.priceRegular * (100 - course.discountPercentage)) / 100
                 | number : "1.0-0"
             }}
+            } @else { ${{ course.priceRegular | number : "1.0-0" }}
+            }
           </span>
         </button>
       </div>
