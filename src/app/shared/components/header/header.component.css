@@ -3,7 +3,7 @@
   background-color: var(--gray-3);
   position: fixed;
   top: 0;
-  z-index: 2;
+  z-index: 5;
 
   .box-shadow-effect {
     width: 100%;

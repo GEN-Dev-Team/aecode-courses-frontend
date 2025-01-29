@@ -28,6 +28,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      fill: #eef3f8;
+    }
+
+    .async-icon {
+      stroke: #eef3f8;
     }
   }
 

@@ -26,8 +26,8 @@ export class CourseMainComponent implements OnInit {
     SecondaryCourseService
   );
 
+  filterValue: string = '';
   coursesList: ISecondaryCourse[] = [];
-
   filteredCoursesList: ISecondaryCourse[] = [];
 
   secondaryCourseList$: Observable<ISecondaryCourse[]> =
@@ -39,6 +39,8 @@ export class CourseMainComponent implements OnInit {
 
       this.resetFilteredCourses();
     });
+
+    console.log(this.coursesList);
   }
 
   onSearch(event: Event): void {
@@ -58,5 +60,17 @@ export class CourseMainComponent implements OnInit {
 
   private resetFilteredCourses(): void {
     this.filteredCoursesList = JSON.parse(JSON.stringify(this.coursesList));
+  }
+
+  filterByMode(value: string) {
+    if (value !== 'all') {
+      this.filteredCoursesList = this.coursesList.filter(
+        (course) => course.mode === value
+      );
+    } else {
+      this.resetFilteredCourses();
+    }
+
+    console.log(this.filteredCoursesList);
   }
 }

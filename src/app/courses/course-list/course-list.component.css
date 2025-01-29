@@ -9,12 +9,25 @@
   flex-direction: column;
   justify-content: center;
 
-  .course-list-title {
-    margin: 0 0 40px 0;
-    color: var(--purple-2);
-    font-family: "ruberoid-semibold";
-    font-size: 30px;
-    text-transform: uppercase;
+  .course-list-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 40px;
+    position: relative;
+    align-items: center;
+
+    .course-list-title {
+      color: var(--purple-2);
+      font-family: "ruberoid-semibold";
+      font-size: 30px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    .filter-icon {
+      margin-left: auto;
+    }
   }
 
   .course-list-content {
