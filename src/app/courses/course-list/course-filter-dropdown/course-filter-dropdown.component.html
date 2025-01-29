@@ -1,0 +1,21 @@
+<div class="dropdown-content">
+  <p (click)="emitFilterValue('all')" class="dropdown-item">
+    <app-all-dropdown-icon />
+
+    Todos
+  </p>
+  <p (click)="emitFilterValue('EN_VIVO')" class="dropdown-item">
+    <app-sync-course-icon />
+
+    En vivo
+  </p>
+  <p (click)="emitFilterValue('SINCRONO')" class="dropdown-item">
+    <app-coming-soon-course-icon />
+
+    Próximos
+  </p>
+  <p (click)="emitFilterValue('ASINCRONO')" class="dropdown-item">
+    <app-async-course-icon class="async-icon" />
+    Asincrónicos
+  </p>
+</div>
