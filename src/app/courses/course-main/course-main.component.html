@@ -20,6 +20,10 @@
   </div>
 
   <div class="course-main-list">
-    <app-course-list [secondaryCourseList]="filteredCoursesList" />
+    <app-course-list
+      (filterMode)="filterValue = $event"
+      (filterMode)="filterByMode($event)"
+      [secondaryCourseList]="filteredCoursesList"
+    />
   </div>
 </main>
