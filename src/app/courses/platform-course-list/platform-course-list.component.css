@@ -23,13 +23,19 @@
     z-index: -1;
   }
 
-  .course-platform-list-content {
+  .masive-course-list-containaer {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(200px, 1fr));
-    align-items: stretch;
-    gap: 32px;
-    justify-content: space-evenly;
+    display: flex;
+    justify-content: center;
+
+    .course-platform-list-content {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+      align-items: stretch;
+      gap: 32px;
+      justify-content: space-evenly;
+    }
   }
 }
 

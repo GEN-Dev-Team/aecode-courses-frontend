@@ -1,19 +1,18 @@
 <div
   class="course-item-container"
   [class.platform-course-item-container]="isMasiveCourse"
+  (click)="showCourseDetails(course)"
 >
-  <div
-    class="course-item-mode"
-    [class.async-course-button]="course.mode == 'ASINCRONO'"
-    [class.coming-soon-course-button]="course.mode == 'SINCRONO'"
-  >
-    @switch (course.mode) { @case ('SINCRONO') {
+  <div class="course-item-mode" [ngClass]="getButtonClasses()">
+    @if(isMasiveCourse) {
+    <app-e-learning-icon />
+    E - LEARNING }@else { @switch (course.mode) { @case ('SINCRONO') {
     <app-coming-soon-course-icon class="icon" />
     PRÓXIMOS } @case ('EN_VIVO') {
     <app-sync-course-icon class="icon" />
     EN VIVO } @case ('ASINCRONO') {
     <app-async-course-icon class="icon async-icon" />
-    ASINCRÓNICOS } }
+    ASINCRÓNICOS } } }
   </div>
 
   @if (course.isOnSale && course.discountPercentage > 0) {
@@ -27,19 +26,21 @@
     <img class="course-img" src="{{ secondaryCourseMainImgUrl }}" alt="" />
 
     <div class="course-tags">
+      @if (!isMasiveCourse) {
       <div
         class="course-tags-cointainer course-tags-date"
-        [class.static-course-icons]="!isMasiveCourse"
+        [class.static-course-icons]="isMasiveCourse"
       >
         <app-watch-icon class="icon" />
         @if (course.mode === 'ASINCRONO') { DISPONIBLE 24/7 } @else { INICIO:
         {{ course.startDate }}
         }
       </div>
+      }
 
       <div
         class="course-tags-cointainer"
-        [class.static-course-icons]="!isMasiveCourse"
+        [class.static-course-icons]="isMasiveCourse"
       >
         <app-course-session-icon class="icon" />
         CERTIFICADO POR {{ course.certificateDate }} HRS
@@ -47,18 +48,6 @@
     </div>
   </div>
 
-  @if(isMasiveCourse) {
-  <div class="platform-course-details">
-    <h2 class="course-title">{{ course.title }}</h2>
-    <button
-      class="course-item-button course-item-button-small"
-      (click)="showMasiveCourseDetails(course.courseId)"
-    >
-      Ver más
-    </button>
-  </div>
-
-  } @else {
   <div class="course-details">
     <h2 class="course-title">{{ course.title }}</h2>
 
@@ -67,6 +56,7 @@
     </p>
 
     <div class="course-footer">
+      @if (!isMasiveCourse) {
       <div class="course-footer-details">
         <div class="course-level">
           <app-course-session-icon class="icon" />
@@ -80,34 +70,35 @@
         >
         }
       </div>
+      }
 
-      <div class="buttons-container">
+      <div
+        class="buttons-container"
+        [class.masive-course-buttons-container]="isMasiveCourse"
+      >
         <button
           class="course-item-button"
-          [class.async-course-button]="course.mode == 'ASINCRONO'"
-          [class.coming-soon-course-button]="course.mode == 'SINCRONO'"
-          (click)="showCourseDetails(course)"
+          [ngClass]="getButtonClasses()"
+          (click)="downloadKit($event)"
         >
+          @if(isMasiveCourse){
+          <app-download-kit-icon />
+          Descargar Kit gratuito } @else {
           <app-access-to-course-icon class="shop-cart-icon" />
 
-          Acceder al curso
+          Acceder al curso }
         </button>
 
         <button
           class="course-item-button"
-          [class.async-course-button]="course.mode == 'ASINCRONO'"
-          [class.coming-soon-course-button]="course.mode == 'SINCRONO'"
-          (click)="
-            goToPay(
-              (course.priceRegular * (100 - course.discountPercentage)) / 100
-            )
-          "
+          [ngClass]="getButtonClasses()"
+          (click)="goToPay($event)"
         >
-          <app-shopping-cart-icon class="shop-cart-icon" /> Añadir
+          <app-shopping-cart-icon class="shop-cart-icon" /> @if (isMasiveCourse)
+          { Añadir al carrito} @else {Añadir}
           <span>
             @if(course.isOnSale && course.discountPercentage > 0) { ${{
-              (course.priceRegular * (100 - course.discountPercentage)) / 100
-                | number : "1.0-0"
+              discountPrice()
             }}
             } @else { ${{ course.priceRegular | number : "1.0-0" }}
             }
@@ -116,6 +107,4 @@
       </div>
     </div>
   </div>
-
-  }
 </div>
