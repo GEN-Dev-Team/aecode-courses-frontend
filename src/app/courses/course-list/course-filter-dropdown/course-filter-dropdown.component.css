@@ -1,0 +1,31 @@
+.dropdown-content {
+  width: 195px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  font-family: "ruberoid-medium";
+  font-size: 14px;
+  border: 1px solid #cad5da;
+  border-bottom: none;
+  border-radius: 4px;
+  background-color: white;
+  z-index: 2;
+
+  .dropdown-item {
+    padding: 13px 20px;
+    margin: 0;
+    width: 100%;
+    border-bottom: 1px solid #cad5da;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    fill: black;
+    cursor: pointer;
+  }
+
+  .async-icon {
+    stroke: black;
+    stroke-width: 1;
+  }
+}

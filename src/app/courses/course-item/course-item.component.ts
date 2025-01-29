@@ -9,7 +9,6 @@ import { environment } from '../../../environment/environment';
 import { IModule } from '../interface/Module';
 import { IUnit } from '../interface/Unit';
 import { CommonModule } from '@angular/common';
-import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 import { ShoppingCartIconComponent } from '../icons/shopping-cart-icon/shopping-cart-icon.component';
 import { PaymentService } from '../../payment/services/payment.service';
 import { ComnigSoonCourseIconComponent } from '../../shared/icons/comnig-soon-course-icon/comnig-soon-course-icon.component';
@@ -25,7 +24,6 @@ import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-ic
     WatchIconComponent,
     CourseSessionIconComponent,
     CommonModule,
-    AddBaseUrlPipe,
     ShoppingCartIconComponent,
     ComnigSoonCourseIconComponent,
     SyncCourseIconComponent,
@@ -66,11 +64,15 @@ export class CourseItemComponent {
     }
   }
 
-  showCourseDetails(courseId: number) {
-    this.browserService.navigateAndScroll(
-      `courses/secondary-course-detail/${courseId}`,
-      0
-    );
+  showCourseDetails(course: any) {
+    if (course.mode !== 'ASINCRONO') {
+      {
+        this.browserService.navigateAndScroll(
+          `courses/secondary-course-detail/${course.courseId}`,
+          0
+        );
+      }
+    }
   }
 
   showMasiveCourseDetails(courseId: number) {

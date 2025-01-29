@@ -1,7 +1,21 @@
 <div class="course-list-container">
-  <h2 class="course-list-title">
-    El poder tecnoló﻿gico del AEC al alcance de un clic
-  </h2>
+  <div class="course-list-header">
+    <h2 class="course-list-title">
+      El poder tecnoló﻿gico del AEC al alcance de un clic
+    </h2>
+
+    <app-filter-icon
+      ZoomIn
+      class="filter-icon"
+      (click)="showFilter = !showFilter"
+    />
+
+    @if(showFilter) {
+    <app-course-filter-dropdown (filterMode)="emitFilterMode($event)" />
+
+    }
+  </div>
+
   <div class="course-list-content">
     @if (secondaryCourseList.length > 0) { @for (secondaryCourseItem of
     secondaryCourseList; track secondaryCourseItem) {
