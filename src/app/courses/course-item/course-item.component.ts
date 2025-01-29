@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, computed, inject, Input, signal } from '@angular/core';
 import { WatchIconComponent } from '../../shared/icons/watch-icon/watch-icon.component';
 import { CourseSessionIconComponent } from '../../shared/icons/course-session-icon/course-session-icon.component';
 import { Router } from '@angular/router';
@@ -16,6 +16,8 @@ import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/syn
 import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/async-course-icon.component';
 import { AccessToCourseIconComponent } from '../../shared/icons/access-to-course-icon/access-to-course-icon.component';
 import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-icon.component';
+import { ELearningIconComponent } from '../../shared/icons/e-learning-icon/e-learning-icon.component';
+import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/download-kit-icon.component';
 
 @Component({
   selector: 'app-course-item',
@@ -30,6 +32,8 @@ import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-ic
     AsyncCourseIconComponent,
     AccessToCourseIconComponent,
     OfferbgIconComponent,
+    ELearningIconComponent,
+    DownloadKitIconComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
@@ -45,6 +49,15 @@ export class CourseItemComponent {
 
   secondaryCourseMainImgUrl = '';
   secondaryCourseSessions: number = 0;
+  finalPrice = signal(0);
+
+  discountPrice = computed(() => {
+    const priceDiscounted = Math.round(
+      (this.course.priceRegular * (100 - this.course.discountPercentage)) / 100
+    );
+
+    return priceDiscounted;
+  });
 
   ngOnInit() {
     if (!this.isMasiveCourse) {
@@ -65,29 +78,51 @@ export class CourseItemComponent {
   }
 
   showCourseDetails(course: any) {
-    if (course.mode !== 'ASINCRONO') {
+    if (!this.isMasiveCourse && course.mode !== 'ASINCRONO') {
       {
         this.browserService.navigateAndScroll(
-          `courses/secondary-course-detail/${course.courseId}`,
+          `courses/secondary-course-detail/${course.seccourseId}`,
           0
         );
+      }
+    } else {
+      this.browserService.navigateAndScroll(
+        `courses/masive-course-detail/${course.courseId}`,
+        0
+      );
+    }
+  }
+
+  downloadKit(event: Event) {
+    if (this.isMasiveCourse) {
+      event.stopPropagation();
+      if (this.isMasiveCourse && this.course.urlkit) {
+        console.log(this.course.urlkit);
       }
     }
   }
 
-  showMasiveCourseDetails(courseId: number) {
-    this.browserService.navigateAndScroll(
-      `courses/masive-course-detail/${courseId}`,
-      0
-    );
+  goToPay(event: Event) {
+    event.stopPropagation();
+
+    const price = this.discountPrice();
+
+    if (price > 0) {
+      this.router.navigate(['payment']);
+      this.paymentService.paymentDetails.set({
+        courseName: this.course.title,
+        amount: price,
+      });
+    }
   }
 
-  goToPay(price: any) {
-    const rounded_price = Math.round(price);
-    this.router.navigate(['payment']);
-    this.paymentService.paymentDetails.set({
-      courseName: this.course.title,
-      amount: rounded_price,
-    });
+  getButtonClasses() {
+    return {
+      'async-course-button': this.course.mode === 'ASINCRONO',
+      'coming-soon-course-button': this.course.mode === 'SINCRONO',
+      'masive-course-button': this.isMasiveCourse,
+      'masive-course-button-progra':
+        this.isMasiveCourse && this.course.courseId === 2,
+    };
   }
 }
