@@ -20,10 +20,10 @@ import { Component } from '@angular/core';
     </svg>
   `,
   styles: `
-    .icon {
+    .icon{
       display:flex;
-      justify-content: center;
-      align-items: center;
+      align-items:center;
+      justify-content:center;
     }
   `,
 })
