@@ -22,15 +22,14 @@ import { ToastrService } from 'ngx-toastr';
 import { ComnigSoonCourseIconComponent } from '../../shared/icons/comnig-soon-course-icon/comnig-soon-course-icon.component';
 import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/sync-course-icon.component';
 import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/async-course-icon.component';
-import { CourseButtonStyleDirective } from '../../shared/directives/styles/course-button-style.directive';
 import { SecCourseWsspIconComponent } from '../../shared/icons/sec-course-wssp-icon/sec-course-wssp-icon.component';
+import { CustomCourseButtonDirective } from '../../shared/directives/styles/custom-course-button.directive';
 import { BookIconComponent } from '../../shared/icons/book-icon/book-icon.component';
 
 @Component({
   selector: 'app-course-landing-detail',
   standalone: true,
   imports: [
-    CourseSessionIconComponent,
     WatchIconComponent,
     UnitCourseIconComponent,
     CourseInvestComponent,
@@ -45,7 +44,7 @@ import { BookIconComponent } from '../../shared/icons/book-icon/book-icon.compon
     ComnigSoonCourseIconComponent,
     SyncCourseIconComponent,
     AsyncCourseIconComponent,
-    CourseButtonStyleDirective,
+    CustomCourseButtonDirective,
     SecCourseWsspIconComponent,
     BookIconComponent,
   ],
