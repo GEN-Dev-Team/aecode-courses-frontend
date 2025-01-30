@@ -1,14 +1,45 @@
 <app-course-overlay>
   @if (secondaryCourseData$ | async; as secondaryCourseData) {
   <main class="course-landing-detail-container">
+    <h1 class="program-title">
+      {{ secondaryCourseData.programTitle }}
+    </h1>
+
     <div class="course-landing-presentation">
-      <h2 class="course-landing-title">{{ secondaryCourseData.title }}</h2>
-      <h3 class="course-landing-subtitle">¡Este curso es para ti!</h3>
+      <div class="program-modules-container">
+        <button class="module-item">Módulo 1</button>
+        <button class="module-item module-selected">Módulo 2</button>
+        <button class="module-item">Módulo 3</button>
+      </div>
 
       <div class="course-landing-presentation-box">
-        <p class="course-description">
-          {{ secondaryCourseData.description }}
-        </p>
+        <div class="course-landing-detailes">
+          <h2 class="course-landing-title">{{ secondaryCourseData.title }}</h2>
+
+          <p class="course-description">
+            {{ secondaryCourseData.description }}
+          </p>
+
+          <div class="course-dates-container">
+            <div class="date-container">
+              <h4 class="date-title">FECHA</h4>
+              <div class="date-content">
+                {{ secondaryCourseData.startDate }}
+              </div>
+            </div>
+
+            <div class="date-container">
+              <h4 class="date-title">HORARIOS</h4>
+
+              <div class="date-content">
+                @for (schedule of secondaryCourseData.schedules; track schedule)
+                {
+                <p>{{ schedule }}</p>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="video-container" (click)="showCourseVideo()">
           <img
@@ -16,12 +47,39 @@
             src="{{ secondaryCourseData.principalimage | addBaseUrl }}"
             alt=""
           />
-          <a
-            class="access-button"
-            target="_blank"
-            href="{{ secondaryCourseData.brochureUrl }}"
-            >Brochure</a
+
+          <div
+            class="course-mode"
+            customCourseButton
+            [mode]="secondaryCourseData.mode"
+            [isMasive]="false"
+            [courseId]="secondaryCourseData.seccourseId"
           >
+            <!-- @if(isMasiveCourse) {
+            <app-e-learning-icon />
+            E - LEARNING }@else {  -->
+            @switch (secondaryCourseData.mode) { @case ('SINCRONO') {
+            <app-coming-soon-course-icon class="icon" />
+            PRÓXIMOS } @case ('EN_VIVO') {
+            <app-sync-course-icon class="icon" />
+            EN VIVO } @case ('ASINCRONO') {
+            <app-async-course-icon class="icon async-icon" />
+            ASINCRÓNICOS } }
+          </div>
+
+          <div class="buttons-video-container">
+            <a
+              class="access-button"
+              target="_blank"
+              href="{{ secondaryCourseData.brochureUrl }}"
+              ><app-book-icon /> BROCHURE</a
+            ><a
+              class="access-button"
+              target="_blank"
+              href="{{ secondaryCourseData.brochureUrl }}"
+              ><app-sec-course-wssp-icon /> GRUPOS DE WHATSAPP</a
+            >
+          </div>
 
           <app-play-icon class="play-icon" />
         </div>
@@ -36,19 +94,15 @@
               <h2>PLAN DE ESTUDIOS</h2>
               <div class="plan-tags">
                 <div class="tag-item">
-                  <app-unit-course-icon class="icon" />
-                  @if (courseUnitsNumber$ | async; as units) {
-                  {{ units }} unidades }
-                </div>
-                <div class="tag-item">
-                  <app-course-session-icon class="session-icon" />
-                  @if (courseSessionsNumber$ | async; as sessions) {
-                  {{ sessions }} sesiones }
-                </div>
-                <div class="tag-item">
                   <app-watch-icon class="watch-icon" />
                   @if (courseHoursNumber$ | async; as units) {
                   {{ units }} hrs }
+                </div>
+
+                <div class="tag-item">
+                  <app-unit-course-icon class="icon" />
+                  @if (courseUnitsNumber$ | async; as units) {
+                  {{ units }} unidades }
                 </div>
               </div>
             </div>
@@ -61,28 +115,24 @@
             </div>
           </div>
 
-          <div class="tools-container">
-            <h2 class="section-title tools-title">HERRAMIENTAS</h2>
+          <div class="requirements-container">
+            <h2 class="section-title">REQUISITOS</h2>
+            <div class="requirements-content">
+              <ul class="requirements-list">
+                @for(benefitItem of secondaryCourseData.benefits; track
+                benefitItem) {
+                <li>{{ benefitItem }}</li>
 
-            <div class="slider-wrapper">
-              <div class="slider">
-                @for (item of loopList; track item) { @for( toolItem of
-                secondaryCourseData.tools; track toolItem) {
-                <img
-                  class="tool-img"
-                  [src]="url_base + toolItem.picture"
-                  alt="{{ toolItem.name }} icon image"
-                />
-                } }
-              </div>
+                }
+              </ul>
             </div>
           </div>
         </div>
 
         <app-course-invest
-          [priceAcademy]="secondaryCourseData.priceRegular"
           [priceRegular]="secondaryCourseData.priceRegular"
           [discount]="secondaryCourseData.discountPercentage"
+          [promptPaymentPrice]="secondaryCourseData.promptPaymentPrice"
           [courseTitle]="secondaryCourseData.title"
         />
       </div>
@@ -91,7 +141,7 @@
         [courseAchievements]="secondaryCourseData.achievement"
         [courseBenefits]="secondaryCourseData.benefits"
         [courseFaqs]="secondaryCourseData.freqquests"
-        [courseSchedule]="secondaryCourseData.schedules[0]"
+        [toolList]="secondaryCourseData.tools"
       />
     </div>
   </main>

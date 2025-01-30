@@ -1,38 +1,122 @@
 .course-landing-detail-container {
   width: 100%;
+  padding: 62px 50px;
+
+  .program-title {
+    width: 1075px;
+    color: #381187;
+    text-align: center;
+    font-family: "ruberoid-semibold";
+    font-size: 50px;
+  }
 
   .course-landing-presentation {
-    padding: 30px 25px;
     margin-bottom: 50px;
     border-radius: 6px;
     border: 1px solid white;
     background: #eef3f8;
     box-shadow: 0px 0px 5px 2px rgba(120, 55, 221, 0.1);
 
-    .course-landing-title {
-      margin: 0;
-      color: #381187;
-      font-family: "Ruberoid-semibold";
-      font-size: 50px;
-    }
+    .program-modules-container {
+      width: 100%;
+      padding: 18px 23px;
+      display: flex;
+      gap: 16px;
 
-    .course-landing-subtitle {
-      font-family: "plusjakartasans-regular";
-      font-size: 20px;
+      .module-item {
+        flex: 1;
+        padding-block: 17px;
+        text-align: center;
+        font-size: 16px;
+        font-family: "plusjakartasans-semibold";
+        color: #636364;
+        border-radius: 4px;
+        border: 1px solid #381187;
+        background-color: transparent;
+      }
+
+      .module-selected {
+        background-color: var(--purple-2);
+        color: white;
+      }
     }
 
     .course-landing-presentation-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 46px;
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 34px;
+      padding: 38px 30px 31px;
 
-      .course-description {
-        margin: 0;
-        font-family: "plusjakartasans-light";
-        line-height: 24px;
+      .course-landing-detailes {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        p {
+          margin: 0 0 10px 0;
+        }
+
+        .course-landing-title {
+          margin: 0;
+          color: #381187;
+          font-family: "Ruberoid-semibold";
+          font-size: 25px;
+        }
+
+        .course-landing-subtitle {
+          font-family: "plusjakartasans-regular";
+          font-size: 20px;
+        }
+
+        .course-description {
+          margin: 0;
+          font-family: "plusjakartasans-light";
+          line-height: 24px;
+        }
+
+        .course-dates-container {
+          display: flex;
+          flex-direction: row;
+          gap: 42px;
+          align-items: stretch;
+
+          .date-container {
+            flex: 1;
+            border-radius: 6px;
+            font-family: "plusjakartasans-bold";
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+
+            .date-title {
+              margin: 0;
+              padding-block: 12px;
+              width: 100%;
+              border-radius: 6px 6px 0px 0px;
+              background: #381187;
+              color: white;
+              font-family: "plusjakartasans-bold";
+            }
+
+            .date-content {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              flex: 1;
+              padding: 12px 30px;
+              border: 1px solid #fff;
+              background: #eef3f8;
+              box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+              border-radius: 0px 0px 6px 6px;
+            }
+          }
+        }
       }
 
       .video-container {
+        flex: 1;
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
@@ -44,23 +128,88 @@
           width: 100%;
           aspect-ratio: 16/9;
           cursor: pointer;
+          position: relative;
+          border-radius: 6px;
+          border: 1px solid var(--Gris-0, #99a3a8);
+          background: lightgray 50% / cover no-repeat;
+          box-shadow: 0px 0px 4px 2px rgba(180, 187, 191, 0.49);
         }
 
-        .access-button {
-          padding: 12px 20px;
-          font-family: "plusjakartasans-semibold";
+        .course-mode {
+          width: fit-content;
           border-radius: 4px;
-          border: 1px solid var(--purple-2);
-          background: var(--purple-2);
-          color: white;
-          font-size: 16px;
-          text-decoration: none;
-          cursor: pointer;
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          padding: 5px;
+          gap: 10px;
+          color: #eef3f8;
+          font-family: "ruberoid-semibold";
+          font-size: 15px;
+          background-color: #d50b0b;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          z-index: 1;
+
+          .icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            fill: #eef3f8;
+          }
+
+          .async-icon {
+            stroke: #eef3f8;
+          }
+        }
+
+        .async-course-button {
+          background: #115e32;
+        }
+
+        .coming-soon-course-button {
+          background: #4465ee;
+        }
+
+        .masive-course-button {
+          border: 1px solid #4465ee;
+          background: #203aa5;
+        }
+
+        .masive-course-button-progra {
+          border-radius: 4px;
+          border: 1px solid #7837dd;
+          background: #381187;
+        }
+
+        .buttons-video-container {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          gap: 35px;
+
+          .access-button {
+            flex: 1;
+            padding: 12px 20px;
+            font-family: "plusjakartasans-semibold";
+            border-radius: 4px;
+            border: 1px solid var(--purple-2);
+            background: var(--purple-2);
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+          }
         }
 
         .play-icon {
           position: absolute;
-          top: 30%;
+          top: 35%;
           left: 50%;
           transform: translateX(-50%);
           z-index: 1;
@@ -71,12 +220,16 @@
   }
 
   .course-landing-details-box {
-    padding-inline: 26px;
+    width: 100%;
+    padding: 30px;
     display: flex;
     flex-flow: column nowrap;
     gap: 50px;
     font-family: "plusjakartasans-regular";
     font-size: 15px;
+    border-radius: 6px;
+    border: 2px solid white;
+    box-shadow: 0px 0px 6.2px 5px #b4bbbf;
 
     .section-title {
       width: 100%;
@@ -93,7 +246,7 @@
     .units-list {
       display: flex;
       flex-flow: column nowrap;
-      gap: 10px;
+      gap: 0;
     }
 
     .section-description {
@@ -110,7 +263,7 @@
     .row-1 {
       display: grid;
       grid-template-columns: auto 346px;
-      gap: 44px;
+      gap: 32px;
 
       .col-1 {
         display: flex;
@@ -123,6 +276,7 @@
           .plan-title {
             justify-content: space-between;
             align-items: center;
+            padding-right: 87px;
 
             h2 {
               margin: 0;
@@ -132,7 +286,7 @@
             .plan-tags {
               display: flex;
               flex-flow: row nowrap;
-              gap: 37px;
+              gap: 68px;
               font-size: 14px;
               font-family: "plusjakartasans-semibold";
               text-wrap: nowrap;
@@ -140,7 +294,7 @@
               .tag-item {
                 display: flex;
                 flex-flow: row nowrap;
-                gap: 4px;
+                gap: 6px;
               }
 
               .icon {
@@ -149,7 +303,6 @@
                 align-items: center;
               }
 
-              .session-icon,
               .watch-icon {
                 fill: white;
               }
@@ -191,29 +344,21 @@
           }
         }
 
-        .tools-container {
-          width: 100%;
+        .requirements-container {
+          display: flex;
+          flex-direction: column;
 
-          .tools-title {
-            border-radius: 6px;
-          }
-
-          .slider-wrapper {
+          .requirements-content {
+            flex: 1;
             width: 100%;
-            max-width: 692px;
-            margin: 33px 12px;
-            overflow: hidden;
+            border-radius: 0px 0px 2px 2px;
+            border: 1px solid #fff;
+            background: #eef3f8;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-            .slider {
-              display: flex;
-              flex-flow: row nowrap;
-              gap: 71px;
-              animation: slider 20s linear infinite;
-
-              .tool-img {
-                width: 58px;
-                height: 58px;
-                flex-shrink: 1;
+            .requirements-list {
+              li {
+                font-size: 16px;
               }
             }
           }

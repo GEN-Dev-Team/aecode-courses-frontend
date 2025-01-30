@@ -11,6 +11,8 @@ import { Component } from '@angular/core';
       />
     </svg>
   `,
-  styles: ``,
+  styles: `
+    
+  `,
 })
 export class CaretDownIconComponent {}

@@ -1,41 +1,51 @@
 <div class="extra-information-container">
-  <div class="what-to-learn-container">
-    <h2 class="section-title">¿QUE LOGRARAS?</h2>
-    <p class="section-description">
-      {{ courseAchievements }}
-    </p>
-  </div>
-
-  <div class="benefits-schedule-container">
-    <div class="benefits-container">
-      <h2 class="section-title">BENEFICIOS</h2>
-      <div class="benefits-content">
-        <ul class="benefits-list">
-          @for(benefitItem of courseBenefits; track benefitItem) {
-          <li>{{ benefitItem }}</li>
-
-          }
-        </ul>
-      </div>
+  <div class="extra-info-col-1">
+    <div class="what-to-learn-container">
+      <h2 class="section-title">¿QUE LOGRARAS?</h2>
+      <p class="section-description">
+        {{ courseAchievements }}
+      </p>
     </div>
 
-    <div class="horarios-container">
-      <h2 class="section-title">HORARIOS</h2>
-      <div class="horarios-description">
-        {{ courseSchedule }}
+    <div class="tools-container">
+      <h2 class="section-title tools-title">HERRAMIENTAS</h2>
+
+      <div class="slider-wrapper">
+        <div class="slider">
+          @for (item of loopList; track item) { @for( toolItem of toolList;
+          track toolItem) {
+          <img
+            class="tool-img"
+            [src]="url_base + toolItem.picture"
+            alt="{{ toolItem.name }} icon image"
+          />
+          } }
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="question-container">
-    <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
-    <div class="question-content">
-      <ul class="question-list">
-        @for (faqItem of courseFaqs; track faqItem) {
-        <li><app-caret-up-icon /> {{ faqItem.questionText }}</li>
+  <div class="benefits-container">
+    <h2 class="section-title">BENEFICIOS</h2>
+    <div class="benefits-content">
+      <ul class="benefits-list">
+        @for(benefitItem of courseBenefits; track benefitItem) {
+        <li>{{ benefitItem }}</li>
 
         }
       </ul>
     </div>
+  </div>
+</div>
+
+<div class="question-container">
+  <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
+  <div class="question-content">
+    <ul class="question-list">
+      @for (faqItem of courseFaqs; track faqItem) {
+      <li><app-caret-up-icon /> {{ faqItem.questionText }}</li>
+
+      }
+    </ul>
   </div>
 </div>

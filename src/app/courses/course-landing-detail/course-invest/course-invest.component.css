@@ -16,35 +16,8 @@
     box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.25);
   }
 
-  .invest-options {
-    display: flex;
-    flex-flow: row nowrap;
-
-    span {
-      width: 50%;
-      padding-block: 17px;
-      font-family: "plusjakartasans-semibold";
-      font-size: 20px;
-      text-align: center;
-      border-bottom: 1px solid #8f60ea;
-      cursor: pointer;
-      position: relative;
-
-      .invest-line {
-        width: 100%;
-        height: 3px;
-        border-radius: 4px;
-        opacity: 0.8;
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        background-color: var(--purple-2);
-      }
-    }
-  }
-
   .invest-content {
-    padding: 36px 20px;
+    padding: 50px 20px 32px;
 
     .investDetail {
       .invest-item {
@@ -54,6 +27,8 @@
         font-family: "plusjakartasans-semibold";
         margin-bottom: 30px;
         font-size: 18px;
+        background: #ececff;
+        padding-block: 10px;
 
         .cupon-input {
           width: 100px;
@@ -82,22 +57,80 @@
       border: none;
       cursor: pointer;
       text-decoration: none;
+
+      .shop-cart-icon {
+        fill: white;
+        display: flex;
+        width: 20px;
+        height: 20px;
+      }
     }
 
     .invest-question {
       display: flex;
       justify-content: center;
-      margin-block: 10px 5px;
+      margin-block: 30px 15px;
       font-family: "plusjakartasans-semibold";
       font-size: 16px;
     }
 
-    .invest-question-info {
-      display: flex;
-      justify-content: center;
+    .invest-description {
       color: #636364;
-      font-family: "plusjakartasans-regular";
+      text-align: center;
+      font-family: "plusjakartasans-light";
       font-size: 16px;
+      margin-block: 0px 30px;
+    }
+
+    .invest-whatsapp-button {
+      display: flex;
+      width: 238px;
+      height: 50px;
+      color: black;
+      margin-inline: auto;
+      margin-top: 23px;
+      padding: 10px 0px 10px 16px;
+      align-items: center;
+      border-radius: 4px;
+      border: 2px solid #fff;
+      background: linear-gradient(
+        270deg,
+        rgba(255, 255, 255, 0.1) 57.6%,
+        rgba(255, 255, 255, 0.02) 91.06%
+      );
+      box-shadow: 0px 0px 6.8px 0px #b4bbbf;
+      backdrop-filter: blur(25px);
+      text-decoration: none;
+      font-family: "plusjakartasans-semibold";
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+
+      .whatsapp-button {
+        width: 55px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: linear-gradient(
+          180deg,
+          #d6dceb 10%,
+          rgba(255, 255, 255) 100%
+        );
+        flex-shrink: 0;
+        position: absolute;
+        right: -15%;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 1px solid white;
+        box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.15);
+
+        img {
+          width: 30px;
+          aspect-ratio: 1/1;
+        }
+      }
     }
   }
 }

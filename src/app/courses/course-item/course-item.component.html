@@ -3,7 +3,13 @@
   [class.platform-course-item-container]="isMasiveCourse"
   (click)="showCourseDetails(course)"
 >
-  <div class="course-item-mode" [ngClass]="getButtonClasses()">
+  <div
+    class="course-item-mode"
+    customCourseButton
+    [mode]="course.mode"
+    [isMasive]="isMasiveCourse"
+    [courseId]="course.courseId"
+  >
     @if(isMasiveCourse) {
     <app-e-learning-icon />
     E - LEARNING }@else { @switch (course.mode) { @case ('SINCRONO') {
@@ -78,7 +84,10 @@
       >
         <button
           class="course-item-button"
-          [ngClass]="getButtonClasses()"
+          customCourseButton
+          [mode]="course.mode"
+          [isMasive]="isMasiveCourse"
+          [courseId]="course.courseId"
           (click)="downloadKit($event)"
         >
           @if(isMasiveCourse){
@@ -91,7 +100,10 @@
 
         <button
           class="course-item-button"
-          [ngClass]="getButtonClasses()"
+          customCourseButton
+          [mode]="course.mode"
+          [isMasive]="isMasiveCourse"
+          [courseId]="course.courseId"
           (click)="goToPay($event)"
         >
           <app-shopping-cart-icon class="shop-cart-icon" /> @if (isMasiveCourse)
