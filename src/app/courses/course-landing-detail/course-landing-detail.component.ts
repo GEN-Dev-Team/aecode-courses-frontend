@@ -23,8 +23,8 @@ import { ComnigSoonCourseIconComponent } from '../../shared/icons/comnig-soon-co
 import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/sync-course-icon.component';
 import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/async-course-icon.component';
 import { SecCourseWsspIconComponent } from '../../shared/icons/sec-course-wssp-icon/sec-course-wssp-icon.component';
-import { CustomCourseButtonDirective } from '../../shared/directives/styles/custom-course-button.directive';
-import { BookIconComponent } from '../../shared/icons/book-icon/book-icon.component';
+import { BookIconComponent } from '../icons/book-icon/book-icon.component';
+import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 
 @Component({
   selector: 'app-course-landing-detail',

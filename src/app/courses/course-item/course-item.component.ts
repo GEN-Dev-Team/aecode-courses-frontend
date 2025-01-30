@@ -18,7 +18,7 @@ import { AccessToCourseIconComponent } from '../../shared/icons/access-to-course
 import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-icon.component';
 import { ELearningIconComponent } from '../../shared/icons/e-learning-icon/e-learning-icon.component';
 import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/download-kit-icon.component';
-import { CustomCourseButtonDirective } from '../../shared/directives/styles/custom-course-button.directive';
+import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 
 @Component({
   selector: 'app-course-item',
