@@ -4,7 +4,7 @@ import { Directive, ElementRef, Input } from '@angular/core';
   selector: '[customCourseButton]',
   standalone: true,
 })
-export class CourseButtonStyleDirective {
+export class CustomCourseButtonDirective {
   @Input() mode!: string;
   @Input() isMasive!: boolean;
   @Input() courseId!: number;

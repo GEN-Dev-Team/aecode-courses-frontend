@@ -21,9 +21,9 @@ import { Component } from '@angular/core';
   `,
   styles: `
     .icon {
-      display: flex;
-      align-items: center;
+      display:flex;
       justify-content: center;
+      align-items: center;
     }
   `,
 })
