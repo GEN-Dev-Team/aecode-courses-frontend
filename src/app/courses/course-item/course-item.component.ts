@@ -18,6 +18,7 @@ import { AccessToCourseIconComponent } from '../../shared/icons/access-to-course
 import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-icon.component';
 import { ELearningIconComponent } from '../../shared/icons/e-learning-icon/e-learning-icon.component';
 import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/download-kit-icon.component';
+import { CourseButtonStyleDirective } from '../../shared/directives/styles/course-button-style.directive';
 
 @Component({
   selector: 'app-course-item',
@@ -34,6 +35,7 @@ import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/d
     OfferbgIconComponent,
     ELearningIconComponent,
     DownloadKitIconComponent,
+    CourseButtonStyleDirective,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
@@ -78,7 +80,7 @@ export class CourseItemComponent {
   }
 
   showCourseDetails(course: any) {
-    if (!this.isMasiveCourse && course.mode !== 'ASINCRONO') {
+    if (!this.isMasiveCourse) {
       {
         this.browserService.navigateAndScroll(
           `courses/secondary-course-detail/${course.seccourseId}`,
@@ -114,15 +116,5 @@ export class CourseItemComponent {
         amount: price,
       });
     }
-  }
-
-  getButtonClasses() {
-    return {
-      'async-course-button': this.course.mode === 'ASINCRONO',
-      'coming-soon-course-button': this.course.mode === 'SINCRONO',
-      'masive-course-button': this.isMasiveCourse,
-      'masive-course-button-progra':
-        this.isMasiveCourse && this.course.courseId === 2,
-    };
   }
 }
