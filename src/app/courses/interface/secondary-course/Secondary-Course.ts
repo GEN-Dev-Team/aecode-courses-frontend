@@ -11,7 +11,7 @@ export interface ISecondaryCourse {
   module: string;
   brochureUrl: string;
   startDate: string;
-  certificateDate: string;
+  certificateHours: string;
   priceRegular: number;
   discountPercentage: number;
   promptPaymentPrice: number;
@@ -28,6 +28,7 @@ export interface ISecondaryCourse {
   studyplans: IStudyPlan[];
   coupons: ICoupon[];
   freqquests: IFAQ[];
+  requeriments: string[];
   mode: string;
 }
 
@@ -39,7 +40,7 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   module: '',
   brochureUrl: '',
   startDate: '',
-  certificateDate: '',
+  certificateHours: '',
   priceRegular: 0,
   discountPercentage: 0,
   promptPaymentPrice: 0,
@@ -56,5 +57,6 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   studyplans: [],
   coupons: [],
   freqquests: [],
+  requeriments: [],
   mode: '',
 };
