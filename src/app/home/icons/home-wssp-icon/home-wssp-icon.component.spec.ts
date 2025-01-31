@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SocialMediaComponent } from './social-media.component';
+import { HomeWsspIconComponent } from './home-wssp-icon.component';
 
-describe('SocialMediaComponent', () => {
-  let component: SocialMediaComponent;
-  let fixture: ComponentFixture<SocialMediaComponent>;
+describe('HomeWsspIconComponent', () => {
+  let component: HomeWsspIconComponent;
+  let fixture: ComponentFixture<HomeWsspIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SocialMediaComponent]
+      imports: [HomeWsspIconComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(SocialMediaComponent);
+    fixture = TestBed.createComponent(HomeWsspIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

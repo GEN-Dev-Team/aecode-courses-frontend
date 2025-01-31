@@ -1,35 +1,55 @@
-<div class="login-container">
-  <div class="login-content">
-    <img class="login-logo" src="/assets/images/aecode-logo.webp" alt="" />
+<div class="home-container">
+  <app-home-header />
+  <div class="home-content">
+    <h1 class="home-title">
+      Forma parte de la comunidad más grande en
+      <span>Inteligencia Artificial</span> aplicado al sector AEC
+    </h1>
 
-    <span class="login-title">ECOSISTEMA DIGITAL 4.0</span>
+    <div class="home-subtitle-container">
+      <h2 class="home-subtitle">Arquitectura, Ingeniería y Construcción</h2>
 
-    <video
-      class="login-video"
-      autoplay
-      muted
-      loop
-      src="/assets/images/login-view/robot-video.mp4"
-    ></video>
+      <div class="rectangle top-right"></div>
+      <div class="rectangle top-left"></div>
+      <div class="rectangle bottom-right"></div>
+      <div class="rectangle bottom-left"></div>
+    </div>
 
-    <span class="login-subtitle">Descubre como AECODE puede servirte</span>
+    <div class="send-bar-container">
+      <div class="custom-shadow-light"></div>
+      <div class="custom-shadow-dark"></div>
 
-    <button class="sendbar">
-      <div class="sendbar-text">
-        <img src="/assets/images/login-view/brain-img.svg" alt="Brain image" />
-        <input
-          type="text"
-          placeholder="¡Escribe aquí cualquier duda que tengas!"
-          id="message-input"
-        />
-      </div>
-      <div class="send-icon-container" (click)="sendMessage()">
-        <app-send-icon />
-      </div>
-    </button>
+      <button class="sendbar">
+        <div class="sendbar-text">
+          <img
+            src="/assets/images/login-view/brain-img.svg"
+            alt="Brain image"
+          />
+          <input
+            type="text"
+            placeholder="Soy estudiante, quisiera aprender BIM"
+            id="message-input"
+          />
+        </div>
+        <div class="send-icon-container" (click)="sendMessage()">
+          <app-send-icon />
+        </div>
+      </button>
+    </div>
   </div>
 
-  <app-social-media (isOpen)="openModal = $event" />
+  <app-home-footer />
+
+  <div class="home-whatsapp-button">
+    <app-home-wssp-icon class="wssp-icon" />
+    <!-- <img
+      class="wssp-icon"
+      src="/assets/images/home/home-wssp-icon.svg"
+      alt="" 
+          /> -->
+  </div>
+
+  <div class="wssp-shadow-effect"></div>
 </div>
 
 <app-modal [isOpen]="openModal" (isClosed)="openModal = $event">

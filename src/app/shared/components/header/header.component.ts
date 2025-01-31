@@ -43,7 +43,7 @@ export class HeaderComponent {
   base_url = environment.base;
 
   ngOnInit(): void {
-    // this.setUser();
+    this.setUser();
   }
 
   setUser() {

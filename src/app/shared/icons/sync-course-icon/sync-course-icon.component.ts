@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
       width="26"
       height="18"
       viewBox="0 0 26 18"
+      class="icon"
     >
       <path
         d="M12.055 5.37159C14.9289 5.08055 16.9637 8.00728 15.4859 10.5112C13.8584 13.2691 9.57037 12.4506 9.1001 9.2891C8.82667 7.45222 10.1564 5.56356 12.055 5.37159Z"
@@ -34,6 +35,12 @@ import { Component } from '@angular/core';
       />
     </svg>
   `,
-  styles: ``,
+  styles: `
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  `,
 })
 export class SyncCourseIconComponent {}
