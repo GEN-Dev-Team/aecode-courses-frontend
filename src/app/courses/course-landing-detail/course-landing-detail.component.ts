@@ -22,7 +22,6 @@ import { ToastrService } from 'ngx-toastr';
 import { ComnigSoonCourseIconComponent } from '../../shared/icons/comnig-soon-course-icon/comnig-soon-course-icon.component';
 import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/sync-course-icon.component';
 import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/async-course-icon.component';
-import { SecCourseWsspIconComponent } from '../../shared/icons/sec-course-wssp-icon/sec-course-wssp-icon.component';
 import { BookIconComponent } from '../icons/book-icon/book-icon.component';
 import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 
@@ -45,7 +44,6 @@ import { CustomCourseButtonDirective } from '../../shared/directives/custom-cour
     SyncCourseIconComponent,
     AsyncCourseIconComponent,
     CustomCourseButtonDirective,
-    SecCourseWsspIconComponent,
     BookIconComponent,
   ],
   templateUrl: './course-landing-detail.component.html',
