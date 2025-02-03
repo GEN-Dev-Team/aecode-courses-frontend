@@ -82,7 +82,7 @@
   .home-content {
     max-width: 1440px;
     margin-inline: auto;
-    padding: 176px 68px;
+    padding: 11rem 4.25rem;
 
     .home-title {
       width: 1094px;
@@ -110,7 +110,7 @@
         margin: 0;
         color: #7c7edf;
         font-family: "plusjakartasans-medium";
-        font-size: 30px;
+        font-size: 1.875rem;
         font-style: italic;
         line-height: 65px;
         border: 1px solid #8f60ea;
@@ -217,7 +217,7 @@
             border: none;
             outline: none;
             font-family: "plusjakartasans-light";
-            font-size: 25px;
+            font-size: 1.5625rem;
             color: #c2c2c2;
             font-style: italic;
             background-color: transparent;
@@ -298,7 +298,7 @@
 
       .login-title {
         margin-top: 15px;
-        font-size: 20px;
+        font-size: 1.25rem;
       }
 
       .login-video {
@@ -324,7 +324,7 @@
 
           & input {
             height: 20px;
-            font-size: 12px;
+            font-size: 0.75rem;
           }
         }
 
