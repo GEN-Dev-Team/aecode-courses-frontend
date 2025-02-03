@@ -221,9 +221,10 @@
             color: #c2c2c2;
             font-style: italic;
             background-color: transparent;
+            color: white;
 
             &::placeholder {
-              color: #c2c2c2;
+              color: #b896fa;
             }
           }
         }
