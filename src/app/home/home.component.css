@@ -82,7 +82,7 @@
   .home-content {
     max-width: 1440px;
     margin-inline: auto;
-    padding: 11rem 4.25rem;
+    padding: 11rem 15% 11rem 4.25rem;
 
     .home-title {
       /* width: 1094px; */
