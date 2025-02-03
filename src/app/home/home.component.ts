@@ -6,7 +6,6 @@ import { FormComponent } from './form/form.component';
 import { BrowserService } from '../core/services/browser.service';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { HomeHeaderComponent } from './home-header/home-header.component';
-import { HomeWsspIconComponent } from './icons/home-wssp-icon/home-wssp-icon.component';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +17,6 @@ import { HomeWsspIconComponent } from './icons/home-wssp-icon/home-wssp-icon.com
     FormComponent,
     HomeFooterComponent,
     HomeHeaderComponent,
-    HomeWsspIconComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
