@@ -14,12 +14,12 @@
     .header-list {
       display: flex;
       flex-direction: row;
-      gap: 30px;
+      gap: 50px;
       align-items: center;
       margin: 0;
       padding: 0;
 
-      font-family: "ruberoid-medium";
+      font-family: "ruberoid-light";
       font-size: 20px;
 
       .header-item {
