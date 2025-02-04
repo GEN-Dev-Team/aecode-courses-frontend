@@ -33,21 +33,10 @@
 
           <div class="separator"></div>
 
-          <div class="user-logged">
-            <div (click)="showProfileMenuHandler()" class="user-profile">
-              <div class="user-profile-img-container">
-                <img [src]="userProfileImg" class="user-profile-img" alt="" />
-              </div>
-
-              <span class="profile-dropdown-button">▼</span>
-              @if (showProfileMenu) {
-              <app-view-profile
-                [profileImgUrl]="userProfileImg"
-                class="profile-dropdown"
-              />
-              }
-            </div>
-          </div>
+          <app-user-profile-button
+            [isHomeView]="false"
+            (sendIsUserLoggedIn)="isUserLoggedIn = $event"
+          />
 
           } @else {
           <app-button

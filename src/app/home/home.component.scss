@@ -1,9 +1,23 @@
+@use "sass:math";
+
+@function rem($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + rem;
+  } @else {
+    @error "Cannot convert unit `#{$pixel}` to rem.";
+  }
+}
+
 .home-container {
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   background-color: #0e1121;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
 
   .home-bg-img-left-container {
     position: absolute;
@@ -80,20 +94,25 @@
   }
 
   .home-content {
+    flex: 1;
     max-width: 1440px;
     margin-inline: auto;
-    padding: 11rem 15% 11rem 4.25rem;
+    padding-inline: 68px 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 
     .home-title {
       /* width: 1094px; */
       /* height: 214px; */
       color: #eef3f8;
       font-family: "Ruberoid-light";
-      font-size: clamp(1rem, 4.5vw, 3.75rem);
+      // font-size: clamp(1rem, 4.5vw, 3.75rem);
+      font-size: clamp(2.0625rem, 1.4683rem + 2.5352vw, 3.75rem);
       /* line-height: 75px; */
-      margin: 0 0 53px 0;
+      margin:0;
       position: relative;
-      z-index: 5;
+      z-index: 1;
 
       span {
         color: #7837dd;
@@ -110,9 +129,9 @@
         margin: 0;
         color: #7c7edf;
         font-family: "plusjakartasans-medium";
-        font-size: 1.875rem;
+        /* font-size: 1.875rem; */
+        font-size: clamp(0.9375rem, 0.6074rem + 1.4085vw, 1.875rem);
         font-style: italic;
-        line-height: 65px;
         border: 1px solid #8f60ea;
         width: fit-content;
         padding: 0px 17px;
@@ -161,7 +180,6 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 116px;
       margin-inline-start: -16px;
 
       .custom-shadow-light {
@@ -217,7 +235,7 @@
             border: none;
             outline: none;
             font-family: "plusjakartasans-light";
-            font-size: 1.5625rem;
+            font-size: clamp(0.75rem, 0.4639rem + 1.2207vw, 1.5625rem);
             color: #c2c2c2;
             font-style: italic;
             background-color: transparent;
@@ -244,7 +262,7 @@
   }
 
   .home-whatsapp-button {
-    width: 167px;
+    width: clamp(114px, 10vw ,167px);
     height: 127px;
     position: fixed;
     right: 0;
@@ -252,14 +270,21 @@
     cursor: pointer;
     border-radius: 100px 0px 0px 100px;
     border: 1px solid #7837dd;
-    background: #140436;
+    border-right: none;
+    background: rgba(20, 4, 54, 0.6);
     box-shadow: 0px 0px 7.8px 3px rgba(44, 34, 175, 0.5);
     display: flex;
     align-items: center;
-    z-index: 2;
+    display: flex;
+    z-index: 1;
+    box-shadow: inset 0px 0px 7.8px 3px rgba(44, 34, 175, 0.5);
 
     .wssp-icon {
+      width: auto;
+      height: 120%;
       opacity: 1;
+      margin-inline-start: -10px;
+      position: relative;
     }
   }
 
@@ -275,7 +300,6 @@
     right: 0;
     bottom: 15%;
     transform: translateX(40%);
-    z-index: 1;
   }
 }
 

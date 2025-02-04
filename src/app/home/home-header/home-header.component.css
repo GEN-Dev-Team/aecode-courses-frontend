@@ -1,6 +1,8 @@
 .header-container {
   width: 100%;
-  border-bottom: #eef3f8 1px solid;
+  border-bottom: #3a4065 1px solid;
+  position: relative;
+  z-index: 2;
 
   .header-content {
     max-width: 1440px;
@@ -18,9 +20,8 @@
       align-items: center;
       margin: 0;
       padding: 0;
-
       font-family: "ruberoid-light";
-      font-size: 20px;
+      font-size: clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
 
       .header-item {
         display: flex;
