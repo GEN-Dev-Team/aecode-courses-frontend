@@ -1,0 +1,22 @@
+<div class="user-logged">
+  <div (click)="showProfileMenuHandler()" class="user-profile">
+    <div
+      class="user-profile-img-container"
+      [class.is-home-header-img-container]="isHomeView"
+    >
+      <img [src]="userProfileImg" class="user-profile-img" alt="" />
+    </div>
+
+    <span
+      class="profile-dropdown-button"
+      [class.is-home-header-button]="isHomeView"
+      >▼</span
+    >
+    @if (showProfileMenu) {
+    <app-view-profile
+      [profileImgUrl]="userProfileImg"
+      class="profile-dropdown"
+    />
+    }
+  </div>
+</div>

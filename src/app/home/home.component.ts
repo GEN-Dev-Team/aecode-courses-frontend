@@ -19,7 +19,7 @@ import { HomeHeaderComponent } from './home-header/home-header.component';
     HomeHeaderComponent,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent {
   browserService: BrowserService = inject(BrowserService);

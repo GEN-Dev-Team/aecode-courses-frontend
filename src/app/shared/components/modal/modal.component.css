@@ -7,10 +7,10 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1;
+  z-index: 3;
 
   .modal-content {
-    z-index: 2;
+    z-index: 4;
   }
 
   .background-overlay {
@@ -19,6 +19,6 @@
     position: fixed;
     background-color: black;
     opacity: 0.69;
-    z-index: 1;
+    z-index: 3;
   }
 }
