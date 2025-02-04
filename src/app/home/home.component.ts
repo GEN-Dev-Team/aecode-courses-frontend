@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SendIconComponent } from '../shared/icons/send-icon/send-icon.component';
 import { ModalComponent } from '../shared/components/modal/modal.component';
 import { CourseListComponent } from '../courses/course-list/course-list.component';
@@ -21,12 +21,38 @@ import { HomeHeaderComponent } from './home-header/home-header.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   browserService: BrowserService = inject(BrowserService);
 
   openModal = false;
   openForm = false;
   userMessage = '';
+
+  textItems: string[] = [
+    'Modelamiento Paramétrico',
+    'Inteligencia Artificial',
+    'Diseño Generativo',
+    'Programación con Python',
+  ];
+
+  currentText = this.textItems[0];
+  index = 0;
+  animate = false;
+
+  ngOnInit() {
+    if (this.browserService.isBrowser()) {
+      setInterval(() => {
+        this.animate = true;
+
+        this.index = (this.index + 1) % this.textItems.length;
+        this.currentText = this.textItems[this.index];
+
+        setTimeout(() => {
+          this.animate = false;
+        }, 2000);
+      }, 3000);
+    }
+  }
 
   sendMessage() {
     if (this.browserService.isBrowser()) {
