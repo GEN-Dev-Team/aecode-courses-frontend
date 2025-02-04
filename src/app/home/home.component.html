@@ -22,7 +22,15 @@
   <div class="home-content">
     <h1 class="home-title">
       Forma parte de la comunidad más grande en
-      <span>Inteligencia Artificial</span> aplicado al sector AEC
+
+      <span
+        class="text-item"
+        [class.fade-in-down]="animate"
+        [class.fade-out-down]="!animate"
+        >{{ currentText }}
+      </span>
+
+      <span> aplicado al sector AEC </span>
     </h1>
 
     <div class="home-subtitle-container">
