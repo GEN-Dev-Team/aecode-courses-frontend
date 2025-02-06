@@ -1,4 +1,4 @@
-<div class="unit-item" (click)="openUnit()">
+<div class="unit-item" (click)="sendUnitIdSelected(studyplanItem.studyplanId)">
   <span>U{{ studyplanItem.studyplanId }}: {{ studyplanItem.unit }}</span>
 
   <div class="unit-hours-container">
@@ -15,7 +15,7 @@
   </div>
 </div>
 
-@if (showDropdownUnit) {
+@if (studyUnitIdSelected === studyplanItem.studyplanId) {
 <ul class="plan-list">
   @for (sessionItem of studyplanItem.sessions; track sessionItem) {
   <li>{{ sessionItem }}</li>

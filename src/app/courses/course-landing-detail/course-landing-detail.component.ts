@@ -65,6 +65,7 @@ export class CourseLandingDetailComponent {
   url_base = environment.base;
   showIntroVideo: boolean = false;
   url: string = '';
+  studyUnitIdSelected = -1;
 
   youtubeVideo$: Observable<SafeResourceUrl> = this.secondaryCourseData$.pipe(
     map((data) => {

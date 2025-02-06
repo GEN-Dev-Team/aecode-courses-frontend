@@ -1,16 +1,6 @@
 <app-header />
 
 <div class="courses-overlay">
-  @if (showMasiveCourseBackground) {
-  <div class="masive-course-bg-container">
-    <div class="masive-course-bg-content">
-      <div class="bg-gradient"></div>
-      <img src="{{ masiveCourseBackgroundGift | addBaseUrl }}" alt="" />
-    </div>
-  </div>
-
-  }
-
   <ng-content />
 
   <button class="theme-button">

@@ -29,7 +29,16 @@
   }
 
   <div class="course-presentation-container">
-    <img class="course-img" src="{{ course.principalimage }}" alt="" />
+    @if(isMasiveCourse) {
+    <img class="course-img" src="{{ course.coverimage | addBaseUrl }}" alt="" />
+
+    } @else {
+    <img
+      class="course-img"
+      src="{{ course.principalimage | addBaseUrl }}"
+      alt=""
+    />
+    }
 
     <div class="course-tags">
       @if (!isMasiveCourse) {

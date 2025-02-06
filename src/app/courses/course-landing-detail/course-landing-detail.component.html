@@ -7,9 +7,24 @@
 
     <div class="course-landing-presentation">
       <div class="program-modules-container">
-        <button class="module-item">Módulo 1</button>
-        <button class="module-item module-selected">Módulo 2</button>
-        <button class="module-item">Módulo 3</button>
+        <button
+          class="module-item"
+          [class.module-selected]="secondaryCourseData.module == 'Módulo 1'"
+        >
+          Módulo 1
+        </button>
+        <button
+          class="module-item"
+          [class.module-selected]="secondaryCourseData.module == 'Módulo 2'"
+        >
+          Módulo 2
+        </button>
+        <button
+          class="module-item"
+          [class.module-selected]="secondaryCourseData.module == 'Módulo 3'"
+        >
+          Módulo 3
+        </button>
       </div>
 
       <div class="course-landing-presentation-box">
@@ -110,7 +125,11 @@
             <div class="units-list">
               @for (studyplanItem of secondaryCourseData.studyplans; track
               studyplanItem) {
-              <app-course-landing-unit [studyplanItem]="studyplanItem" />
+              <app-course-landing-unit
+                [studyplanItem]="studyplanItem"
+                [studyUnitIdSelected]="studyUnitIdSelected"
+                (emitUnitIdSelected)="studyUnitIdSelected = $event"
+              />
               }
             </div>
           </div>

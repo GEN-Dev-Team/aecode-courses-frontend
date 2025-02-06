@@ -1,0 +1,14 @@
+<span (click)="sendQuestion(faqItem.freqquestId)">
+  @if (this.faqIdSelected === this.faqItem.freqquestId) {
+  <app-caret-up-icon />
+
+  }@else {
+  <app-caret-down-question-icon />
+
+  }
+  {{ faqItem.questionText }}</span
+>
+@if(this.faqIdSelected === this.faqItem.freqquestId) {
+<p>{{ faqItem.answerText }}</p>
+
+}
