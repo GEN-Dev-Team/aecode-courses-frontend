@@ -1,10 +1,12 @@
 <main class="main-container">
   <div class="title-container">
-    <h1 class="main-title">¿Qué aprenderemos hoy?</h1>
+    <h1 class="main-title">LA ESENCIA DE LA INNOVACIÓN COMIENZA AQU´I</h1>
     <div FadeOut class="punto-container">
       <div class="punto"></div>
     </div>
   </div>
+
+  <app-platform-course-list />
 
   <div class="search-container">
     <app-search-tool-icon class="search-tool-icon" />
@@ -17,15 +19,11 @@
     <app-course-search-icon class="search-icon" />
   </div>
 
-  <app-platform-course-list />
-
   <div class="course-main-list">
-    @for (courseListItem of filteredCoursesList; track courseListItem) {
     <app-course-list
-      [listTitle]="courseListItem.name"
-      [secondaryCourseList]="courseListItem.list"
+      (filterMode)="filterValue = $event"
+      (filterMode)="filterByMode($event)"
+      [secondaryCourseList]="filteredCoursesList"
     />
-
-    }
   </div>
 </main>

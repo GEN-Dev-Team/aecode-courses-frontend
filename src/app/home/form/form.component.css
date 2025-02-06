@@ -7,6 +7,7 @@
   border-radius: 10px;
   background: #fafafa;
   position: relative;
+  z-index: 3;
 
   .close-button {
     top: 21px;

@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, computed, inject, Input, signal } from '@angular/core';
 import { WatchIconComponent } from '../../shared/icons/watch-icon/watch-icon.component';
 import { CourseSessionIconComponent } from '../../shared/icons/course-session-icon/course-session-icon.component';
 import { Router } from '@angular/router';
@@ -9,10 +9,17 @@ import { environment } from '../../../environment/environment';
 import { IModule } from '../interface/Module';
 import { IUnit } from '../interface/Unit';
 import { CommonModule } from '@angular/common';
+import { ShoppingCartIconComponent } from '../icons/shopping-cart-icon/shopping-cart-icon.component';
+import { PaymentService } from '../../payment/services/payment.service';
+import { ComnigSoonCourseIconComponent } from '../../shared/icons/comnig-soon-course-icon/comnig-soon-course-icon.component';
+import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/sync-course-icon.component';
+import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/async-course-icon.component';
+import { AccessToCourseIconComponent } from '../../shared/icons/access-to-course-icon/access-to-course-icon.component';
+import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-icon.component';
+import { ELearningIconComponent } from '../../shared/icons/e-learning-icon/e-learning-icon.component';
+import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/download-kit-icon.component';
+import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
-import { BasicLevelIconComponent } from '../../shared/icons/basic-level-icon/basic-level-icon.component';
-import { MediumLevelIconComponent } from '../../shared/icons/medium-level-icon/medium-level-icon.component';
-import { HighLevelIconComponent } from '../../shared/icons/high-level-icon/high-level-icon.component';
 
 @Component({
   selector: 'app-course-item',
@@ -21,10 +28,16 @@ import { HighLevelIconComponent } from '../../shared/icons/high-level-icon/high-
     WatchIconComponent,
     CourseSessionIconComponent,
     CommonModule,
+    ShoppingCartIconComponent,
+    ComnigSoonCourseIconComponent,
+    SyncCourseIconComponent,
+    AsyncCourseIconComponent,
+    AccessToCourseIconComponent,
+    OfferbgIconComponent,
+    ELearningIconComponent,
+    DownloadKitIconComponent,
+    CustomCourseButtonDirective,
     AddBaseUrlPipe,
-    BasicLevelIconComponent,
-    MediumLevelIconComponent,
-    HighLevelIconComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
@@ -36,9 +49,19 @@ export class CourseItemComponent {
   courseService: CourseService = inject(CourseService);
   browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
+  paymentService: PaymentService = inject(PaymentService);
 
   secondaryCourseMainImgUrl = '';
   secondaryCourseSessions: number = 0;
+  finalPrice = signal(0);
+
+  discountPrice = computed(() => {
+    const priceDiscounted = Math.round(
+      (this.course.priceRegular * (100 - this.course.discountPercentage)) / 100
+    );
+
+    return priceDiscounted;
+  });
 
   ngOnInit() {
     if (!this.isMasiveCourse) {
@@ -58,17 +81,42 @@ export class CourseItemComponent {
     }
   }
 
-  showCourseDetails(courseId: number) {
-    this.browserService.navigateAndScroll(
-      `courses/secondary-course-detail/${courseId}`,
-      0
-    );
+  showCourseDetails(course: any) {
+    if (this.isMasiveCourse) {
+      this.browserService.navigateAndScroll(
+        `courses/masive-course-detail/${course.courseId}`,
+        0
+      );
+    } else if (this.course.mode !== 'SINCRONO') {
+      {
+        this.browserService.navigateAndScroll(
+          `courses/secondary-course-detail/${course.seccourseId}`,
+          0
+        );
+      }
+    }
   }
 
-  showMasiveCourseDetails(courseId: number) {
-    this.browserService.navigateAndScroll(
-      `courses/masive-course-detail/${courseId}`,
-      0
-    );
+  downloadKit(event: Event) {
+    if (this.isMasiveCourse) {
+      event.stopPropagation();
+      if (this.isMasiveCourse && this.course.urlkit) {
+        console.log(this.course.urlkit);
+      }
+    }
+  }
+
+  goToPay(event: Event) {
+    event.stopPropagation();
+
+    const price = this.discountPrice();
+
+    if (price > 0) {
+      this.router.navigate(['payment']);
+      this.paymentService.paymentDetails.set({
+        courseName: this.course.title,
+        amount: price,
+      });
+    }
   }
 }

@@ -2,7 +2,7 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  padding: 10px 25px;
+  padding: 6px 25px;
   color: var(--Negro, #000);
   font-family: "plusjakartasans-regular";
   font-size: 16px;
@@ -12,14 +12,32 @@
   position: relative;
   z-index: 0;
   cursor: pointer;
+  margin-top: 10px;
+  align-items: center;
 
   .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     fill: var(--purple-2);
+    width: 15px;
+  }
+
+  .unit-hours-container {
+    display: flex;
+    flex-direction: row;
+
+    .unit-hours {
+      font-family: "plusjakartasans-semibold";
+      font-size: 20px;
+      margin-inline: 11px 21px;
+      text-wrap: nowrap;
+    }
   }
 }
 
 .plan-list {
-  margin: 0;
+  margin: 10px 0 0 0;
   padding: 13px 45px;
   border-radius: 0px 0px 2px 2px;
   border: 1px solid white;

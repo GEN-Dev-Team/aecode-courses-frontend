@@ -1,24 +1,17 @@
 <div class="course-platform-list-container">
   <div class="shadow-effect" hidden></div>
 
-  <div class="course-platform-list-content">
-    @if (masiveCourseList$ | async; as masiveCourseList) { @for
-    (masiveCourseItem of masiveCourseList; track masiveCourseItem) {
-    <app-course-item [course]="masiveCourseItem" [isMasiveCourse]="true" />
+  <div class="masive-course-list-containaer">
+    @if (masiveCourseList$ | async; as masiveCourseList) {
+    <div class="course-platform-list-content">
+      @for (masiveCourseItem of masiveCourseList; track masiveCourseItem) {
+      <app-course-item [course]="masiveCourseItem" [isMasiveCourse]="true" />
 
-    } } @else {
+      }
+    </div>
+
+    } @else {
     <app-loader />
     }
   </div>
-
-  <button ZoomIn class="get-free-button" (click)="showFreeContentForm = true">
-    <app-gift-icon /> GET FREE LEARNING MATERIALS
-  </button>
 </div>
-
-<app-modal
-  [isOpen]="showFreeContentForm"
-  (isClosed)="showFreeContentForm = $event"
->
-  <app-get-free-content-form (isClosed)="showFreeContentForm = $event" />
-</app-modal>

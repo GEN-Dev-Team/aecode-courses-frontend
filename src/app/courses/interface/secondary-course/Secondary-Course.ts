@@ -1,3 +1,4 @@
+import { ICoupon } from '../../../payment/interfaces/Coupon';
 import { IFAQ } from './FAQ';
 import { IStudyPlan } from './StudyPlan';
 import { ITool } from './Tool';
@@ -5,45 +6,57 @@ import { ITool } from './Tool';
 export interface ISecondaryCourse {
   seccourseId: number;
   title: string;
-  principalimage: string;
+  programTitle: string;
   description: string;
-  priceAcademy: number;
+  module: string;
+  brochureUrl: string;
+  startDate: string;
+  certificateHours: string;
   priceRegular: number;
-  percentage: number;
-  toolIds: number[];
-  freqquestIds: number[];
-  studyplans: IStudyPlan[];
-  tools: ITool[];
-  freqquests: IFAQ[];
-  level: string;
-  mode: string;
-  hours: number;
-  benefits: string[];
-  schedule: string;
+  discountPercentage: number;
+  promptPaymentPrice: number;
+  isOnSale: boolean;
   achievement: string;
-  exterallink: string;
   videoUrl: string;
+  principalimage: string;
+  totalHours: number;
+  numberOfSessions: number;
+  numberOfUnits: number;
+  schedules: string[];
+  benefits: string[];
+  tools: ITool[];
+  studyplans: IStudyPlan[];
+  coupons: ICoupon[];
+  freqquests: IFAQ[];
+  requeriments: string[];
+  mode: string;
 }
 
 export const defaultSecondaryCourse: ISecondaryCourse = {
   seccourseId: 0,
   title: '',
-  principalimage: '',
+  programTitle: '',
   description: '',
-  priceAcademy: 0,
+  module: '',
+  brochureUrl: '',
+  startDate: '',
+  certificateHours: '',
   priceRegular: 0,
-  percentage: 0,
-  toolIds: [],
-  freqquestIds: [],
-  studyplans: [],
-  tools: [],
-  freqquests: [],
-  level: '',
-  mode: '',
-  hours: 0,
-  benefits: [],
-  schedule: '',
+  discountPercentage: 0,
+  promptPaymentPrice: 0,
+  isOnSale: false,
   achievement: '',
-  exterallink: '',
   videoUrl: '',
+  principalimage: '',
+  totalHours: 0,
+  numberOfSessions: 0,
+  numberOfUnits: 0,
+  schedules: [],
+  benefits: [],
+  tools: [],
+  studyplans: [],
+  coupons: [],
+  freqquests: [],
+  requeriments: [],
+  mode: '',
 };

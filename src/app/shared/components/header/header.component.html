@@ -9,17 +9,36 @@
 
       <div class="header-options">
         <ul class="header-list">
-          <!--
-        <span
-          (click)="changeLanguage()"
-          id="language-button"
-          class="language-button"
-          ZoomIn
-        >
-          <app-language-icon /> ES
-        </span> -->
+          <li ZoomIn (click)="redirectToCoursesView()" class="header-item">
+            Inicio
+          </li>
 
-          @if (!isUserLoggedIn) {
+          <a
+            ZoomIn
+            href="https://www.canva.com/design/DAGbXMYH3Qo/Njl9uZGdNjfleEX8Jt2lpQ/view?utm_content=DAGbXMYH3Qo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc8bb83ae0a"
+            target="_blank"
+            class="header-item"
+            >Conócenos</a
+          >
+
+          <app-shopping-cart-icon
+            ZoomIn
+            (click)="redirectToCartView()"
+            class="cart-icon"
+          />
+
+          @if (isUserLoggedIn) {
+
+          <app-notification-icon ZoomIn class="notification-icon" />
+
+          <div class="separator"></div>
+
+          <app-user-profile-button
+            [isHomeView]="false"
+            (sendIsUserLoggedIn)="isUserLoggedIn = $event"
+          />
+
+          } @else {
           <app-button
             class="header-button"
             ZoomIn
@@ -29,24 +48,6 @@
           >
             Acceder
           </app-button>
-          } @else {
-          <div class="user-logged">
-            <app-notification-icon class="notification-icon" ZoomIn />
-            <div class="separator"></div>
-            <div (click)="showProfileMenuHandler()" class="user-profile">
-              <div class="user-profile-img-container">
-                <img [src]="userProfileImg" class="user-profile-img" alt="" />
-              </div>
-
-              <span class="profile-dropdown-button" ZoomIn>▼</span>
-              @if (showProfileMenu) {
-              <app-view-profile
-                [profileImgUrl]="userProfileImg"
-                class="profile-dropdown"
-              />
-              }
-            </div>
-          </div>
           }
         </ul>
       </div>

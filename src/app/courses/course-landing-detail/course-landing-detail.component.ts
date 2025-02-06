@@ -10,7 +10,7 @@ import { CourseExtraInformationComponent } from './course-extra-information/cour
 import { SecondaryCourseService } from '../services/secondary-course.service';
 import { map, Observable } from 'rxjs';
 import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, NgClass, NgIf } from '@angular/common';
 import { environment } from '../../../environment/environment';
 import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
 import { CourseLandingUnitComponent } from './course-landing-unit/course-landing-unit.component';
@@ -19,12 +19,16 @@ import { PlayIconComponent } from '../../shared/icons/play-icon/play-icon.compon
 import { ActivatedRoute } from '@angular/router';
 import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 import { ToastrService } from 'ngx-toastr';
+import { ComnigSoonCourseIconComponent } from '../../shared/icons/comnig-soon-course-icon/comnig-soon-course-icon.component';
+import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/sync-course-icon.component';
+import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/async-course-icon.component';
+import { BookIconComponent } from '../icons/book-icon/book-icon.component';
+import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 
 @Component({
   selector: 'app-course-landing-detail',
   standalone: true,
   imports: [
-    CourseSessionIconComponent,
     WatchIconComponent,
     UnitCourseIconComponent,
     CourseInvestComponent,
@@ -36,6 +40,11 @@ import { ToastrService } from 'ngx-toastr';
     LoaderComponent,
     PlayIconComponent,
     AddBaseUrlPipe,
+    ComnigSoonCourseIconComponent,
+    SyncCourseIconComponent,
+    AsyncCourseIconComponent,
+    CustomCourseButtonDirective,
+    BookIconComponent,
   ],
   templateUrl: './course-landing-detail.component.html',
   styleUrl: './course-landing-detail.component.css',
@@ -54,9 +63,9 @@ export class CourseLandingDetailComponent {
     this.secondaryCourseService.getSecondaryCourseById(this.secCourseId);
 
   url_base = environment.base;
-  loopList: number[] = [1, 2, 3];
   showIntroVideo: boolean = false;
   url: string = '';
+  studyUnitIdSelected = -1;
 
   youtubeVideo$: Observable<SafeResourceUrl> = this.secondaryCourseData$.pipe(
     map((data) => {

@@ -1,0 +1,16 @@
+span {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 17px;
+    margin: 0px;
+    fill: white;
+  font-family: "plusjakartasans-semibold";
+    cursor: pointer;
+}
+
+p {
+    margin: 0px;
+    font-family: "plusjakartasans-light";
+    padding: 10px 30px;
+}

@@ -1,13 +1,12 @@
-import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { RouterOutlet } from '@angular/router';
-import { CourseAsideComponent } from './courses/course-aside/course-aside.component';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, RouterOutlet, CourseAsideComponent],
+  imports: [HeaderComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

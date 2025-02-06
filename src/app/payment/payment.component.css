@@ -1,0 +1,141 @@
+h1,
+p,
+h2 {
+  margin: 0;
+}
+
+.payment-container {
+  padding: 77px 100px 65px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 131px;
+
+  .payment-method {
+    background-color: #eef3f8;
+    padding: 60px 45px;
+    font-family: "plusjakartasans-semibold";
+
+    .payment-title {
+      font-family: "ruberoid-semibold";
+      margin-inline-start: 15px;
+      font-size: 18px;
+    }
+
+    .payment-method-content {
+      width: 100%;
+      padding: 20px;
+      margin-block: 15px 50px;
+      border-radius: 6px;
+      border: 1px solid var(--Gris-lineas, #cad5da);
+      font-size: 20px;
+
+      .payment-method-description {
+        font-family: "plusjakartasans-light";
+        margin-top: 20px;
+      }
+    }
+
+    .payment-method-qr {
+      display: flex;
+      flex-flow: row nowrap;
+      gap: 30px;
+      font-family: "plusjakartasans-light";
+
+      img {
+        flex-shrink: 0;
+        width: 235px;
+        aspect-ratio: 1/1;
+      }
+
+      .payment-method-name {
+        font-family: "plusjakartasans-semibold";
+        margin-block: 40px 15px;
+      }
+
+      .payment-method-phone {
+        font-family: "plusjakartasans-light";
+      }
+    }
+
+    .payment-method-options-details {
+      .payment-method-options {
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 28px;
+
+        .payment-method-buttons {
+          display: flex;
+          flex-flow: row nowrap;
+          align-items: center;
+          margin-block: 20px;
+          border-radius: 6px;
+          background: white;
+          border: none;
+          padding: 20px 10px;
+          cursor: pointer;
+
+          .payment-method-text {
+            color: #381187;
+            text-align: center;
+            font-family: "ruberoid-medium";
+            font-size: 20px;
+            margin-inline: 10px 15px;
+          }
+        }
+
+        .payment-method-buttons-yape {
+          padding-inline: 40px;
+          gap: 23px;
+        }
+      }
+
+      .payment-terms {
+        font-family: "plusjakartasans-light";
+        font-size: 17px;
+      }
+    }
+  }
+
+  .payment-info {
+    background-color: #eef3f8;
+    padding: 60px 45px;
+    font-family: "plusjakartasans-light";
+    font-size: 20px;
+
+    .payment-info-title {
+      font-family: "ruberoid-semibold";
+      font-size: 30px;
+    }
+
+    .payment-info-subtitle {
+      width: 100%;
+      padding-block: 20px 30px;
+      border-bottom: 1px solid #b4bbbf;
+    }
+
+    .payment-info-description {
+      width: 100%;
+      padding-block: 25px;
+      border-bottom: 1px solid #b4bbbf;
+      margin-bottom: 25px;
+    }
+
+    .payment-info-total {
+      width: 100%;
+      padding: 12px 24px;
+      font-family: "ruberoid-semibold";
+      background-color: transparent;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      font-size: 20px;
+    }
+
+    .payment-info-reminder {
+      font-family: "plusjakartasans-regular";
+      font-size: 16px;
+      color: #989898;
+      margin-block: 15px 40px;
+    }
+  }
+}

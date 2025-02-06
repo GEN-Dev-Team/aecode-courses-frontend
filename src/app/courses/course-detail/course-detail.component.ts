@@ -62,8 +62,7 @@ export class CourseDetailComponent implements OnInit {
   course_id: number = Number(this.route.snapshot.params['courseId']);
   module_id: number = Number(this.route.snapshot.params['moduleId']);
   courseSessionSubject!: ISession;
-  //
-  showBlockedModal = true;
+  showBlockedModal = false;
   userHasAccessToCourse: boolean = true;
   userHasAccessToModule: boolean = true;
   isDescription = true;
