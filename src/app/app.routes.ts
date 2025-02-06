@@ -48,14 +48,14 @@ export const routes: Routes = [
     canActivate: [adminAuthGuard],
   },
   {
-    path: '**',
-    title: 'AECODE COURSES',
-    component: CoursesComponent,
-  },
-  {
     path: 'payment',
     title: 'PAYMENT',
     component: PaymentComponent,
     // canActivate: [adminAuthGuard],
+  },
+  {
+    path: '**',
+    title: 'AECODE COURSES',
+    component: CoursesComponent,
   },
 ];
