@@ -263,6 +263,7 @@
     .row-1 {
       display: grid;
       grid-template-columns: auto 346px;
+      grid-template-rows: 564px auto;
       gap: 32px;
 
       .col-1 {
@@ -272,6 +273,8 @@
 
         .plan-estudio-container {
           margin-bottom: 50px;
+          flex: 1;
+          overflow-y: auto;
 
           .plan-title {
             justify-content: space-between;

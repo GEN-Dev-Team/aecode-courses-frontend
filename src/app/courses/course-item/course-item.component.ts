@@ -19,6 +19,7 @@ import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-ic
 import { ELearningIconComponent } from '../../shared/icons/e-learning-icon/e-learning-icon.component';
 import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/download-kit-icon.component';
 import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
+import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 
 @Component({
   selector: 'app-course-item',
@@ -36,6 +37,7 @@ import { CustomCourseButtonDirective } from '../../shared/directives/custom-cour
     ELearningIconComponent,
     DownloadKitIconComponent,
     CustomCourseButtonDirective,
+    AddBaseUrlPipe,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
@@ -80,18 +82,18 @@ export class CourseItemComponent {
   }
 
   showCourseDetails(course: any) {
-    if (!this.isMasiveCourse) {
+    if (this.isMasiveCourse) {
+      this.browserService.navigateAndScroll(
+        `courses/masive-course-detail/${course.courseId}`,
+        0
+      );
+    } else if (this.course.mode !== 'SINCRONO') {
       {
         this.browserService.navigateAndScroll(
           `courses/secondary-course-detail/${course.seccourseId}`,
           0
         );
       }
-    } else {
-      this.browserService.navigateAndScroll(
-        `courses/masive-course-detail/${course.courseId}`,
-        0
-      );
     }
   }
 

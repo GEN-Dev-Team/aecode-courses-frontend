@@ -11,6 +11,7 @@ import { MessageComponent } from '../../shared/components/message/message.compon
 import { EditIconComponent } from '../../shared/icons/edit-icon/edit-icon.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { AuthService } from '../../core/services/auth.service';
+import { HeaderComponent } from '../../shared/components/header/header.component';
 
 @Component({
   selector: 'app-profile-main-view',
@@ -23,6 +24,7 @@ import { AuthService } from '../../core/services/auth.service';
     MessageComponent,
     EditIconComponent,
     LoaderComponent,
+    HeaderComponent,
   ],
   templateUrl: './profile-main-view.component.html',
   styleUrl: './profile-main-view.component.css',

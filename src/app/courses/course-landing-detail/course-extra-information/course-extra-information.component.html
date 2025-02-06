@@ -39,13 +39,15 @@
 </div>
 
 <div class="question-container">
-  <h2 class="section-title">PREGUNTAS FRECUENTES</h2>
-  <div class="question-content">
-    <ul class="question-list">
-      @for (faqItem of courseFaqs; track faqItem) {
-      <li><app-caret-up-icon /> {{ faqItem.questionText }}</li>
+  <h2 class="question-title">PREGUNTAS FRECUENTES</h2>
+  <div class="question-list">
+    @for (faqItem of courseFaqs; track faqItem) {
+    <app-fap-dropdown-item
+      [faqItem]="faqItem"
+      (questionSelectedEvent)="selectQuestion($event)"
+      [faqIdSelected]="freqQuestIdSelected"
+    />
 
-      }
-    </ul>
+    }
   </div>
 </div>

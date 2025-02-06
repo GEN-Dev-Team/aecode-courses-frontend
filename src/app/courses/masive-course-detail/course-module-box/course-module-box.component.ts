@@ -43,7 +43,6 @@ export class CourseModuleBoxComponent {
       this.authService.getAccessToModule()
     );
 
-    this.courseService.setShowMasiveCourseBackground(false);
     this.browserService.navigateAndScroll(
       `courses/masive-course-detail/${this.course.courseId}/module/${moduleId}`,
       0

@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { CaretUpIconComponent } from '../../../shared/icons/caret-up-icon/caret-up-icon.component';
 import { IFAQ } from '../../interface/secondary-course/FAQ';
 import { environment } from '../../../../environment/environment';
 import { ITool } from '../../interface/secondary-course/Tool';
+import { FapDropdownItemComponent } from './fap-dropdown-item/fap-dropdown-item.component';
 
 @Component({
   selector: 'app-course-extra-information',
   standalone: true,
-  imports: [CaretUpIconComponent],
+  imports: [FapDropdownItemComponent],
   templateUrl: './course-extra-information.component.html',
   styleUrl: './course-extra-information.component.css',
 })
@@ -17,7 +17,13 @@ export class CourseExtraInformationComponent {
   @Input() courseFaqs: IFAQ[] = [];
   @Input() toolList!: ITool[];
 
+  freqQuestIdSelected!: number;
+
   loopList: number[] = [1, 2, 3];
 
   url_base = environment.base;
+
+  selectQuestion(freqQuestId: number) {
+    this.freqQuestIdSelected = freqQuestId;
+  }
 }
