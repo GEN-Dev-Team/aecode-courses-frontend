@@ -1,13 +1,15 @@
 .course-platform-list-container {
   width: 100%;
-  max-width: 1116px;
-  min-height: 413px;
-  padding: 30px 24px;
-  margin-bottom: 30px;
+  min-height: 482px;
+  padding: 30px 32px;
+  margin-bottom: 40px;
   border-radius: 6px;
   border: 1px solid rgba(153, 163, 168, 0.3);
   box-shadow: 0px 0px 6.2px 5px rgba(180, 187, 191, 0.3);
   position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 32px;
 
   .shadow-effect {
     width: 100%;
@@ -21,32 +23,19 @@
     z-index: -1;
   }
 
-  .course-platform-list-content {
+  .masive-course-list-containaer {
+    width: 100%;
     display: flex;
-    min-height: 273px;
-    flex-flow: row nowrap;
     justify-content: center;
-    gap: 27px;
-    align-items: center;
-  }
 
-  .get-free-button {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 30px auto 0;
-    padding: 12px 28px;
-    border-radius: 4px;
-    border: 2px solid #33a3dc;
-    gap: 12px;
-    outline: none;
-    background: var(--purple-2);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    font-size: 16px;
-    font-family: "plusjakartasans-semibold";
-    color: white;
-    cursor: pointer;
+    .course-platform-list-content {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(200px, 1fr));
+      align-items: stretch;
+      gap: 32px;
+      justify-content: space-evenly;
+    }
   }
 }
 
@@ -71,13 +60,6 @@
     .course-platform-list-content {
       flex-flow: column nowrap;
       gap: 10px;
-    }
-
-    .get-free-button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      font-size: 14px;
-      text-wrap: nowrap;
     }
   }
 }

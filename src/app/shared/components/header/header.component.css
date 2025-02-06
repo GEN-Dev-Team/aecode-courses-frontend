@@ -3,7 +3,7 @@
   background-color: var(--gray-3);
   position: fixed;
   top: 0;
-  z-index: 1;
+  z-index: 5;
 
   .box-shadow-effect {
     width: 100%;
@@ -40,81 +40,34 @@
           display: flex;
           flex-flow: row wrap;
           align-items: center;
-          gap: 91px;
+          gap: 50px;
           margin: 0;
+          padding: 0;
+          list-style: none;
 
-          .language-button {
-            display: flex;
-            flex-flow: row wrap;
-            align-items: center;
-            gap: 8px;
-            font-family: "ruberoid-semibold";
-            font-size: 15px;
+          .header-item {
             color: var(--purple-2);
+            font-family: "ruberoid-medium";
+            font-size: 20px;
+            text-decoration: none;
             cursor: pointer;
-
-            :nth-child(1) {
-              display: flex;
-              align-items: center;
-            }
           }
 
-          .user-logged {
-            display: flex;
-            flex-flow: row nowrap;
-            gap: 20px;
-            align-items: center;
+          .cart-icon {
+            width: 25px;
+            cursor: pointer;
+            fill: var(--purple-2);
+          }
 
-            .notification-icon {
-              width: 22px;
-              cursor: pointer;
-            }
+          .notification-icon {
+            width: 33px;
+            cursor: pointer;
+          }
 
-            .separator {
-              width: 1px;
-              height: 44px;
-              background: #8c9295;
-            }
-
-            .user-profile {
-              display: flex;
-              flex-flow: row nowrap;
-              align-items: center;
-              gap: 15px;
-              cursor: pointer;
-              position: relative;
-              z-index: 1;
-
-              .profile-dropdown {
-                position: absolute;
-                right: 0;
-                top: 100%;
-              }
-
-              .user-profile-img-container {
-                width: 44px;
-                height: 44px;
-                border-radius: 50%;
-                border: solid 1px var(--gray-1);
-
-                .user-profile-img {
-                  width: 100%;
-                  aspect-ratio: 1/1;
-                  border-radius: 50%;
-                  object-fit: cover;
-                  object-position: center;
-                }
-              }
-
-              .profile-dropdown-button {
-                color: var(--purple-2);
-                text-align: center;
-                font-size: 9px;
-                font-weight: 450;
-                cursor: pointer;
-                user-select: none;
-              }
-            }
+          .separator {
+            width: 1px;
+            height: 44px;
+            background: #8c9295;
           }
         }
       }
@@ -147,10 +100,6 @@
 
         .header-options {
           .header-list {
-            .language-button {
-              display: flex;
-            }
-
             .user-logged {
               gap: 11px;
 

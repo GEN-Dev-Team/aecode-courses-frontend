@@ -1,37 +1,67 @@
-import { Component, inject } from '@angular/core';
-import { SocialMediaComponent } from './social-media/social-media.component';
+import { Component, inject, OnInit } from '@angular/core';
 import { SendIconComponent } from '../shared/icons/send-icon/send-icon.component';
 import { ModalComponent } from '../shared/components/modal/modal.component';
 import { CourseListComponent } from '../courses/course-list/course-list.component';
 import { FormComponent } from './form/form.component';
 import { BrowserService } from '../core/services/browser.service';
+import { HomeFooterComponent } from './home-footer/home-footer.component';
+import { HomeHeaderComponent } from './home-header/home-header.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    SocialMediaComponent,
     SendIconComponent,
     ModalComponent,
     CourseListComponent,
     FormComponent,
+    HomeFooterComponent,
+    HomeHeaderComponent,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   browserService: BrowserService = inject(BrowserService);
 
   openModal = false;
   openForm = false;
   userMessage = '';
 
-  sendMessage() {
-    const messageInput = this.browserService.getElementById(
-      'message-input'
-    ) as HTMLInputElement;
+  textItems: string[] = [
+    'Modelamiento Paramétrico',
+    'Inteligencia Artificial',
+    'Diseño Generativo',
+    'Programación con Python',
+  ];
 
-    this.openForm = true;
-    this.userMessage = messageInput.value;
+  currentText = this.textItems[0];
+  index = 0;
+  animate = false;
+
+  ngOnInit() {
+    if (this.browserService.isBrowser()) {
+      setInterval(() => {
+        this.animate = true;
+
+        this.index = (this.index + 1) % this.textItems.length;
+        this.currentText = this.textItems[this.index];
+
+        setTimeout(() => {
+          this.animate = false;
+        }, 2000);
+      }, 3000);
+    }
+  }
+
+  sendMessage() {
+    if (this.browserService.isBrowser()) {
+      const messageInput = this.browserService.getElementById(
+        'message-input'
+      ) as HTMLInputElement;
+
+      this.openForm = true;
+      this.userMessage = messageInput.value;
+    }
   }
 }

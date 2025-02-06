@@ -1,14 +1,21 @@
-<div class="unit-item" (click)="openUnit()">
-  <span> {{ studyplanItem.unit }}</span>
-  @if(showDropdownUnit) {
-  <app-caret-up-icon class="icon" />
-  } @else {
-  <app-caret-down-icon class="icon" />
+<div class="unit-item" (click)="sendUnitIdSelected(studyplanItem.studyplanId)">
+  <span>U{{ studyplanItem.studyplanId }}: {{ studyplanItem.unit }}</span>
 
-  }
+  <div class="unit-hours-container">
+    <app-stop-watch-icon />
+
+    <span class="unit-hours">{{ studyplanItem.hours }} horas</span>
+
+    @if(showDropdownUnit) {
+    <app-caret-up-icon class="icon" />
+    } @else {
+    <app-caret-down-icon class="icon" />
+
+    }
+  </div>
 </div>
 
-@if (showDropdownUnit) {
+@if (studyUnitIdSelected === studyplanItem.studyplanId) {
 <ul class="plan-list">
   @for (sessionItem of studyplanItem.sessions; track sessionItem) {
   <li>{{ sessionItem }}</li>

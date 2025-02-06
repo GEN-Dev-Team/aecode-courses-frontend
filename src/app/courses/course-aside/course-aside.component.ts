@@ -3,8 +3,6 @@ import { CaretUpIconLightComponent } from '../../shared/icons/caret-up-icon-ligh
 import { ZoomInDirective } from '../../shared/directives/animations/zoom-in.directive';
 import { PlusIconComponent } from '../../shared/icons/plus-icon/plus-icon.component';
 import { InicioIconComponent } from '../../shared/icons/inicio-icon/inicio-icon.component';
-import { SunIconComponent } from '../../shared/icons/sun-icon/sun-icon.component';
-import { MoonIconComponent } from '../../shared/icons/moon-icon/moon-icon.component';
 import { CaretDownIconLightComponent } from '../../shared/icons/caret-down-icon-light/caret-down-icon-light.component';
 import { ShamanIconComponent } from '../../shared/icons/shaman-icon/shaman-icon.component';
 import { Router } from '@angular/router';
@@ -20,8 +18,6 @@ import { AuthService } from '../../core/services/auth.service';
     ZoomInDirective,
     PlusIconComponent,
     InicioIconComponent,
-    SunIconComponent,
-    MoonIconComponent,
     CaretDownIconLightComponent,
     ShamanIconComponent,
     ProfileIconComponent,
@@ -34,7 +30,6 @@ export class CourseAsideComponent {
   courseService: CourseService = inject(CourseService);
   authService: AuthService = inject(AuthService);
 
-  isDarkTheme: boolean = false;
   showAsideList: boolean = true;
   userId: number = 0;
   itemSelected: number = 0;

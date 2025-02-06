@@ -1,14 +1,31 @@
 <div class="course-list-container">
-  <div class="course-list-title">
-    <span>{{ listTitle }}</span>
-    <span hidden class="see-all-button">Ver todo</span>
-  </div>
-  <div class="course-list-content">
-    @if (secondaryCourseList.length > 0) { @for (secondaryCourseItem of
-    secondaryCourseList; track secondaryCourseItem) {
-    <app-course-item [course]="secondaryCourseItem" />
+  <div class="course-list-header">
+    <h2 class="course-list-title">
+      El poder tecnoló﻿gico del AEC al alcance de un clic
+    </h2>
 
-    } } @else {
+    <app-filter-icon
+      ZoomIn
+      class="filter-icon"
+      (click)="showFilter = !showFilter"
+    />
+
+    @if(showFilter) {
+    <app-course-filter-dropdown (filterMode)="emitFilterMode($event)" />
+
+    }
+  </div>
+  <div class="sec-course-list-container">
+    @if (secondaryCourseList.length > 0) {
+    <div class="course-list-content">
+      @for (secondaryCourseItem of secondaryCourseList; track
+      secondaryCourseItem) {
+      <app-course-item [course]="secondaryCourseItem" />
+
+      }
+    </div>
+
+    } @else {
     <app-loader />
     }
   </div>

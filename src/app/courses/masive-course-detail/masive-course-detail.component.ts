@@ -29,12 +29,4 @@ export class MasiveCourseDetailComponent {
   urlCourseId: number = Number(this.route.snapshot.params['courseId']);
 
   course$: Observable<ICourse> = this.courseService.getCourse(this.urlCourseId);
-
-  ngOnInit(): void {
-    this.courseService.setShowMasiveCourseBackground(true);
-  }
-
-  ngOnDestroy(): void {
-    this.courseService.setShowMasiveCourseBackground(false);
-  }
 }

@@ -3,4 +3,6 @@ export const environment = {
   base: 'https://backend-productodigital.onrender.com',
   // production: false,
   // base: 'https://webcoursesback-26hk.onrender.com',
+  // production: false,
+  // base: 'http://localhost:8081',
 };

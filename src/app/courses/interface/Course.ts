@@ -5,6 +5,7 @@ export interface ICourse {
   courseId: number;
   title: string;
   subtitle: string;
+  description: string;
   coverimage: string;
   moduleimage: string;
   gift: string;
@@ -15,12 +16,14 @@ export interface ICourse {
   modules: IModule[];
   tools: ITool[];
   urlkit: string;
+  courseOrder: number;
 }
 
 export const defaultCourse: ICourse = {
   courseId: 0,
   title: '',
   subtitle: '',
+  description: '',
   coverimage: '',
   moduleimage: '',
   gift: '',
@@ -31,4 +34,5 @@ export const defaultCourse: ICourse = {
   modules: [],
   tools: [],
   urlkit: '',
+  courseOrder: 0,
 };

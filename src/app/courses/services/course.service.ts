@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environment/environment';
 import { ICourse } from '../interface/Course';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { IModule } from '../interface/Module';
 
 const base_url = environment.base;
@@ -16,30 +16,12 @@ export class CourseService {
 
   http: HttpClient = inject(HttpClient);
 
-  showMasiveCourseBackground = new BehaviorSubject<boolean>(false);
-  masiveCourseBackgroundGift = new BehaviorSubject<string>('');
-
-  showMasiveCourseBackground$ = this.showMasiveCourseBackground.asObservable();
-  masiveCourseBackgroundGift$ = this.masiveCourseBackgroundGift.asObservable();
-
-  setShowMasiveCourseBackground(state: boolean) {
-    this.showMasiveCourseBackground.next(state);
-  }
-
-  getShowMasiveCourseBackground() {
-    return this.showMasiveCourseBackground.getValue();
-  }
-
-  setMasiveCourseBackgroundGift(gift: string) {
-    this.masiveCourseBackgroundGift.next(gift);
-  }
-
-  getMasiveCourseBackgroundGift() {
-    return this.masiveCourseBackgroundGift.getValue();
-  }
-
   getCourses() {
-    return this.http.get<ICourse[]>(`${this.api_url}`);
+    return this.http
+      .get<ICourse[]>(`${this.api_url}`)
+      .pipe(
+        map((courses) => courses.sort((a, b) => a.courseOrder - b.courseOrder))
+      );
   }
 
   getCourse(id: number) {

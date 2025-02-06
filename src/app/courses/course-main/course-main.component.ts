@@ -8,11 +8,6 @@ import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course
 import { Observable } from 'rxjs';
 import { FadeOutDirective } from '../../shared/directives/animations/fade-out.directive';
 
-interface listToRender {
-  id: number;
-  name: string;
-  list: ISecondaryCourse[];
-}
 @Component({
   selector: 'app-course-main',
   standalone: true,
@@ -31,32 +26,21 @@ export class CourseMainComponent implements OnInit {
     SecondaryCourseService
   );
 
-  coursesList: listToRender[] = [
-    { id: 2, name: 'CURSOS - ENERO', list: [] },
-    { id: 3, name: 'CURSOS - FEBRERO', list: [] },
-    { id: 1, name: 'CURSOS PRÓXIMOS', list: [] },
-  ];
-
-  filteredCoursesList: listToRender[] = [];
+  filterValue: string = '';
+  coursesList: ISecondaryCourse[] = [];
+  filteredCoursesList: ISecondaryCourse[] = [];
 
   secondaryCourseList$: Observable<ISecondaryCourse[]> =
     this.secondaryCourseService.getAllSecondaryCourses();
 
   ngOnInit(): void {
     this.secondaryCourseList$.subscribe((data) => {
-      const asyncCourses = data.filter((course) => course.mode === 'ASINCRONO');
-      const syncCourses = data.filter((course) => course.mode === 'EN_VIVO');
-      const comingSoonCourses = data.filter(
-        (course) => course.mode === 'SINCRONO'
-      );
+      this.coursesList = data;
 
-      this.coursesList[0].list = asyncCourses;
-      this.coursesList[1].list = syncCourses;
-      this.coursesList[2].list = comingSoonCourses;
-
-      // Inicializamos la lista filtrada con los valores originales
       this.resetFilteredCourses();
     });
+
+    console.log(this.coursesList);
   }
 
   onSearch(event: Event): void {
@@ -67,20 +51,26 @@ export class CourseMainComponent implements OnInit {
       return;
     }
 
-    // Filtrar listas por coincidencia en el título de los cursos
-    this.filteredCoursesList = this.coursesList
-      .map((group) => ({
-        ...group,
-        list: group.list.filter((course) =>
-          course.title.toLowerCase().includes(searchTerm)
-        ),
-      }))
-      .filter((group) => group.list.length > 0); // Elimina grupos vacíos
+    this.filteredCoursesList = this.coursesList.filter((course) =>
+      course.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     console.log(this.filteredCoursesList);
   }
 
   private resetFilteredCourses(): void {
     this.filteredCoursesList = JSON.parse(JSON.stringify(this.coursesList));
+  }
+
+  filterByMode(value: string) {
+    if (value !== 'all') {
+      this.filteredCoursesList = this.coursesList.filter(
+        (course) => course.mode === value
+      );
+    } else {
+      this.resetFilteredCourses();
+    }
+
+    console.log(this.filteredCoursesList);
   }
 }
