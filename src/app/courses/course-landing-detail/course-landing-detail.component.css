@@ -247,6 +247,7 @@
       display: flex;
       flex-flow: column nowrap;
       gap: 0;
+      overflow-y: auto;
     }
 
     .section-description {
@@ -274,7 +275,9 @@
         .plan-estudio-container {
           margin-bottom: 50px;
           flex: 1;
-          overflow-y: auto;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
 
           .plan-title {
             justify-content: space-between;
