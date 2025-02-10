@@ -5,41 +5,39 @@
     <div class="investDetail">
       <div class="invest-item">
         <span> Precio regular: </span>
-        <span> {{ priceRegular }}$ </span>
+        <span> {{ course.priceRegular }}$ </span>
       </div>
 
       <div class="invest-item">
         <span> Descuento: </span>
-        {{ (discount * priceRegular) / 100 | number : "1.0-0" }}$
+        @if(course.isOnSale && course.discountPercentage > 0) {
+        {{
+          course.discountPercentage * course.priceRegular | number : "1.0-0"
+        }}% } @else { 0 }
       </div>
 
       <div class="invest-item">
         <span> Total: </span>
-        {{ promptPaymentPrice | number : "1.0-0" }}$
+        @if(course.isOnSale){
+        {{ discountedPrice | number : "1.0-0" }}
+        } @else {
+        {{ course.priceRegular | number : "1.0-0" }}
+        } $
       </div>
     </div>
 
-    <a
-      class="invest-button"
-      target="_blank"
-      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Me gustaría adquirir el programa de *&quot;{{
-        courseTitle
-      }}&quot;* a un costo de {{
-        promptPaymentPrice
-      }} USD. ¿Podrías indicarme como proceder?"
-      ><app-shopping-cart-icon class="shop-cart-icon" /> AÑADIR AL CARRITO</a
-    >
+    <button class="invest-button" (click)="goToPay()">
+      <app-shopping-cart-icon class="shop-cart-icon" /> Comprar ahora
+    </button>
 
     <span class="invest-question">¿BUSCAS ASESORIA PERSONALIZADA?</span>
 
-    <p class="invest-description">¿BUSCAS ASESORIA PERSONALIZADA?</p>
+    <p class="invest-description">Para una guía exclusiva:</p>
 
     <a
       class="invest-whatsapp-button"
       target="_blank"
-      href="https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. Necesito informaci%C3%B3n para poder fraccionar el programa de *&quot;{{
-        courseTitle
-      }}&quot;*  en cuotas."
+      href="{{ wsspMessageConsultar }}"
     >
       Consultar con un asesor
       <div class="whatsapp-button">

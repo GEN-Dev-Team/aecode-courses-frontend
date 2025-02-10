@@ -6,7 +6,7 @@
 
     <span class="unit-hours">{{ studyplanItem.hours }} horas</span>
 
-    @if(showDropdownUnit) {
+    @if(studyUnitIdSelected === studyplanItem.studyplanId) {
     <app-caret-up-icon class="icon" />
     } @else {
     <app-caret-down-icon class="icon" />

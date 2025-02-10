@@ -51,8 +51,7 @@
         {{ course.startDate }}
         }
       </div>
-      }
-
+      } @if(!isMasiveCourse) {
       <div
         class="course-tags-cointainer"
         [class.static-course-icons]="isMasiveCourse"
@@ -60,6 +59,7 @@
         <app-course-session-icon class="icon" />
         CERTIFICADO POR {{ course.certificateHours }} HRS
       </div>
+      }
     </div>
   </div>
 
@@ -115,13 +115,16 @@
           [courseId]="course.courseId"
           (click)="goToPay($event)"
         >
-          <app-shopping-cart-icon class="shop-cart-icon" /> @if (isMasiveCourse)
-          { Añadir al carrito} @else {Añadir}
+          @if (isMasiveCourse) {
+          <app-whatsapp-icon class="wssp-icon" /> Solicitar información } @else
+          {
+
+          <app-shopping-cart-icon class="shop-cart-icon" /> Comprar}
           <span>
-            @if(course.isOnSale && course.discountPercentage > 0) { ${{
-              discountPrice()
+            @if(course.isOnSale) {
+            {{ discountPrice() }} } @else if( !isMasiveCourse){ ${{
+              course.priceRegular | number : "1.0-0"
             }}
-            } @else { ${{ course.priceRegular | number : "1.0-0" }}
             }
           </span>
         </button>

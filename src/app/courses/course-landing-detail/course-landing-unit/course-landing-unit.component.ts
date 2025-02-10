@@ -20,13 +20,13 @@ export class CourseLandingUnitComponent {
   @Input() studyUnitIdSelected!: number;
   @Output() emitUnitIdSelected = new EventEmitter<number>();
 
-  showDropdownUnit: boolean = false;
+  ngOnInit(): void {
+    if (this.studyplanItem.studyplanId === 1) {
+      this.sendUnitIdSelected(this.studyplanItem.studyplanId);
+    }
+  }
 
   sendUnitIdSelected(unitId: number) {
-    if (unitId !== this.studyUnitIdSelected) {
-      this.emitUnitIdSelected.emit(unitId);
-    } else {
-      this.emitUnitIdSelected.emit(-1);
-    }
+    this.emitUnitIdSelected.emit(unitId);
   }
 }

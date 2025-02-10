@@ -28,6 +28,9 @@ export class HomeComponent implements OnInit {
   openForm = false;
   userMessage = '';
 
+  wsspMessage =
+    'https://api.whatsapp.com/send?phone=51900121245&text=Hola AECODE, quisiera conocer más detalles de los programas e iniciativas de colaboración que cuentan. Quiero contactar con un asesor.';
+
   textItems: string[] = [
     'Modelamiento Paramétrico',
     'Inteligencia Artificial',

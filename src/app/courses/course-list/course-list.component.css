@@ -40,9 +40,7 @@
       width: 100%;
       display: grid;
       grid-template-columns: repeat(3, minmax(200px, 1fr));
-      align-items: stretch;
       justify-content: center;
-      flex: 1;
       gap: 20px 32px;
       padding-bottom: 30px;
     }
