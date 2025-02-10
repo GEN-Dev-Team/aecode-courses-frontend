@@ -20,5 +20,8 @@ import { HeaderComponent } from '../../components/header/header.component';
 export class CourseOverlayComponent {
   courseService: CourseService = inject(CourseService);
 
+  wsspMessage =
+    'https://api.whatsapp.com/send?phone=51900121245&text=Hola AECODE, quisiera conocer más detalles de los programas e iniciativas de colaboración que cuentan. Quiero contactar con un asesor.';
+
   isDarkTheme: boolean = false;
 }

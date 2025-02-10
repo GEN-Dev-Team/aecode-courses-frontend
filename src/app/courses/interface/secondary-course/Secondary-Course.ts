@@ -28,7 +28,7 @@ export interface ISecondaryCourse {
   studyplans: IStudyPlan[];
   coupons: ICoupon[];
   freqquests: IFAQ[];
-  requeriments: string[];
+  requirements: string[];
   mode: string;
 }
 
@@ -57,6 +57,6 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   studyplans: [],
   coupons: [],
   freqquests: [],
-  requeriments: [],
+  requirements: [],
   mode: '',
 };

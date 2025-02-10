@@ -17,7 +17,6 @@ export class CustomCourseButtonDirective {
 
   private updateClasses() {
     const element = this.el.nativeElement;
-    element.classList.add('course-item-button');
 
     if (this.mode === 'ASINCRONO') element.classList.add('async-course-button');
     if (this.mode === 'SINCRONO')

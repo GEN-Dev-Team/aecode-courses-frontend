@@ -96,7 +96,10 @@
             >
           </div>
 
+          @if (url) {
           <app-play-icon class="play-icon" />
+
+          }
         </div>
       </div>
     </div>
@@ -138,7 +141,7 @@
             <h2 class="section-title">REQUISITOS</h2>
             <div class="requirements-content">
               <ul class="requirements-list">
-                @for(requeriment of secondaryCourseData.requeriments; track
+                @for(requeriment of secondaryCourseData.requirements; track
                 requeriment) {
                 <li>{{ requeriment }}</li>
 
@@ -148,12 +151,7 @@
           </div>
         </div>
 
-        <app-course-invest
-          [priceRegular]="secondaryCourseData.priceRegular"
-          [discount]="secondaryCourseData.discountPercentage"
-          [promptPaymentPrice]="secondaryCourseData.promptPaymentPrice"
-          [courseTitle]="secondaryCourseData.title"
-        />
+        <app-course-invest [course]="secondaryCourseData" />
       </div>
 
       <app-course-extra-information

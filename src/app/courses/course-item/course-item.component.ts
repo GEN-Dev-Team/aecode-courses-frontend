@@ -20,6 +20,7 @@ import { ELearningIconComponent } from '../../shared/icons/e-learning-icon/e-lea
 import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/download-kit-icon.component';
 import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
+import { WhatsappIconComponent } from '../../shared/icons/whatsapp-icon/whatsapp-icon.component';
 
 @Component({
   selector: 'app-course-item',
@@ -38,6 +39,7 @@ import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
     DownloadKitIconComponent,
     CustomCourseButtonDirective,
     AddBaseUrlPipe,
+    WhatsappIconComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
@@ -56,11 +58,16 @@ export class CourseItemComponent {
   finalPrice = signal(0);
 
   discountPrice = computed(() => {
-    const priceDiscounted = Math.round(
-      (this.course.priceRegular * (100 - this.course.discountPercentage)) / 100
-    );
+    if (this.course.isOnSale && this.course.discountPercentage > 0) {
+      const priceDiscounted = Math.round(
+        (this.course.priceRegular * (100 - this.course.discountPercentage)) /
+          100
+      );
 
-    return priceDiscounted;
+      return priceDiscounted;
+    } else {
+      return this.course.priceRegular;
+    }
   });
 
   ngOnInit() {
@@ -83,11 +90,13 @@ export class CourseItemComponent {
 
   showCourseDetails(course: any) {
     if (this.isMasiveCourse) {
+      return;
+
       this.browserService.navigateAndScroll(
         `courses/masive-course-detail/${course.courseId}`,
         0
       );
-    } else if (this.course.mode !== 'SINCRONO') {
+    } else {
       {
         this.browserService.navigateAndScroll(
           `courses/secondary-course-detail/${course.seccourseId}`,
@@ -100,14 +109,34 @@ export class CourseItemComponent {
   downloadKit(event: Event) {
     if (this.isMasiveCourse) {
       event.stopPropagation();
-      if (this.isMasiveCourse && this.course.urlkit) {
-        console.log(this.course.urlkit);
+      if (
+        this.browserService.isBrowser() &&
+        this.isMasiveCourse &&
+        this.course.urlkit
+      ) {
+        window.open(this.course.urlkit, '_blank');
       }
     }
   }
 
   goToPay(event: Event) {
     event.stopPropagation();
+
+    const message = `Hola AECODE. Me gustaría adquirir el programa de "${
+      this.course.title
+    } - ${
+      this.course.module
+    }" a un costo de ${this.discountPrice()} USD. ¿Podrías indicarme cómo proceder?`;
+
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=51900121245&text=${encodeURIComponent(
+      message
+    )}`;
+
+    if (this.browserService.isBrowser()) {
+      window.open(whatsappUrl, '_blank');
+    }
+
+    return;
 
     const price = this.discountPrice();
 
