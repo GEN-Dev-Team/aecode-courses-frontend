@@ -3,5 +3,6 @@ export interface IStudyPlan {
   seccourseId: number;
   unit: string;
   hours: number;
+  orderNumber: number;
   sessions: String[];
 }
