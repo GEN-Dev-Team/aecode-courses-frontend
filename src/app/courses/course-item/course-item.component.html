@@ -132,3 +132,10 @@
     </div>
   </div>
 </div>
+
+<app-modal [isOpen]="showBlockedModal" (isClosed)="showBlockedModal = $event">
+  <app-content-blocked
+    [message]="message"
+    (isClosed)="showBlockedModal = $event"
+  ></app-content-blocked>
+</app-modal>

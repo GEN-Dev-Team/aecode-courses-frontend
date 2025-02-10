@@ -21,6 +21,8 @@ import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/d
 import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 import { WhatsappIconComponent } from '../../shared/icons/whatsapp-icon/whatsapp-icon.component';
+import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
+import { ModalComponent } from '../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-course-item',
@@ -40,6 +42,8 @@ import { WhatsappIconComponent } from '../../shared/icons/whatsapp-icon/whatsapp
     CustomCourseButtonDirective,
     AddBaseUrlPipe,
     WhatsappIconComponent,
+    ContentBlockedComponent,
+    ModalComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
@@ -56,6 +60,8 @@ export class CourseItemComponent {
   secondaryCourseMainImgUrl = '';
   secondaryCourseSessions: number = 0;
   finalPrice = signal(0);
+  showBlockedModal = false;
+  message = '';
 
   discountPrice = computed(() => {
     if (this.course.isOnSale && this.course.discountPercentage > 0) {
@@ -90,6 +96,9 @@ export class CourseItemComponent {
 
   showCourseDetails(course: any) {
     if (this.isMasiveCourse) {
+      this.message = `El contenido del programa "${this.course.title}" estará disponible próximamente.`;
+      this.showBlockedModal = true;
+
       return;
 
       this.browserService.navigateAndScroll(
@@ -121,12 +130,17 @@ export class CourseItemComponent {
 
   goToPay(event: Event) {
     event.stopPropagation();
+    let message = '';
 
-    const message = `Hola AECODE. Me gustaría adquirir el programa de "${
-      this.course.title
-    } - ${
-      this.course.module
-    }" a un costo de ${this.discountPrice()} USD. ¿Podrías indicarme cómo proceder?`;
+    if (this.isMasiveCourse) {
+      message = `Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.course.title}".`;
+    } else {
+      message = `Hola AECODE. Me gustaría adquirir el programa de "${
+        this.course.title
+      } - ${
+        this.course.module
+      }" a un costo de ${this.discountPrice()} USD. ¿Podrías indicarme cómo proceder?`;
+    }
 
     const whatsappUrl = `https://api.whatsapp.com/send?phone=51900121245&text=${encodeURIComponent(
       message
