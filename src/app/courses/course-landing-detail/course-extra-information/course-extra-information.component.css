@@ -91,6 +91,15 @@
   }
 }
 
+@keyframes slider {
+  from {
+    transform: translateX(5%);
+  }
+  to {
+    transform: translateX(-88%);
+  }
+}
+
 .question-container {
   width: 100%;
   border-radius: 6px;

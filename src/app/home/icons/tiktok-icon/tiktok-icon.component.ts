@@ -11,7 +11,6 @@ import { Component } from '@angular/core';
       height="22"
       viewBox="0 0 23 22"
       fill="none"
-      class="icon"
     >
       <path
         fill-rule="evenodd"
@@ -22,11 +21,7 @@ import { Component } from '@angular/core';
     </svg>
   `,
   styles: `
-    .icon{ 
-      display: flex;
-      align-items: center;
-      justify-content:center;
-    }
+
   `,
 })
 export class TiktokIconComponent {}
