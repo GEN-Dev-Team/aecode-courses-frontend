@@ -56,8 +56,9 @@
           </div>
         </div>
 
-        <div class="video-container" (click)="showCourseVideo()">
+        <div class="video-container">
           <img
+            (click)="showCourseVideo()"
             class="course-video"
             src="{{ secondaryCourseData.principalimage | addBaseUrl }}"
             alt=""
@@ -91,7 +92,7 @@
             ><a
               class="access-button"
               target="_blank"
-              href="{{ secondaryCourseData.brochureUrl }}"
+              href="{{ secondaryCourseData.whatsappGroupLink }}"
               >GRUPOS DE WHATSAPP</a
             >
           </div>
