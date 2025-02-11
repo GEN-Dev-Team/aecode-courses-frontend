@@ -6,7 +6,7 @@
 
     <span class="unit-hours">{{ studyplanItem.hours }} horas</span>
 
-    @if(studyUnitIdSelected === studyplanItem.studyplanId) {
+    @if(studyOrderNumberSelected === studyplanItem.studyplanId) {
     <app-caret-up-icon class="icon" />
     } @else {
     <app-caret-down-icon class="icon" />
@@ -15,7 +15,7 @@
   </div>
 </div>
 
-@if (studyUnitIdSelected === studyplanItem.studyplanId) {
+@if (studyOrderNumberSelected === studyplanItem.studyplanId) {
 <ul class="plan-list">
   @for (sessionItem of studyplanItem.sessions; track sessionItem) {
   <li>{{ sessionItem }}</li>

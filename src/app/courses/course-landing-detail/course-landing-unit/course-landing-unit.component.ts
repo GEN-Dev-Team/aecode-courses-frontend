@@ -17,16 +17,20 @@ import { StopWatchIconComponent } from '../../../shared/icons/stop-watch-icon/st
 })
 export class CourseLandingUnitComponent {
   @Input() studyplanItem!: IStudyPlan;
-  @Input() studyUnitIdSelected!: number;
+  @Input() studyOrderNumberSelected!: number;
   @Output() emitUnitIdSelected = new EventEmitter<number>();
 
   ngOnInit(): void {
-    if (this.studyplanItem.studyplanId === 1) {
-      this.sendUnitIdSelected(this.studyplanItem.studyplanId);
+    if (this.studyplanItem.orderNumber === 1) {
+      this.emitUnitIdSelected.emit(this.studyplanItem.orderNumber);
     }
   }
 
-  sendUnitIdSelected(unitId: number) {
-    this.emitUnitIdSelected.emit(unitId);
+  sendUnitIdSelected(orderId: number) {
+    if (this.studyOrderNumberSelected === orderId) {
+      this.emitUnitIdSelected.emit(-1);
+    } else {
+      this.emitUnitIdSelected.emit(orderId);
+    }
   }
 }
