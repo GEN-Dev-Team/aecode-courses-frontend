@@ -1,4 +1,4 @@
-<div class="unit-item" (click)="sendUnitIdSelected(studyplanItem.studyplanId)">
+<div class="unit-item" (click)="sendUnitIdSelected(studyplanItem.orderNumber)">
   <span>U{{ studyplanItem.orderNumber }}: {{ studyplanItem.unit }}</span>
 
   <div class="unit-hours-container">
@@ -6,7 +6,7 @@
 
     <span class="unit-hours">{{ studyplanItem.hours }} horas</span>
 
-    @if(studyOrderNumberSelected === studyplanItem.studyplanId) {
+    @if(studyOrderNumberSelected === studyplanItem.orderNumber) {
     <app-caret-up-icon class="icon" />
     } @else {
     <app-caret-down-icon class="icon" />
@@ -15,7 +15,7 @@
   </div>
 </div>
 
-@if (studyOrderNumberSelected === studyplanItem.studyplanId) {
+@if (studyOrderNumberSelected === studyplanItem.orderNumber) {
 <ul class="plan-list">
   @for (sessionItem of studyplanItem.sessions; track sessionItem) {
   <li>{{ sessionItem }}</li>
