@@ -4,7 +4,7 @@ const path = require("path");
 async function getSecondaryCourseIds() {
   try {
     const response = await fetch(
-      "https://webcoursesback-26hk.onrender.com/secondarycourses"
+      "https://backend-productodigital.onrender.com/secondarycourses"
     );
     const courses = await response.json();
     return courses.map((course) => course.seccourseId);
@@ -17,10 +17,10 @@ async function getSecondaryCourseIds() {
 async function getMasiveCourseIds() {
   try {
     const response = await fetch(
-      "https://webcoursesback-26hk.onrender.com/course"
+      "https://backend-productodigital.onrender.com/course"
     );
     const courses = await response.json();
-    return courses.map((course) => course.secCourseId);
+    return courses.map((course) => course.courseId);
   } catch (error) {
     console.error("Error fetching masive course IDs:", error);
     return [];
@@ -30,7 +30,7 @@ async function getMasiveCourseIds() {
 async function getUserIds() {
   try {
     const response = await fetch(
-      "https://webcoursesback-26hk.onrender.com/userprofile/list"
+      "https://backend-productodigital.onrender.com/userprofile/list"
     );
     const users = await response.json();
     return users.map((user) => user.userId);

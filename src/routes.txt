@@ -1,4 +1,13 @@
 /courses
 /admin-panel
 /payment
+/courses/secondary-course-detail/3
+/courses/secondary-course-detail/2
 /courses/secondary-course-detail/1
+/courses/secondary-course-detail/4
+/courses/secondary-course-detail/5
+/courses/secondary-course-detail/9
+/courses/masive-course-detail/2
+/courses/masive-course-detail/1
+/profile/4
+/profile/5
