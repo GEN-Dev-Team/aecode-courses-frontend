@@ -4,6 +4,7 @@
   "scripts": {
     "generate-routes": "node generate-routes.js",
     "prerender": "bun run generate-routes && ng build --configuration=production",
+    "prerender-dev": "bun run generate-routes && ng build --configuration=development",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
