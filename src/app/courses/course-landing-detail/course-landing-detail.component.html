@@ -7,24 +7,23 @@
 
     <div class="course-landing-presentation">
       <div class="program-modules-container">
+        @for (moduleButton of moduleButtons; track moduleButton) {
         <button
           class="module-item"
-          [class.module-selected]="secondaryCourseData.module == 'Módulo 1'"
+          [class.module-selected]="
+            secondaryCourseData.module === moduleButton.name
+          "
+          (click)="
+            goToCourseModule(
+              moduleButton.name,
+              secondaryCourseData.programTitle
+            )
+          "
         >
-          Módulo 1
+          {{ moduleButton.name }}
         </button>
-        <button
-          class="module-item"
-          [class.module-selected]="secondaryCourseData.module == 'Módulo 2'"
-        >
-          Módulo 2
-        </button>
-        <button
-          class="module-item"
-          [class.module-selected]="secondaryCourseData.module == 'Módulo 3'"
-        >
-          Módulo 3
-        </button>
+
+        }
       </div>
 
       <div class="course-landing-presentation-box">
@@ -115,7 +114,7 @@
                 <div class="tag-item">
                   <app-watch-icon class="watch-icon" />
                   @if (courseHoursNumber$ | async; as units) {
-                  {{ units }} hrs }
+                  {{ units }} horas }
                 </div>
 
                 <div class="tag-item">
@@ -180,3 +179,10 @@
   <app-loader />
   }
 </app-course-overlay>
+
+<app-modal [isOpen]="showMessageError" (isClosed)="showMessageError = $event">
+  <app-content-blocked
+    [message]="errorMessage"
+    (isClosed)="showMessageError = $event"
+  />
+</app-modal>

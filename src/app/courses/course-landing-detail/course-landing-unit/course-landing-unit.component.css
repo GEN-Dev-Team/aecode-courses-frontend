@@ -26,10 +26,10 @@
   .unit-hours-container {
     display: flex;
     flex-direction: row;
+    align-items: center;
 
     .unit-hours {
       font-family: "plusjakartasans-semibold";
-      font-size: 20px;
       margin-inline: 11px 21px;
       text-wrap: nowrap;
     }
