@@ -33,6 +33,7 @@
         border-radius: 4px;
         border: 1px solid #381187;
         background-color: transparent;
+        cursor: pointer;
       }
 
       .module-selected {

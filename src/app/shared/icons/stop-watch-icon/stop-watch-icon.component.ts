@@ -21,7 +21,7 @@ import { Component } from '@angular/core';
   `,
   styles: `
   .icon{
-    displauy: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
   }`,
