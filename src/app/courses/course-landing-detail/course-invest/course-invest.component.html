@@ -12,21 +12,31 @@
         <span> Descuento: </span>
         @if(course.isOnSale && course.discountPercentage > 0) {
         {{
-          course.discountPercentage * course.priceRegular | number : "1.0-0"
-        }}% } @else { 0 }
+          (course.discountPercentage * course.priceRegular) / 100
+            | number : "1.0-0"
+        }}
+        } @else { 0 } $
       </div>
 
       <div class="invest-item">
         <span> Total: </span>
-        @if(course.isOnSale){
-        {{ discountedPrice | number : "1.0-0" }}
+        @if(course.isOnSale && course.discountPercentage > 0){
+        {{
+          course.priceRegular * (1 - course.discountPercentage / 100)
+            | number : "1.0-0"
+        }}
         } @else {
         {{ course.priceRegular | number : "1.0-0" }}
         } $
       </div>
     </div>
 
-    <button class="invest-button" (click)="goToPay()">
+    <button
+      class="invest-button"
+      (click)="
+        goToPay(course.priceRegular * (1 - course.discountPercentage / 100))
+      "
+    >
       <app-shopping-cart-icon class="shop-cart-icon" /> Comprar ahora
     </button>
 
