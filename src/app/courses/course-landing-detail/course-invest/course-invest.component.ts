@@ -15,22 +15,14 @@ export class CourseInvestComponent {
 
   @Input() course: any = {};
 
-  finalPriceRegular: number = 0;
-
-  discountedPrice =
-    (this.course.priceRegular * (100 - this.course.discountPercentage)) / 100;
-
   wsspMessageConsultar = `Quiero contactar con un asesor para mas información del modulo ${this.course.title}.`;
 
-  ngOnInit(): void {
-    this.finalPriceRegular = Math.round(
-      this.course.priceRegular -
-        (this.course.priceRegular * this.course.discount) / 100
-    );
-  }
-
-  goToPay() {
-    const message = `Me gustaría adquirir el programa de "${this.course.title} - ${this.course.module}" a un costo de ${this.discountedPrice} USD. ¿Podrías indicarme como proceder?`;
+  goToPay(dicountedPrice: number) {
+    const message = `Me gustaría adquirir el programa de "${
+      this.course.title
+    } - ${this.course.module}" a un costo de ${Math.round(
+      dicountedPrice
+    )} USD. ¿Podrías indicarme como proceder?`;
 
     const deafulMessage = `Me gustaría adquirir el programa de "${this.course.title} - ${this.course.module}" a un costo de ${this.course.priceRegular} USD. ¿Podrías indicarme como proceder?`;
 
