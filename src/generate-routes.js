@@ -51,11 +51,11 @@ async function generateRoutes() {
   routes.push("/payment");
 
   secCourseIds.forEach((id) => {
-    routes.push(`/courses/secondary-course-detail/${id}`);
+    routes.push(`/courses/module/${id}`);
   });
 
   masiveCourseIds.forEach((id) => {
-    routes.push(`/courses/masive-course-detail/${id}`);
+    routes.push(`/courses/e-learning/${id}`);
   });
 
   userIds.forEach((id) => {
