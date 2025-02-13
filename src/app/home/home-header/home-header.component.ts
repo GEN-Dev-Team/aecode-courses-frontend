@@ -35,6 +35,6 @@ export class HomeHeaderComponent {
     }
   }
   redirectToCoursesView() {
-    this.route.navigate(['/courses']);
+    this.route.navigate(['/training']);
   }
 }

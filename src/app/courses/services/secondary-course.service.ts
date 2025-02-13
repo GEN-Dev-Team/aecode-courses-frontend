@@ -6,6 +6,7 @@ import {
   ISecondaryCourse,
 } from '../interface/secondary-course/Secondary-Course';
 import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
+import { off } from 'process';
 
 @Injectable({
   providedIn: 'root',
@@ -46,5 +47,11 @@ export class SecondaryCourseService {
           return throwError(() => error);
         })
       );
+  }
+
+  getPaginatedSecCoursesList(pageSize: number, offsetCourseId: number) {
+    return this.http.get<ISecondaryCourse[]>(
+      `${this.api_url}/paginatedList?limit=${pageSize}&offsetCourseId=${offsetCourseId}`
+    );
   }
 }

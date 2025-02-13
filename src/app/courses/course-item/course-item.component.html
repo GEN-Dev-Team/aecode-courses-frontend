@@ -121,10 +121,8 @@
 
           <app-shopping-cart-icon class="shop-cart-icon" /> Comprar}
           <span>
-            @if(course.isOnSale) {
-            {{ discountPrice() }} } @else if( !isMasiveCourse){ ${{
-              course.priceRegular | number : "1.0-0"
-            }}
+            @if(course.isOnSale) { ${{ discountPrice() }} } @else if(
+            !isMasiveCourse){ ${{ course.priceRegular | number : "1.0-0" }}
             }
           </span>
         </button>

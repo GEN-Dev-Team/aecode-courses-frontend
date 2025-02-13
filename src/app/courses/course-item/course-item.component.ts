@@ -102,13 +102,13 @@ export class CourseItemComponent {
       return;
 
       this.browserService.navigateAndScroll(
-        `courses/masive-course-detail/${course.courseId}`,
+        `training/e-learning/${course.courseId}`,
         0
       );
     } else {
       {
         this.browserService.navigateAndScroll(
-          `courses/secondary-course-detail/${course.seccourseId}`,
+          `training/module/${course.seccourseId}`,
           0
         );
       }

@@ -40,7 +40,7 @@ export class HeaderComponent {
   }
 
   redirectToCoursesView() {
-    this.route.navigate(['/courses']);
+    this.route.navigate(['/training']);
   }
 
   redirectToCartView() {
