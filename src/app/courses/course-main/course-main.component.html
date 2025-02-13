@@ -24,6 +24,8 @@
       (filterMode)="filterValue = $event"
       (filterMode)="filterByMode($event)"
       [secondaryCourseList]="filteredCoursesList"
+      [paginatorPages]="paginatorPages"
+      (nextPage)="paginateCourseList($event)"
     />
   </div>
 </main>

@@ -29,4 +29,9 @@
     <app-loader />
     }
   </div>
+
+  <app-course-paginator
+    (nextPage)="emiteChangeNextPage($event)"
+    [totalPages]="paginatorPages"
+  />
 </div>

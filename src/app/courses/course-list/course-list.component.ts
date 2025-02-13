@@ -5,6 +5,7 @@ import { LoaderComponent } from '../../shared/components/loader/loader.component
 import { FilterIconComponent } from '../../admin-panel/icons/filter-icon/filter-icon.component';
 import { CourseFilterDropdownComponent } from './course-filter-dropdown/course-filter-dropdown.component';
 import { ZoomInDirective } from '../../shared/directives/animations/zoom-in.directive';
+import { CoursePaginatorComponent } from './course-paginator/course-paginator.component';
 
 @Component({
   selector: 'app-course-list',
@@ -15,18 +16,25 @@ import { ZoomInDirective } from '../../shared/directives/animations/zoom-in.dire
     FilterIconComponent,
     CourseFilterDropdownComponent,
     ZoomInDirective,
+    CoursePaginatorComponent,
   ],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.css',
 })
 export class CourseListComponent {
   @Output() filterMode = new EventEmitter<string>();
+  @Output() nextPage = new EventEmitter<boolean>();
   @Input() secondaryCourseList: ISecondaryCourse[] = [];
+  @Input() paginatorPages: number = 0;
 
   showFilter: boolean = false;
 
   emitFilterMode(mode: string) {
     this.filterMode.emit(mode);
     this.showFilter = false;
+  }
+
+  emiteChangeNextPage(nextPage: boolean) {
+    this.nextPage.emit(nextPage);
   }
 }

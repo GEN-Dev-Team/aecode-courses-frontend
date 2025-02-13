@@ -30,8 +30,13 @@ export class CourseMainComponent implements OnInit {
   coursesList: ISecondaryCourse[] = [];
   filteredCoursesList: ISecondaryCourse[] = [];
 
+  paginatorCourseIds: number[] = [];
+  paginatorPages: number = 4;
+  pageSize: number = 6;
+  currentPage: number = 0;
+
   secondaryCourseList$: Observable<ISecondaryCourse[]> =
-    this.secondaryCourseService.getAllSecondaryCourses();
+    this.secondaryCourseService.getPaginatedSecCoursesList(this.pageSize, 0);
 
   ngOnInit(): void {
     this.secondaryCourseList$.subscribe((data) => {
@@ -40,7 +45,11 @@ export class CourseMainComponent implements OnInit {
       this.resetFilteredCourses();
     });
 
-    console.log(this.coursesList);
+    this.secondaryCourseService.getAllSecondaryCourses().subscribe((data) => {
+      this.paginatorPages = Math.ceil(data.length / this.pageSize);
+    });
+
+    this.paginatorCourseIds.push(0);
   }
 
   onSearch(event: Event): void {
@@ -54,8 +63,6 @@ export class CourseMainComponent implements OnInit {
     this.filteredCoursesList = this.coursesList.filter((course) =>
       course.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-
-    console.log(this.filteredCoursesList);
   }
 
   private resetFilteredCourses(): void {
@@ -70,7 +77,33 @@ export class CourseMainComponent implements OnInit {
     } else {
       this.resetFilteredCourses();
     }
+  }
 
-    console.log(this.filteredCoursesList);
+  paginateCourseList(nextPage: boolean) {
+    if (nextPage && this.currentPage < this.paginatorPages - 1) {
+      this.currentPage++;
+
+      const lastCourseId =
+        this.filteredCoursesList[this.filteredCoursesList.length - 1]
+          .seccourseId;
+
+      // Si existe el id en el array, no lo agrega
+      if (!this.paginatorCourseIds.includes(lastCourseId)) {
+        this.paginatorCourseIds.push(lastCourseId);
+      }
+    } else {
+      this.currentPage--;
+    }
+
+    this.filteredCoursesList = [];
+
+    this.secondaryCourseService
+      .getPaginatedSecCoursesList(
+        this.pageSize,
+        this.paginatorCourseIds[this.currentPage]
+      )
+      .subscribe((data) => {
+        this.filteredCoursesList = data;
+      });
   }
 }

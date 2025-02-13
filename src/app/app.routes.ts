@@ -12,26 +12,26 @@ import { PaymentComponent } from './payment/payment.component';
 export const routes: Routes = [
   {
     path: '',
-    title: 'AECODE COURSES',
+    title: 'AECODE',
     component: HomeComponent,
   },
   {
-    path: 'courses',
-    title: 'AECODE COURSES',
+    path: 'training',
+    title: 'AECODE TRAINING',
     component: CoursesComponent,
   },
   {
-    path: 'courses/secondary-course-detail/:secCourseId',
+    path: 'training/module/:secCourseId',
     title: 'AECODE COURSES',
     component: CourseLandingDetailComponent,
   },
   {
-    path: 'courses/masive-course-detail/:courseId',
+    path: 'training/e-learning/:courseId',
     title: 'AECODE COURSES',
     component: MasiveCourseDetailComponent,
   },
   {
-    path: 'courses/masive-course-detail/:courseId/module/:moduleId',
+    path: 'training/e-learning/:courseId/module/:moduleId',
     title: 'AECODE COURSES',
     component: CourseDetailComponent,
   },
@@ -40,7 +40,6 @@ export const routes: Routes = [
     title: 'PROFILE',
     component: ProfileMainViewComponent,
   },
-
   {
     path: 'admin-panel',
     title: 'ADMIN PANEL',

@@ -122,9 +122,7 @@ export class CourseLandingDetailComponent {
       .pipe(
         tap((course) => {
           if (course) {
-            this.routing.navigate([
-              `/courses/secondary-course-detail/${course.seccourseId}`,
-            ]);
+            this.routing.navigate([`/training/module/${course.seccourseId}`]);
           }
         }),
         catchError((error) => {

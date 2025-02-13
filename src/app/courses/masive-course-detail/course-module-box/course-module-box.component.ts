@@ -44,7 +44,7 @@ export class CourseModuleBoxComponent {
     );
 
     this.browserService.navigateAndScroll(
-      `courses/masive-course-detail/${this.course.courseId}/module/${moduleId}`,
+      `training/e-learning/${this.course.courseId}/module/${moduleId}`,
       0
     );
   }

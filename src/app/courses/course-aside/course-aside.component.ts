@@ -39,7 +39,7 @@ export class CourseAsideComponent {
   }
 
   goToCourseList() {
-    this.router.navigate(['courses']);
+    this.router.navigate(['training']);
   }
 
   goToProfileView() {
