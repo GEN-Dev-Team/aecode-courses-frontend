@@ -235,14 +235,14 @@
   }
 
   .masive-course-button {
-    border: 1px solid #4465ee;
-    background: #203aa5;
+    border: 1px solid #7837dd;
+    background: #381187;
   }
 
   .masive-course-button-progra {
     border-radius: 4px;
-    border: 1px solid #7837dd;
-    background: #381187;
+    border: 1px solid #4465ee;
+    background: #203aa5;
   }
 }
 

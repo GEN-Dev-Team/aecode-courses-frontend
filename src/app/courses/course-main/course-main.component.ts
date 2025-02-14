@@ -7,6 +7,7 @@ import { SecondaryCourseService } from '../services/secondary-course.service';
 import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
 import { Observable } from 'rxjs';
 import { FadeOutDirective } from '../../shared/directives/animations/fade-out.directive';
+import { BrowserService } from '../../core/services/browser.service';
 
 @Component({
   selector: 'app-course-main',
@@ -26,12 +27,18 @@ export class CourseMainComponent implements OnInit {
     SecondaryCourseService
   );
 
+  browserService: BrowserService = inject(BrowserService);
+
   filterValue: string = '';
   coursesList: ISecondaryCourse[] = [];
   filteredCoursesList: ISecondaryCourse[] = [];
 
+  animate = false;
+  animateFadeOut = false;
+  private intervalId!: any;
+
   paginatorCourseIds: number[] = [];
-  paginatorPages: number = 4;
+  paginatorPages: number = 1;
   pageSize: number = 6;
   currentPage: number = 0;
 
@@ -50,6 +57,14 @@ export class CourseMainComponent implements OnInit {
     });
 
     this.paginatorCourseIds.push(0);
+
+    this.startAnimationLoop();
+  }
+
+  ngOnDestroy() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 
   onSearch(event: Event): void {
@@ -105,5 +120,27 @@ export class CourseMainComponent implements OnInit {
       .subscribe((data) => {
         this.filteredCoursesList = data;
       });
+  }
+
+  startAnimationLoop() {
+    // Inicia la animación
+    this.animate = true;
+    setTimeout(() => {
+      this.animateFadeOut = true;
+    }, 1500);
+
+    // Repite la animación cada 5 segundos
+    this.intervalId = setInterval(() => {
+      this.animate = false;
+      this.animateFadeOut = false;
+
+      setTimeout(() => {
+        this.animate = true;
+      }, 100);
+
+      setTimeout(() => {
+        this.animateFadeOut = true;
+      }, 1500);
+    }, 5000);
   }
 }

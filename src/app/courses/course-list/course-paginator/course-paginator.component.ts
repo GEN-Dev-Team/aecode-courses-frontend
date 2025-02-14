@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { AngleLeftIconComponent } from './angle-left-icon/angle-left-icon.component';
 import { AngleRightIconComponent } from './angle-right-icon/angle-right-icon.component';
 import { CoursePaginatorItemComponent } from './course-paginator-item/course-paginator-item.component';
@@ -22,11 +28,13 @@ export class CoursePaginatorComponent {
   itemsList: number[] = [];
   pageSelected: number = 1;
 
-  ngOnInit(): void {
-    this.itemsList = Array.from(
-      { length: this.totalPages },
-      (_, index) => index + 1
-    );
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['totalPages'] && this.totalPages > 0) {
+      this.itemsList = Array.from(
+        { length: this.totalPages },
+        (_, index) => index + 1
+      );
+    }
   }
 
   emiteChangeNextPage(nextPage: boolean) {
