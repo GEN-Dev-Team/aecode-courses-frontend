@@ -35,7 +35,11 @@ export class CourseAsideComponent {
   itemSelected: number = 0;
 
   ngOnInit(): void {
-    this.userId = this.authService.getUserDetails().userId;
+    if (this.authService.getUserDetails() !== null) {
+      this.userId = this.authService.getUserDetails().userId;
+    } else {
+      return;
+    }
   }
 
   goToCourseList() {
