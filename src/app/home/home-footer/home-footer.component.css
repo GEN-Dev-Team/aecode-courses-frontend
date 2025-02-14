@@ -4,6 +4,11 @@
   position: relative;
   z-index: 1;
 
+  .footer-icon {
+    fill: #9198a1;
+    background-color: transparent;
+  }
+
   .footer-content {
     max-width: 1440px;
     display: flex;
@@ -52,6 +57,26 @@
         align-self: flex-end;
         text-decoration: none;
         color: #9198a1;
+      }
+    }
+  }
+}
+
+.course-footer-container {
+  border-top: none;
+  z-index: 0;
+  background-color: var(--purple-2);
+
+  .footer-icon {
+    fill: white;
+  }
+
+  .footer-content {
+    color: white;
+
+    .footer-list {
+      .footer-item {
+        color: white;
       }
     }
   }
