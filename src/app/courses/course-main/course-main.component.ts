@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, NgZone, OnInit } from '@angular/core';
 import { SearchToolIconComponent } from '../../shared/icons/search-tool-icon/search-tool-icon.component';
 import { CourseSearchIconComponent } from '../../shared/icons/course-search-icon/course-search-icon.component';
 import { PlatformCourseListComponent } from '../platform-course-list/platform-course-list.component';
@@ -27,13 +27,15 @@ export class CourseMainComponent implements OnInit {
 
   browserService: BrowserService = inject(BrowserService);
 
+  ngZone: NgZone = inject(NgZone);
+
   filterValue: string = '';
   coursesList: ISecondaryCourse[] = [];
   filteredCoursesList: ISecondaryCourse[] = [];
 
   animate = false;
   animateFadeOut = false;
-  private intervalId!: any;
+  intervalId: any = null;
 
   paginatorCourseIds: number[] = [];
   paginatorPages: number = 1;
@@ -62,6 +64,7 @@ export class CourseMainComponent implements OnInit {
   ngOnDestroy() {
     if (this.intervalId) {
       clearInterval(this.intervalId);
+      this.intervalId = null;
     }
   }
 
@@ -121,24 +124,32 @@ export class CourseMainComponent implements OnInit {
   }
 
   startAnimationLoop() {
-    // Inicia la animación
-    this.animate = true;
-    setTimeout(() => {
-      this.animateFadeOut = true;
-    }, 1500);
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
 
-    // Repite la animación cada 5 segundos
-    this.intervalId = setInterval(() => {
-      this.animate = false;
-      this.animateFadeOut = false;
-
+    this.ngZone.runOutsideAngular(() => {
+      // Inicia la animación
+      this.animate = true;
       setTimeout(() => {
-        this.animate = true;
-      }, 100);
-
-      setTimeout(() => {
-        this.animateFadeOut = true;
+        this.ngZone.run(() => (this.animateFadeOut = true));
       }, 1500);
-    }, 5000);
+
+      // Repite la animación cada 5 segundos
+      this.intervalId = setInterval(() => {
+        this.ngZone.run(() => {
+          this.animate = false;
+          this.animateFadeOut = false;
+        });
+
+        setTimeout(() => {
+          this.ngZone.run(() => (this.animate = true));
+        }, 100);
+
+        setTimeout(() => {
+          this.ngZone.run(() => (this.animateFadeOut = true));
+        }, 1500);
+      }, 5000);
+    });
   }
 }

@@ -75,10 +75,6 @@ export class ProfileMainViewComponent {
 
   ngOnInit(): void {
     this.initProfileViewData();
-
-    console.log(this.userDataForm.value);
-    console.log(this.userProfileImageForm.value);
-    console.log(this.userChangePasswordForm.value);
   }
 
   sendUserData() {

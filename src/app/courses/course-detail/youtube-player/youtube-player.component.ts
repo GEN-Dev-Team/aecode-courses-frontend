@@ -48,8 +48,6 @@ export class YoutubePlayerComponent {
     this.courseSessionObject$.subscribe((session) => {
       if (session.sessiontests) {
         this.initializeYoutubePlayer();
-      } else {
-        console.log('Seccion sin test');
       }
     });
   }
@@ -63,7 +61,6 @@ export class YoutubePlayerComponent {
       );
     } else {
       this.safeUrl = ''; // No hay video disponible
-      console.log('Video no encontrado.');
     }
   }
 
