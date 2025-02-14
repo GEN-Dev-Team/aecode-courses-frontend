@@ -160,7 +160,11 @@ export class ProfileMainViewComponent {
   }
 
   initProfileViewData() {
-    this.userData = this.authService.getUserDetails();
+    if (this.authService.getUserDetails() !== null) {
+      this.userData = this.authService.getUserDetails();
+    } else {
+      return;
+    }
 
     this.userService
       .getUserDetailsImgById(this.userData.userId)

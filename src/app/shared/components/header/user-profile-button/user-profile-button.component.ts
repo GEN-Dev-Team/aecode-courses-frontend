@@ -59,6 +59,8 @@ export class UserProfileButtonComponent {
           this.authService.setUserDetails(response);
         });
       }
+    } else {
+      return;
     }
   }
 

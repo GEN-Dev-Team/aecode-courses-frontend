@@ -46,16 +46,16 @@ async function generateRoutes() {
   const userIds = await getUserIds();
   const routes = [];
 
-  routes.push("/courses");
+  routes.push("/training");
   routes.push("/admin-panel");
   routes.push("/payment");
 
   secCourseIds.forEach((id) => {
-    routes.push(`/courses/module/${id}`);
+    routes.push(`/training/module/${id}`);
   });
 
   masiveCourseIds.forEach((id) => {
-    routes.push(`/courses/e-learning/${id}`);
+    routes.push(`/training/e-learning/${id}`);
   });
 
   userIds.forEach((id) => {

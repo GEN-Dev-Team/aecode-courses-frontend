@@ -65,7 +65,11 @@ export class CourseSessionComponent {
   moduleSelected!: IModule;
 
   ngOnInit(): void {
-    this.userId = this.authService.getUserDetails().userId;
+    if (this.authService.getUserDetails() !== null) {
+      this.userId = this.authService.getUserDetails().userId;
+    } else {
+      return;
+    }
 
     this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
       this.isUserLogged = loggedInStatus;
