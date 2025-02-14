@@ -1,8 +1,10 @@
 <main class="main-container">
   <div class="title-container">
-    <h1 class="main-title">LA ESENCIA DE LA INNOVACIÓN COMIENZA AQU´I</h1>
-    <div FadeOut class="punto-container">
-      <div class="punto"></div>
+    <h1 class="main-title" [class.title-animation]="animate">
+      La esencia de la innovación comienza aquí
+    </h1>
+    <div class="punto-container" [class.punto-animation]="animate">
+      <div class="punto" [class.punto-fade-out]="animateFadeOut"></div>
     </div>
   </div>
 

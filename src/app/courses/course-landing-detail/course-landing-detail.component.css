@@ -1,6 +1,6 @@
 .course-landing-detail-container {
   width: 100%;
-  padding: 62px 50px;
+  padding: 30px 50px;
 
   .program-title {
     color: #381187;
@@ -8,6 +8,7 @@
     font-family: "ruberoid-semibold";
     font-size: 50px;
     margin-inline: auto;
+    margin-top: 0;
   }
 
   .course-landing-presentation {
@@ -174,14 +175,14 @@
         }
 
         .masive-course-button {
-          border: 1px solid #4465ee;
-          background: #203aa5;
-        }
-
-        .masive-course-button-progra {
           border-radius: 4px;
           border: 1px solid #7837dd;
           background: #381187;
+        }
+
+        .masive-course-button-progra {
+          border: 1px solid #4465ee;
+          background: #203aa5;
         }
 
         .buttons-video-container {
@@ -225,7 +226,7 @@
     padding: 30px;
     display: flex;
     flex-flow: column nowrap;
-    gap: 50px;
+    gap: 30px;
     font-family: "plusjakartasans-regular";
     font-size: 15px;
     border-radius: 6px;
