@@ -16,6 +16,7 @@ export class GoogleSheetService {
       NOMBRE_COMPLETO: nombre_completo,
       CORREO: email,
       CONSULTA: consulta,
+      FECHA: new Date().toLocaleDateString('es-ES'),
     };
 
     this.http.post<ISheetItem>(this.api_url, sheetObject).subscribe({
