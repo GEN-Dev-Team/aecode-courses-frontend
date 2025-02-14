@@ -42,9 +42,11 @@ export class HomeComponent implements OnInit {
   index = 0;
   animate = false;
 
+  intervalId: any;
+
   ngOnInit() {
     if (this.browserService.isBrowser()) {
-      setInterval(() => {
+      this.intervalId = setInterval(() => {
         this.animate = true;
 
         this.index = (this.index + 1) % this.textItems.length;
@@ -55,6 +57,10 @@ export class HomeComponent implements OnInit {
         }, 2000);
       }, 3000);
     }
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.intervalId);
   }
 
   sendMessage() {

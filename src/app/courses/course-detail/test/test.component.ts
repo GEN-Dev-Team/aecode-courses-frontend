@@ -30,8 +30,6 @@ export class TestComponent {
       completed: true,
     };
 
-    console.log(rwItem);
-
     this.courseProgressService.createRWProgress(rwItem).subscribe({
       next: (data) => {},
     });

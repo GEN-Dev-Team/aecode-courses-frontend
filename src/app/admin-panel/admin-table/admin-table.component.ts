@@ -77,7 +77,6 @@ export class AdminTableComponent {
 
   deleteItem(itemId: number) {
     this.adminService.deleteItem(itemId);
-    console.log(itemId);
   }
 
   setDataTable() {
