@@ -4,6 +4,7 @@ import { SunIconComponent } from '../../icons/sun-icon/sun-icon.component';
 import { MoonIconComponent } from '../../icons/moon-icon/moon-icon.component';
 import { WsspFloatingIconComponent } from '../../icons/wssp-floating-icon/wssp-floating-icon.component';
 import { HeaderComponent } from '../../components/header/header.component';
+import { HomeFooterComponent } from '../../../home/home-footer/home-footer.component';
 
 @Component({
   selector: 'app-course-overlay',
@@ -13,6 +14,7 @@ import { HeaderComponent } from '../../components/header/header.component';
     MoonIconComponent,
     WsspFloatingIconComponent,
     HeaderComponent,
+    HomeFooterComponent,
   ],
   templateUrl: './course-overlay.component.html',
   styleUrl: './course-overlay.component.css',

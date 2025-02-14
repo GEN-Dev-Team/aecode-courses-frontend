@@ -1,4 +1,7 @@
-<footer class="footer-container">
+<footer
+  class="footer-container"
+  [class.course-footer-container]="isCourseFooter"
+>
   <div class="footer-content">
     <div class="social-container">
       <span> Conoce más de nosotros</span>
@@ -8,26 +11,27 @@
           ZoomIn
           href="https://www.linkedin.com/company/aecode-ai/"
           target="_blank"
-          ><img src="/assets/images/home/linkedin.svg" alt=""
-        /></a>
-        <a ZoomIn href="https://www.facebook.com/aecodeai" target="_blank"
-          ><img src="/assets/images/home/facebook.svg" alt=""
+        >
+          <app-linkedin-icon class="footer-icon" />
+        </a>
+        <a ZoomIn href="https://www.facebook.com/aecodeai" target="_blank">
+          <app-facebook-icon class="footer-icon"
         /></a>
         <a ZoomIn href="https://www.youtube.com/@aecode_ai" target="_blank"
-          ><img src="/assets/images/home/youtube.svg" alt=""
-        /></a>
-        <a ZoomIn href="https://www.instagram.com/aecode.ai/" target="_blank"
-          ><img src="/assets/images/home/instagram.svg" alt=""
-        /></a>
+          ><app-youtube-icon class="footer-icon" />
+        </a>
+        <a ZoomIn href="https://www.instagram.com/aecode.ai/" target="_blank">
+          <app-instagram-icon class="footer-icon" />
+        </a>
         <a ZoomIn href="https://www.tiktok.com/@aecode.ai" target="_blank">
-          <app-tiktok-icon />
+          <app-tiktok-icon class="footer-icon" />
         </a>
       </ul>
     </div>
 
     <ul class="footer-list">
       <a class="footer-item" href="mailto:contacto@aecode.ai">
-        <app-message-icon />
+        <app-message-icon class="footer-icon" />
         coordinador&#64;aecode.ai
       </a>
       <li class="footer-item">

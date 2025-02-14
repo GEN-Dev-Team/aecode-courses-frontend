@@ -107,6 +107,10 @@
   }
 }
 
+.course-footer {
+  background-color: var(--purple-2);
+}
+
 @media screen and (max-width: 768px) {
   .courses-overlay {
     padding: 60px 14px 80px;
