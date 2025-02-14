@@ -3,4 +3,5 @@ export interface ISheetItem {
   NOMBRE_COMPLETO: string;
   CORREO: string;
   CONSULTA: string;
+  FECHA: string;
 }
