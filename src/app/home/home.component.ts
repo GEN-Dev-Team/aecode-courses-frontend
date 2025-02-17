@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
   browserService: BrowserService = inject(BrowserService);
 
   openModal = false;
-  openForm = true;
+  openForm = false;
   userMessage = '';
 
   wsspMessage =
