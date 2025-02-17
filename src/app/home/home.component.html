@@ -79,6 +79,6 @@
   <app-course-list />
 </app-modal>
 
-<app-modal [isOpen]="openForm">
+<app-modal [isOpen]="openForm" (isClosed)="openForm = $event">
   <app-form (openModal)="openForm = $event" [userMessage]="userMessage" />
 </app-modal>
