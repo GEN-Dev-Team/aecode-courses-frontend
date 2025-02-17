@@ -1,7 +1,7 @@
-<form [formGroup]="initialForm" class="form-container">
+<form #formContainer [formGroup]="initialForm" class="form-container">
   <app-square-icon class="close-button" (click)="closeModal()" />
 
-  <span class="form-message">¡ESTAMOS AQUÍ PARA AYUDARTE!</span>
+  <span class="form-message">¡Estamos aquí para ayudarte!</span>
 
   <p class="form-description">
     Ingresa tu nombre y correo electronico para recibir información sobre tu
@@ -22,4 +22,5 @@
   />
 
   <button (click)="sendMessage()" class="form-button">Enviar</button>
+  <div #mouseShadow class="custom-shadow-light"></div>
 </form>
