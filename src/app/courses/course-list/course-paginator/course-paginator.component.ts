@@ -23,6 +23,7 @@ import { CoursePaginatorItemComponent } from './course-paginator-item/course-pag
 export class CoursePaginatorComponent {
   @Input() page: number = 1;
   @Input() totalPages: number = 0;
+  @Output() changePage = new EventEmitter<number>();
   @Output() nextPage = new EventEmitter<boolean>();
 
   itemsList: number[] = [];
@@ -45,5 +46,11 @@ export class CoursePaginatorComponent {
       this.pageSelected = this.pageSelected - 1;
       this.nextPage.emit(nextPage);
     }
+  }
+
+  emiteChangePage(pageNumber: number) {
+    this.changePage.emit(pageNumber);
+
+    this.pageSelected = pageNumber + 1;
   }
 }

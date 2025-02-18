@@ -28,6 +28,7 @@
       [secondaryCourseList]="filteredCoursesList"
       [paginatorPages]="paginatorPages"
       (nextPage)="paginateCourseList($event)"
+      (changePage)="setPaginatorPage($event)"
     />
   </div>
 </main>

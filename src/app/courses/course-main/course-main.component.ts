@@ -37,13 +37,16 @@ export class CourseMainComponent implements OnInit {
   animateFadeOut = false;
   intervalId: any = null;
 
-  paginatorCourseIds: number[] = [];
   paginatorPages: number = 1;
-  pageSize: number = 6;
+  pageSize: number = 3;
   currentPage: number = 0;
+  offset: number = 0;
 
   secondaryCourseList$: Observable<ISecondaryCourse[]> =
-    this.secondaryCourseService.getPaginatedSecCoursesList(this.pageSize, 0);
+    this.secondaryCourseService.getPaginatedSecCoursesList(
+      this.pageSize,
+      this.offset
+    );
 
   ngOnInit(): void {
     this.secondaryCourseList$.subscribe((data) => {
@@ -55,8 +58,6 @@ export class CourseMainComponent implements OnInit {
     this.secondaryCourseService.getAllSecondaryCourses().subscribe((data) => {
       this.paginatorPages = Math.ceil(data.length / this.pageSize);
     });
-
-    this.paginatorCourseIds.push(0);
 
     this.startAnimationLoop();
   }
@@ -98,26 +99,30 @@ export class CourseMainComponent implements OnInit {
   paginateCourseList(nextPage: boolean) {
     if (nextPage && this.currentPage < this.paginatorPages - 1) {
       this.currentPage++;
-
-      const lastCourseId =
-        this.filteredCoursesList[this.filteredCoursesList.length - 1]
-          .seccourseId;
-
-      // Si existe el id en el array, no lo agrega
-      if (!this.paginatorCourseIds.includes(lastCourseId)) {
-        this.paginatorCourseIds.push(lastCourseId);
-      }
     } else {
       this.currentPage--;
     }
 
+    this.offset = this.pageSize * this.currentPage;
+
     this.filteredCoursesList = [];
 
     this.secondaryCourseService
-      .getPaginatedSecCoursesList(
-        this.pageSize,
-        this.paginatorCourseIds[this.currentPage]
-      )
+      .getPaginatedSecCoursesList(this.pageSize, this.offset)
+      .subscribe((data) => {
+        this.filteredCoursesList = data;
+      });
+  }
+
+  setPaginatorPage(page: number) {
+    this.currentPage = page;
+
+    this.offset = this.pageSize * this.currentPage;
+
+    this.filteredCoursesList = [];
+
+    this.secondaryCourseService
+      .getPaginatedSecCoursesList(this.pageSize, this.offset)
       .subscribe((data) => {
         this.filteredCoursesList = data;
       });

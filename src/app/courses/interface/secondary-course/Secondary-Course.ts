@@ -23,6 +23,7 @@ export interface ISecondaryCourse {
   totalHours: number;
   numberOfSessions: number;
   numberOfUnits: number;
+  orderNumber: number;
   schedules: string[];
   benefits: string[];
   tools: ITool[];
@@ -53,6 +54,7 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   totalHours: 0,
   numberOfSessions: 0,
   numberOfUnits: 0,
+  orderNumber: -1,
   schedules: [],
   benefits: [],
   tools: [],

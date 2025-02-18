@@ -33,5 +33,6 @@
   <app-course-paginator
     (nextPage)="emiteChangeNextPage($event)"
     [totalPages]="paginatorPages"
+    (changePage)="emiteChangePage($event)"
   />
 </div>
