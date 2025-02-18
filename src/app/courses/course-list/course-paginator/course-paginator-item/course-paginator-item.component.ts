@@ -9,8 +9,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class CoursePaginatorItemComponent {
   @Output() changePage = new EventEmitter<number>();
-  @Output() nextPage = new EventEmitter<boolean>();
   @Input() totalPages: number = 0;
   @Input() pageNumber: number = 0;
   @Input() pageSelected: number = 0;
+
+  sendPageNumber() {
+    this.changePage.emit(this.pageNumber - 1);
+  }
 }

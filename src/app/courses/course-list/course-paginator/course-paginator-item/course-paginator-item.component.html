@@ -1,3 +1,7 @@
-<div class="paginator-item" [class.item-active]="pageNumber === pageSelected">
+<div
+  (click)="sendPageNumber()"
+  class="paginator-item"
+  [class.item-active]="pageNumber === pageSelected"
+>
   {{ pageNumber }}
 </div>

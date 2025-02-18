@@ -24,6 +24,7 @@ import { CoursePaginatorComponent } from './course-paginator/course-paginator.co
 export class CourseListComponent {
   @Output() filterMode = new EventEmitter<string>();
   @Output() nextPage = new EventEmitter<boolean>();
+  @Output() changePage = new EventEmitter<number>();
   @Input() secondaryCourseList: ISecondaryCourse[] = [];
   @Input() paginatorPages: number = 0;
 
@@ -36,5 +37,9 @@ export class CourseListComponent {
 
   emiteChangeNextPage(nextPage: boolean) {
     this.nextPage.emit(nextPage);
+  }
+
+  emiteChangePage(page: number) {
+    this.changePage.emit(page);
   }
 }
