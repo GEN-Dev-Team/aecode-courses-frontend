@@ -38,7 +38,7 @@ export class CourseMainComponent implements OnInit {
   intervalId: any = null;
 
   paginatorPages: number = 1;
-  pageSize: number = 3;
+  pageSize: number = 6;
   currentPage: number = 0;
   offset: number = 0;
 
@@ -103,7 +103,8 @@ export class CourseMainComponent implements OnInit {
       this.currentPage--;
     }
 
-    this.offset = this.pageSize * this.currentPage;
+    //3 por la cantidad de modulos de cada curso
+    this.offset = this.pageSize * this.currentPage * 3;
 
     this.filteredCoursesList = [];
 
@@ -117,7 +118,8 @@ export class CourseMainComponent implements OnInit {
   setPaginatorPage(page: number) {
     this.currentPage = page;
 
-    this.offset = this.pageSize * this.currentPage;
+    //3 por la cantidad de modulos de cada curso
+    this.offset = this.pageSize * this.currentPage * 3;
 
     this.filteredCoursesList = [];
 

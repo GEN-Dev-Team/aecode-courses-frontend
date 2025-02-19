@@ -23,6 +23,7 @@ import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 import { WhatsappIconComponent } from '../../shared/icons/whatsapp-icon/whatsapp-icon.component';
 import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
+import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
 
 @Component({
   selector: 'app-course-item',
@@ -44,6 +45,7 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
     WhatsappIconComponent,
     ContentBlockedComponent,
     ModalComponent,
+    DateFormatPipe,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',

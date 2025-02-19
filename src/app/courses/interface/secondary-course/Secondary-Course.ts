@@ -11,7 +11,7 @@ export interface ISecondaryCourse {
   module: string;
   brochureUrl: string;
   whatsappGroupLink: string;
-  startDate: string;
+  startDate: Date;
   certificateHours: string;
   priceRegular: number;
   discountPercentage: number;
@@ -42,7 +42,7 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   module: '',
   brochureUrl: '',
   whatsappGroupLink: '',
-  startDate: '',
+  startDate: new Date(),
   certificateHours: '',
   priceRegular: 0,
   discountPercentage: 0,
