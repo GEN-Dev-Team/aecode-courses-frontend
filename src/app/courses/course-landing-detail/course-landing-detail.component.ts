@@ -25,6 +25,7 @@ import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/a
 import { BookIconComponent } from '../icons/book-icon/book-icon.component';
 import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
+import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
 
 interface IModuleButton {
   id: number;
@@ -52,6 +53,7 @@ interface IModuleButton {
     CustomCourseButtonDirective,
     BookIconComponent,
     ContentBlockedComponent,
+    DateFormatPipe,
   ],
   templateUrl: './course-landing-detail.component.html',
   styleUrl: './course-landing-detail.component.css',
