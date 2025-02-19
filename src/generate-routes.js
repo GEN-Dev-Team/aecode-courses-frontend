@@ -27,23 +27,9 @@ async function getMasiveCourseIds() {
   }
 }
 
-async function getUserIds() {
-  try {
-    const response = await fetch(
-      "https://backend-productodigital.onrender.com/userprofile/list"
-    );
-    const users = await response.json();
-    return users.map((user) => user.userId);
-  } catch (error) {
-    console.error("Error fetching user IDs:", error);
-    return [];
-  }
-}
-
 async function generateRoutes() {
   const secCourseIds = await getSecondaryCourseIds();
   const masiveCourseIds = await getMasiveCourseIds();
-  const userIds = await getUserIds();
   const routes = [];
 
   routes.push("/training");
@@ -56,10 +42,6 @@ async function generateRoutes() {
 
   masiveCourseIds.forEach((id) => {
     routes.push(`/training/e-learning/${id}`);
-  });
-
-  userIds.forEach((id) => {
-    routes.push(`/profile/${id}`);
   });
 
   const routesFile = path.join(__dirname, "routes.txt");

@@ -14,10 +14,3 @@
 /training/module/7
 /training/e-learning/1
 /training/e-learning/2
-/profile/4
-/profile/5
-/profile/6
-/profile/7
-/profile/8
-/profile/9
-/profile/10
