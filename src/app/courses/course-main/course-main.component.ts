@@ -51,12 +51,14 @@ export class CourseMainComponent implements OnInit {
   ngOnInit(): void {
     this.secondaryCourseList$.subscribe((data) => {
       this.coursesList = data;
+      console.log(data);
 
       this.resetFilteredCourses();
     });
 
     this.secondaryCourseService.getAllSecondaryCourses().subscribe((data) => {
       this.paginatorPages = Math.ceil(data.length / this.pageSize);
+      console.log(data);
     });
 
     this.startAnimationLoop();

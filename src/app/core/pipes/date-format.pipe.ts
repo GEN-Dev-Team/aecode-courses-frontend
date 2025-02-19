@@ -20,7 +20,7 @@ export class DateFormatPipe implements PipeTransform {
     'DICIEMBRE',
   ];
 
-  transform(value: string): string {
+  transform(value: any, format: 'upper' | 'lower' = 'upper'): string {
     if (!value) return '';
     else {
       const date = value.split('-').reverse().slice(0, 2);
@@ -31,7 +31,9 @@ export class DateFormatPipe implements PipeTransform {
         .join(' DE ')
         .replace(date[1], this.monthList[monthId]);
 
-      return `${formatedDate}`;
+      return format === 'lower'
+        ? formatedDate.toLowerCase()
+        : `${formatedDate}`;
     }
   }
 }
