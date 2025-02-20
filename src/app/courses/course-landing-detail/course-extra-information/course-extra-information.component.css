@@ -59,7 +59,6 @@
           animation: slider 20s linear infinite;
 
           .tool-img {
-            width: 58px;
             height: 58px;
             flex-shrink: 1;
           }
