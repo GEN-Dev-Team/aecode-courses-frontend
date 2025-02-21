@@ -41,6 +41,7 @@ export class CourseMainComponent implements OnInit {
   pageSize: number = 6;
   currentPage: number = 0;
   offset: number = 0;
+  showPaginator: boolean = true;
 
   secondaryCourseList$: Observable<ISecondaryCourse[]> =
     this.secondaryCourseService.getPaginatedSecCoursesList(
@@ -51,14 +52,12 @@ export class CourseMainComponent implements OnInit {
   ngOnInit(): void {
     this.secondaryCourseList$.subscribe((data) => {
       this.coursesList = data;
-      console.log(data);
 
       this.resetFilteredCourses();
     });
 
     this.secondaryCourseService.getAllSecondaryCourses().subscribe((data) => {
       this.paginatorPages = Math.ceil(data.length / this.pageSize);
-      console.log(data);
     });
 
     this.startAnimationLoop();
@@ -90,12 +89,21 @@ export class CourseMainComponent implements OnInit {
 
   filterByMode(value: string) {
     if (value !== 'all') {
-      this.filteredCoursesList = this.coursesList.filter(
-        (course) => course.mode === value
-      );
+      this.showPaginator = false;
+      this.filteredCoursesList = [];
+
+      this.secondaryCourseService
+        .getSecondaryCoursesByMode(value)
+        .subscribe((data) => {
+          this.filteredCoursesList = data;
+        });
     } else {
       this.resetFilteredCourses();
+      this.showPaginator = true;
     }
+
+    this.currentPage = 0;
+    this.offset = 0;
   }
 
   paginateCourseList(nextPage: boolean) {
@@ -105,7 +113,6 @@ export class CourseMainComponent implements OnInit {
       this.currentPage--;
     }
 
-    //3 por la cantidad de modulos de cada curso
     this.offset = this.pageSize * this.currentPage;
 
     this.filteredCoursesList = [];
@@ -120,7 +127,6 @@ export class CourseMainComponent implements OnInit {
   setPaginatorPage(page: number) {
     this.currentPage = page;
 
-    //3 por la cantidad de modulos de cada curso
     this.offset = this.pageSize * this.currentPage;
 
     this.filteredCoursesList = [];
@@ -138,7 +144,6 @@ export class CourseMainComponent implements OnInit {
     }
 
     this.ngZone.runOutsideAngular(() => {
-      // Inicia la animación
       this.animate = true;
       setTimeout(() => {
         this.ngZone.run(() => (this.animateFadeOut = true));
