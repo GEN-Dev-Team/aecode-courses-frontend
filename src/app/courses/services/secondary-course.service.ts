@@ -54,4 +54,10 @@ export class SecondaryCourseService {
       `${this.api_url}/paginatedList?limit=${pageSize}&offsetCourseId=${offsetCourseId}`
     );
   }
+
+  getSecondaryCoursesByMode(mode: string) {
+    return this.http.get<ISecondaryCourse[]>(
+      `${this.api_url}/paginateByMode?mode=${mode}`
+    );
+  }
 }
