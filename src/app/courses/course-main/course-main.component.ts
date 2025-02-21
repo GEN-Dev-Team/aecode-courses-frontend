@@ -106,7 +106,7 @@ export class CourseMainComponent implements OnInit {
     }
 
     //3 por la cantidad de modulos de cada curso
-    this.offset = this.pageSize * this.currentPage * 3;
+    this.offset = this.pageSize * this.currentPage;
 
     this.filteredCoursesList = [];
 
@@ -121,7 +121,7 @@ export class CourseMainComponent implements OnInit {
     this.currentPage = page;
 
     //3 por la cantidad de modulos de cada curso
-    this.offset = this.pageSize * this.currentPage * 3;
+    this.offset = this.pageSize * this.currentPage;
 
     this.filteredCoursesList = [];
 
