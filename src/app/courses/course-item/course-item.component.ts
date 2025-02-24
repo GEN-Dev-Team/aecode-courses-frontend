@@ -19,7 +19,6 @@ import { OfferbgIconComponent } from '../../shared/icons/offerbg-icon/offerbg-ic
 import { ELearningIconComponent } from '../../shared/icons/e-learning-icon/e-learning-icon.component';
 import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/download-kit-icon.component';
 import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
-import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 import { WhatsappIconComponent } from '../../shared/icons/whatsapp-icon/whatsapp-icon.component';
 import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
@@ -41,7 +40,6 @@ import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
     ELearningIconComponent,
     DownloadKitIconComponent,
     CustomCourseButtonDirective,
-    AddBaseUrlPipe,
     WhatsappIconComponent,
     ContentBlockedComponent,
     ModalComponent,

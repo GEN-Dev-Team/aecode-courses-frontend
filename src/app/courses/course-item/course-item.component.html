@@ -30,14 +30,10 @@
 
   <div class="course-presentation-container">
     @if(isMasiveCourse) {
-    <img class="course-img" src="{{ course.coverimage | addBaseUrl }}" alt="" />
+    <img class="course-img" src="{{ course.coverimage }}" alt="" />
 
     } @else {
-    <img
-      class="course-img"
-      src="{{ course.principalimage | addBaseUrl }}"
-      alt=""
-    />
+    <img class="course-img" src="{{ course.principalimage }}" alt="" />
     }
 
     <div class="course-tags">
