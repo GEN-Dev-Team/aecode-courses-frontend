@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { CourseSessionIconComponent } from '../../shared/icons/course-session-icon/course-session-icon.component';
 import { WatchIconComponent } from '../../shared/icons/watch-icon/watch-icon.component';
 import { UnitCourseIconComponent } from '../../shared/icons/unit-course-icon/unit-course-icon.component';
 
@@ -8,16 +7,15 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { CourseExtraInformationComponent } from './course-extra-information/course-extra-information.component';
 import { SecondaryCourseService } from '../services/secondary-course.service';
-import { catchError, map, Observable, of, tap } from 'rxjs';
+import { catchError, map, Observable, tap } from 'rxjs';
 import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
-import { AsyncPipe, NgClass, NgIf } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { environment } from '../../../environment/environment';
 import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
 import { CourseLandingUnitComponent } from './course-landing-unit/course-landing-unit.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { PlayIconComponent } from '../../shared/icons/play-icon/play-icon.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AddBaseUrlPipe } from '../../core/pipes/add-base-url.pipe';
 import { ToastrService } from 'ngx-toastr';
 import { ComnigSoonCourseIconComponent } from '../../shared/icons/comnig-soon-course-icon/comnig-soon-course-icon.component';
 import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/sync-course-icon.component';
@@ -46,7 +44,6 @@ interface IModuleButton {
     CourseLandingUnitComponent,
     LoaderComponent,
     PlayIconComponent,
-    AddBaseUrlPipe,
     ComnigSoonCourseIconComponent,
     SyncCourseIconComponent,
     AsyncCourseIconComponent,
