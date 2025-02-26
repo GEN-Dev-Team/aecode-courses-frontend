@@ -1,8 +1,10 @@
 <div
   class="course-item-container"
   [class.platform-course-item-container]="isMasiveCourse"
-  (click)="showCourseDetails(course)"
+  (click)="showCourseDetails()"
 >
+  @if(course$ | async; as course) {
+
   <div
     class="course-item-mode"
     customCourseButton
@@ -125,6 +127,10 @@
       </div>
     </div>
   </div>
+
+  } @else {
+  <app-loader />
+  }
 </div>
 
 <app-modal [isOpen]="showBlockedModal" (isClosed)="showBlockedModal = $event">

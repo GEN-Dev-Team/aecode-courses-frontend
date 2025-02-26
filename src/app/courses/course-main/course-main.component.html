@@ -23,13 +23,11 @@
 
   <div class="course-main-list">
     <app-course-list
-      (filterMode)="filterValue = $event"
       (filterMode)="filterByMode($event)"
       [secondaryCourseList]="filteredCoursesList"
       [paginatorPages]="paginatorPages"
       (nextPage)="paginateCourseList($event)"
       (changePage)="setPaginatorPage($event)"
-      [showPaginator]="showPaginator"
     />
   </div>
 </main>

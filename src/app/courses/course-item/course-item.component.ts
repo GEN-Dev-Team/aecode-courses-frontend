@@ -23,6 +23,9 @@ import { WhatsappIconComponent } from '../../shared/icons/whatsapp-icon/whatsapp
 import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
+import { SecondaryCourseService } from '../services/secondary-course.service';
+import { map, Observable } from 'rxjs';
+import { LoaderComponent } from '../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-course-item',
@@ -44,71 +47,92 @@ import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
     ContentBlockedComponent,
     ModalComponent,
     DateFormatPipe,
+    LoaderComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
 })
 export class CourseItemComponent {
   @Input() isMasiveCourse: boolean = false;
-  @Input() course: any = {};
+  @Input() courseId: number = 0;
 
   courseService: CourseService = inject(CourseService);
+  secondaryCourseService: SecondaryCourseService = inject(
+    SecondaryCourseService
+  );
   browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
   paymentService: PaymentService = inject(PaymentService);
 
-  secondaryCourseMainImgUrl = '';
-  secondaryCourseSessions: number = 0;
+  course$!: Observable<any>;
+  // secondaryCourseMainImgUrl$ = this.course$.pipe(
+  //   map((data) => {
+  //     return environment.base + data.principalimage;
+  //   })
+  // );
+
+  // masiveCourseMainImgUrl$ = this.course$.pipe(
+  //   map((data) => {
+  //     return environment.base + data.coverimage;
+  //   })
+  // );
+
+  courseTitle = '';
+  urlKit = '';
+  module = '';
+  isOnSale = false;
+  discountPercentage = 0;
+  priceRegular = 0;
+
   finalPrice = signal(0);
   showBlockedModal = false;
   message = '';
 
   discountPrice = computed(() => {
-    if (this.course.isOnSale && this.course.discountPercentage > 0) {
+    if (this.isOnSale && this.discountPercentage > 0) {
       const priceDiscounted = Math.round(
-        (this.course.priceRegular * (100 - this.course.discountPercentage)) /
-          100
+        (this.priceRegular * (100 - this.discountPercentage)) / 100
       );
-
       return priceDiscounted;
     } else {
-      return this.course.priceRegular;
+      return this.priceRegular;
     }
   });
 
   ngOnInit() {
     if (!this.isMasiveCourse) {
-      this.secondaryCourseMainImgUrl =
-        environment.base + this.course.principalimage;
-      this.course.studyplans.forEach((studyplan: IStudyPlan) => {
-        this.secondaryCourseSessions += studyplan.sessions.length;
-      });
+      this.course$ = this.secondaryCourseService.getSecondaryCourseById(
+        this.courseId
+      );
     } else {
-      this.secondaryCourseMainImgUrl =
-        environment.base + this.course.coverimage;
-      this.course.modules.forEach((module: IModule) => {
-        module.units.forEach((unit: IUnit) => {
-          this.secondaryCourseSessions += unit.sessions.length;
-        });
-      });
+      this.course$ = this.courseService.getCourse(this.courseId);
     }
+
+    this.course$.subscribe((data) => {
+      this.courseTitle = data.title;
+      this.urlKit = data.urlkit;
+      this.module = data.module;
+      this.isOnSale = data.isOnSale;
+      this.discountPercentage = data.discountPercentage;
+      this.priceRegular = data.priceRegular;
+    });
   }
 
-  showCourseDetails(course: any) {
+  showCourseDetails() {
     if (this.isMasiveCourse) {
-      this.message = `El contenido del programa "${this.course.title}" estará disponible próximamente.`;
+      this.message = `El contenido del programa "${this.courseTitle}" estará disponible próximamente.`;
       this.showBlockedModal = true;
 
       return;
 
       this.browserService.navigateAndScroll(
-        `training/e-learning/${course.courseId}`,
+        `training/e-learning/${this.courseId}`,
         0
       );
     } else {
       {
         this.browserService.navigateAndScroll(
-          `training/module/${course.seccourseId}`,
+          `training/module/${this.courseId}`,
           0
         );
       }
@@ -121,9 +145,9 @@ export class CourseItemComponent {
       if (
         this.browserService.isBrowser() &&
         this.isMasiveCourse &&
-        this.course.urlkit
+        this.urlKit
       ) {
-        window.open(this.course.urlkit, '_blank');
+        window.open(this.urlKit, '_blank');
       }
     }
   }
@@ -133,12 +157,12 @@ export class CourseItemComponent {
     let message = '';
 
     if (this.isMasiveCourse) {
-      message = `Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.course.title}".`;
+      message = `Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.courseTitle}".`;
     } else {
       message = `Hola AECODE. Me gustaría adquirir el programa de "${
-        this.course.title
+        this.courseTitle
       } - ${
-        this.course.module
+        this.module
       }" a un costo de ${this.discountPrice()} USD. ¿Podrías indicarme cómo proceder?`;
     }
 
@@ -157,7 +181,7 @@ export class CourseItemComponent {
     if (price > 0) {
       this.router.navigate(['payment']);
       this.paymentService.paymentDetails.set({
-        courseName: this.course.title,
+        courseName: this.courseTitle,
         amount: price,
       });
     }

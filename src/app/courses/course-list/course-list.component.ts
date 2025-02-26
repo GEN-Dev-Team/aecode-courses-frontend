@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CourseItemComponent } from '../course-item/course-item.component';
-import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
+import { ISecondaryCourseSummary } from '../interface/secondary-course/Secondary-Course';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { FilterIconComponent } from '../../admin-panel/icons/filter-icon/filter-icon.component';
 import { CourseFilterDropdownComponent } from './course-filter-dropdown/course-filter-dropdown.component';
@@ -25,9 +25,8 @@ export class CourseListComponent {
   @Output() filterMode = new EventEmitter<string>();
   @Output() nextPage = new EventEmitter<boolean>();
   @Output() changePage = new EventEmitter<number>();
-  @Input() secondaryCourseList: ISecondaryCourse[] = [];
+  @Input() secondaryCourseList: ISecondaryCourseSummary[] = [];
   @Input() paginatorPages: number = 0;
-  @Input() showPaginator: boolean = true;
 
   showFilter: boolean = false;
 
