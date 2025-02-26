@@ -4,9 +4,10 @@ import { CourseSearchIconComponent } from '../../shared/icons/course-search-icon
 import { PlatformCourseListComponent } from '../platform-course-list/platform-course-list.component';
 import { CourseListComponent } from '../course-list/course-list.component';
 import { SecondaryCourseService } from '../services/secondary-course.service';
-import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
+import { ISecondaryCourseSummary } from '../interface/secondary-course/Secondary-Course';
 import { Observable } from 'rxjs';
 import { BrowserService } from '../../core/services/browser.service';
+import { IPaginator } from '../../core/interfaces/paginator';
 
 @Component({
   selector: 'app-course-main',
@@ -29,9 +30,10 @@ export class CourseMainComponent implements OnInit {
 
   ngZone: NgZone = inject(NgZone);
 
+  isFilteringByMode = false;
   filterValue: string = '';
-  coursesList: ISecondaryCourse[] = [];
-  filteredCoursesList: ISecondaryCourse[] = [];
+  coursesList: ISecondaryCourseSummary[] = [];
+  filteredCoursesList: ISecondaryCourseSummary[] = [];
 
   animate = false;
   animateFadeOut = false;
@@ -40,24 +42,19 @@ export class CourseMainComponent implements OnInit {
   paginatorPages: number = 1;
   pageSize: number = 6;
   currentPage: number = 0;
-  offset: number = 0;
-  showPaginator: boolean = true;
 
-  secondaryCourseList$: Observable<ISecondaryCourse[]> =
+  secondaryCourseList$: Observable<IPaginator<ISecondaryCourseSummary>> =
     this.secondaryCourseService.getPaginatedSecCoursesList(
-      this.pageSize,
-      this.offset
+      this.currentPage,
+      this.pageSize
     );
 
   ngOnInit(): void {
     this.secondaryCourseList$.subscribe((data) => {
-      this.coursesList = data;
+      this.coursesList = data.content;
+      this.paginatorPages = data.totalPages;
 
       this.resetFilteredCourses();
-    });
-
-    this.secondaryCourseService.getAllSecondaryCourses().subscribe((data) => {
-      this.paginatorPages = Math.ceil(data.length / this.pageSize);
     });
 
     this.startAnimationLoop();
@@ -89,21 +86,27 @@ export class CourseMainComponent implements OnInit {
 
   filterByMode(value: string) {
     if (value !== 'all') {
-      this.showPaginator = false;
       this.filteredCoursesList = [];
+      this.isFilteringByMode = true;
+      this.currentPage = 0;
+      this.filterValue = value;
 
       this.secondaryCourseService
-        .getSecondaryCoursesByMode(value)
+        .getSecondaryCoursesByMode(
+          this.filterValue,
+          this.currentPage,
+          this.pageSize
+        )
         .subscribe((data) => {
-          this.filteredCoursesList = data;
+          this.filteredCoursesList = data.content;
+          this.paginatorPages = data.totalPages;
+          console.log(data);
         });
     } else {
+      this.isFilteringByMode = false;
+      this.currentPage = 0;
       this.resetFilteredCourses();
-      this.showPaginator = true;
     }
-
-    this.currentPage = 0;
-    this.offset = 0;
   }
 
   paginateCourseList(nextPage: boolean) {
@@ -113,29 +116,49 @@ export class CourseMainComponent implements OnInit {
       this.currentPage--;
     }
 
-    this.offset = this.pageSize * this.currentPage;
-
     this.filteredCoursesList = [];
 
-    this.secondaryCourseService
-      .getPaginatedSecCoursesList(this.pageSize, this.offset)
-      .subscribe((data) => {
-        this.filteredCoursesList = data;
-      });
+    if (!this.isFilteringByMode) {
+      this.secondaryCourseService
+        .getPaginatedSecCoursesList(this.currentPage, this.pageSize)
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+        });
+    } else {
+      this.secondaryCourseService
+        .getSecondaryCoursesByMode(
+          this.filterValue,
+          this.currentPage,
+          this.pageSize
+        )
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+        });
+    }
   }
 
   setPaginatorPage(page: number) {
     this.currentPage = page;
 
-    this.offset = this.pageSize * this.currentPage;
-
     this.filteredCoursesList = [];
 
-    this.secondaryCourseService
-      .getPaginatedSecCoursesList(this.pageSize, this.offset)
-      .subscribe((data) => {
-        this.filteredCoursesList = data;
-      });
+    if (!this.isFilteringByMode) {
+      this.secondaryCourseService
+        .getPaginatedSecCoursesList(this.currentPage, this.pageSize)
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+        });
+    } else {
+      this.secondaryCourseService
+        .getSecondaryCoursesByMode(
+          this.filterValue,
+          this.currentPage,
+          this.pageSize
+        )
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+        });
+    }
   }
 
   startAnimationLoop() {

@@ -34,6 +34,23 @@ export interface ISecondaryCourse {
   mode: string;
 }
 
+export interface ISecondaryCourseSummary {
+  seccourseId: number;
+  title: string;
+  programTitle: string;
+  description: string;
+  module: string;
+  startDate: Date;
+  certificateHours: string;
+  priceRegular: number;
+  discountPercentage: number;
+  promptPaymentPrice: number;
+  isOnSale: boolean;
+  principalimage: string;
+  orderNumber: number;
+  mode: string;
+}
+
 export const defaultSecondaryCourse: ISecondaryCourse = {
   seccourseId: 0,
   title: '',

@@ -20,7 +20,7 @@
     <div class="course-list-content">
       @for (secondaryCourseItem of secondaryCourseList; track
       secondaryCourseItem) {
-      <app-course-item [course]="secondaryCourseItem" />
+      <app-course-item [courseId]="secondaryCourseItem.seccourseId" />
 
       }
     </div>
@@ -30,11 +30,9 @@
     }
   </div>
 
-  @if(showPaginator) {
   <app-course-paginator
     (nextPage)="emiteChangeNextPage($event)"
     [totalPages]="paginatorPages"
     (changePage)="emiteChangePage($event)"
   />
-  }
 </div>
