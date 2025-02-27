@@ -20,7 +20,7 @@
     <div class="course-list-content">
       @for (secondaryCourseItem of secondaryCourseList; track
       secondaryCourseItem) {
-      <app-course-item [courseId]="secondaryCourseItem.seccourseId" />
+      <app-course-item [course]="secondaryCourseItem" />
 
       }
     </div>
