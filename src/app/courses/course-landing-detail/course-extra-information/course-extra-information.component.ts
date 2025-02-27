@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { IFAQ } from '../../interface/secondary-course/FAQ';
-import { environment } from '../../../../environment/environment';
 import { ITool } from '../../interface/secondary-course/Tool';
 import { FapDropdownItemComponent } from './fap-dropdown-item/fap-dropdown-item.component';
 
@@ -20,8 +19,6 @@ export class CourseExtraInformationComponent {
   freqQuestIdSelected!: number;
 
   loopList: number[] = [1, 2, 3];
-
-  url_base = environment.base;
 
   selectQuestion(freqQuestId: number) {
     this.freqQuestIdSelected = freqQuestId;
