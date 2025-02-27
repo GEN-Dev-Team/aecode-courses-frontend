@@ -27,6 +27,7 @@ export class CourseListComponent {
   @Output() changePage = new EventEmitter<number>();
   @Input() secondaryCourseList: any[] = [];
   @Input() paginatorPages: number = 0;
+  @Input() currentPage: number = 0;
 
   showFilter: boolean = false;
 

@@ -85,10 +85,11 @@ export class CourseMainComponent implements OnInit {
   }
 
   filterByMode(value: string) {
+    this.currentPage = 0;
+
     if (value !== 'all') {
       this.filteredCoursesList = [];
       this.isFilteringByMode = true;
-      this.currentPage = 0;
       this.filterValue = value;
 
       this.secondaryCourseService
@@ -104,7 +105,6 @@ export class CourseMainComponent implements OnInit {
         });
     } else {
       this.isFilteringByMode = false;
-      this.currentPage = 0;
       this.resetFilteredCourses();
     }
   }

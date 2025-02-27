@@ -36,6 +36,8 @@ export class CoursePaginatorComponent {
         (_, index) => index + 1
       );
     }
+
+    this.pageSelected = this.page + 1;
   }
 
   emiteChangeNextPage(nextPage: boolean) {
