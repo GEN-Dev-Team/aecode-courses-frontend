@@ -1,6 +1,6 @@
 .course-list-container {
   width: 100%;
-  min-height: 1250px;
+  /* min-height: 1250px; */
   padding: 30px 32px;
   border-radius: 6px;
   border: 1px solid rgba(153, 163, 168, 0.3);
@@ -37,13 +37,17 @@
     min-height: 505px;
 
     .course-list-content {
-      min-height: 1014px;
+      min-height: 1048px;
       width: 100%;
       display: grid;
       grid-template-columns: repeat(3, minmax(200px, 1fr));
       justify-content: center;
       gap: 20px 32px;
       padding-bottom: 30px;
+    }
+
+    .loader-container {
+      min-height: 1048px;
     }
   }
 }
