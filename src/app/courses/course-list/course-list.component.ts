@@ -25,7 +25,7 @@ export class CourseListComponent {
   @Output() filterMode = new EventEmitter<string>();
   @Output() nextPage = new EventEmitter<boolean>();
   @Output() changePage = new EventEmitter<number>();
-  @Input() secondaryCourseList: ISecondaryCourseSummary[] = [];
+  @Input() secondaryCourseList: any[] = [];
   @Input() paginatorPages: number = 0;
 
   showFilter: boolean = false;

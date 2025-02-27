@@ -4,10 +4,6 @@ import { CourseSessionIconComponent } from '../../shared/icons/course-session-ic
 import { Router } from '@angular/router';
 import { CourseService } from '../services/course.service';
 import { BrowserService } from '../../core/services/browser.service';
-import { IStudyPlan } from '../interface/secondary-course/StudyPlan';
-import { environment } from '../../../environment/environment';
-import { IModule } from '../interface/Module';
-import { IUnit } from '../interface/Unit';
 import { CommonModule } from '@angular/common';
 import { ShoppingCartIconComponent } from '../icons/shopping-cart-icon/shopping-cart-icon.component';
 import { PaymentService } from '../../payment/services/payment.service';
@@ -24,8 +20,7 @@ import { ContentBlockedComponent } from '../../shared/components/content-blocked
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
 import { SecondaryCourseService } from '../services/secondary-course.service';
-import { map, Observable } from 'rxjs';
-import { LoaderComponent } from '../../shared/components/loader/loader.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-course-item',
@@ -47,92 +42,55 @@ import { LoaderComponent } from '../../shared/components/loader/loader.component
     ContentBlockedComponent,
     ModalComponent,
     DateFormatPipe,
-    LoaderComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
 })
 export class CourseItemComponent {
   @Input() isMasiveCourse: boolean = false;
-  @Input() courseId: number = 0;
+  @Input() course!: any;
 
-  courseService: CourseService = inject(CourseService);
-  secondaryCourseService: SecondaryCourseService = inject(
-    SecondaryCourseService
-  );
   browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
   paymentService: PaymentService = inject(PaymentService);
-
-  course$!: Observable<any>;
-  // secondaryCourseMainImgUrl$ = this.course$.pipe(
-  //   map((data) => {
-  //     return environment.base + data.principalimage;
-  //   })
-  // );
-
-  // masiveCourseMainImgUrl$ = this.course$.pipe(
-  //   map((data) => {
-  //     return environment.base + data.coverimage;
-  //   })
-  // );
-
-  courseTitle = '';
-  urlKit = '';
-  module = '';
-  isOnSale = false;
-  discountPercentage = 0;
-  priceRegular = 0;
 
   finalPrice = signal(0);
   showBlockedModal = false;
   message = '';
 
   discountPrice = computed(() => {
-    if (this.isOnSale && this.discountPercentage > 0) {
+    if (this.course.isOnSale && this.course.discountPercentage > 0) {
       const priceDiscounted = Math.round(
-        (this.priceRegular * (100 - this.discountPercentage)) / 100
+        (this.course.priceRegular * (100 - this.course.discountPercentage)) /
+          100
       );
       return priceDiscounted;
     } else {
-      return this.priceRegular;
+      return this.course.priceRegular;
     }
   });
 
   ngOnInit() {
     if (!this.isMasiveCourse) {
-      this.course$ = this.secondaryCourseService.getSecondaryCourseById(
-        this.courseId
-      );
     } else {
-      this.course$ = this.courseService.getCourse(this.courseId);
     }
-
-    this.course$.subscribe((data) => {
-      this.courseTitle = data.title;
-      this.urlKit = data.urlkit;
-      this.module = data.module;
-      this.isOnSale = data.isOnSale;
-      this.discountPercentage = data.discountPercentage;
-      this.priceRegular = data.priceRegular;
-    });
   }
 
   showCourseDetails() {
     if (this.isMasiveCourse) {
-      this.message = `El contenido del programa "${this.courseTitle}" estará disponible próximamente.`;
+      this.message = `El contenido del programa "${this.course.courseTitle}" estará disponible próximamente.`;
       this.showBlockedModal = true;
 
       return;
 
       this.browserService.navigateAndScroll(
-        `training/e-learning/${this.courseId}`,
+        `training/e-learning/${this.course.courseId}`,
         0
       );
     } else {
       {
         this.browserService.navigateAndScroll(
-          `training/module/${this.courseId}`,
+          `training/module/${this.course.seccourseId}`,
           0
         );
       }
@@ -145,9 +103,9 @@ export class CourseItemComponent {
       if (
         this.browserService.isBrowser() &&
         this.isMasiveCourse &&
-        this.urlKit
+        this.course.urlKit
       ) {
-        window.open(this.urlKit, '_blank');
+        window.open(this.course.urlKit, '_blank');
       }
     }
   }
@@ -157,12 +115,12 @@ export class CourseItemComponent {
     let message = '';
 
     if (this.isMasiveCourse) {
-      message = `Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.courseTitle}".`;
+      message = `Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.course.courseTitle}".`;
     } else {
       message = `Hola AECODE. Me gustaría adquirir el programa de "${
-        this.courseTitle
+        this.course.courseTitle
       } - ${
-        this.module
+        this.course.module
       }" a un costo de ${this.discountPrice()} USD. ¿Podrías indicarme cómo proceder?`;
     }
 
@@ -181,7 +139,7 @@ export class CourseItemComponent {
     if (price > 0) {
       this.router.navigate(['payment']);
       this.paymentService.paymentDetails.set({
-        courseName: this.courseTitle,
+        courseName: this.course.courseTitle,
         amount: price,
       });
     }
