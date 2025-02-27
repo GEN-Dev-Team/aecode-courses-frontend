@@ -37,7 +37,6 @@
     min-height: 505px;
 
     .course-list-content {
-      min-height: 1048px;
       width: 100%;
       display: grid;
       grid-template-columns: repeat(3, minmax(200px, 1fr));
