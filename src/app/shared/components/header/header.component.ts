@@ -30,8 +30,10 @@ export class HeaderComponent {
   authService: AuthService = inject(AuthService);
   route: Router = inject(Router);
 
-  isUserLoggedIn = true;
+  isUserLoggedIn = false;
   openLoginForm = false;
+
+  openMobileMenu = false;
 
   ngOnInit(): void {
     if (this.authService.getUserDetails() !== null) {

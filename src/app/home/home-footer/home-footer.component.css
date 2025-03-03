@@ -81,3 +81,45 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .footer-container {
+    .footer-icon {
+      background-color: transparent;
+      display: flex;
+    }
+
+    .footer-content {
+      flex-flow: column nowrap;
+      align-items: flex-start;
+      gap: 17px;
+      padding: 10px 17px 15px;
+
+      .social-container {
+        font-family: "plusjakartasans-medium";
+        font-size: 14px;
+
+        .social-list {
+          gap: 25px;
+          margin: 8px 0 0 0;
+
+          a {
+            cursor: pointer;
+            height: 18.75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+
+      .footer-list {
+        font-size: 12px;
+
+        .footer-item {
+          align-self: flex-start;
+        }
+      }
+    }
+  }
+}

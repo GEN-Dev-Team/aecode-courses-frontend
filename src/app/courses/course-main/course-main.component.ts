@@ -106,6 +106,7 @@ export class CourseMainComponent implements OnInit {
     } else {
       this.isFilteringByMode = false;
       this.resetFilteredCourses();
+      this.currentPage = 0;
     }
   }
 

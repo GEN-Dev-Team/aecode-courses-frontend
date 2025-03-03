@@ -6,6 +6,7 @@ import { FormComponent } from './form/form.component';
 import { BrowserService } from '../core/services/browser.service';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { HomeHeaderComponent } from './home-header/home-header.component';
+import { ZoomInDirective } from '../shared/directives/animations/zoom-in.directive';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,7 @@ import { HomeHeaderComponent } from './home-header/home-header.component';
     FormComponent,
     HomeFooterComponent,
     HomeHeaderComponent,
+    ZoomInDirective,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',

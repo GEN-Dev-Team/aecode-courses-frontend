@@ -1,16 +1,16 @@
 <header class="header-container">
   <div class="header-content">
-    <a href="">
-      <app-aecode-icon />
+    <a href="" class="header-logo-container">
+      <app-aecode-icon class="header-logo" />
     </a>
-
-    <ul class="header-list">
+    <ul class="header-list" [class.isMobile]="showMenu">
       <a
         target="_blank"
         ZoomIn
         class="header-item"
         href="https://www.canva.com/design/DAGbXMYH3Qo/Njl9uZGdNjfleEX8Jt2lpQ/view?utm_content=DAGbXMYH3Qo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc8bb83ae0a"
       >
+        <app-about-us-mobile-icon />
         ¿Quienes somos?
       </a>
       <a
@@ -19,6 +19,7 @@
         class="header-item"
         href="https://shamanai.aecode.ai/"
       >
+        <app-shamanai-mobile-icon />
         Shaman AI</a
       >
       <a
@@ -43,12 +44,22 @@
 
       } @else {
       <a
-        class="header-item header-button sky-blue-button"
+        class="header-item header-button sky-blue-button mobile-item"
         (click)="openLoginForm = true"
         >Acceder</a
       >
       }
     </ul>
+
+    <a
+      class="header-item header-button sky-blue-button access-button-mobile"
+      (click)="openLoginForm = true"
+      >Acceder</a
+    >
+
+    <button class="menu-button" (click)="toggleMenu()">
+      <app-burger-icon />
+    </button>
   </div>
 </header>
 

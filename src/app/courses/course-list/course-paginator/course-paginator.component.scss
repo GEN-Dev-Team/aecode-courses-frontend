@@ -26,3 +26,18 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .paginator-container {
+    width: 100%;
+    padding-block: 8px;
+
+    .paginator-items {
+      .paginator-icon {
+        width: 32px;
+        height: 32px;
+        padding: 8px 14px;
+      }
+    }
+  }
+}

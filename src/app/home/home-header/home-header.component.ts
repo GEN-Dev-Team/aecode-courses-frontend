@@ -7,6 +7,10 @@ import { Router } from '@angular/router';
 import { LoginFormComponent } from '../login-form/login-form.component';
 import { UserProfileButtonComponent } from '../../shared/components/header/user-profile-button/user-profile-button.component';
 import { AuthService } from '../../core/services/auth.service';
+import { BurgerIconComponent } from '../../shared/icons/burger-icon/burger-icon.component';
+import { AboutUsMobileIconComponent } from '../../shared/icons/about-us-mobile-icon/about-us-mobile-icon.component';
+import { ShamanaiMobileIconComponent } from '../../shared/icons/shamanai-mobile-icon/shamanai-mobile-icon.component';
+import { BrowserService } from '../../core/services/browser.service';
 
 @Component({
   selector: 'app-home-header',
@@ -18,6 +22,9 @@ import { AuthService } from '../../core/services/auth.service';
     ZoomInDirective,
     LoginFormComponent,
     UserProfileButtonComponent,
+    BurgerIconComponent,
+    AboutUsMobileIconComponent,
+    ShamanaiMobileIconComponent,
   ],
   templateUrl: './home-header.component.html',
   styleUrl: './home-header.component.css',
@@ -25,9 +32,11 @@ import { AuthService } from '../../core/services/auth.service';
 export class HomeHeaderComponent {
   route: Router = inject(Router);
   authService: AuthService = inject(AuthService);
+  browserService: BrowserService = inject(BrowserService);
 
   openLoginForm = false;
   isUserLoggedIn = false;
+  showMenu = true;
 
   ngOnInit(): void {
     if (this.authService.getUserDetails() !== null) {
@@ -36,5 +45,9 @@ export class HomeHeaderComponent {
   }
   redirectToCoursesView() {
     this.route.navigate(['/training']);
+  }
+
+  toggleMenu() {
+    this.showMenu = !this.showMenu;
   }
 }
