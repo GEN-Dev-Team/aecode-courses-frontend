@@ -47,7 +47,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
 
   .home-bg-img-left-container {
     position: absolute;
@@ -136,15 +135,15 @@
       color: #eef3f8;
       font-family: "Ruberoid-light";
       font-size: clamp(2.0625rem, 1.4683rem + 2.5352vw, 3.75rem);
-      margin:0;
+      margin: 0;
       position: relative;
       z-index: 1;
-      line-height: clamp(45px,  1.4683rem + 2.5352vw , 90px);
+      line-height: clamp(45px, 1.4683rem + 2.5352vw, 90px);
 
-      span{
+      span {
         display: block;
       }
-      
+
       .text-item {
         display: inline-block;
         width: fit-content;
@@ -289,13 +288,18 @@
           display: flex;
           justify-content: center;
           align-items: center;
+
+          .send-icon {
+            width: 44px;
+            height: 43px;
+          }
         }
       }
     }
   }
 
   .home-whatsapp-button {
-    width: clamp(114px, 10vw ,167px);
+    width: clamp(114px, 10vw, 167px);
     height: 127px;
     position: fixed;
     right: 0;
@@ -337,59 +341,218 @@
 }
 
 @media screen and (max-width: 768px) {
-  .login-container {
-    width: 100%;
-    height: 100%;
-    padding: 98px 16px 120px;
+  .home-container {
+    height: auto;
+    background-color: #0e1121;
     position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-    .login-content {
-      min-height: 365px;
-      padding: 51px 8px 36px 8px;
-      display: flex;
-      border-radius: 10px;
+    .home-bg-img-left-container {
+      position: absolute;
+      left: -3%;
+      top: 0;
+      display: none;
 
-      .login-logo {
-        max-height: 38px;
-      }
+      .home-bg-img-left-content {
+        width: 100%;
+        height: 100%;
+        position: relative;
 
-      .login-title {
-        margin-top: 15px;
-        font-size: 1.25rem;
-      }
-
-      .login-video {
-        width: 140px;
-        height: 132px;
-        margin-block: 11px;
-      }
-
-      .login-subtitle {
-        display: none;
-      }
-
-      .sendbar {
-        height: 43px;
-
-        .sendbar-text {
-          gap: 2px;
-
-          & img {
-            margin-inline-start: 0px;
-            height: 28px;
-          }
-
-          & input {
-            height: 20px;
-            font-size: 0.75rem;
-          }
+        .shadow-filter-black {
+          width: 70%;
+          height: 45%;
+          border-radius: 299.338px;
+          background: #0f1123;
+          filter: blur(25px);
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          z-index: 0;
         }
 
-        .send-icon-container {
-          width: 28px;
-          height: 28px;
+        .shadow-filter-purple {
+          background: #6831e1;
+          opacity: 0.2;
+          filter: blur(58.016998291015625px);
+          width: 50%;
+          height: 50%;
+          transform: rotate(-158.745deg);
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          z-index: 1;
         }
       }
+    }
+
+    .home-bg-img-right-container {
+      width: 50%;
+      position: absolute;
+      right: 0%;
+      top: 10%;
+
+      .home-bg-img-right-content {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .shadow-filter-black {
+          width: 80%;
+          height: 20%;
+          border-radius: 299.338px;
+          background: #0f1123;
+          filter: blur(25px);
+          position: absolute;
+          left: 0;
+          bottom: 50%;
+          z-index: 0;
+          transform: rotate(-40.272deg);
+        }
+
+        .shadow-filter-purple {
+          border-radius: 556px;
+          background: rgba(130, 67, 234, 0.2);
+          filter: blur(200px);
+          width: 50%;
+          height: 100%;
+          position: absolute;
+          right: -10%;
+          top: 0;
+          z-index: 1;
+        }
+      }
+    }
+
+    .home-content {
+      padding: 71px 25px 196px;
+      flex-direction: column;
+
+      .home-title {
+        text-align: center;
+
+        span {
+          display: block;
+        }
+      }
+
+      .home-subtitle-container {
+        width: fit-content;
+        margin-top: 34px;
+        margin-inline: auto;
+
+        .home-subtitle {
+          font-style: italic;
+          border: 1px solid #8f60ea;
+          width: fit-content;
+          padding: 0px 17px;
+          display: flex;
+          text-align: center;
+        }
+
+        .rectangle {
+          width: 12px;
+          height: 12px;
+          border: 1px solid #8f60ea;
+          background: #eef3f8;
+          position: absolute;
+        }
+
+        .top-right {
+          top: 0;
+          right: 0;
+          transform: translateX(50%);
+        }
+
+        .top-left {
+          top: 0;
+          left: 0;
+          transform: translateX(-50%);
+        }
+
+        .bottom-right {
+          bottom: 0;
+          right: 0;
+          transform: translateX(50%);
+        }
+
+        .bottom-left {
+          bottom: 0;
+          left: 0;
+          transform: translateX(-50%);
+        }
+      }
+
+      .send-bar-container {
+        height: 45px;
+        align-items: center;
+        margin-inline-start: -0px;
+        margin-top: 70px;
+
+        .custom-shadow-light {
+          width: 100%;
+          height: 100%;
+          border-radius: 60px;
+          opacity: 0.57;
+          background: #6831e1;
+          filter: blur(30px);
+          position: absolute;
+        }
+
+        .custom-shadow-dark {
+          height: 55px;
+          width: 103%;
+          border-radius: 33px;
+        }
+
+        .sendbar {
+          height: 45px;
+          border-radius: 33.5px;
+
+          .sendbar-text {
+            & img {
+              margin-inline-start: 3px;
+              width: 32px;
+            }
+          }
+
+          .send-icon-container {
+            height: 33px;
+            width: 33px;
+
+            .send-icon {
+              width: 25px;
+              height: 25px;
+            }
+          }
+        }
+      }
+    }
+
+    .home-whatsapp-button {
+      width: fit-content;
+      height: 85px;
+      position: absolute;
+      padding-block: 5px;
+      bottom: 21%;
+
+      .wssp-icon {
+        width: auto;
+        height: 120%;
+        opacity: 1;
+        margin: 0px;
+        position: relative;
+      }
+    }
+
+    .wssp-shadow-effect {
+      width: 120px;
+      height: 100px;
+      flex-shrink: 0;
+      position: absolute;
+      bottom: 20%;
     }
   }
 }

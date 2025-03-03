@@ -56,7 +56,7 @@
           />
         </div>
         <div class="send-icon-container" (click)="sendMessage()">
-          <app-send-icon />
+          <app-send-icon class="send-icon" />
         </div>
       </button>
     </div>
@@ -64,7 +64,12 @@
 
   <app-home-footer />
 
-  <a target="_blank" href="{{ wsspMessage }}" class="home-whatsapp-button">
+  <a
+    target="_blank"
+    href="{{ wsspMessage }}"
+    ZoomIn
+    class="home-whatsapp-button"
+  >
     <img
       class="wssp-icon"
       src="/assets/images/home/home-wssp-icon.png"

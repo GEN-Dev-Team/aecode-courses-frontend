@@ -11,7 +11,7 @@
   .course-list-header {
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-flow: row nowrap;
     margin-bottom: 40px;
     position: relative;
     align-items: center;
@@ -20,12 +20,13 @@
     .course-list-title {
       color: var(--purple-2);
       font-family: "ruberoid-semibold";
-      font-size: 30px;
+      font-size: clamp(0.875rem, 0.5229rem + 1.5023vw, 1.875rem);
       margin: 0;
     }
 
     .filter-icon {
       margin-left: auto;
+      width: 30px;
     }
   }
 
@@ -56,14 +57,35 @@
     min-height: 330px;
     padding: 20px 16px;
 
-    .course-list-title {
-      font-size: 14px;
-      align-items: center;
+    .course-list-header {
+      margin-bottom: 28px;
+
+      .course-list-title {
+        width: 85%;
+      }
+
+      .filter-icon {
+        width: 20px;
+        align-self: flex-start;
+      }
     }
 
-    .course-list-content {
-      gap: 5px;
-      overflow-x: scroll;
+    .sec-course-list-container {
+      width: 100%;
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      min-height: 505px;
+
+      .course-list-content {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-bottom: 44px;
+      }
+
+      .loader-container {
+        min-height: 998px;
+      }
     }
   }
 }

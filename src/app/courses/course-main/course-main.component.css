@@ -89,6 +89,19 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  @keyframes slideLeftMobile {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0%);
+      opacity: 1;
+    }
+  }
+}
+
 .punto-container {
   width: 60%;
   height: 100%;
@@ -135,18 +148,36 @@
 }
 
 @media screen and (max-width: 768px) {
+  @keyframes moveRightMobile {
+    from {
+      left: 50%;
+    }
+    to {
+      left: 90%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
   .main-container {
-    padding-block: 20px 122px;
+    padding-block: 20px 0px;
 
     .title-container {
-      max-width: 280px;
-      height: 37px;
+      height: auto;
       margin: 0 auto 19px;
+      padding-inline: 25px;
 
       .main-title {
-        margin: 0;
-        font-size: 20px;
-        animation: slideLeftMobile 1.5s ease-in-out forwards;
+        text-wrap: wrap;
+        font-size: 18px;
+        animation: none;
+        position: initial;
+        transform: translateY(-5%);
+        opacity: 0;
+      }
+
+      .title-animation {
+        animation: slideLeftMobile 1.6s ease-in-out forwards;
       }
     }
 
@@ -189,22 +220,22 @@
   }
 
   .punto-container {
-    width: 60%;
+    width: 100%;
     height: 100%;
     background-color: white;
     position: absolute;
+    display: flex;
+    align-items: center;
     top: 50%;
-    left: 0;
+    left: 50%;
     transform: translateY(-50%);
-    animation: moveRight 1.5s ease-in-out forwards;
   }
-}
 
-@keyframes slideLeftMobile {
-  from {
-    right: -50%;
+  .punto-animation {
+    animation: moveRightMobile 1.6s ease-in-out forwards;
   }
-  to {
-    right: 5%;
+
+  .punto {
+    height: 60%;
   }
 }

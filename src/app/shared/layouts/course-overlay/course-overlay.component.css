@@ -100,6 +100,7 @@
     z-index: 1;
 
     .icon {
+      width: 70px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -114,5 +115,30 @@
 @media screen and (max-width: 768px) {
   .courses-overlay {
     padding: 60px 14px 80px;
+
+    .theme-button {
+      padding: 16px 6px 16px 11px;
+      bottom: 160px;
+
+      .theme-content {
+        gap: 8px;
+        padding: 3px 4px;
+
+        .theme-option {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+
+    .whatsapp-button {
+      padding: 5px 17px 5px 5px;
+      display: flex;
+      bottom: 160px;
+
+      .icon {
+        width: 50px;
+      }
+    }
   }
 }

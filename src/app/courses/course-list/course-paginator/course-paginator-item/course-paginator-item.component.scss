@@ -17,3 +17,11 @@
   color: white;
   box-shadow: 0px 0px 6.6px 0px rgba(120, 55, 221, 0.73);
 }
+
+@media screen and (max-width: 768px) {
+  .paginator-item {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+}

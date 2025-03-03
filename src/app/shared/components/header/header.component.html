@@ -7,50 +7,50 @@
         <img src="assets/images/aecode-logo.webp" alt="" />
       </a>
 
-      <div class="header-options">
-        <ul class="header-list">
-          <li ZoomIn (click)="redirectToCoursesView()" class="header-item">
-            Inicio
-          </li>
+      <ul class="header-list">
+        <li ZoomIn (click)="redirectToCoursesView()" class="header-item">
+          Inicio
+        </li>
 
-          <a
-            ZoomIn
-            href="https://www.canva.com/design/DAGbXMYH3Qo/Njl9uZGdNjfleEX8Jt2lpQ/view?utm_content=DAGbXMYH3Qo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc8bb83ae0a"
-            target="_blank"
-            class="header-item"
-            >Conócenos</a
-          >
+        <a
+          ZoomIn
+          href="https://www.canva.com/design/DAGbXMYH3Qo/Njl9uZGdNjfleEX8Jt2lpQ/view?utm_content=DAGbXMYH3Qo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc8bb83ae0a"
+          target="_blank"
+          class="header-item"
+          >Conócenos</a
+        >
 
-          <app-shopping-cart-icon
-            ZoomIn
-            (click)="redirectToCartView()"
-            class="cart-icon"
-          />
+        <app-shopping-cart-icon
+          ZoomIn
+          (click)="redirectToCartView()"
+          class="cart-icon"
+        />
+      </ul>
 
-          @if (isUserLoggedIn) {
+      @if (isUserLoggedIn) {
 
-          <app-notification-icon ZoomIn class="notification-icon" />
+      <div class="user-logged-buttons">
+        <app-notification-icon ZoomIn class="notification-icon" />
 
-          <div class="separator"></div>
+        <div class="separator"></div>
 
-          <app-user-profile-button
-            [isHomeView]="false"
-            (sendIsUserLoggedIn)="isUserLoggedIn = $event"
-          />
-
-          } @else {
-          <app-button
-            class="header-button"
-            ZoomIn
-            data-section="header-container"
-            data-value="Acceder"
-            (click)="openLoginForm = true"
-          >
-            Acceder
-          </app-button>
-          }
-        </ul>
+        <app-user-profile-button
+          [isHomeView]="false"
+          (sendIsUserLoggedIn)="isUserLoggedIn = $event"
+        />
       </div>
+
+      } @else {
+      <app-button
+        class="header-button"
+        ZoomIn
+        data-section="header-container"
+        data-value="Acceder"
+        (click)="openLoginForm = true"
+      >
+        Acceder
+      </app-button>
+      }
     </div>
   </div>
 </header>

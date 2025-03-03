@@ -26,6 +26,10 @@
     left: 20px;
     z-index: 1;
 
+    .masive-icon {
+      width: 24px;
+    }
+
     .icon {
       display: flex;
       align-items: center;
@@ -259,15 +263,27 @@
 
 @media screen and (max-width: 768px) {
   .course-item-container {
-    width: 203px;
-    display: flex;
-    flex-flow: column nowrap;
-    flex-shrink: 0;
-    margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 0;
+
+    .course-item-mode {
+      font-size: 10px;
+      top: 10px;
+      left: 10px;
+
+      .masive-icon {
+        width: 15px;
+      }
+
+      .icon {
+        width: 24px;
+      }
+    }
 
     .course-presentation-container {
-      height: 130px;
+      height: 186px;
       border-radius: 4px;
+      flex-shrink: 0;
 
       .static-course-status {
         width: 37px;
@@ -276,14 +292,15 @@
       }
 
       .course-tags {
-        padding: 10px 0 10px 10px;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: center;
         position: absolute;
-        bottom: 0;
-        right: 0;
+
+        .course-tags-cointainer {
+          font-size: 9px;
+        }
 
         /* Static course styles for mobile */
         .static-course-icons {
@@ -311,7 +328,7 @@
     }
 
     .course-details {
-      padding: 12px 10px 15px 10px;
+      padding: 20px 20px 30px 15px;
       gap: 0px;
 
       .course-price {
@@ -336,19 +353,46 @@
       font-size: 12px;
     }
 
-    .course-item-button {
-      height: 22px;
-      border-radius: 2px;
-      padding: 7px 10px;
+    .course-description {
       font-size: 10px;
+      margin: 8px 0 20px;
+    }
+
+    .course-footer-details {
+      margin-bottom: 15px;
+    }
+
+    .buttons-container {
+      justify-content: space-between;
+
+      .course-item-button {
+        flex: initial;
+        width: fit-content;
+        height: 30px;
+        font-size: 10px;
+        border-radius: 4px;
+        text-wrap: nowrap;
+        gap: 8px;
+
+        .shop-cart-icon {
+          display: flex;
+          width: 20px;
+          height: 20px;
+          fill: white;
+        }
+      }
+    }
+
+    .masive-course-buttons-container {
+      gap: 10px;
+
+      .course-item-button {
+        width: auto;
+      }
     }
   }
 
-  /* Platform course styles */
-
   .platform-course-item-container {
-    min-width: 315px;
-    min-height: auto;
     margin: 0px auto;
   }
 }
