@@ -138,11 +138,32 @@
     flex-flow: column nowrap;
     gap: 25px;
 
-    .section-description {
-      width: 100%;
-      height: auto;
-      padding: 8px 12px;
-      margin: 0;
+    .extra-info-col-1 {
+      gap: 20px;
+
+      .section-description {
+        padding: 8px 12px;
+        margin: 0;
+        height: auto;
+      }
+
+      .tools-container {
+        .tools-title {
+          border-radius: 6px 6px 0 0;
+        }
+
+        .slider-wrapper {
+          min-height: 57px;
+
+          .slider {
+            gap: 24px;
+
+            .tool-img {
+              height: 30px;
+            }
+          }
+        }
+      }
     }
 
     .horarios-container {
@@ -152,61 +173,34 @@
       }
     }
 
-    .benefits-schedule-container {
-      display: flex;
-      flex-flow: column nowrap;
-      gap: 19px;
+    .benefits-container {
+      .benefits-content {
+        height: auto;
 
-      .benefits-container {
-        .benefits-content {
-          height: auto;
+        .benefits-list {
+          display: flex;
+          flex-flow: column nowrap;
+          padding-inline: 25px;
 
-          .benefits-list {
-            display: flex;
-            flex-flow: column nowrap;
-            padding-inline: 25px;
-
-            li {
-              margin-bottom: 4px;
-            }
+          li {
+            margin-bottom: 4px;
+            font-size: 12px;
           }
         }
       }
     }
+  }
 
-    .question-container {
-      border-radius: 4px;
+  .question-container {
+    padding: 15px 12px;
 
-      .question-content {
-        display: flex;
-        flex-flow: column nowrap;
+    .question-title {
+      margin: 0 0 15px 0;
+      font-size: 16px;
+    }
 
-        .question-list {
-          margin: 0px 8px 25px;
-          padding: 0;
-        }
-
-        .asesor-button {
-          width: 152px;
-          height: fit-content;
-          padding: 2px 22px 5px 10px;
-          margin: 15px auto;
-          border-radius: 4px;
-          font-size: 12px;
-
-          .whatsapp-button {
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            right: -10%;
-            top: 50%;
-
-            img {
-              width: 24px;
-            }
-          }
-        }
-      }
+    .question-list {
+      gap: 5px;
     }
   }
 }

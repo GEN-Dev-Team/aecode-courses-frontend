@@ -6,7 +6,7 @@
     color: #381187;
     text-align: center;
     font-family: "ruberoid-semibold";
-    font-size: 50px;
+    font-size: clamp(1.125rem, 0.4208rem + 3.0047vw, 3.125rem);
     margin-inline: auto;
     margin-top: 0;
   }
@@ -28,7 +28,7 @@
         flex: 1;
         padding-block: 17px;
         text-align: center;
-        font-size: 16px;
+        font-size: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
         font-family: "plusjakartasans-semibold";
         color: #636364;
         border-radius: 4px;
@@ -63,7 +63,7 @@
           margin: 0;
           color: #381187;
           font-family: "Ruberoid-semibold";
-          font-size: 25px;
+          font-size: clamp(1.25rem, 1.14rem + 0.4695vw, 1.5625rem);
         }
 
         .course-landing-subtitle {
@@ -75,6 +75,7 @@
           margin: 0;
           font-family: "plusjakartasans-light";
           line-height: 24px;
+          font-size: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
         }
 
         .course-dates-container {
@@ -206,6 +207,7 @@
             align-items: center;
             justify-content: center;
             gap: 11px;
+            fill: white;
           }
         }
 
@@ -399,13 +401,23 @@
 
 @media screen and (max-width: 768px) {
   .course-landing-detail-container {
+    padding: 24px 0px 20px;
+
     .course-landing-presentation {
-      padding: 20px 14px;
+      padding: 20px 12px;
       margin-bottom: 25px;
 
-      .course-landing-title {
-        margin: 0;
-        font-size: 20px;
+      .program-modules-container {
+        padding: 0;
+
+        .module-item {
+          padding: 7.5px 15px;
+        }
+
+        .module-selected {
+          background-color: var(--purple-2);
+          color: white;
+        }
       }
 
       .course-landing-subtitle {
@@ -415,49 +427,83 @@
       .course-landing-presentation-box {
         display: flex;
         flex-flow: column nowrap;
-        gap: 47px;
+        gap: 31px;
+        padding: 0;
+        margin-top: 24px;
 
-        .course-description {
-          max-height: 144px;
-          text-overflow: ellipsis;
-          overflow-y: hidden;
-          font-size: 14px;
+        .course-landing-detailes {
+          .course-landing-title {
+            margin-bottom: 14px;
+          }
+
+          .course-description {
+            margin-bottom: 29px;
+          }
+
+          .course-dates-container {
+            display: flex;
+            flex-direction: row;
+            gap: 42px;
+            align-items: stretch;
+
+            .date-container {
+              .date-title {
+                margin: 0;
+                padding-block: 7px;
+                font-size: 12px;
+              }
+
+              .date-content {
+                padding: 9px 8px;
+                font-size: 14px;
+                margin: 0;
+              }
+            }
+          }
         }
 
         .video-container {
-          .access-button {
-            font-size: 14px;
+          .buttons-video-container {
+            justify-content: space-between;
+
+            .access-button {
+              flex: initial;
+              padding: 6px;
+              font-size: 10px;
+              gap: 8px;
+              width: 141px;
+            }
           }
         }
       }
     }
 
     .course-landing-details-box {
-      padding-inline: 0;
-      gap: 35px;
+      padding: 11px 13px;
+      gap: 8px;
       font-size: 12px;
 
       .section-title {
-        width: 100%;
         padding: 11px 10px;
-        font-size: 16px;
+        font-size: 14px;
         border-radius: 4px 4px 0 0;
       }
 
       .row-1 {
         display: flex;
         flex-flow: column nowrap;
-        gap: 35px;
+        gap: 20px;
 
         .col-1 {
           .plan-estudio-container {
-            margin-bottom: 35px;
+            margin-bottom: 20px;
 
             .plan-title {
               width: 100%;
               justify-content: space-between;
               align-items: center;
               text-wrap: nowrap;
+              padding-right: 12px;
 
               h2 {
                 margin: 0;
@@ -510,23 +556,14 @@
             }
           }
 
-          .tools-container {
-            .tools-title {
-              border-radius: 4px;
-            }
+          .requirements-container {
+            display: flex;
+            flex-direction: column;
 
-            .slider-wrapper {
-              width: 100%;
-              max-width: 692px;
-              margin: 43px 0 0 0;
-
-              .slider {
-                gap: 34px;
-                animation: slider 20s linear infinite;
-
-                .tool-img {
-                  width: 40px;
-                  height: 40px;
+            .requirements-content {
+              .requirements-list {
+                li {
+                  font-size: 12px;
                 }
               }
             }
