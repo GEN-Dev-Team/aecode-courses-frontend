@@ -90,9 +90,9 @@
       }
 
       .header-list {
+        width: fit-content;
         flex-direction: column;
         gap: 18px;
-        width: 223px;
         padding: 25px 20px;
         margin-top: -15px;
         background-color: white;
@@ -101,6 +101,7 @@
         position: absolute;
         z-index: 0;
         align-items: flex-start;
+        border-radius: 6px;
       }
 
       .header-item {
@@ -132,6 +133,7 @@
         position: relative;
         z-index: 2;
         margin-inline-start: 20px;
+        width: 40px;
       }
 
       .isMobile {
@@ -143,6 +145,7 @@
         font-family: "ruberoid-light";
         padding: 6px 19.033px;
         color: white;
+        font-size: 12px;
       }
     }
   }
