@@ -2,7 +2,6 @@ import {
   Component,
   ElementRef,
   EventEmitter,
-  HostListener,
   inject,
   Input,
   Output,
@@ -19,9 +18,7 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { BrowserService } from '../../core/services/browser.service';
-import { IEmail, defaultEmail } from '../../courses/interface/Email';
 import { EmailSenderService } from '../../courses/services/email-sender.service';
-import { ISheetItem } from '../../core/services/interfaces/Sheet-Item';
 import { GoogleSheetService } from '../../core/services/google-sheet.service';
 
 @Component({

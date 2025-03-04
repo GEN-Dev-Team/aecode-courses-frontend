@@ -521,6 +521,8 @@
           .send-icon-container {
             height: 33px;
             width: 33px;
+            position: relative;
+            z-index: 1;
 
             .send-icon {
               width: 25px;
