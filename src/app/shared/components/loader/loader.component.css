@@ -19,6 +19,13 @@
   }
 }
 
+.dark-loader-container {
+  .loader {
+    border: 3px solid var(--gray-3);
+    border-top-color: #0e1121;
+  }
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);

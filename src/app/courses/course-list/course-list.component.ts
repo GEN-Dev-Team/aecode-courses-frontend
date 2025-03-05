@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CourseItemComponent } from '../course-item/course-item.component';
 import { ISecondaryCourseSummary } from '../interface/secondary-course/Secondary-Course';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
@@ -6,6 +6,8 @@ import { FilterIconComponent } from '../../admin-panel/icons/filter-icon/filter-
 import { CourseFilterDropdownComponent } from './course-filter-dropdown/course-filter-dropdown.component';
 import { ZoomInDirective } from '../../shared/directives/animations/zoom-in.directive';
 import { CoursePaginatorComponent } from './course-paginator/course-paginator.component';
+import { ThemeService } from '../../core/services/theme.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-course-list',
@@ -17,6 +19,7 @@ import { CoursePaginatorComponent } from './course-paginator/course-paginator.co
     CourseFilterDropdownComponent,
     ZoomInDirective,
     CoursePaginatorComponent,
+    AsyncPipe,
   ],
   templateUrl: './course-list.component.html',
   styleUrl: './course-list.component.css',
@@ -28,6 +31,8 @@ export class CourseListComponent {
   @Input() secondaryCourseList: any[] = [];
   @Input() paginatorPages: number = 0;
   @Input() currentPage: number = 0;
+
+  themeService: ThemeService = inject(ThemeService);
 
   showFilter: boolean = false;
 

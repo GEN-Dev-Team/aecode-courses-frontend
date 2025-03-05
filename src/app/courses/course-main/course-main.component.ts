@@ -8,6 +8,8 @@ import { ISecondaryCourseSummary } from '../interface/secondary-course/Secondary
 import { Observable } from 'rxjs';
 import { BrowserService } from '../../core/services/browser.service';
 import { IPaginator } from '../../core/interfaces/paginator';
+import { ThemeService } from '../../core/services/theme.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-course-main',
@@ -17,6 +19,7 @@ import { IPaginator } from '../../core/interfaces/paginator';
     CourseSearchIconComponent,
     PlatformCourseListComponent,
     CourseListComponent,
+    AsyncPipe,
   ],
   templateUrl: './course-main.component.html',
   styleUrl: './course-main.component.css',
@@ -27,8 +30,8 @@ export class CourseMainComponent implements OnInit {
   );
 
   browserService: BrowserService = inject(BrowserService);
-
   ngZone: NgZone = inject(NgZone);
+  themeService: ThemeService = inject(ThemeService);
 
   isFilteringByMode = false;
   filterValue: string = '';

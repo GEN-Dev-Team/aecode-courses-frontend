@@ -1,4 +1,6 @@
-<main class="main-container">
+<main
+  class="main-container {{ themeService.getMode() | async }}-main-container "
+>
   <div class="title-container">
     <h1 class="main-title" [class.title-animation]="animate">
       La esencia de la innovación comienza aquí

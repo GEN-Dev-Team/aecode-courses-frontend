@@ -27,6 +27,7 @@
     .filter-icon {
       margin-left: auto;
       width: 30px;
+      fill: var(--purple-2);
     }
   }
 
@@ -48,6 +49,23 @@
 
     .loader-container {
       min-height: 998px;
+    }
+  }
+}
+
+/* DARK MODE */
+
+.dark-course-list-container {
+  border: 2px solid rgba(51, 163, 220, 0.3);
+  box-shadow: 0px 0px 6.2px 5px rgba(180, 187, 191, 0.3);
+
+  .course-list-header {
+    .course-list-title {
+      color: var(--gray-3);
+    }
+
+    .filter-icon {
+      fill: var(--gray-3);
     }
   }
 }

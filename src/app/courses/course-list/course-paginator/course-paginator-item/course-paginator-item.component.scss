@@ -18,6 +18,10 @@
   box-shadow: 0px 0px 6.6px 0px rgba(120, 55, 221, 0.73);
 }
 
+.dark-item-active {
+  background: var(--dark-fondo, #4a3ac1);
+}
+
 @media screen and (max-width: 768px) {
   .paginator-item {
     width: 32px;

@@ -147,6 +147,44 @@
   }
 }
 
+/* DARK MODE */
+
+.dark-main-container {
+  .title-container {
+    background-color: transparent;
+
+    .main-title {
+      color: var(--gray-3);
+    }
+
+    .punto-container {
+      background-color: #0e1121;
+    }
+
+    .punto {
+      background-color: var(--gray-3);
+    }
+  }
+
+  .search-container {
+    border: 2px solid #8c97dc;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0px 2.84px 23.43px -2.84px rgba(0, 0, 0, 0.2);
+
+    .search-input {
+      color: var(--gray-3);
+      background-color: transparent;
+
+      &::placeholder {
+        color: var(--gray-3);
+      }
+    }
+  }
+
+  .course-main-list {
+  }
+}
+
 @media screen and (max-width: 768px) {
   @keyframes moveRightMobile {
     from {
