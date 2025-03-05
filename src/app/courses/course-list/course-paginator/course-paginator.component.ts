@@ -1,6 +1,7 @@
 import {
   Component,
   EventEmitter,
+  inject,
   Input,
   Output,
   SimpleChanges,
@@ -8,6 +9,8 @@ import {
 import { AngleLeftIconComponent } from './angle-left-icon/angle-left-icon.component';
 import { AngleRightIconComponent } from './angle-right-icon/angle-right-icon.component';
 import { CoursePaginatorItemComponent } from './course-paginator-item/course-paginator-item.component';
+import { ThemeService } from '../../../core/services/theme.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-course-paginator',
@@ -16,6 +19,7 @@ import { CoursePaginatorItemComponent } from './course-paginator-item/course-pag
     AngleLeftIconComponent,
     AngleRightIconComponent,
     CoursePaginatorItemComponent,
+    AsyncPipe,
   ],
   templateUrl: './course-paginator.component.html',
   styleUrl: './course-paginator.component.scss',
@@ -25,6 +29,8 @@ export class CoursePaginatorComponent {
   @Input() totalPages: number = 0;
   @Output() changePage = new EventEmitter<number>();
   @Output() nextPage = new EventEmitter<boolean>();
+
+  themeService: ThemeService = inject(ThemeService);
 
   itemsList: number[] = [];
   pageSelected: number = 1;

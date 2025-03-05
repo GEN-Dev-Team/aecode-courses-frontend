@@ -116,12 +116,14 @@ body {
 /* .toast-title{}
 .toast-message{} */
 
+/* DARK MODE */
+
 .light {
   background-color: white;
   color: black;
 }
 
 .dark {
-  background-color: black;
+  background-color: #0e1121;
   color: white;
 }

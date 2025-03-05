@@ -1,4 +1,8 @@
-<div class="course-list-container">
+<div
+  class="course-list-container {{
+    themeService.getMode() | async
+  }}-course-list-container"
+>
   <div class="course-list-header">
     <h2 class="course-list-title">
       El poder tecnoló﻿gico del AEC al alcance de un clic

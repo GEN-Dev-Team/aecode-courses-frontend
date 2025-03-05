@@ -1,5 +1,7 @@
 <div
-  class="course-item-container"
+  class="course-item-container {{
+    themeService.getMode() | async
+  }}-course-item-container"
   [class.platform-course-item-container]="isMasiveCourse"
   (click)="showCourseDetails()"
 >

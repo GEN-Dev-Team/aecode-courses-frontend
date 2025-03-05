@@ -94,11 +94,14 @@
   }
 }
 
+/* DARK MODE */
+
 .dark-header-container {
   background-color: #0e1121;
+  border: 1px solid #3a4065;
 
   .box-shadow-effect {
-    background: #4465ee;
+    background: none;
   }
 
   .header-wrapper {

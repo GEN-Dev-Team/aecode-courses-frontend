@@ -1,4 +1,8 @@
-<div class="paginator-container">
+<div
+  class="paginator-container {{
+    themeService.getMode() | async
+  }}-paginator-container "
+>
   <div class="paginator-items">
     <app-angle-left-icon
       (click)="emiteChangeNextPage(false)"

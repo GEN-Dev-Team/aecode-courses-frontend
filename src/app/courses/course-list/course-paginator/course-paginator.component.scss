@@ -27,6 +27,22 @@
   }
 }
 
+/* DARK MODE */
+.dark-paginator-container {
+  .paginator-items {
+    user-select: none;
+
+    .paginator-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      justify-content: center;
+    }
+  }
+}
+
 @media screen and (max-width: 768px) {
   .paginator-container {
     width: 100%;

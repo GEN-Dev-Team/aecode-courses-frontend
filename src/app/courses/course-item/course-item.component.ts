@@ -21,6 +21,7 @@ import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
 import { SecondaryCourseService } from '../services/secondary-course.service';
 import { Observable } from 'rxjs';
+import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
   selector: 'app-course-item',
@@ -53,6 +54,7 @@ export class CourseItemComponent {
   browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
   paymentService: PaymentService = inject(PaymentService);
+  themeService: ThemeService = inject(ThemeService);
 
   finalPrice = signal(0);
   showBlockedModal = false;
