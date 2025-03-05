@@ -60,6 +60,10 @@
       background: #2e6df3;
     }
 
+    .hideInMobile {
+      display: flex;
+    }
+
     .menu-button {
       display: none;
     }
@@ -67,16 +71,16 @@
     .access-button-mobile {
       display: none;
     }
-
-    .isMobile {
-      display: flex;
-    }
   }
 }
 
 @media screen and (max-width: 768px) {
   .header-container {
+    display: flex;
+
     .header-content {
+      width: 100%;
+      display: flex;
       flex-flow: row nowrap;
       padding: 15px 20px;
       justify-content: center;
@@ -128,16 +132,16 @@
         display: none;
       }
 
+      .hideInMobile {
+        display: none;
+      }
+
       .menu-button {
         display: block;
         position: relative;
         z-index: 2;
         margin-inline-start: 20px;
         width: 40px;
-      }
-
-      .isMobile {
-        display: none;
       }
 
       .access-button-mobile {
