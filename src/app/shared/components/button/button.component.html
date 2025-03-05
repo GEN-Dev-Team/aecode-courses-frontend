@@ -1,3 +1,6 @@
-<button class="header-button" [ngClass]="class">
+<button
+  class="header-button {{ themeService.getMode() | async }}"
+  [ngClass]="class"
+>
   <ng-content />
 </button>

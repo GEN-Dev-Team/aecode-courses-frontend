@@ -3,7 +3,7 @@
 <div class="courses-overlay">
   <ng-content />
 
-  <button class="theme-button">
+  <button class="theme-button {{ theme | async }}-theme-button ">
     <div class="theme-content">
       <div
         ZoomIn

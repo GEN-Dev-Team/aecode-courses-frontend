@@ -11,6 +11,9 @@ import { environment } from '../../../../environment/environment';
 import { ShoppingCartIconComponent } from '../../../courses/icons/shopping-cart-icon/shopping-cart-icon.component';
 import { Router } from '@angular/router';
 import { UserProfileButtonComponent } from './user-profile-button/user-profile-button.component';
+import { ThemeService } from '../../../core/services/theme.service';
+import { AsyncPipe } from '@angular/common';
+import { AecodeIconComponent } from '../../../home/icons/aecode-icon/aecode-icon.component';
 
 @Component({
   selector: 'app-header',
@@ -22,6 +25,8 @@ import { UserProfileButtonComponent } from './user-profile-button/user-profile-b
     ZoomInDirective,
     ShoppingCartIconComponent,
     UserProfileButtonComponent,
+    AsyncPipe,
+    AecodeIconComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -29,6 +34,7 @@ import { UserProfileButtonComponent } from './user-profile-button/user-profile-b
 export class HeaderComponent {
   authService: AuthService = inject(AuthService);
   route: Router = inject(Router);
+  themeService: ThemeService = inject(ThemeService);
 
   isUserLoggedIn = false;
   openLoginForm = false;
