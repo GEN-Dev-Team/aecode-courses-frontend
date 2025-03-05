@@ -3,7 +3,7 @@
     <a href="" class="header-logo-container">
       <app-aecode-icon class="header-logo" />
     </a>
-    <ul class="header-list" [class.isMobile]="showMenu">
+    <ul class="header-list" [class.hideInMobile]="!showMobileMenu">
       <a
         target="_blank"
         ZoomIn

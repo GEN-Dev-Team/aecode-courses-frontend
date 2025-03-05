@@ -36,7 +36,7 @@ export class HomeHeaderComponent {
 
   openLoginForm = false;
   isUserLoggedIn = false;
-  showMenu = true;
+  showMobileMenu = false;
 
   ngOnInit(): void {
     if (this.authService.getUserDetails() !== null) {
@@ -48,6 +48,6 @@ export class HomeHeaderComponent {
   }
 
   toggleMenu() {
-    this.showMenu = !this.showMenu;
+    this.showMobileMenu = !this.showMobileMenu;
   }
 }
