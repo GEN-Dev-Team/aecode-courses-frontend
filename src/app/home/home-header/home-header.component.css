@@ -76,6 +76,8 @@
 
 @media screen and (max-width: 768px) {
   .header-container {
+    display: block;
+
     .header-content {
       flex-flow: row nowrap;
       padding: 15px 20px;
