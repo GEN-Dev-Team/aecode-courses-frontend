@@ -5,6 +5,7 @@ import { MoonIconComponent } from '../../icons/moon-icon/moon-icon.component';
 import { WsspFloatingIconComponent } from '../../icons/wssp-floating-icon/wssp-floating-icon.component';
 import { HeaderComponent } from '../../components/header/header.component';
 import { HomeFooterComponent } from '../../../home/home-footer/home-footer.component';
+import { ThemeMode, ThemeService } from '../../../core/services/theme.service';
 
 @Component({
   selector: 'app-course-overlay',
@@ -21,9 +22,17 @@ import { HomeFooterComponent } from '../../../home/home-footer/home-footer.compo
 })
 export class CourseOverlayComponent {
   courseService: CourseService = inject(CourseService);
+  themeService: ThemeService = inject(ThemeService);
 
   wsspMessage =
     'https://api.whatsapp.com/send?phone=51900121245&text=Hola AECODE, quisiera conocer más detalles de los programas e iniciativas de colaboración que cuentan. Quiero contactar con un asesor.';
 
   isDarkTheme: boolean = false;
+
+  ngOnInit(): void {}
+
+  setThemeMode(theme: ThemeMode): void {
+    this.isDarkTheme = !this.isDarkTheme;
+    this.themeService.setMode(theme);
+  }
 }

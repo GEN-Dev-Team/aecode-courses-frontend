@@ -9,20 +9,18 @@
         ZoomIn
         class="theme-option"
         [class.theme-selected]="!isDarkTheme"
-        (click)="isDarkTheme = false"
+        (click)="setThemeMode('light')"
       >
         <app-sun-icon />
-        <!-- <span>Light</span> -->
       </div>
 
       <div
         ZoomIn
         class="theme-option"
         [class.theme-selected]="isDarkTheme"
-        (click)="isDarkTheme = true"
+        (click)="setThemeMode('dark')"
       >
         <app-moon-icon />
-        <!-- <span>Dark</span> -->
       </div>
     </div>
   </button>
