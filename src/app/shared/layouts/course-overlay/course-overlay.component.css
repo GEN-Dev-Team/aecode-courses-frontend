@@ -87,6 +87,15 @@
     }
   }
 
+  .dark-theme-button {
+    border: 1px solid #0e1121;
+    background: white;
+
+    .theme-content {
+      background-color: #0e1121;
+    }
+  }
+
   .whatsapp-button {
     flex-shrink: 0;
     border-radius: 50px 0px 0px 50px;

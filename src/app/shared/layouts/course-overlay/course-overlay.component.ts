@@ -6,6 +6,8 @@ import { WsspFloatingIconComponent } from '../../icons/wssp-floating-icon/wssp-f
 import { HeaderComponent } from '../../components/header/header.component';
 import { HomeFooterComponent } from '../../../home/home-footer/home-footer.component';
 import { ThemeMode, ThemeService } from '../../../core/services/theme.service';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-course-overlay',
@@ -16,6 +18,7 @@ import { ThemeMode, ThemeService } from '../../../core/services/theme.service';
     WsspFloatingIconComponent,
     HeaderComponent,
     HomeFooterComponent,
+    AsyncPipe,
   ],
   templateUrl: './course-overlay.component.html',
   styleUrl: './course-overlay.component.css',
@@ -27,12 +30,15 @@ export class CourseOverlayComponent {
   wsspMessage =
     'https://api.whatsapp.com/send?phone=51900121245&text=Hola AECODE, quisiera conocer más detalles de los programas e iniciativas de colaboración que cuentan. Quiero contactar con un asesor.';
 
-  isDarkTheme: boolean = false;
+  theme: Observable<ThemeMode> = this.themeService.getMode();
+  isDarkTheme!: boolean;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.theme.subscribe((mode) => (this.isDarkTheme = mode === 'dark'));
+  }
 
   setThemeMode(theme: ThemeMode): void {
-    this.isDarkTheme = !this.isDarkTheme;
     this.themeService.setMode(theme);
+    this.isDarkTheme = theme === 'dark';
   }
 }
