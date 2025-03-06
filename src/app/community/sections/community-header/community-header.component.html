@@ -1,0 +1,19 @@
+<header class="header-container">
+  <div class="header-content">
+    <a (click)="redirectToMainView()" class="header-logo-container">
+      <app-aecode-icon class="header-logo" />
+    </a>
+
+    <ul class="header-list">
+      @for (headerItem of headerItemsList; track headerItem) {
+      <app-coommunity-header-item
+        [headerItem]="headerItem"
+        [selectedHeaderItem]="headerItemSelected"
+        (headerItemSelected)="sendHeaderItemSelected($event)"
+      />
+      }
+    </ul>
+
+    <a class="header-button">Contáctanos</a>
+  </div>
+</header>

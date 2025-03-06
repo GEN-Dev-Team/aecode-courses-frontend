@@ -1,0 +1,116 @@
+.header-container {
+  width: 100%;
+  border-bottom: #3a4065 1px solid;
+  position: relative;
+  z-index: 2;
+
+  .header-content {
+    max-width: 1440px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 26px 50px;
+    margin-inline: auto;
+
+    .header-logo {
+      height: 27px;
+      display: flex;
+      cursor: pointer;
+    }
+
+    .header-list {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin: 0;
+      font-family: "ruberoid-light";
+      font-size: clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
+      display: flex;
+      gap: 60px;
+      border-radius: 60px;
+      border: 1.5px solid #3a4065;
+      height: 71px;
+      padding: 0 30px;
+    }
+
+    .header-button {
+      padding: 10px 20px;
+      gap: 10px;
+      color: #eef3f8;
+      font-family: "ruberoid-medium";
+      font-size: 20px;
+      border-radius: 30px;
+      background: var(--dark-fondo, #4a3ac1);
+      cursor: pointer;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header-container {
+    display: flex;
+
+    .header-content {
+      width: 100%;
+      display: flex;
+      flex-flow: row nowrap;
+      padding: 15px 20px;
+      justify-content: center;
+
+      .header-logo-container {
+        margin-right: auto;
+      }
+
+      .header-logo {
+        height: 15.71px;
+      }
+
+      .header-list {
+        width: fit-content;
+        flex-direction: column;
+        gap: 18px;
+        padding: 25px 20px;
+        margin-top: -15px;
+        background-color: white;
+        right: 25px;
+        top: 100%;
+        position: absolute;
+        z-index: 0;
+        align-items: flex-start;
+        border-radius: 6px;
+      }
+
+      .header-button {
+        width: fit-content;
+        height: inherit;
+        fill: black;
+      }
+
+      .purple-button {
+        border: transparent;
+        background: transparent;
+      }
+
+      .sky-blue-button {
+        background: #2e6df3;
+      }
+
+      .mobile-item {
+        display: none;
+      }
+
+      .hideInMobile {
+        display: none;
+      }
+
+      .menu-button {
+        display: block;
+        position: relative;
+        z-index: 2;
+        margin-inline-start: 20px;
+        width: 40px;
+      }
+    }
+  }
+}
