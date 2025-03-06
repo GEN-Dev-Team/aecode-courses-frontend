@@ -8,6 +8,7 @@ import { CourseLandingDetailComponent } from './courses/course-landing-detail/co
 import { MasiveCourseDetailComponent } from './courses/masive-course-detail/masive-course-detail.component';
 import { adminAuthGuard } from './core/guards/admin-auth.guard';
 import { PaymentComponent } from './payment/payment.component';
+import { CommunityComponent } from './community/community.component';
 
 export const routes: Routes = [
   {
@@ -45,6 +46,11 @@ export const routes: Routes = [
     title: 'ADMIN PANEL',
     component: AdminPanelComponent,
     canActivate: [adminAuthGuard],
+  },
+  {
+    path: 'community',
+    title: 'AECODE COMMUNITY',
+    component: CommunityComponent,
   },
   {
     path: 'payment',

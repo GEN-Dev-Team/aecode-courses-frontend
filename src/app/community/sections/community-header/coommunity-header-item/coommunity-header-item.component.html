@@ -1,0 +1,9 @@
+<a
+  target="_blank"
+  ZoomIn
+  class="header-item"
+  [class.header-item-selected]="selectedHeaderItem === headerItem.name"
+  (click)="redirectToSection()"
+>
+  {{ headerItem.name }}
+</a>
