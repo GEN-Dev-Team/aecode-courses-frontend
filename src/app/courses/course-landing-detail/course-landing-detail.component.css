@@ -254,17 +254,6 @@
       overflow-y: auto;
     }
 
-    .section-description {
-      width: 100%;
-      height: 100px;
-      padding: 15px 25px 20px 25px;
-      margin: 0;
-      border-radius: 0px 0px 2px 2px;
-      background: #eef3f8;
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      line-height: 20px;
-    }
-
     .row-1 {
       display: grid;
       grid-template-columns: auto 346px;
@@ -287,6 +276,8 @@
             justify-content: space-between;
             align-items: center;
             padding-right: 87px;
+            border: 1px solid #fff;
+            border-radius: 4px;
 
             h2 {
               margin: 0;
@@ -316,40 +307,6 @@
               .watch-icon {
                 fill: white;
               }
-            }
-          }
-
-          .unit-item {
-            display: flex;
-            flex-flow: row nowrap;
-            justify-content: space-between;
-            padding: 10px 25px;
-            color: var(--Negro, #000);
-            font-family: "plusjakartasans-regular";
-            font-size: 16px;
-            border: 1px solid white;
-            background: #eef3f8;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.19);
-            position: relative;
-            z-index: 1;
-            cursor: pointer;
-
-            .icon {
-              fill: var(--purple-2);
-            }
-          }
-
-          .plan-list {
-            margin: 0;
-            padding: 13px 45px;
-            border-radius: 0px 0px 2px 2px;
-            border: 1px solid white;
-            background: #eef3f8;
-            position: relative;
-            z-index: 0;
-
-            li {
-              margin-bottom: 4px;
             }
           }
         }
@@ -383,6 +340,112 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* DARK MODE */
+
+.dark-course-landing-detail-container {
+  .program-title {
+    color: var(--gray-3);
+  }
+
+  .course-landing-presentation {
+    border: 1.5px solid #8c97dc;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 2.84px 23.43px -2.84px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15.97499942779541px);
+
+    .program-modules-container {
+      .module-item {
+        border: 1px solid #4a3ac1;
+      }
+
+      .module-selected {
+        background-color: #4a3ac1;
+        border: 1px solid #8c97dc;
+        color: var(--gray-3);
+      }
+    }
+
+    .course-landing-presentation-box {
+      .course-landing-detailes {
+        .course-landing-title {
+          color: var(--gray-3);
+        }
+
+        .course-dates-container {
+          .date-container {
+            .date-title {
+              background: #4a3ac1;
+              color: var(--gray-3);
+              border: 1px solid #8c97dc;
+              border-bottom: none;
+            }
+
+            .date-content {
+              border: 1px solid #8c97dc;
+              background: transparent;
+            }
+          }
+        }
+      }
+
+      .video-container {
+        .course-video {
+          border: none;
+          background: transparent;
+          box-shadow: none;
+        }
+
+        .masive-course-button {
+          border-radius: 4px;
+          border: 1px solid #7837dd;
+          background: #381187;
+        }
+
+        .masive-course-button-progra {
+          border: 1px solid #4465ee;
+          background: #203aa5;
+        }
+
+        .buttons-video-container {
+          .access-button {
+            border: none;
+            border: 1px solid #8c97dc;
+            background: #4a3ac1;
+          }
+        }
+      }
+    }
+  }
+
+  .course-landing-details-box {
+    border: 1.5px solid #8c97dc;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 2.84px 23.43px -2.84px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15.97499942779541px);
+
+    .section-title {
+      background: #4a3ac1;
+    }
+
+    .row-1 {
+      .col-1 {
+        .requirements-container {
+          .section-title {
+            border: 1px solid #fff;
+            border-radius: 4px 4px 0px 0px;
+            border-bottom: none;
+          }
+
+          .requirements-content {
+            background: transparent;
+            border-radius: 0px 0px 4px 4px;
+          }
+        }
+      }
+    }
+  }
 }
 
 @keyframes slider {
@@ -531,27 +594,6 @@
                   display: flex;
                   width: 16px;
                 }
-              }
-            }
-
-            .unit-item {
-              padding: 10px;
-              font-size: 14px;
-              align-items: center;
-
-              .icon {
-                width: 13px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              }
-            }
-
-            .plan-list {
-              padding: 13px 28px;
-
-              li {
-                margin-bottom: 5px;
               }
             }
           }

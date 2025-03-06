@@ -126,6 +126,65 @@
   }
 }
 
+.dark-extra-information-container {
+  .extra-info-col-1 {
+    .what-to-learn-container {
+      .section-title {
+        border: 1px solid #fff;
+        background: #4a3ac1;
+        border-bottom: none;
+      }
+
+      .section-description {
+        border: 1px solid #fff;
+      }
+    }
+
+    .section-description {
+      background: transparent;
+    }
+
+    .tools-container {
+      width: 100%;
+
+      .tools-title {
+        border: 1px solid #fff;
+        border-radius: 4px 4px 0px 0px;
+        background: #4a3ac1;
+        border-bottom: none;
+      }
+
+      .slider-wrapper {
+        border: 1px solid #fff;
+        border-radius: 0px 0px 4px 4px;
+        background: transparent;
+      }
+    }
+  }
+
+  .benefits-container {
+    .section-title {
+      background-color: #4a3ac1;
+      border: 1px solid #fff;
+      border-bottom: none;
+    }
+
+    .benefits-content {
+      background: transparent;
+    }
+  }
+}
+
+.dark-question-container {
+  border: 1px solid #fff;
+  border-radius: 4px;
+  background: transparent;
+
+  .question-title {
+    background: transparent;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .section-title {
     padding: 12px 10px;

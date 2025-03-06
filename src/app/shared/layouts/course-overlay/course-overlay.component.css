@@ -88,11 +88,20 @@
   }
 
   .dark-theme-button {
-    border: 1px solid #0e1121;
-    background: white;
+    border: 1px solid #4a3ac1;
+    border-left: none;
+    background: #100d46;
+    box-shadow: 0px 0px 7.8px 3px #7c7edf;
 
     .theme-content {
-      background-color: #0e1121;
+      background-color: #4a3ac1;
+      border-radius: 20px;
+      padding: 4px 5px;
+
+      .theme-selected {
+        background-color: #eef3f8;
+        fill: #4a3ac1;
+      }
     }
   }
 
@@ -113,6 +122,31 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+  }
+
+  .dark-whatsapp-button {
+    box-shadow: 0px 0px 7.8px 3px #7c7edf;
+    width: clamp(83px, 10vw, 106px);
+    height: 85px;
+    position: fixed;
+    right: 0;
+    bottom: 20px;
+    cursor: pointer;
+    border-radius: 100px 0px 0px 100px;
+    background: #100d46;
+    display: flex;
+    align-items: center;
+    border: 1px solid #4a3ac1;
+    border-right: none;
+    z-index: 1;
+
+    .wssp-icon {
+      width: auto;
+      height: 120%;
+      opacity: 1;
+      margin-inline-start: -5px;
+      position: relative;
     }
   }
 }
@@ -148,6 +182,11 @@
       .icon {
         width: 50px;
       }
+    }
+
+    .dark-whatsapp-button {
+      height: 64px;
+      bottom: 160px;
     }
   }
 }

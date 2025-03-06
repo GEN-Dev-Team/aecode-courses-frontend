@@ -1,4 +1,8 @@
-<div class="extra-information-container">
+<div
+  class="extra-information-container {{
+    themeService.getMode() | async
+  }}-extra-information-container"
+>
   <div class="extra-info-col-1">
     <div class="what-to-learn-container">
       <h2 class="section-title">¿QUE LOGRARAS?</h2>
@@ -38,7 +42,11 @@
   </div>
 </div>
 
-<div class="question-container">
+<div
+  class="question-container {{
+    themeService.getMode() | async
+  }}-question-container"
+>
   <h2 class="question-title">PREGUNTAS FRECUENTES</h2>
   <div class="question-list">
     @for (faqItem of courseFaqs; track faqItem) {
