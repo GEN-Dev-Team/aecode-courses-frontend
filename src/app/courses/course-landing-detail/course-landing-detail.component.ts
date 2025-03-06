@@ -24,6 +24,7 @@ import { BookIconComponent } from '../icons/book-icon/book-icon.component';
 import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
 import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
+import { ThemeService } from '../../core/services/theme.service';
 
 interface IModuleButton {
   id: number;
@@ -51,6 +52,7 @@ interface IModuleButton {
     BookIconComponent,
     ContentBlockedComponent,
     DateFormatPipe,
+    AsyncPipe,
   ],
   templateUrl: './course-landing-detail.component.html',
   styleUrl: './course-landing-detail.component.css',
@@ -63,6 +65,7 @@ export class CourseLandingDetailComponent {
   router: ActivatedRoute = inject(ActivatedRoute);
   routing: Router = inject(Router);
   toastService = inject(ToastrService);
+  themeService: ThemeService = inject(ThemeService);
 
   secCourseId = Number(this.router.snapshot.paramMap.get('secCourseId'));
 

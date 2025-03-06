@@ -1,6 +1,10 @@
 <app-course-overlay>
   @if (secondaryCourseData$ | async; as secondaryCourseData) {
-  <main class="course-landing-detail-container">
+  <main
+    class="course-landing-detail-container {{
+      themeService.getMode() | async
+    }}-course-landing-detail-container"
+  >
     <h1 class="program-title">
       {{ secondaryCourseData.programTitle }}
     </h1>

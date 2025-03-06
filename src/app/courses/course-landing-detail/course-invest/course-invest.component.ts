@@ -1,17 +1,19 @@
-import { CommonModule } from '@angular/common';
+import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, computed, inject, Input } from '@angular/core';
 import { ShoppingCartIconComponent } from '../../icons/shopping-cart-icon/shopping-cart-icon.component';
 import { BrowserService } from '../../../core/services/browser.service';
+import { ThemeService } from '../../../core/services/theme.service';
 
 @Component({
   selector: 'app-course-invest',
   standalone: true,
-  imports: [CommonModule, ShoppingCartIconComponent],
+  imports: [CommonModule, ShoppingCartIconComponent, AsyncPipe],
   templateUrl: './course-invest.component.html',
   styleUrl: './course-invest.component.css',
 })
 export class CourseInvestComponent {
   browserService: BrowserService = inject(BrowserService);
+  themeService: ThemeService = inject(ThemeService);
 
   @Input() course: any = {};
 

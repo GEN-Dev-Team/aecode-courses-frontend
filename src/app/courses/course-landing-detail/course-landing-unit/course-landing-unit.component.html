@@ -1,4 +1,7 @@
-<div class="unit-item" (click)="sendUnitIdSelected(studyplanItem.orderNumber)">
+<div
+  class="unit-item {{ themeService.getMode() | async }}-unit-item"
+  (click)="sendUnitIdSelected(studyplanItem.orderNumber)"
+>
   <span>U{{ studyplanItem.orderNumber }}: {{ studyplanItem.unit }}</span>
 
   <div class="unit-hours-container">
@@ -16,7 +19,7 @@
 </div>
 
 @if (studyOrderNumberSelected === studyplanItem.orderNumber) {
-<ul class="plan-list">
+<ul class="plan-list {{ themeService.getMode() | async }}-plan-list">
   @for (sessionItem of studyplanItem.sessions; track sessionItem) {
   <li>{{ sessionItem }}</li>
   }
