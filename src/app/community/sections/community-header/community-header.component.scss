@@ -1,8 +1,10 @@
 .header-container {
   width: 100%;
-  border-bottom: #3a4065 1px solid;
-  position: relative;
+  position: fixed;
   z-index: 2;
+  top: 0;
+  left: 0;
+  background-color: #0e1121;
 
   .header-content {
     max-width: 1440px;
@@ -10,7 +12,7 @@
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 26px 50px;
+    padding: 26px 50px 0px;
     margin-inline: auto;
 
     .header-logo {
