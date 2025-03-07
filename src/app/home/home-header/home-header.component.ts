@@ -24,7 +24,6 @@ import { BrowserService } from '../../core/services/browser.service';
     UserProfileButtonComponent,
     BurgerIconComponent,
     AboutUsMobileIconComponent,
-    ShamanaiMobileIconComponent,
   ],
   templateUrl: './home-header.component.html',
   styleUrl: './home-header.component.css',
@@ -45,6 +44,10 @@ export class HomeHeaderComponent {
   }
   redirectToCoursesView() {
     this.route.navigate(['/training']);
+  }
+
+  redirectToComunnity() {
+    this.route.navigate(['/community']);
   }
 
   toggleMenu() {
