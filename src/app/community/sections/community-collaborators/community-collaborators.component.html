@@ -1,1 +1,112 @@
-<p>community-collaborators works!</p>
+<section class="collaborators-container">
+  <div class="collaborators-buttons-container">
+    <button
+      class="collaborators-button"
+      [class.collaborators-button-selected]="collabsButtonSelected"
+      (click)="collabsButtonSelected = true"
+    >
+      Colaboradores
+    </button>
+    <button
+      class="collaborators-button embajadores-button-embajadores"
+      [class.collaborators-button-selected]="!collabsButtonSelected"
+      (click)="collabsButtonSelected = false"
+    >
+      Embajadores
+    </button>
+  </div>
+
+  <h2 class="collaborators-title">Colaboradores</h2>
+
+  <p class="collaborators-subtitle">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+    ligula eget dolor. Aenean massa. Cum
+  </p>
+
+  <div class="collaborators-carousel-container">
+    <swiper-container
+      loop="true"
+      slides-per-view="1"
+      slides-per-group="1"
+      autoplay='{"delay": 3000}'
+      speed="1500"
+    >
+      <!-- Página 1 -->
+      <swiper-slide>
+        <div class="grid">
+          <div class="row">
+            <div class="collab-item">1</div>
+            <div class="collab-item">2</div>
+            <div class="collab-item">3</div>
+            <div class="collab-item">4</div>
+          </div>
+          <div class="row">
+            <div class="collab-item">5</div>
+            <div class="collab-item">6</div>
+            <div class="collab-item">7</div>
+            <div class="collab-item">8</div>
+          </div>
+          <div class="row last">
+            <div class="collab-item">9</div>
+            <div class="collab-item">10</div>
+          </div>
+        </div>
+      </swiper-slide>
+
+      <!-- Página 2 (repite los elementos en loop) -->
+      <swiper-slide>
+        <div class="grid">
+          <div class="row">
+            <div class="collab-item">11</div>
+            <div class="collab-item">12</div>
+            <div class="collab-item">13</div>
+            <div class="collab-item">14</div>
+          </div>
+          <div class="row">
+            <div class="collab-item">15</div>
+            <div class="collab-item">16</div>
+            <div class="collab-item">17</div>
+            <div class="collab-item">18</div>
+          </div>
+          <div class="row last">
+            <div class="collab-item">19</div>
+            <div class="collab-item">20</div>
+          </div>
+        </div>
+      </swiper-slide>
+    </swiper-container>
+
+    <div class="collaborator-detail-container">
+      <div class="collaborator-img">
+        <img
+          src="https://imgs.search.brave.com/GAMXHxkvbL1AGLI8PVj0gfztG_ObfzPD_sD2D5DgaYU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1QlpUWXpZV1Uw/WlRjdFpqWXhZeTAw/TkRnekxUazJZemt0/Wmprd056UTVPRFE1/TWpVNFhrRXlYa0Zx/Y0djQC5qcGc"
+          alt=""
+        />
+      </div>
+
+      <h3 class="collaborator-name">Jazmin cuadros Miranda</h3>
+      <p class="collaborator-description">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
+        dis parturient montes, nascetur ridiculus mus. Donec quam felis,
+        ultricies necDonec quam felis, ultricies nec, Donec quam felis,
+        ultricies nec, ,
+      </p>
+
+      <ul class="collaborator-social-media">
+        <a ZoomIn href="" class="social-media-item">
+          <app-community-facebook-icon />
+        </a>
+        <a ZoomIn href="" class="social-media-item">
+          <app-community-youtube-icon />
+        </a>
+        <a ZoomIn href="" class="social-media-item">
+          <app-community-instagram-icon />
+        </a>
+        <a ZoomIn href="" class="social-media-item">
+          <app-community-linkedin-icon />
+        </a>
+      </ul>
+    </div>
+  </div>
+</section>
