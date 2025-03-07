@@ -1,1 +1,37 @@
-<p>community-partners works!</p>
+<section class="partners-container">
+  <h2 class="partners-title">Partners</h2>
+
+  <p class="partners-subtitle">
+    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+    ligula eget dolor. Aenean massa. Cum
+  </p>
+
+  <div class="partners-buttons-container">
+    <button
+      class="partners-button"
+      [class.partners-button-selected]="companyButtonSelected"
+      (click)="companyButtonSelected = true"
+    >
+      Empresas
+    </button>
+    <button
+      class="partners-button"
+      [class.partners-button-selected]="!companyButtonSelected"
+      (click)="companyButtonSelected = false"
+    >
+      Grupos Estudiantiles
+    </button>
+  </div>
+
+  <div class="partners-logos">
+    @for (item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17, 18]; track item) {
+    @if(companyButtonSelected) {
+    <app-partner-item [partnerItem]="item" />
+
+    }@else {
+
+    <app-partner-item [partnerItem]="item" />
+
+    } }
+  </div>
+</section>

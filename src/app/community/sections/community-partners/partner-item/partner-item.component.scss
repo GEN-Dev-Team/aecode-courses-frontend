@@ -1,0 +1,22 @@
+.partner-item {
+  width: 203.932px;
+  height: 138.085px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: rgba(94, 101, 181, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  img {
+    height: 100%;
+    filter: saturate(0);
+  }
+
+  &:hover {
+    img {
+      filter: saturate(1);
+    }
+  }
+}
