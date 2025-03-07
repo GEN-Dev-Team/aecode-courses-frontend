@@ -35,6 +35,7 @@ async function generateRoutes() {
   routes.push("/training");
   routes.push("/admin-panel");
   routes.push("/payment");
+  routes.push("/community");
 
   secCourseIds.forEach((id) => {
     routes.push(`/training/module/${id}`);
