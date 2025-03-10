@@ -2,11 +2,11 @@
   <h1 class="home-title">AECODE COMMUNITY</h1>
 
   <div class="general-container">
-    <swiper-container #swiperContainer init="false">
+    <swiper-container init="false">
       @for (item of videoList; track $index) {
       <swiper-slide>
         <div loading="lazy" class="item">
-          <video id="video {{ item.id }}" controls>
+          <video id="video {{ item.id }}" autoplay muted loop>
             <source src="{{ item.video_url }}" type="video/mp4" />
             Tu navegador no soporta el elemento de video.
           </video>

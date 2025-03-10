@@ -20,4 +20,6 @@ import { MainContainerComponent } from '../shared/components/main-container/main
   templateUrl: './community.component.html',
   styleUrl: './community.component.scss',
 })
-export class CommunityComponent {}
+export class CommunityComponent {
+  collabsButtonSelected: boolean = true;
+}

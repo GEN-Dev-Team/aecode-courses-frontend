@@ -16,6 +16,7 @@ export interface ICommunityHeaderItem {
   styleUrl: './community-header.component.scss',
 })
 export class CommunityHeaderComponent {
+  @Output() collabsButtonSelected = new EventEmitter<boolean>();
   router: Router = inject(Router);
 
   headerItemSelected: string = 'Inicio';
@@ -45,6 +46,11 @@ export class CommunityHeaderComponent {
   }
 
   sendHeaderItemSelected(headerItemName: string) {
+    if (headerItemName === 'Colaboradores') {
+      this.collabsButtonSelected.emit(true);
+    } else if (headerItemName === 'Embajadores') {
+      this.collabsButtonSelected.emit(false);
+    }
     this.headerItemSelected = headerItemName;
   }
 }
