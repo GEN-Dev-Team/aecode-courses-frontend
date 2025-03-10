@@ -1,4 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { SwiperContainer } from 'swiper/element';
+import { SwiperOptions } from 'swiper/types';
 
 @Component({
   selector: 'app-community-home',
@@ -9,6 +11,8 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CommunityHomeComponent {
+  swiperElement = signal<SwiperContainer | null>(null);
+
   videoList: any[] = [
     {
       id: 1,
@@ -35,4 +39,18 @@ export class CommunityHomeComponent {
       video_url: '/assets/images/community/mundo.mp4',
     },
   ];
+
+  ngAfterViewInit(): void {
+    const swiperElemConstructor = document.querySelector('swiper-container');
+    const swiperOptions: SwiperOptions = {
+      loop: true,
+      navigation: true,
+      slidesPerView: 5,
+      centeredSlides: true,
+    };
+
+    Object.assign(swiperElemConstructor!, swiperOptions);
+    this.swiperElement.set(swiperElemConstructor as SwiperContainer);
+    this.swiperElement()?.initialize();
+  }
 }
