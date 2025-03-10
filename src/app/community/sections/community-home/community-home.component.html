@@ -7,32 +7,18 @@
       navigation="true"
       slides-per-view="5"
       centered-slides="true"
-      autoplay='{"delay": 3000}'
       spaceBetween="100"
     >
+      @for (item of videoList; track $index) {
       <swiper-slide>
-        <div loading="lazy" class="item"></div>
+        <div loading="lazy" class="item">
+          <video id="video {{ item.id }}" muted loop controls>
+            <source src="{{ item.video_url }}" type="video/mp4" />
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
       </swiper-slide>
-
-      <swiper-slide>
-        <div loading="lazy" class="item"></div>
-      </swiper-slide>
-
-      <swiper-slide>
-        <div loading="lazy" class="item"></div>
-      </swiper-slide>
-
-      <swiper-slide>
-        <div loading="lazy" class="item"></div>
-      </swiper-slide>
-
-      <swiper-slide>
-        <div loading="lazy" class="item"></div>
-      </swiper-slide>
-
-      <swiper-slide>
-        <div loading="lazy" class="item"></div>
-      </swiper-slide>
+      }
     </swiper-container>
 
     <div class="transparent-bg-right"></div>

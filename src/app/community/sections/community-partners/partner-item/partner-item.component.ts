@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { IPartner } from '../../../interfaces/Partner';
 
 @Component({
   selector: 'app-partner-item',
@@ -8,5 +9,5 @@ import { Component, Input } from '@angular/core';
   styleUrl: './partner-item.component.scss',
 })
 export class PartnerItemComponent {
-  @Input() partnerItem: any;
+  @Input() partnerItem!: IPartner;
 }

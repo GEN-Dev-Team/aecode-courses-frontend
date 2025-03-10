@@ -14,6 +14,18 @@
     >
       Embajadores
     </button>
+
+    <img
+      class="collaborators-intersect"
+      src="/assets/images/community/Intersect.png"
+      alt=""
+    />
+
+    <img
+      class="collaborators-animated-bot"
+      src="/assets/images/community/ROBOTITO-6--unscreen.gif"
+      alt=""
+    />
   </div>
 
   <h2 class="collaborators-title">Colaboradores</h2>
@@ -28,27 +40,49 @@
       loop="true"
       slides-per-view="1"
       slides-per-group="1"
-      autoplay='{"delay": 3000}'
       speed="1500"
     >
       <!-- Página 1 -->
       <swiper-slide>
         <div class="grid">
           <div class="row">
-            <div class="collab-item">1</div>
-            <div class="collab-item">2</div>
-            <div class="collab-item">3</div>
-            <div class="collab-item">4</div>
+            @for (item of collabsButtonSelected ? colaborators_list :
+            embajadores_list; track $index) { @if($index < 4) {
+            <div class="collab-item" (click)="selectItem(item, $index)">
+              <img src="{{ item.image_url }}" alt="" />
+              @if($index === itemSelected){
+              <div class="collab-item-selected"></div>
+
+              }
+            </div>
+
+            } }
           </div>
           <div class="row">
-            <div class="collab-item">5</div>
-            <div class="collab-item">6</div>
-            <div class="collab-item">7</div>
-            <div class="collab-item">8</div>
+            @for (item of collabsButtonSelected ? colaborators_list :
+            embajadores_list; track $index) { @if( $index > 3 && $index < 8) {
+            <div class="collab-item" (click)="selectItem(item, $index)">
+              <img src="{{ item.image_url }}" alt="" />
+              @if($index === itemSelected){
+              <div class="collab-item-selected"></div>
+
+              }
+            </div>
+
+            } }
           </div>
           <div class="row last">
-            <div class="collab-item">9</div>
-            <div class="collab-item">10</div>
+            @for (item of collabsButtonSelected ? colaborators_list :
+            embajadores_list; track $index) { @if( $index > 7) {
+            <div class="collab-item" (click)="selectItem(item, $index)">
+              <img src="{{ item.image_url }}" alt="" />
+              @if($index === itemSelected){
+              <div class="collab-item-selected"></div>
+
+              }
+            </div>
+
+            } }
           </div>
         </div>
       </swiper-slide>
@@ -79,31 +113,43 @@
     <div class="collaborator-detail-container">
       <div class="collaborator-img">
         <img
-          src="https://imgs.search.brave.com/GAMXHxkvbL1AGLI8PVj0gfztG_ObfzPD_sD2D5DgaYU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1QlpUWXpZV1Uw/WlRjdFpqWXhZeTAw/TkRnekxUazJZemt0/Wmprd056UTVPRFE1/TWpVNFhrRXlYa0Zx/Y0djQC5qcGc"
-          alt=""
+          src="{{ itemDataSelected.image_url }}"
+          alt="Image of {{ itemDataSelected.name }}"
         />
       </div>
 
-      <h3 class="collaborator-name">Jazmin cuadros Miranda</h3>
+      <h3 class="collaborator-name">{{ itemDataSelected.name }}</h3>
       <p class="collaborator-description">
-        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
-        ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis
-        dis parturient montes, nascetur ridiculus mus. Donec quam felis,
-        ultricies necDonec quam felis, ultricies nec, Donec quam felis,
-        ultricies nec, ,
+        {{ itemDataSelected.name }}
       </p>
 
       <ul class="collaborator-social-media">
-        <a ZoomIn href="" class="social-media-item">
+        <a
+          ZoomIn
+          href="{{ itemDataSelected.facebook_url }}"
+          class="social-media-item"
+        >
           <app-community-facebook-icon />
         </a>
-        <a ZoomIn href="" class="social-media-item">
+        <a
+          ZoomIn
+          href="{{ itemDataSelected.youtube_url }}"
+          class="social-media-item"
+        >
           <app-community-youtube-icon />
         </a>
-        <a ZoomIn href="" class="social-media-item">
+        <a
+          ZoomIn
+          href="{{ itemDataSelected.instragram_url }}"
+          class="social-media-item"
+        >
           <app-community-instagram-icon />
         </a>
-        <a ZoomIn href="" class="social-media-item">
+        <a
+          ZoomIn
+          href="{{ itemDataSelected.linkedin_url }}"
+          class="social-media-item"
+        >
           <app-community-linkedin-icon />
         </a>
       </ul>

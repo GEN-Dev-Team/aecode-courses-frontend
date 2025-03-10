@@ -24,6 +24,7 @@
     margin-block: 40px 23px;
     margin-inline: auto;
     background: rgba(94, 101, 181, 0.54);
+    position: relative;
 
     .collaborators-button {
       padding: 47px 175px;
@@ -38,6 +39,24 @@
       &:hover {
         opacity: 0.7;
       }
+    }
+
+    .collaborators-intersect {
+      width: 671px;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .collaborators-animated-bot {
+      width: 268.867px;
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translate(-50%, 21%);
+      z-index: 1;
     }
 
     .embajadores-button-embajadores {
@@ -68,6 +87,7 @@
     .grid {
       display: flex;
       flex-direction: column;
+      padding: 20px;
     }
 
     .row {
@@ -78,10 +98,34 @@
     .row .collab-item {
       width: 81.67px;
       height: 81.67px;
-      padding: 20px;
       border-radius: 50%;
       background-color: #5e65b5;
-      border: solid 3px #5e65b5;
+      border: solid 5px #5e65b5;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        position: relative;
+        z-index: 1;
+        border-radius: 50%;
+      }
+
+      .collab-item-selected {
+        width: calc(100% + 20px);
+        height: calc(100% + 20px);
+        border: solid 1px #8c97dc;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+      }
     }
 
     .row:nth-child(1) {
