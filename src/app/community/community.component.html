@@ -1,9 +1,14 @@
-<app-community-header />
+<app-community-header
+  (collabsButtonSelected)="collabsButtonSelected = $event"
+/>
 
 <app-community-home id="home" />
 
 <app-main-container>
-  <app-community-collaborators id="collabs" />
+  <app-community-collaborators
+    [collabsButtonSelected]="collabsButtonSelected"
+    id="collabs"
+  />
   <app-community-partners id="partners" />
 </app-main-container>
 

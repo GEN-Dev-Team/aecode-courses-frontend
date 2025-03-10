@@ -71,6 +71,8 @@
     margin-top: 20%;
     transition: all 0.5s ease;
     overflow: hidden;
+    border-radius: 20px;
+    border: 3px solid var(--dark-lineas, #7c7edf);
 
     video {
       width: 100%;

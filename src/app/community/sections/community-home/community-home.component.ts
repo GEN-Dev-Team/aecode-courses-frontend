@@ -47,6 +47,10 @@ export class CommunityHomeComponent {
       navigation: true,
       slidesPerView: 5,
       centeredSlides: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
     };
 
     Object.assign(swiperElemConstructor!, swiperOptions);

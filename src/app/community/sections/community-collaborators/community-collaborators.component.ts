@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
 import { CommunityInstagramIconComponent } from '../../icons/community-instagram-icon/community-instagram-icon.component';
 import { CommunityLinkedinIconComponent } from '../../icons/community-linkedin-icon/community-linkedin-icon.component';
 import { CommunityYoutubeIconComponent } from '../../icons/community-youtube-icon/community-youtube-icon.component';
@@ -24,7 +24,7 @@ import {
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CommunityCollaboratorsComponent {
-  collabsButtonSelected: boolean = true;
+  @Input() collabsButtonSelected: boolean = true;
   itemSelected: number = 0;
 
   colaborators_list: ICollaborator[] = [
