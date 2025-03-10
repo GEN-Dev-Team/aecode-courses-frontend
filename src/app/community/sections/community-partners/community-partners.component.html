@@ -24,14 +24,11 @@
   </div>
 
   <div class="partners-logos">
-    @for (item of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17, 18]; track item) {
-    @if(companyButtonSelected) {
+    @if(companies) { @for (item of companyButtonSelected ? companies :
+    student_groups; track item) {
     <app-partner-item [partnerItem]="item" />
 
-    }@else {
-
-    <app-partner-item [partnerItem]="item" />
-
-    } }
+    } } @else {
+    <app-loader /> }
   </div>
 </section>
