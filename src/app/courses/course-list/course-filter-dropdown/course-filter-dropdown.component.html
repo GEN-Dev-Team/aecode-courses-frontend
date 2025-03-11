@@ -1,4 +1,6 @@
-<div class="dropdown-content">
+<div
+  class="dropdown-content {{ themeService.getMode() | async }}-dropdown-content"
+>
   <p (click)="emitFilterValue('all')" class="dropdown-item">
     <app-all-dropdown-icon />
 

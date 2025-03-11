@@ -11,6 +11,9 @@ import { BurgerIconComponent } from '../../shared/icons/burger-icon/burger-icon.
 import { AboutUsMobileIconComponent } from '../../shared/icons/about-us-mobile-icon/about-us-mobile-icon.component';
 import { ShamanaiMobileIconComponent } from '../../shared/icons/shamanai-mobile-icon/shamanai-mobile-icon.component';
 import { BrowserService } from '../../core/services/browser.service';
+import { AsyncPipe } from '@angular/common';
+import { ThemeService } from '../../core/services/theme.service';
+import { HomeCommunityIconComponent } from '../icons/home-community-icon/home-community-icon.component';
 
 @Component({
   selector: 'app-home-header',
@@ -24,6 +27,8 @@ import { BrowserService } from '../../core/services/browser.service';
     UserProfileButtonComponent,
     BurgerIconComponent,
     AboutUsMobileIconComponent,
+    AsyncPipe,
+    HomeCommunityIconComponent,
   ],
   templateUrl: './home-header.component.html',
   styleUrl: './home-header.component.css',
@@ -32,6 +37,7 @@ export class HomeHeaderComponent {
   route: Router = inject(Router);
   authService: AuthService = inject(AuthService);
   browserService: BrowserService = inject(BrowserService);
+  themeService: ThemeService = inject(ThemeService);
 
   openLoginForm = false;
   isUserLoggedIn = false;

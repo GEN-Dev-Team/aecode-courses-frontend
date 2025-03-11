@@ -36,79 +36,58 @@
   </p>
 
   <div class="collaborators-carousel-container">
-    <swiper-container
-      loop="true"
-      slides-per-view="1"
-      slides-per-group="1"
-      speed="1500"
-    >
-      <!-- Página 1 -->
-      <swiper-slide>
-        <div class="grid">
-          <div class="row">
-            @for (item of collabsButtonSelected ? colaborators_list :
-            embajadores_list; track $index) { @if($index < 4) {
-            <div class="collab-item" (click)="selectItem(item, $index)">
-              <img src="{{ item.image_url }}" alt="" />
-              @if($index === itemSelected){
-              <div class="collab-item-selected"></div>
+    <div class="collaborators-carousel">
+      <swiper-container id="collaborators-swiper" init="false">
+        @for(item of [1,2]; track item) {
+        <swiper-slide>
+          <div class="grid">
+            <div class="row">
+              @for (item of collabsButtonSelected ? colaborators_list :
+              embajadores_list; track $index) { @if($index < 4) {
+              <div class="collab-item" (click)="selectItem(item, $index)">
+                <img src="{{ item.image_url }}" alt="" />
+                @if($index === itemSelected){
+                <div class="collab-item-selected"></div>
 
-              }
+                }
+              </div>
+
+              } }
             </div>
+            <div class="row">
+              @for (item of collabsButtonSelected ? colaborators_list :
+              embajadores_list; track $index) { @if( $index > 3 && $index < 8) {
+              <div class="collab-item" (click)="selectItem(item, $index)">
+                <img src="{{ item.image_url }}" alt="" />
+                @if($index === itemSelected){
+                <div class="collab-item-selected"></div>
 
-            } }
-          </div>
-          <div class="row">
-            @for (item of collabsButtonSelected ? colaborators_list :
-            embajadores_list; track $index) { @if( $index > 3 && $index < 8) {
-            <div class="collab-item" (click)="selectItem(item, $index)">
-              <img src="{{ item.image_url }}" alt="" />
-              @if($index === itemSelected){
-              <div class="collab-item-selected"></div>
+                }
+              </div>
 
-              }
+              } }
             </div>
+            <div class="row last">
+              @for (item of collabsButtonSelected ? colaborators_list :
+              embajadores_list; track $index) { @if( $index > 7) {
+              <div class="collab-item" (click)="selectItem(item, $index)">
+                <img src="{{ item.image_url }}" alt="" />
+                @if($index === itemSelected){
+                <div class="collab-item-selected"></div>
 
-            } }
-          </div>
-          <div class="row last">
-            @for (item of collabsButtonSelected ? colaborators_list :
-            embajadores_list; track $index) { @if( $index > 7) {
-            <div class="collab-item" (click)="selectItem(item, $index)">
-              <img src="{{ item.image_url }}" alt="" />
-              @if($index === itemSelected){
-              <div class="collab-item-selected"></div>
+                }
+              </div>
 
-              }
+              } }
             </div>
+          </div>
+        </swiper-slide>
+        }
+      </swiper-container>
 
-            } }
-          </div>
-        </div>
-      </swiper-slide>
-
-      <!-- Página 2 (repite los elementos en loop) -->
-      <swiper-slide>
-        <div class="grid">
-          <div class="row">
-            <div class="collab-item">11</div>
-            <div class="collab-item">12</div>
-            <div class="collab-item">13</div>
-            <div class="collab-item">14</div>
-          </div>
-          <div class="row">
-            <div class="collab-item">15</div>
-            <div class="collab-item">16</div>
-            <div class="collab-item">17</div>
-            <div class="collab-item">18</div>
-          </div>
-          <div class="row last">
-            <div class="collab-item">19</div>
-            <div class="collab-item">20</div>
-          </div>
-        </div>
-      </swiper-slide>
-    </swiper-container>
+      <div class="like-container-top-right"><app-collabs-like-icon /></div>
+      <div class="like-container-bottom-left"><app-collabs-like-icon /></div>
+    </div>
 
     <div class="collaborator-detail-container">
       <div class="collaborator-img">

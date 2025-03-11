@@ -32,6 +32,11 @@
     margin-top: 11%;
     margin-left: 35%;
     color: var(--gray-3);
+    width: 30px;
+    height: 30px;
+    background-color: #8c97dc;
+    border-radius: 50%;
+    padding: 10px 12px 10px 8px;
   }
 
   swiper-container::part(button-next) {
@@ -40,6 +45,11 @@
     margin-top: 11%;
     margin-right: 35%;
     color: var(--gray-3);
+    width: 30px;
+    height: 30px;
+    background-color: #8c97dc;
+    border-radius: 50%;
+    padding: 10px 8px 10px 12px;
   }
 
   .transparent-bg-right {

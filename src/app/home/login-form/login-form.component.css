@@ -88,13 +88,14 @@
       }
     }
 
-    img {
+    .eye-icon {
       position: absolute;
       right: 5%;
       top: 50%;
       transform: translateY(-50%);
       cursor: pointer;
       z-index: 0;
+      fill: #424242;
     }
   }
 
@@ -131,6 +132,57 @@
   background-color: black;
   opacity: 0.69;
   z-index: 3;
+}
+
+.dark-login-form {
+  background: #0d0f1f;
+  border: none;
+  box-shadow: 0px 0px 7px 0px #b4bbbf;
+
+  .close-button {
+    stroke: #0d0f1f;
+  }
+
+  .form-control {
+    .label {
+      background-color: #0d0f1f;
+      color: #c3cbfd;
+    }
+
+    input {
+      border: 1px solid #c3cbfd;
+      background-color: transparent;
+      color: #c3cbfd;
+
+      &:focus {
+        border: 2px solid #c3cbfd;
+      }
+
+      &:focus + .label {
+        color: #c3cbfd;
+      }
+
+      &::placeholder {
+        color: #c3cbfd;
+      }
+    }
+
+    .eye-icon {
+      fill: #c3cbfd;
+    }
+  }
+
+  .login-text {
+    span {
+      color: #c3cbfd;
+    }
+  }
+
+  .terms-text {
+    span {
+      color: #c3cbfd;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {

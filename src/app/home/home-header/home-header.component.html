@@ -3,14 +3,17 @@
     <a href="" class="header-logo-container">
       <app-aecode-icon class="header-logo" />
     </a>
-    <ul class="header-list" [class.hideInMobile]="!showMobileMenu">
+    <ul
+      class="header-list {{ themeService.getMode() | async }}-header-list"
+      [class.hideInMobile]="!showMobileMenu"
+    >
       <a
         target="_blank"
         ZoomIn
         class="header-item"
         href="https://www.canva.com/design/DAGbXMYH3Qo/Njl9uZGdNjfleEX8Jt2lpQ/view?utm_content=DAGbXMYH3Qo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc8bb83ae0a"
       >
-        <app-about-us-mobile-icon />
+        <app-about-us-mobile-icon class="home-header-icon hide-in-desktop" />
         ¿Quienes somos?
       </a>
       <a
@@ -18,20 +21,20 @@
         ZoomIn
         class="header-item header-button purple-button"
       >
-        Comunidad</a
+        <app-home-community-icon class="home-header-icon" /> Comunidad</a
       >
       <a
         (click)="redirectToCoursesView()"
         ZoomIn
         class="header-item header-button purple-button"
-        ><app-book-icon /> Training</a
+        ><app-book-icon class="home-header-icon" /> Training</a
       >
       <a
         href="http://beacons.ai/aecode.ai/live"
         target="_blank"
         ZoomIn
         class="header-item header-button purple-button"
-        ><app-sync-course-icon /> Live</a
+        ><app-sync-course-icon class="home-header-icon" /> Live</a
       >
 
       @if (isUserLoggedIn) {
@@ -42,7 +45,7 @@
 
       } @else {
       <a
-        class="header-item header-button sky-blue-button mobile-item"
+        class="header-item header-button sky-blue-button hide-in-mobile"
         (click)="openLoginForm = true"
         >Acceder</a
       >
