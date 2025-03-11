@@ -12,11 +12,20 @@ import { AuthService } from '../../core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { BrowserService } from '../../core/services/browser.service';
 import { SquareIconComponent } from '../../shared/icons/square-icon/square-icon.component';
+import { AsyncPipe } from '@angular/common';
+import { ThemeService } from '../../core/services/theme.service';
+import { FormEyeIconComponent } from '../icons/form-eye-icon/form-eye-icon.component';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonComponent, SquareIconComponent],
+  imports: [
+    ReactiveFormsModule,
+    ButtonComponent,
+    SquareIconComponent,
+    AsyncPipe,
+    FormEyeIconComponent,
+  ],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.css',
 })
@@ -26,6 +35,7 @@ export class LoginFormComponent {
 
   browserService: BrowserService = inject(BrowserService);
   toastService: ToastrService = inject(ToastrService);
+  themeService: ThemeService = inject(ThemeService);
 
   loginForm: FormGroup;
   signInForm: FormGroup;

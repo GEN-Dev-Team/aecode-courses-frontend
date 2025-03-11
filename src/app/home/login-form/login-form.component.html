@@ -1,4 +1,7 @@
-<form [formGroup]="isSignInForm ? signInForm : loginForm" class="login-form">
+<form
+  [formGroup]="isSignInForm ? signInForm : loginForm"
+  class="login-form {{ themeService.getMode() | async }}-login-form"
+>
   <app-square-icon class="close-button" (click)="closeModal()" />
 
   <span class="start-title">Comencemos</span>
@@ -38,11 +41,11 @@
       placeholder="********"
     />
     <label for="passwordHash" class="label">Contraseña</label>
-    <img
-      (click)="hidePassword(false)"
-      src="assets\images\login-view\eye.svg"
-      alt="Mostrar contraseña"
+
+    <app-form-eye-icon
+      class="eye-icon"
       id="toggle-password"
+      (click)="hidePassword(false)"
     />
   </div>
 
@@ -50,11 +53,11 @@
   <div class="form-control">
     <input id="passwordHashConfirm" type="password" placeholder="********" />
     <label for="passwordHashConfirm" class="label">Confirmar</label>
-    <img
-      (click)="hidePassword(true)"
-      src="assets\images\login-view\eye.svg"
-      alt="Mostrar contraseña"
+    <img />
+    <app-form-eye-icon
+      class="eye-icon"
       id="toggle-password-confirm"
+      (click)="hidePassword(true)"
     />
   </div>
   }

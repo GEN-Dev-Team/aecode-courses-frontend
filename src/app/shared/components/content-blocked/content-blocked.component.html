@@ -1,10 +1,16 @@
-@if (showContentModal) {
-<app-course-content (isClosed)="closeModal($event)" />
-
-} @else {
-<div class="content-blocked-container">
+<div
+  class="content-blocked-container {{
+    themeService.getMode() | async
+  }}-content-blocked-container"
+>
   <div class="icon-container">
-    <img src="/assets/images/blocked-icon.svg" alt="" />
+    @if(isMessageTypeSuccess) {
+    <app-success-icon class="success-icon" />
+
+    } @else {
+    <app-blocked-icon class="blocked-icon" />
+
+    }
   </div>
 
   <h1 class="subtitle">Contenido bloqueado</h1>
@@ -16,4 +22,3 @@
   <!-- <app-button (click)="openContentModal()">COMENZAR</app-button> -->
   <app-button (click)="closeModal(false)">ENTENDIDO</app-button>
 </div>
-}

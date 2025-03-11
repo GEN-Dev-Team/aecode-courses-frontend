@@ -16,6 +16,14 @@
     border-radius: 50%;
     flex-shrink: 0;
     background: #eef3f8;
+
+    .blocked-icon {
+      color: var(--purple-2);
+    }
+
+    .success-icon {
+      fill: var(--purple-2);
+    }
   }
 
   .subtitle {
@@ -36,6 +44,31 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 25px;
+  }
+}
+
+.dark-content-blocked-container {
+  background: #0d0f1f;
+  box-shadow: 0px 0px 6px 0px white;
+
+  .icon-container {
+    background: transparent;
+
+    .blocked-icon {
+      color: #8c97dc;
+    }
+
+    .success-icon {
+      fill: #8c97dc;
+    }
+  }
+
+  .subtitle {
+    color: #eef3f8;
+  }
+
+  .message {
+    color: #eef3f8;
   }
 }
 

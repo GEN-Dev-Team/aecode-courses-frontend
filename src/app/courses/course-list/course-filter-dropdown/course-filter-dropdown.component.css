@@ -29,3 +29,17 @@
     stroke-width: 1;
   }
 }
+
+.dark-dropdown-content {
+  background-color: #0d0f1f;
+  box-shadow: 0px 0px 6px 0 #b4bbbf;
+
+  .dropdown-item {
+    border-bottom: 1px solid #8c97dc;
+    fill: var(--gray-3);
+  }
+
+  .async-icon {
+    stroke: var(--gray-3);
+  }
+}

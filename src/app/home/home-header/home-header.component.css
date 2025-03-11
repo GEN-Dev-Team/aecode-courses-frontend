@@ -21,27 +21,35 @@
     .header-list {
       display: flex;
       flex-direction: row;
-      gap: 50px;
+      gap: 35px;
       align-items: center;
       margin: 0;
       padding: 0;
       font-family: "ruberoid-light";
       font-size: clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
-    }
 
-    .header-item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      cursor: pointer;
-      color: white;
-      text-decoration: none;
+      .header-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+
+        .home-header-icon {
+          fill: white;
+        }
+
+        .hide-in-desktop {
+          display: none;
+        }
+      }
     }
 
     .header-button {
-      width: 149px;
+      width: 175px;
       height: 39px;
       border-radius: 19.5px;
       fill: white;
@@ -108,9 +116,25 @@
         border-radius: 6px;
       }
 
-      .header-item {
-        color: black;
-        gap: 10px;
+      .dark-header-list {
+        background-color: #0d0f1f;
+        box-shadow: 0px 0px 6px 0px white;
+
+        .header-item {
+          color: #eef3f8;
+
+          .home-header-icon {
+            fill: #eef3f8;
+          }
+
+          .hide-in-desktop {
+            display: inherit;
+          }
+        }
+
+        .hide-in-mobile {
+          display: none;
+        }
       }
 
       .header-button {
@@ -126,10 +150,6 @@
 
       .sky-blue-button {
         background: #2e6df3;
-      }
-
-      .mobile-item {
-        display: none;
       }
 
       .hideInMobile {

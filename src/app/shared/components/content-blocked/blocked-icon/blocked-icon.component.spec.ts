@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CourseContentComponent } from './course-content.component';
+import { BlockedIconComponent } from './blocked-icon.component';
 
-describe('CourseContentComponent', () => {
-  let component: CourseContentComponent;
-  let fixture: ComponentFixture<CourseContentComponent>;
+describe('BlockedIconComponent', () => {
+  let component: BlockedIconComponent;
+  let fixture: ComponentFixture<BlockedIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CourseContentComponent]
+      imports: [BlockedIconComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CourseContentComponent);
+    fixture = TestBed.createComponent(BlockedIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

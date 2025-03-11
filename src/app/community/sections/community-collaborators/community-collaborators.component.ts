@@ -1,4 +1,9 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  Input,
+  signal,
+} from '@angular/core';
 import { CommunityInstagramIconComponent } from '../../icons/community-instagram-icon/community-instagram-icon.component';
 import { CommunityLinkedinIconComponent } from '../../icons/community-linkedin-icon/community-linkedin-icon.component';
 import { CommunityYoutubeIconComponent } from '../../icons/community-youtube-icon/community-youtube-icon.component';
@@ -8,6 +13,10 @@ import {
   defaultCollaborator,
   ICollaborator,
 } from '../../interfaces/Collaborator';
+import { SwiperContainer } from 'swiper/element';
+import { SwiperOptions } from 'swiper/types';
+import { CollabsLikeIconComponent } from '../../icons/collabs-like-icon/collabs-like-icon.component';
+import { BrowserService } from '../../../core/services/browser.service';
 
 @Component({
   selector: 'app-community-collaborators',
@@ -18,14 +27,17 @@ import {
     CommunityYoutubeIconComponent,
     CommunityFacebookIconComponent,
     ZoomInDirective,
+    CollabsLikeIconComponent,
   ],
   templateUrl: './community-collaborators.component.html',
   styleUrl: './community-collaborators.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class CommunityCollaboratorsComponent {
+  swiperElement = signal<SwiperContainer | null>(null);
   @Input() collabsButtonSelected: boolean = true;
   itemSelected: number = 0;
+  browserService: BrowserService = inject(BrowserService);
 
   colaborators_list: ICollaborator[] = [
     {
@@ -256,4 +268,26 @@ export class CommunityCollaboratorsComponent {
     this.itemSelected = index;
     this.itemDataSelected = item;
   }
+
+  ngAfterViewInit(): void {
+    if (this.browserService.isBrowser()) {
+      const swiperElemConstructor = document.getElementById(
+        'collaborators-swiper'
+      );
+      const swiperOptions: SwiperOptions = {
+        loop: true,
+        navigation: true,
+        slidesPerView: 1,
+        slidesPerGroup: 1,
+        speed: 1000,
+      };
+
+      Object.assign(swiperElemConstructor!, swiperOptions);
+      this.swiperElement.set(swiperElemConstructor as SwiperContainer);
+      this.swiperElement()?.initialize();
+    }
+  }
+}
+function inject(BrowserService: any): BrowserService {
+  throw new Error('Function not implemented.');
 }
