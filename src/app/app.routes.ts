@@ -9,6 +9,7 @@ import { MasiveCourseDetailComponent } from './courses/masive-course-detail/masi
 import { adminAuthGuard } from './core/guards/admin-auth.guard';
 import { PaymentComponent } from './payment/payment.component';
 import { CommunityComponent } from './community/community.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -53,10 +54,9 @@ export const routes: Routes = [
     component: CommunityComponent,
   },
   {
-    path: 'payment',
-    title: 'PAYMENT',
-    component: PaymentComponent,
-    // canActivate: [adminAuthGuard],
+    path: 'not-found',
+    title: 'NOT FOUND',
+    component: NotFoundComponent,
   },
   {
     path: '**',

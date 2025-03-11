@@ -1,6 +1,12 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  inject,
+  signal,
+} from '@angular/core';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
+import { BrowserService } from '../../../core/services/browser.service';
 
 @Component({
   selector: 'app-community-home',
@@ -12,6 +18,7 @@ import { SwiperOptions } from 'swiper/types';
 })
 export class CommunityHomeComponent {
   swiperElement = signal<SwiperContainer | null>(null);
+  browserService: BrowserService = inject(BrowserService);
 
   videoList: any[] = [
     {
@@ -41,20 +48,22 @@ export class CommunityHomeComponent {
   ];
 
   ngAfterViewInit(): void {
-    const swiperElemConstructor = document.querySelector('swiper-container');
-    const swiperOptions: SwiperOptions = {
-      loop: true,
-      navigation: true,
-      slidesPerView: 5,
-      centeredSlides: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
-    };
+    if (this.browserService.isBrowser()) {
+      const swiperElemConstructor = document.querySelector('swiper-container');
+      const swiperOptions: SwiperOptions = {
+        loop: true,
+        navigation: true,
+        slidesPerView: 5,
+        centeredSlides: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+      };
 
-    Object.assign(swiperElemConstructor!, swiperOptions);
-    this.swiperElement.set(swiperElemConstructor as SwiperContainer);
-    this.swiperElement()?.initialize();
+      Object.assign(swiperElemConstructor!, swiperOptions);
+      this.swiperElement.set(swiperElemConstructor as SwiperContainer);
+      this.swiperElement()?.initialize();
+    }
   }
 }
