@@ -51,8 +51,13 @@
 }
 
 @font-face {
-  font-family: "ruberoid-bold";
+  font-family: "ruberoid-extrabold";
   src: url("assets/fonts/Ruberoid/Ruberoid-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "ruberoid-bold";
+  src: url("assets/fonts/Ruberoid/Ruberoid-ExtraBold.otf") format("opentype");
 }
 
 @font-face {

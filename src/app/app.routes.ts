@@ -60,7 +60,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    title: 'AECODE COURSES',
-    component: CoursesComponent,
+    title: 'NOT FOUND',
+    component: NotFoundComponent,
   },
 ];
