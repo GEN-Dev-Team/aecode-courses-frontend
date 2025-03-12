@@ -33,7 +33,7 @@ export class CommunityHeaderComponent {
 
     {
       name: 'Embajadores',
-      section: 'embajadores',
+      section: 'collabs',
     },
     {
       name: 'Partners',
