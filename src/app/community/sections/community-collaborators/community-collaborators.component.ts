@@ -1,6 +1,7 @@
 import {
   Component,
   CUSTOM_ELEMENTS_SCHEMA,
+  inject,
   Input,
   signal,
 } from '@angular/core';
@@ -9,10 +10,7 @@ import { CommunityLinkedinIconComponent } from '../../icons/community-linkedin-i
 import { CommunityYoutubeIconComponent } from '../../icons/community-youtube-icon/community-youtube-icon.component';
 import { CommunityFacebookIconComponent } from '../../icons/community-facebook-icon/community-facebook-icon.component';
 import { ZoomInDirective } from '../../../shared/directives/animations/zoom-in.directive';
-import {
-  defaultCollaborator,
-  ICollaborator,
-} from '../../interfaces/Collaborator';
+import { ICollaborator } from '../../interfaces/Collaborator';
 import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
 import { CollabsLikeIconComponent } from '../../icons/collabs-like-icon/collabs-like-icon.component';
@@ -287,7 +285,4 @@ export class CommunityCollaboratorsComponent {
       this.swiperElement()?.initialize();
     }
   }
-}
-function inject(BrowserService: any): BrowserService {
-  throw new Error('Function not implemented.');
 }
