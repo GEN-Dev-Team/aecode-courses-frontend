@@ -16,29 +16,52 @@
     margin-block: 17px 101px;
   }
 
+  .partners-buttons-container {
+    width: fit-content;
+    border-radius: 40px;
+    border: 1px solid #7c7edf;
+    background: #1c1d3c;
+    display: flex;
+    padding: 20px 33px;
+    gap: 50px;
+    margin-block: 40px 23px;
+    margin-inline: auto;
+  }
+
   .collaborators-buttons-container {
     width: fit-content;
     border-radius: 40px;
     display: flex;
-    padding: 12px 18px;
+    padding: 12px 50px;
     margin-block: 40px 23px;
     margin-inline: auto;
-    background: rgba(94, 101, 181, 0.54);
+    background: #1c1d3c;
     position: relative;
+    display: flex;
+    gap: 55px;
+    border-radius: 40px;
+    border: 1px solid #7c7edf;
 
     .collaborators-button {
-      padding: 47px 175px;
+      border-radius: 40px;
+      padding: 10px 70px;
       color: var(--gray-3);
-      font-size: 30px;
+      font-size: 20px;
       font-family: "ruberoid-semibold";
-      border: 3px solid transparent;
-      border-radius: 40px 0px 0px 40px;
-      background: #1c1d3c;
+      background-color: transparent;
+      border: none;
       cursor: pointer;
+      border: 1px solid #7c7edf;
+      position: relative;
+      z-index: 2;
 
       &:hover {
         opacity: 0.7;
       }
+    }
+
+    .collaborators-button-selected {
+      background-color: #4a3ac1;
     }
 
     .collaborators-intersect {
@@ -57,18 +80,6 @@
       left: 50%;
       transform: translate(-50%, 21%);
       z-index: 1;
-    }
-
-    .embajadores-button-embajadores {
-      border-radius: 0px 40px 40px 0px;
-    }
-
-    .collaborators-button-selected {
-      border: 3px solid #7c7edf;
-    }
-
-    .collaborators-button-selected {
-      border: 3px solid #7c7edf;
     }
   }
 

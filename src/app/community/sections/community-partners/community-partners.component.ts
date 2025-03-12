@@ -11,7 +11,7 @@ import { LoaderComponent } from '../../../shared/components/loader/loader.compon
   styleUrl: './community-partners.component.scss',
 })
 export class CommunityPartnersComponent {
-  companyButtonSelected: boolean = true;
+  companyButtonSelected: boolean = false;
 
   student_groups: IPartner[] = [
     {
