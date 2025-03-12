@@ -27,15 +27,14 @@ export function app(): express.Express {
     })
   );
 
-  // All regular routes use the Angular engine
-  server.get('*', (req, res, next) => {
-    const { protocol, headers } = req;
+  server.use((req, res, next) => {
+    const { protocol, originalUrl, headers } = req;
 
     commonEngine
       .render({
         bootstrap,
         documentFilePath: indexHtml,
-        url: `${protocol}://${headers.host}$/not-found`,
+        url: `${protocol}://${headers.host}/not-found`,
         publicPath: browserDistFolder,
         providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
       })
