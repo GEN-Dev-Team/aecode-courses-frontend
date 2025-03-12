@@ -7,8 +7,8 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseLandingDetailComponent } from './courses/course-landing-detail/course-landing-detail.component';
 import { MasiveCourseDetailComponent } from './courses/masive-course-detail/masive-course-detail.component';
 import { adminAuthGuard } from './core/guards/admin-auth.guard';
-import { PaymentComponent } from './payment/payment.component';
 import { CommunityComponent } from './community/community.component';
+import { InProgressComponent } from './in-progress/in-progress.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
@@ -57,6 +57,11 @@ export const routes: Routes = [
     path: 'not-found',
     title: 'NOT FOUND',
     component: NotFoundComponent,
+  },
+  {
+    path: 'in-progress',
+    title: 'IN PROGRESS',
+    component: InProgressComponent,
   },
   {
     path: '**',
