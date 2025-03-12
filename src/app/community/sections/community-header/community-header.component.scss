@@ -16,7 +16,7 @@
     margin-inline: auto;
 
     .header-logo {
-      height: 27px;
+      height: 25px;
       display: flex;
       cursor: pointer;
     }
@@ -27,12 +27,12 @@
       align-items: center;
       margin: 0;
       font-family: "ruberoid-light";
-      font-size: clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
+      font-size: 16px;
       display: flex;
       gap: 60px;
       border-radius: 60px;
       border: 1.5px solid #3a4065;
-      height: 71px;
+      height: 60px;
       padding: 0 30px;
     }
 
@@ -41,7 +41,6 @@
       gap: 10px;
       color: #eef3f8;
       font-family: "ruberoid-medium";
-      font-size: 20px;
       border-radius: 30px;
       background: var(--dark-fondo, #4a3ac1);
       cursor: pointer;
