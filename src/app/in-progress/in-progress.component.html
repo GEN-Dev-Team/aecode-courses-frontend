@@ -24,7 +24,9 @@
       </p>
     </div>
 
-    <button class="in-progress-button">CONTACTANOS</button>
+    <a href="{{ whatsappMessage }}" target="_blank" class="in-progress-button"
+      >CONTACTANOS</a
+    >
 
     <div class="in-progress-img-container">
       <div class="in-progress-img-content">
@@ -37,6 +39,10 @@
         <div class="circle"></div>
       </div>
     </div>
+
+    <button (click)="goBack()" class="back-button">
+      <app-caret-left-icon /> Volver
+    </button>
   </div>
 
   <app-home-footer />

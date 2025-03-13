@@ -111,7 +111,7 @@ export class CourseItemComponent {
     let message = '';
 
     if (this.isMasiveCourse) {
-      message = `Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.course.courseTitle}".`;
+      message = `Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.course.title}".`;
     } else {
       message = `Hola AECODE. Me gustaría adquirir el programa de "${
         this.course.courseTitle

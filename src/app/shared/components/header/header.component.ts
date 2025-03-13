@@ -52,6 +52,6 @@ export class HeaderComponent {
   }
 
   redirectToCartView() {
-    this.route.navigate(['/cart']);
+    this.route.navigate(['/in-progress']);
   }
 }
