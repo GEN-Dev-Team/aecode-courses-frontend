@@ -3,14 +3,14 @@
     <button
       class="collaborators-button"
       [class.collaborators-button-selected]="collabsButtonSelected"
-      (click)="collabsButtonSelected = true"
+      (click)="changeCollabsButton(true)"
     >
       Colaboradores
     </button>
     <button
       class="collaborators-button"
       [class.collaborators-button-selected]="!collabsButtonSelected"
-      (click)="collabsButtonSelected = false"
+      (click)="changeCollabsButton(false)"
     >
       Embajadores
     </button>
@@ -28,7 +28,9 @@
     />
   </div>
 
-  <h2 class="collaborators-title">Colaboradores</h2>
+  <h2 class="collaborators-title">
+    @if(collabsButtonSelected){Colaboradores}@else{Embajadores}
+  </h2>
 
   <p class="collaborators-subtitle">
     Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
@@ -98,11 +100,26 @@
       </div>
 
       <h3 class="collaborator-name">{{ itemDataSelected.name }}</h3>
+      @if(collabsButtonSelected){
       <p class="collaborator-description">
-        {{ itemDataSelected.name }}
+        {{ itemDataSelected.description }}
       </p>
 
-      <ul class="collaborator-social-media">
+      } @if(collabsButtonSelected){
+      <span class="collaborator-group">
+        {{ itemDataSelected.group }}
+      </span>
+      }@else{
+      <div class="embajadores-tag-list">
+        @for(item of itemDataSelected.tag_list; track item){
+        <span class="collaborator-group">
+          {{ item }}
+        </span>
+        }
+      </div>
+      }
+
+      <!-- <ul class="collaborator-social-media">
         <a
           ZoomIn
           href="{{ itemDataSelected.facebook_url }}"
@@ -131,7 +148,7 @@
         >
           <app-community-linkedin-icon />
         </a>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </section>

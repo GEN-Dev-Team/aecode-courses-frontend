@@ -53,7 +53,7 @@
       cursor: pointer;
       border: 1px solid #7c7edf;
       position: relative;
-      z-index: 2;
+      z-index: 1;
 
       &:hover {
         opacity: 0.7;
@@ -76,9 +76,9 @@
     .collaborators-animated-bot {
       width: 268.867px;
       position: absolute;
-      bottom: 100%;
+      bottom: 90%;
       left: 50%;
-      transform: translate(-50%, 21%);
+      transform: translateX(-50%);
       z-index: 1;
     }
   }
@@ -275,7 +275,7 @@
 
     .collaborator-detail-container {
       display: flex;
-      flex-direction: column;
+      flex-flow: column nowrap;
       align-items: flex-end;
       color: var(--gray-3);
 
@@ -303,6 +303,26 @@
         font-size: 16px;
         margin-block: 0px 38px;
         text-align: end;
+      }
+
+      .embajadores-tag-list {
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        gap: 20px;
+        justify-content: flex-end;
+      }
+
+      .collaborator-group {
+        width: fit-content;
+        border-radius: 20px;
+        border: 2px solid#7c7edf;
+        padding: 10px 15px;
+        gap: 10px;
+        color: #eef3f8;
+        font-family: "ruberoid-medium";
+        font-size: 18px;
+        text-wrap: nowrap;
       }
 
       .collaborator-social-media {
