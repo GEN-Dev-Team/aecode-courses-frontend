@@ -16,58 +16,55 @@
     margin-block: 17px 101px;
   }
 
-  .partners-buttons-container {
-    width: fit-content;
-    border-radius: 40px;
-    border: 1px solid #7c7edf;
-    background: #1c1d3c;
-    display: flex;
-    padding: 20px 33px;
-    gap: 50px;
-    margin-block: 40px 23px;
-    margin-inline: auto;
-  }
-
   .collaborators-buttons-container {
     width: fit-content;
-    border-radius: 40px;
-    display: flex;
-    padding: 12px 50px;
-    margin-block: 40px 23px;
+    margin-block: 0px 23px;
     margin-inline: auto;
     background: #1c1d3c;
-    position: relative;
-    display: flex;
-    gap: 55px;
-    border-radius: 40px;
-    border: 1px solid #7c7edf;
+    border-radius: 80px;
+    border: 10px solid rgba(94, 101, 181, 0.54);
 
     .collaborators-button {
-      border-radius: 40px;
-      padding: 10px 70px;
+      padding: 23px 26px;
+      border-radius: 80px 0 0 80px;
       color: var(--gray-3);
       font-size: 20px;
       font-family: "ruberoid-semibold";
       background-color: transparent;
-      border: none;
+      border: 1px solid #1c1d3c;
+
       cursor: pointer;
-      border: 1px solid #7c7edf;
       position: relative;
       z-index: 1;
 
       &:hover {
         opacity: 0.7;
       }
+
+      .inner-button {
+        padding: 20px 186px;
+        border-radius: 80px;
+      }
+
+      .inner-button-selected {
+        border: 1px solid #7c7edf;
+        background: #4a3ac1;
+      }
+    }
+
+    .embajador-button {
+      border-radius: 0 80px 80px 0;
+      border: 3px solid #1c1d3c;
     }
 
     .collaborators-button-selected {
-      background-color: #4a3ac1;
+      border: 3px solid #7c7edf;
     }
 
     .collaborators-intersect {
       width: 671px;
       position: absolute;
-      bottom: 100%;
+      bottom: -38px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1;
@@ -76,7 +73,7 @@
     .collaborators-animated-bot {
       width: 268.867px;
       position: absolute;
-      bottom: 90%;
+      bottom: -38px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1;
