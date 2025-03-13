@@ -72,15 +72,9 @@ export class CourseItemComponent {
     }
   });
 
-  ngOnInit() {
-    if (!this.isMasiveCourse) {
-    } else {
-    }
-  }
-
   showCourseDetails() {
     if (this.isMasiveCourse) {
-      this.message = `El contenido del programa "${this.course.courseTitle}" estará disponible próximamente.`;
+      this.message = `El contenido del programa "${this.course.title}" estará disponible próximamente.`;
       this.showBlockedModal = true;
 
       return;
@@ -105,9 +99,9 @@ export class CourseItemComponent {
       if (
         this.browserService.isBrowser() &&
         this.isMasiveCourse &&
-        this.course.urlKit
+        this.course.urlkit
       ) {
-        window.open(this.course.urlKit, '_blank');
+        window.open(this.course.urlkit, '_blank');
       }
     }
   }
