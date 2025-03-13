@@ -1,15 +1,17 @@
-<app-community-header
-  (collabsButtonSelected)="collabsButtonSelected = $event"
-/>
-
-<app-community-home id="home" />
-
-<app-main-container>
-  <app-community-collaborators
-    [collabsButtonSelected]="collabsButtonSelected"
-    id="collabs"
+<div class="community-container">
+  <app-community-header
+    (collabsButtonSelected)="collabsButtonSelected = $event"
   />
-  <app-community-partners id="partners" />
-</app-main-container>
 
-<app-home-footer />
+  <app-community-home id="home" />
+
+  <app-main-container>
+    <app-community-collaborators
+      [collabsButtonSelected]="collabsButtonSelected"
+      id="collabs"
+    />
+    <app-community-partners id="partners" />
+  </app-main-container>
+
+  <app-home-footer />
+</div>
