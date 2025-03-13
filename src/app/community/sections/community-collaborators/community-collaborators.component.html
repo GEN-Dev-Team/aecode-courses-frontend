@@ -5,14 +5,24 @@
       [class.collaborators-button-selected]="collabsButtonSelected"
       (click)="changeCollabsButton(true)"
     >
-      Colaboradores
+      <div
+        [class.inner-button-selected]="collabsButtonSelected"
+        class="inner-button"
+      >
+        Colaboradores
+      </div>
     </button>
     <button
-      class="collaborators-button"
+      class="collaborators-button embajador-button"
       [class.collaborators-button-selected]="!collabsButtonSelected"
       (click)="changeCollabsButton(false)"
     >
-      Embajadores
+      <div
+        [class.inner-button-selected]="!collabsButtonSelected"
+        class="inner-button"
+      >
+        Embajadores
+      </div>
     </button>
 
     <img
