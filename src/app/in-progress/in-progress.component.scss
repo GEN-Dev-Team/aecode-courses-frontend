@@ -2,6 +2,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #0e1121;
 }
 
 .in-progress-container {
@@ -20,20 +21,20 @@
 
   .status-code {
     font-family: "ruberoid-semibold";
-    font-size: 60px;
+    font-size: clamp(1.875rem, 1.2148rem + 2.8169vw, 3.75rem);
     margin: 0;
   }
 
   .in-progress-title {
     font-family: "plusjakartasans-regular";
-    font-size: 30px;
+    font-size: clamp(1.25rem, 1.0299rem + 0.939vw, 1.875rem);
     margin: 0;
     margin-top: 10px;
   }
 
   .in-progress-description {
     font-family: "plusjakartasans-light";
-    font-size: 20px;
+    font-size: clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
     margin: 0;
     margin-top: 23px;
   }
@@ -70,13 +71,14 @@
     padding: 21px 40px;
     color: var(--gray-3);
     font-family: "ruberoid-semibold";
-    font-size: 20px;
+    font-size: clamp(0.75rem, 0.5739rem + 0.7512vw, 1.25rem);
     cursor: pointer;
     outline: none;
     border-radius: 60px;
     border: 1px solid #5a5de2;
     background: #4a3ac1;
     box-shadow: 0px 0px 8.2px 0px rgba(147, 168, 252, 0.4);
+    text-decoration: none;
   }
 
   .in-progress-img-container {
@@ -115,5 +117,23 @@
         transform: translateX(-50%);
       }
     }
+  }
+
+  .back-button {
+    position: absolute;
+    top: 42px;
+    left: 90px;
+    cursor: pointer;
+    outline: none;
+    border-radius: 19.5px;
+    border: 1px solid var(--dark-lineas, #7c7edf);
+    padding: 11px 13px;
+    background-color: transparent;
+    color: #eef3f8;
+    font-family: "ruberoid-medium";
+    font-size: 16px;
+    display: flex;
+    gap: 6px;
+    align-items: center;
   }
 }
