@@ -88,9 +88,10 @@
       position: relative;
 
       .in-progress-img {
+        height: 229.959px;
         position: absolute;
         bottom: 30px;
-        left: 50%;
+        left: 40%;
         transform: translateX(-50%);
         z-index: 1;
       }
