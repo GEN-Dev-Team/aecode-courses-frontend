@@ -1,3 +1,10 @@
 .community-container {
   background-color: #0e1121;
 }
+
+@media screen and (max-width: 768px) {
+  .community-container {
+    height: 100dvh;
+    display: grid;
+  }
+}

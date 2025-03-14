@@ -1,6 +1,5 @@
 .content-blocked-container {
   width: 460px;
-  height: 368px;
   padding: 30px 40px 46px;
   flex-shrink: 0;
   border-radius: 10px;
@@ -75,10 +74,11 @@
 @media screen and (max-width: 768px) {
   .content-blocked-container {
     width: 80%;
-    height: 50%;
+    height: auto;
     margin-inline: auto;
     padding: 29px 14px;
     border-radius: 6px;
+    align-items: center;
 
     .icon-container {
       width: 52px;
@@ -96,7 +96,6 @@
     }
 
     .message {
-      color: #212121;
       text-align: center;
       margin-block: 0px 15px;
       font-size: 12px;

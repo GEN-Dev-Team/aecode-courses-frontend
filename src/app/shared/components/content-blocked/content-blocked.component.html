@@ -1,24 +1,26 @@
-<div
-  class="content-blocked-container {{
-    themeService.getMode() | async
-  }}-content-blocked-container"
->
-  <div class="icon-container">
-    @if(isMessageTypeSuccess) {
-    <app-success-icon class="success-icon" />
+<app-modal [isOpen]="isOpen" (isClosed)="closeModal($event)">
+  <div
+    class="content-blocked-container {{
+      themeService.getMode() | async
+    }}-content-blocked-container"
+  >
+    <div class="icon-container">
+      @if(isMessageTypeSuccess) {
+      <app-success-icon class="success-icon" />
 
-    } @else {
-    <app-blocked-icon class="blocked-icon" />
+      } @else {
+      <app-blocked-icon class="blocked-icon" />
 
-    }
+      }
+    </div>
+
+    <h1 class="subtitle">{{ title }}</h1>
+
+    <p class="message">
+      {{ message }}
+    </p>
+
+    <!-- <app-button (click)="openContentModal()">COMENZAR</app-button> -->
+    <app-button (click)="closeModal(false)">ENTENDIDO</app-button>
   </div>
-
-  <h1 class="subtitle">Contenido bloqueado</h1>
-
-  <p class="message">
-    {{ message }}
-  </p>
-
-  <!-- <app-button (click)="openContentModal()">COMENZAR</app-button> -->
-  <app-button (click)="closeModal(false)">ENTENDIDO</app-button>
-</div>
+</app-modal>

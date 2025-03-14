@@ -84,7 +84,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: auto 495px;
-    gap: 53px;
+    grid-template-rows: 440px;
 
     .collaborators-carousel {
       position: relative;
@@ -293,6 +293,7 @@
         font-family: "Ruberoid-semibold";
         font-size: 30px;
         margin-block: 22px 14px;
+        text-align: end;
       }
 
       .collaborator-description {
