@@ -58,7 +58,8 @@ export class CourseItemComponent {
 
   finalPrice = signal(0);
   showBlockedModal = false;
-  message = '';
+  blockedModalMessage = '';
+  blockedModalTitle = '¡Estamos trabajando en ello!';
 
   discountPrice = computed(() => {
     if (this.course.isOnSale && this.course.discountPercentage > 0) {
@@ -74,7 +75,7 @@ export class CourseItemComponent {
 
   showCourseDetails() {
     if (this.isMasiveCourse) {
-      this.message = `El contenido del programa "${this.course.title}" estará disponible próximamente.`;
+      this.blockedModalMessage = `El contenido del programa "${this.course.title}" estará disponible próximamente.`;
       this.showBlockedModal = true;
 
       return;

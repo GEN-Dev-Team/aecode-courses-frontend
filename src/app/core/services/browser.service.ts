@@ -23,6 +23,12 @@ export class BrowserService {
     return typeof window !== 'undefined';
   }
 
+  isMobile(): boolean {
+    if (this.isBrowser()) {
+      return window.innerWidth < 1024;
+    } else return false;
+  }
+
   getDocument(): Document | null {
     return this.isBrowser() ? document : null;
   }
