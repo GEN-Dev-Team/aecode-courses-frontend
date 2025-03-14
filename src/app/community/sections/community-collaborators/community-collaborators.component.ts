@@ -478,7 +478,7 @@ export class CommunityCollaboratorsComponent {
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fgrupos_estudiantiles%2FCIVIAL%20UTEC.webp?alt=media&token=3d02f213-039c-4648-8900-832ba47dd26b',
       group: '',
       description:
-        'Me uní a AECODE por su visión de futuro sobre IA y automatización en proyectos, algo que aún no se ve en universidad pero pronto será esencial. La mejor forma de afrontar este cambio es prepararnos desde ahora, y esta comunidad ofrece el espacio ideal para aprender y adaptarnos.',
+        'Me uní a AECODE por su visión de futuro sobre IA y automatización en proyectos, algo que aún no se ve en la universidad pero pronto será esencial. La mejor forma de afrontar este cambio es prepararnos desde ahora, y esta comunidad ofrece el espacio ideal para aprender y adaptarnos.',
     },
     {
       id: 15,

@@ -56,14 +56,61 @@ export class CommunityHomeComponent {
         slidesPerView: 5,
         centeredSlides: true,
         autoplay: {
-          delay: 3000,
+          delay: 10000,
           disableOnInteraction: false,
+        },
+        on: {
+          afterInit: () => this.handleafterInit(),
+          slideChangeTransitionStart: () =>
+            this.handleslideNextTransitionStart(),
         },
       };
 
       Object.assign(swiperElemConstructor!, swiperOptions);
       this.swiperElement.set(swiperElemConstructor as SwiperContainer);
       this.swiperElement()?.initialize();
+    }
+  }
+
+  handleslideNextTransitionStart(): void {
+    const slide_active = document.querySelector(
+      '.swiper-slide-active video'
+    ) as HTMLVideoElement | null;
+
+    const slide_prev = document.querySelector(
+      '.swiper-slide-prev video'
+    ) as HTMLVideoElement | null;
+
+    const slide_next = document.querySelector(
+      '.swiper-slide-next video'
+    ) as HTMLVideoElement | null;
+
+    if (slide_active) {
+      slide_active.setAttribute('autoplay', 'true');
+      slide_active.play();
+    }
+
+    if (slide_prev) {
+      slide_prev.currentTime = 0;
+      slide_prev.pause();
+      slide_prev.removeAttribute('autoplay');
+    }
+
+    if (slide_next) {
+      slide_next.currentTime = 0;
+      slide_next.pause();
+      slide_next.removeAttribute('autoplay');
+    }
+  }
+
+  handleafterInit(): void {
+    const slide_active = document.querySelector(
+      '.swiper-slide-active video'
+    ) as HTMLVideoElement | null;
+
+    if (slide_active) {
+      slide_active.setAttribute('autoplay', 'true');
+      slide_active.play();
     }
   }
 }
