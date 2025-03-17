@@ -23,27 +23,27 @@ export class CommunityHomeComponent {
   videoList: any[] = [
     {
       id: 1,
-      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
+      video_url: '/assets/images/community/colaboradores .webm',
     },
     {
       id: 2,
-      video_url: '/assets/images/community/Colaboradores.webm',
+      video_url: '/assets/images/community/Embajadores.webm',
     },
     {
       id: 3,
-      video_url: '/assets/images/community/Partners.webm',
+      video_url: '/assets/images/community/Redes.webm',
     },
     {
       id: 4,
-      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
+      video_url: '/assets/images/community/colaboradores .webm',
     },
     {
       id: 5,
-      video_url: '/assets/images/community/Colaboradores.webm',
+      video_url: '/assets/images/community/Embajadores.webm',
     },
     {
       id: 6,
-      video_url: '/assets/images/community/Partners.webm',
+      video_url: '/assets/images/community/Redes.webm',
     },
   ];
 
@@ -55,10 +55,10 @@ export class CommunityHomeComponent {
         navigation: true,
         slidesPerView: 5,
         centeredSlides: true,
-        // autoplay: {
-        //   delay: 10000,
-        //   disableOnInteraction: false,
-        // },
+        autoplay: {
+          delay: 10000,
+          disableOnInteraction: false,
+        },
         on: {
           afterInit: () => this.handleafterInit(),
           slideChangeTransitionStart: () =>
