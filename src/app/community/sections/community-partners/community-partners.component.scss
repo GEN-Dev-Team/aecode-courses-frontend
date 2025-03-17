@@ -2,6 +2,7 @@
   color: var(--gray-3);
   font-size: 18px;
   padding: 0px 65px 38px 65px;
+  position: relative;
 
   .partners-title {
     font-family: "Ruberoid-semibold";
@@ -55,5 +56,20 @@
     background: rgba(94, 101, 181, 0.1);
     padding: 19px;
     margin-top: 55px;
+  }
+
+  .light-blue-shadow {
+    position: absolute;
+    left: 15%;
+    bottom: 40%;
+    transform: translate(-50%, 50%);
+    height: calc((538.873 / 920) * 100vh);
+    aspect-ratio: 1 / 1;
+
+    border-radius: 538.873px;
+    border: 34px solid #00f0ff;
+    opacity: 0.3;
+    filter: blur(56px);
+    z-index: 0;
   }
 }

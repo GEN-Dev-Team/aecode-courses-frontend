@@ -2,27 +2,32 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
-  max-width: calc(1440px + (87px * 2));
-  margin-inline: auto;
+  position: relative;
+  overflow: hidden;
 
   .home-title {
     color: var(--gray-3);
     font-family: "Ruberoid-semibold";
     font-size: clamp(1.25rem, 0.5898rem + 2.8169vw, 3.125rem);
     text-align: center;
-    margin-top: calc(100vh / 13);
-    padding-top: 123px;
+    margin-top: 86px;
+    padding-top: calc((123 / 920) * 100vh);
+    position: relative;
+    z-index: 1;
   }
 
   .general-container {
     height: auto;
     position: relative;
     flex: 1;
+    width: 100%;
+    max-width: calc(1440px + (87px * 2));
   }
 
   swiper-container {
-    background-color: #0e1121;
+    background-color: transparent;
     height: 100%;
   }
 
@@ -50,26 +55,6 @@
     background-color: #8c97dc;
     border-radius: 50%;
     padding: 10px 8px 10px 12px;
-  }
-
-  .transparent-bg-right {
-    background-color: #0e1121;
-    position: absolute;
-    width: 87px;
-    height: 100%;
-    right: 0;
-    top: 0;
-    z-index: 1;
-  }
-
-  .transparent-bg-left {
-    background-color: #0e1121;
-    position: absolute;
-    width: 87px;
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 1;
   }
 
   .item {
@@ -108,5 +93,49 @@
 
   .swiper-slide-next .item {
     margin-top: 45%;
+  }
+
+  .green-shadow {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, 50%);
+
+    width: calc((497.13 / 920) * 100vh);
+    height: calc((328.798 / 920) * 100vh);
+    border-radius: 497.13px;
+    opacity: 0.69;
+    background: #107152;
+    filter: blur(150px);
+  }
+
+  .blue-shadow {
+    position: absolute;
+    left: 0;
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+
+    width: calc((468.292 / 920) * 100vh);
+    height: calc((516.264 / 920) * 100vh);
+    border-radius: 516.264px;
+    opacity: 0.57;
+    background: #4465ee;
+    filter: blur(150px);
+  }
+
+  .active-slide-shadow {
+    position: absolute;
+    left: 50%;
+    bottom: 40%;
+    transform: translate(-50%, 50%);
+    width: calc((360 / 1440) * 100vh);
+    height: calc((250 / 920) * 100vh);
+
+    flex-shrink: 0;
+    border-radius: 516.264px;
+    opacity: 0.57;
+    background: #4465ee;
+    filter: blur(150px);
+    z-index: 0;
   }
 }
