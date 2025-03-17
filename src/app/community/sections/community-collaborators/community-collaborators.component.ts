@@ -268,7 +268,7 @@ export class CommunityCollaboratorsComponent {
       id: 13,
       name: 'EVA LUCERO AREVALO SANCHEZ',
       image_url:
-        'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FEva_Lucero_Arevalo_Sanchez.webp?alt=media&token=ea2b4fff-65b2-4990-9209-941d15af99d1',
+        'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FEva_Lucero_Arevalo_Sanchez.webp?alt=media&token=40cb6c0d-c057-4c77-928c-83a4a5046f49',
       group: 'ACI UTEC',
       description:
         'Siempre me ha interesado aprender cosas nuevas, y AECODE combina perfectamente innovación, tecnología y el sector AEC, que es mi área de estudio. Quise ser parte de este espacio para crecer y también ayudar a que otros descubran todo lo que este centro tiene para ofrecer.',
@@ -356,7 +356,9 @@ export class CommunityCollaboratorsComponent {
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FJosue_Noha.webp?alt=media&token=1019bb78-041d-40fa-b612-886c4d90425e',
       tag_list: [
-        'Programador de Algoritmos de Automatización y Optimización Estructural',
+        'Algorithm programmer',
+        'Structural automation',
+        'Structural optimization',
       ],
     },
     {
