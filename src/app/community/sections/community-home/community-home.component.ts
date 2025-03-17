@@ -55,10 +55,10 @@ export class CommunityHomeComponent {
         navigation: true,
         slidesPerView: 5,
         centeredSlides: true,
-        autoplay: {
-          delay: 10000,
-          disableOnInteraction: false,
-        },
+        // autoplay: {
+        //   delay: 10000,
+        //   disableOnInteraction: false,
+        // },
         on: {
           afterInit: () => this.handleafterInit(),
           slideChangeTransitionStart: () =>
