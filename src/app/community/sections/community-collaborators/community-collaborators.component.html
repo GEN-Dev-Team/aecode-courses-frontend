@@ -58,7 +58,7 @@
               @for (item of collabsButtonSelected ? colaborators_list :
               embajadores_list; track $index) { @if($index < 4) {
               <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" />
+                <img src="{{ item.image_url }}" alt="" loading="lazy" />
                 @if($index === itemSelected){
                 <div class="collab-item-selected"></div>
 
@@ -71,7 +71,7 @@
               @for (item of collabsButtonSelected ? colaborators_list :
               embajadores_list; track $index) { @if( $index > 3 && $index < 8) {
               <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" />
+                <img src="{{ item.image_url }}" alt="" loading="lazy" />
                 @if($index === itemSelected){
                 <div class="collab-item-selected"></div>
 
@@ -84,7 +84,7 @@
               @for (item of collabsButtonSelected ? colaborators_list :
               embajadores_list; track $index) { @if( $index > 7) {
               <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" />
+                <img src="{{ item.image_url }}" alt="" loading="lazy" />
                 @if($index === itemSelected){
                 <div class="collab-item-selected"></div>
 
@@ -102,7 +102,7 @@
               @for (item of collabsButtonSelected ? colaborators_list_2 :
               embajadores_list_2; track $index) { @if($index < 4) {
               <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" />
+                <img src="{{ item.image_url }}" alt="" loading="lazy" />
                 @if($index === itemSelected){
                 <div class="collab-item-selected"></div>
 
@@ -116,7 +116,7 @@
               embajadores_list_2; track $index) { @if( $index > 3 && $index < 8)
               {
               <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" />
+                <img src="{{ item.image_url }}" alt="" loading="lazy" />
                 @if($index === itemSelected){
                 <div class="collab-item-selected"></div>
 
@@ -129,7 +129,7 @@
               @for (item of collabsButtonSelected ? colaborators_list_2 :
               embajadores_list_2; track $index) { @if( $index > 7) {
               <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" />
+                <img src="{{ item.image_url }}" alt="" loading="lazy" />
                 @if($index === itemSelected){
                 <div class="collab-item-selected"></div>
 
@@ -151,16 +151,17 @@
         <img
           src="{{ itemDataSelected.image_url }}"
           alt="Image of {{ itemDataSelected.name }}"
+          loading="lazy"
         />
       </div>
 
       <h3 class="collaborator-name">{{ itemDataSelected.name }}</h3>
-      @if(collabsButtonSelected){
+      @if(!collabsButtonSelected){
       <p class="collaborator-description">
         {{ itemDataSelected.description }}
       </p>
 
-      } @if(collabsButtonSelected){
+      } @if(!collabsButtonSelected){
       <span class="collaborator-group">
         {{ itemDataSelected.group }}
       </span>

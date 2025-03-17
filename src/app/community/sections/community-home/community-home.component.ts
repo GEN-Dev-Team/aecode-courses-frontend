@@ -23,27 +23,27 @@ export class CommunityHomeComponent {
   videoList: any[] = [
     {
       id: 1,
-      video_url: '/assets/images/community/mundo.mp4',
+      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
     },
     {
       id: 2,
-      video_url: '/assets/images/community/mundo.mp4',
+      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
     },
     {
       id: 3,
-      video_url: '/assets/images/community/mundo.mp4',
+      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
     },
     {
       id: 4,
-      video_url: '/assets/images/community/mundo.mp4',
+      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
     },
     {
       id: 5,
-      video_url: '/assets/images/community/mundo.mp4',
+      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
     },
     {
       id: 6,
-      video_url: '/assets/images/community/mundo.mp4',
+      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
     },
   ];
 
