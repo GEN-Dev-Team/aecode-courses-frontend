@@ -27,11 +27,11 @@ export class CommunityHomeComponent {
     },
     {
       id: 2,
-      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
+      video_url: '/assets/images/community/Colaboradores.webm',
     },
     {
       id: 3,
-      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
+      video_url: '/assets/images/community/Partners.webm',
     },
     {
       id: 4,
@@ -39,11 +39,11 @@ export class CommunityHomeComponent {
     },
     {
       id: 5,
-      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
+      video_url: '/assets/images/community/Colaboradores.webm',
     },
     {
       id: 6,
-      video_url: '/assets/images/community/COMUNIDAD-AECODE-VIDEOS-_4_.webm',
+      video_url: '/assets/images/community/Partners.webm',
     },
   ];
 
