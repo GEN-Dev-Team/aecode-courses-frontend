@@ -5,6 +5,7 @@ import { AsyncCourseIconComponent } from '../../../shared/icons/async-course-ico
 import { DropdownDropdownIconComponent } from '../../../shared/icons/all-dropdown-icon/all-dropdown-icon.component';
 import { AsyncPipe } from '@angular/common';
 import { ThemeService } from '../../../core/services/theme.service';
+import { DateIconComponent } from '../../icons/date-icon/date-icon.component';
 
 @Component({
   selector: 'app-course-filter-dropdown',
@@ -15,6 +16,7 @@ import { ThemeService } from '../../../core/services/theme.service';
     AsyncCourseIconComponent,
     DropdownDropdownIconComponent,
     AsyncPipe,
+    DateIconComponent,
   ],
   templateUrl: './course-filter-dropdown.component.html',
   styleUrl: './course-filter-dropdown.component.css',

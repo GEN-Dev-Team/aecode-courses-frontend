@@ -29,13 +29,21 @@
         class="header-item header-button purple-button"
         ><app-book-icon class="home-header-icon" /> Training</a
       >
+
       <a
-        href="http://beacons.ai/aecode.ai/live"
+        href="https://lu.ma/event/evt-0DGaUj7vEMhFVxL"
         target="_blank"
-        ZoomIn
         class="header-item header-button purple-button"
-        ><app-sync-course-icon class="home-header-icon" /> Live</a
+        data-luma-action="checkout"
+        data-luma-event-id="evt-0DGaUj7vEMhFVxL"
       >
+        <app-sync-course-icon class="home-header-icon" /> Live
+      </a>
+
+      <script
+        id="luma-checkout"
+        src="https://embed.lu.ma/checkout-button.js"
+      ></script>
 
       @if (isUserLoggedIn) {
       <app-user-profile-button
