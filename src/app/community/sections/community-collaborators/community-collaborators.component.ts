@@ -59,8 +59,9 @@ export class CommunityCollaboratorsComponent {
       name: 'RODRIGO ELIAS ALVAREZ ALANOCCA',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FRODRIGO_ELIAS_ALVAREZ_ALANOCCA.webp?alt=media&token=d21c1b9a-8fa4-4bba-aee3-c519d3cace6e',
-      group: '',
-      description: '',
+      group: 'ANEIC, CEIC Y EERI UNSA',
+      description:
+        'Me uní a AECODE porque creo en el valor de aprender y crecer en comunidad. Ser parte de un grupo con visión y compromiso me motiva a desarrollar habilidades, compartir ideas y aportar en proyectos con impacto. Además, me entusiasma conectar con personas que buscan generar cambios positivos.',
     },
     {
       id: 5,
@@ -278,9 +279,9 @@ export class CommunityCollaboratorsComponent {
       name: 'CRISTHIAN IVAN ESCOBAR GARAVITO',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FCRISTHIAN_IVAN_ESCOBAR_GARAVITO.webp?alt=media&token=d89cb687-6416-4dd5-93dd-d5a5b34525cf',
-      group: '',
+      group: 'COMUNIDAD CIMIC',
       description:
-        'Me uní a AECODE por su visión de futuro sobre IA y automatización en proyectos, algo que aún no se ve en la universidad pero pronto será esencial. La mejor forma de afrontar este cambio es prepararnos desde ahora, y esta comunidad ofrece el espacio ideal para aprender y adaptarnos.',
+        'Me uní a AECODE por su visión de futuro sobre IA y automatización en proyectos, algo que aún no se ve en la Universidad pero pronto será esencial. La mejor forma de afrontar este cambio es prepararnos desde ahora, y esta comunidad ofrece el espacio ideal para aprender y adaptarnos.',
     },
     {
       id: 15,
