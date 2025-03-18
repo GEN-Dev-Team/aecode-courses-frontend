@@ -2,7 +2,6 @@ import { Component, computed, inject, Input, signal } from '@angular/core';
 import { WatchIconComponent } from '../../shared/icons/watch-icon/watch-icon.component';
 import { CourseSessionIconComponent } from '../../shared/icons/course-session-icon/course-session-icon.component';
 import { Router } from '@angular/router';
-import { CourseService } from '../services/course.service';
 import { BrowserService } from '../../core/services/browser.service';
 import { CommonModule } from '@angular/common';
 import { ShoppingCartIconComponent } from '../icons/shopping-cart-icon/shopping-cart-icon.component';
@@ -17,10 +16,7 @@ import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/d
 import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 import { WhatsappIconComponent } from '../../shared/icons/whatsapp-icon/whatsapp-icon.component';
 import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
-import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
-import { SecondaryCourseService } from '../services/secondary-course.service';
-import { Observable } from 'rxjs';
 import { ThemeService } from '../../core/services/theme.service';
 
 @Component({
@@ -41,7 +37,6 @@ import { ThemeService } from '../../core/services/theme.service';
     CustomCourseButtonDirective,
     WhatsappIconComponent,
     ContentBlockedComponent,
-    ModalComponent,
     DateFormatPipe,
   ],
   templateUrl: './course-item.component.html',
