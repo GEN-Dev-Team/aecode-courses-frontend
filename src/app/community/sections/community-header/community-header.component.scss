@@ -12,7 +12,7 @@
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    padding: 26px 50px;
+    padding: 15px 50px;
     margin-inline: auto;
 
     .header-logo {
@@ -27,7 +27,7 @@
       align-items: center;
       margin: 0;
       font-family: "ruberoid-light";
-      font-size: 16px;
+      font-size: clamp(0.75rem, 0.662rem + 0.3756vw, 1rem);
       display: flex;
       gap: 60px;
       border-radius: 60px;
