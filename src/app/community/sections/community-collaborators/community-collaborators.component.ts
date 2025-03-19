@@ -29,7 +29,7 @@ export class CommunityCollaboratorsComponent {
   embajadores_list: ICollaborator[] = [
     {
       id: 1,
-      name: 'YOHARA DANIEL MEJIA ALBARRACIN',
+      name: 'YOHARA MEJIA ALBARRACIN',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FYOHARA_DANIEL_MEJIA_ALBARRACIN.webp?alt=media&token=e78a2dea-8cb4-4aa7-8f97-15e3691de99e',
       group: 'ACI UPC',
@@ -38,7 +38,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 2,
-      name: 'RODRIGO ENMANUEL BOZA ROMERO',
+      name: 'RODRIGO BOZA ROMERO',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FRODRIGO_ENMANUEL_BOZA_ROMERO.webp?alt=media&token=1f2f8808-9850-4d95-895b-585ce8ba3afc',
       group: 'CEIE UPC',
@@ -47,7 +47,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 3,
-      name: 'SERGIO GERARDO RODRIGUEZ LLANQUE',
+      name: 'SERGIO RODRIGUEZ LLANQUE',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FSERGIO_GERARDO_RODRIGUEZ_LLANQUE.webp?alt=media&token=497c6299-009f-47e4-bba8-613d9ad2e65b',
       group: 'ESVIAL UNMSM',
@@ -56,7 +56,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 4,
-      name: 'RODRIGO ELIAS ALVAREZ ALANOCCA',
+      name: 'RODRIGO ALVAREZ ALANOCCA',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FRODRIGO_ELIAS_ALVAREZ_ALANOCCA.webp?alt=media&token=d21c1b9a-8fa4-4bba-aee3-c519d3cace6e',
       group: 'ANEIC, CEIC Y EERI UNSA',
@@ -65,7 +65,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 5,
-      name: 'REINER ANTONIO LAGOS BARRETO',
+      name: 'REINER LAGOS BARRETO',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FREINER_ANTONIO_LAGOS_BARRETO.webp?alt=media&token=08738052-c64f-441d-ae3e-3cbeff445e0e',
       group: 'ACI PUCP Y GEMRA',
@@ -74,7 +74,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 6,
-      name: 'PATRICK MORRIS GUEVARA CASTILLO',
+      name: 'PATRICK GUEVARA CASTILLO',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FPATRICK_MORRIS_GUEVARA_CASTILLO.webp?alt=media&token=9046cdbe-6ed9-4380-92b1-191000dbf4ae',
       group: 'CONYGER UNMSM',
@@ -83,7 +83,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 7,
-      name: 'MIGUEL ANGEL DELGADO VALLE',
+      name: 'MIGUEL DELGADO VALLE',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FMIGUEL_ANGEL_DELGADO_VALLE.webp?alt=media&token=f54b35b0-2c7d-4707-9d94-84d4d983a2c3',
       group: 'ESVIAL UNMSM',
@@ -92,7 +92,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 8,
-      name: 'KAROL MILAGROS VALDEZ CHOQUE',
+      name: 'KAROL VALDEZ CHOQUE',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FKAROL_MILAGROS_VALDEZ_CHOQUE.webp?alt=media&token=d185827f-1d27-4d02-b2a0-30bc7689342c',
       group: 'ANEIC PERU',
@@ -110,7 +110,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 10,
-      name: 'KAREN LORENA FLORES ACHULLI',
+      name: 'KAREN FLORES ACHULLI',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FKAREN_LORENA_FLORES_ACHULLI.webp?alt=media&token=39933df8-5960-4fd2-9989-e62a82e8ac2d',
       group: 'PROYECTA UNI',
@@ -141,7 +141,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 3,
-      name: 'Daniella Victoria Galvez Ramírez',
+      name: 'Daniella Galvez Ramírez',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FDaniella_Galvez.webp?alt=media&token=162cb47d-f02b-4a19-ae38-23f95b5c4aff',
       tag_list: [
@@ -156,7 +156,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 4,
-      name: 'Silvert Kevin Quispe Pacompia',
+      name: 'Silvert Quispe Pacompia',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FSilvert_Quispe.webp?alt=media&token=74270436-d8f7-4f93-88d7-92aca7212637',
       tag_list: [
@@ -188,7 +188,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 6,
-      name: 'Rosmil Jhordan Huamaccto Canchari',
+      name: 'Rosmil Huamaccto Canchari',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FRosmil_Huamaccto.webp?alt=media&token=6f5ea974-05ed-4809-a8c2-05fc57b386d9',
       tag_list: [
@@ -208,7 +208,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 8,
-      name: 'Vladimir Mario Huaman Espillco',
+      name: 'Vladimir Huaman Espillco',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FVladimir_Huaman.webp?alt=media&token=18b8531b-dae9-4f62-abe0-f522383ccb0a',
       tag_list: [
@@ -220,7 +220,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 9,
-      name: 'Adrián Rafael Gutiérrez Alvarez',
+      name: 'Adrián Gutiérrez Alvarez',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FADRIAN_GUTIERREZ.webp?alt=media&token=6c06abe2-4581-4ef5-8d74-706082ac7740',
       tag_list: [
@@ -232,7 +232,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 10,
-      name: 'Julie Kareli Palero Vega',
+      name: 'Julie Palero Vega',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FJulie_Palero.webp?alt=media&token=26a664bc-73a1-4aaf-8d75-aa32607d6958',
       tag_list: [
@@ -249,7 +249,7 @@ export class CommunityCollaboratorsComponent {
   embajadores_list_2: ICollaborator[] = [
     {
       id: 11,
-      name: 'JOSEP JESUS ABREGU GONZALES',
+      name: 'JOSEP ABREGU GONZALES',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FJOSEP_JESUS_ABREGU_GONZALES.webp?alt=media&token=08e8562b-7237-484c-bc50-e83f4ea9ee7a',
       group: 'GIT Y PROYECTA UNI',
@@ -258,7 +258,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 12,
-      name: 'JAIRSINHO SEBASTIAN HUISA VILLAVICENCIO',
+      name: 'JAIRSINHO HUISA VILLAVICENCIO',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FJAIRSINHO_SEBASTIAN_HUISA_VILLAVICENCIO.webp?alt=media&token=3c126653-c543-44d7-8f96-b4a1ca2342fa',
       group: 'ESTRUCTURAS UNMSM',
@@ -267,7 +267,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 13,
-      name: 'EVA LUCERO AREVALO SANCHEZ',
+      name: 'EVA AREVALO SANCHEZ',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FEva_Lucero_Arevalo_Sanchez.webp?alt=media&token=40cb6c0d-c057-4c77-928c-83a4a5046f49',
       group: 'ACI UTEC',
@@ -276,7 +276,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 14,
-      name: 'CRISTHIAN IVAN ESCOBAR GARAVITO',
+      name: 'CRISTHIAN ESCOBAR GARAVITO',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FCRISTHIAN_IVAN_ESCOBAR_GARAVITO.webp?alt=media&token=d89cb687-6416-4dd5-93dd-d5a5b34525cf',
       group: 'COMUNIDAD CIMIC',
@@ -303,7 +303,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 17,
-      name: 'CAROL FABIOLA OCAÑA JARA',
+      name: 'CAROL OCAÑA JARA',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FCAROL_FABIOLA_OCA%C3%91A_JARA.webp?alt=media&token=49258bbf-23ba-47b6-8c2b-d6d49215db84',
       group: 'ESTRUCTURAS UNMSM',
@@ -312,7 +312,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 18,
-      name: 'CAMILA NICOLE MONTERREY PALACIOS',
+      name: 'CAMILA MONTERREY PALACIOS',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FCAMILA_NICOLE_MONTERREY_PALACIOS.webp?alt=media&token=363a3e77-a5cd-4a1b-a63b-4dd2049d7d31',
       group: 'EERI PUCP',
@@ -330,7 +330,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 20,
-      name: 'KAREN LORENA FLORES ACHULLI',
+      name: 'KAREN FLORES ACHULLI',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fembajadores%2FKAREN_LORENA_FLORES_ACHULLI.webp?alt=media&token=39933df8-5960-4fd2-9989-e62a82e8ac2d',
       group: 'PROYECTA UNI',
@@ -342,7 +342,7 @@ export class CommunityCollaboratorsComponent {
   colaborators_list_2: IEmbajador[] = [
     {
       id: 11,
-      name: 'José Franco Gutiérrez Manrique',
+      name: 'José Gutiérrez Manrique',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FJos%C3%A9_Guti%C3%A9rrez.webp?alt=media&token=13d72d13-ee49-49bd-beeb-6ee34019dbaf',
       tag_list: [
@@ -353,7 +353,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 12,
-      name: 'Josue Julianz Noha Valdivia',
+      name: 'Josue Noha Valdivia',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FJosue_Noha.webp?alt=media&token=1019bb78-041d-40fa-b612-886c4d90425e',
       tag_list: [
@@ -364,7 +364,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 13,
-      name: 'Renzo Giancarlo Rios Rugel',
+      name: 'Renzo Rios Rugel',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FRENZO_RIOS.webp?alt=media&token=fda0ee4a-a6ac-477f-8366-d8e63e2965da',
       tag_list: [
@@ -388,7 +388,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 15,
-      name: 'Juan David Cano López',
+      name: 'Juan Cano López',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FJuan_David.webp?alt=media&token=59041746-a747-4c5d-8eff-4d0fcf0a84dc',
       tag_list: [
@@ -413,7 +413,7 @@ export class CommunityCollaboratorsComponent {
     },
     {
       id: 17,
-      name: 'José Fabrizio Inga Díaz',
+      name: 'José Inga Díaz',
       image_url:
         'https://firebasestorage.googleapis.com/v0/b/digitalproduct-6d2f8.firebasestorage.app/o/prod%2Fcomunidad%2Fcolaboradores%2FJose_Fabrizio.webp?alt=media&token=9b3c015f-2ce5-4e24-9c60-fc0125e7c3c0',
       tag_list: [
