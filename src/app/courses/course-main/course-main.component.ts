@@ -10,6 +10,7 @@ import { BrowserService } from '../../core/services/browser.service';
 import { IPaginator } from '../../core/interfaces/paginator';
 import { ThemeService } from '../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
+import { CourseTagListComponent } from '../course-tag-list/course-tag-list.component';
 
 @Component({
   selector: 'app-course-main',
@@ -20,6 +21,7 @@ import { AsyncPipe } from '@angular/common';
     PlatformCourseListComponent,
     CourseListComponent,
     AsyncPipe,
+    CourseTagListComponent,
   ],
   templateUrl: './course-main.component.html',
   styleUrl: './course-main.component.css',
@@ -90,26 +92,38 @@ export class CourseMainComponent implements OnInit {
   filterByMode(value: string) {
     this.currentPage = 0;
 
-    if (value !== 'all') {
-      this.filteredCoursesList = [];
-      this.isFilteringByMode = true;
-      this.filterValue = value;
+    this.filteredCoursesList = [];
+    this.isFilteringByMode = true;
+    this.filterValue = value;
 
-      this.secondaryCourseService
-        .getSecondaryCoursesByMode(
-          this.filterValue,
-          this.currentPage,
-          this.pageSize
-        )
-        .subscribe((data) => {
-          this.filteredCoursesList = data.content;
-          this.paginatorPages = data.totalPages;
-          console.log(data);
-        });
-    } else {
-      this.isFilteringByMode = false;
-      this.resetFilteredCourses();
-      this.currentPage = 0;
+    switch (value) {
+      case 'all':
+        this.isFilteringByMode = false;
+        this.resetFilteredCourses();
+        this.currentPage = 0;
+        break;
+      case 'DATE':
+        this.secondaryCourseService
+          .getSecondaryCoursesByDate(this.currentPage, this.pageSize)
+          .subscribe((data) => {
+            this.filteredCoursesList = data.content;
+            this.paginatorPages = data.totalPages;
+            console.log(data);
+          });
+        break;
+      default:
+        this.secondaryCourseService
+          .getSecondaryCoursesByMode(
+            this.filterValue,
+            this.currentPage,
+            this.pageSize
+          )
+          .subscribe((data) => {
+            this.filteredCoursesList = data.content;
+            this.paginatorPages = data.totalPages;
+            console.log(data);
+          });
+        break;
     }
   }
 
@@ -162,6 +176,26 @@ export class CourseMainComponent implements OnInit {
         .subscribe((data) => {
           this.filteredCoursesList = data.content;
         });
+    }
+  }
+
+  handleTagListChange(tagIdsList: number[]) {
+    this.currentPage = 0;
+
+    if (tagIdsList.length > 0) {
+      this.filteredCoursesList = [];
+      this.isFilteringByMode = true;
+      this.filterValue = '';
+
+      this.secondaryCourseService
+        .getSecondaryCoursesByTags(tagIdsList, this.currentPage, this.pageSize)
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+          this.paginatorPages = data.totalPages;
+          console.log(data);
+        });
+    } else {
+      this.resetFilteredCourses();
     }
   }
 

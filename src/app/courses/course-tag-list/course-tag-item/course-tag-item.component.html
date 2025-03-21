@@ -1,0 +1,10 @@
+<span
+  class="course-tag {{ themeService.getMode() | async }}-course-tag"
+  [class.course-tag-selected]="tagItem.isSelected"
+  [class.dark-course-tag-selected]="
+    tagItem.isSelected && (themeService.getMode() | async) === 'dark'
+  "
+  (click)="selectTag()"
+>
+  {{ tagItem.courseTagName }}</span
+>
