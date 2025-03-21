@@ -92,10 +92,30 @@
     gap: 126px;
     position: relative;
 
-    .collaborators-video {
-      width: 100%;
-      border: 2px solid #8f60ea;
-      border-radius: 6px;
+    .collaborators-video-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+
+      .collaborators-video {
+        width: 100%;
+      }
+
+      .collab-form-button {
+        cursor: pointer;
+        user-select: none;
+        border-radius: 30px;
+        border: 1px solid #8c97dc;
+        background: #4a3ac1;
+        box-shadow: 0px 0px 6px 0px #7c7edf;
+        padding: 15px 20px;
+        color: #eef3f8;
+        font-family: "Ruberoid-regular";
+        font-size: 18px;
+        text-decoration: none;
+      }
     }
 
     .detail-container {
@@ -175,5 +195,6 @@
     border-radius: 886.61px;
     background: #2e64f4;
     filter: blur(250px);
+    z-index: 0;
   }
 }
