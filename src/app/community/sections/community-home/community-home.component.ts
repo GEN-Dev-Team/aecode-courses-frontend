@@ -39,7 +39,7 @@ export class CommunityHomeComponent {
     },
     {
       id: 5,
-      video_url: '/assets/images/community/REDES.webm',
+      video_url: '/assets/images/community/Redes.webm',
     },
     {
       id: 6,
@@ -59,7 +59,7 @@ export class CommunityHomeComponent {
     },
     {
       id: 10,
-      video_url: '/assets/images/community/REDES.webm',
+      video_url: '/assets/images/community/Redes.webm',
     },
   ];
 
