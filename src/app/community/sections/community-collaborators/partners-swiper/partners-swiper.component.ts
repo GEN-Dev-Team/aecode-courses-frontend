@@ -10,11 +10,12 @@ import { ICollaborator } from '../../../interfaces/Collaborator';
 import { SwiperContainer } from 'swiper/element';
 import { BrowserService } from '../../../../core/services/browser.service';
 import { SwiperOptions } from 'swiper/types';
+import { CollabsLikeIconComponent } from '../../../icons/collabs-like-icon/collabs-like-icon.component';
 
 @Component({
   selector: 'app-partners-swiper',
   standalone: true,
-  imports: [],
+  imports: [CollabsLikeIconComponent],
   templateUrl: './partners-swiper.component.html',
   styleUrl: './partners-swiper.component.scss',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
