@@ -23,6 +23,8 @@
     <app-course-search-icon class="search-icon" />
   </div>
 
+  <app-course-tag-list (tagIdsList)="handleTagListChange($event)" />
+
   <div class="course-main-list">
     <app-course-list
       (filterMode)="filterByMode($event)"

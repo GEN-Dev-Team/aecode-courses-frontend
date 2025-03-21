@@ -66,4 +66,22 @@ export class SecondaryCourseService {
       `${this.api_url}/paginateByMode?mode=${mode}&page=${pageNumber}&size=${pageSize}`
     );
   }
+
+  getSecondaryCoursesByDate(pageNumber: number, pageSize: number) {
+    return this.http.get<IPaginator<ISecondaryCourseSummary>>(
+      `${this.api_url}/paginateByDate?offsetCourseId=0&page=${pageNumber}&size=${pageSize}`
+    );
+  }
+
+  getSecondaryCoursesByTags(
+    tagIdsList: number[],
+    pageNumber: number,
+    pageSize: number
+  ) {
+    const tagIds = tagIdsList.join('&tagIds=');
+
+    return this.http.get<IPaginator<ISecondaryCourseSummary>>(
+      `${this.api_url}/paginateByTags?tagIds=${tagIds}&page=${pageNumber}&size=${pageSize}`
+    );
+  }
 }

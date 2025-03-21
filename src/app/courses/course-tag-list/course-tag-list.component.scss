@@ -1,0 +1,33 @@
+.tag-container {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 17px;
+  align-items: center;
+  height: fit-content;
+  color: var(--purple-2);
+  height: 42px;
+  margin-block: 35px 40px;
+
+  .caret-left-icon {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+  }
+
+  .tag-list {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 39px;
+    align-items: center;
+  }
+
+  .caret-right-icon {
+    align-self: flex-end;
+  }
+}
+
+.dark-tag-container {
+  color: rgba(238, 243, 248, 1);
+}
