@@ -23,7 +23,7 @@ export class CommunityHomeComponent {
   videoList: any[] = [
     {
       id: 1,
-      video_url: '/assets/images/community/COLABORADOR.webm',
+      video_url: '/assets/images/community/COLABORADORES.webm',
     },
     {
       id: 2,
@@ -39,11 +39,11 @@ export class CommunityHomeComponent {
     },
     {
       id: 5,
-      video_url: '/assets/images/community/Redes.webm',
+      video_url: '/assets/images/community/REDES.webm',
     },
     {
       id: 6,
-      video_url: '/assets/images/community/COLABORADOR.webm',
+      video_url: '/assets/images/community/COLABORADORES.webm',
     },
     {
       id: 7,
@@ -59,7 +59,7 @@ export class CommunityHomeComponent {
     },
     {
       id: 10,
-      video_url: '/assets/images/community/Redes.webm',
+      video_url: '/assets/images/community/REDES.webm',
     },
   ];
 
@@ -72,6 +72,10 @@ export class CommunityHomeComponent {
         slidesPerView: 5,
         centeredSlides: true,
         initialSlide: 0,
+        autoplay: {
+          delay: 10000,
+          disableOnInteraction: false,
+        },
         on: {
           afterInit: () => this.handleafterInit(),
           slideChangeTransitionStart: () =>

@@ -1,88 +1,90 @@
-<swiper-container id="ambassador-swiper" init="false">
-  <swiper-slide>
-    <div class="grid">
-      <div class="row">
-        @for (item of embajadores_list ; track $index) { @if($index < 4) {
-        <div class="collab-item" (click)="selectItem(item, $index)">
-          <img src="{{ item.image_url }}" alt="" loading="lazy" />
-          @if($index === itemIndexSelected){
-          <div class="collab-item-selected"></div>
+<div class="swiper-container">
+  <swiper-container id="ambassador-swiper" init="false">
+    <swiper-slide>
+      <div class="grid">
+        <div class="row">
+          @for (item of embajadores_list ; track $index) { @if($index < 4) {
+          <div class="collab-item" (click)="selectItem(item, $index)">
+            <img src="{{ item.image_url }}" alt="" loading="lazy" />
+            @if($index === itemIndexSelected){
+            <div class="collab-item-selected"></div>
 
-          }
+            }
+          </div>
+
+          } }
         </div>
+        <div class="row">
+          @for (item of embajadores_list ; track $index) { @if( $index > 3 &&
+          $index < 8) {
+          <div class="collab-item" (click)="selectItem(item, $index)">
+            <img src="{{ item.image_url }}" alt="" loading="lazy" />
+            @if($index === itemIndexSelected){
+            <div class="collab-item-selected"></div>
 
-        } }
-      </div>
-      <div class="row">
-        @for (item of embajadores_list ; track $index) { @if( $index > 3 &&
-        $index < 8) {
-        <div class="collab-item" (click)="selectItem(item, $index)">
-          <img src="{{ item.image_url }}" alt="" loading="lazy" />
-          @if($index === itemIndexSelected){
-          <div class="collab-item-selected"></div>
+            }
+          </div>
 
-          }
+          } }
         </div>
+        <div class="row last">
+          @for (item of embajadores_list ; track $index) { @if( $index > 7) {
+          <div class="collab-item" (click)="selectItem(item, $index)">
+            <img src="{{ item.image_url }}" alt="" loading="lazy" />
+            @if($index === itemIndexSelected){
+            <div class="collab-item-selected"></div>
 
-        } }
-      </div>
-      <div class="row last">
-        @for (item of embajadores_list ; track $index) { @if( $index > 7) {
-        <div class="collab-item" (click)="selectItem(item, $index)">
-          <img src="{{ item.image_url }}" alt="" loading="lazy" />
-          @if($index === itemIndexSelected){
-          <div class="collab-item-selected"></div>
+            }
+          </div>
 
-          }
+          } }
         </div>
-
-        } }
       </div>
-    </div>
-  </swiper-slide>
+    </swiper-slide>
 
-  <swiper-slide>
-    <div class="grid">
-      <div class="row">
-        @for (item of embajadores_list_2 ; track $index) { @if($index < 4) {
-        <div class="collab-item" (click)="selectItem(item, $index)">
-          <img src="{{ item.image_url }}" alt="" loading="lazy" />
-          @if($index === itemIndexSelected){
-          <div class="collab-item-selected"></div>
+    <swiper-slide>
+      <div class="grid">
+        <div class="row">
+          @for (item of embajadores_list_2 ; track $index) { @if($index < 4) {
+          <div class="collab-item" (click)="selectItem(item, $index)">
+            <img src="{{ item.image_url }}" alt="" loading="lazy" />
+            @if($index === itemIndexSelected){
+            <div class="collab-item-selected"></div>
 
-          }
+            }
+          </div>
+
+          } }
         </div>
+        <div class="row">
+          @for (item of embajadores_list_2 ; track $index) { @if( $index > 3 &&
+          $index < 8) {
+          <div class="collab-item" (click)="selectItem(item, $index)">
+            <img src="{{ item.image_url }}" alt="" loading="lazy" />
+            @if($index === itemIndexSelected){
+            <div class="collab-item-selected"></div>
 
-        } }
-      </div>
-      <div class="row">
-        @for (item of embajadores_list_2 ; track $index) { @if( $index > 3 &&
-        $index < 8) {
-        <div class="collab-item" (click)="selectItem(item, $index)">
-          <img src="{{ item.image_url }}" alt="" loading="lazy" />
-          @if($index === itemIndexSelected){
-          <div class="collab-item-selected"></div>
+            }
+          </div>
 
-          }
+          } }
         </div>
+        <div class="row last">
+          @for (item of embajadores_list_2 ; track $index) { @if( $index > 7) {
+          <div class="collab-item" (click)="selectItem(item, $index)">
+            <img src="{{ item.image_url }}" alt="" loading="lazy" />
+            @if($index === itemIndexSelected){
+            <div class="collab-item-selected"></div>
 
-        } }
-      </div>
-      <div class="row last">
-        @for (item of embajadores_list_2 ; track $index) { @if( $index > 7) {
-        <div class="collab-item" (click)="selectItem(item, $index)">
-          <img src="{{ item.image_url }}" alt="" loading="lazy" />
-          @if($index === itemIndexSelected){
-          <div class="collab-item-selected"></div>
+            }
+          </div>
 
-          }
+          } }
         </div>
-
-        } }
       </div>
-    </div>
-  </swiper-slide>
-</swiper-container>
+    </swiper-slide>
+  </swiper-container>
 
-<div class="like-container-top-right"><app-collabs-like-icon /></div>
-<div class="like-container-bottom-left"><app-collabs-like-icon /></div>
+  <div class="like-container-top-right"><app-collabs-like-icon /></div>
+  <div class="like-container-bottom-left"><app-collabs-like-icon /></div>
+</div>
