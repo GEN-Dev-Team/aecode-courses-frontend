@@ -1,15 +1,17 @@
 <app-course-overlay>
-  <app-shop-cart-navigator />
+  <div class="shop-cart-general-container">
+    <app-shop-cart-navigator />
 
-  <h2 class="shop-cart-sub-title">3 Módulos seleccionados</h2>
+    <h2 class="shop-cart-sub-title">3 Módulos seleccionados</h2>
 
-  <div class="shop-cart-container">
-    <app-shop-cart-products />
+    <div class="shop-cart-container">
+      <app-shop-cart-products (emitItem)="handleShopCartList($event)" />
 
-    <app-course-invest />
+      <app-shop-cart-investment [shopCartList]="shopCartList" />
+    </div>
+
+    <!-- <h2 class="shop-cart-sub-title">MÓDULOS RELACIONADOS</h2> -->
+
+    <!-- <app-course-module-box /> -->
   </div>
-
-  <h2 class="shop-cart-sub-title">MÓDULOS RELACIONADOS</h2>
-
-  <app-course-module-box />
 </app-course-overlay>
