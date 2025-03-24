@@ -1,3 +1,21 @@
 <article class="shop-cart-products-container">
-  <app-shop-cart-item />
+  <h2 class="shop-cart-item-subtitle" (click)="dropdown = !dropdown">
+    PROGRAMA: PYTHON APLICADO A LA INGENIERÍA CIVIL @if(dropdown) {
+    <app-caret-down-icon-light />
+    }@else {
+    <app-caret-up-icon-light />
+    }
+  </h2>
+
+  @if(dropdown) {
+  <div class="shop-cart-item-content">
+    @for (cartItem of itemList ; track $index) {
+    <app-shop-cart-item
+      [cartItem]="cartItem"
+      (emitItem)="addItemToList($event)"
+    />
+
+    }
+  </div>
+  }
 </article>

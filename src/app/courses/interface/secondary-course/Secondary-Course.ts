@@ -81,3 +81,20 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   requirements: [],
   mode: '',
 };
+
+export const defaultSecondaryCourseSummary: ISecondaryCourseSummary = {
+  seccourseId: 0,
+  title: '',
+  programTitle: '',
+  description: '',
+  module: '',
+  startDate: new Date(),
+  certificateHours: '',
+  priceRegular: 0,
+  discountPercentage: 0,
+  promptPaymentPrice: 0,
+  isOnSale: false,
+  principalimage: '',
+  orderNumber: -1,
+  mode: '',
+};
