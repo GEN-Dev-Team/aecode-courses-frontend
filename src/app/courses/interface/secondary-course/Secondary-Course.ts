@@ -1,4 +1,4 @@
-import { ICoupon } from '../../../payment/interfaces/Coupon';
+import { ICoupon } from '../../../shopping-cart/interfaces/Coupon';
 import { IFAQ } from './FAQ';
 import { IStudyPlan } from './StudyPlan';
 import { ITool } from './Tool';

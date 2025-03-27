@@ -117,7 +117,7 @@
           <app-whatsapp-icon class="wssp-icon" /> Solicitar información } @else
           {
 
-          <app-shopping-cart-icon class="shop-cart-icon" /> Comprar}
+          <app-shopping-cart-icon class="shop-cart-icon" /> Añadir al carrito}
           <span>
             @if(course.isOnSale) { ${{ discountPrice() }} } @else if(
             !isMasiveCourse){ ${{ course.priceRegular | number : "1.0-0" }}
@@ -130,8 +130,10 @@
 </div>
 
 <app-content-blocked
-  [title]="blockedModalTitle"
-  [message]="blockedModalMessage"
-  (isClosed)="showBlockedModal = $event"
-  [isOpen]="showBlockedModal"
-></app-content-blocked>
+  [title]="title"
+  [message]="message"
+  (isClosed)="showMessageModal = $event"
+  [isOpen]="showMessageModal"
+  [isMessageTypeSuccess]="isMessageTypeSuccess"
+>
+</app-content-blocked>

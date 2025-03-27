@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { BrowserService } from '../../core/services/browser.service';
 import { CommonModule } from '@angular/common';
 import { ShoppingCartIconComponent } from '../icons/shopping-cart-icon/shopping-cart-icon.component';
-import { PaymentService } from '../../payment/services/payment.service';
 import { ComnigSoonCourseIconComponent } from '../../shared/icons/comnig-soon-course-icon/comnig-soon-course-icon.component';
 import { SyncCourseIconComponent } from '../../shared/icons/sync-course-icon/sync-course-icon.component';
 import { AsyncCourseIconComponent } from '../../shared/icons/async-course-icon/async-course-icon.component';
@@ -18,6 +17,7 @@ import { WhatsappIconComponent } from '../../shared/icons/whatsapp-icon/whatsapp
 import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
 import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
 import { ThemeService } from '../../core/services/theme.service';
+import { PaymentService } from '../../shopping-cart/services/payment.service';
 
 @Component({
   selector: 'app-course-item',
@@ -48,13 +48,15 @@ export class CourseItemComponent {
 
   browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
-  paymentService: PaymentService = inject(PaymentService);
   themeService: ThemeService = inject(ThemeService);
+  cartService: PaymentService = inject(PaymentService);
 
   finalPrice = signal(0);
-  showBlockedModal = false;
-  blockedModalMessage = '';
-  blockedModalTitle = '¡Estamos trabajando en ello!';
+
+  showMessageModal = false;
+  message = 'El módulo ya se encuentra en tu carrito de compras.';
+  title = '¡Módulo repetido!';
+  isMessageTypeSuccess = false;
 
   discountPrice = computed(() => {
     if (this.course.isOnSale && this.course.discountPercentage > 0) {
@@ -70,11 +72,13 @@ export class CourseItemComponent {
 
   showCourseDetails() {
     if (this.isMasiveCourse) {
-      this.blockedModalMessage = `El contenido del programa "${this.course.title}" estará disponible próximamente.`;
-      this.showBlockedModal = true;
+      this.showMessageModal = true;
+      this.message = `El contenido del programa "${this.course.title}" estará disponible próximamente.`;
+      ('El módulo se ha agregado exitosamente a tu carrito de compras.');
+      this.title = '¡Estamos trabajando en ello!';
+      this.isMessageTypeSuccess = false;
 
       return;
-
       this.browserService.navigateAndScroll(
         `training/e-learning/${this.course.courseId}`,
         0
@@ -104,36 +108,27 @@ export class CourseItemComponent {
 
   goToPay(event: Event) {
     event.stopPropagation();
-    let message = '';
 
-    if (this.isMasiveCourse) {
-      message = `Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.course.title}".`;
-    } else {
-      message = `Hola AECODE. Me gustaría adquirir el programa de "${
-        this.course.courseTitle
-      } - ${
-        this.course.module
-      }" a un costo de ${this.discountPrice()} USD. ¿Podrías indicarme cómo proceder?`;
-    }
+    if (this.isMasiveCourse && this.browserService.isBrowser()) {
+      const whatsappUrl = `https://api.whatsapp.com/send?phone=51900121245&text=Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.course.title}".`;
 
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=51900121245&text=${encodeURIComponent(
-      message
-    )}`;
-
-    if (this.browserService.isBrowser()) {
       window.open(whatsappUrl, '_blank');
-    }
+    } else {
+      let response = this.cartService.addItemToCart(this.course);
 
-    return;
-
-    const price = this.discountPrice();
-
-    if (price > 0) {
-      this.router.navigate(['payment']);
-      this.paymentService.paymentDetails.set({
-        courseName: this.course.courseTitle,
-        amount: price,
-      });
+      console.log(response);
+      if (response === 1) {
+        this.showMessageModal = true;
+        this.message =
+          'El módulo se ha agregado exitosamente a tu carrito de compras.';
+        this.title = '¡Módulo agregado!';
+        this.isMessageTypeSuccess = true;
+      } else {
+        this.showMessageModal = true;
+        this.message = 'El módulo ya se encuentra en tu carrito de compras.';
+        this.title = '¡Módulo repetido!';
+        this.isMessageTypeSuccess = true;
+      }
     }
   }
 }

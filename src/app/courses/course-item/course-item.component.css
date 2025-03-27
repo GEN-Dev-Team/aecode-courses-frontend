@@ -217,6 +217,7 @@
     font-family: "plusjakartasans-medium";
     cursor: pointer;
     background: var(--purple-2);
+    text-wrap: nowrap;
 
     .shop-cart-icon {
       display: flex;
