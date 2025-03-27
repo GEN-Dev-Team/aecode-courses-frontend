@@ -2,13 +2,17 @@
   <div class="shop-cart-general-container">
     <app-shop-cart-navigator />
 
-    <h2 class="shop-cart-sub-title">3 Módulos seleccionados</h2>
+    <h2 class="shop-cart-sub-title">
+      {{ paymentService.shopCartListSelected().length }} Módulos seleccionados
+    </h2>
 
     <div class="shop-cart-container">
-      <app-shop-cart-products (emitItem)="handleShopCartList($event)" />
+      <app-shop-cart-products />
 
-      <app-shop-cart-investment [shopCartList]="shopCartList" />
+      <app-shop-cart-investment />
     </div>
+
+    <!-- <div #paymentRef></div> -->
 
     <!-- <h2 class="shop-cart-sub-title">MÓDULOS RELACIONADOS</h2> -->
 

@@ -1,9 +1,5 @@
 <div class="shop-cart-item">
-  <img
-    class="shop-cart-item-img"
-    src="https://imgs.search.brave.com/Gah9B2p6HqB4m6wqNgFQdgl2-p34TJeLbdOzJNR4zPQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jbGlw/YXJ0LWxpYnJhcnku/Y29tL25ld19nYWxs/ZXJ5LzM0MS0zNDE0/OTUwX3B5dGhvbi1s/b2dvLWFuZC1hcmR1/aW5vLTV2LXRvLTMt/My12LnBuZw"
-    alt=""
-  />
+  <img class="shop-cart-item-img" src="{{ cartItem.principalimage }}" alt="" />
 
   <div class="shop-cart-item-info">
     <span class="shop-cart-item-title">{{ cartItem.title }}</span>
@@ -39,24 +35,28 @@
     </div>
   </div>
 
-  <div class="shop-cart-item-price">
-    <p>
-      $
-      {{ cartItem.promptPaymentPrice }}
-    </p>
-    <p class="shop-cart-item-regular-price">
-      $
-      {{ cartItem.priceRegular }}
-    </p>
+  <div class="shop-cart-item-container">
+    <div class="shop-cart-item-price">
+      <p>
+        $
+        {{ cartItem.promptPaymentPrice }}
+      </p>
+      <p class="shop-cart-item-regular-price">
+        $
+        {{ cartItem.priceRegular }}
+      </p>
+    </div>
+
+    <div class="shop-cart-item-icons">
+      @if(!checkItem) {
+      <app-cart-input-icon class="check-cart-icon" (click)="checkCartItem()" />
+      } @else {
+      <app-cart-input-selected-icon
+        class="check-cart-icon"
+        (click)="checkCartItem()"
+      />
+      }
+      <app-delete-icon class="delete-cart-icon" (click)="removeCartItem()" />
+    </div>
   </div>
-
-  @if(!checkItem) {
-  <app-cart-input-icon class="check-cart-icon" (click)="checkCartItem()" />
-  } @else {
-
-  <app-cart-input-selected-icon
-    class="check-cart-icon"
-    (click)="checkCartItem()"
-  />
-  }
 </div>

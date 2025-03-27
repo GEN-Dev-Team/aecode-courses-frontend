@@ -7,17 +7,17 @@
     <div class="investDetail">
       <div class="invest-item">
         <span> Precio regular: </span>
-        <span> {{ totalCartRegularPrice }} $ </span>
+        <span> {{ totalCartRegularPrice() }} $ </span>
       </div>
 
       <div class="invest-item">
         <span> Total: </span>
-        <span> {{ totalCartReducePrice }} $ </span>
+        <span> {{ totalCartReducePrice() }} $ </span>
       </div>
 
       <div class="invest-discount">
         <span> Descuento: </span>
-        <span> {{ totalCartRegularPrice - totalCartReducePrice }} $ </span>
+        <span> {{ totalCartRegularPrice() - totalCartReducePrice() }} $ </span>
       </div>
     </div>
 

@@ -1,10 +1,7 @@
 .shop-cart-item {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   padding-bottom: 22px;
-  gap: 25px;
   border-bottom: 1px solid #b4bbbf;
   user-select: none;
 
@@ -17,6 +14,7 @@
     flex-direction: column;
     gap: 15px;
     color: white;
+    margin-inline: 25px auto;
 
     .shop-cart-item-title {
       max-width: 332px;
@@ -64,26 +62,45 @@
     }
   }
 
-  .shop-cart-item-price {
-    color: #381187;
-    font-family: "plusjakartasans-bold";
-    font-size: 20px;
-    align-self: flex-start;
+  .shop-cart-item-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-    p {
-      margin: 0;
+    .shop-cart-item-price {
+      color: #381187;
+      font-family: "plusjakartasans-bold";
+      font-size: 20px;
+      align-self: flex-end;
+
+      p {
+        margin: 0;
+      }
+
+      .shop-cart-item-regular-price {
+        color: #d50b0b;
+        font-family: "plusjakartasans-semibold";
+        font-size: 16px;
+        text-decoration: line-through;
+      }
     }
 
-    .shop-cart-item-regular-price {
-      color: #d50b0b;
-      font-family: "plusjakartasans-semibold";
-      font-size: 16px;
-      text-decoration: line-through;
-    }
-  }
+    .shop-cart-item-icons {
+      display: flex;
+      flex-direction: row;
+      gap: 45px;
+      height: 31px;
 
-  .check-cart-icon {
-    cursor: pointer;
-    align-self: flex-start;
+      .check-cart-icon {
+        cursor: pointer;
+        align-self: flex-start;
+      }
+
+      .delete-cart-icon {
+        color: #381187;
+        cursor: pointer;
+        align-self: flex-start;
+      }
+    }
   }
 }
