@@ -10,7 +10,6 @@ import { adminAuthGuard } from './core/guards/admin-auth.guard';
 import { CommunityComponent } from './community/community.component';
 import { InProgressComponent } from './in-progress/in-progress.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { PaymentComponent } from './payment/payment.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 export const routes: Routes = [

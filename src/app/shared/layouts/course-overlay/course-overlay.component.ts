@@ -8,6 +8,7 @@ import { HomeFooterComponent } from '../../../home/home-footer/home-footer.compo
 import { ThemeMode, ThemeService } from '../../../core/services/theme.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { PaymentService } from '../../../shopping-cart/services/payment.service';
 
 @Component({
   selector: 'app-course-overlay',
@@ -26,6 +27,7 @@ import { AsyncPipe } from '@angular/common';
 export class CourseOverlayComponent {
   courseService: CourseService = inject(CourseService);
   themeService: ThemeService = inject(ThemeService);
+  cartService: PaymentService = inject(PaymentService);
 
   wsspMessage =
     'https://api.whatsapp.com/send?phone=51900121245&text=Hola AECODE, quisiera conocer más detalles de los programas e iniciativas de colaboración que cuentan. Quiero contactar con un asesor.';
@@ -34,6 +36,7 @@ export class CourseOverlayComponent {
   isDarkTheme!: boolean;
 
   ngOnInit(): void {
+    this.cartService.initializeShopCartList();
     this.theme.subscribe((mode) => (this.isDarkTheme = mode === 'dark'));
   }
 

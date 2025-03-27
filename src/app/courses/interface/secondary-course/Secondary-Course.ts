@@ -1,4 +1,4 @@
-import { ICoupon } from '../../../payment/interfaces/Coupon';
+import { ICoupon } from '../../../shopping-cart/interfaces/Coupon';
 import { IFAQ } from './FAQ';
 import { IStudyPlan } from './StudyPlan';
 import { ITool } from './Tool';
@@ -79,5 +79,22 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   coupons: [],
   freqquests: [],
   requirements: [],
+  mode: '',
+};
+
+export const defaultSecondaryCourseSummary: ISecondaryCourseSummary = {
+  seccourseId: 0,
+  title: '',
+  programTitle: '',
+  description: '',
+  module: '',
+  startDate: new Date(),
+  certificateHours: '',
+  priceRegular: 0,
+  discountPercentage: 0,
+  promptPaymentPrice: 0,
+  isOnSale: false,
+  principalimage: '',
+  orderNumber: -1,
   mode: '',
 };
