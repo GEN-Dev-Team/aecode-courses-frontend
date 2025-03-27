@@ -1,1 +1,14 @@
-<p>shop-cart-navigator works!</p>
+<div class="shop-cart-navigator-container">
+  @for (item of checkoutSteps; track $index) {
+  <div
+    class="shop-cart-step-box {{ item.isSelected ? 'shop-cart-selected' : '' }}"
+    (click)="setStep(item.step)"
+  >
+    <span class="shop-cart-step">{{ item.step }}</span>
+    <span class="shop-cart-title"
+      >{{ item.title }}
+      <app-shopping-cart-icon class="shop-cart-icon" />
+    </span>
+  </div>
+  }
+</div>
