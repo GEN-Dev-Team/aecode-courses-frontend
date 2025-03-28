@@ -10,6 +10,8 @@ import { ComnigSoonCourseIconComponent } from '../../../shared/icons/comnig-soon
 import { SyncCourseIconComponent } from '../../../shared/icons/sync-course-icon/sync-course-icon.component';
 import { DeleteIconComponent } from '../../../shared/icons/delete-icon/delete-icon.component';
 import { PaymentService } from '../../services/payment.service';
+import { ThemeService } from '../../../core/services/theme.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-shop-cart-item',
@@ -24,6 +26,7 @@ import { PaymentService } from '../../services/payment.service';
     ComnigSoonCourseIconComponent,
     SyncCourseIconComponent,
     DeleteIconComponent,
+    AsyncPipe,
   ],
   templateUrl: './shop-cart-item.component.html',
   styleUrl: './shop-cart-item.component.scss',
@@ -33,6 +36,8 @@ export class ShopCartItemComponent {
   @Output() itemSelected = new EventEmitter<ISecondaryCourseSummary>();
 
   cartService: PaymentService = inject(PaymentService);
+  themeService: ThemeService = inject(ThemeService);
+
   checkItem: boolean = false;
 
   checkCartItem() {

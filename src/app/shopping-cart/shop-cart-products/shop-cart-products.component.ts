@@ -5,6 +5,8 @@ import { CaretDownIconLightComponent } from '../../shared/icons/caret-down-icon-
 import { ISecondaryCourseSummary } from '../../courses/interface/secondary-course/Secondary-Course';
 import { BrowserService } from '../../core/services/browser.service';
 import { PaymentService } from '../services/payment.service';
+import { ThemeService } from '../../core/services/theme.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-shop-cart-products',
@@ -13,12 +15,14 @@ import { PaymentService } from '../services/payment.service';
     ShopCartItemComponent,
     CaretUpIconLightComponent,
     CaretDownIconLightComponent,
+    AsyncPipe,
   ],
   templateUrl: './shop-cart-products.component.html',
   styleUrl: './shop-cart-products.component.scss',
 })
 export class ShopCartProductsComponent {
   @Output() itemSelected = new EventEmitter<ISecondaryCourseSummary>();
+  themeService: ThemeService = inject(ThemeService);
 
   cartService: PaymentService = inject(PaymentService);
   browserService: BrowserService = inject(BrowserService);

@@ -1,4 +1,8 @@
-<div class="shop-cart-navigator-container">
+<div
+  class="shop-cart-navigator-container {{
+    themeService.getMode() | async
+  }}-shop-cart-navigator-container"
+>
   @for (item of checkoutSteps; track $index) {
   <div
     class="shop-cart-step-box {{ item.isSelected ? 'shop-cart-selected' : '' }}"

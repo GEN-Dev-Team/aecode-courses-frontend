@@ -1,14 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ShoppingCartIconComponent } from '../../courses/icons/shopping-cart-icon/shopping-cart-icon.component';
+import { ThemeService } from '../../core/services/theme.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-shop-cart-navigator',
   standalone: true,
-  imports: [ShoppingCartIconComponent],
+  imports: [ShoppingCartIconComponent, AsyncPipe],
   templateUrl: './shop-cart-navigator.component.html',
   styleUrl: './shop-cart-navigator.component.scss',
 })
 export class ShopCartNavigatorComponent {
+  themeService: ThemeService = inject(ThemeService);
+
   checkoutSteps: any[] = [
     { step: '1', title: 'Carrito', isSelected: true },
     { step: '2', title: 'Pagar', isSelected: false },

@@ -2,7 +2,11 @@
   <div class="shop-cart-general-container">
     <app-shop-cart-navigator />
 
-    <h2 class="shop-cart-sub-title">
+    <h2
+      class="shop-cart-sub-title  {{
+        themeService.getMode() | async
+      }}-shop-cart-sub-title"
+    >
       {{ paymentService.shopCartListSelected().length }} Módulos seleccionados
     </h2>
 

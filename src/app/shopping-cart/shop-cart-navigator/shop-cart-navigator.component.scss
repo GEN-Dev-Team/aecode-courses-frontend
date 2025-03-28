@@ -61,3 +61,23 @@
     }
   }
 }
+
+.dark-shop-cart-navigator-container {
+  .shop-cart-selected {
+    color: #7c7edf;
+
+    .shop-cart-step {
+      border: none;
+      background-color: #7c7edf;
+      color: #100d46;
+    }
+
+    .shop-cart-title {
+      border-bottom: solid 1px #7c7edf;
+
+      .shop-cart-icon {
+        fill: #7c7edf;
+      }
+    }
+  }
+}

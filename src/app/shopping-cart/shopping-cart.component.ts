@@ -6,6 +6,8 @@ import { ShopCartInvestmentComponent } from './shop-cart-investment/shop-cart-in
 import { ISecondaryCourseSummary } from '../courses/interface/secondary-course/Secondary-Course';
 import { BrowserService } from '../core/services/browser.service';
 import { PaymentService } from './services/payment.service';
+import { ThemeService } from '../core/services/theme.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -15,6 +17,7 @@ import { PaymentService } from './services/payment.service';
     ShopCartNavigatorComponent,
     ShopCartProductsComponent,
     ShopCartInvestmentComponent,
+    AsyncPipe,
   ],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.scss',
@@ -24,6 +27,7 @@ export class ShoppingCartComponent {
 
   browserService: BrowserService = inject(BrowserService);
   paymentService: PaymentService = inject(PaymentService);
+  themeService: ThemeService = inject(ThemeService);
 
   paymentDetails = this.paymentService.paymentDetails;
   isPaypalMethod = false;

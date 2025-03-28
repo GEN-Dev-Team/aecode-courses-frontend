@@ -1,4 +1,6 @@
-<div class="shop-cart-item">
+<div
+  class="shop-cart-item {{ themeService.getMode() | async }}-shop-cart-item "
+>
   <img class="shop-cart-item-img" src="{{ cartItem.principalimage }}" alt="" />
 
   <div class="shop-cart-item-info">
