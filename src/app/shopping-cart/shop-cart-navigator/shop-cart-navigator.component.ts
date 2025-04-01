@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { ShoppingCartIconComponent } from '../../courses/icons/shopping-cart-icon/shopping-cart-icon.component';
 import { ThemeService } from '../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
@@ -11,6 +11,8 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './shop-cart-navigator.component.scss',
 })
 export class ShopCartNavigatorComponent {
+  @Input() stepSelected: string = '1';
+
   themeService: ThemeService = inject(ThemeService);
 
   checkoutSteps: any[] = [
