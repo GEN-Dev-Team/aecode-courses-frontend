@@ -1,0 +1,98 @@
+.payment-success-container {
+  display: grid;
+  grid-template-columns: minmax(200px, 532px) 1fr;
+  gap: 30px;
+
+  .payment-message-container {
+    padding: 36px 60px;
+    background: var(--blanco, #fff);
+    border-radius: 6px;
+    border: 2px solid rgba(51, 163, 220, 0.3);
+    box-shadow: 0px 0px 6.2px 5px #b4bbbf;
+    color: var(--purple-2);
+    display: grid;
+    place-content: center;
+    text-align: center;
+
+    .payment-icon {
+      margin-inline: auto;
+    }
+
+    .payment-title {
+      font-family: "ruberoid-semibold";
+      font-size: 20px;
+    }
+
+    .payment-message {
+      font-family: "plusjakartasans-light";
+      font-size: 17px;
+      color: black;
+    }
+
+    .payment-button {
+      width: 100%;
+      height: 50px;
+      border-radius: 6px;
+      background: var(--purple-2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Ruberoid-medium";
+      font-size: 16px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 30px;
+    }
+  }
+
+  .payment-summary-container {
+    padding: 36px 60px;
+    background: var(--blanco, #fff);
+    border-radius: 6px;
+    border: 2px solid rgba(51, 163, 220, 0.3);
+    box-shadow: 0px 0px 6.2px 5px #b4bbbf;
+    color: #636364;
+
+    .payment-title {
+      color: var(--purple-2);
+      font-family: "ruberoid-semibold";
+      font-size: 22px;
+      margin-bottom: 38px;
+    }
+
+    .payment-item {
+      font-family: "plusjakartasans-semibold";
+      font-size: 18px;
+
+      .payment-value {
+        color: black;
+        margin-block: 14px 38px;
+        font-family: "plusjakartasans-bold";
+      }
+
+      .payment-module-list {
+        width: 100%;
+        border-radius: 6px;
+        border: 0.5px solid #b4bbbf;
+
+        .payment-module-item {
+          width: 100%;
+          margin: 0;
+          padding: 15px 13px;
+          border-bottom: 0.5px solid #b4bbbf;
+          font-family: "plusjakartasans-bold";
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          color: #757575;
+        }
+
+        .payment-module-item-total {
+          color: var(--purple-2);
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

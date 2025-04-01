@@ -1,14 +1,12 @@
 import {
   Component,
   computed,
+  EventEmitter,
   inject,
-  Input,
-  signal,
-  Signal,
+  Output,
 } from '@angular/core';
 import { BrowserService } from '../../core/services/browser.service';
 import { ThemeService } from '../../core/services/theme.service';
-import { ISecondaryCourseSummary } from '../../courses/interface/secondary-course/Secondary-Course';
 import { ShoppingCartIconComponent } from '../../courses/icons/shopping-cart-icon/shopping-cart-icon.component';
 import { AsyncPipe } from '@angular/common';
 import { PaymentService } from '../services/payment.service';
@@ -21,6 +19,8 @@ import { PaymentService } from '../services/payment.service';
   styleUrl: './shop-cart-investment.component.scss',
 })
 export class ShopCartInvestmentComponent {
+  @Output() changeStep = new EventEmitter<string>();
+
   browserService: BrowserService = inject(BrowserService);
   themeService: ThemeService = inject(ThemeService);
   cardService: PaymentService = inject(PaymentService);
@@ -30,7 +30,8 @@ export class ShopCartInvestmentComponent {
   totalCartReducePrice = computed(() => {
     const shopCartListValue = this.shopCartList();
     return shopCartListValue.reduce(
-      (acc, item) => acc + item.promptPaymentPrice,
+      (acc, item) =>
+        acc + (item.isOnSale ? item.priceRegular - item.promptPaymentPrice : 0),
       0
     );
   });
@@ -41,14 +42,6 @@ export class ShopCartInvestmentComponent {
   });
 
   goToPay() {
-    const message = `Me gustaría adquirir el programa de "- $ a un costo de USD. ¿Podrías indicarme como proceder?`;
-
-    const deafulMessage = `Me gustaría adquirir el programa de " - " a un costo de  USD. ¿Podrías indicarme como proceder?`;
-
-    let wsspMessageComprar = '';
-
-    if (this.browserService.isBrowser()) {
-      window.open(wsspMessageComprar, '_blank');
-    }
+    this.changeStep.emit('2');
   }
 }

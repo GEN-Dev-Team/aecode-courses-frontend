@@ -1,11 +1,13 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CourseOverlayComponent } from '../shared/layouts/course-overlay/course-overlay.component';
 import { ShopCartNavigatorComponent } from './shop-cart-navigator/shop-cart-navigator.component';
-import { ShopCartProductsComponent } from './shop-cart-products/shop-cart-products.component';
+import { ThemeService } from '../core/services/theme.service';
+import { ShoppingCartStep1Component } from './shopping-cart-step-1/shopping-cart-step-1.component';
+import { ShoppingCartStep2Component } from './shopping-cart-step-2/shopping-cart-step-2.component';
+import { ShoppingCartStep3Component } from './shopping-cart-step-3/shopping-cart-step-3.component';
 import { ShopCartInvestmentComponent } from './shop-cart-investment/shop-cart-investment.component';
-import { ISecondaryCourseSummary } from '../courses/interface/secondary-course/Secondary-Course';
-import { BrowserService } from '../core/services/browser.service';
-import { PaymentService } from './services/payment.service';
+import { ShopCartProductsComponent } from './shop-cart-products/shop-cart-products.component';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,58 +15,23 @@ import { PaymentService } from './services/payment.service';
   imports: [
     CourseOverlayComponent,
     ShopCartNavigatorComponent,
-    ShopCartProductsComponent,
+    ShoppingCartStep1Component,
+    ShoppingCartStep2Component,
+    ShoppingCartStep3Component,
     ShopCartInvestmentComponent,
+    ShopCartProductsComponent,
+    AsyncPipe,
   ],
   templateUrl: './shopping-cart.component.html',
   styleUrl: './shopping-cart.component.scss',
 })
 export class ShoppingCartComponent {
-  @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
+  themeService: ThemeService = inject(ThemeService);
 
-  browserService: BrowserService = inject(BrowserService);
-  paymentService: PaymentService = inject(PaymentService);
+  stepSelected: string = '1';
+  paymentDetails: any;
 
-  paymentDetails = this.paymentService.paymentDetails;
-  isPaypalMethod = false;
-
-  ngOnInit(): void {
-    if (this.browserService.isBrowser()) {
-      window.paypal
-        .Buttons({
-          style: {
-            layout: 'vertical',
-            shape: 'rect',
-            label: 'pay',
-          },
-
-          createOrder: (data: any, actions: any) => {
-            return actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    value: this.paymentDetails().amount.toString(),
-                    currency_code: 'USD',
-                  },
-                },
-              ],
-            });
-          },
-
-          onApprove: (data: any, actions: any) => {
-            return actions.order.capture().then((details: any) => {
-              console.log(details);
-              if (details.status === 'COMPLETED') {
-                console.log('Pago exitoso');
-              }
-            });
-          },
-
-          onError: (err: any) => {
-            console.log(err);
-          },
-        })
-        .render(this.paymentRef.nativeElement);
-    }
+  changeStep(step: string) {
+    this.stepSelected = step;
   }
 }

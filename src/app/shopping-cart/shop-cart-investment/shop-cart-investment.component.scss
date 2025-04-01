@@ -31,6 +31,13 @@
         background: #ececff;
         padding-block: 10px;
         padding-inline-end: 18px;
+
+        .invest-item-title {
+          max-width: 80%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
       }
 
       .invest-discount {
@@ -174,8 +181,9 @@
 .dark-invest-container {
   background: transparent;
   border-radius: 4px;
-  border: 1px solid #8c97dc;
-  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.53);
+  border: 1.5px solid #8c97dc;
+  box-shadow: 0px 2.84px 23.43px -2.84px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15.97499942779541px);
 
   .invest-title {
     color: var(--gray-3);
@@ -187,7 +195,12 @@
   .invest-content {
     .investDetail {
       .invest-item {
-        background: transparent;
+        color: #eef3f8;
+        background: rgba(74, 58, 193, 0.2);
+      }
+
+      .invest-discount {
+        color: #7c7edf;
       }
     }
 
@@ -197,15 +210,36 @@
 
     .invest-question {
       text-wrap: nowrap;
+      color: #7c7edf;
     }
 
     .invest-description {
       color: var(--gray-3);
     }
 
+    .invest-input-container {
+      .invest-input {
+        border-radius: 4px;
+        border: 1px solid #7c7edf;
+        color: #eef3f8;
+
+        &::placeholder {
+          color: #eef3f8;
+        }
+      }
+
+      .invest-apply-button {
+        background: #4a3ac1;
+      }
+    }
+
     .invest-whatsapp-button {
       color: var(--gray-3);
       border: none;
+      border-radius: 4px;
+      border: 2px solid var(--dark-lineas, #7c7edf);
+      background: rgba(74, 58, 193, 0.22);
+      backdrop-filter: blur(25px);
     }
   }
 }

@@ -11,6 +11,7 @@ import { CommunityComponent } from './community/community.component';
 import { InProgressComponent } from './in-progress/in-progress.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ShoppingCartStep3Component } from './shopping-cart/shopping-cart-step-3/shopping-cart-step-3.component';
 
 export const routes: Routes = [
   {
