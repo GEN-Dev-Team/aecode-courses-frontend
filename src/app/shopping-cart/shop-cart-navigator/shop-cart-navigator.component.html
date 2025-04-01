@@ -5,8 +5,9 @@
 >
   @for (item of checkoutSteps; track $index) {
   <div
-    class="shop-cart-step-box {{ item.isSelected ? 'shop-cart-selected' : '' }}"
-    (click)="setStep(item.step)"
+    class="shop-cart-step-box {{
+      item.step === stepSelected ? 'shop-cart-selected' : ''
+    }}"
   >
     <span class="shop-cart-step">{{ item.step }}</span>
     <span class="shop-cart-title"

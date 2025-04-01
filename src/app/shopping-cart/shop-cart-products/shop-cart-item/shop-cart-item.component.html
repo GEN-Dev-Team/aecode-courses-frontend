@@ -39,6 +39,7 @@
 
   <div class="shop-cart-item-container">
     <div class="shop-cart-item-price">
+      @if(cartItem.isOnSale) {
       <p>
         $
         {{ cartItem.promptPaymentPrice }}
@@ -47,6 +48,12 @@
         $
         {{ cartItem.priceRegular }}
       </p>
+      } @else {
+      <p>
+        $
+        {{ cartItem.priceRegular }}
+      </p>
+      }
     </div>
 
     <div class="shop-cart-item-icons">
