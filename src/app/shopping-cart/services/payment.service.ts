@@ -3,25 +3,15 @@ import { environment } from '../../../environment/environment';
 import { ISecondaryCourseSummary } from '../../courses/interface/secondary-course/Secondary-Course';
 import { BrowserService } from '../../core/services/browser.service';
 
-interface IPayment {
-  courseName: string;
-  amount: number;
-}
-
-const InitIPayment: IPayment = {
-  courseName: '',
-  amount: 0,
-};
-
 @Injectable({
   providedIn: 'root',
 })
 export class PaymentService {
   browserService: BrowserService = inject(BrowserService);
-  paymentDetails = signal<IPayment>(InitIPayment);
 
   shopCartList = signal<ISecondaryCourseSummary[]>([]);
   shopCartListSelected = signal<ISecondaryCourseSummary[]>([]);
+  paymentDetails = signal<any>({});
 
   initializeShopCartList() {
     if (this.browserService.isBrowser()) {

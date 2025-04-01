@@ -5,19 +5,27 @@
 
   <div class="invest-content">
     <div class="investDetail">
+      @for (item of shopCartList(); track $index) {
       <div class="invest-item">
-        <span> Precio regular: </span>
-        <span> {{ totalCartRegularPrice() }} $ </span>
+        <span class="invest-item-title"> {{ item.title }}: </span>
+        @if(item.isOnSale) {
+        <span> {{ item.promptPaymentPrice }} $ </span>
+
+        }@else {
+        <span> {{ item.priceRegular }} $ </span>
+
+        }
       </div>
+      }
 
       <div class="invest-item">
         <span> Total: </span>
-        <span> {{ totalCartReducePrice() }} $ </span>
+        <span> {{ totalCartRegularPrice() - totalCartReducePrice() }} $ </span>
       </div>
 
       <div class="invest-discount">
         <span> Descuento: </span>
-        <span> {{ totalCartRegularPrice() - totalCartReducePrice() }} $ </span>
+        <span> {{ totalCartReducePrice() }} $ </span>
       </div>
     </div>
 

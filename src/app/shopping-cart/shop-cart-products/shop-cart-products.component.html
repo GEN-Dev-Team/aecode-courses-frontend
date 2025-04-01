@@ -1,4 +1,8 @@
-<article class="shop-cart-products-container">
+<article
+  class="shop-cart-products-container {{
+    themeService.getMode() | async
+  }}-shop-cart-products-container "
+>
   <div class="shop-cart-products-content">
     <!-- <h2 class="shop-cart-item-subtitle" (click)="dropdown = !dropdown">
       PROGRAMA: PYTHON APLICADO A LA INGENIERÍA CIVIL @if(dropdown) {

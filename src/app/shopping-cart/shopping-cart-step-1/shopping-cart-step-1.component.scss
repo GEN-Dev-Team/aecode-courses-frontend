@@ -1,0 +1,21 @@
+.shop-cart-sub-title {
+  color: white;
+  font-family: "plusjakartasans-semibold";
+  font-size: 24px;
+  width: 100%;
+  padding: 12px 26px;
+  background-color: var(--purple-2);
+  margin: 0;
+  border-radius: 6px;
+}
+
+.dark-shop-cart-sub-title {
+  background-color: #4a3ac1;
+}
+
+.shop-cart-container {
+  display: grid;
+  grid-template-columns: auto minmax(100px, 393.52px);
+  gap: 45px;
+  padding: 18px 0px;
+}
