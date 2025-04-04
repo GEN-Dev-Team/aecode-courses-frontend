@@ -1,11 +1,11 @@
-<app-modal [isOpen]="isOpen" (isClosed)="closeModal($event)">
+<app-modal [isOpen]="isOpen()" (isClosed)="closeModal($event)">
   <div
     class="content-blocked-container {{
       themeService.getMode() | async
     }}-content-blocked-container"
   >
     <div class="icon-container">
-      @if(isMessageTypeSuccess) {
+      @if(isMessageTypeSuccess()) {
       <app-success-icon class="success-icon" />
 
       } @else {
@@ -14,10 +14,10 @@
       }
     </div>
 
-    <h1 class="subtitle">{{ title }}</h1>
+    <h1 class="subtitle">{{ title() }}</h1>
 
     <p class="message">
-      {{ message }}
+      {{ message() }}
     </p>
 
     <!-- <app-button (click)="openContentModal()">COMENZAR</app-button> -->

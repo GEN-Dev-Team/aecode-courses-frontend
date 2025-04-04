@@ -185,10 +185,3 @@
   </div>
   }
 </app-course-overlay>
-
-<app-modal [isOpen]="showMessageError" (isClosed)="showMessageError = $event">
-  <app-content-blocked
-    [message]="errorMessage"
-    (isClosed)="showMessageError = $event"
-  />
-</app-modal>

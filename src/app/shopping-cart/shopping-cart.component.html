@@ -1,6 +1,9 @@
 <app-course-overlay>
   <div class="shop-cart-general-container">
-    <app-shop-cart-navigator [stepSelected]="stepSelected" />
+    <app-shop-cart-navigator
+      [stepSelected]="stepSelected"
+      (changeStep)="changeStep($event)"
+    />
 
     @switch (stepSelected) { @case ('1') {
     <app-shopping-cart-step-1 (changeStep)="changeStep($event)" /> } @case ('2')

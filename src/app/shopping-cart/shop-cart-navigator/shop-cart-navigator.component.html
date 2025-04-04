@@ -8,11 +8,12 @@
     class="shop-cart-step-box {{
       item.step === stepSelected ? 'shop-cart-selected' : ''
     }}"
+    (click)="changeToFirstStep(item)"
   >
     <span class="shop-cart-step">{{ item.step }}</span>
     <span class="shop-cart-title"
       >{{ item.title }}
-      <app-shopping-cart-icon class="shop-cart-icon" />
+      <app-shopping-cart-icon />
     </span>
   </div>
   }

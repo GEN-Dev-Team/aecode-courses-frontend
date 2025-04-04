@@ -1,28 +1,18 @@
 <div class="community-container">
   @if(!isMobile) {
-  <app-community-header
-    (collabsButtonSelected)="collabsButtonSelected = $event"
-  />
 
-  <app-community-home id="home" />
+  <app-community-home />
 
   <app-main-container>
     <app-community-collaborators
       [collabsButtonSelected]="collabsButtonSelected"
-      id="collabs"
     />
-    <app-community-partners id="partners" />
+    <app-community-partners />
   </app-main-container>
 
   <app-home-footer />
 
   } @else {
-  <app-content-blocked
-    [isMessageTypeSuccess]="false"
-    [message]="mobileMessage"
-    [title]="mobileTitle"
-    [isOpen]="true"
-    [hasBackButton]="true"
-  />
+  <app-content-blocked />
   }
 </div>
