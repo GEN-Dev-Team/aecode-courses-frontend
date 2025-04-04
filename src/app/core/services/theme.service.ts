@@ -26,6 +26,8 @@ export class ThemeService {
       const theme = this.localStorage.getItem('theme') as ThemeMode;
       if (theme) {
         this.setMode(theme);
+      } else {
+        this.setMode('dark');
       }
     }
   }

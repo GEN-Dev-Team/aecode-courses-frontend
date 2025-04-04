@@ -21,7 +21,6 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './shop-cart-products.component.scss',
 })
 export class ShopCartProductsComponent {
-  @Output() itemSelected = new EventEmitter<ISecondaryCourseSummary>();
   themeService: ThemeService = inject(ThemeService);
 
   cartService: PaymentService = inject(PaymentService);
@@ -30,8 +29,4 @@ export class ShopCartProductsComponent {
   dropdown: boolean = true;
 
   itemList = this.cartService.shopCartList;
-
-  emitItemSelected(item: ISecondaryCourseSummary) {
-    this.itemSelected.emit(item);
-  }
 }

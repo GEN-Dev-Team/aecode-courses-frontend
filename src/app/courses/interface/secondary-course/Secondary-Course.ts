@@ -32,6 +32,7 @@ export interface ISecondaryCourse {
   freqquests: IFAQ[];
   requirements: string[];
   mode: string;
+  isSelectedinCart: boolean;
 }
 
 export interface ISecondaryCourseSummary {
@@ -49,6 +50,7 @@ export interface ISecondaryCourseSummary {
   principalimage: string;
   orderNumber: number;
   mode: string;
+  isSelectedinCart: boolean;
 }
 
 export const defaultSecondaryCourse: ISecondaryCourse = {
@@ -80,6 +82,7 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   freqquests: [],
   requirements: [],
   mode: '',
+  isSelectedinCart: false,
 };
 
 export const defaultSecondaryCourseSummary: ISecondaryCourseSummary = {
@@ -97,4 +100,5 @@ export const defaultSecondaryCourseSummary: ISecondaryCourseSummary = {
   principalimage: '',
   orderNumber: -1,
   mode: '',
+  isSelectedinCart: false,
 };

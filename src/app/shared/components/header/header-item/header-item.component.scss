@@ -1,0 +1,41 @@
+.header-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  height: 40px;
+  padding: 10px 30px;
+  cursor: pointer;
+  color: var(--purple-2);
+  text-decoration: none;
+  font-size: 16px;
+  font-family: "ruberoid-regular";
+  border-radius: 25px;
+
+  .hide-in-desktop {
+    display: none;
+  }
+}
+
+.header-item-selected {
+  border: 2px solid var(--purple-2);
+  font-family: "ruberoid-semibold";
+}
+
+.dark-header-item-selected {
+  border: 2px solid #8f60ea;
+  font-family: "ruberoid-semibold";
+
+  .shopping-cart-selected {
+    color: #8f60ea;
+  }
+}
+
+.dark-header-item {
+  color: #eef3f8;
+}
+
+.is-shop-cart-item {
+  border: none;
+}

@@ -1,0 +1,27 @@
+import { Injectable, signal } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root',
+})
+export class MessageBoxService {
+  showMessageModal = signal(false);
+  message = signal('Oops, ocurrió un error. Vuelve a intentarlo.');
+  title = signal('¡Algo salió mal!');
+  isMessageTypeSuccess = signal(false);
+
+  showMessageBox(
+    title: string,
+    message: string,
+    isMessageTypeSuccess: boolean
+  ) {
+    this.showMessageModal.set(true);
+    this.message.set(message);
+    this.title.set(title);
+    this.isMessageTypeSuccess.set(isMessageTypeSuccess);
+    console.log('Show message box:', title, message, isMessageTypeSuccess);
+  }
+
+  closeMessageBox() {
+    this.showMessageModal.set(false);
+  }
+}

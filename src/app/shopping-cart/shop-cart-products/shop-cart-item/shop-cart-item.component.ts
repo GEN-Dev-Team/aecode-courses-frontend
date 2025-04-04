@@ -33,20 +33,21 @@ import { AsyncPipe } from '@angular/common';
 })
 export class ShopCartItemComponent {
   @Input() cartItem!: ISecondaryCourseSummary;
-  @Output() itemSelected = new EventEmitter<ISecondaryCourseSummary>();
 
   cartService: PaymentService = inject(PaymentService);
   themeService: ThemeService = inject(ThemeService);
 
-  checkItem: boolean = false;
-
   checkCartItem() {
-    this.checkItem = !this.checkItem;
-    this.itemSelected.emit(this.cartItem);
+    this.cartItem.isSelectedinCart = !this.cartItem.isSelectedinCart;
+    this.cartService.updateIsSelectedinCart(this.cartItem);
     this.cartService.addItemToCartSelected(this.cartItem);
   }
 
   removeCartItem() {
+    if (this.cartItem.isSelectedinCart) {
+      this.cartItem.isSelectedinCart = false;
+      this.cartService.updateIsSelectedinCart(this.cartItem);
+    }
     this.cartService.deleteItemFromCart(this.cartItem);
   }
 }
