@@ -1,0 +1,20 @@
+<li
+  (click)="redirectToView(headerItem)"
+  class="header-item {{ themeService.getMode() | async }}-header-item"
+  [class.header-item-selected]="headerIdSelected === headerItem.id"
+  [class.dark-header-item-selected]="
+    headerIdSelected === headerItem.id &&
+    (themeService.getMode() | async) === 'dark'
+  "
+  [class.is-shop-cart-item]="headerItem.id === 5"
+>
+  @switch (headerItem.id) { @case (2) {<app-home-community-icon />} @case (3)
+  {<app-book-icon />} @case (4) {<app-sync-course-icon />} @case (5) {
+  <app-shopping-cart-icon
+    [class.shopping-cart-selected]="headerIdSelected === 5"
+  />
+  } } @if(headerItem.id !== 5) {
+  {{ headerItem.name }}
+
+  }
+</li>

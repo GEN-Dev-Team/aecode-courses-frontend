@@ -18,6 +18,7 @@ import { ContentBlockedComponent } from '../../shared/components/content-blocked
 import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
 import { ThemeService } from '../../core/services/theme.service';
 import { PaymentService } from '../../shopping-cart/services/payment.service';
+import { MessageBoxService } from '../../core/services/message-box.service';
 
 @Component({
   selector: 'app-course-item',
@@ -50,10 +51,10 @@ export class CourseItemComponent {
   router: Router = inject(Router);
   themeService: ThemeService = inject(ThemeService);
   cartService: PaymentService = inject(PaymentService);
+  messageBoxService: MessageBoxService = inject(MessageBoxService);
 
   finalPrice = signal(0);
 
-  showMessageModal = false;
   message = 'El módulo ya se encuentra en tu carrito de compras.';
   title = '¡Módulo repetido!';
   isMessageTypeSuccess = false;
@@ -72,11 +73,16 @@ export class CourseItemComponent {
 
   showCourseDetails() {
     if (this.isMasiveCourse) {
-      this.showMessageModal = true;
+      this.title = '¡Estamos trabajando en ello!';
       this.message = `El contenido del programa "${this.course.title}" estará disponible próximamente.`;
       ('El módulo se ha agregado exitosamente a tu carrito de compras.');
-      this.title = '¡Estamos trabajando en ello!';
       this.isMessageTypeSuccess = false;
+
+      this.messageBoxService.showMessageBox(
+        this.title,
+        this.message,
+        this.isMessageTypeSuccess
+      );
 
       return;
       this.browserService.navigateAndScroll(
@@ -114,21 +120,24 @@ export class CourseItemComponent {
 
       window.open(whatsappUrl, '_blank');
     } else {
+      this.course.isSelectedinCart = false;
       let response = this.cartService.addItemToCart(this.course);
 
-      console.log(response);
       if (response === 1) {
-        this.showMessageModal = true;
         this.message =
           'El módulo se ha agregado exitosamente a tu carrito de compras.';
         this.title = '¡Módulo agregado!';
         this.isMessageTypeSuccess = true;
       } else {
-        this.showMessageModal = true;
         this.message = 'El módulo ya se encuentra en tu carrito de compras.';
         this.title = '¡Módulo repetido!';
         this.isMessageTypeSuccess = true;
       }
+      this.messageBoxService.showMessageBox(
+        this.title,
+        this.message,
+        this.isMessageTypeSuccess
+      );
     }
   }
 }

@@ -1,5 +1,9 @@
-<div class="payment-methods-container">
-  <app-shop-cart-investment />
+<div
+  class="payment-methods-container {{
+    themeService.getMode() | async
+  }}-payment-methods-container"
+>
+  <app-shop-cart-investment [isStep2]="true" />
 
   <div class="payment-methods-content">
     <div class="payment-options">
