@@ -16,10 +16,7 @@
     <div class="shop-cart-item-content">
       @if (itemList().length > 0) { @for (cartItem of itemList() ; track $index)
       {
-      <app-shop-cart-item
-        [cartItem]="cartItem"
-        (itemSelected)="emitItemSelected($event)"
-      />
+      <app-shop-cart-item [cartItem]="cartItem" />
 
       } } @else {
       <h1 class="shop-cart-no-items">

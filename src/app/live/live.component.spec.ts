@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CommunityHeaderComponent } from './community-header.component';
+import { LiveComponent } from './live.component';
 
-describe('CommunityHeaderComponent', () => {
-  let component: CommunityHeaderComponent;
-  let fixture: ComponentFixture<CommunityHeaderComponent>;
+describe('LiveComponent', () => {
+  let component: LiveComponent;
+  let fixture: ComponentFixture<LiveComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommunityHeaderComponent]
+      imports: [LiveComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(CommunityHeaderComponent);
+    fixture = TestBed.createComponent(LiveComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

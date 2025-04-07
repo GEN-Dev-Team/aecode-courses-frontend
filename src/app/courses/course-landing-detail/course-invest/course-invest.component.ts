@@ -3,6 +3,9 @@ import { Component, computed, inject, Input } from '@angular/core';
 import { ShoppingCartIconComponent } from '../../icons/shopping-cart-icon/shopping-cart-icon.component';
 import { BrowserService } from '../../../core/services/browser.service';
 import { ThemeService } from '../../../core/services/theme.service';
+import { PaymentService } from '../../../shopping-cart/services/payment.service';
+import { ContentBlockedComponent } from '../../../shared/components/content-blocked/content-blocked.component';
+import { MessageBoxService } from '../../../core/services/message-box.service';
 
 @Component({
   selector: 'app-course-invest',
@@ -14,34 +17,34 @@ import { ThemeService } from '../../../core/services/theme.service';
 export class CourseInvestComponent {
   browserService: BrowserService = inject(BrowserService);
   themeService: ThemeService = inject(ThemeService);
+  cartService: PaymentService = inject(PaymentService);
+  messageBoxService: MessageBoxService = inject(MessageBoxService);
 
   @Input() course: any = {};
 
-  wsspMessageConsultar = `Quiero contactar con un asesor para mas información del modulo ${this.course.title}.`;
+  showMessageModal = false;
+  message = 'El módulo ya se encuentra en tu carrito de compras.';
+  title = '¡Módulo repetido!';
+  isMessageTypeSuccess = false;
 
-  goToPay(dicountedPrice: number) {
-    const message = `Me gustaría adquirir el programa de "${
-      this.course.title
-    } - ${this.course.module}" a un costo de ${Math.round(
-      dicountedPrice
-    )} USD. ¿Podrías indicarme como proceder?`;
+  goToPay() {
+    this.course.isSelectedinCart = false;
+    let response = this.cartService.addItemToCart(this.course);
 
-    const deafulMessage = `Me gustaría adquirir el programa de "${this.course.title} - ${this.course.module}" a un costo de ${this.course.priceRegular} USD. ¿Podrías indicarme como proceder?`;
-
-    let wsspMessageComprar = '';
-
-    if (this.course.isOnSale) {
-      wsspMessageComprar = `https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. ${encodeURIComponent(
-        message
-      )}`;
+    if (response === 1) {
+      this.message =
+        'El módulo se ha agregado exitosamente a tu carrito de compras.';
+      this.title = '¡Módulo agregado!';
+      this.isMessageTypeSuccess = true;
     } else {
-      wsspMessageComprar = `https://api.whatsapp.com/send?phone=+51900121245&text=Hola AECODE. ${encodeURIComponent(
-        deafulMessage
-      )}`;
+      this.message = 'El módulo ya se encuentra en tu carrito de compras.';
+      this.title = '¡Módulo repetido!';
+      this.isMessageTypeSuccess = true;
     }
-
-    if (this.browserService.isBrowser()) {
-      window.open(wsspMessageComprar, '_blank');
-    }
+    this.messageBoxService.showMessageBox(
+      this.title,
+      this.message,
+      this.isMessageTypeSuccess
+    );
   }
 }

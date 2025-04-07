@@ -57,7 +57,7 @@
     </div>
 
     <div class="shop-cart-item-icons">
-      @if(!checkItem) {
+      @if(!cartItem.isSelectedinCart) {
       <app-cart-input-icon class="check-cart-icon" (click)="checkCartItem()" />
       } @else {
       <app-cart-input-selected-icon

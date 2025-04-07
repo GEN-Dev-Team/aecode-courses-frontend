@@ -14,29 +14,19 @@
       </a>
 
       <ul class="header-list">
-        <li ZoomIn (click)="redirectToCoursesView()" class="header-item">
-          Inicio
-        </li>
-
-        <a
-          ZoomIn
-          href="https://www.canva.com/design/DAGbXMYH3Qo/Njl9uZGdNjfleEX8Jt2lpQ/view?utm_content=DAGbXMYH3Qo&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hc8bb83ae0a"
-          target="_blank"
-          class="header-item"
-          >Conócenos</a
-        >
-
-        <app-shopping-cart-icon
-          ZoomIn
-          (click)="redirectToCartView()"
-          class="cart-icon"
+        @for(headerItem of headerItemsList; track headerItem) {
+        <app-header-item
+          [headerItem]="headerItem"
+          [headerIdSelected]="headerIdSelected"
+          (emitHeaderIdSelected)="headerIdSelected = $event"
         />
+        }
       </ul>
 
       @if (isUserLoggedIn) {
 
       <div class="user-logged-buttons">
-        <app-notification-icon ZoomIn class="notification-icon" />
+        <app-notification-icon />
 
         <div class="separator"></div>
 
@@ -47,7 +37,7 @@
       </div>
 
       } @else {
-      <app-button
+      <button
         class="header-button"
         ZoomIn
         data-section="header-container"
@@ -55,7 +45,7 @@
         (click)="openLoginForm = true"
       >
         Acceder
-      </app-button>
+      </button>
       }
     </div>
   </div>

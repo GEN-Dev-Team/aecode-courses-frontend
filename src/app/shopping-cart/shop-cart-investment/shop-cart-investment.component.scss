@@ -25,12 +25,11 @@
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        font-family: "plusjakartasans-semibold";
-        margin-bottom: 20px;
+        font-family: "plusjakartasans-light";
         font-size: 18px;
-        background: #ececff;
-        padding-block: 10px;
-        padding-inline-end: 18px;
+        padding-block: 20px;
+        padding-inline: 13px;
+        border-top: 1px solid #b4bbbf;
 
         .invest-item-title {
           max-width: 80%;
@@ -38,22 +37,45 @@
           text-overflow: ellipsis;
           white-space: nowrap;
         }
+
+        .show-complete-title {
+          overflow: none;
+          text-overflow: none;
+          white-space: normal;
+        }
+      }
+
+      .first-invest-item {
+        border-top: none;
+      }
+
+      .subtotal-item,
+      .total-item {
+        margin-top: 10px;
+        padding: 10px;
+        padding-inline: 13px;
+        border-radius: 3px;
+        border: 1px solid rgba(124, 126, 223, 0.25);
+        background: rgba(154, 144, 233, 0.1);
+        font-family: "plusjakartasans-medium";
       }
 
       .invest-discount {
         color: #8f60ea;
-        font-family: "plusjakartasans-medium";
-        font-size: 18px;
+        font-family: "plusjakartasans-light";
+        font-size: 16px;
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
-        padding-inline-end: 18px;
+        padding-inline: 10px;
+        margin-block: 15px;
       }
     }
 
     .invest-button {
       display: flex;
       justify-content: center;
+      align-items: center;
       padding: 12px 20px;
       margin: 30px auto;
       gap: 8px;
@@ -70,8 +92,6 @@
       .shop-cart-icon {
         fill: white;
         display: flex;
-        width: 20px;
-        height: 20px;
       }
     }
 
@@ -196,12 +216,27 @@
     .investDetail {
       .invest-item {
         color: #eef3f8;
-        background: rgba(74, 58, 193, 0.2);
+        border-top: 1px solid #3a4065;
+      }
+
+      .first-invest-item {
+        border-top: none;
+      }
+
+      .subtotal-item,
+      .total-item {
+        border-radius: 3px;
+        border: 1px solid rgba(124, 126, 223, 0.25);
+        background: rgba(154, 144, 233, 0.1);
       }
 
       .invest-discount {
-        color: #7c7edf;
+        color: #eef3f8;
       }
+    }
+
+    .invest-message {
+      color: #eef3f8;
     }
 
     .invest-button {

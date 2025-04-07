@@ -16,9 +16,13 @@ export class PaymentService {
   initializeShopCartList() {
     if (this.browserService.isBrowser()) {
       const cart = localStorage.getItem('cart') || '[]';
+      const cartSelected = localStorage.getItem('cartSelected') || '[]';
 
       if (cart === '[]') return;
       this.shopCartList.set(JSON.parse(cart));
+
+      if (cartSelected === '[]') return;
+      this.shopCartListSelected.set(JSON.parse(cartSelected));
     }
   }
 
@@ -40,6 +44,26 @@ export class PaymentService {
     this.shopCartList.update((current) =>
       current.filter((i) => i.seccourseId !== item.seccourseId)
     );
+
+    this.shopCartListSelected.update((current) =>
+      current.filter((i) => i.seccourseId !== item.seccourseId)
+    );
+
+    localStorage.setItem(
+      'cartSelected',
+      JSON.stringify(this.shopCartListSelected())
+    );
+    localStorage.setItem('cart', JSON.stringify(this.shopCartList()));
+  }
+
+  updateIsSelectedinCart(item: ISecondaryCourseSummary) {
+    this.shopCartList.update((current) =>
+      current.map((course) =>
+        course.seccourseId === item.seccourseId
+          ? { ...course, isSelectedinCart: item.isSelectedinCart }
+          : course
+      )
+    );
     localStorage.setItem('cart', JSON.stringify(this.shopCartList()));
   }
 
@@ -55,5 +79,10 @@ export class PaymentService {
     } else {
       this.shopCartListSelected.update((current) => [...current, item]);
     }
+
+    localStorage.setItem(
+      'cartSelected',
+      JSON.stringify(this.shopCartListSelected())
+    );
   }
 }

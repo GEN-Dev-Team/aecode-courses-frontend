@@ -13,6 +13,8 @@ import { CreditCardIconComponent } from '../../shared/icons/credit-card-icon/cre
 import { PaypallIconComponent } from '../../shared/icons/paypal-icon/paypal-icon.component';
 import { OtherMethodsIconComponent } from '../../shared/icons/other-methods-icon/other-methods-icon.component';
 import { Router } from '@angular/router';
+import { ThemeService } from '../../core/services/theme.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-shopping-cart-step-2',
@@ -22,6 +24,7 @@ import { Router } from '@angular/router';
     CreditCardIconComponent,
     PaypallIconComponent,
     OtherMethodsIconComponent,
+    AsyncPipe,
   ],
   templateUrl: './shopping-cart-step-2.component.html',
   styleUrl: './shopping-cart-step-2.component.scss',
@@ -33,6 +36,7 @@ export class ShoppingCartStep2Component {
 
   paymentService: PaymentService = inject(PaymentService);
   browserService: BrowserService = inject(BrowserService);
+  themeService: ThemeService = inject(ThemeService);
   router: Router = inject(Router);
   isPaypalMethod = true;
 
