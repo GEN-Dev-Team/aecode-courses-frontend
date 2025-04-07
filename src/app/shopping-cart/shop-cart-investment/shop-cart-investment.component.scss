@@ -1,0 +1,383 @@
+.invest-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0px 0px 4px 4px;
+  background: #eef3f8;
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.25);
+
+  .invest-title {
+    padding: 12px 25px;
+    margin: 0;
+    color: white;
+    background-color: var(--purple-2);
+    font-family: "plusjakartasans-bold";
+    font-size: 20px;
+    border-radius: 4px 4px 0px 0px;
+    border: 1px solid white;
+    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.25);
+  }
+
+  .invest-content {
+    padding: 27px 21px 65px;
+
+    .investDetail {
+      .invest-item {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        font-family: "plusjakartasans-light";
+        font-size: 18px;
+        padding-block: 20px;
+        padding-inline: 13px;
+        border-top: 1px solid #b4bbbf;
+
+        .invest-item-title {
+          max-width: 80%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .show-complete-title {
+          overflow: none;
+          text-overflow: none;
+          white-space: normal;
+        }
+      }
+
+      .first-invest-item {
+        border-top: none;
+      }
+
+      .subtotal-item,
+      .total-item {
+        margin-top: 10px;
+        padding: 10px;
+        padding-inline: 13px;
+        border-radius: 3px;
+        border: 1px solid rgba(124, 126, 223, 0.25);
+        background: rgba(154, 144, 233, 0.1);
+        font-family: "plusjakartasans-medium";
+      }
+
+      .invest-discount {
+        color: #8f60ea;
+        font-family: "plusjakartasans-light";
+        font-size: 16px;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        padding-inline: 10px;
+        margin-block: 15px;
+      }
+    }
+
+    .invest-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 20px;
+      margin: 30px auto;
+      gap: 8px;
+      border-radius: 4px;
+      color: white;
+      background: var(--purple-2);
+      font-family: "plusjakartasans-semibold";
+      font-size: 14px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      width: 100%;
+
+      .shop-cart-icon {
+        fill: white;
+        display: flex;
+      }
+    }
+
+    .invest-question {
+      font-family: "plusjakartasans-semibold";
+      color: #381187;
+      font-size: 18px;
+    }
+
+    .invest-description {
+      color: #636364;
+      font-family: "plusjakartasans-light";
+      font-size: 16px;
+      margin-block: 15px 30px;
+    }
+
+    .invest-input-container {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 30px;
+
+      .invest-input {
+        border-radius: 4px;
+        border: 1px solid #757575;
+        color: #636364;
+        font-family: "plusjakartasans-light";
+        font-size: 16px;
+        background-color: transparent;
+        height: 43.477px;
+        outline: none;
+        padding-inline: 13px;
+        width: 100%;
+
+        &::placeholder {
+          color: #636364;
+          font-family: "plusjakartasans-light";
+          font-size: 16px;
+        }
+      }
+
+      .invest-apply-button {
+        color: white;
+        font-family: "plusjakartasans-medium";
+        font-size: 14px;
+        border-radius: 4px;
+        background: #381187;
+        padding-inline: 24px;
+        border: none;
+      }
+    }
+
+    .invest-whatsapp-button {
+      display: flex;
+      width: 238px;
+      height: 50px;
+      color: black;
+      margin-inline: auto;
+      margin-top: 23px;
+      padding: 10px 0px 10px 16px;
+      align-items: center;
+      border-radius: 4px;
+      border: 2px solid #fff;
+      background: linear-gradient(
+        270deg,
+        rgba(255, 255, 255, 0.1) 57.6%,
+        rgba(255, 255, 255, 0.02) 91.06%
+      );
+      box-shadow: 0px 0px 6.8px 0px #b4bbbf;
+      backdrop-filter: blur(25px);
+      text-decoration: none;
+      font-family: "plusjakartasans-semibold";
+      font-size: 16px;
+      cursor: pointer;
+      position: relative;
+
+      .whatsapp-button {
+        width: 55px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        background: linear-gradient(
+          180deg,
+          #d6dceb 10%,
+          rgba(255, 255, 255) 100%
+        );
+        flex-shrink: 0;
+        position: absolute;
+        right: -15%;
+        top: 50%;
+        transform: translateY(-50%);
+        border: 1px solid white;
+        box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.15);
+
+        img {
+          width: 30px;
+          aspect-ratio: 1/1;
+        }
+      }
+    }
+  }
+}
+
+.dark-invest-container {
+  background: transparent;
+  border-radius: 4px;
+  border: 1.5px solid #8c97dc;
+  box-shadow: 0px 2.84px 23.43px -2.84px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15.97499942779541px);
+
+  .invest-title {
+    color: var(--gray-3);
+    border: none;
+    border-bottom: 1px solid #8c97dc;
+    background-color: #4a3ac1;
+  }
+
+  .invest-content {
+    .investDetail {
+      .invest-item {
+        color: #eef3f8;
+        border-top: 1px solid #3a4065;
+      }
+
+      .first-invest-item {
+        border-top: none;
+      }
+
+      .subtotal-item,
+      .total-item {
+        border-radius: 3px;
+        border: 1px solid rgba(124, 126, 223, 0.25);
+        background: rgba(154, 144, 233, 0.1);
+      }
+
+      .invest-discount {
+        color: #eef3f8;
+      }
+    }
+
+    .invest-message {
+      color: #eef3f8;
+    }
+
+    .invest-button {
+      background: #4a3ac1;
+    }
+
+    .invest-question {
+      text-wrap: nowrap;
+      color: #7c7edf;
+    }
+
+    .invest-description {
+      color: var(--gray-3);
+    }
+
+    .invest-input-container {
+      .invest-input {
+        border-radius: 4px;
+        border: 1px solid #7c7edf;
+        color: #eef3f8;
+
+        &::placeholder {
+          color: #eef3f8;
+        }
+      }
+
+      .invest-apply-button {
+        background: #4a3ac1;
+      }
+    }
+
+    .invest-whatsapp-button {
+      color: var(--gray-3);
+      border: none;
+      border-radius: 4px;
+      border: 2px solid var(--dark-lineas, #7c7edf);
+      background: rgba(74, 58, 193, 0.22);
+      backdrop-filter: blur(25px);
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .invest-container {
+    .invest-title {
+      padding: 12px 25px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .invest-options {
+      display: flex;
+      flex-flow: row nowrap;
+
+      span {
+        width: 50%;
+        font-size: 16px;
+      }
+    }
+
+    .invest-content {
+      padding: 30px 16px;
+
+      .investDetail {
+        .invest-item {
+          margin-bottom: 30px;
+          font-size: 16px;
+        }
+      }
+
+      .invest-button {
+        padding: 10px 20px;
+        font-size: 14px;
+
+        .shop-cart-icon {
+          fill: white;
+          display: flex;
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .invest-question {
+        font-size: 14px;
+        text-wrap: nowrap;
+      }
+
+      .invest-description {
+        font-size: 14px;
+        margin-block: 0px 15px;
+      }
+
+      .invest-whatsapp-button {
+        display: flex;
+        width: 238px;
+        height: 50px;
+        color: black;
+        margin-inline: auto;
+        margin-top: 23px;
+        padding: 10px 0px 10px 16px;
+        align-items: center;
+        border-radius: 4px;
+        border: 2px solid #fff;
+        background: linear-gradient(
+          270deg,
+          rgba(255, 255, 255, 0.1) 57.6%,
+          rgba(255, 255, 255, 0.02) 91.06%
+        );
+        box-shadow: 0px 0px 6.8px 0px #b4bbbf;
+        backdrop-filter: blur(25px);
+        text-decoration: none;
+        font-family: "plusjakartasans-semibold";
+        font-size: 16px;
+        cursor: pointer;
+        position: relative;
+
+        .whatsapp-button {
+          width: 55px;
+          height: 55px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 50%;
+          background: linear-gradient(
+            180deg,
+            #d6dceb 10%,
+            rgba(255, 255, 255) 100%
+          );
+          flex-shrink: 0;
+          position: absolute;
+          right: -15%;
+          top: 50%;
+          transform: translateY(-50%);
+          border: 1px solid white;
+          box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.15);
+
+          img {
+            width: 30px;
+            aspect-ratio: 1/1;
+          }
+        }
+      }
+    }
+  }
+}

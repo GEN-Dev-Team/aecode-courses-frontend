@@ -1,0 +1,32 @@
+<div class="swiper-container">
+  <swiper-container id="collaborators-swiper" init="false">
+    @for (item of colaborators_list; track $index) {
+    <swiper-slide>
+      <div class="collaborator-img-container">
+        <img
+          src="{{ item.image_url }}"
+          alt="Image of {{ item.name }}"
+          loading="lazy"
+        />
+      </div>
+
+      <h3 class="collaborator-name">{{ item.name }}</h3>
+
+      <div class="embajadores-tag-list">
+        @for(item of item.tag_list.slice(0, 5); track item){
+        <span class="collaborator-group">
+          {{ item }}
+        </span>
+        }
+      </div>
+    </swiper-slide>
+    }
+  </swiper-container>
+
+  <button class="swiper-btn swiper-button-prev">
+    <app-angle-left-icon />
+  </button>
+  <button class="swiper-btn swiper-button-next">
+    <app-angle-right-icon class="icon" />
+  </button>
+</div>

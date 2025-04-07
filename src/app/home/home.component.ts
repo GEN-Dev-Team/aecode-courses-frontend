@@ -5,7 +5,6 @@ import { CourseListComponent } from '../courses/course-list/course-list.componen
 import { FormComponent } from './form/form.component';
 import { BrowserService } from '../core/services/browser.service';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
-import { HomeHeaderComponent } from './home-header/home-header.component';
 import { ZoomInDirective } from '../shared/directives/animations/zoom-in.directive';
 
 @Component({
@@ -17,7 +16,6 @@ import { ZoomInDirective } from '../shared/directives/animations/zoom-in.directi
     CourseListComponent,
     FormComponent,
     HomeFooterComponent,
-    HomeHeaderComponent,
     ZoomInDirective,
   ],
   templateUrl: './home.component.html',

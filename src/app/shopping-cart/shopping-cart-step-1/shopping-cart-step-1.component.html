@@ -1,0 +1,19 @@
+<h2
+  class="shop-cart-sub-title  {{
+    themeService.getMode() | async
+  }}-shop-cart-sub-title"
+>
+  {{ paymentService.shopCartListSelected().length }} Módulos seleccionados
+</h2>
+
+<div class="shop-cart-container">
+  <app-shop-cart-products />
+
+  <app-shop-cart-investment (changeStep)="emitStep($event)" />
+</div>
+
+<!-- <div #paymentRef></div> -->
+
+<!-- <h2 class="shop-cart-sub-title">MÓDULOS RELACIONADOS</h2> -->
+
+<!-- <app-course-module-box /> -->
