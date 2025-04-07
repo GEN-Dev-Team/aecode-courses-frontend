@@ -1,0 +1,70 @@
+<div
+  class="invest-container {{ themeService.getMode() | async }}-invest-container"
+>
+  @if (!isStep2) {
+  <h3 class="invest-title">TOTAL A PAGAR</h3>
+
+  }
+
+  <div class="invest-content">
+    <div class="investDetail">
+      @for (item of shopCartList(); track $index) {
+      <div class="invest-item" [class.first-invest-item]="$index == 0">
+        <span class="invest-item-title" [class.show-complete-title]="isStep2">
+          {{ item.title }}
+        </span>
+        <span> {{ item.priceRegular }} $ </span>
+      </div>
+      }
+
+      <div class="invest-item subtotal-item">
+        <span> Subtotal: </span>
+        <span> {{ totalCartRegularPrice() }} $ </span>
+      </div>
+
+      <div class="invest-discount">
+        <span> Descuento: </span>
+        <span> {{ totalCartDiscount() }} $ </span>
+      </div>
+
+      <div class="invest-item total-item">
+        <span> Total: </span>
+        <span> {{ totalCartRegularPrice() - totalCartDiscount() }} $ </span>
+      </div>
+    </div>
+
+    @if (!isStep2) {
+    <button class="invest-button" (click)="goToPay()">
+      <app-shopping-cart-icon class="shop-cart-icon" /> PAGAR
+    </button>
+
+    <span class="invest-question">PROMOCIONES</span>
+
+    <p class="invest-description">
+      Si tienes un cupón de descuento coloca aquí para validar
+    </p>
+
+    <div class="invest-input-container">
+      <input
+        class="invest-input"
+        placeholder="Introducir el cupón"
+        type="text"
+      />
+      <button class="invest-apply-button">Aplicar</button>
+    </div>
+
+    <a
+      class="invest-whatsapp-button"
+      target="_blank"
+      href="https://api.whatsapp.com/send?phone=+51900121245&text={{
+        wsspMessage
+      }}"
+    >
+      Consultar con un asesor
+      <div class="whatsapp-button">
+        <img src="assets\images\whatsapp-icon.png" alt="" />
+      </div>
+    </a>
+    }
+  </div>
+</div>

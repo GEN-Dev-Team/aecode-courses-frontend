@@ -23,7 +23,7 @@ export class CommunityHomeComponent {
   videoList: any[] = [
     {
       id: 1,
-      video_url: '/assets/images/community/colaboradores .webm',
+      video_url: '/assets/images/community/COLABORADORES.webm',
     },
     {
       id: 2,
@@ -31,18 +31,34 @@ export class CommunityHomeComponent {
     },
     {
       id: 3,
-      video_url: '/assets/images/community/Redes.webm',
+      video_url: '/assets/images/community/Participantes.webm',
     },
     {
       id: 4,
-      video_url: '/assets/images/community/colaboradores .webm',
+      video_url: '/assets/images/community/Partners.webm',
     },
     {
       id: 5,
-      video_url: '/assets/images/community/Embajadores.webm',
+      video_url: '/assets/images/community/Redes.webm',
     },
     {
       id: 6,
+      video_url: '/assets/images/community/COLABORADORES.webm',
+    },
+    {
+      id: 7,
+      video_url: '/assets/images/community/Embajadores.webm',
+    },
+    {
+      id: 8,
+      video_url: '/assets/images/community/Participantes.webm',
+    },
+    {
+      id: 9,
+      video_url: '/assets/images/community/Partners.webm',
+    },
+    {
+      id: 10,
       video_url: '/assets/images/community/Redes.webm',
     },
   ];
@@ -55,6 +71,7 @@ export class CommunityHomeComponent {
         navigation: true,
         slidesPerView: 5,
         centeredSlides: true,
+        initialSlide: 0,
         autoplay: {
           delay: 10000,
           disableOnInteraction: false,

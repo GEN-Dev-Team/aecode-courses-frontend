@@ -50,103 +50,34 @@
   </p>
 
   <div class="collaborators-carousel-container">
-    <div class="collaborators-carousel">
-      <swiper-container id="collaborators-swiper" init="false">
-        <swiper-slide>
-          <div class="grid">
-            <div class="row">
-              @for (item of collabsButtonSelected ? colaborators_list :
-              embajadores_list; track $index) { @if($index < 4) {
-              <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" loading="lazy" />
-                @if($index === itemSelected){
-                <div class="collab-item-selected"></div>
+    @if(collabsButtonSelected) {
 
-                }
-              </div>
+    <div class="collaborators-video-container">
+      <img
+        class="collaborators-video"
+        src="/assets/images/community/Copia de COMUNIDAD AECODE VIDEOS (385 x 275 px) (1).gif"
+        alt=""
+      />
 
-              } }
-            </div>
-            <div class="row">
-              @for (item of collabsButtonSelected ? colaborators_list :
-              embajadores_list; track $index) { @if( $index > 3 && $index < 8) {
-              <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" loading="lazy" />
-                @if($index === itemSelected){
-                <div class="collab-item-selected"></div>
-
-                }
-              </div>
-
-              } }
-            </div>
-            <div class="row last">
-              @for (item of collabsButtonSelected ? colaborators_list :
-              embajadores_list; track $index) { @if( $index > 7) {
-              <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" loading="lazy" />
-                @if($index === itemSelected){
-                <div class="collab-item-selected"></div>
-
-                }
-              </div>
-
-              } }
-            </div>
-          </div>
-        </swiper-slide>
-
-        <swiper-slide>
-          <div class="grid">
-            <div class="row">
-              @for (item of collabsButtonSelected ? colaborators_list_2 :
-              embajadores_list_2; track $index) { @if($index < 4) {
-              <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" loading="lazy" />
-                @if($index === itemSelected){
-                <div class="collab-item-selected"></div>
-
-                }
-              </div>
-
-              } }
-            </div>
-            <div class="row">
-              @for (item of collabsButtonSelected ? colaborators_list_2 :
-              embajadores_list_2; track $index) { @if( $index > 3 && $index < 8)
-              {
-              <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" loading="lazy" />
-                @if($index === itemSelected){
-                <div class="collab-item-selected"></div>
-
-                }
-              </div>
-
-              } }
-            </div>
-            <div class="row last">
-              @for (item of collabsButtonSelected ? colaborators_list_2 :
-              embajadores_list_2; track $index) { @if( $index > 7) {
-              <div class="collab-item" (click)="selectItem(item, $index)">
-                <img src="{{ item.image_url }}" alt="" loading="lazy" />
-                @if($index === itemSelected){
-                <div class="collab-item-selected"></div>
-
-                }
-              </div>
-
-              } }
-            </div>
-          </div>
-        </swiper-slide>
-      </swiper-container>
-
-      <div class="like-container-top-right"><app-collabs-like-icon /></div>
-      <div class="like-container-bottom-left"><app-collabs-like-icon /></div>
+      <a
+        class="collab-form-button"
+        href="https://forms.gle/dVS6su12nLeBUGAu6"
+        target="_blank"
+        >Quiero ser colaborador</a
+      >
     </div>
 
-    <div class="collaborator-detail-container">
+    }@else {
+
+    <app-partners-swiper (itemSelected)="selectItem($event)" />
+
+    }
+
+    <div class="" [class.detail-container]="!collabsButtonSelected">
+      @if(collabsButtonSelected) {
+      <app-collabs-swiper />
+
+      }@else {
       <div class="collaborator-img">
         <img
           src="{{ itemDataSelected.image_url }}"
@@ -167,44 +98,13 @@
       </span>
       }@else{
       <div class="embajadores-tag-list">
-        @for(item of itemDataSelected.tag_list.slice(0, 3); track item){
-        <span class="collaborator-group">
-          {{ item }}
-        </span>
-        }
+        <!-- @for(item of itemDataSelected.tag_list.slice(0, 3); track item){
+          <span class="collaborator-group">
+            {{ item }}
+          </span>
+          } -->
       </div>
-      }
-
-      <!-- <ul class="collaborator-social-media">
-        <a
-          ZoomIn
-          href="{{ itemDataSelected.facebook_url }}"
-          class="social-media-item"
-        >
-          <app-community-facebook-icon />
-        </a>
-        <a
-          ZoomIn
-          href="{{ itemDataSelected.youtube_url }}"
-          class="social-media-item"
-        >
-          <app-community-youtube-icon />
-        </a>
-        <a
-          ZoomIn
-          href="{{ itemDataSelected.instragram_url }}"
-          class="social-media-item"
-        >
-          <app-community-instagram-icon />
-        </a>
-        <a
-          ZoomIn
-          href="{{ itemDataSelected.linkedin_url }}"
-          class="social-media-item"
-        >
-          <app-community-linkedin-icon />
-        </a>
-      </ul> -->
+      } }
     </div>
   </div>
 

@@ -1,15 +1,16 @@
 <app-course-overlay>
-  <app-shop-cart-navigator />
+  <div class="shop-cart-general-container">
+    <app-shop-cart-navigator
+      [stepSelected]="stepSelected"
+      (changeStep)="changeStep($event)"
+    />
 
-  <h2 class="shop-cart-sub-title">3 Módulos seleccionados</h2>
-
-  <div class="shop-cart-container">
-    <app-shop-cart-products />
-
-    <app-course-invest />
+    @switch (stepSelected) { @case ('1') {
+    <app-shopping-cart-step-1 (changeStep)="changeStep($event)" /> } @case ('2')
+    {
+    <app-shopping-cart-step-2 (changeStep)="changeStep($event)" />
+    } @case ('3') {
+    <app-shopping-cart-step-3 (changeStep)="changeStep($event)" /> } @default {
+    <app-shopping-cart-step-1 /> }}
   </div>
-
-  <h2 class="shop-cart-sub-title">MÓDULOS RELACIONADOS</h2>
-
-  <app-course-module-box />
 </app-course-overlay>
