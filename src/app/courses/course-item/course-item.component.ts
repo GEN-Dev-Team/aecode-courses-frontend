@@ -110,7 +110,7 @@ export class CourseItemComponent {
       message = `Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.course.title}".`;
     } else {
       message = `Hola AECODE. Me gustaría adquirir el programa de "${
-        this.course.courseTitle
+        this.course.title
       } - ${
         this.course.module
       }" a un costo de ${this.discountPrice()} USD. ¿Podrías indicarme cómo proceder?`;
