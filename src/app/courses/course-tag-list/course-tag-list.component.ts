@@ -5,6 +5,7 @@ import { ICourseTag } from '../interface/CourseTag';
 import { CourseTagItemComponent } from './course-tag-item/course-tag-item.component';
 import { AsyncPipe } from '@angular/common';
 import { ThemeService } from '../../core/services/theme.service';
+import { CourseTagService } from '../services/course-tag.service';
 
 @Component({
   selector: 'app-course-tag-list',
@@ -22,41 +23,48 @@ export class CourseTagListComponent {
   @Output() tagIdsList = new EventEmitter<number[]>();
 
   themeService: ThemeService = inject(ThemeService);
+  courseTagService: CourseTagService = inject(CourseTagService);
 
   tagList: ICourseTag[] = [
-    {
-      courseTagId: 1,
-      courseTagName: 'Python',
-      isSelected: false,
-    },
-    {
-      courseTagId: 2,
-      courseTagName: 'Java',
-      isSelected: false,
-    },
-    {
-      courseTagId: 3,
-      courseTagName: 'C#',
-      isSelected: false,
-    },
-    {
-      courseTagId: 4,
-      courseTagName: 'C++',
-      isSelected: false,
-    },
-    {
-      courseTagId: 5,
-      courseTagName: 'Gestión',
-      isSelected: false,
-    },
-    {
-      courseTagId: 6,
-      courseTagName: 'BIM',
-      isSelected: false,
-    },
+    // {
+    //   courseTagId: 1,
+    //   courseTagName: 'Python',
+    //   isSelected: false,
+    // },
+    // {
+    //   courseTagId: 2,
+    //   courseTagName: 'Java',
+    //   isSelected: false,
+    // },
+    // {
+    //   courseTagId: 3,
+    //   courseTagName: 'C#',
+    //   isSelected: false,
+    // },
+    // {
+    //   courseTagId: 4,
+    //   courseTagName: 'C++',
+    //   isSelected: false,
+    // },
+    // {
+    //   courseTagId: 5,
+    //   courseTagName: 'Gestión',
+    //   isSelected: false,
+    // },
+    // {
+    //   courseTagId: 6,
+    //   courseTagName: 'BIM',
+    //   isSelected: false,
+    // },
   ];
 
   tagListSelected: number[] = [];
+
+  ngOnInit(): void {
+    this.courseTagService.getCourseTags().subscribe((tags) => {
+      this.tagList = tags;
+    });
+  }
 
   handleTagListSelected(tagId: number) {
     if (this.tagListSelected.includes(tagId)) {

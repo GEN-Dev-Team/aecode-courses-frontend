@@ -63,8 +63,6 @@ export class CourseMainComponent implements OnInit {
     });
 
     this.startAnimationLoop();
-
-    console.log(this.coursesList);
   }
 
   ngOnDestroy() {
