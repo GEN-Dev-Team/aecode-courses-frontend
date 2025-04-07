@@ -77,6 +77,13 @@ export class CourseLandingDetailComponent {
     { id: 2, name: 'Módulo 2' },
     { id: 3, name: 'Módulo 3' },
   ];
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    this.secondaryCourseData$.subscribe((data) => {
+      console.log(data);
+    });
+  }
 
   url_base = environment.base;
   showIntroVideo: boolean = false;

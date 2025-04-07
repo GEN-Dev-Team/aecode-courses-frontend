@@ -1,7 +1,7 @@
 export interface ICourseTag {
   courseTagId: number;
   courseTagName: string;
-  isSelected: boolean;
+  isSelected?: boolean;
 }
 
 export const defaultCourseTag: ICourseTag = {
