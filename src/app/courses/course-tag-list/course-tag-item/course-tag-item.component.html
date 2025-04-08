@@ -1,4 +1,4 @@
-<span
+<p
   class="course-tag {{ themeService.getMode() | async }}-course-tag"
   [class.course-tag-selected]="tagItem.isSelected"
   [class.dark-course-tag-selected]="
@@ -6,5 +6,5 @@
   "
   (click)="selectTag()"
 >
-  {{ tagItem.courseTagName }}</span
->
+  {{ tagItem.courseTagName }}
+</p>
