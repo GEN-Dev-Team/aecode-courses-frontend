@@ -11,6 +11,8 @@ import { IPaginator } from '../../core/interfaces/paginator';
 import { ThemeService } from '../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
 import { CourseTagListComponent } from '../course-tag-list/course-tag-list.component';
+import { CourseTagService } from '../services/course-tag.service';
+import { ICourseTag } from '../interface/CourseTag';
 
 @Component({
   selector: 'app-course-main',
@@ -30,6 +32,7 @@ export class CourseMainComponent implements OnInit {
   secondaryCourseService: SecondaryCourseService = inject(
     SecondaryCourseService
   );
+  courseTagService: CourseTagService = inject(CourseTagService);
 
   browserService: BrowserService = inject(BrowserService);
   ngZone: NgZone = inject(NgZone);
@@ -39,6 +42,8 @@ export class CourseMainComponent implements OnInit {
   filterValue: string = '';
   coursesList: ISecondaryCourseSummary[] = [];
   filteredCoursesList: ISecondaryCourseSummary[] = [];
+  tagListFiltered: ICourseTag[] = [];
+  tagList: ICourseTag[] = [];
 
   animate = false;
   animateFadeOut = false;
@@ -63,6 +68,11 @@ export class CourseMainComponent implements OnInit {
     });
 
     this.startAnimationLoop();
+
+    this.courseTagService.getCourseTags().subscribe((tags) => {
+      this.tagList = tags;
+      this.tagListFiltered = tags;
+    });
   }
 
   ngOnDestroy() {
@@ -76,12 +86,12 @@ export class CourseMainComponent implements OnInit {
     const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
 
     if (!searchTerm) {
-      this.resetFilteredCourses();
+      this.tagList = this.tagListFiltered;
       return;
     }
 
-    this.filteredCoursesList = this.coursesList.filter((course) =>
-      course.title.toLowerCase().includes(searchTerm.toLowerCase())
+    this.tagList = this.tagList.filter((tag) =>
+      tag.courseTagName.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
 

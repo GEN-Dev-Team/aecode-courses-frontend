@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { CaretRightIconComponent } from '../icons/caret-right-icon/caret-right-icon.component';
 import { CaretLeftIconComponent } from '../../shared/icons/caret-left-icon/caret-left-icon.component';
 import { ICourseTag } from '../interface/CourseTag';
@@ -21,50 +21,11 @@ import { CourseTagService } from '../services/course-tag.service';
 })
 export class CourseTagListComponent {
   @Output() tagIdsList = new EventEmitter<number[]>();
+  @Input() tagList: ICourseTag[] = [];
 
   themeService: ThemeService = inject(ThemeService);
-  courseTagService: CourseTagService = inject(CourseTagService);
-
-  tagList: ICourseTag[] = [
-    // {
-    //   courseTagId: 1,
-    //   courseTagName: 'Python',
-    //   isSelected: false,
-    // },
-    // {
-    //   courseTagId: 2,
-    //   courseTagName: 'Java',
-    //   isSelected: false,
-    // },
-    // {
-    //   courseTagId: 3,
-    //   courseTagName: 'C#',
-    //   isSelected: false,
-    // },
-    // {
-    //   courseTagId: 4,
-    //   courseTagName: 'C++',
-    //   isSelected: false,
-    // },
-    // {
-    //   courseTagId: 5,
-    //   courseTagName: 'Gestión',
-    //   isSelected: false,
-    // },
-    // {
-    //   courseTagId: 6,
-    //   courseTagName: 'BIM',
-    //   isSelected: false,
-    // },
-  ];
 
   tagListSelected: number[] = [];
-
-  ngOnInit(): void {
-    this.courseTagService.getCourseTags().subscribe((tags) => {
-      this.tagList = tags;
-    });
-  }
 
   handleTagListSelected(tagId: number) {
     if (this.tagListSelected.includes(tagId)) {
