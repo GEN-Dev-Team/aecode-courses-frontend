@@ -12,7 +12,6 @@ import { ShoppingCartIconComponent } from '../../courses/icons/shopping-cart-ico
 import { AsyncPipe } from '@angular/common';
 import { PaymentService } from '../services/payment.service';
 import { AuthService } from '../../core/services/auth.service';
-import { MessageBoxService } from '../../core/services/message-box.service';
 
 @Component({
   selector: 'app-shop-cart-investment',
@@ -29,7 +28,6 @@ export class ShopCartInvestmentComponent {
   themeService: ThemeService = inject(ThemeService);
   cardService: PaymentService = inject(PaymentService);
   authService: AuthService = inject(AuthService);
-  messageBoxService: MessageBoxService = inject(MessageBoxService);
 
   shopCartList = this.cardService.shopCartListSelected;
 
@@ -49,6 +47,21 @@ export class ShopCartInvestmentComponent {
     );
   });
 
+  totalWithoutTax = computed(() => {
+    return this.totalCartRegularPrice() - this.totalCartDiscount();
+  });
+
+  totalAmountWithTax = computed(() => {
+    const tax = 0.3;
+    const taxPercentage = 5.4;
+
+    return ((this.totalWithoutTax() + tax) * 100) / (100 - taxPercentage);
+  });
+
+  taxValue = computed(() => {
+    return (this.totalAmountWithTax() - this.totalWithoutTax()).toFixed(2);
+  });
+
   createMessageForAdvisor() {
     const courseNames = this.shopCartList()
       .map((course) => course.title)
@@ -66,11 +79,7 @@ export class ShopCartInvestmentComponent {
   goToPay() {
     if (this.authService.hasToken()) this.changeStep.emit('2');
     else {
-      this.messageBoxService.showMessageBox(
-        '¡Parece que algo salió mal!',
-        'Debes iniciar sesión para poder continuar con tu compra.',
-        false
-      );
+      this.cardService.showPaymentModal.set(true);
     }
   }
 }

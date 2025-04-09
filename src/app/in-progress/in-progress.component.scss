@@ -1,9 +1,8 @@
 .in-progress-general-container {
-  height: 100vh;
+  height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
   background-color: #0e1121;
-  padding-top: 74px;
 }
 
 .in-progress-container {
@@ -15,10 +14,14 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding-block: 4% 8%;
+  padding-block: 5%;
   color: var(--gray-3);
   position: relative;
   text-align: center;
+
+  .in-progress-tool-img {
+    height: calc((125 / 1024) * 100vh);
+  }
 
   .status-code {
     font-family: "ruberoid-semibold";
@@ -95,6 +98,7 @@
       width: 230px;
       height: 255px;
       position: relative;
+      overflow: hidden;
 
       .in-progress-img {
         height: 229.959px;

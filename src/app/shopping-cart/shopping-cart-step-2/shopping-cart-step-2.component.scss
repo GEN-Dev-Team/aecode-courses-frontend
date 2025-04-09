@@ -56,6 +56,11 @@
       font-size: 18px;
     }
 
+    .payment-ref {
+      padding: 15px;
+      border-radius: 6px;
+    }
+
     .payment-message {
       font-family: "plusjakartasans-medium";
       margin-block: 50px 30px;
@@ -117,6 +122,10 @@
 
     .payment-title {
       color: #eef3f8;
+    }
+
+    .payment-ref {
+      background-color: #eef3f8e5;
     }
 
     .payment-terms {

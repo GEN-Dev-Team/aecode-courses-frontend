@@ -10,6 +10,7 @@ import { ThemeService } from '../../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
 import { AecodeIconComponent } from '../../../home/icons/aecode-icon/aecode-icon.component';
 import { HeaderItemComponent } from './header-item/header-item.component';
+import { HeaderService } from '../../../core/services/header.service';
 
 export interface ICommunityHeaderItem {
   id: number;
@@ -35,9 +36,10 @@ export interface ICommunityHeaderItem {
 export class HeaderComponent {
   authService: AuthService = inject(AuthService);
   themeService: ThemeService = inject(ThemeService);
+  headerService: HeaderService = inject(HeaderService);
 
   isUserLoggedIn = false;
-  openLoginForm = false;
+  openLoginForm = this.headerService.showLogInAccess;
   showMobileMenu = false;
   openMobileMenu = false;
 

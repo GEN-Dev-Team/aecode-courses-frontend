@@ -14,3 +14,7 @@
     <app-shopping-cart-step-1 /> }}
   </div>
 </app-course-overlay>
+
+<app-modal [isOpen]="showModal()" (isClosed)="showModal.set($event)">
+  <button (click)="openLoginModal()">Botoncito por el momento</button>
+</app-modal>

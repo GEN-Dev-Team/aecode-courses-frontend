@@ -6,43 +6,43 @@
   background: var(--Blanco, #fff);
   padding: 25px;
   border: 1px solid #e0e0e0;
-}
+  color: #000;
 
-/* Encabezado del perfil */
-.profile-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+  .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 
-  .user-profile-img-container {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    border: solid 1px var(--gray-1);
-    margin-right: 9px;
-
-    .profile-img {
-      width: 100%;
-      height: 100%;
+    .user-profile-img-container {
+      width: 62px;
+      width: 62px;
       border-radius: 50%;
-      object-fit: cover;
-      object-position: center;
+      border: solid 1px var(--gray-1);
+      display: flex;
+
+      .profile-img {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+      }
+    }
+
+    .profile-info {
+      margin-inline-start: 10px;
     }
   }
 }
 
-/* Información del perfil */
 .profile-info h2 {
   margin: 0;
   font-size: 18px;
-  color: var(--Negro, #000);
   font-family: "ruberoid-semibold";
 }
 
 .profile-info p {
   margin: 0;
   font-size: 12px;
-  color: #1e1e1e;
   line-height: 1.5;
   font-family: "plusjakartasans-light";
 }
@@ -56,7 +56,7 @@
   align-items: flex-start;
   right: 25px;
 }
-/* Lista de opciones del menú */
+
 .menu-options {
   list-style-type: none;
   padding: 0;
@@ -66,15 +66,11 @@
 .menu-options li {
   display: flex;
   align-items: center;
-  padding: 15px 0;
+  padding: 15px 10px;
   cursor: pointer;
   border-radius: 5px;
+  gap: 10px;
   transition: background-color 0.3s ease;
-}
-svg {
-  margin-right: 14px;
-  width: 20px;
-  height: 20px;
 }
 
 .menu-options li:hover {
@@ -82,9 +78,22 @@ svg {
 }
 
 .menu-options span {
-  color: var(--Negro, #000);
   font-family: "ruberoid-medium";
   font-size: 14px;
+}
+
+.dark-profile-menu {
+  background: #0d0f1f;
+  color: #eef3f8;
+  border: 1px solid #3a4065;
+
+  .menu-options li:hover {
+    background-color: transparent;
+  }
+
+  .linea {
+    background: #3a4065;
+  }
 }
 
 @media screen and (max-width: 768px) {

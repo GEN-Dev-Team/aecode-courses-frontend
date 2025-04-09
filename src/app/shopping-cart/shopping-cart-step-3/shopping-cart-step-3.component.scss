@@ -16,6 +16,7 @@
 
     .payment-icon {
       margin-inline: auto;
+      color: var(--purple-2);
     }
 
     .payment-title {
@@ -87,10 +88,58 @@
           justify-content: space-between;
           color: #757575;
         }
+      }
+    }
+  }
+}
 
-        .payment-module-item-total {
-          color: var(--purple-2);
-          border-bottom: none;
+.dark-payment-success-container {
+  .payment-message-container {
+    border: 1.5px solid #8c97dc;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 2.84px 23.43px -2.84px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15.97499942779541px);
+
+    .payment-icon {
+      color: #8c97dc;
+    }
+
+    .payment-title {
+      color: #8c97dc;
+    }
+
+    .payment-message {
+      color: #eff3f8;
+    }
+
+    .payment-button {
+      background: #4a3ac1;
+    }
+  }
+
+  .payment-summary-container {
+    border: 1.5px solid #8c97dc;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0px 2.84px 23.43px -2.84px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15.97499942779541px);
+    color: #eff3f8;
+
+    .payment-title {
+      color: #8c97dc;
+    }
+
+    .payment-item {
+      font-family: "plusjakartasans-regular";
+
+      .payment-value {
+        color: #eff3f8;
+      }
+
+      .payment-module-list {
+        border: 0.5px solid #eff3f8;
+
+        .payment-module-item {
+          color: #eff3f8;
         }
       }
     }
