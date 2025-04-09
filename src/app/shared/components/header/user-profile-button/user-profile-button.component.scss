@@ -24,7 +24,11 @@
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      border: solid 1px var(--gray-1);
+      border: solid 1px var(--purple-2);
+      background-color: var(--purple-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       .user-profile-img {
         width: 100%;
@@ -32,6 +36,12 @@
         border-radius: 50%;
         object-fit: cover;
         object-position: center;
+      }
+
+      .user-profile-first-letter {
+        color: #fff;
+        font-family: "ruberoid-regular";
+        font-size: 18px;
       }
     }
 
@@ -50,6 +60,30 @@
 
     .is-home-header-button {
       color: #fff;
+    }
+  }
+}
+
+.dark-user-logged {
+  .user-profile {
+    .user-profile-img-container {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: solid 1px #eef3f8;
+      background-color: #4a3ac1;
+
+      .user-profile-first-letter {
+        color: #eef3f8;
+      }
+    }
+
+    .is-home-header-img-container {
+      border: solid 1px #eef3f8;
+    }
+
+    .profile-dropdown-button {
+      color: #eef3f8;
     }
   }
 }

@@ -1,4 +1,8 @@
-<div class="payment-success-container">
+<div
+  class="payment-success-container {{
+    themeService.getMode() | async
+  }}-payment-success-container"
+>
   <div class="payment-message-container">
     <app-payment-successed-icon class="payment-icon" />
 
@@ -40,24 +44,6 @@
       <p class="payment-label">Correo:</p>
       <p class="payment-value">{{ paymentDetails.payer.email_address }}</p>
     </div>
-
-    <!-- <div class="payment-item">
-      <p class="payment-label">Detalles de la compra:</p>
-      <div class="payment-module-list">
-        @for (item of paymentDetails.purchase_units[0].items; track $index) {
-        <p class="payment-module-item">
-          {{ item.title }}:
-          <span>$ {{ item.priceRegular }}</span>
-        </p>
-
-        }
-
-        <p class="payment-module-item payment-module-item-total">
-          Total pagado:
-          <span>${{ paymentDetails.purchase_units[0].amount.value }}</span>
-        </p>
-      </div>
-    </div> -->
 
     <div class="payment-item">
       <p class="payment-label">Fecha de compra:</p>

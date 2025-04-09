@@ -12,6 +12,7 @@ export class PaymentService {
   shopCartList = signal<ISecondaryCourseSummary[]>([]);
   shopCartListSelected = signal<ISecondaryCourseSummary[]>([]);
   paymentDetails = signal<any>({});
+  showPaymentModal = signal(false);
 
   initializeShopCartList() {
     if (this.browserService.isBrowser()) {

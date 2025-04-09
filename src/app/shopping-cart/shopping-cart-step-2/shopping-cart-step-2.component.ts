@@ -1,5 +1,6 @@
 import {
   Component,
+  computed,
   ElementRef,
   EventEmitter,
   inject,
@@ -50,14 +51,34 @@ export class ShoppingCartStep2Component {
 
   courseList = this.paymentService.shopCartListSelected();
 
-  amount = this.paymentService
-    .shopCartListSelected()
-    .reduce(
-      (acc, course) =>
-        acc +
-        (course.isOnSale ? course.promptPaymentPrice : course.priceRegular),
+  totalCartRegularPrice = computed(() => {
+    const shopCartListValue = this.courseList;
+    return shopCartListValue.reduce((acc, item) => acc + item.priceRegular, 0);
+  });
+
+  totalCartDiscount = computed(() => {
+    const shopCartListValue = this.courseList;
+    return shopCartListValue.reduce(
+      (acc, item) =>
+        acc + (item.isOnSale ? item.priceRegular - item.promptPaymentPrice : 0),
       0
     );
+  });
+
+  totalWithoutTax = computed(() => {
+    return this.totalCartRegularPrice() - this.totalCartDiscount();
+  });
+
+  totalAmountWithTax = computed(() => {
+    const tax = 0.3;
+    const taxPercentage = 5.4;
+
+    return ((this.totalWithoutTax() + tax) * 100) / (100 - taxPercentage);
+  });
+
+  taxValue = computed(() => {
+    return (this.totalAmountWithTax() - this.totalWithoutTax()).toFixed(2);
+  });
 
   ngOnInit(): void {
     if (this.browserService.isBrowser()) {
@@ -87,11 +108,15 @@ export class ShoppingCartStep2Component {
                 {
                   amount: {
                     currency_code: 'USD',
-                    value: this.amount.toFixed(2),
+                    value: this.totalAmountWithTax().toFixed(2),
                     breakdown: {
                       item_total: {
                         currency_code: 'USD',
-                        value: this.amount.toFixed(2),
+                        value: this.totalWithoutTax().toFixed(2),
+                      },
+                      tax_total: {
+                        currency_code: 'USD',
+                        value: this.taxValue(),
                       },
                     },
                   },
