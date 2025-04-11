@@ -71,6 +71,10 @@ export class CourseItemComponent {
     }
   });
 
+  ngOnInit(): void {
+    console.log(this.course);
+  }
+
   showCourseDetails() {
     if (this.isMasiveCourse) {
       this.title = '¡Estamos trabajando en ello!';
