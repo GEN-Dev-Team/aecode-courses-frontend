@@ -120,6 +120,11 @@
       font-family: "plusjakartasans-bold";
       color: var(--purple-2);
       cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+        opacity: 0.8;
+      }
     }
   }
 }

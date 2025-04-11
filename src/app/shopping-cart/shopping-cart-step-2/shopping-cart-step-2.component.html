@@ -47,8 +47,11 @@
 
     <p class="payment-terms">
       Al hacer clic en “Completar Compra” acepto las
-      <span class="payment-terms-link"
-        >condiciones de uso, la política de privacidad</span
+      <span class="payment-terms-link" (click)="showPaymentPolicies()"
+        >condiciones de uso </span
+      >,
+      <span class="payment-terms-link" (click)="showPrivacyPolicies()"
+        >la política de privacidad</span
       >
     </p>
   </div>

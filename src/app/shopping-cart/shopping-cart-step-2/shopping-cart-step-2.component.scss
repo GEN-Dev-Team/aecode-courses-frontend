@@ -73,6 +73,12 @@
       .payment-terms-link {
         font-family: "plusjakartasans-semibold";
         color: #381187;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+          opacity: 0.8;
+        }
       }
     }
 

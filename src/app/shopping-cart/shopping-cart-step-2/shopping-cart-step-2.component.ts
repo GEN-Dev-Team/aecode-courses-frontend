@@ -16,6 +16,7 @@ import { OtherMethodsIconComponent } from '../../shared/icons/other-methods-icon
 import { Router } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
+import { MessageBoxService } from '../../core/services/message-box.service';
 
 @Component({
   selector: 'app-shopping-cart-step-2',
@@ -38,6 +39,7 @@ export class ShoppingCartStep2Component {
   paymentService: PaymentService = inject(PaymentService);
   browserService: BrowserService = inject(BrowserService);
   themeService: ThemeService = inject(ThemeService);
+  messageBoxService: MessageBoxService = inject(MessageBoxService);
   router: Router = inject(Router);
   isPaypalMethod = true;
 
@@ -131,6 +133,7 @@ export class ShoppingCartStep2Component {
               if (details.status === 'COMPLETED') {
                 this.emitStep('3');
                 this.paymentService.paymentDetails.set(details);
+                this.paymentService.cleanShopCartList();
               }
             });
           },
@@ -149,5 +152,15 @@ export class ShoppingCartStep2Component {
 
   emitStep(step: string) {
     this.changeStep.emit(step);
+  }
+
+  showPaymentPolicies() {
+    this.messageBoxService.showTermsModal.set(true);
+    this.messageBoxService.termsMessage.set('payment');
+  }
+
+  showPrivacyPolicies() {
+    this.messageBoxService.showTermsModal.set(true);
+    this.messageBoxService.termsMessage.set('privacy');
   }
 }

@@ -4,10 +4,16 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root',
 })
 export class MessageBoxService {
+  // General message box
   showMessageModal = signal(false);
   message = signal('Oops, ocurrió un error. Vuelve a intentarlo.');
   title = signal('¡Algo salió mal!');
   isMessageTypeSuccess = signal(false);
+  redirectTo = signal('¡Algo salió mal!');
+
+  // Terms and conditions message box
+  showTermsModal = signal(false);
+  termsMessage = signal('');
 
   showMessageBox(
     title: string,

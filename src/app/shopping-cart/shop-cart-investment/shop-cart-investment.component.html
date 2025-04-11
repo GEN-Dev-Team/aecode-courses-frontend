@@ -29,21 +29,26 @@
       </div>
 
       <div class="invest-discount">
+        <span> Descuento: </span>
+        <span> {{ totalCartDiscount() }} $ </span>
+      </div>
+
+      @if (isStep2) {
+      <div class="invest-discount">
         <span> Cargo por transacción: </span>
         <span>
           {{ taxValue() }}
           $
         </span>
       </div>
-
-      <div class="invest-discount">
-        <span> Descuento: </span>
-        <span> {{ totalCartDiscount() }} $ </span>
-      </div>
+      }
 
       <div class="invest-item total-item">
         <span> Total: </span>
-        <span> {{ totalAmountWithTax().toFixed(2) }} $ </span>
+        <span
+          >@if (!isStep2){ {{ totalWithoutTax() }} } @else {
+          {{ totalAmountWithTax().toFixed(2) }} } $
+        </span>
       </div>
     </div>
 

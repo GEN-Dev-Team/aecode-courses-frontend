@@ -12,6 +12,7 @@ import { ShoppingCartIconComponent } from '../../courses/icons/shopping-cart-ico
 import { AsyncPipe } from '@angular/common';
 import { PaymentService } from '../services/payment.service';
 import { AuthService } from '../../core/services/auth.service';
+import { MessageBoxService } from '../../core/services/message-box.service';
 
 @Component({
   selector: 'app-shop-cart-investment',
@@ -28,6 +29,7 @@ export class ShopCartInvestmentComponent {
   themeService: ThemeService = inject(ThemeService);
   cardService: PaymentService = inject(PaymentService);
   authService: AuthService = inject(AuthService);
+  messageBoxService: MessageBoxService = inject(MessageBoxService);
 
   shopCartList = this.cardService.shopCartListSelected;
 
@@ -71,15 +73,18 @@ export class ShopCartInvestmentComponent {
   }
 
   ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
     this.createMessageForAdvisor();
   }
 
   goToPay() {
     if (this.authService.hasToken()) this.changeStep.emit('2');
     else {
-      this.cardService.showPaymentModal.set(true);
+      this.messageBoxService.title.set('Iniciar sesión para continuar');
+      this.messageBoxService.message.set(
+        'Este paso es indispensable para completar tu compra.'
+      );
+      this.messageBoxService.showMessageModal.set(true);
+      this.messageBoxService.redirectTo.set('login');
     }
   }
 }
