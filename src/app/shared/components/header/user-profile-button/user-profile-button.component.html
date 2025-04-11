@@ -8,7 +8,7 @@
       <img [src]="userProfileImg" class="user-profile-img" alt="" />
 
       } @else {
-      <span class="user-profile-first-letter">A</span>
+      <span class="user-profile-first-letter">{{ userFirstLetterName }}</span>
       }
     </div>
 
@@ -18,10 +18,7 @@
       >▼</span
     >
     @if (showProfileMenu) {
-    <app-view-profile
-      [profileImgUrl]="userProfileImg"
-      class="profile-dropdown"
-    />
+    <app-view-profile class="profile-dropdown" />
     }
   </div>
 </div>

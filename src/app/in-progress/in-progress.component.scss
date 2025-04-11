@@ -1,8 +1,9 @@
 .in-progress-general-container {
-  height: calc(100vh - 80px);
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background-color: #0e1121;
+  padding-top: 74px;
 }
 
 .in-progress-container {

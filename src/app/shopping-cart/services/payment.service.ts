@@ -42,6 +42,16 @@ export class PaymentService {
   }
 
   deleteItemFromCart(item: ISecondaryCourseSummary) {
+    this.deleteItem(item);
+
+    localStorage.setItem(
+      'cartSelected',
+      JSON.stringify(this.shopCartListSelected())
+    );
+    localStorage.setItem('cart', JSON.stringify(this.shopCartList()));
+  }
+
+  deleteItem(item: ISecondaryCourseSummary) {
     this.shopCartList.update((current) =>
       current.filter((i) => i.seccourseId !== item.seccourseId)
     );
@@ -49,12 +59,6 @@ export class PaymentService {
     this.shopCartListSelected.update((current) =>
       current.filter((i) => i.seccourseId !== item.seccourseId)
     );
-
-    localStorage.setItem(
-      'cartSelected',
-      JSON.stringify(this.shopCartListSelected())
-    );
-    localStorage.setItem('cart', JSON.stringify(this.shopCartList()));
   }
 
   updateIsSelectedinCart(item: ISecondaryCourseSummary) {
@@ -85,5 +89,17 @@ export class PaymentService {
       'cartSelected',
       JSON.stringify(this.shopCartListSelected())
     );
+  }
+
+  cleanShopCartList() {
+    this.shopCartList()
+      .filter((item) => item.isSelectedinCart)
+      .forEach((item) => this.deleteItem(item));
+
+    localStorage.setItem(
+      'cartSelected',
+      JSON.stringify(this.shopCartListSelected())
+    );
+    localStorage.setItem('cart', JSON.stringify(this.shopCartList()));
   }
 }

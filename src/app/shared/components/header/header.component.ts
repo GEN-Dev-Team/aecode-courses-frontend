@@ -75,7 +75,7 @@ export class HeaderComponent {
   headerIdSelected = 0;
 
   ngOnInit(): void {
-    if (this.authService.getUserDetails()) {
+    if (this.authService.hasToken()) {
       this.isUserLoggedIn = true;
     }
   }

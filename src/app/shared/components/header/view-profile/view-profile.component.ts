@@ -22,8 +22,6 @@ import { LogoutMenuIconComponent } from '../icons/logout-menu-icon/logout-menu-i
 })
 export class ViewProfileComponent {
   @Output() isClosed = new EventEmitter<boolean>();
-  @Input() profileImgUrl: string =
-    'assets/images/login-view/user-profile-img.webp';
 
   authService: AuthService = inject(AuthService);
   route: Router = inject(Router);

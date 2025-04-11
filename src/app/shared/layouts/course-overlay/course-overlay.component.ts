@@ -11,6 +11,7 @@ import { AsyncPipe } from '@angular/common';
 import { PaymentService } from '../../../shopping-cart/services/payment.service';
 import { ContentBlockedComponent } from '../../components/content-blocked/content-blocked.component';
 import { MessageBoxService } from '../../../core/services/message-box.service';
+import { TermsAndConditionsComponent } from '../../components/terms-and-conditions/terms-and-conditions.component';
 
 @Component({
   selector: 'app-course-overlay',
@@ -23,6 +24,7 @@ import { MessageBoxService } from '../../../core/services/message-box.service';
     HomeFooterComponent,
     AsyncPipe,
     ContentBlockedComponent,
+    TermsAndConditionsComponent,
   ],
   templateUrl: './course-overlay.component.html',
   styleUrl: './course-overlay.component.css',

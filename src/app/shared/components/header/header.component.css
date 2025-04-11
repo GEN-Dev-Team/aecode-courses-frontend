@@ -5,7 +5,8 @@
 .header-container {
   width: 100%;
   background-color: var(--gray-3);
-  position: relative;
+  position: fixed;
+  top: 0;
   z-index: 2;
 
   .box-shadow-effect {

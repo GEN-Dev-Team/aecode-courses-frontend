@@ -81,7 +81,8 @@
 
   <span class="terms-text"
     >Al crear una cuenta en AECODE, aceptas los
-    <span>Términos de Servicio y Políticas de Privacidad</span></span
-  >
+    <span (click)="showUserDataPolicies()">Términos de Servicio</span> y
+    <span (click)="showPrivacyPolicies()">Políticas de Privacidad</span>
+  </span>
 </form>
 <div class="background-overlay" (click)="closeModal()"></div>
