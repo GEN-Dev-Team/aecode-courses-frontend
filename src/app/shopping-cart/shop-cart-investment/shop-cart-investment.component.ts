@@ -57,11 +57,15 @@ export class ShopCartInvestmentComponent {
     const tax = 0.3;
     const taxPercentage = 5.4;
 
-    return ((this.totalWithoutTax() + tax) * 100) / (100 - taxPercentage);
+    if (this.totalCartRegularPrice() > 0)
+      return ((this.totalWithoutTax() + tax) * 100) / (100 - taxPercentage);
+    else return 0;
   });
 
   taxValue = computed(() => {
-    return (this.totalAmountWithTax() - this.totalWithoutTax()).toFixed(2);
+    if (this.totalCartRegularPrice() > 0)
+      return (this.totalAmountWithTax() - this.totalWithoutTax()).toFixed(2);
+    else return 0;
   });
 
   createMessageForAdvisor() {

@@ -25,7 +25,7 @@ export class ShoppingCartComponent {
   themeService: ThemeService = inject(ThemeService);
   paymentService: PaymentService = inject(PaymentService);
 
-  stepSelected: string = '1';
+  stepSelected: string = '2';
   paymentDetails: any;
 
   showModal = this.paymentService.showPaymentModal;

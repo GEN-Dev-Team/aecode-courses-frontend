@@ -40,13 +40,14 @@
 
 .home-container {
   width: 100%;
-  height: calc(100dvh - 80px);
+  height: 100dvh;
   background-color: #0e1121;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding-top: calc(80 / 960) * 100dvh;
 
   .home-bg-img-left-container {
     position: absolute;
