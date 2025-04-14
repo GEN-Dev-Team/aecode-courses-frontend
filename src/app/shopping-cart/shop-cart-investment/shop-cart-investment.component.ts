@@ -35,39 +35,6 @@ export class ShopCartInvestmentComponent {
 
   wsspMessage = '';
 
-  totalCartRegularPrice = computed(() => {
-    const shopCartListValue = this.shopCartList();
-    return shopCartListValue.reduce((acc, item) => acc + item.priceRegular, 0);
-  });
-
-  totalCartDiscount = computed(() => {
-    const shopCartListValue = this.shopCartList();
-    return shopCartListValue.reduce(
-      (acc, item) =>
-        acc + (item.isOnSale ? item.priceRegular - item.promptPaymentPrice : 0),
-      0
-    );
-  });
-
-  totalWithoutTax = computed(() => {
-    return this.totalCartRegularPrice() - this.totalCartDiscount();
-  });
-
-  totalAmountWithTax = computed(() => {
-    const tax = 0.3;
-    const taxPercentage = 5.4;
-
-    if (this.totalCartRegularPrice() > 0)
-      return ((this.totalWithoutTax() + tax) * 100) / (100 - taxPercentage);
-    else return 0;
-  });
-
-  taxValue = computed(() => {
-    if (this.totalCartRegularPrice() > 0)
-      return (this.totalAmountWithTax() - this.totalWithoutTax()).toFixed(2);
-    else return 0;
-  });
-
   createMessageForAdvisor() {
     const courseNames = this.shopCartList()
       .map((course) => course.title)
@@ -81,8 +48,9 @@ export class ShopCartInvestmentComponent {
   }
 
   goToPay() {
-    if (this.authService.hasToken()) this.changeStep.emit('2');
-    else {
+    if (this.authService.hasToken() && this.cardService.totalWithoutTax() > 0) {
+      this.changeStep.emit('2');
+    } else if (!this.authService.hasToken()) {
       this.messageBoxService.title.set('Iniciar sesión para continuar');
       this.messageBoxService.message.set(
         'Este paso es indispensable para completar tu compra.'
