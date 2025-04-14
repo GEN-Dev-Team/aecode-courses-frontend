@@ -186,6 +186,14 @@ export class CourseMainComponent implements OnInit {
         .subscribe((data) => {
           this.filteredCoursesList = data.content;
         });
+    } else if (this.filterValue === 'DATE') {
+      this.secondaryCourseService
+        .getSecondaryCoursesByDate(this.currentPage, this.pageSize)
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+          this.paginatorPages = data.totalPages;
+          console.log(data);
+        });
     } else {
       this.secondaryCourseService
         .getSecondaryCoursesByMode(

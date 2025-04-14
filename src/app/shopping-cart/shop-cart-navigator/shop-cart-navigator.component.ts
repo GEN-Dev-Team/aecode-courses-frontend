@@ -4,6 +4,7 @@ import { ThemeService } from '../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
 import { MessageBoxService } from '../../core/services/message-box.service';
 import { AuthService } from '../../core/services/auth.service';
+import { PaymentService } from '../services/payment.service';
 
 @Component({
   selector: 'app-shop-cart-navigator',
@@ -19,6 +20,7 @@ export class ShopCartNavigatorComponent {
   themeService: ThemeService = inject(ThemeService);
   messageBoxService: MessageBoxService = inject(MessageBoxService);
   authService: AuthService = inject(AuthService);
+  paymentService: PaymentService = inject(PaymentService);
 
   checkoutSteps: any[] = [
     { step: '1', title: 'Carrito', isSelected: true },
@@ -36,7 +38,7 @@ export class ShopCartNavigatorComponent {
       return;
     }
 
-    if (actualItem.step !== '3') {
+    if (actualItem.step !== '3' && this.paymentService.totalWithoutTax() > 0) {
       this.changeStep.emit(actualItem.step);
     }
   }

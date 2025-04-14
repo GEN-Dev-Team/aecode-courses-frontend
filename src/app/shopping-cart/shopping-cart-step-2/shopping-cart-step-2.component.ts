@@ -51,37 +51,6 @@ export class ShoppingCartStep2Component {
 
   paymentMethodSelected = this.paymentMethodList[0];
 
-  courseList = this.paymentService.shopCartListSelected();
-
-  totalCartRegularPrice = computed(() => {
-    const shopCartListValue = this.courseList;
-    return shopCartListValue.reduce((acc, item) => acc + item.priceRegular, 0);
-  });
-
-  totalCartDiscount = computed(() => {
-    const shopCartListValue = this.courseList;
-    return shopCartListValue.reduce(
-      (acc, item) =>
-        acc + (item.isOnSale ? item.priceRegular - item.promptPaymentPrice : 0),
-      0
-    );
-  });
-
-  totalWithoutTax = computed(() => {
-    return this.totalCartRegularPrice() - this.totalCartDiscount();
-  });
-
-  totalAmountWithTax = computed(() => {
-    const tax = 0.3;
-    const taxPercentage = 5.4;
-
-    return ((this.totalWithoutTax() + tax) * 100) / (100 - taxPercentage);
-  });
-
-  taxValue = computed(() => {
-    return (this.totalAmountWithTax() - this.totalWithoutTax()).toFixed(2);
-  });
-
   ngOnInit(): void {
     if (this.browserService.isBrowser()) {
       window.paypal
@@ -93,32 +62,34 @@ export class ShoppingCartStep2Component {
           },
 
           createOrder: (data: any, actions: any) => {
-            const items = this.courseList.map((course) => ({
-              name: course.title,
-              unit_amount: {
-                currency_code: 'USD',
-                value: (course.isOnSale
-                  ? course.promptPaymentPrice
-                  : course.priceRegular
-                ).toFixed(2),
-              },
-              quantity: '1',
-            }));
+            const items = this.paymentService
+              .shopCartListSelected()
+              .map((course) => ({
+                name: course.title,
+                unit_amount: {
+                  currency_code: 'USD',
+                  value: (course.isOnSale
+                    ? course.promptPaymentPrice
+                    : course.priceRegular
+                  ).toFixed(2),
+                },
+                quantity: '1',
+              }));
 
             return actions.order.create({
               purchase_units: [
                 {
                   amount: {
                     currency_code: 'USD',
-                    value: this.totalAmountWithTax().toFixed(2),
+                    value: this.paymentService.totalAmountWithTax().toFixed(2),
                     breakdown: {
                       item_total: {
                         currency_code: 'USD',
-                        value: this.totalWithoutTax().toFixed(2),
+                        value: this.paymentService.totalWithoutTax().toFixed(2),
                       },
                       tax_total: {
                         currency_code: 'USD',
-                        value: this.taxValue(),
+                        value: this.paymentService.taxValue(),
                       },
                     },
                   },

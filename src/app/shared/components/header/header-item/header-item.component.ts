@@ -6,6 +6,7 @@ import { SyncCourseIconComponent } from '../../../icons/sync-course-icon/sync-co
 import { ThemeService } from '../../../../core/services/theme.service';
 import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import { ICommunityHeaderItem } from '../header.component';
 
 @Component({
   selector: 'app-header-item',
@@ -21,14 +22,15 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './header-item.component.scss',
 })
 export class HeaderItemComponent {
-  @Input() headerItem: any;
-  @Input() headerIdSelected: number = 0;
-  @Output() emitHeaderIdSelected = new EventEmitter<number>();
+  @Input() headerItem!: ICommunityHeaderItem;
+  @Input() headerItemSelected!: ICommunityHeaderItem;
+  @Output() emitHeaderItemSelected = new EventEmitter<ICommunityHeaderItem>();
+
   route: Router = inject(Router);
   themeService: ThemeService = inject(ThemeService);
 
-  redirectToView(item: any) {
-    this.emitHeaderIdSelected.emit(item.id);
+  redirectToView(item: ICommunityHeaderItem) {
+    this.emitHeaderItemSelected.emit(item);
     this.route.navigate([`${item.route}`]);
   }
 }

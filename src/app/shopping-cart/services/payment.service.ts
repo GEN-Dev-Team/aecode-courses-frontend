@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environment/environment';
 import { ISecondaryCourseSummary } from '../../courses/interface/secondary-course/Secondary-Course';
 import { BrowserService } from '../../core/services/browser.service';
@@ -13,6 +13,37 @@ export class PaymentService {
   shopCartListSelected = signal<ISecondaryCourseSummary[]>([]);
   paymentDetails = signal<any>({});
   showPaymentModal = signal(false);
+
+  totalCartRegularPrice = computed(() => {
+    const shopCartListValue = this.shopCartListSelected();
+    return shopCartListValue.reduce((acc, item) => acc + item.priceRegular, 0);
+  });
+
+  totalCartDiscount = computed(() => {
+    const shopCartListValue = this.shopCartListSelected();
+    return shopCartListValue.reduce(
+      (acc, item) =>
+        acc + (item.isOnSale ? item.priceRegular - item.promptPaymentPrice : 0),
+      0
+    );
+  });
+
+  totalWithoutTax = computed(() => {
+    return this.totalCartRegularPrice() - this.totalCartDiscount();
+  });
+
+  totalAmountWithTax = computed(() => {
+    const tax = 0.3;
+    const taxPercentage = 5.4;
+
+    if (this.totalCartRegularPrice() > 0)
+      return ((this.totalWithoutTax() + tax) * 100) / (100 - taxPercentage);
+    else return 0;
+  });
+
+  taxValue = computed(() => {
+    return (this.totalAmountWithTax() - this.totalWithoutTax()).toFixed(2);
+  });
 
   initializeShopCartList() {
     if (this.browserService.isBrowser()) {

@@ -17,8 +17,8 @@
         @for(headerItem of headerItemsList; track headerItem) {
         <app-header-item
           [headerItem]="headerItem"
-          [headerIdSelected]="headerIdSelected"
-          (emitHeaderIdSelected)="headerIdSelected = $event"
+          [headerItemSelected]="headerItemSelected"
+          (emitHeaderItemSelected)="headerItemSelected = $event"
         />
         }
       </ul>
@@ -43,6 +43,7 @@
         data-section="header-container"
         data-value="Acceder"
         (click)="openLoginForm.set(true)"
+        [style.background-color]="headerItemSelected.colorCode"
       >
         Acceder
       </button>

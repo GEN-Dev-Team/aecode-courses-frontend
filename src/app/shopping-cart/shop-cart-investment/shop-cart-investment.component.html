@@ -25,19 +25,19 @@
 
       <div class="invest-item subtotal-item">
         <span> Subtotal: </span>
-        <span> {{ totalCartRegularPrice() }} $ </span>
+        <span> {{ cardService.totalCartRegularPrice() }} $ </span>
       </div>
 
       <div class="invest-discount">
         <span> Descuento: </span>
-        <span> {{ totalCartDiscount() }} $ </span>
+        <span> {{ cardService.totalCartDiscount() }} $ </span>
       </div>
 
       @if (isStep2) {
       <div class="invest-discount">
         <span> Cargo por transacción: </span>
         <span>
-          {{ taxValue() }}
+          {{ cardService.taxValue() }}
           $
         </span>
       </div>
@@ -46,14 +46,18 @@
       <div class="invest-item total-item">
         <span> Total: </span>
         <span
-          >@if (!isStep2){ {{ totalWithoutTax() }} } @else {
-          {{ totalAmountWithTax().toFixed(2) }} } $
+          >@if (!isStep2){ {{ cardService.totalWithoutTax() }} } @else {
+          {{ cardService.totalAmountWithTax().toFixed(2) }} } $
         </span>
       </div>
     </div>
 
     @if (!isStep2) {
-    <button class="invest-button" (click)="goToPay()">
+    <button
+      class="invest-button"
+      (click)="goToPay()"
+      [class.isDisabled]="cardService.totalWithoutTax() > 0 ? false : true"
+    >
       <app-shopping-cart-icon class="shop-cart-icon" /> PAGAR
     </button>
 
@@ -89,7 +93,10 @@
 
   @if (isStep2) {
   <div class="invest-message-reminder">
-    <p>Cobraremos $ {{ totalAmountWithTax().toFixed(2) }} en tu tarjeta</p>
+    <p>
+      Cobraremos $ {{ cardService.totalAmountWithTax().toFixed(2) }} en tu
+      tarjeta
+    </p>
     <p>Se aplicara un cargo extra por la transacción</p>
   </div>
   }
