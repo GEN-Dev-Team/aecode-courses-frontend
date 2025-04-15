@@ -1,0 +1,58 @@
+<div
+  class="payment-success-container {{
+    themeService.getMode() | async
+  }}-payment-success-container"
+>
+  <div class="payment-message-container">
+    <app-payment-successed-icon class="payment-icon" />
+
+    <p class="payment-title">Pago realizado exitosamente</p>
+
+    <span class="payment-message"
+      >¡Pago realizado con éxito! Tu compra ha sido procesada correctamente y
+      ahora tienes acceso a tu curso. Revisa tu correo, donde encontrarás todos
+      los detalles e instrucciones para comenzar tu aprendizaje. Si tienes
+      alguna duda o necesitas ayuda, no dudes en contactarnos. Gracias por tu
+      confianza y éxito en tu formación</span
+    >
+
+    <button class="payment-button" (click)="goToCart()">Entiendo</button>
+  </div>
+
+  <div class="payment-summary-container">
+    <h2 class="payment-title">Resumen de la compra</h2>
+
+    <div class="payment-item">
+      <p class="payment-label">Empresa:</p>
+      <p class="payment-value">AECODE</p>
+    </div>
+
+    <div class="payment-item">
+      <p class="payment-label">ID de compra:</p>
+      <p class="payment-value">{{ paymentDetails.id }}</p>
+    </div>
+
+    <div class="payment-item">
+      <p class="payment-label">Cliente:</p>
+      <p class="payment-value">
+        {{ paymentDetails.payer.name.given_name }}
+        {{ paymentDetails.payer.surname }}
+      </p>
+    </div>
+
+    <div class="payment-item">
+      <p class="payment-label">Correo:</p>
+      <p class="payment-value">{{ paymentDetails.payer.email_address }}</p>
+    </div>
+
+    <div class="payment-item">
+      <p class="payment-label">Fecha de compra:</p>
+      <p class="payment-value">
+        {{
+          paymentDetails.purchase_units[0].payments.captures[0].create_time
+            | date : "dd/MM/yyyy"
+        }}
+      </p>
+    </div>
+  </div>
+</div>

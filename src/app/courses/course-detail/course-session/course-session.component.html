@@ -22,16 +22,3 @@
     <span class="duration-separator">•</span> {{ videoDuration }} min</span
   >
 </label>
-
-<app-modal (isClosed)="showBlockedModal = $event" [isOpen]="showBlockedModal">
-  @if( !userHasAccessToModule) {
-  <app-content-blocked
-    [message]="blockedMessage"
-    (isClosed)="showBlockedModal = $event"
-  />
-
-  } @else {
-  <app-content-blocked (isClosed)="showBlockedModal = $event" />
-
-  }
-</app-modal>

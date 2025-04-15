@@ -1,4 +1,5 @@
-import { ICoupon } from '../../../payment/interfaces/Coupon';
+import { ICoupon } from '../../../shopping-cart/interfaces/Coupon';
+import { ICourseTag } from '../CourseTag';
 import { IFAQ } from './FAQ';
 import { IStudyPlan } from './StudyPlan';
 import { ITool } from './Tool';
@@ -32,6 +33,8 @@ export interface ISecondaryCourse {
   freqquests: IFAQ[];
   requirements: string[];
   mode: string;
+  isSelectedinCart: boolean;
+  tags: ICourseTag[];
 }
 
 export interface ISecondaryCourseSummary {
@@ -49,6 +52,8 @@ export interface ISecondaryCourseSummary {
   principalimage: string;
   orderNumber: number;
   mode: string;
+  isSelectedinCart: boolean;
+  tags: ICourseTag[];
 }
 
 export const defaultSecondaryCourse: ISecondaryCourse = {
@@ -80,4 +85,25 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
   freqquests: [],
   requirements: [],
   mode: '',
+  isSelectedinCart: false,
+  tags: [],
+};
+
+export const defaultSecondaryCourseSummary: ISecondaryCourseSummary = {
+  seccourseId: 0,
+  title: '',
+  programTitle: '',
+  description: '',
+  module: '',
+  startDate: new Date(),
+  certificateHours: '',
+  priceRegular: 0,
+  discountPercentage: 0,
+  promptPaymentPrice: 0,
+  isOnSale: false,
+  principalimage: '',
+  orderNumber: -1,
+  mode: '',
+  isSelectedinCart: false,
+  tags: [],
 };

@@ -10,6 +10,7 @@ import { Component } from '@angular/core';
       width="26"
       height="18"
       viewBox="0 0 26 18"
+      fill="currentColor"
       class="icon"
     >
       <path

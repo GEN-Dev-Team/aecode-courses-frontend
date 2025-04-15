@@ -10,6 +10,9 @@ import { BrowserService } from '../../core/services/browser.service';
 import { IPaginator } from '../../core/interfaces/paginator';
 import { ThemeService } from '../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
+import { CourseTagListComponent } from '../course-tag-list/course-tag-list.component';
+import { CourseTagService } from '../services/course-tag.service';
+import { ICourseTag } from '../interface/CourseTag';
 
 @Component({
   selector: 'app-course-main',
@@ -20,6 +23,7 @@ import { AsyncPipe } from '@angular/common';
     PlatformCourseListComponent,
     CourseListComponent,
     AsyncPipe,
+    CourseTagListComponent,
   ],
   templateUrl: './course-main.component.html',
   styleUrl: './course-main.component.css',
@@ -28,6 +32,7 @@ export class CourseMainComponent implements OnInit {
   secondaryCourseService: SecondaryCourseService = inject(
     SecondaryCourseService
   );
+  courseTagService: CourseTagService = inject(CourseTagService);
 
   browserService: BrowserService = inject(BrowserService);
   ngZone: NgZone = inject(NgZone);
@@ -37,6 +42,9 @@ export class CourseMainComponent implements OnInit {
   filterValue: string = '';
   coursesList: ISecondaryCourseSummary[] = [];
   filteredCoursesList: ISecondaryCourseSummary[] = [];
+  tagListFiltered: ICourseTag[] = [];
+  tagList: ICourseTag[] = [];
+  tagIdSelectedList: number[] = [];
 
   animate = false;
   animateFadeOut = false;
@@ -61,6 +69,11 @@ export class CourseMainComponent implements OnInit {
     });
 
     this.startAnimationLoop();
+
+    this.courseTagService.getCourseTags().subscribe((tags) => {
+      this.tagList = tags;
+      this.tagListFiltered = tags;
+    });
   }
 
   ngOnDestroy() {
@@ -74,42 +87,54 @@ export class CourseMainComponent implements OnInit {
     const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
 
     if (!searchTerm) {
-      this.resetFilteredCourses();
+      this.tagList = this.tagListFiltered;
       return;
     }
 
-    this.filteredCoursesList = this.coursesList.filter((course) =>
-      course.title.toLowerCase().includes(searchTerm.toLowerCase())
+    this.tagList = this.tagList.filter((tag) =>
+      tag.courseTagName.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
 
   private resetFilteredCourses(): void {
     this.filteredCoursesList = JSON.parse(JSON.stringify(this.coursesList));
+    this.isFilteringByMode = false;
+    this.filterValue = '';
   }
 
   filterByMode(value: string) {
     this.currentPage = 0;
 
-    if (value !== 'all') {
-      this.filteredCoursesList = [];
-      this.isFilteringByMode = true;
-      this.filterValue = value;
+    this.filteredCoursesList = [];
+    this.isFilteringByMode = true;
+    this.filterValue = value;
 
-      this.secondaryCourseService
-        .getSecondaryCoursesByMode(
-          this.filterValue,
-          this.currentPage,
-          this.pageSize
-        )
-        .subscribe((data) => {
-          this.filteredCoursesList = data.content;
-          this.paginatorPages = data.totalPages;
-          console.log(data);
-        });
-    } else {
-      this.isFilteringByMode = false;
-      this.resetFilteredCourses();
-      this.currentPage = 0;
+    switch (value) {
+      case 'all':
+        this.isFilteringByMode = false;
+        this.resetFilteredCourses();
+        this.currentPage = 0;
+        break;
+      case 'DATE':
+        this.secondaryCourseService
+          .getSecondaryCoursesByDate(this.currentPage, this.pageSize)
+          .subscribe((data) => {
+            this.filteredCoursesList = data.content;
+            this.paginatorPages = data.totalPages;
+          });
+        break;
+      default:
+        this.secondaryCourseService
+          .getSecondaryCoursesByMode(
+            this.filterValue,
+            this.currentPage,
+            this.pageSize
+          )
+          .subscribe((data) => {
+            this.filteredCoursesList = data.content;
+            this.paginatorPages = data.totalPages;
+          });
+        break;
     }
   }
 
@@ -124,9 +149,28 @@ export class CourseMainComponent implements OnInit {
 
     if (!this.isFilteringByMode) {
       this.secondaryCourseService
-        .getPaginatedSecCoursesList(this.currentPage, this.pageSize)
+        .getSecondaryCoursesByDate(this.currentPage, this.pageSize)
         .subscribe((data) => {
           this.filteredCoursesList = data.content;
+          this.paginatorPages = data.totalPages;
+        });
+    } else if (this.filterValue === 'DATE') {
+      this.secondaryCourseService
+        .getSecondaryCoursesByDate(this.currentPage, this.pageSize)
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+          this.paginatorPages = data.totalPages;
+        });
+    } else if (this.filterValue === 'TAG') {
+      this.secondaryCourseService
+        .getSecondaryCoursesByTags(
+          this.tagIdSelectedList,
+          this.currentPage,
+          this.pageSize
+        )
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+          this.paginatorPages = data.totalPages;
         });
     } else {
       this.secondaryCourseService
@@ -152,6 +196,24 @@ export class CourseMainComponent implements OnInit {
         .subscribe((data) => {
           this.filteredCoursesList = data.content;
         });
+    } else if (this.filterValue === 'DATE') {
+      this.secondaryCourseService
+        .getSecondaryCoursesByDate(this.currentPage, this.pageSize)
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+          this.paginatorPages = data.totalPages;
+        });
+    } else if (this.filterValue === 'TAG') {
+      this.secondaryCourseService
+        .getSecondaryCoursesByTags(
+          this.tagIdSelectedList,
+          this.currentPage,
+          this.pageSize
+        )
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+          this.paginatorPages = data.totalPages;
+        });
     } else {
       this.secondaryCourseService
         .getSecondaryCoursesByMode(
@@ -162,6 +224,26 @@ export class CourseMainComponent implements OnInit {
         .subscribe((data) => {
           this.filteredCoursesList = data.content;
         });
+    }
+  }
+
+  handleTagListChange(tagIdsList: number[]) {
+    this.currentPage = 0;
+    this.tagIdSelectedList = tagIdsList;
+
+    if (tagIdsList.length > 0) {
+      this.filteredCoursesList = [];
+      this.isFilteringByMode = true;
+      this.filterValue = 'TAG';
+
+      this.secondaryCourseService
+        .getSecondaryCoursesByTags(tagIdsList, this.currentPage, this.pageSize)
+        .subscribe((data) => {
+          this.filteredCoursesList = data.content;
+          this.paginatorPages = data.totalPages;
+        });
+    } else {
+      this.resetFilteredCourses();
     }
   }
 

@@ -24,7 +24,7 @@ export class AuthService {
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
-  private hasToken(): boolean {
+  hasToken(): boolean {
     if (isPlatformBrowser(this.platformId)) {
       return !!localStorage.getItem('user');
     }
@@ -51,10 +51,10 @@ export class AuthService {
 
   getUserDetails(): any {
     if (this.browserService.isBrowser()) {
-      return JSON.parse(localStorage.getItem('user') || '{}');
+      const user = localStorage.getItem('user');
+      if (user === null) return {};
+      return JSON.parse(user);
     }
-
-    return null;
   }
 
   setUserDetails(user: any): void {

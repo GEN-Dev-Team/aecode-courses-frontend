@@ -1,0 +1,20 @@
+<div
+  class="shop-cart-navigator-container {{
+    themeService.getMode() | async
+  }}-shop-cart-navigator-container"
+>
+  @for (item of checkoutSteps; track $index) {
+  <div
+    class="shop-cart-step-box {{
+      item.step === stepSelected ? 'shop-cart-selected' : ''
+    }}"
+    (click)="changeToFirstStep(item)"
+  >
+    <span class="shop-cart-step">{{ item.step }}</span>
+    <span class="shop-cart-title"
+      >{{ item.title }}
+      <app-shopping-cart-icon />
+    </span>
+  </div>
+  }
+</div>

@@ -42,7 +42,7 @@
             <div class="date-container">
               <h4 class="date-title">FECHA DE INICIO</h4>
               <div class="date-content">
-                {{ secondaryCourseData.startDate | dateFormat : "lower" }}
+                {{ secondaryCourseData.startDate | dateFormat : false }}
               </div>
             </div>
 
@@ -185,10 +185,3 @@
   </div>
   }
 </app-course-overlay>
-
-<app-modal [isOpen]="showMessageError" (isClosed)="showMessageError = $event">
-  <app-content-blocked
-    [message]="errorMessage"
-    (isClosed)="showMessageError = $event"
-  />
-</app-modal>
