@@ -1,0 +1,24 @@
+<app-modal [isOpen]="showTermsModal()" (isClosed)="showTermsModal.set($event)">
+  <article class="terms-and-conditions-container">
+    <h1 class="terms-title">
+      @if(termsMessage() !== 'privacy'){Términos y condiciones de uso} @else {
+      Políticas de Privacidad}
+    </h1>
+
+    @switch (termsMessage()) { @case ('userData') {
+    <app-user-data-policies />
+
+    } @case ('payment') {
+    <app-payment-policies />
+
+    } @case ('privacy') {
+    <app-privacy-policies />
+
+    } }
+
+    <div class="buttons-container">
+      <button (click)="closeModal()">Cancelar</button>
+      <button (click)="closeModal()">Aceptar</button>
+    </div>
+  </article>
+</app-modal>

@@ -6,11 +6,13 @@ import { IUserDetails } from '../../../../home/interface/Login';
 import { UserService } from '../../../../home/user.service';
 import { Router } from '@angular/router';
 import { ViewProfileComponent } from '../view-profile/view-profile.component';
+import { ThemeService } from '../../../../core/services/theme.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-user-profile-button',
   standalone: true,
-  imports: [ViewProfileComponent],
+  imports: [ViewProfileComponent, AsyncPipe],
   templateUrl: './user-profile-button.component.html',
   styleUrl: './user-profile-button.component.scss',
 })
@@ -21,12 +23,14 @@ export class UserProfileButtonComponent {
   logInService: UserService = inject(UserService);
   userService: UserService = inject(UserService);
   route: Router = inject(Router);
+  themeService: ThemeService = inject(ThemeService);
 
-  isUserLoggedIn = true;
+  isUserLoggedIn = false;
   openLoginForm = false;
   showProfileMenu = false;
   userId: number = 0;
-  userProfileImg: string = 'assets/images/login-view/user-profile-img.webp';
+  userProfileImg: string = '';
+  userFirstLetterName: string = '';
   userDetailsData!: Observable<IUserDetails>;
   base_url = environment.base;
 
@@ -35,8 +39,10 @@ export class UserProfileButtonComponent {
   }
 
   setUser() {
-    if (this.authService.getUserDetails() !== null) {
-      this.userId = this.authService.getUserDetails().userId;
+    if (this.authService.hasToken()) {
+      const userData = this.authService.getUserDetails();
+      this.userId = userData.userId;
+      this.userFirstLetterName = userData.fullname.charAt(0).toUpperCase();
 
       this.userService
         .getUserDetailsImgById(this.userId)
@@ -44,8 +50,7 @@ export class UserProfileButtonComponent {
           if (response.profilepicture) {
             this.userProfileImg = this.base_url + response.profilepicture;
           } else {
-            this.userProfileImg =
-              'assets/images/login-view/user-profile-img.webp';
+            this.userProfileImg = '';
           }
         });
 

@@ -20,20 +20,24 @@ export class DateFormatPipe implements PipeTransform {
     'DICIEMBRE',
   ];
 
-  transform(value: any, format: 'upper' | 'lower' = 'upper'): string {
+  transform(value: any, isCard: boolean = true): string {
     if (!value) return '';
-    else {
-      const date = value.split('-').reverse().slice(0, 2);
+    else if (isCard) {
+      const date = value;
 
       const monthId = Number(date[1]) - 1;
 
-      const formatedDate = date
-        .join(' DE ')
-        .replace(date[1], this.monthList[monthId]);
+      const formatedDate = date[2] + ' DE ' + this.monthList[monthId];
 
-      return format === 'lower'
-        ? formatedDate.toLowerCase()
-        : `${formatedDate}`;
+      return formatedDate.toUpperCase();
+    } else {
+      const date = value.split('-');
+
+      const monthId = Number(date[1]) - 1;
+
+      const formatedDate = date[2] + ' DE ' + this.monthList[monthId];
+
+      return formatedDate.toUpperCase();
     }
   }
 }

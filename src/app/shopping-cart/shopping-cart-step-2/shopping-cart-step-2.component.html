@@ -1,0 +1,58 @@
+<div
+  class="payment-methods-container {{
+    themeService.getMode() | async
+  }}-payment-methods-container"
+>
+  <app-shop-cart-investment [isStep2]="true" />
+
+  <div class="payment-methods-content">
+    <div class="payment-options">
+      @for (item of paymentMethodList; track item.id) {
+      <div
+        class="payment-button"
+        [class.payment-button-selected]="item.id === paymentMethodSelected.id"
+        (click)="selectPaymentMethod(item)"
+      >
+        @switch (item.id) { @case (2) {
+        <app-credit-card-icon />
+        } @case (1) {
+        <app-paypal-icon />
+        } @case (3) {
+        <app-other-methods-icon />
+        } }
+        {{ item.name }}
+      </div>
+      }
+    </div>
+    @if(paymentMethodSelected.id === 1) {
+
+    <p class="payment-title">PAGAR CON PAYPAL</p>
+
+    <p>
+      Selecciona PayPal como método de pago y haz clic en 'Pagar con Paypal'.
+      Serás redirigido a su plataforma para completar la transacción de forma
+      segura
+    </p>
+
+    <p class="payment-message">
+      La forma rápida y segura de pagar tus compras en línea con total confianza
+    </p>
+    } @else {
+    <div class="coming-soon-payment">
+      <span>Próximamente</span>
+    </div>
+    }
+
+    <div class="payment-ref" #paymentRef></div>
+
+    <p class="payment-terms">
+      Al hacer clic en “Completar Compra” acepto las
+      <span class="payment-terms-link" (click)="showPaymentPolicies()"
+        >condiciones de uso </span
+      >,
+      <span class="payment-terms-link" (click)="showPrivacyPolicies()"
+        >la política de privacidad</span
+      >
+    </p>
+  </div>
+</div>

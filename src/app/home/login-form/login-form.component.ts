@@ -15,6 +15,7 @@ import { SquareIconComponent } from '../../shared/icons/square-icon/square-icon.
 import { AsyncPipe } from '@angular/common';
 import { ThemeService } from '../../core/services/theme.service';
 import { FormEyeIconComponent } from '../icons/form-eye-icon/form-eye-icon.component';
+import { MessageBoxService } from '../../core/services/message-box.service';
 
 @Component({
   selector: 'app-login-form',
@@ -36,6 +37,7 @@ export class LoginFormComponent {
   browserService: BrowserService = inject(BrowserService);
   toastService: ToastrService = inject(ToastrService);
   themeService: ThemeService = inject(ThemeService);
+  messageBoxService: MessageBoxService = inject(MessageBoxService);
 
   loginForm: FormGroup;
   signInForm: FormGroup;
@@ -117,5 +119,15 @@ export class LoginFormComponent {
     } else {
       passwordField.type = 'password';
     }
+  }
+
+  showUserDataPolicies() {
+    this.messageBoxService.showTermsModal.set(true);
+    this.messageBoxService.termsMessage.set('userData');
+  }
+
+  showPrivacyPolicies() {
+    this.messageBoxService.showTermsModal.set(true);
+    this.messageBoxService.termsMessage.set('privacy');
   }
 }

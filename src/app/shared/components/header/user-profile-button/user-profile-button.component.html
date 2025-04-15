@@ -1,10 +1,15 @@
-<div class="user-logged">
+<div class="user-logged {{ themeService.getMode() | async }}-user-logged">
   <div (click)="showProfileMenuHandler()" class="user-profile">
     <div
       class="user-profile-img-container"
       [class.is-home-header-img-container]="isHomeView"
     >
+      @if (userProfileImg) {
       <img [src]="userProfileImg" class="user-profile-img" alt="" />
+
+      } @else {
+      <span class="user-profile-first-letter">{{ userFirstLetterName }}</span>
+      }
     </div>
 
     <span
@@ -13,10 +18,7 @@
       >▼</span
     >
     @if (showProfileMenu) {
-    <app-view-profile
-      [profileImgUrl]="userProfileImg"
-      class="profile-dropdown"
-    />
+    <app-view-profile class="profile-dropdown" />
     }
   </div>
 </div>

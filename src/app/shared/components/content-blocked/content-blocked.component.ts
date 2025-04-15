@@ -1,10 +1,20 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  Output,
+  signal,
+} from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 import { AsyncPipe, Location } from '@angular/common';
 import { ThemeService } from '../../../core/services/theme.service';
 import { SuccessIconComponent } from './success-icon/success-icon.component';
 import { BlockedIconComponent } from './blocked-icon/blocked-icon.component';
 import { ModalComponent } from '../modal/modal.component';
+import { MessageBoxService } from '../../../core/services/message-box.service';
+import { HeaderService } from '../../../core/services/header.service';
+import { PaymentService } from '../../../shopping-cart/services/payment.service';
 
 @Component({
   selector: 'app-content-blocked',
@@ -20,30 +30,27 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrl: './content-blocked.component.css',
 })
 export class ContentBlockedComponent {
-  @Input() isOpen: boolean = false;
-  @Input() hasBackButton: boolean = false;
-  @Input() title: string = '';
-  @Input() message: string =
-    'El siguiente contenido se desbloqueará próximamente.';
-  @Input() isMessageTypeSuccess: boolean = false;
+  messageBoxService: MessageBoxService = inject(MessageBoxService);
+  headerService: HeaderService = inject(HeaderService);
 
-  @Output() isClosed = new EventEmitter<boolean>();
+  isOpen = this.messageBoxService.showMessageModal;
+  title = this.messageBoxService.title;
+  message = this.messageBoxService.message;
+  isMessageTypeSuccess = this.messageBoxService.isMessageTypeSuccess;
+  redirectTo = this.messageBoxService.redirectTo;
 
   themeService: ThemeService = inject(ThemeService);
   location: Location = inject(Location);
 
-  showContentModal = false;
-  messageModal = '';
-
   closeModal(event: boolean) {
-    if (!this.hasBackButton) {
-      this.isClosed.emit(event);
-    } else {
-      this.location.back();
+    this.isOpen.set(false);
+
+    if (this.redirectTo() === 'login') {
+      this.headerService.showLogInAccess.set(true);
     }
   }
 
-  openContentModal() {
-    this.showContentModal = true;
+  ngOnDestroy(): void {
+    this.redirectTo.set('');
   }
 }
