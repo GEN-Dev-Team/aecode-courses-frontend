@@ -81,7 +81,7 @@ export class HeaderComponent {
     },
   ];
 
-  headerItemSelected!: ICommunityHeaderItem;
+  headerItemSelected: ICommunityHeaderItem = this.headerItemsList[0];
 
   ngOnInit(): void {
     if (this.authService.hasToken()) {
