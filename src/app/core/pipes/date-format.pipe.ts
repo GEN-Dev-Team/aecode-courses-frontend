@@ -23,13 +23,11 @@ export class DateFormatPipe implements PipeTransform {
   transform(value: any, format: 'upper' | 'lower' = 'upper'): string {
     if (!value) return '';
     else {
-      const date = value.split('-').reverse().slice(0, 2);
+      const date = value;
 
       const monthId = Number(date[1]) - 1;
 
-      const formatedDate = date
-        .join(' DE ')
-        .replace(date[1], this.monthList[monthId]);
+      const formatedDate = date[2] + ' DE ' + this.monthList[monthId];
 
       return format === 'lower'
         ? formatedDate.toLowerCase()
