@@ -48,6 +48,7 @@ export class HeaderComponent {
   openLoginForm = this.headerService.showLogInAccess;
   showMobileMenu = false;
   openMobileMenu = false;
+  isMobile = this.browserService.isMobile();
 
   headerItemsList: ICommunityHeaderItem[] = [
     {
