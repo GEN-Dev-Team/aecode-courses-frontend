@@ -13,20 +13,19 @@
         }
       </a>
 
-      <ul class="header-list">
+      <ul class="header-list" [class.show-header-list]="showMobileMenu">
         @for(headerItem of headerItemsList; track headerItem) {
         <app-header-item
           [headerItem]="headerItem"
           [headerItemSelected]="headerItemSelected"
-          (emitHeaderItemSelected)="headerItemSelected = $event"
+          (emitHeaderItemSelected)="setHeaderItemSelected($event)"
         />
         }
       </ul>
-
-      @if (isUserLoggedIn) {
+      @if (!isUserLoggedIn) {
 
       <div class="user-logged-buttons">
-        <app-notification-icon />
+        <app-notification-icon class="notification-icon" />
 
         <div class="separator"></div>
 
@@ -47,6 +46,8 @@
       >
         Acceder
       </button>
+
+      <app-burger-icon class="menu-button" (click)="toggleMenu()" />
       }
     </div>
   </div>

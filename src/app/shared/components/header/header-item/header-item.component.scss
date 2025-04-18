@@ -13,22 +13,15 @@
   font-family: "ruberoid-regular";
   border-radius: 25px;
 
-  .hide-in-desktop {
-    display: none;
+  .shopping-cart-icon {
+    width: 31px;
+    height: 31px;
   }
 }
 
 .header-item-selected {
   border: 2px solid var(--purple-2);
   font-family: "ruberoid-semibold";
-}
-
-.header-item-selected {
-  border: 2px solid;
-}
-
-.header-item-selected {
-  border: 2px solid;
 }
 
 .dark-header-item-selected {
@@ -46,4 +39,22 @@
 
 .is-shop-cart-item {
   border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .header-item {
+    gap: 5px;
+    height: fit-content;
+    padding: 0;
+    font-size: 14px;
+
+    .shopping-cart-icon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .header-item-selected {
+    border: none;
+  }
 }
