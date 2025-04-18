@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { LoginFormComponent } from '../../../home/login-form/login-form.component';
 import { NotificationIconComponent } from '../../icons/notification-icon/notification-icon.component';
 import { AuthService } from '../../../core/services/auth.service';
@@ -11,6 +11,7 @@ import { AecodeIconComponent } from '../../../home/icons/aecode-icon/aecode-icon
 import { HeaderItemComponent } from './header-item/header-item.component';
 import { HeaderService } from '../../../core/services/header.service';
 import { BrowserService } from '../../../core/services/browser.service';
+import { BurgerIconComponent } from '../../icons/burger-icon/burger-icon.component';
 
 export interface ICommunityHeaderItem {
   id: number;
@@ -30,6 +31,7 @@ export interface ICommunityHeaderItem {
     AsyncPipe,
     AecodeIconComponent,
     HeaderItemComponent,
+    BurgerIconComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -97,10 +99,22 @@ export class HeaderComponent {
           this.headerItemSelected = item;
         }
       });
+
+      if (this.headerItemSelected.id === 1) {
+        this.themeService.setMode('dark');
+      }
     }
   }
 
   toggleMenu() {
     this.showMobileMenu = !this.showMobileMenu;
+  }
+
+  setHeaderItemSelected(item: ICommunityHeaderItem) {
+    this.headerItemSelected = item;
+
+    if (this.showMobileMenu) {
+      this.showMobileMenu = false;
+    }
   }
 }

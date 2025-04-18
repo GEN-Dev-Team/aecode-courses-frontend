@@ -14,6 +14,7 @@
   @switch (headerItem.id) { @case (2) {<app-home-community-icon />} @case (3)
   {<app-book-icon />} @case (4) {<app-sync-course-icon />} @case (5) {
   <app-shopping-cart-icon
+    class="shopping-cart-icon"
     [class.shopping-cart-selected]="headerItemSelected.id === 5"
   />
   } } @if(headerItem.id !== 5) {
