@@ -22,7 +22,7 @@
         />
         }
       </ul>
-      @if (!isUserLoggedIn) {
+      @if (isUserLoggedIn) {
 
       <div class="user-logged-buttons">
         <app-notification-icon class="notification-icon" />
@@ -47,7 +47,9 @@
         Acceder
       </button>
 
+      } @if (isMobile) {
       <app-burger-icon class="menu-button" (click)="toggleMenu()" />
+
       }
     </div>
   </div>

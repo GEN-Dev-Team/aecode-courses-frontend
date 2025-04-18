@@ -163,7 +163,7 @@
         .user-logged-buttons {
           display: flex;
           gap: 20px;
-          margin-left: 0px;
+          margin-inline: auto 20px;
 
           .notification-icon {
             width: 20px;
