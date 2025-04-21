@@ -1,0 +1,12 @@
+<div class="chat-container">
+  <div class="messages-container" #messagesEnd>
+    @if(messageList.length>0){ @for (item of messageList; track $index) {
+
+    <app-chat-message [message]="item.userMessage" [isUserMessage]="true" />
+    <app-chat-message [message]="item.botResponse" [isUserMessage]="false" />
+
+    } }
+  </div>
+
+  <app-user-input (userInputEvent)="callToOpenAI($event)" />
+</div>
