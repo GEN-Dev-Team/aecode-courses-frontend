@@ -12,6 +12,7 @@ import { InProgressComponent } from './in-progress/in-progress.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { LiveComponent } from './live/live.component';
+import { AecodeGptComponent } from './aecode-gpt/aecode-gpt.component';
 
 export const routes: Routes = [
   {
@@ -23,6 +24,11 @@ export const routes: Routes = [
     path: 'home',
     title: 'AECODE',
     component: HomeComponent,
+  },
+  {
+    path: 'aecode-gpt',
+    title: 'AECODE GPT',
+    component: AecodeGptComponent,
   },
   {
     path: 'training',
