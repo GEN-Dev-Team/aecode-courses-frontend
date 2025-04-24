@@ -53,38 +53,44 @@ export class HeaderComponent {
   headerItemsList: ICommunityHeaderItem[] = [
     {
       id: 1,
+      name: 'aecode-chat',
+      route: '/aecode-chat',
+      colorCode: '#7837DD',
+    },
+    {
+      id: 2,
       name: 'Inicio',
       route: '/home',
       colorCode: '#7837DD',
     },
     {
-      id: 2,
+      id: 3,
       name: 'Comunidad',
       route: '/community',
       colorCode: '#4A3AC1',
     },
 
     {
-      id: 3,
+      id: 4,
       name: 'Training',
       route: '/training',
       colorCode: '#4A3AC1',
     },
     {
-      id: 4,
+      id: 5,
       name: 'Live',
       route: '/live',
       colorCode: '#3D813F',
     },
     {
-      id: 5,
+      id: 6,
       name: 'Shopping cart',
       route: '/shopping-cart',
       colorCode: '#4A3AC1',
     },
   ];
 
-  headerItemSelected: ICommunityHeaderItem = this.headerItemsList[0];
+  headerItemSelected: ICommunityHeaderItem = this.headerItemsList[1];
 
   ngOnInit(): void {
     if (this.authService.hasToken()) {
@@ -101,7 +107,7 @@ export class HeaderComponent {
         }
       });
 
-      if (this.headerItemSelected.id === 1) {
+      if (this.headerItemSelected.id === 2) {
         this.themeService.setMode('dark');
       }
     }

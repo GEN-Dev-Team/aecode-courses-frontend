@@ -1,12 +1,32 @@
 <div class="chat-container">
-  <div class="messages-container" #messagesEnd>
+  <div
+    class="messages-container"
+    #messagesEnd
+    [class.container-without-messages]="messageList.length == 0"
+  >
     @if(messageList.length>0){ @for (item of messageList; track $index) {
 
     <app-chat-message [message]="item.userMessage" [isUserMessage]="true" />
     <app-chat-message [message]="item.botResponse" [isUserMessage]="false" />
 
-    } }
+    } }@else {
+    <div>
+      <h2 class="no-messages-title">¡Hola!</h2>
+      <h2 class="no-messages-subtitle">¿Cómo puedo ayudarte hoy?</h2>
+    </div>
+    }
   </div>
 
   <app-user-input (userInputEvent)="callToOpenAI($event)" />
+
+  <img
+    class="bridge-bg"
+    src="/assets/images/aecode-chatbot/puente.webp"
+    alt=""
+  />
+  <img
+    class="edifi-bg"
+    src="/assets/images/aecode-chatbot/edificio.webp"
+    alt=""
+  />
 </div>

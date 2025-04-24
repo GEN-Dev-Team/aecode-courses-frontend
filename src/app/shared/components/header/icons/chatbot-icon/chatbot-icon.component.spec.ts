@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FormComponent } from './form.component';
+import { ChatbotIconComponent } from './chatbot-icon.component';
 
-describe('FormComponent', () => {
-  let component: FormComponent;
-  let fixture: ComponentFixture<FormComponent>;
+describe('ChatbotIconComponent', () => {
+  let component: ChatbotIconComponent;
+  let fixture: ComponentFixture<ChatbotIconComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormComponent]
+      imports: [ChatbotIconComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(FormComponent);
+    fixture = TestBed.createComponent(ChatbotIconComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -8,10 +8,11 @@ import { environment } from '../../environments/environment';
 export class OpenaiService {
   http = inject(HttpClient);
 
-  url = environment.base + '/ask-openai';
+  url = environment.agent_url + '/api/chat';
 
   sendMessageToChatBot(message: string) {
-    const params = new HttpParams().set('prompt', message);
-    return this.http.get(this.url, { params });
+    console.log('message', { mensaje: message });
+    // const params = new HttpParams().set('prompt', message);
+    return this.http.post(this.url, { mensaje: message });
   }
 }

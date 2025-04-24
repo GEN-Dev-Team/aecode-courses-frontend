@@ -54,8 +54,8 @@
         display: flex;
         flex-flow: row nowrap;
         align-items: center;
-        gap: 50px;
-        margin-left: 50px;
+        gap: 40px;
+        margin-left: 20px;
         color: var(--purple-2);
 
         .notification-icon {

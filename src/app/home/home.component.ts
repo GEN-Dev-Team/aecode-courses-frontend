@@ -2,10 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { SendIconComponent } from '../shared/icons/send-icon/send-icon.component';
 import { ModalComponent } from '../shared/components/modal/modal.component';
 import { CourseListComponent } from '../courses/course-list/course-list.component';
-import { FormComponent } from './form/form.component';
 import { BrowserService } from '../core/services/browser.service';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { ZoomInDirective } from '../shared/directives/animations/zoom-in.directive';
+import { ChatbotIconComponent } from '../shared/components/header/icons/chatbot-icon/chatbot-icon.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -14,19 +15,18 @@ import { ZoomInDirective } from '../shared/directives/animations/zoom-in.directi
     SendIconComponent,
     ModalComponent,
     CourseListComponent,
-    FormComponent,
     HomeFooterComponent,
     ZoomInDirective,
+    ChatbotIconComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   browserService: BrowserService = inject(BrowserService);
+  router: Router = inject(Router);
 
   openModal = false;
-  openForm = false;
-  userMessage = '';
 
   wsspMessage =
     'https://api.whatsapp.com/send?phone=51900121245&text=Hola AECODE, quisiera conocer más detalles de los programas e iniciativas de colaboración que cuentan. Quiero contactar con un asesor.';
@@ -63,14 +63,7 @@ export class HomeComponent implements OnInit {
     clearInterval(this.intervalId);
   }
 
-  sendMessage() {
-    if (this.browserService.isBrowser()) {
-      const messageInput = this.browserService.getElementById(
-        'message-input'
-      ) as HTMLInputElement;
-
-      this.openForm = true;
-      this.userMessage = messageInput.value;
-    }
+  redirectToChat() {
+    this.router.navigate(['/aecode-chat']);
   }
 }

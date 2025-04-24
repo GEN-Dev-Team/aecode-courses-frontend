@@ -26,8 +26,8 @@ export const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'aecode-gpt',
-    title: 'AECODE GPT',
+    path: 'aecode-chat',
+    title: 'AECODE CHAT',
     component: AecodeGptComponent,
   },
   {

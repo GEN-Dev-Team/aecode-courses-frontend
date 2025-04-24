@@ -7,6 +7,7 @@ import { ThemeService } from '../../../../core/services/theme.service';
 import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { ICommunityHeaderItem } from '../header.component';
+import { ChatbotIconComponent } from '../icons/chatbot-icon/chatbot-icon.component';
 
 @Component({
   selector: 'app-header-item',
@@ -17,6 +18,7 @@ import { ICommunityHeaderItem } from '../header.component';
     ShoppingCartIconComponent,
     SyncCourseIconComponent,
     AsyncPipe,
+    ChatbotIconComponent,
   ],
   templateUrl: './header-item.component.html',
   styleUrl: './header-item.component.scss',
