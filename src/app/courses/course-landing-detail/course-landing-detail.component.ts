@@ -10,7 +10,7 @@ import { SecondaryCourseService } from '../services/secondary-course.service';
 import { catchError, map, Observable, tap } from 'rxjs';
 import { ISecondaryCourse } from '../interface/secondary-course/Secondary-Course';
 import { AsyncPipe } from '@angular/common';
-import { environment } from '../../../environment/environment';
+import { environment } from '../../../environments/environment';
 import { CourseOverlayComponent } from '../../shared/layouts/course-overlay/course-overlay.component';
 import { CourseLandingUnitComponent } from './course-landing-unit/course-landing-unit.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';

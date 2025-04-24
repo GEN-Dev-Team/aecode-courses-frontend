@@ -1,5 +1,5 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
-import { environment } from '../../../environment/environment';
+import { environment } from '../../../environments/environment';
 import { ISecondaryCourseSummary } from '../../courses/interface/secondary-course/Secondary-Course';
 import { BrowserService } from '../../core/services/browser.service';
 

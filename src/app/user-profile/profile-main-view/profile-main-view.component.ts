@@ -5,7 +5,7 @@ import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ILogin, IUserDetails } from '../../home/interface/Login';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { environment } from '../../../environment/environment';
+import { environment } from '../../../environments/environment';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { MessageComponent } from '../../shared/components/message/message.component';
 import { EditIconComponent } from '../../shared/icons/edit-icon/edit-icon.component';

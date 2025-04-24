@@ -1,17 +1,6 @@
 import { inject, Injectable } from '@angular/core';
-import { environment } from '../../environment/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { firstValueFrom, Observable } from 'rxjs';
-import OpenAI from 'openai';
-
-interface OpenAIResponse {
-  choices: {
-    text: string;
-    index: number;
-    logprobs: any;
-    finish_reason: string;
-  }[];
-}
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -19,29 +8,10 @@ interface OpenAIResponse {
 export class OpenaiService {
   http = inject(HttpClient);
 
-  private apiUrl = 'https://api.openai.com/v1/chat/completions';
-  private apiKey = environment.openAIToken;
+  url = environment.base + '/ask-openai';
 
-  async getResponse(prompt: string): Promise<string> {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.apiKey}`,
-    });
-
-    const body = {
-      model: 'gpt-4',
-      messages: [
-        {
-          role: 'user',
-          content: prompt,
-        },
-      ],
-    };
-
-    const response: any = await firstValueFrom(
-      this.http.post(this.apiUrl, body, { headers })
-    );
-
-    return response.choices[0].message.content;
+  sendMessageToChatBot(message: string) {
+    const params = new HttpParams().set('prompt', message);
+    return this.http.get(this.url, { params });
   }
 }

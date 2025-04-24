@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { environment } from '../../../environment/environment';
+import { environment } from '../../../environments/environment';
 
 @Pipe({
   name: 'addBaseUrl',

@@ -64,19 +64,25 @@ export class AecodeGptComponent {
     }
   }
 
-  async callToOpenAI(prompt: string): Promise<void> {
-    try {
-      const response = await this.openAiService.getResponse(prompt);
+  callToOpenAI(prompt: string) {
+    console.log('Prompt:', prompt);
 
-      const messageItem: IMessage = {
-        userMessage: prompt,
-        botResponse: response,
-      };
+    this.openAiService.sendMessageToChatBot(prompt).subscribe({
+      next: (res) => {
+        const response = res as any;
+        const chatBotResponse = response.choices[0].message.content;
 
-      this.messageList.push(messageItem);
-      this.shouldScroll = true;
-    } catch (error) {
-      console.error('Error al llamar a OpenAI:', error);
-    }
+        const messageItem: IMessage = {
+          userMessage: prompt,
+          botResponse: chatBotResponse,
+        };
+
+        this.messageList.push(messageItem);
+        this.shouldScroll = true;
+      },
+      error: (err) => {
+        console.error('Error al enviar el mensaje:', err);
+      },
+    });
   }
 }
