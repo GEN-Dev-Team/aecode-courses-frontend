@@ -53,7 +53,7 @@ export class HeaderComponent {
   headerItemsList: ICommunityHeaderItem[] = [
     {
       id: 1,
-      name: 'aecode-chat',
+      name: 'AI',
       route: '/aecode-chat',
       colorCode: '#7837DD',
     },
@@ -82,13 +82,14 @@ export class HeaderComponent {
       route: '/live',
       colorCode: '#3D813F',
     },
-    {
-      id: 6,
-      name: 'Shopping cart',
-      route: '/shopping-cart',
-      colorCode: '#4A3AC1',
-    },
   ];
+
+  shopCartItem: ICommunityHeaderItem = {
+    id: 6,
+    name: 'Shopping cart',
+    route: '/shopping-cart',
+    colorCode: '#4A3AC1',
+  };
 
   headerItemSelected: ICommunityHeaderItem = this.headerItemsList[1];
 

@@ -1,1 +1,12 @@
-<p>user-progress works!</p>
+<section class="">
+  <h2>Mi progreso</h2>
+
+  <div class="progress-container">
+    @for (item of userCourseList; track $index) {
+    <div class="progress-item">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.subtitle }}</p>
+    </div>
+    }
+  </div>
+</section>

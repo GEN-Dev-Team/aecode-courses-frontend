@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { ICommunityHeaderItem } from '../header.component';
 import { ChatbotIconComponent } from '../icons/chatbot-icon/chatbot-icon.component';
+import { HomeIconComponent } from '../icons/home-icon/home-icon.component';
 
 @Component({
   selector: 'app-header-item',
@@ -19,6 +20,7 @@ import { ChatbotIconComponent } from '../icons/chatbot-icon/chatbot-icon.compone
     SyncCourseIconComponent,
     AsyncPipe,
     ChatbotIconComponent,
+    HomeIconComponent,
   ],
   templateUrl: './header-item.component.html',
   styleUrl: './header-item.component.scss',

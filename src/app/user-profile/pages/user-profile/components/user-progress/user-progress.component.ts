@@ -5,8 +5,19 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './user-progress.component.html',
-  styleUrl: './user-progress.component.scss'
+  styleUrl: './user-progress.component.scss',
 })
 export class UserProgressComponent {
-
+  userCourseList = [
+    {
+      title: 'AECODE',
+      subtitle: 'AECODE',
+      progress: 100,
+    },
+    {
+      title: 'AECODE',
+      subtitle: 'AECODE',
+      progress: 100,
+    },
+  ];
 }

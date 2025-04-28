@@ -1,20 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { UserService } from '../home/user.service';
-import { CameraIconComponent } from '../shared/icons/camera-icon/camera-icon.component';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ILogin, IUserDetails } from '../home/interface/Login';
 import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
 import { environment } from '../../environments/environment';
 import { ModalComponent } from '../shared/components/modal/modal.component';
 import { MessageComponent } from '../shared/components/message/message.component';
-import { EditIconComponent } from '../shared/icons/edit-icon/edit-icon.component';
-import { LoaderComponent } from '../shared/components/loader/loader.component';
 import { AuthService } from '../core/services/auth.service';
-import { HeaderComponent } from '../shared/components/header/header.component';
 import { UserProfileLayoutComponent } from '../shared/layouts/user-profile-layout/user-profile-layout.component';
-import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
-import { UserCoursesComponent } from './pages/user-courses/user-courses.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 
 @Component({
@@ -25,8 +18,6 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     ModalComponent,
     MessageComponent,
     UserProfileLayoutComponent,
-    EditProfileComponent,
-    UserCoursesComponent,
     UserProfileComponent,
   ],
   templateUrl: './profile-main-view.component.html',
