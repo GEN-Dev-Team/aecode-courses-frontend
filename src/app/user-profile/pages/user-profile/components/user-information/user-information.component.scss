@@ -1,0 +1,41 @@
+.user-info-container {
+  border-radius: 10px;
+  border: 1.5px solid rgba(140, 151, 220, 0.3);
+  box-shadow: 0px 2.84px 23.43px -2.84px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15.97499942779541px);
+  padding: 33px 24px;
+
+  h2 {
+    color: #eef3f8;
+    font-family: "ruberoid-regular";
+    font-size: 18px;
+  }
+
+  .user-info-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(auto, 1fr));
+    grid-template-rows: repeat(2, minmax(auto, 1fr));
+    grid-auto-rows: auto;
+    gap: 30px 130px;
+
+    .user-info-item {
+      min-width: 240px;
+
+      label {
+        color: var(--STROKE-DARK, #8c97dc);
+        font-family: "ruberoid-regular";
+        font-size: 14px;
+      }
+
+      p {
+        font-family: "plusjakartasans-light";
+        font-size: 16px;
+        padding: 10px;
+        margin: 8px 0 0 0;
+        border-radius: 4px;
+        border: 1px solid rgba(94, 101, 181, 0.43);
+      }
+    }
+  }
+}

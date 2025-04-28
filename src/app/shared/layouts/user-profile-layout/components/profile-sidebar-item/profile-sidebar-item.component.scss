@@ -1,0 +1,25 @@
+.sidebar-item-container {
+  color: #eef3f8;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  align-items: center;
+
+  .profile-icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+  }
+
+  span {
+    font-family: "ruberoid-regular";
+    font-size: 16px;
+  }
+}
+
+.sidebar-item-selected {
+  background-color: #4a3ac1;
+}

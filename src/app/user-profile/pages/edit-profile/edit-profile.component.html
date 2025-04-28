@@ -1,5 +1,4 @@
-<div class="profile-container">
-  @if (userData$ | async; as userData) {
+<!-- @if (userData$ | async; as userData) {
   <div class="bento-box">
     <form class="row-1" [formGroup]="userDataForm">
       <div class="profile-img">
@@ -184,7 +183,8 @@
         </div>
         } @if(changePassword) {
         <button (click)="sendChangePasswordForm()">ACTUALIZAR</button> } @else {
-        <button (click)="activateChangePassword()">CAMBIAR CONTRASEÑA</button> }
+        <button (click)="activateChangePassword()">CAMBIAR CONTRASEÑA</button>
+        }
       </div>
 
       <div class="box-2">
@@ -194,28 +194,5 @@
   </div>
   } @else {
   <app-loader />
-  }
-</div>
-
-<app-modal [isOpen]="showMessageModal" (isClosed)="showMessageModal = $event">
-  @if (showChangePasswordError) {
-  <app-message
-    title="¡Oh no, un error!"
-    message="Las contraseñas no coinciden"
-    (isClosed)="showMessageModal = $event"
-  />
-  }@else { @if(dataUpdated){
-  <app-message
-    title="¡Felicidades!"
-    message="Tus datos fueron actualizados correctamente"
-    (isClosed)="showMessageModal = $event"
-    (isClosed)="dataUpdated = $event"
-  />
-  } @else {
-  <app-message
-    title="¡Felicidades!"
-    message="Tu contraseña fue actualizada correctamente"
-    (isClosed)="showMessageModal = $event"
-  />
-  } }
-</app-modal>
+  } 
+ -->

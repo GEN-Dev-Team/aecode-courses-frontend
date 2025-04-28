@@ -1,0 +1,14 @@
+.user-profile-layout {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 275px auto;
+  gap: 28px;
+  padding-top: 75px;
+
+  .user-profile-content {
+    width: 1088px;
+    margin-inline: auto;
+    padding: 30px 50px 30px 28px;
+    box-sizing: content-box;
+  }
+}

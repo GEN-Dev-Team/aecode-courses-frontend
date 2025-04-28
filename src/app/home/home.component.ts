@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
   textItems: string[] = [
     'Modelamiento Paramétrico',
     'Inteligencia Artificial',
+    'Automatización',
     'Diseño Generativo',
     'Programación con Python',
   ];

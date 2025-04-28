@@ -1,0 +1,50 @@
+.user-presentation {
+  color: #eef3f8;
+  text-align: center;
+
+  .user-img-container {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #4a3ac1;
+    border: 1px solid currentColor;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: auto;
+    position: relative;
+
+    span {
+      font-family: "ruberoid-semibold";
+      font-size: 40px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .camera-icon-container {
+      color: #4a3ac1;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: #eef3f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  h1 {
+    font-family: "ruberoid-semibold";
+    font-size: 18px;
+  }
+}

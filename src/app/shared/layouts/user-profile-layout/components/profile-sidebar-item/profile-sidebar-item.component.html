@@ -1,0 +1,26 @@
+<div
+  class="sidebar-item-container"
+  [class.sidebar-item-selected]="itemSelected === index"
+>
+  @switch (index) { @case (0) {
+  <app-profile-icon class="profile-icon" />
+
+  } @case (1) {
+  <app-edit-inf-icon />
+
+  } @case (2) {
+  <app-course-session-icon />
+
+  } @case (3) {
+  <app-star-icon />
+
+  } @case (4) {
+  <app-settings-icon />
+
+  } @case (5) {
+  <app-logout-profile-icon />
+
+  } }
+
+  <span>{{ item.name }}</span>
+</div>

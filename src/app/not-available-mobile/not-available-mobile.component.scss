@@ -1,0 +1,46 @@
+main {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  padding-top: 50px;
+  padding-inline: calc(30 / 375) * 100vw;
+  font-size: 16px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  h1 {
+    font-family: "ruberoid-bold";
+    font-size: 26px;
+    margin: 20px 0 0 0;
+    color: var(--purple-5);
+  }
+
+  p {
+    font-family: "plusjakartasans-light";
+    margin-bottom: 0;
+    line-height: 24px;
+  }
+
+  a {
+    font-family: "ruberoid-medium";
+    margin-block: 60px 20px;
+    border: none;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 14px 40px;
+    background-color: var(--purple-3);
+    color: white;
+    flex-wrap: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    text-decoration: none;
+  }
+
+  span {
+    font-family: "plusjakartasans-light";
+    font-size: 14px;
+  }
+}

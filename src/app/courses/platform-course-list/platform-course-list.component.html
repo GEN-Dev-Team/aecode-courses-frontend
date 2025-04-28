@@ -4,7 +4,8 @@
   <div class="masive-course-list-containaer">
     @if (masiveCourseList$ | async; as masiveCourseList) {
     <div class="course-platform-list-content">
-      @for (masiveCourseItem of masiveCourseList; track masiveCourseItem) {
+      @for (masiveCourseItem of masiveCourseList.slice(0, 2); track
+      masiveCourseItem) {
       <app-course-item [course]="masiveCourseItem" [isMasiveCourse]="true" />
 
       }

@@ -1,0 +1,28 @@
+<app-user-profile-layout>
+  <app-user-profile />
+  <!-- <app-edit-profile/> -->
+  <!-- <app-user-courses/> -->
+</app-user-profile-layout>
+
+<app-modal [isOpen]="showMessageModal" (isClosed)="showMessageModal = $event">
+  @if (showChangePasswordError) {
+  <app-message
+    title="¡Oh no, un error!"
+    message="Las contraseñas no coinciden"
+    (isClosed)="showMessageModal = $event"
+  />
+  }@else { @if(dataUpdated){
+  <app-message
+    title="¡Felicidades!"
+    message="Tus datos fueron actualizados correctamente"
+    (isClosed)="showMessageModal = $event"
+    (isClosed)="dataUpdated = $event"
+  />
+  } @else {
+  <app-message
+    title="¡Felicidades!"
+    message="Tu contraseña fue actualizada correctamente"
+    (isClosed)="showMessageModal = $event"
+  />
+  } }
+</app-modal>
