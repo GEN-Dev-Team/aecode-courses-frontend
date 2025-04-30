@@ -1,13 +1,10 @@
-import { provideRouter, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { CourseDetailComponent } from './courses/course-detail/course-detail.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { ProfileMainViewComponent } from './user-profile/profile-main-view.component';
 import { CoursesComponent } from './courses/courses.component';
-import { CourseLandingDetailComponent } from './courses/course-landing-detail/course-landing-detail.component';
-import { MasiveCourseDetailComponent } from './courses/masive-course-detail/masive-course-detail.component';
+import { CourseLandingDetailComponent } from './courses/pages/course-landing-detail/course-landing-detail.component';
 import { adminAuthGuard } from './core/guards/admin-auth.guard';
-import { CommunityComponent } from './community/community.component';
 import { InProgressComponent } from './in-progress/in-progress.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -15,6 +12,7 @@ import { LiveComponent } from './live/live.component';
 import { AecodeGptComponent } from './aecode-gpt/aecode-gpt.component';
 import { NotAvailableMobileComponent } from './not-available-mobile/not-available-mobile.component';
 import { mobileAvailabilityGuard } from './core/guards/mobile-availability.guard';
+import { PurchasedProgramDetailsComponent } from './courses/pages/purchased-program-details/purchased-program-details.component';
 
 export const routes: Routes = [
   {
@@ -45,12 +43,7 @@ export const routes: Routes = [
   {
     path: 'training/e-learning/:courseId',
     title: 'AECODE COURSES',
-    component: MasiveCourseDetailComponent,
-  },
-  {
-    path: 'training/e-learning/:courseId/module/:moduleId',
-    title: 'AECODE COURSES',
-    component: CourseDetailComponent,
+    component: PurchasedProgramDetailsComponent,
   },
   {
     path: 'profile/:id',

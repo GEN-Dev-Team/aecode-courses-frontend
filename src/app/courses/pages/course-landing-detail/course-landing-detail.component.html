@@ -1,0 +1,177 @@
+<app-course-overlay>
+  @if (courseData()) {
+  <main
+    class="course-landing-detail-container {{
+      themeService.getMode() | async
+    }}-course-landing-detail-container"
+  >
+    <h1 class="program-title">
+      {{ courseData().programTitle }}
+    </h1>
+
+    <div class="course-landing-presentation">
+      <div class="program-modules-container">
+        @for (moduleButton of moduleButtons; track moduleButton) {
+        <button
+          class="module-item"
+          [class.module-selected]="courseData().module === moduleButton.name"
+          (click)="
+            goToCourseModule(moduleButton.name, courseData().programTitle)
+          "
+        >
+          {{ moduleButton.name }}
+        </button>
+
+        }
+      </div>
+
+      <div class="course-landing-presentation-box">
+        <div class="course-landing-detailes">
+          <h2 class="course-landing-title">{{ courseData().title }}</h2>
+
+          <p class="course-description">
+            {{ courseData().description }}
+          </p>
+
+          <div class="course-dates-container">
+            <div class="date-container">
+              <h4 class="date-title">FECHA DE INICIO</h4>
+              <div class="date-content">
+                {{ courseData().startDate | dateFormat : false }}
+              </div>
+            </div>
+
+            <div class="date-container">
+              <h4 class="date-title">HORARIOS</h4>
+
+              <div class="date-content">
+                @for (schedule of courseData().schedules; track schedule) {
+                <p>{{ schedule }}</p>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="video-container">
+          <img
+            (click)="showCourseVideo()"
+            class="course-video"
+            src="{{ courseData().principalimage }}"
+            alt=""
+          />
+
+          <div
+            class="course-mode"
+            customCourseButton
+            [mode]="courseData().mode"
+            [isMasive]="false"
+            [courseId]="courseData().seccourseId"
+          >
+            <!-- @if(isMasiveCourse) {
+            <app-e-learning-icon />
+            E - LEARNING }@else {  -->
+            @switch (courseData().mode) { @case ('SINCRONO') {
+            <app-coming-soon-course-icon class="icon" />
+            PRÓXIMOS } @case ('EN_VIVO') {
+            <app-sync-course-icon class="icon" />
+            EN VIVO } @case ('ASINCRONO') {
+            <app-async-course-icon class="icon async-icon" />
+            ASINCRÓNICOS } }
+          </div>
+
+          <div class="buttons-video-container">
+            <a
+              class="access-button"
+              target="_blank"
+              href="{{ courseData().brochureUrl }}"
+              ><app-book-icon /> BROCHURE</a
+            ><a
+              class="access-button"
+              target="_blank"
+              href="{{ courseData().whatsappGroupLink }}"
+              >GRUPOS DE WHATSAPP</a
+            >
+          </div>
+
+          @if (url) {
+          <app-play-icon class="play-icon" />
+
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="course-landing-details-box">
+      <div class="row-1">
+        <div class="col-1">
+          <div class="plan-estudio-container">
+            <div class="section-title plan-title">
+              <h2>PLAN DE ESTUDIOS</h2>
+              <div class="plan-tags">
+                <div class="tag-item">
+                  <app-watch-icon class="watch-icon" />
+                  {{ courseHoursNumber() }} horas
+                </div>
+
+                <div class="tag-item">
+                  <app-unit-course-icon class="icon" />
+                  {{ courseUnitsNumber() }} unidades
+                </div>
+              </div>
+            </div>
+
+            <div class="units-list">
+              @for (studyplanItem of courseData().studyplans; track
+              studyplanItem) {
+              <app-course-landing-unit
+                [studyplanItem]="studyplanItem"
+                [studyOrderNumberSelected]="studyUnitIdSelected"
+                (emitUnitIdSelected)="studyUnitIdSelected = $event"
+              />
+              }
+            </div>
+          </div>
+
+          <div class="requirements-container">
+            <h2 class="section-title">REQUISITOS</h2>
+            <div class="requirements-content">
+              <ul class="requirements-list">
+                @for(requeriment of courseData().requirements; track
+                requeriment) {
+                <li>{{ requeriment }}</li>
+
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <app-course-invest [course]="courseData()" />
+      </div>
+
+      <app-course-extra-information
+        [courseAchievements]="courseData().achievement"
+        [courseBenefits]="courseData().benefits"
+        [courseFaqs]="courseData().freqquests"
+        [toolList]="courseData().tools"
+      />
+    </div>
+  </main>
+
+  <!-- <app-modal [isOpen]="showIntroVideo" (isClosed)="showIntroVideo = $event">
+    <iframe
+      [src]="courseData().videoUrl"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      class="intro-video"
+    ></iframe>
+  </app-modal> -->
+
+  } @else {
+  <div class="loader-view">
+    <app-loader />
+  </div>
+  }
+</app-course-overlay>

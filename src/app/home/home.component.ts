@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SendIconComponent } from '../shared/icons/send-icon/send-icon.component';
 import { ModalComponent } from '../shared/components/modal/modal.component';
-import { CourseListComponent } from '../courses/course-list/course-list.component';
+import { CourseListComponent } from '../courses/components/course-list/course-list.component';
 import { BrowserService } from '../core/services/browser.service';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { ZoomInDirective } from '../shared/directives/animations/zoom-in.directive';
