@@ -13,6 +13,7 @@ import { AecodeGptComponent } from './aecode-gpt/aecode-gpt.component';
 import { NotAvailableMobileComponent } from './not-available-mobile/not-available-mobile.component';
 import { mobileAvailabilityGuard } from './core/guards/mobile-availability.guard';
 import { PurchasedProgramDetailsComponent } from './courses/pages/purchased-program-details/purchased-program-details.component';
+import { CommunityInProgressComponent } from './community-in-progress/community-in-progress.component';
 
 export const routes: Routes = [
   {
@@ -59,10 +60,8 @@ export const routes: Routes = [
   },
   {
     path: 'community',
-    // title: 'AECODE COMMUNITY',
-    // component: CommunityComponent,
-    title: 'IN PROGRESS',
-    component: LiveComponent,
+    title: 'AECODE COMMUNITY',
+    component: CommunityInProgressComponent,
     canActivate: [mobileAvailabilityGuard],
   },
   {
@@ -76,6 +75,11 @@ export const routes: Routes = [
     title: 'IN PROGRESS',
     component: LiveComponent,
     canActivate: [mobileAvailabilityGuard],
+  },
+  {
+    path: 'in-progress',
+    title: 'IN PROGRESS',
+    component: CommunityInProgressComponent,
   },
   {
     path: 'not-found',

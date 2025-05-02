@@ -1,0 +1,76 @@
+<div class="in-progress-general-container">
+  <div class="in-progress-container">
+    <img
+      class="in-progress-tool-img"
+      src="/assets/images/in-progress/tool-kit.webp"
+      alt=""
+    />
+
+    <div>
+      <h1 class="status-code">Sitio en construcción</h1>
+      <h2 class="in-progress-title">
+        Estamos trabajando para mejorar tu experiencia
+      </h2>
+    </div>
+
+    <div>
+      <div class="loader-container">
+        <div class="loading-progress"></div>
+      </div>
+      <p class="in-progress-description">
+        Volveremos pronto con algo increible.
+      </p>
+    </div>
+
+    <h2 class="join-us-title">¿Quieres formar parte de AECODE?</h2>
+
+    <div class="join-us-container">
+      <article>
+        <p>Únete como</p>
+        <h3>Colaborador</h3>
+        <p>
+          Si eres profesional podrás compartir tu experiencia con toda la
+          comunidad de tecnología en el sector AEC
+        </p>
+      </article>
+      <article>
+        <p>Forma parte de la red de</p>
+        <h3>Embajadores</h3>
+        <p>
+          Desde estudiante universitario puedes representar a AECODE y aprender
+          de expertos en liderazgo y tecnología
+        </p>
+      </article>
+      <article>
+        <p>Conviertete en</p>
+        <h3>Partner</h3>
+        <p>
+          Visibiliza tu marca y accede a training in house de la mano con los
+          expertos de la comunidad
+        </p>
+      </article>
+    </div>
+
+    <a href="{{ whatsappMessage }}" target="_blank" class="in-progress-button"
+      >ÚNETE AQUÍ</a
+    >
+
+    <div class="in-progress-img-container">
+      <div class="in-progress-img-content">
+        <img
+          class="in-progress-img"
+          src="/assets/images/in-progress/aecodito-waiting.gif"
+          alt=""
+        />
+
+        <div class="circle"></div>
+      </div>
+    </div>
+
+    <button (click)="goBack()" class="back-button">
+      <app-caret-left-icon /> Volver
+    </button>
+  </div>
+
+  <app-home-footer />
+</div>
