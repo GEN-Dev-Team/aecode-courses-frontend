@@ -1,16 +1,18 @@
-<div class="chat-input">
-  <div class="ia-icon-container">
-    <app-ia-icon class="ia-icon" />
-    <app-gpt-icon class="gpt-icon" />
+<div class="input-container">
+  <div class="chat-input">
+    <div class="ia-icon-container">
+      <app-ia-icon class="ia-icon" />
+      <app-gpt-icon class="gpt-icon" />
+    </div>
+
+    <input
+      [formControl]="userInput"
+      placeholder="¿Qué buscamos?"
+      (keydown.enter)="sendUserMessage()"
+    />
+
+    <button (click)="sendUserMessage()">
+      <app-send-chat-icon />
+    </button>
   </div>
-
-  <input
-    [formControl]="userInput"
-    placeholder="¿Qué buscamos?"
-    (keydown.enter)="sendUserMessage()"
-  />
-
-  <button (click)="sendUserMessage()">
-    <app-send-chat-icon />
-  </button>
 </div>

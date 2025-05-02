@@ -1,61 +1,68 @@
-.chat-input {
-  width: 100%;
-  max-width: 1104px;
-  padding: 16px 20px;
-  border-radius: 40px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #0e1121;
-  backdrop-filter: blur(14.100000381469727px);
-  align-self: flex-end;
-  margin-inline: auto;
+.input-container {
+  padding-inline: calc(168 / 1440) * 100%;
 
-  .ia-icon-container {
-    position: relative;
-    width: 50px;
-    height: 50px;
-
-    .ia-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    .gpt-icon {
-      position: absolute;
-      top: 45%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-
-  input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    color: #fff;
-    font-size: clamp(0.875rem, 0.787rem + 0.3756vw, 1.125rem);
-    font-family: "plusjakartasans-light";
-    outline: none;
-  }
-
-  button {
-    padding: 8px;
-    border-radius: 8px;
+  .chat-input {
+    max-width: 1104px;
+    padding: 16px 20px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: #4a3ac1;
-    backdrop-filter: blur(12px);
-    cursor: pointer;
+    background: #0e1121;
+    backdrop-filter: blur(14.100000381469727px);
+    align-self: flex-end;
+    margin-inline: auto;
+
+    .ia-icon-container {
+      position: relative;
+      width: 50px;
+      height: 50px;
+
+      .ia-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .gpt-icon {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      color: #fff;
+      font-size: clamp(0.875rem, 0.787rem + 0.3756vw, 1.125rem);
+      font-family: "plusjakartasans-light";
+      outline: none;
+    }
+
+    button {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: #4a3ac1;
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+    }
   }
 }
 
 @media screen and (max-width: 768px) {
-  .chat-input {
-    padding: 8px 12px;
-    gap: 10px;
+  .input-container {
+    padding-inline: calc(20 / 375) * 100%;
+
+    .chat-input {
+      padding: 8px 12px;
+      gap: 10px;
+    }
   }
 }
