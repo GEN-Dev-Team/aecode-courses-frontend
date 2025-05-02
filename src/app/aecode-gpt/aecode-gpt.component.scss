@@ -1,20 +1,24 @@
 .chat-container {
   width: 100%;
   height: calc(100vh);
-  max-width: 1104px;
-  padding-block: 110px 0px;
-  margin: 0 auto;
+  padding-block: 110px 50px;
   display: flex;
   flex-flow: column nowrap;
   position: relative;
 
   .messages-container {
-    max-height: 75vh;
+    flex: 1;
     overflow-y: auto;
-    padding-inline-end: 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
+    padding-inline: calc(168 / 1440) * 100%;
+    padding-bottom: 40px;
+
+    .content {
+      max-width: 1104px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      gap: calc(40 / 768 * 100vh);
+    }
 
     &::-webkit-scrollbar {
       width: 15px;
@@ -55,6 +59,13 @@
     }
   }
 
+  @media screen and (max-width: 768px) {
+    .messages-container {
+      padding-inline: calc(25 / 375) * 100%;
+      padding-bottom: 20px;
+    }
+  }
+
   .container-without-messages {
     display: grid;
     place-items: center;
@@ -66,7 +77,8 @@
     bottom: 10%;
     left: 0;
     width: auto;
-    height: 50%;
+    height: 60%;
+    z-index: -1;
   }
 
   .edifi-bg {
@@ -75,5 +87,30 @@
     right: 0;
     width: auto;
     height: 65%;
+    z-index: -1;
+  }
+
+  @media screen and (max-width: 768px) {
+    .bridge-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: 60%;
+    }
+
+    .edifi-bg {
+      position: absolute;
+      bottom: 10%;
+      right: 0;
+      width: auto;
+      height: 65%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chat-container {
+    padding-block: 70px 25px;
   }
 }

@@ -74,19 +74,19 @@ export class CourseItemComponent {
   }
 
   showCourseDetails() {
-    if (this.isMasiveCourse) {
+    // if (this.isMasiveCourse) {
+    // this.browserService.navigateAndScroll(
+    // `training/e-learning/${this.course.courseId}`,
+    // 0
+    // );
+    // } else {
+    {
       this.browserService.navigateAndScroll(
-        `training/e-learning/${this.course.courseId}`,
+        `training/module/${this.course.seccourseId}`,
         0
       );
-    } else {
-      {
-        this.browserService.navigateAndScroll(
-          `training/module/${this.course.seccourseId}`,
-          0
-        );
-      }
     }
+    // }
   }
 
   downloadKit(event: Event) {

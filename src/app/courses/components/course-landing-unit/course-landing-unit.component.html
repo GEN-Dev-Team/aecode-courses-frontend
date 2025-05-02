@@ -2,7 +2,11 @@
   class="unit-item {{ themeService.getMode() | async }}-unit-item"
   (click)="sendUnitIdSelected(studyplanItem.orderNumber)"
 >
-  <span>U{{ studyplanItem.orderNumber }}: {{ studyplanItem.unit }}</span>
+  <span
+    >@if(studyplanItem.sessions.length < 2){M}@else{U}{{
+      studyplanItem.orderNumber
+    }}: {{ studyplanItem.unit }}</span
+  >
 
   <div class="unit-hours-container">
     <app-stop-watch-icon class="watch-icon" />
@@ -19,7 +23,10 @@
 </div>
 
 @if (studyOrderNumberSelected === studyplanItem.orderNumber) {
-<ul class="plan-list {{ themeService.getMode() | async }}-plan-list">
+<ul
+  class="plan-list {{ themeService.getMode() | async }}-plan-list"
+  [class.only-one-session]="studyplanItem.sessions.length < 2"
+>
   @for (sessionItem of studyplanItem.sessions; track sessionItem) {
   <li>{{ sessionItem }}</li>
   }

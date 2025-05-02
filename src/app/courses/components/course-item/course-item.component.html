@@ -9,12 +9,12 @@
     class="course-item-mode"
     customCourseButton
     [mode]="course.mode"
-    [isMasive]="isMasiveCourse"
+    [isMasive]="false"
     [courseId]="course.courseId"
   >
     @if(isMasiveCourse) {
-    <app-e-learning-icon class="masive-icon" />
-    E - LEARNING }@else { @switch (course.mode) { @case ('SINCRONO') {
+    <app-sync-course-icon class="icon" />
+    EN VIVO}@else { @switch (course.mode) { @case ('SINCRONO') {
     <app-coming-soon-course-icon class="icon" />
     PRÓXIMOS } @case ('EN_VIVO') {
     <app-sync-course-icon class="icon" />
@@ -31,12 +31,12 @@
   }
 
   <div class="course-presentation-container">
-    @if(isMasiveCourse) {
-    <img class="course-img" src="{{ course.coverimage }}" alt="" />
+    <!-- @if(isMasiveCourse) { -->
+    <!-- <img class="course-img" src="{{ course.coverimage }}" alt="" /> -->
 
-    } @else {
+    <!-- } @else { -->
     <img class="course-img" src="{{ course.principalimage }}" alt="" />
-    }
+    <!-- } -->
 
     <div class="course-tags">
       @if (!isMasiveCourse) {
@@ -99,7 +99,7 @@
         >
           @if(isMasiveCourse){
           <app-download-kit-icon />
-          Descargar Kit gratuito } @else {
+          Descargar brochure } @else {
           <app-access-to-course-icon class="shop-cart-icon" />
 
           Acceder al curso }
@@ -113,11 +113,12 @@
           [courseId]="course.courseId"
           (click)="goToPay($event)"
         >
-          @if (isMasiveCourse) {
-          <app-whatsapp-icon class="wssp-icon" /> Solicitar información } @else
-          {
+          <!-- @if (isMasiveCourse) { -->
+          <!-- <app-whatsapp-icon class="wssp-icon" /> Solicitar información } @else -->
+          <!-- { -->
 
-          <app-shopping-cart-icon class="shop-cart-icon" /> Añadir al carrito}
+          <app-shopping-cart-icon class="shop-cart-icon" /> Añadir al carrito
+          <!-- } -->
           <span>
             @if(course.isOnSale) { ${{ discountPrice() }} } @else if(
             !isMasiveCourse){ ${{ course.priceRegular | number : "1.0-0" }}

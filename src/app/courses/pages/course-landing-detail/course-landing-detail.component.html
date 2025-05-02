@@ -6,12 +6,21 @@
     }}-course-landing-detail-container"
   >
     <h1 class="program-title">
+      <!-- cambiar luego -->
+      @if(courseData().programTitle) {
       {{ courseData().programTitle }}
+
+      } @else {
+      {{ courseData().title }}
+
+      }
     </h1>
 
     <div class="course-landing-presentation">
       <div class="program-modules-container">
-        @for (moduleButton of moduleButtons; track moduleButton) {
+        <!-- cambiar luego -->
+        @if(courseData().programTitle) { @for (moduleButton of moduleButtons;
+        track moduleButton) {
         <button
           class="module-item"
           [class.module-selected]="courseData().module === moduleButton.name"
@@ -22,7 +31,7 @@
           {{ moduleButton.name }}
         </button>
 
-        }
+        } }
       </div>
 
       <div class="course-landing-presentation-box">

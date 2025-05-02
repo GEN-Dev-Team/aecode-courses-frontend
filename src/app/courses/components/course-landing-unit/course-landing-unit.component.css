@@ -57,6 +57,11 @@
   }
 }
 
+.only-one-session {
+  list-style: none;
+  padding: 13px 25px;
+}
+
 .dark-unit-item {
   color: var(--gray-3);
   border-radius: 6px;

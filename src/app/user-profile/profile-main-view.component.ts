@@ -9,6 +9,7 @@ import { MessageComponent } from '../shared/components/message/message.component
 import { AuthService } from '../core/services/auth.service';
 import { UserProfileLayoutComponent } from '../shared/layouts/user-profile-layout/user-profile-layout.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
+import { InProgressComponent } from '../in-progress/in-progress.component';
 
 @Component({
   selector: 'app-profile-main-view',
@@ -19,6 +20,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
     MessageComponent,
     UserProfileLayoutComponent,
     UserProfileComponent,
+    InProgressComponent,
   ],
   templateUrl: './profile-main-view.component.html',
   styleUrl: './profile-main-view.component.css',

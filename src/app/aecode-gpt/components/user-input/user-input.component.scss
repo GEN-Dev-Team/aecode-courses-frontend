@@ -11,8 +11,7 @@
   background: #0e1121;
   backdrop-filter: blur(14.100000381469727px);
   align-self: flex-end;
-  position: absolute;
-  bottom: 20px;
+  margin-inline: auto;
 
   .ia-icon-container {
     position: relative;
@@ -39,7 +38,7 @@
     border: none;
     background: transparent;
     color: #fff;
-    font-size: 18px;
+    font-size: clamp(0.875rem, 0.787rem + 0.3756vw, 1.125rem);
     font-family: "plusjakartasans-light";
     outline: none;
   }
@@ -51,5 +50,12 @@
     background: #4a3ac1;
     backdrop-filter: blur(12px);
     cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .chat-input {
+    padding: 8px 12px;
+    gap: 10px;
   }
 }

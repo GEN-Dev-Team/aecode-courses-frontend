@@ -1,10 +1,9 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CourseItemComponent } from '../course-item/course-item.component';
-import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { CourseService } from '../../services/course.service';
-import { ICourse } from '../../interface/Course';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
+import { SecondaryCourseService } from '../../services/secondary-course.service';
 
 @Component({
   selector: 'app-platform-course-list',
@@ -17,6 +16,18 @@ export class PlatformCourseListComponent {
   showFreeContentForm: boolean = false;
 
   courseService: CourseService = inject(CourseService);
+  secondaryCourses: SecondaryCourseService = inject(SecondaryCourseService);
 
-  masiveCourseList$: Observable<ICourse[]> = this.courseService.getCourses();
+  // masiveCourseList$: Observable<ICourse[]> = this.courseService.getCourses();
+
+  courseList = signal<any>([]);
+
+  ngOnInit(): void {
+    this.secondaryCourses.getSecondaryCourseById(100).subscribe((data) => {
+      this.courseList().push(data);
+      this.secondaryCourses.getSecondaryCourseById(101).subscribe((data) => {
+        this.courseList().push(data);
+      });
+    });
+  }
 }

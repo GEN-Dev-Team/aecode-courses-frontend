@@ -8,7 +8,7 @@
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(14.100000381469727px);
+  backdrop-filter: blur(30px);
   margin: 0;
 
   .user-profile-img-container {
@@ -43,11 +43,18 @@
 
   p {
     font-family: "plusjakartasans-light";
-    font-size: 18px;
+    font-size: clamp(0.875rem, 0.787rem + 0.3756vw, 1.125rem);
     margin: 0;
   }
 }
 
 .align-to-end {
   margin-left: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .message-container {
+    padding: 10px 15px;
+    line-height: 24px;
+  }
 }
