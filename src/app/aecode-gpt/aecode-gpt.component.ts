@@ -3,6 +3,7 @@ import { OpenaiService } from './openai.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { chatMessageComponent } from './components/message/message.component';
 import { UserInputComponent } from './components/user-input/user-input.component';
+import { InProgressComponent } from '../in-progress/in-progress.component';
 
 interface IMessage {
   userMessage: string;
@@ -12,7 +13,12 @@ interface IMessage {
 @Component({
   selector: 'app-aecode-gpt',
   standalone: true,
-  imports: [ReactiveFormsModule, chatMessageComponent, UserInputComponent],
+  imports: [
+    ReactiveFormsModule,
+    chatMessageComponent,
+    UserInputComponent,
+    InProgressComponent,
+  ],
   templateUrl: './aecode-gpt.component.html',
   styleUrl: './aecode-gpt.component.scss',
 })
