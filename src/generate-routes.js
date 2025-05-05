@@ -29,7 +29,7 @@ async function getMasiveCourseIds() {
 
 async function generateRoutes() {
   const secCourseIds = await getSecondaryCourseIds();
-  const masiveCourseIds = await getMasiveCourseIds();
+  // const masiveCourseIds = await getMasiveCourseIds();
   const routes = [];
 
   routes.push("/training");
@@ -41,9 +41,9 @@ async function generateRoutes() {
     routes.push(`/training/module/${id}`);
   });
 
-  masiveCourseIds.forEach((id) => {
-    routes.push(`/training/e-learning/${id}`);
-  });
+  // masiveCourseIds.forEach((id) => {
+  //   routes.push(`/training/e-learning/${id}`);
+  // });
 
   const routesFile = path.join(__dirname, "routes.txt");
   fs.writeFileSync(routesFile, routes.join("\n"));
