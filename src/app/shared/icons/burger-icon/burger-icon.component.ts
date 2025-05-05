@@ -28,6 +28,10 @@ import { Component } from '@angular/core';
       display: flex;
       align-items: center;
       justify-content: center;
+<<<<<<< HEAD
+=======
+      border:none
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
     }
   `,
 })

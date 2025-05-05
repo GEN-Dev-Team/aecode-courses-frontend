@@ -1,0 +1,24 @@
+<label class="course-session" (click)="selectUnitVideo(courseSession.videoUrl)">
+  @if (this.youtubeRegex.test(courseSession.videoUrl) &&
+  this.moduleSelected.orderNumber == 0 || userHasAccessToModule) {
+  <div
+    class="course-session-checkbox"
+    [ngClass]="{ checked: selectedVideoIsCompleted }"
+  >
+    <app-input-check-icon
+      class="course-session-icon"
+      [hidden]="!selectedVideoIsCompleted"
+    />
+  </div>
+  } @else {
+  <app-padlock-icon />
+  }
+
+  <span class="course-session-title">
+    {{ courseSession.title }}
+  </span>
+
+  <span class="course-session-duration">
+    <span class="duration-separator">•</span> {{ videoDuration }} min</span
+  >
+</label>

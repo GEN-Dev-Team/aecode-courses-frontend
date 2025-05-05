@@ -1,0 +1,31 @@
+.paginator-item {
+  display: flex;
+  width: 36px;
+  height: 36px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  color: #374254;
+  font-family: "plusjakartasans-medium";
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.item-active {
+  background: var(--MORADO, #381187);
+  color: white;
+  box-shadow: 0px 0px 6.6px 0px rgba(120, 55, 221, 0.73);
+}
+
+.dark-item-active {
+  background: var(--dark-fondo, #4a3ac1);
+}
+
+@media screen and (max-width: 768px) {
+  .paginator-item {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+}

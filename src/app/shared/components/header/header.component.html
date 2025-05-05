@@ -13,11 +13,16 @@
         }
       </a>
 
+<<<<<<< HEAD
       <ul class="header-list" [class.show-header-list]="showMobileMenu">
+=======
+      <ul class="header-list">
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
         @for(headerItem of headerItemsList; track headerItem) {
         <app-header-item
           [headerItem]="headerItem"
           [headerItemSelected]="headerItemSelected"
+<<<<<<< HEAD
           (emitHeaderItemSelected)="setHeaderItemSelected($event)"
         />
 
@@ -36,6 +41,19 @@
         />
 
         <app-notification-icon class="notification-icon" />
+=======
+          (emitHeaderItemSelected)="headerItemSelected = $event"
+        />
+        }
+      </ul>
+
+      @if (isUserLoggedIn) {
+
+      <div class="user-logged-buttons">
+        <app-notification-icon />
+
+        <div class="separator"></div>
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 
         <app-user-profile-button
           [isHomeView]="false"
@@ -43,10 +61,14 @@
         />
       </div>
 
+<<<<<<< HEAD
       @if (isMobile) {
       <app-burger-icon class="menu-button" (click)="toggleMenu()" />
 
       } } @else {
+=======
+      } @else {
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
       <button
         class="header-button"
         ZoomIn
@@ -57,7 +79,10 @@
       >
         Acceder
       </button>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
       }
     </div>
   </div>

@@ -1,0 +1,221 @@
+<div class="profile-container">
+  @if (userData$ | async; as userData) {
+  <div class="bento-box">
+    <form class="row-1" [formGroup]="userDataForm">
+      <div class="profile-img">
+        @if(userDetails$ | async; as userDetails) {
+        <img
+          [src]="profileImgUrl"
+          alt="{{ userData.fullname }} profile image"
+        />
+
+        }
+        <label for="profilepicture" class="change-prof-img-button">
+          <app-camera-icon class="camera-icon" />
+        </label>
+        <input
+          [disabled]="!editUserData"
+          hidden
+          id="profilepicture"
+          type="file"
+          accept="image/*"
+          (change)="showProfileImg($event)"
+        />
+      </div>
+
+      <div class="profile-data">
+        <h1>Tus datos</h1>
+
+        <div class="data-container">
+          <div class="data-item">
+            <label for="fullname">Nombres</label>
+            <input
+              [readonly]="!editUserData"
+              formControlName="fullname"
+              type="text"
+              id="fullname"
+            />
+            @if(editUserData) {
+            <app-edit-icon class="edit-icon" />
+            }
+          </div>
+          <div class="data-item">
+            <label for="email">Correo</label>
+            <input
+              [readonly]="!editUserData"
+              formControlName="email"
+              type="text"
+              id="email"
+            />
+            @if(editUserData) {
+            <app-edit-icon class="edit-icon" />
+            }
+          </div>
+          <div class="data-item">
+            <label for="phone">Teléfono</label>
+            <input
+              [readonly]="!editUserData"
+              type="text"
+              id="phone"
+              formControlName="phoneNumber"
+              placeholder="+51 000 000 000"
+            />
+            @if(editUserData) {
+            <app-edit-icon class="edit-icon" />
+            }
+          </div>
+          <div class="data-item">
+            <label for="genre">Género</label>
+
+            <div class="radio-container">
+              <label>
+                <input
+                  [disabled]="!editUserData"
+                  formControlName="gender"
+                  name="gender"
+                  type="radio"
+                  id="masculino"
+                  value="masculino"
+                />
+                <label for="masculino">Masculino</label>
+              </label>
+              <label>
+                <input
+                  [disabled]="!editUserData"
+                  formControlName="gender"
+                  name="gender"
+                  type="radio"
+                  id="femenino"
+                  value="femenino"
+                />
+                <label for="femenino">Femenino</label>
+              </label>
+            </div>
+          </div>
+          <div class="data-item">
+            <label for="dob">Cumpleaños</label>
+            <input
+              [readonly]="!editUserData"
+              formControlName="birthdate"
+              type="date"
+              id="dob"
+              placeholder="dd/mm/aaaa"
+            />
+          </div>
+          <div class="data-item">
+            <label>Experiencia</label>
+
+            <div class="radio-container">
+              <label>
+                <input
+                  [disabled]="!editUserData"
+                  formControlName="experience"
+                  name="experience"
+                  type="radio"
+                  id="yes"
+                  value="yes"
+                />
+                <label for="yes">Sí</label>
+              </label>
+              <label>
+                <input
+                  [disabled]="!editUserData"
+                  formControlName="experience"
+                  name="experience"
+                  type="radio"
+                  id="no"
+                  value="no"
+                />
+                <label for="no">No</label>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      @if(editUserData) {
+      <button class="edit-button" (click)="sendUserData()">GUARDAR</button>
+
+      } @else {
+
+      <button class="edit-button" (click)="activateEditUserData()">
+        EDITAR
+      </button>
+      }
+    </form>
+
+    <form [formGroup]="userChangePasswordForm" class="row-2">
+      <div class="box-1">
+        <h1>Cambiar contraseña</h1>
+
+        @if (changePassword) {
+        <div class="data-item">
+          <label> Nueva contraseña </label>
+          <input
+            formControlName="newPassword"
+            name="newPassword"
+            type="text"
+            placeholder="*********"
+            id="passwordHash"
+          />
+        </div>
+        } @else {
+        <div class="data-item">
+          <label> Contraseña </label>
+          <input
+            [readonly]="!changePassword"
+            formControlName="passwordHash"
+            name="passwordHash"
+            type="text"
+            placeholder="*********"
+            id="passwordHash"
+          />
+        </div>
+        } @if(changePassword) {
+        <div class="data-item">
+          <label>Confirmar Contraseña</label>
+          <input
+            formControlName="confirmPassword"
+            name="confirmPassword"
+            type="text"
+            placeholder="*********"
+            id="confirmPasswordHash"
+          />
+        </div>
+        } @if(changePassword) {
+        <button (click)="sendChangePasswordForm()">ACTUALIZAR</button> } @else {
+        <button (click)="activateChangePassword()">CAMBIAR CONTRASEÑA</button> }
+      </div>
+
+      <div class="box-2">
+        <h1>¡Pronto podrás ver tus cursos aqui!</h1>
+      </div>
+    </form>
+  </div>
+  } @else {
+  <app-loader />
+  }
+</div>
+
+<app-modal [isOpen]="showMessageModal" (isClosed)="showMessageModal = $event">
+  @if (showChangePasswordError) {
+  <app-message
+    title="¡Oh no, un error!"
+    message="Las contraseñas no coinciden"
+    (isClosed)="showMessageModal = $event"
+  />
+  }@else { @if(dataUpdated){
+  <app-message
+    title="¡Felicidades!"
+    message="Tus datos fueron actualizados correctamente"
+    (isClosed)="showMessageModal = $event"
+    (isClosed)="dataUpdated = $event"
+  />
+  } @else {
+  <app-message
+    title="¡Felicidades!"
+    message="Tu contraseña fue actualizada correctamente"
+    (isClosed)="showMessageModal = $event"
+  />
+  } }
+</app-modal>

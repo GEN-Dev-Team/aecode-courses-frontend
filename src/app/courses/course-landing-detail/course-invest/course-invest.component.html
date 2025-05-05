@@ -1,0 +1,57 @@
+<div
+  class="invest-container {{ themeService.getMode() | async }}-invest-container"
+>
+  <h3 class="invest-title">INVERSION</h3>
+
+  <div class="invest-content">
+    <div class="investDetail">
+      <div class="invest-item">
+        <span> Precio regular: </span>
+        <span> {{ course.priceRegular }}$ </span>
+      </div>
+
+      <div class="invest-item">
+        <span> Descuento: </span>
+        @if(course.isOnSale && course.discountPercentage > 0) {
+        {{
+          (course.discountPercentage * course.priceRegular) / 100
+            | number : "1.0-0"
+        }}
+        } @else { 0 } $
+      </div>
+
+      <div class="invest-item">
+        <span> Total: </span>
+        @if(course.isOnSale && course.discountPercentage > 0){
+        {{
+          course.priceRegular * (1 - course.discountPercentage / 100)
+            | number : "1.0-0"
+        }}
+        } @else {
+        {{ course.priceRegular | number : "1.0-0" }}
+        } $
+      </div>
+    </div>
+
+    <button class="invest-button" (click)="goToPay()">
+      <app-shopping-cart-icon class="shop-cart-icon" /> Añadir al carrito
+    </button>
+
+    <span class="invest-question">¿BUSCAS ASESORIA PERSONALIZADA?</span>
+
+    <p class="invest-description">Para una guía exclusiva:</p>
+
+    <a
+      class="invest-whatsapp-button"
+      target="_blank"
+      href="https://api.whatsapp.com/send?phone=+51900121245&text=Quiero contactar con un asesor para mas información del modulo '{{
+        course.title
+      }}'."
+    >
+      Consultar con un asesor
+      <div class="whatsapp-button">
+        <img src="assets\images\whatsapp-icon.png" alt="" />
+      </div>
+    </a>
+  </div>
+</div>

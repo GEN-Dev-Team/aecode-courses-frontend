@@ -1,0 +1,10 @@
+<div
+  (click)="sendPageNumber()"
+  class="paginator-item"
+  [class.item-active]="pageNumber === pageSelected"
+  [class.dark-item-active]="
+    pageNumber === pageSelected && (themeService.getMode() | async) === 'dark'
+  "
+>
+  {{ pageNumber }}
+</div>

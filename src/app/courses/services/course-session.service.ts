@@ -2,7 +2,11 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { defaultSession, ISession } from '../interface/Session';
 import { HttpClient } from '@angular/common/http';
+<<<<<<< HEAD
 import { environment } from '../../../environments/environment';
+=======
+import { environment } from '../../../environment/environment';
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 import { defaultModule, IModule } from '../interface/Module';
 import { defaultCourse } from '../interface/Course';
 import { CourseService } from './course.service';

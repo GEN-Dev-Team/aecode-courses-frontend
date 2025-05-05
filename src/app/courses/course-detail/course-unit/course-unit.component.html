@@ -1,0 +1,25 @@
+<label for="{{ unit.unitId }}" class="course-item" (click)="onClick()">
+  @if ( this.moduleSelected.orderNumber == 0 || userHasAccessToModule) {
+  <div class="course-item-checkbox" [ngClass]="{ checked: false }">
+    <app-input-check-icon class="course-item-icon" />
+  </div>
+  } @else {
+  <app-padlock-icon />
+  }
+
+  <span>
+    {{ unit.title }}
+  </span>
+
+  @if (showSessions) {
+  <app-caret-up-icon class="unit-caret" />
+  } @else {
+  <app-caret-down-icon class="unit-caret" />
+  }
+</label>
+
+<ul class="course-item-sessions" [hidden]="!showSessions">
+  @for (session of unit.sessions; track session.sessionId) {
+  <app-course-session [courseSession]="session" [moduleId]="unit.moduleId" />
+  }
+</ul>

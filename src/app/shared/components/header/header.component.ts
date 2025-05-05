@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { Component, inject, signal } from '@angular/core';
+=======
+import { Component, inject } from '@angular/core';
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 import { LoginFormComponent } from '../../../home/login-form/login-form.component';
 import { NotificationIconComponent } from '../../icons/notification-icon/notification-icon.component';
 import { AuthService } from '../../../core/services/auth.service';
@@ -11,7 +15,10 @@ import { AecodeIconComponent } from '../../../home/icons/aecode-icon/aecode-icon
 import { HeaderItemComponent } from './header-item/header-item.component';
 import { HeaderService } from '../../../core/services/header.service';
 import { BrowserService } from '../../../core/services/browser.service';
+<<<<<<< HEAD
 import { BurgerIconComponent } from '../../icons/burger-icon/burger-icon.component';
+=======
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 
 export interface ICommunityHeaderItem {
   id: number;
@@ -31,7 +38,10 @@ export interface ICommunityHeaderItem {
     AsyncPipe,
     AecodeIconComponent,
     HeaderItemComponent,
+<<<<<<< HEAD
     BurgerIconComponent,
+=======
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -48,40 +58,59 @@ export class HeaderComponent {
   openLoginForm = this.headerService.showLogInAccess;
   showMobileMenu = false;
   openMobileMenu = false;
+<<<<<<< HEAD
   isMobile = this.browserService.isMobile();
+=======
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 
   headerItemsList: ICommunityHeaderItem[] = [
     {
       id: 1,
+<<<<<<< HEAD
       name: 'AI',
       route: '/aecode-chat',
       colorCode: '#7837DD',
     },
     {
       id: 2,
+=======
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
       name: 'Inicio',
       route: '/home',
       colorCode: '#7837DD',
     },
     {
+<<<<<<< HEAD
       id: 3,
+=======
+      id: 2,
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
       name: 'Comunidad',
       route: '/community',
       colorCode: '#4A3AC1',
     },
 
     {
+<<<<<<< HEAD
       id: 4,
+=======
+      id: 3,
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
       name: 'Training',
       route: '/training',
       colorCode: '#4A3AC1',
     },
     {
+<<<<<<< HEAD
       id: 5,
+=======
+      id: 4,
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
       name: 'Live',
       route: '/live',
       colorCode: '#3D813F',
     },
+<<<<<<< HEAD
   ];
 
   shopCartItem: ICommunityHeaderItem = {
@@ -92,6 +121,17 @@ export class HeaderComponent {
   };
 
   headerItemSelected: ICommunityHeaderItem = this.headerItemsList[1];
+=======
+    {
+      id: 5,
+      name: 'Shopping cart',
+      route: '/shopping-cart',
+      colorCode: '#4A3AC1',
+    },
+  ];
+
+  headerItemSelected: ICommunityHeaderItem = this.headerItemsList[0];
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 
   ngOnInit(): void {
     if (this.authService.hasToken()) {
@@ -107,16 +147,20 @@ export class HeaderComponent {
           this.headerItemSelected = item;
         }
       });
+<<<<<<< HEAD
 
       if (this.headerItemSelected.id === 2) {
         this.themeService.setMode('dark');
       }
+=======
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
     }
   }
 
   toggleMenu() {
     this.showMobileMenu = !this.showMobileMenu;
   }
+<<<<<<< HEAD
 
   setHeaderItemSelected(item: ICommunityHeaderItem) {
     this.headerItemSelected = item;
@@ -125,4 +169,6 @@ export class HeaderComponent {
       this.showMobileMenu = false;
     }
   }
+=======
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 }

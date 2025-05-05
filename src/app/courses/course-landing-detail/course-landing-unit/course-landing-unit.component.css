@@ -1,0 +1,123 @@
+.unit-item {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 6px 25px;
+  color: var(--Negro, #000);
+  font-family: "plusjakartasans-regular";
+  font-size: 16px;
+  border: 1px solid white;
+  background: #eef3f8;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.19);
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+  margin-top: 10px;
+  align-items: center;
+  user-select: none;
+
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    fill: var(--purple-2);
+    width: 15px;
+  }
+
+  .unit-hours-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .watch-icon {
+      width: 30px;
+      fill: var(--purple-2);
+    }
+
+    .unit-hours {
+      font-family: "plusjakartasans-semibold";
+      margin-inline: 11px 21px;
+      text-wrap: nowrap;
+    }
+  }
+}
+
+.plan-list {
+  margin: 10px 0 0 0;
+  padding: 13px 45px;
+  border-radius: 0px 0px 2px 2px;
+  border: 1px solid white;
+  background: #eef3f8;
+  position: relative;
+  z-index: 0;
+  user-select: none;
+
+  li {
+    margin-bottom: 4px;
+  }
+}
+
+.dark-unit-item {
+  color: var(--gray-3);
+  border-radius: 6px;
+  border: 1px solid #8c97dc;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.19);
+  background-color: transparent;
+
+  .icon {
+    fill: var(--gray-3);
+  }
+
+  .unit-hours-container {
+    .watch-icon {
+      fill: var(--gray-3);
+    }
+  }
+}
+
+.dark-plan-list {
+  background: transparent;
+  border-radius: 6px;
+  border: 1px solid #8c97dc;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.19);
+}
+
+@media screen and (max-width: 768px) {
+  .unit-item {
+    padding: 11px 10px;
+    font-size: 14px;
+    gap: 10px;
+
+    .icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      fill: var(--purple-2);
+      width: 13px;
+    }
+
+    .unit-hours-container {
+      align-self: flex-start;
+
+      .watch-icon {
+        width: 18px;
+      }
+
+      .unit-hours {
+        margin-inline: 7px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .plan-list {
+    margin: 10px 0 0 0;
+    padding: 13px 45px;
+    position: relative;
+    z-index: 0;
+
+    li {
+      margin-bottom: 4px;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+<div
+  class="paginator-container {{
+    themeService.getMode() | async
+  }}-paginator-container "
+>
+  <div class="paginator-items">
+    <app-angle-left-icon
+      (click)="emiteChangeNextPage(false)"
+      class="paginator-icon"
+    />
+
+    @for (item of itemsList; track $index) {
+    <app-course-paginator-item
+      [totalPages]="totalPages"
+      [pageNumber]="item"
+      [pageSelected]="pageSelected"
+      (changePage)="emiteChangePage($event)"
+    />
+    }
+
+    <app-angle-right-icon
+      (click)="emiteChangeNextPage(true)"
+      class="paginator-icon"
+    />
+  </div>
+</div>

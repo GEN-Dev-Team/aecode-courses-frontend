@@ -250,15 +250,27 @@
         border: 1px solid #f7e0f4;
         background: linear-gradient(5deg, #a770ef -25.64%, #7235f2 71.64%);
         padding: 4px;
+<<<<<<< HEAD
         padding-inline-start: 26px;
+=======
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 
         .sendbar-text {
           flex: 1;
           display: flex;
           flex-direction: row;
+<<<<<<< HEAD
           gap: 21px;
           align-items: center;
           color: white;
+=======
+          gap: 13px;
+          align-items: center;
+
+          & img {
+            margin-inline-start: 10px;
+          }
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 
           & input {
             width: clamp(200px, 100%, 475px);

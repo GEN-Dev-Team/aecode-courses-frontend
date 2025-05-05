@@ -1,5 +1,9 @@
 import { computed, inject, Injectable, signal } from '@angular/core';
+<<<<<<< HEAD
 import { environment } from '../../../environments/environment';
+=======
+import { environment } from '../../../environment/environment';
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 import { ISecondaryCourseSummary } from '../../courses/interface/secondary-course/Secondary-Course';
 import { BrowserService } from '../../core/services/browser.service';
 

@@ -1,0 +1,55 @@
+.paginator-container {
+  //   opacity: 0.2;
+  //   filter: blur(100px);
+  //   background: var(
+  //     --degrade-2,
+  //     linear-gradient(180deg, #33a3dc 0%, #7837dd 100%)
+  //   );
+  width: 100%;
+  padding-block: 30px;
+
+  .paginator-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    user-select: none;
+
+    .paginator-icon {
+      cursor: pointer;
+      color: rgba(103, 119, 144, 1);
+    }
+  }
+}
+
+/* DARK MODE */
+.dark-paginator-container {
+  .paginator-items {
+    user-select: none;
+
+    .paginator-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      justify-content: center;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .paginator-container {
+    width: 100%;
+    padding-block: 8px;
+
+    .paginator-items {
+      .paginator-icon {
+        width: 32px;
+        height: 32px;
+        padding: 8px 14px;
+      }
+    }
+  }
+}

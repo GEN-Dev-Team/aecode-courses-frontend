@@ -8,8 +8,13 @@ import { SwiperContainer } from 'swiper/element';
 import { SwiperOptions } from 'swiper/types';
 import { BrowserService } from '../../../../core/services/browser.service';
 import { IEmbajador } from '../../../interfaces/Embajador';
+<<<<<<< HEAD
 import { AngleLeftIconComponent } from '../../../../courses/icons/angle-left-icon/angle-left-icon.component';
 import { AngleRightIconComponent } from '../../../../courses/icons/angle-right-icon/angle-right-icon.component';
+=======
+import { AngleLeftIconComponent } from '../../../../courses/course-list/course-paginator/angle-left-icon/angle-left-icon.component';
+import { AngleRightIconComponent } from '../../../../courses/course-list/course-paginator/angle-right-icon/angle-right-icon.component';
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 
 @Component({
   selector: 'app-collabs-swiper',

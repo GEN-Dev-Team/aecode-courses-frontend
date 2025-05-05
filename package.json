@@ -24,12 +24,18 @@
     "@angular/platform-server": "^17.3.0",
     "@angular/router": "^17.3.0",
     "@angular/ssr": "^17.3.10",
+<<<<<<< HEAD
     "axios": "^1.8.4",
+=======
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
     "cli-cursor": "^5.0.0",
     "express": "^4.18.2",
     "ngx-toastr": "^19.0.0",
     "node-fetch": "^3.3.2",
+<<<<<<< HEAD
     "openai": "^4.95.1",
+=======
+>>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
     "rxjs": "~7.8.0",
     "swiper": "^11.2.5",
     "tslib": "^2.3.0",
