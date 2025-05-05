@@ -46,14 +46,14 @@
 
       <button class="sendbar">
         <div class="sendbar-text">
-          <img src="/assets/images/home/brain.png" alt="Brain image" />
+          <app-chatbot-icon />
           <input
             type="text"
-            placeholder="Soy estudiante, quisiera aprender BIM"
+            placeholder="Hola, soy AECODITO. ¡Conversemos!"
             id="message-input"
           />
         </div>
-        <div class="send-icon-container" (click)="sendMessage()">
+        <div class="send-icon-container" (click)="redirectToChat()">
           <app-send-icon class="send-icon" />
         </div>
       </button>
@@ -80,8 +80,4 @@
 
 <app-modal [isOpen]="openModal" (isClosed)="openModal = $event">
   <app-course-list />
-</app-modal>
-
-<app-modal [isOpen]="openForm" (isClosed)="openForm = $event">
-  <app-form (openModal)="openForm = $event" [userMessage]="userMessage" />
 </app-modal>

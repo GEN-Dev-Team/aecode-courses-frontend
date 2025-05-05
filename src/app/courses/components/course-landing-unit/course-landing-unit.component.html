@@ -1,0 +1,35 @@
+<div
+  class="unit-item {{ themeService.getMode() | async }}-unit-item"
+  (click)="sendUnitIdSelected(studyplanItem.orderNumber)"
+>
+  <span
+    >@if(studyplanItem.sessions.length < 2){M}@else{U}{{
+      studyplanItem.orderNumber
+    }}: {{ studyplanItem.unit }}</span
+  >
+
+  <div class="unit-hours-container">
+    <app-stop-watch-icon class="watch-icon" />
+
+    <span class="unit-hours">{{ studyplanItem.hours }} horas</span>
+
+    @if(studyOrderNumberSelected === studyplanItem.orderNumber) {
+    <app-caret-up-icon class="icon" />
+    } @else {
+    <app-caret-down-icon class="icon" />
+
+    }
+  </div>
+</div>
+
+@if (studyOrderNumberSelected === studyplanItem.orderNumber) {
+<ul
+  class="plan-list {{ themeService.getMode() | async }}-plan-list"
+  [class.only-one-session]="studyplanItem.sessions.length < 2"
+>
+  @for (sessionItem of studyplanItem.sessions; track sessionItem) {
+  <li>{{ sessionItem }}</li>
+  }
+</ul>
+
+}

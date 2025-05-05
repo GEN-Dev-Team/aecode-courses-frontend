@@ -6,7 +6,6 @@ import { HomeFooterComponent } from '../home/home-footer/home-footer.component';
 import { MainContainerComponent } from '../shared/components/main-container/main-container.component';
 import { BrowserService } from '../core/services/browser.service';
 import { ContentBlockedComponent } from '../shared/components/content-blocked/content-blocked.component';
-import { HeaderComponent } from '../shared/components/header/header.component';
 import { MessageBoxService } from '../core/services/message-box.service';
 
 @Component({
@@ -19,7 +18,6 @@ import { MessageBoxService } from '../core/services/message-box.service';
     HomeFooterComponent,
     MainContainerComponent,
     ContentBlockedComponent,
-    HeaderComponent,
   ],
   templateUrl: './community.component.html',
   styleUrl: './community.component.scss',

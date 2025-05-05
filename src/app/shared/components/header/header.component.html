@@ -13,22 +13,29 @@
         }
       </a>
 
-      <ul class="header-list">
+      <ul class="header-list" [class.show-header-list]="showMobileMenu">
         @for(headerItem of headerItemsList; track headerItem) {
         <app-header-item
           [headerItem]="headerItem"
           [headerItemSelected]="headerItemSelected"
-          (emitHeaderItemSelected)="headerItemSelected = $event"
+          (emitHeaderItemSelected)="setHeaderItemSelected($event)"
         />
+
         }
       </ul>
 
-      @if (isUserLoggedIn) {
+      @if(!isMobile && isUserLoggedIn) {
+      <div class="separator"></div>
+      } @if (isUserLoggedIn) {
 
       <div class="user-logged-buttons">
-        <app-notification-icon />
+        <app-header-item
+          [headerItem]="shopCartItem"
+          [headerItemSelected]="headerItemSelected"
+          (emitHeaderItemSelected)="setHeaderItemSelected($event)"
+        />
 
-        <div class="separator"></div>
+        <app-notification-icon class="notification-icon" />
 
         <app-user-profile-button
           [isHomeView]="false"
@@ -36,7 +43,10 @@
         />
       </div>
 
-      } @else {
+      @if (isMobile) {
+      <app-burger-icon class="menu-button" (click)="toggleMenu()" />
+
+      } } @else {
       <button
         class="header-button"
         ZoomIn
@@ -47,6 +57,7 @@
       >
         Acceder
       </button>
+
       }
     </div>
   </div>

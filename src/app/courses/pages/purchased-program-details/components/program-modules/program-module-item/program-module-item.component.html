@@ -1,0 +1,38 @@
+<div class="program-module-item" (click)="openDropdown = !openDropdown">
+  <p>M1: Introducción al BIM 4D</p>
+  <span>24hrs</span>
+
+  @if(openDropdown) {
+  <app-caret-up-icon class="caret-icon" />
+
+  } @else {
+  <app-caret-down-icon class="caret-icon" />
+
+  }
+</div>
+
+@if(openDropdown) {
+<div class="program-module-item-dropdown">
+  <ul>
+    <li>Contexto nacional BIM 4D</li>
+    <li>Plan BIM y proyecciones de implementacion BIM</li>
+    <li>Requerimientos BIM 4D en TDR's de proyectos</li>
+    <li>Contexto nacional BIM 4D</li>
+    <li>Plan BIM y proyecciones de implementacion BIM</li>
+    <li>Requerimientos BIM 4D en TDR's de proyectos</li>
+    <li>Contexto nacional BIM 4D</li>
+    <li>Plan BIM y proyecciones de implementacion BIM</li>
+    <li>Requerimientos BIM 4D en TDR's de proyectos</li>
+    <li>TALLER 2: DIAGRAMAS DE FLUJO DE PROCESOS</li>
+  </ul>
+
+  <div class="buttons-container">
+    <div class="button-list">
+      <button>Ver grabación</button>
+      <button>Descargar material</button>
+      <button>Ver presentación</button>
+    </div>
+  </div>
+</div>
+
+}

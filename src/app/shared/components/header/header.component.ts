@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { LoginFormComponent } from '../../../home/login-form/login-form.component';
 import { NotificationIconComponent } from '../../icons/notification-icon/notification-icon.component';
 import { AuthService } from '../../../core/services/auth.service';
@@ -11,6 +11,7 @@ import { AecodeIconComponent } from '../../../home/icons/aecode-icon/aecode-icon
 import { HeaderItemComponent } from './header-item/header-item.component';
 import { HeaderService } from '../../../core/services/header.service';
 import { BrowserService } from '../../../core/services/browser.service';
+import { BurgerIconComponent } from '../../icons/burger-icon/burger-icon.component';
 
 export interface ICommunityHeaderItem {
   id: number;
@@ -30,6 +31,7 @@ export interface ICommunityHeaderItem {
     AsyncPipe,
     AecodeIconComponent,
     HeaderItemComponent,
+    BurgerIconComponent,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
@@ -46,42 +48,50 @@ export class HeaderComponent {
   openLoginForm = this.headerService.showLogInAccess;
   showMobileMenu = false;
   openMobileMenu = false;
+  isMobile = this.browserService.isMobile();
 
   headerItemsList: ICommunityHeaderItem[] = [
     {
       id: 1,
+      name: 'AI',
+      route: '/aecode-chat',
+      colorCode: '#7837DD',
+    },
+    {
+      id: 2,
       name: 'Inicio',
       route: '/home',
       colorCode: '#7837DD',
     },
     {
-      id: 2,
+      id: 3,
       name: 'Comunidad',
       route: '/community',
       colorCode: '#4A3AC1',
     },
 
     {
-      id: 3,
+      id: 4,
       name: 'Training',
       route: '/training',
       colorCode: '#4A3AC1',
     },
     {
-      id: 4,
+      id: 5,
       name: 'Live',
       route: '/live',
       colorCode: '#3D813F',
     },
-    {
-      id: 5,
-      name: 'Shopping cart',
-      route: '/shopping-cart',
-      colorCode: '#4A3AC1',
-    },
   ];
 
-  headerItemSelected: ICommunityHeaderItem = this.headerItemsList[0];
+  shopCartItem: ICommunityHeaderItem = {
+    id: 6,
+    name: 'Shopping cart',
+    route: '/shopping-cart',
+    colorCode: '#4A3AC1',
+  };
+
+  headerItemSelected: ICommunityHeaderItem = this.headerItemsList[1];
 
   ngOnInit(): void {
     if (this.authService.hasToken()) {
@@ -97,10 +107,22 @@ export class HeaderComponent {
           this.headerItemSelected = item;
         }
       });
+
+      if (this.headerItemSelected.id === 2) {
+        this.themeService.setMode('dark');
+      }
     }
   }
 
   toggleMenu() {
     this.showMobileMenu = !this.showMobileMenu;
+  }
+
+  setHeaderItemSelected(item: ICommunityHeaderItem) {
+    this.headerItemSelected = item;
+
+    if (this.showMobileMenu) {
+      this.showMobileMenu = false;
+    }
   }
 }

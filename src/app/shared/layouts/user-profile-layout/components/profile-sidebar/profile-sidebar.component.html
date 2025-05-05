@@ -1,0 +1,13 @@
+<aside class="profile-sidebar-container">
+  <app-user-presentation />
+  <ul class="sidebar-list-container">
+    @for (item of sidebarList; track $index) {
+    <app-profile-sidebar-item
+      (click)="selectItem($index)"
+      [item]="item"
+      [index]="$index"
+      [itemSelected]="itemIndexSelected"
+    />
+    }
+  </ul>
+</aside>

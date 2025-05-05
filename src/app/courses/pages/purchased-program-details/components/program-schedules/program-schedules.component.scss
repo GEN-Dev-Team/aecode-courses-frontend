@@ -1,0 +1,57 @@
+.program-schedules-container {
+  border-radius: 5px;
+  border: 1.5px solid rgba(94, 101, 181, 0.43);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0px 2.84px 23.43px -2.84px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15.97499942779541px);
+  padding: 10px 20px;
+  color: #8c97dc;
+
+  h2 {
+    font-family: "plusjakartasans-medium";
+    font-size: 18px;
+    margin: 0 0 25px 0;
+  }
+
+  .schedules-container {
+    display: flex;
+    flex-direction: row;
+    gap: 13px;
+
+    div {
+      width: 166px;
+      display: flex;
+      padding: 8px 20px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      border-radius: 6px;
+      border: 1px solid #7c7edf;
+      text-align: center;
+      font-family: "Ruberoid-regular";
+      color: #eef3f8;
+    }
+  }
+
+  p {
+    font-family: "Ruberoid-medium";
+    margin-block: 8px 25px;
+    font-size: 16px;
+    text-decoration-line: underline;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+
+  button {
+    border-radius: 6px;
+    color: #eef3f8;
+    background: #4a3ac1;
+    font-family: "Ruberoid-regular";
+    border: none;
+    padding: 10px 70px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+  }
+}

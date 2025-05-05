@@ -1,0 +1,34 @@
+.program-extra-info-container {
+  border-radius: 5px;
+  border: 1.5px solid rgba(94, 101, 181, 0.43);
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0px 2.84px 23.43px -2.84px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(15.97499942779541px);
+  padding: 20px;
+
+  h2 {
+    color: #8c97dc;
+    font-family: "plusjakartasans-medium";
+    font-size: 18px;
+    margin: 0 0 25px 0;
+  }
+
+  button {
+    border-radius: 6px;
+    color: #eef3f8;
+    background: #4a3ac1;
+    font-family: "Ruberoid-regular";
+    border: none;
+    padding: 10px 70px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  p {
+    color: #eef3f8;
+    font-family: "plusjakartasans-light";
+    font-size: 14px;
+    margin-block: 8px 25px;
+  }
+}

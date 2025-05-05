@@ -1,0 +1,74 @@
+.program-details-container {
+  padding: 40px 50px;
+  color: #eef3f8;
+
+  .buttons-container {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 40px;
+
+    .button-back {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border-radius: 6px;
+      border: 0.5px solid #7c7edf;
+      padding: 10px 13px;
+      font-family: "ruberoid-medium";
+      color: #eef3f8;
+      font-size: 16px;
+      background-color: transparent;
+      cursor: pointer;
+      border-radius: 6px;
+
+      .caret-icon {
+        width: 18px;
+        height: 18px;
+        margin-right: 6px;
+      }
+    }
+
+    .button-my-courses {
+      border-radius: 6px;
+      color: #eef3f8;
+      background: #4a3ac1;
+      font-family: "Ruberoid-regular";
+      border: none;
+      padding: 10px 70px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+  }
+
+  h2 {
+    font-family: "Ruberoid-semibold";
+    font-size: 35px;
+    margin-block: 45px 30px;
+  }
+
+  h4 {
+    color: #8c97dc;
+    font-family: "plusjakartasans-medium";
+    font-size: 25px;
+    margin-block: 0;
+  }
+
+  p {
+    font-family: "plusjakartasans-light";
+    font-size: 18px;
+    margin-block: 30px 45px;
+  }
+
+  .program-bento-container {
+    display: grid;
+    grid-template-columns: minmax(auto, 925px) auto;
+    grid-auto-rows: auto;
+    gap: 28px;
+
+    .program-extra-info-container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}
