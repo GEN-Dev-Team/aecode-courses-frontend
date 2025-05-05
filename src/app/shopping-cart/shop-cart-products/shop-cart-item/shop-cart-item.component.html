@@ -26,7 +26,7 @@
       <span class="shop-cart-item-info-box-2">
         <app-watch-icon /> @if (cartItem.mode === 'ASINCRONO') { DISPONIBLE 24/7
         } @else { INICIO:
-        {{ cartItem.startDate | dateFormat }}
+        {{ cartItem.startDate | dateFormat : false }}
         }
       </span>
 
