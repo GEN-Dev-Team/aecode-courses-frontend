@@ -181,5 +181,10 @@
     display: flex;
     gap: 6px;
     align-items: center;
+
+    .caret-icon {
+      height: 19px;
+      width: 19px;
+    }
   }
 }

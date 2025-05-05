@@ -201,6 +201,7 @@
     display: flex;
     flex-flow: column nowrap;
     gap: 25px;
+    max-height: none;
 
     .extra-info-col-1 {
       gap: 20px;
@@ -238,8 +239,11 @@
     }
 
     .benefits-container {
+      max-height: none;
+
       .benefits-content {
         height: auto;
+        max-height: none;
 
         .benefits-list {
           display: flex;

@@ -6,12 +6,12 @@
     [class.container-without-messages]="messageList.length == 0"
   >
     <div class="content">
-      @if(messageList.length>0){ @for (item of messageList; track $index) {
+      @if(messageList.length > 0){ @for (item of messageList; track $index) {
 
       <app-chat-message [message]="item.userMessage" [isUserMessage]="true" />
       <app-chat-message [message]="item.botResponse" [isUserMessage]="false" />
 
-      } }@else {
+      } } @else {
       <div>
         <h2 class="no-messages-title">¡Hola!</h2>
         <h2 class="no-messages-subtitle">¿Cómo puedo ayudarte hoy?</h2>
@@ -20,7 +20,7 @@
     </div>
   </div>
 
-  <app-user-input (userInputEvent)="callToOpenAI($event)" />
+  <app-user-input (userInputEvent)="sendMessageToChatBot($event)" />
 
   <img
     class="bridge-bg"

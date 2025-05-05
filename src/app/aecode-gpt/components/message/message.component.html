@@ -9,7 +9,15 @@
 
     }
   </div>
-  }
-
+  } @if(message) {
   <p>{{ message }}</p>
+
+  }@else {
+  <div class="loading-container">
+    <p>Buscando en AECODE</p>
+    <p class="point-1">.</p>
+    <p class="point-2">.</p>
+    <p class="point-3">.</p>
+  </div>
+  }
 </div>

@@ -28,3 +28,10 @@
   border: 1px solid, #381187;
   background: #4a3ac1;
 }
+
+@media screen and (max-width: 768px) {
+  .course-tag {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}

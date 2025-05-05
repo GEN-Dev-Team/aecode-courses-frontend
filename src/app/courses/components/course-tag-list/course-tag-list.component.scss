@@ -48,3 +48,20 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .tag-container {
+    gap: 10px;
+    margin-block: 25px 40px;
+
+    // .caret-left-icon {
+    //   height: 30px;
+    //   width: 30px;
+    //   cursor: pointer;
+    // }
+
+    .tag-list {
+      gap: 10px;
+    }
+  }
+}
