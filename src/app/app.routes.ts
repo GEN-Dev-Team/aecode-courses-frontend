@@ -30,6 +30,7 @@ export const routes: Routes = [
     path: 'aecode-chat',
     title: 'AECODE CHAT',
     component: AecodeGptComponent,
+    canActivate: [mobileAvailabilityGuard],
   },
   {
     path: 'training',
@@ -42,7 +43,8 @@ export const routes: Routes = [
     component: CourseLandingDetailComponent,
   },
   {
-    path: 'training/e-learning/:courseId',
+    // path: 'training/e-learning/:courseId',
+    path: 'training/e-learning',
     title: 'AECODE COURSES',
     component: PurchasedProgramDetailsComponent,
   },
