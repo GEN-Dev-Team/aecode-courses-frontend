@@ -1,11 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-<<<<<<< HEAD
 import { environment } from '../../../environments/environment';
-=======
-import { environment } from '../../../environment/environment';
->>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 import { IEndpointItem } from '../admin-side-bar/admin-side-bar.component';
 
 const base_url = environment.base;

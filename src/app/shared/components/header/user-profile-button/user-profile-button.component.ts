@@ -1,10 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-<<<<<<< HEAD
 import { environment } from '../../../../../environments/environment';
-=======
-import { environment } from '../../../../../environment/environment';
->>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 import { AuthService } from '../../../../core/services/auth.service';
 import { IUserDetails } from '../../../../home/interface/Login';
 import { UserService } from '../../../../home/user.service';

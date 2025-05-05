@@ -9,7 +9,6 @@
     headerItemSelected.id === headerItem.id &&
     (themeService.getMode() | async) === 'dark'
   "
-<<<<<<< HEAD
   [class.is-shop-cart-item]="headerItem.id === 6"
   [class.header-without-text]="headerItem.id === 6"
 >
@@ -22,16 +21,6 @@
   />
   } } @if(headerItem.id !== 6 ) {
 
-=======
-  [class.is-shop-cart-item]="headerItem.id === 5"
->
-  @switch (headerItem.id) { @case (2) {<app-home-community-icon />} @case (3)
-  {<app-book-icon />} @case (4) {<app-sync-course-icon />} @case (5) {
-  <app-shopping-cart-icon
-    [class.shopping-cart-selected]="headerItemSelected.id === 5"
-  />
-  } } @if(headerItem.id !== 5) {
->>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
   {{ headerItem.name }}
 
   }

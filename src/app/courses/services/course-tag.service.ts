@@ -1,9 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-<<<<<<< HEAD
 import { environment } from '../../../environments/environment';
-=======
-import { environment } from '../../../environment/environment';
->>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 import { HttpClient } from '@angular/common/http';
 import { ICourseTag } from '../interface/CourseTag';
 

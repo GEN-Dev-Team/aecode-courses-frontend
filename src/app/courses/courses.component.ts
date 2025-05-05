@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Component, inject, NgZone } from '@angular/core';
 import { CourseOverlayComponent } from '../shared/layouts/course-overlay/course-overlay.component';
 import { AsyncPipe } from '@angular/common';
@@ -15,16 +14,10 @@ import { ICourseTag } from './interface/CourseTag';
 import { ISecondaryCourseSummary } from './interface/secondary-course/Secondary-Course';
 import { CourseTagService } from './services/course-tag.service';
 import { SecondaryCourseService } from './services/secondary-course.service';
-=======
-import { Component } from '@angular/core';
-import { CourseMainComponent } from './course-main/course-main.component';
-import { CourseOverlayComponent } from '../shared/layouts/course-overlay/course-overlay.component';
->>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-<<<<<<< HEAD
   imports: [
     CourseOverlayComponent,
     SearchToolIconComponent,
@@ -285,10 +278,3 @@ export class CoursesComponent {
     });
   }
 }
-=======
-  imports: [CourseMainComponent, CourseOverlayComponent],
-  templateUrl: './courses.component.html',
-  styleUrl: './courses.component.css',
-})
-export class CoursesComponent {}
->>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74

@@ -7,11 +7,6 @@ import { Component } from '@angular/core';
   template: `
     <svg
       xmlns="http://www.w3.org/2000/svg"
-<<<<<<< HEAD
-=======
-      width="31"
-      height="31"
->>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
       viewBox="0 0 31 31"
       fill="currentColor"
       class="icon"
