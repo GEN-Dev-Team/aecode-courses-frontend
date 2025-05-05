@@ -46,6 +46,42 @@
     font-size: clamp(0.875rem, 0.787rem + 0.3756vw, 1.125rem);
     margin: 0;
   }
+
+  .loading-container {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    gap: 2px;
+
+    .point-1 {
+      margin-inline-start: 5px;
+      animation: verticalSlide 1s ease-in-out infinite;
+    }
+
+    .point-2 {
+      animation: verticalSlide 1s ease-in-out infinite;
+      animation-delay: 0.15s;
+    }
+
+    .point-3 {
+      animation: verticalSlide 1s ease-in-out infinite;
+      animation-delay: 0.3s;
+    }
+  }
+}
+
+@keyframes verticalSlide {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+
+  75% {
+    transform: translateY(0);
+  }
 }
 
 .align-to-end {
