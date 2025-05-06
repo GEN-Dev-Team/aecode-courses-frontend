@@ -41,7 +41,8 @@
     }
   }
 
-  p {
+  p,
+  markdown {
     font-family: "plusjakartasans-light";
     font-size: clamp(0.875rem, 0.787rem + 0.3756vw, 1.125rem);
     margin: 0;

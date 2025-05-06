@@ -10,7 +10,8 @@
     }
   </div>
   } @if(message) {
-  <p>{{ message }}</p>
+
+  <markdown [data]="message"></markdown>
 
   }@else {
   <div class="loading-container">

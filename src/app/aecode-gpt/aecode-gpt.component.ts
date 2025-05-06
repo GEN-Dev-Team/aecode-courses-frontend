@@ -1,9 +1,17 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  inject,
+  ViewChild,
+} from '@angular/core';
 import { OpenaiService } from './openai.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { chatMessageComponent } from './components/message/message.component';
 import { UserInputComponent } from './components/user-input/user-input.component';
 import { InProgressComponent } from '../in-progress/in-progress.component';
+import { threadId } from 'worker_threads';
+import { BrowserService } from '../core/services/browser.service';
 
 interface IMessage {
   userMessage: string;
@@ -24,14 +32,11 @@ interface IMessage {
 })
 export class AecodeGptComponent {
   @ViewChild('messagesEnd') private messagesEnd!: ElementRef;
+  cd = inject(ChangeDetectorRef);
 
-  messageList: IMessage[] = [
-    {
-      userMessage: 'Hola',
-      botResponse: '',
-    },
-  ];
+  messageList: IMessage[] = [];
   shouldScroll: boolean = true;
+  threadId: string = '';
 
   openAiService = inject(OpenaiService);
 
@@ -40,6 +45,14 @@ export class AecodeGptComponent {
       this.scrollToBottom();
       this.shouldScroll = false;
     }
+  }
+
+  ngOnInit(): void {
+    this.openAiService.getThreadId().subscribe({
+      next: (data) => {
+        this.threadId = (data as any).thread_id;
+      },
+    });
   }
 
   scrollToBottom(): void {
@@ -58,28 +71,25 @@ export class AecodeGptComponent {
     };
 
     this.messageList.push(messageItem);
+    this.scrollToBottom();
 
-    this.openAiService.sendMessageToChatBot(prompt).subscribe({
-      next: (token) => (messageItem.botResponse += token),
-      error: (err) => console.error(err),
-      complete: () => console.log('Respuesta completa', messageItem),
+    this.openAiService.sendMessageToChatBot(prompt, this.threadId).subscribe({
+      next: (token) => {
+        messageItem.botResponse += token;
+        if (token.includes('\n\n')) console.log('/');
+        this.cd.detectChanges();
+        this.scrollToBottom();
+      },
+      error: (err) => {
+        if (err instanceof Event) {
+          console.warn('ℹ️ EventSource closed by server.');
+        } else {
+          console.error('❌ Error inesperado:', err);
+        }
+      },
+      complete: () => {
+        console.log('✅ Respuesta completa');
+      },
     });
-
-    // this.openAiService.sendMessageToChatBot(prompt).subscribe({
-    //   next: (res) => {
-    //     console.log('Response in component:', res);
-    //     const response = res as any;
-    //     const chatBotResponse = response.respuesta;
-
-    //     if (chatBotResponse) {
-    //       this.messageList[this.messageList.length - 1].botResponse =
-    //         chatBotResponse;
-    //       this.shouldScroll = true;
-    //     }
-    //   },
-    //   error: (err) => {
-    //     console.error('Error al enviar el mensaje:', err);
-    //   },
-    // });
   }
 }
