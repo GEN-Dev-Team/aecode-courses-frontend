@@ -40,14 +40,20 @@
       font-family: "ruberoid-bold";
       font-size: 48px;
       line-height: 120%;
-      background: linear-gradient(
-        90deg,
-        rgba(123, 163, 255, 0.8) 40.85%,
-        rgba(127, 61, 255, 0.8) 57.44%
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      animation: gradientAnimation 3s infinite linear;
+      position: relative;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        color: rgba(123, 163, 255, 0.8);
+      }
+      50% {
+        color: rgba(127, 61, 255, 0.8);
+      }
+      100% {
+        color: rgba(123, 163, 255, 0.8);
+      }
     }
 
     .no-messages-subtitle {

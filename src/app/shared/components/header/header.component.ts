@@ -3,7 +3,7 @@ import { LoginFormComponent } from '../../../home/login-form/login-form.componen
 import { NotificationIconComponent } from '../../icons/notification-icon/notification-icon.component';
 import { AuthService } from '../../../core/services/auth.service';
 import { ZoomInDirective } from '../../directives/animations/zoom-in.directive';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserProfileButtonComponent } from './user-profile-button/user-profile-button.component';
 import { ThemeService } from '../../../core/services/theme.service';
 import { AsyncPipe, Location } from '@angular/common';
@@ -12,6 +12,7 @@ import { HeaderItemComponent } from './header-item/header-item.component';
 import { HeaderService } from '../../../core/services/header.service';
 import { BrowserService } from '../../../core/services/browser.service';
 import { BurgerIconComponent } from '../../icons/burger-icon/burger-icon.component';
+import { ManageUserDataService } from '../../../user-profile/services/manage-user-data.service';
 
 export interface ICommunityHeaderItem {
   id: number;
@@ -43,6 +44,7 @@ export class HeaderComponent {
   route: Router = inject(Router);
   location: Location = inject(Location);
   browserService: BrowserService = inject(BrowserService);
+  manageUserDataService = inject(ManageUserDataService);
 
   isUserLoggedIn = false;
   openLoginForm = this.headerService.showLogInAccess;
@@ -94,8 +96,14 @@ export class HeaderComponent {
   headerItemSelected: ICommunityHeaderItem = this.headerItemsList[1];
 
   ngOnInit(): void {
+    this.authService.isLoggedInStatus.subscribe((isLoggedIn) => {
+      this.isUserLoggedIn = isLoggedIn;
+    });
+
     if (this.authService.hasToken()) {
-      this.isUserLoggedIn = true;
+      this.manageUserDataService.setUserDataInfo(
+        this.authService.getUserDetails().userId
+      );
     }
 
     if (this.browserService.isBrowser()) {

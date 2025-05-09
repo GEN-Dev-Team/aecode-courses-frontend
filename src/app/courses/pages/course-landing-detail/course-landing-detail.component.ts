@@ -68,8 +68,8 @@ export class CourseLandingDetailComponent {
   toastService = inject(ToastrService);
   themeService: ThemeService = inject(ThemeService);
 
-  secCourseId = Number(this.router.snapshot.paramMap.get('secCourseId'));
-  courseId = Number(this.router.snapshot.paramMap.get('courseId'));
+  secCourseUrlname = this.router.snapshot.paramMap.get('urlname');
+  secCourseModule = this.router.snapshot.paramMap.get('module');
 
   courseData = signal<any>({});
 
@@ -89,13 +89,13 @@ export class CourseLandingDetailComponent {
   errorMessage: string = '';
 
   courseUnitsNumber = computed(() => {
-    if (this.secCourseId !== 0) {
+    if (this.secCourseUrlname) {
       return this.courseData().studyplans.length;
     }
   });
 
   courseHoursNumber = computed(() => {
-    if (this.secCourseId !== 0) {
+    if (this.secCourseUrlname) {
       return this.courseData().studyplans.reduce(
         (acc: any, item: any) => acc + item.hours,
         0
@@ -108,21 +108,17 @@ export class CourseLandingDetailComponent {
   }
 
   setCourseData() {
-    if (this.courseId !== 0) this.isSecondaryCourse = true;
+    if (this.secCourseModule) {
+      this.secCourseUrlname =
+        this.secCourseUrlname + '/' + this.secCourseModule;
+    }
 
-    if (this.isSecondaryCourse) {
-      this.courseService.getCourse(this.courseId).subscribe((data) => {
+    this.secondaryCourseService
+      .getSecondaryCourseByAttribute('urlname', this.secCourseUrlname)
+      .subscribe((data) => {
         this.courseData.set(data);
         console.log(data);
       });
-    } else {
-      this.secondaryCourseService
-        .getSecondaryCourseById(this.secCourseId)
-        .subscribe((data) => {
-          this.courseData.set(data);
-          console.log(data);
-        });
-    }
   }
 
   showCourseVideo() {
@@ -134,12 +130,16 @@ export class CourseLandingDetailComponent {
   }
 
   goToCourseModule(module: string, program: string) {
-    const auxSecCourse = this.courseData();
-
     this.secondaryCourseService
       .getSecondaryCourseByModulexProgram(module, program)
       .subscribe((data) => {
-        this.courseData.set(data);
+        if ((data as any).urlname) {
+          this.courseData.set(data);
+          const urlname = data.urlname;
+          const module = data.module.split(' ');
+
+          this.routing.navigate([`/training/${urlname}`]);
+        }
       });
   }
 }

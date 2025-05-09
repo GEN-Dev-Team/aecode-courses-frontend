@@ -9,6 +9,15 @@
     width: 1088px;
     margin-inline: auto;
     padding: 30px 50px 30px 28px;
-    box-sizing: content-box;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  .user-profile-layout {
+    grid-template-columns: 275px 1fr;
+
+    .user-profile-content {
+      width: 100%;
+    }
   }
 }

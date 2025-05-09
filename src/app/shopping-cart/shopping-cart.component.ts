@@ -5,7 +5,6 @@ import { ThemeService } from '../core/services/theme.service';
 import { ShoppingCartStep1Component } from './shopping-cart-step-1/shopping-cart-step-1.component';
 import { ShoppingCartStep2Component } from './shopping-cart-step-2/shopping-cart-step-2.component';
 import { ShoppingCartStep3Component } from './shopping-cart-step-3/shopping-cart-step-3.component';
-import { HeaderService } from '../core/services/header.service';
 import { PaymentService } from './services/payment.service';
 
 @Component({

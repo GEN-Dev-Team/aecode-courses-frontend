@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { ILogin } from '../interface/Login';
-import { UserService } from '../user.service';
+import { UserService } from '../../user-profile/services/user.service';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { AuthService } from '../../core/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
@@ -32,7 +32,6 @@ import { MessageBoxService } from '../../core/services/message-box.service';
 })
 export class LoginFormComponent {
   @Output() closeLoginForm = new EventEmitter<boolean>();
-  @Output() userLoggedIn = new EventEmitter<boolean>();
 
   browserService: BrowserService = inject(BrowserService);
   toastService: ToastrService = inject(ToastrService);
@@ -85,8 +84,7 @@ export class LoginFormComponent {
   logInUser() {
     this.logInService.logInUser(this.loginForm.value).subscribe(
       (response) => {
-        this.authService.login(response); // Actualizar el estado de autenticación
-        this.userLoggedIn.emit(true);
+        this.authService.login(response);
         this.closeModal();
       },
       (error) => {

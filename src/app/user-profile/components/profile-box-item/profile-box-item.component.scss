@@ -1,0 +1,17 @@
+.user-info-item {
+  label {
+    color: var(--STROKE-DARK, #8c97dc);
+    font-family: "ruberoid-regular";
+    font-size: 14px;
+  }
+
+  p {
+    min-height: 43px;
+    font-family: "plusjakartasans-light";
+    font-size: 16px;
+    padding: 10px;
+    margin: 8px 0 0 0;
+    border-radius: 4px;
+    border: 1px solid rgba(94, 101, 181, 0.43);
+  }
+}

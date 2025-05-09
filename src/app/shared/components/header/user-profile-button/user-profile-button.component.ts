@@ -3,11 +3,12 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { AuthService } from '../../../../core/services/auth.service';
 import { IUserDetails } from '../../../../home/interface/Login';
-import { UserService } from '../../../../home/user.service';
+import { UserService } from '../../../../user-profile/services/user.service';
 import { Router } from '@angular/router';
 import { ViewProfileComponent } from '../view-profile/view-profile.component';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
+import { ManageUserDataService } from '../../../../user-profile/services/manage-user-data.service';
 
 @Component({
   selector: 'app-user-profile-button',
@@ -24,53 +25,23 @@ export class UserProfileButtonComponent {
   userService: UserService = inject(UserService);
   route: Router = inject(Router);
   themeService: ThemeService = inject(ThemeService);
+  manageUserDataService = inject(ManageUserDataService);
 
   isUserLoggedIn = false;
   openLoginForm = false;
   showProfileMenu = false;
-  userId: number = 0;
-  userProfileImg: string = '';
   userFirstLetterName: string = '';
-  userDetailsData!: Observable<IUserDetails>;
+  userDetailsData = this.manageUserDataService.userDataInfo;
   base_url = environment.base;
-
-  ngOnInit(): void {
-    this.setUser();
-  }
-
-  setUser() {
-    if (this.authService.hasToken()) {
-      const userData = this.authService.getUserDetails();
-      this.userId = userData.userId;
-      this.userFirstLetterName = userData.fullname.charAt(0).toUpperCase();
-
-      this.userService
-        .getUserDetailsImgById(this.userId)
-        .subscribe((response) => {
-          if (response.profilepicture) {
-            this.userProfileImg = this.base_url + response.profilepicture;
-          } else {
-            this.userProfileImg = '';
-          }
-        });
-
-      this.authService.isLoggedIn$().subscribe((loggedInStatus) => {
-        this.isUserLoggedIn = loggedInStatus;
-        this.sendIsUserLoggedIn.emit(this.isUserLoggedIn);
-      });
-
-      if (this.isUserLoggedIn) {
-        this.logInService.getUser(this.userId).subscribe((response) => {
-          this.authService.setUserDetails(response);
-        });
-      }
-    } else {
-      return;
-    }
-  }
 
   showProfileMenuHandler() {
     this.showProfileMenu = !this.showProfileMenu;
+  }
+
+  ngOnInit(): void {
+    this.authService.isLoggedInStatus.subscribe((res) => {
+      this.isUserLoggedIn = res;
+    });
   }
 
   logout() {

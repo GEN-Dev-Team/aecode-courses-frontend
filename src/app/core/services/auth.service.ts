@@ -8,12 +8,15 @@ import {
   ICoureAccess,
   IModuleAccess,
 } from '../../courses/interface/CourseProgress';
+import { ManageUserDataService } from '../../user-profile/services/manage-user-data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private isLoggedInStatus = new BehaviorSubject<boolean>(this.hasToken());
+  manageUserDataService = inject(ManageUserDataService);
+
+  isLoggedInStatus = new BehaviorSubject<boolean>(this.hasToken());
   private accessToCourse = new BehaviorSubject<boolean>(false);
   private accessToModule = new BehaviorSubject<boolean>(false);
 
@@ -37,6 +40,7 @@ export class AuthService {
 
   login(token: any): void {
     if (this.browserService.isBrowser()) {
+      this.manageUserDataService.setUserDataInfo(token.userId);
       localStorage.setItem('user', JSON.stringify(token));
       this.isLoggedInStatus.next(true);
     }
@@ -44,6 +48,7 @@ export class AuthService {
 
   logout(): void {
     if (this.browserService.isBrowser()) {
+      this.manageUserDataService.clearUserDataInfo;
       localStorage.removeItem('user');
       this.isLoggedInStatus.next(false);
     }
@@ -59,6 +64,7 @@ export class AuthService {
 
   setUserDetails(user: any): void {
     if (this.browserService.isBrowser()) {
+      this.manageUserDataService.setUserDataInfo(user.userId);
       this.logout();
       localStorage.setItem('user', JSON.stringify(user));
       this.isLoggedInStatus.next(true);

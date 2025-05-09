@@ -24,7 +24,6 @@ export class MessageBoxService {
     this.message.set(message);
     this.title.set(title);
     this.isMessageTypeSuccess.set(isMessageTypeSuccess);
-    console.log('Show message box:', title, message, isMessageTypeSuccess);
   }
 
   closeMessageBox() {

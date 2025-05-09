@@ -1,11 +1,13 @@
 <div class="message-container" [class.align-to-end]="isUserMessage">
   @if(isUserMessage) {
   <div class="user-profile-img-container">
-    @if (userProfileImg !== '') {
-    <img [src]="userProfileImg" class="user-profile-img" alt="" />
+    @if (userData().profilepicture !== '') {
+    <img [src]="userData().profilepicture" class="user-profile-img" alt="" />
 
     } @else {
-    <span class="user-profile-first-letter">{{ userFirstLetterName }}</span>
+    <span class="user-profile-first-letter">{{
+      userData().fullname.charAt(0).toUpperCase()
+    }}</span>
 
     }
   </div>

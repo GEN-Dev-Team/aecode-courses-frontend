@@ -7,6 +7,7 @@ import { ITool } from './Tool';
 export interface ISecondaryCourse {
   seccourseId: number;
   title: string;
+  urlname: string;
   programTitle: string;
   description: string;
   module: string;
@@ -59,6 +60,7 @@ export interface ISecondaryCourseSummary {
 export const defaultSecondaryCourse: ISecondaryCourse = {
   seccourseId: 0,
   title: '',
+  urlname: '',
   programTitle: '',
   description: '',
   module: '',

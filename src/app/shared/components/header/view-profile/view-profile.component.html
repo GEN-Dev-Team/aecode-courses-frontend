@@ -1,7 +1,7 @@
 <div class="profile-menu {{ themeService.getMode() | async }}-profile-menu">
   <div class="profile-header">
     <div class="profile-info">
-      <h2>{{ userData.fullname }}</h2>
+      <h2>{{ userData().fullname }}</h2>
     </div>
   </div>
   <div class="linea"></div>
@@ -11,7 +11,7 @@
       <app-profile-menu-icon />
       <span>Perfil</span>
     </li>
-    @if (userData.rol ==='admin') {
+    @if (userData().rol ==='admin') {
     <li (click)="redirectToAdminView()">
       <app-management-menu-icon />
       <span>Administrar y Gestionar</span>

@@ -15,7 +15,7 @@ import { SaveIconComponent } from './icons/save-icon/save-icon.component';
 import { CaretDownIconComponent } from '../shared/icons/caret-down-icon/caret-down-icon.component';
 import { CaretUpIconComponent } from '../shared/icons/caret-up-icon/caret-up-icon.component';
 import { defaultLogInData, ILogin } from '../home/interface/Login';
-import { UserService } from '../home/user.service';
+import { UserService } from '../user-profile/services/user.service';
 
 @Component({
   selector: 'app-admin-panel',

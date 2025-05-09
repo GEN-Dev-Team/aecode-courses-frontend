@@ -8,13 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class OpenaiService {
   http = inject(HttpClient);
-  // url = environment.agent_url + '/api/chat';
-
-  // sendMessageToChatBot(message: string) {
-  //   console.log('message', { mensaje: message });
-  //   // const params = new HttpParams().set('prompt', message);
-  //   return this.http.post(this.url, { mensaje: message });
-  // }
 
   url = environment.agent_url;
 

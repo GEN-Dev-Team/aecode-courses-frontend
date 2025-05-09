@@ -37,7 +37,6 @@ export class ThemeService {
       this._renderer2.removeClass(document.body, oldMode);
       this._renderer2.addClass(document.body, newMode);
       this.localStorage.setItem('theme', newMode);
-      console.log('theme', this.localStorage.getItem('theme'));
     }
   };
 

@@ -1,6 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
 import { CourseItemComponent } from '../course-item/course-item.component';
-import { AsyncPipe } from '@angular/common';
 import { CourseService } from '../../services/course.service';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 import { SecondaryCourseService } from '../../services/secondary-course.service';
@@ -8,7 +7,7 @@ import { SecondaryCourseService } from '../../services/secondary-course.service'
 @Component({
   selector: 'app-platform-course-list',
   standalone: true,
-  imports: [CourseItemComponent, AsyncPipe, LoaderComponent],
+  imports: [CourseItemComponent, LoaderComponent],
   templateUrl: './platform-course-list.component.html',
   styleUrl: './platform-course-list.component.css',
 })

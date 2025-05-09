@@ -30,7 +30,6 @@ export const routes: Routes = [
     path: 'aecode-chat',
     title: 'AECODE CHAT',
     component: AecodeGptComponent,
-    canActivate: [mobileAvailabilityGuard],
   },
   {
     path: 'training',
@@ -38,7 +37,12 @@ export const routes: Routes = [
     component: CoursesComponent,
   },
   {
-    path: 'training/module/:secCourseId',
+    path: 'training/:urlname',
+    title: 'AECODE COURSES',
+    component: CourseLandingDetailComponent,
+  },
+  {
+    path: 'training/:urlname/:module',
     title: 'AECODE COURSES',
     component: CourseLandingDetailComponent,
   },
@@ -50,7 +54,7 @@ export const routes: Routes = [
   },
   {
     path: 'profile/:id',
-    title: 'PROFILE',
+    title: 'AECODE PROFILE',
     component: ProfileMainViewComponent,
     canActivate: [mobileAvailabilityGuard],
   },
@@ -68,13 +72,12 @@ export const routes: Routes = [
   },
   {
     path: 'shopping-cart',
-    title: 'AECODE CART',
+    title: 'AECODE SHOPPING CART',
     component: ShoppingCartComponent,
-    canActivate: [mobileAvailabilityGuard],
   },
   {
     path: 'live',
-    title: 'IN PROGRESS',
+    title: 'AECODE LIVE',
     component: LiveComponent,
     canActivate: [mobileAvailabilityGuard],
   },

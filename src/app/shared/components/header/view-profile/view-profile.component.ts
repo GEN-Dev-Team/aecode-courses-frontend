@@ -7,6 +7,8 @@ import { AsyncPipe } from '@angular/common';
 import { ProfileMenuIconComponent } from '../icons/profile-menu-icon/profile-menu-icon.component';
 import { ManagementMenuIconComponent } from '../icons/management-menu-icon/management-menu-icon.component';
 import { LogoutMenuIconComponent } from '../icons/logout-menu-icon/logout-menu-icon.component';
+import { ManageUserDataService } from '../../../../user-profile/services/manage-user-data.service';
+import { sign } from 'crypto';
 
 @Component({
   selector: 'app-view-profile',
@@ -26,16 +28,10 @@ export class ViewProfileComponent {
   authService: AuthService = inject(AuthService);
   route: Router = inject(Router);
   themeService: ThemeService = inject(ThemeService);
+  manageUserDataService = inject(ManageUserDataService);
 
-  userData!: ILogin;
+  userData = this.manageUserDataService.userDataInfo;
 
-  ngOnInit(): void {
-    if (this.authService.getUserDetails() !== null) {
-      this.userData = this.authService.getUserDetails();
-    } else {
-      return;
-    }
-  }
   closeModal() {
     this.isClosed.emit(false);
   }
@@ -50,6 +46,6 @@ export class ViewProfileComponent {
   }
 
   redirectToProfile() {
-    this.route.navigate([`/profile/${this.userData.userId}`]);
+    this.route.navigate([`/profile/${this.userData().userId}`]);
   }
 }

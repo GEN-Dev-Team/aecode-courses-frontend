@@ -2,12 +2,10 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import {
-  defaultSecondaryCourse,
   ISecondaryCourse,
   ISecondaryCourseSummary,
 } from '../interface/secondary-course/Secondary-Course';
-import { BehaviorSubject, catchError, Observable, throwError } from 'rxjs';
-import { off } from 'process';
+import { catchError, Observable, throwError } from 'rxjs';
 import { IPaginator } from '../../core/interfaces/paginator';
 
 @Injectable({
@@ -18,22 +16,21 @@ export class SecondaryCourseService {
 
   api_url = environment.base + '/secondarycourses';
 
-  secondaryCourseData = new BehaviorSubject<ISecondaryCourse>(
-    defaultSecondaryCourse
-  );
-
-  secondaryCourseData$ = this.secondaryCourseData.asObservable();
-
-  setSecondaryCourseData(data: ISecondaryCourse) {
-    this.secondaryCourseData.next(data);
-  }
-
   getAllSecondaryCourses(): Observable<ISecondaryCourse[]> {
     return this.http.get<ISecondaryCourse[]>(this.api_url);
   }
 
   getSecondaryCourseById(id: number): Observable<ISecondaryCourse> {
     return this.http.get<ISecondaryCourse>(`${this.api_url}/${id}`);
+  }
+
+  getSecondaryCourseByAttribute(
+    attribute: string,
+    value: any
+  ): Observable<ISecondaryCourse> {
+    return this.http.get<ISecondaryCourse>(
+      `${this.api_url}/search?attribute=${attribute}&value=${value}`
+    );
   }
 
   getSecondaryCourseByModulexProgram(
