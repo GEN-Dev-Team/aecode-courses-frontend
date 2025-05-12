@@ -48,6 +48,8 @@ export class CoursesComponent {
   tagList: ICourseTag[] = [];
   tagIdSelectedList: number[] = [];
 
+  courseListWithoutPagination: ISecondaryCourseSummary[] = [];
+
   animate = false;
   animateFadeOut = false;
   intervalId: any = null;
@@ -63,11 +65,12 @@ export class CoursesComponent {
     );
 
   ngOnInit(): void {
+    this.setCourseListWithoutPagination();
+
     this.secondaryCourseList$.subscribe((data) => {
       this.coursesList = data.content;
+      this.filteredCoursesList = data.content;
       this.paginatorPages = data.totalPages;
-
-      this.resetFilteredCourses();
     });
 
     this.startAnimationLoop();
@@ -89,19 +92,35 @@ export class CoursesComponent {
     const searchTerm = (event.target as HTMLInputElement).value.toLowerCase();
 
     if (!searchTerm) {
-      this.tagList = this.tagListFiltered;
-      return;
-    }
+      this.resetFilteredCourses();
+    } else {
+      // this.tagList = this.tagList.filter((tag) =>
+      //   tag.courseTagName.toLowerCase().includes(searchTerm.toLowerCase())
+      // );
+      this.paginatorPages = 1;
+      this.currentPage = 0;
 
-    this.tagList = this.tagList.filter((tag) =>
-      tag.courseTagName.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+      this.filteredCoursesList = this.courseListWithoutPagination.filter(
+        (course) =>
+          course.title.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+    }
+  }
+
+  private setCourseListWithoutPagination(): void {
+    this.secondaryCourseService
+      .getPaginatedSecCoursesList(0, 35)
+      .subscribe((data) => {
+        this.courseListWithoutPagination = data.content;
+      });
   }
 
   private resetFilteredCourses(): void {
     this.filteredCoursesList = JSON.parse(JSON.stringify(this.coursesList));
     this.isFilteringByMode = false;
     this.filterValue = '';
+    this.paginatorPages = 6;
+    this.currentPage = 0;
   }
 
   filterByMode(value: string) {
@@ -115,7 +134,6 @@ export class CoursesComponent {
       case 'all':
         this.isFilteringByMode = false;
         this.resetFilteredCourses();
-        this.currentPage = 0;
         break;
       case 'DATE':
         this.secondaryCourseService

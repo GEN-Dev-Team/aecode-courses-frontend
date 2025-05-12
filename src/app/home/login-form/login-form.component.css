@@ -29,7 +29,7 @@
     top: 20px;
     right: 20px;
     cursor: pointer;
-    stroke: black;
+    color: black;
     width: 16px;
   }
 
@@ -145,7 +145,7 @@
   box-shadow: 0px 0px 7px 0px #b4bbbf;
 
   .close-button {
-    stroke: #0d0f1f;
+    color: white;
   }
 
   .form-control {

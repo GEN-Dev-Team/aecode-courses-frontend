@@ -71,8 +71,8 @@ export const routes: Routes = [
     canActivate: [mobileAvailabilityGuard],
   },
   {
-    path: 'shopping-cart',
-    title: 'AECODE SHOPPING CART',
+    path: 'shopping',
+    title: 'AECODE SHOPPING',
     component: ShoppingCartComponent,
   },
   {

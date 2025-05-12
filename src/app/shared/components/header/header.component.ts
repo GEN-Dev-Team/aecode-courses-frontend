@@ -89,7 +89,7 @@ export class HeaderComponent {
   shopCartItem: ICommunityHeaderItem = {
     id: 6,
     name: 'Shopping cart',
-    route: '/shopping-cart',
+    route: '/shopping',
     colorCode: '#4A3AC1',
   };
 

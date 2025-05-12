@@ -85,6 +85,7 @@ export class LoginFormComponent {
     this.logInService.logInUser(this.loginForm.value).subscribe(
       (response) => {
         this.authService.login(response);
+        this.loginForm.reset();
         this.closeModal();
       },
       (error) => {
