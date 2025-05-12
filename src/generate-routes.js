@@ -15,19 +15,6 @@ async function getSecondaryUrlnames() {
   }
 }
 
-async function getMasiveCourseIds() {
-  try {
-    const response = await fetch(
-      "https://backend-productodigital.onrender.com/course"
-    );
-    const courses = await response.json();
-    return courses.map((course) => course.courseId);
-  } catch (error) {
-    console.error("Error fetching masive course IDs:", error);
-    return [];
-  }
-}
-
 async function generateRoutes() {
   const secUrlnames = await getSecondaryUrlnames();
   // const masiveCourseIds = await getMasiveCourseIds();
