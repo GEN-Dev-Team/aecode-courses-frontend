@@ -14,6 +14,7 @@ import { NotAvailableMobileComponent } from './not-available-mobile/not-availabl
 import { mobileAvailabilityGuard } from './core/guards/mobile-availability.guard';
 import { PurchasedProgramDetailsComponent } from './courses/pages/purchased-program-details/purchased-program-details.component';
 import { CommunityInProgressComponent } from './community-in-progress/community-in-progress.component';
+import { CommunityComponent } from './community/community.component';
 
 export const routes: Routes = [
   {
@@ -67,7 +68,8 @@ export const routes: Routes = [
   {
     path: 'community',
     title: 'AECODE COMMUNITY',
-    component: CommunityInProgressComponent,
+    // component: CommunityInProgressComponent,
+    component: CommunityComponent,
     canActivate: [mobileAvailabilityGuard],
   },
   {
