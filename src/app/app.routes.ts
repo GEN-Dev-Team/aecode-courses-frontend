@@ -38,11 +38,6 @@ export const routes: Routes = [
     component: CoursesComponent,
   },
   {
-    path: 'training/:urlname',
-    title: 'AECODE COURSES',
-    component: CourseLandingDetailComponent,
-  },
-  {
     path: 'training/:urlname/:module',
     title: 'AECODE COURSES',
     component: CourseLandingDetailComponent,

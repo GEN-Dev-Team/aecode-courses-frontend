@@ -36,5 +36,5 @@
 /training/Planificacion-y-simulacion-BIM-4D/M1
 /training/Planificacion-y-simulacion-BIM-4D/M2
 /training/Planificacion-y-simulacion-BIM-4D/M3
-/training/Metodologia-de-investigacion-con-IA
-/training/BIM-aplicado-a-Proyectos-Hospitalarios
+/training/Metodologia-de-investigacion-con-IA/M1
+/training/BIM-aplicado-a-Proyectos-Hospitalarios/M1
