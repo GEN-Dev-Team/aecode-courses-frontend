@@ -117,7 +117,6 @@ export class CourseLandingDetailComponent {
       .getSecondaryCourseByAttribute('urlname', this.secCourseUrlname)
       .subscribe((data) => {
         this.courseData.set(data);
-        console.log(data);
       });
   }
 
