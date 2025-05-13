@@ -9,7 +9,6 @@
     class="course-item-mode"
     customCourseButton
     [mode]="course.mode"
-    [isMasive]="false"
     [courseId]="course.courseId"
   >
     @if(isMasiveCourse) {
@@ -93,7 +92,6 @@
           class="course-item-button"
           customCourseButton
           [mode]="course.mode"
-          [isMasive]="isMasiveCourse"
           [courseId]="course.courseId"
           (click)="downloadKit($event)"
         >
@@ -109,7 +107,6 @@
           class="course-item-button"
           customCourseButton
           [mode]="course.mode"
-          [isMasive]="isMasiveCourse"
           [courseId]="course.courseId"
           (click)="goToPay($event)"
         >

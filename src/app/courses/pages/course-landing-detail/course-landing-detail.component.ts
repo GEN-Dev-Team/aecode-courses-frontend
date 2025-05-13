@@ -135,7 +135,6 @@ export class CourseLandingDetailComponent {
         if ((data as any).urlname) {
           this.courseData.set(data);
           const urlname = data.urlname;
-          const module = data.module.split(' ');
 
           this.routing.navigate([`/training/${urlname}`]);
         }

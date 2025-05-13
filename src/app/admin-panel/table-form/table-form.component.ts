@@ -35,12 +35,14 @@ export class TableFormComponent {
   }
 
   createForm() {
-    const formControls = this.headerList.reduce((controls, header) => {
-      controls[header] = ['']; // Valor inicial vacío, puedes agregar validaciones aquí
-      return controls;
-    }, {});
+    if (this.headerList.length > 0) {
+      const formControls = this.headerList.reduce((controls, header) => {
+        controls[header] = ['']; // Valor inicial vacío, puedes agregar validaciones aquí
+        return controls;
+      }, {});
 
-    this.form = this.fb.group(formControls);
+      this.form = this.fb.group(formControls);
+    }
   }
 
   sendForm() {

@@ -32,9 +32,12 @@ export class HeaderItemComponent {
 
   route: Router = inject(Router);
   themeService: ThemeService = inject(ThemeService);
+  window: any;
 
   redirectToView(item: ICommunityHeaderItem) {
-    this.emitHeaderItemSelected.emit(item);
-    this.route.navigate([`${item.route}`]);
+    if (item.id !== 5) {
+      this.emitHeaderItemSelected.emit(item);
+      this.route.navigate([`${item.route}`]);
+    }
   }
 }

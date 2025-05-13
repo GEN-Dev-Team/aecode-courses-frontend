@@ -15,17 +15,28 @@ export class PaymentService {
   showPaymentModal = signal(false);
 
   totalCartRegularPrice = computed(() => {
-    const shopCartListValue = this.shopCartListSelected();
-    return shopCartListValue.reduce((acc, item) => acc + item.priceRegular, 0);
+    if (this.shopCartListSelected().length > 0) {
+      const shopCartListValue = this.shopCartListSelected();
+      return shopCartListValue.reduce(
+        (acc, item) => acc + item.priceRegular,
+        0
+      );
+    }
+
+    return 0;
   });
 
   totalCartDiscount = computed(() => {
-    const shopCartListValue = this.shopCartListSelected();
-    return shopCartListValue.reduce(
-      (acc, item) =>
-        acc + (item.isOnSale ? item.priceRegular - item.promptPaymentPrice : 0),
-      0
-    );
+    if (this.shopCartListSelected().length > 0) {
+      const shopCartListValue = this.shopCartListSelected();
+      return shopCartListValue.reduce(
+        (acc, item) =>
+          acc +
+          (item.isOnSale ? item.priceRegular - item.promptPaymentPrice : 0),
+        0
+      );
+    }
+    return 0;
   });
 
   totalWithoutTax = computed(() => {

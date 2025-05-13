@@ -1,4 +1,4 @@
-<div class="message-container" [class.align-to-end]="isUserMessage">
+<div class="message-container" [class.bot-message-container]="isUserMessage">
   @if(isUserMessage) {
   <div class="user-profile-img-container">
     @if (userData().profilepicture !== '') {
@@ -17,10 +17,10 @@
 
   }@else {
   <div class="loading-container">
-    <p>Buscando en AECODE</p>
-    <p class="point-1">.</p>
-    <p class="point-2">.</p>
-    <p class="point-3">.</p>
+    <p>Aecodito está pensando</p>
+    <p class="point-1">●</p>
+    <p class="point-2">●</p>
+    <p class="point-3">●</p>
   </div>
   }
 </div>

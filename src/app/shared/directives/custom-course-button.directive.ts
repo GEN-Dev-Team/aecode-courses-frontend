@@ -6,12 +6,17 @@ import { Directive, ElementRef, Input } from '@angular/core';
 })
 export class CustomCourseButtonDirective {
   @Input() mode!: string;
-  @Input() isMasive!: boolean;
   @Input() courseId!: number;
 
   constructor(private el: ElementRef) {}
 
   ngOnInit() {
+    this.removeClasses();
+    this.updateClasses();
+  }
+
+  ngOnChanges(): void {
+    this.removeClasses();
     this.updateClasses();
   }
 
@@ -19,12 +24,15 @@ export class CustomCourseButtonDirective {
     const element = this.el.nativeElement;
 
     if (this.mode === 'ASINCRONO') element.classList.add('async-course-button');
+    if (this.mode === 'EN_VIVO') element.classList.add('in-live-button');
     if (this.mode === 'SINCRONO')
       element.classList.add('coming-soon-course-button');
-    if (this.isMasive) {
-      element.classList.add('masive-course-button');
-      if (this.courseId === 2)
-        element.classList.add('masive-course-button-progra');
-    }
+  }
+
+  private removeClasses() {
+    const element = this.el.nativeElement;
+    element.classList.remove('async-course-button');
+    element.classList.remove('in-live-button');
+    element.classList.remove('coming-soon-course-button');
   }
 }

@@ -74,12 +74,8 @@
             class="course-mode"
             customCourseButton
             [mode]="courseData().mode"
-            [isMasive]="false"
             [courseId]="courseData().seccourseId"
           >
-            <!-- @if(isMasiveCourse) {
-            <app-e-learning-icon />
-            E - LEARNING }@else {  -->
             @switch (courseData().mode) { @case ('SINCRONO') {
             <app-coming-soon-course-icon class="icon" />
             PRÓXIMOS } @case ('EN_VIVO') {

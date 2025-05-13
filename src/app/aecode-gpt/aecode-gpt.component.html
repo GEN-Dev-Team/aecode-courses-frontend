@@ -13,8 +13,8 @@
       } } @else {
       <div>
         <h2 class="no-messages-title">
-          @if(userData()){ ¡Hola, {{ userData().fullname.split(" ")[0] }}!
-          }@else{ ¡Hola! }
+          @if(userData().userId>0){ ¡Hola,
+          {{ userData().fullname.split(" ")[0] }}! }@else{ ¡Hola! }
         </h2>
         <h2 class="no-messages-subtitle">¿Cómo puedo ayudarte hoy?</h2>
       </div>

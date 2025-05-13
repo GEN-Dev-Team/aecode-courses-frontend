@@ -1,15 +1,17 @@
 .message-container {
-  padding: 0px 30px;
+  max-width: calc(933 / 1104 * 100%);
+  padding: 5px 20px;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   gap: 24px;
   width: fit-content;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(30px);
+  background: #1e233a;
   margin: 0;
+  border-radius: 6px;
+  border: 1px solid rgba(95, 97, 228, 0.31);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.56);
+  backdrop-filter: blur(14px);
 
   .user-profile-img-container {
     width: 40px;
@@ -20,6 +22,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 
     .user-profile-img {
       width: 100%;
@@ -52,20 +55,30 @@
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    gap: 2px;
-    padding-block: 20px;
+    gap: 5px;
+    padding-block: 25px;
+    color: #8b7bff;
 
     .point-1 {
+      margin-block: auto 2px;
+      font-size: 8px;
+      color: #ac8ffe;
       margin-inline-start: 5px;
       animation: verticalSlide 1s ease-in-out infinite;
     }
 
     .point-2 {
+      margin-block: auto 2px;
+      font-size: 8px;
+      color: #8a7bfe;
       animation: verticalSlide 1s ease-in-out infinite;
       animation-delay: 0.15s;
     }
 
     .point-3 {
+      margin-block: auto 2px;
+      font-size: 8px;
+      color: #8a7bfe;
       animation: verticalSlide 1s ease-in-out infinite;
       animation-delay: 0.3s;
     }
@@ -86,9 +99,9 @@
   }
 }
 
-.align-to-end {
+.bot-message-container {
+  max-width: calc(740 / 1104 * 100%);
   margin-left: auto;
-  padding-block: 0;
 }
 
 @media screen and (max-width: 768px) {
