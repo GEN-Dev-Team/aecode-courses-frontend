@@ -38,6 +38,7 @@ export class DateFormatPipe implements PipeTransform {
       const formatedDate = date[2] + ' DE ' + this.monthList[monthId];
 
       return formatedDate.toUpperCase();
+      return formatedDate.toUpperCase();
     }
   }
 }

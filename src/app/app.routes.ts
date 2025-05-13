@@ -51,7 +51,8 @@ export const routes: Routes = [
   {
     path: 'profile/:id',
     title: 'AECODE PROFILE',
-    component: ProfileMainViewComponent,
+    // component: ProfileMainViewComponent,
+    component: InProgressComponent,
     canActivate: [mobileAvailabilityGuard],
   },
   {
@@ -63,8 +64,8 @@ export const routes: Routes = [
   {
     path: 'community',
     title: 'AECODE COMMUNITY',
-    // component: CommunityInProgressComponent,
-    component: CommunityComponent,
+    component: CommunityInProgressComponent,
+    // component: CommunityComponent,
     canActivate: [mobileAvailabilityGuard],
   },
   {

@@ -46,7 +46,7 @@
       >
         <app-watch-icon class="icon" />
         @if (course.mode === 'ASINCRONO') { DISPONIBLE 24/7 } @else { INICIO:
-        {{ course.startDate | dateFormat }}
+        {{ course.startDate | dateFormat : false }}
         }
       </div>
       } @if(!isMasiveCourse) {

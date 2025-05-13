@@ -14,7 +14,6 @@ import { ELearningIconComponent } from '../../shared/icons/e-learning-icon/e-lea
 import { DownloadKitIconComponent } from '../../shared/icons/download-kit-icon/download-kit-icon.component';
 import { CustomCourseButtonDirective } from '../../shared/directives/custom-course-button.directive';
 import { WhatsappIconComponent } from '../../shared/icons/whatsapp-icon/whatsapp-icon.component';
-import { ContentBlockedComponent } from '../../shared/components/content-blocked/content-blocked.component';
 import { DateFormatPipe } from '../../core/pipes/date-format.pipe';
 import { ThemeService } from '../../core/services/theme.service';
 import { PaymentService } from '../../shopping-cart/services/payment.service';
@@ -37,7 +36,6 @@ import { MessageBoxService } from '../../core/services/message-box.service';
     DownloadKitIconComponent,
     CustomCourseButtonDirective,
     WhatsappIconComponent,
-    ContentBlockedComponent,
     DateFormatPipe,
   ],
   templateUrl: './course-item.component.html',
