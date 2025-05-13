@@ -1,34 +1,22 @@
 const fs = require("fs");
 const path = require("path");
 
-async function getSecondaryCourseIds() {
+async function getSecondaryUrlnames() {
   try {
     const response = await fetch(
-      "https://backend-productodigital.onrender.com/secondarycourses"
+      // "https://backend-productodigital.onrender.com/secondarycourses"
+      "https://webcoursesback-alg9.onrender.com/secondarycourses"
     );
     const courses = await response.json();
-    return courses.map((course) => course.seccourseId);
+    return courses.map((course) => course.urlname);
   } catch (error) {
     console.error("Error fetching secondary course IDs:", error);
     return [];
   }
 }
 
-async function getMasiveCourseIds() {
-  try {
-    const response = await fetch(
-      "https://backend-productodigital.onrender.com/course"
-    );
-    const courses = await response.json();
-    return courses.map((course) => course.courseId);
-  } catch (error) {
-    console.error("Error fetching masive course IDs:", error);
-    return [];
-  }
-}
-
 async function generateRoutes() {
-  const secCourseIds = await getSecondaryCourseIds();
+  const secUrlnames = await getSecondaryUrlnames();
   // const masiveCourseIds = await getMasiveCourseIds();
   const routes = [];
 
@@ -36,9 +24,10 @@ async function generateRoutes() {
   routes.push("/admin-panel");
   routes.push("/payment");
   routes.push("/community");
+  routes.push("/shopping");
 
-  secCourseIds.forEach((id) => {
-    routes.push(`/training/module/${id}`);
+  secUrlnames.forEach((urlname) => {
+    routes.push(`/training/${urlname}`);
   });
 
   // masiveCourseIds.forEach((id) => {

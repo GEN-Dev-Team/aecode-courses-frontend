@@ -14,6 +14,7 @@ import { NotAvailableMobileComponent } from './not-available-mobile/not-availabl
 import { mobileAvailabilityGuard } from './core/guards/mobile-availability.guard';
 import { PurchasedProgramDetailsComponent } from './courses/pages/purchased-program-details/purchased-program-details.component';
 import { CommunityInProgressComponent } from './community-in-progress/community-in-progress.component';
+import { CommunityComponent } from './community/community.component';
 
 export const routes: Routes = [
   {
@@ -30,7 +31,6 @@ export const routes: Routes = [
     path: 'aecode-chat',
     title: 'AECODE CHAT',
     component: AecodeGptComponent,
-    canActivate: [mobileAvailabilityGuard],
   },
   {
     path: 'training',
@@ -38,7 +38,7 @@ export const routes: Routes = [
     component: CoursesComponent,
   },
   {
-    path: 'training/module/:secCourseId',
+    path: 'training/:urlname/:module',
     title: 'AECODE COURSES',
     component: CourseLandingDetailComponent,
   },
@@ -50,7 +50,7 @@ export const routes: Routes = [
   },
   {
     path: 'profile/:id',
-    title: 'PROFILE',
+    title: 'AECODE PROFILE',
     component: ProfileMainViewComponent,
     canActivate: [mobileAvailabilityGuard],
   },
@@ -63,18 +63,18 @@ export const routes: Routes = [
   {
     path: 'community',
     title: 'AECODE COMMUNITY',
-    component: CommunityInProgressComponent,
+    // component: CommunityInProgressComponent,
+    component: CommunityComponent,
     canActivate: [mobileAvailabilityGuard],
   },
   {
-    path: 'shopping-cart',
-    title: 'AECODE CART',
+    path: 'shopping',
+    title: 'AECODE SHOPPING',
     component: ShoppingCartComponent,
-    canActivate: [mobileAvailabilityGuard],
   },
   {
     path: 'live',
-    title: 'IN PROGRESS',
+    title: 'AECODE LIVE',
     component: LiveComponent,
     canActivate: [mobileAvailabilityGuard],
   },

@@ -6,6 +6,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { provideClientHydration } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,5 +27,6 @@ export const appConfig: ApplicationConfig = {
       })
     ),
     provideClientHydration(),
+    provideMarkdown(),
   ],
 };

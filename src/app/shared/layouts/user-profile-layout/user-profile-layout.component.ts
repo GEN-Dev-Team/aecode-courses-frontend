@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { ProfileSidebarComponent } from './components/profile-sidebar/profile-sidebar.component';
+import { ManageUserDataService } from '../../../user-profile/services/manage-user-data.service';
 
 @Component({
   selector: 'app-user-profile-layout',
@@ -8,4 +9,6 @@ import { ProfileSidebarComponent } from './components/profile-sidebar/profile-si
   templateUrl: './user-profile-layout.component.html',
   styleUrl: './user-profile-layout.component.scss',
 })
-export class UserProfileLayoutComponent {}
+export class UserProfileLayoutComponent {
+  @Output() itemIndexSelected = new EventEmitter<number>();
+}

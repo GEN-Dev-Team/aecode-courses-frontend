@@ -1,10 +1,14 @@
-@if(true) {
-<app-in-progress />
-}@else {
-<app-user-profile-layout>
+<app-user-profile-layout (itemIndexSelected)="currentView = $event">
+  @switch (currentView) { @case (0) {
   <app-user-profile />
-  <!-- <app-edit-profile/> -->
-  <!-- <app-user-courses/> -->
+
+  } @case (1) {
+  <app-edit-profile />
+
+  } @case (2) {
+  <app-user-courses />
+
+  } }
 </app-user-profile-layout>
 
 <app-modal [isOpen]="showMessageModal" (isClosed)="showMessageModal = $event">
@@ -29,5 +33,3 @@
   />
   } }
 </app-modal>
-
-}

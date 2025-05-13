@@ -65,7 +65,7 @@
 .course-footer-container {
   border-top: none;
   z-index: 0;
-  background-color: var(--purple-2);
+  background-color: var(--purple-3);
 
   .footer-icon {
     fill: white;

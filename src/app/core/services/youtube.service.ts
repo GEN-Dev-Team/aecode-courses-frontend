@@ -3,8 +3,6 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { ProgressSessionService } from '../../courses/services/course-progress.service';
 import { ISession } from '../../courses/interface/Session';
 import { CourseSessionService } from '../../courses/services/course-session.service';
-import { SessionTestService } from '../../courses/course-detail/class-question/session-test.service';
-import { Subject } from 'rxjs/internal/Subject';
 import { Observable } from 'rxjs/internal/Observable';
 import { BehaviorSubject } from 'rxjs';
 import { IProgressSession } from '../../courses/interface/CourseProgress';
@@ -35,7 +33,6 @@ export class YoutubeService {
   );
   courseSessionProgressService: CourseSessionService =
     inject(CourseSessionService);
-  sessionTestService: SessionTestService = inject(SessionTestService);
 
   courseSessionObject!: ISession;
   userId: number = -1;

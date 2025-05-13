@@ -16,6 +16,7 @@ import { SyncCourseIconComponent } from '../../../shared/icons/sync-course-icon/
 import { WatchIconComponent } from '../../../shared/icons/watch-icon/watch-icon.component';
 import { PaymentService } from '../../../shopping-cart/services/payment.service';
 import { ShoppingCartIconComponent } from '../../icons/shopping-cart-icon/shopping-cart-icon.component';
+import { SecondaryCourseService } from '../../services/secondary-course.service';
 
 @Component({
   selector: 'app-course-item',
@@ -46,6 +47,7 @@ export class CourseItemComponent {
   themeService: ThemeService = inject(ThemeService);
   cartService: PaymentService = inject(PaymentService);
   messageBoxService: MessageBoxService = inject(MessageBoxService);
+  secondaryCourseService = inject(SecondaryCourseService);
 
   finalPrice = signal(0);
 
@@ -65,24 +67,10 @@ export class CourseItemComponent {
     }
   });
 
-  ngOnInit(): void {
-    console.log(this.course);
-  }
-
   showCourseDetails() {
-    // if (this.isMasiveCourse) {
-    // this.browserService.navigateAndScroll(
-    // `training/e-learning/${this.course.courseId}`,
-    // 0
-    // );
-    // } else {
-    {
-      this.browserService.navigateAndScroll(
-        `training/module/${this.course.seccourseId}`,
-        0
-      );
-    }
-    // }
+    const urlname = this.course.urlname;
+
+    this.browserService.navigateAndScroll(`training/${urlname}`, 0);
   }
 
   downloadKit(event: Event) {

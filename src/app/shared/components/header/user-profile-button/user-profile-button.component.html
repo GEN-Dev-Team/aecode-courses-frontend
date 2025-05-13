@@ -4,11 +4,17 @@
       class="user-profile-img-container"
       [class.is-home-header-img-container]="isHomeView"
     >
-      @if (userProfileImg) {
-      <img [src]="userProfileImg" class="user-profile-img" alt="" />
+      @if (userDetailsData().profilepicture) {
+      <img
+        [src]="userDetailsData().profilepicture"
+        class="user-profile-img"
+        alt=""
+      />
 
       } @else {
-      <span class="user-profile-first-letter">{{ userFirstLetterName }}</span>
+      <span class="user-profile-first-letter">{{
+        userDetailsData().fullname.charAt(0).toUpperCase()
+      }}</span>
       }
     </div>
 

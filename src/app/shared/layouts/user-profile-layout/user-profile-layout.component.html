@@ -1,5 +1,7 @@
 <main class="user-profile-layout">
-  <app-profile-sidebar />
+  <app-profile-sidebar
+    (emitItemIndexSelected)="itemIndexSelected.emit($event)"
+  />
 
   <section class="user-profile-content">
     <ng-content />

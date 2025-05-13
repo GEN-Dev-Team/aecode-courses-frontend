@@ -3,7 +3,6 @@ import { CourseService } from '../../../courses/services/course.service';
 import { SunIconComponent } from '../../icons/sun-icon/sun-icon.component';
 import { MoonIconComponent } from '../../icons/moon-icon/moon-icon.component';
 import { WsspFloatingIconComponent } from '../../icons/wssp-floating-icon/wssp-floating-icon.component';
-import { HeaderComponent } from '../../components/header/header.component';
 import { HomeFooterComponent } from '../../../home/home-footer/home-footer.component';
 import { ThemeMode, ThemeService } from '../../../core/services/theme.service';
 import { Observable } from 'rxjs';
@@ -20,7 +19,6 @@ import { TermsAndConditionsComponent } from '../../components/terms-and-conditio
     SunIconComponent,
     MoonIconComponent,
     WsspFloatingIconComponent,
-    HeaderComponent,
     HomeFooterComponent,
     AsyncPipe,
     ContentBlockedComponent,

@@ -1,12 +1,7 @@
-<section class="user-info-container">
-  <h2>Información personal</h2>
-
+<app-profile-section-box [boxTitle]="'Información personal'">
   <div class="user-info-list">
     @for (item of userListAtributes; track $index) {
-    <div class="user-info-item">
-      <label for="">{{ item.title }}</label>
-      <p>{{ item.title }}</p>
-    </div>
+    <app-profile-box-item [item]="item" />
     }
   </div>
-</section>
+</app-profile-section-box>
