@@ -6,10 +6,6 @@ import { HomeFooterComponent } from '../home/home-footer/home-footer.component';
 import { MainContainerComponent } from '../shared/components/main-container/main-container.component';
 import { BrowserService } from '../core/services/browser.service';
 import { ContentBlockedComponent } from '../shared/components/content-blocked/content-blocked.component';
-<<<<<<< HEAD
-=======
-import { HeaderComponent } from '../shared/components/header/header.component';
->>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
 import { MessageBoxService } from '../core/services/message-box.service';
 
 @Component({
@@ -22,10 +18,6 @@ import { MessageBoxService } from '../core/services/message-box.service';
     HomeFooterComponent,
     MainContainerComponent,
     ContentBlockedComponent,
-<<<<<<< HEAD
-=======
-    HeaderComponent,
->>>>>>> 6a701c4410546401dfde04eeed2211f8cd751a74
   ],
   templateUrl: './community.component.html',
   styleUrl: './community.component.scss',
