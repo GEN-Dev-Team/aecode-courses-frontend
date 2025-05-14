@@ -75,7 +75,6 @@ export const routes: Routes = [
     path: 'live',
     title: 'AECODE LIVE',
     component: LiveComponent,
-    canActivate: [mobileAvailabilityGuard],
   },
   {
     path: 'in-progress',
