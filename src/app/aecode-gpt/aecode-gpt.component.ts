@@ -3,6 +3,7 @@ import {
   Component,
   ElementRef,
   inject,
+  NgZone,
   ViewChild,
 } from '@angular/core';
 import { OpenaiService } from './openai.service';
@@ -35,6 +36,7 @@ export class AecodeGptComponent {
   @ViewChild('messagesEnd') private messagesEnd!: ElementRef;
   cd = inject(ChangeDetectorRef);
   manageUserDataService = inject(ManageUserDataService);
+  zone = inject(NgZone);
 
   userData = this.manageUserDataService.userDataInfo;
 
@@ -86,9 +88,18 @@ export class AecodeGptComponent {
 
     this.openAiService.sendMessageToChatBot(prompt, this.threadId).subscribe({
       next: (token) => {
-        messageItem.botResponse += token;
-        this.cd.detectChanges();
-        this.scrollToBottom();
+        // messageItem.botResponse += token;
+        // this.cd.detectChanges();
+        // this.scrollToBottom();
+
+        // console.log('Respuesta recibida:', messageItem.botResponse);
+
+        this.zone.run(() => {
+          messageItem.botResponse += token;
+          this.cd.detectChanges();
+          this.scrollToBottom();
+          console.log('Respuesta recibida:', messageItem.botResponse);
+        });
       },
       error: (err) => {
         if (err instanceof Event) {

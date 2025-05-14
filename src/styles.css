@@ -133,3 +133,45 @@ body {
   background-color: #0e1121;
   color: white;
 }
+
+.bot-message-response {
+  font-family: "plusjakartasans-light";
+
+  /* color: red;
+
+  section {
+    padding: 1rem;
+    background-color: #f9f9f9;
+
+    h1 {
+      color: blue;
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+
+      &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+      }
+    }
+
+    h2 {
+      color: red;
+      text-decoration: underline;
+    }
+
+    ul {
+      margin-left: 1.5rem;
+    }
+
+    li {
+      color: #444;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    p {
+      line-height: 1.6;
+      color: #222;
+    }
+  } */
+}
