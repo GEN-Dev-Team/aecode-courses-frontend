@@ -1,3 +1,24 @@
+@if(headerItem.id === 3){
+
+<a
+  href="{{ headerItem.route }}"
+  (click)="redirectToView(headerItem)"
+  class="header-item {{ themeService.getMode() | async }}-header-item "
+  [style.border-color]="
+    headerItemSelected.id === headerItem.id ? headerItem.colorCode : ''
+  "
+  [class.header-item-selected]="headerItemSelected.id === headerItem.id"
+  [class.dark-header-item-selected]="
+    headerItemSelected.id === headerItem.id &&
+    (themeService.getMode() | async) === 'dark'
+  "
+>
+  <app-home-community-icon />
+
+  {{ headerItem.name }}
+</a>
+} @else {
+
 <li
   (click)="redirectToView(headerItem)"
   class="header-item {{ themeService.getMode() | async }}-header-item "
@@ -25,3 +46,5 @@
 
   }
 </li>
+
+}

@@ -68,7 +68,8 @@ export class HeaderComponent {
     {
       id: 3,
       name: 'Comunidad',
-      route: '/community',
+      // route: '/community',
+      route: 'https://export-above-badge.figma.site/',
       colorCode: '#4A3AC1',
     },
 
