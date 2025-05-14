@@ -81,8 +81,7 @@ export class HeaderComponent {
     {
       id: 5,
       name: 'Live',
-      // route: '/live',
-      route: 'https://lu.ma/5sa2znpu',
+      route: '/live',
       colorCode: '#3D813F',
     },
   ];

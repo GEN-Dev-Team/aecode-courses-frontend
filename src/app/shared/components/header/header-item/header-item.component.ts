@@ -35,9 +35,7 @@ export class HeaderItemComponent {
   window: any;
 
   redirectToView(item: ICommunityHeaderItem) {
-    if (item.id !== 5) {
-      this.emitHeaderItemSelected.emit(item);
-      this.route.navigate([`${item.route}`]);
-    }
+    this.emitHeaderItemSelected.emit(item);
+    this.route.navigate([`${item.route}`]);
   }
 }
