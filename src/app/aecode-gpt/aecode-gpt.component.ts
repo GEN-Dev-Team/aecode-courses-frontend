@@ -7,12 +7,9 @@ import {
   ViewChild,
 } from '@angular/core';
 import { OpenaiService } from './openai.service';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { chatMessageComponent } from './components/message/message.component';
 import { UserInputComponent } from './components/user-input/user-input.component';
-import { InProgressComponent } from '../in-progress/in-progress.component';
-import { threadId } from 'worker_threads';
-import { BrowserService } from '../core/services/browser.service';
 import { ManageUserDataService } from '../user-profile/services/manage-user-data.service';
 
 interface IMessage {
@@ -23,12 +20,7 @@ interface IMessage {
 @Component({
   selector: 'app-aecode-gpt',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    chatMessageComponent,
-    UserInputComponent,
-    InProgressComponent,
-  ],
+  imports: [ReactiveFormsModule, chatMessageComponent, UserInputComponent],
   templateUrl: './aecode-gpt.component.html',
   styleUrl: './aecode-gpt.component.scss',
 })
