@@ -72,6 +72,7 @@ export class AecodeGptComponent {
     try {
       this.messagesEnd.nativeElement.scrollTop =
         this.messagesEnd.nativeElement.scrollHeight;
+      this.shouldScroll = false;
     } catch (err) {
       console.error('Error al hacer scroll:', err);
     }
