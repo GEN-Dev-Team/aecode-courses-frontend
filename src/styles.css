@@ -144,10 +144,6 @@ body {
     border-top: 1px solid rgba(75, 71, 138, 0.49);
   }
 
-  p {
-    font-style: italic;
-  }
-
   section {
     h1 {
       font-family: "plusjakartasans-bold";
@@ -190,10 +186,6 @@ body {
     ul,
     ol {
       padding-inline-start: 25px;
-    }
-
-    p:last-child {
-      font-style: italic;
     }
   }
 }
