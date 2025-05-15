@@ -11,11 +11,15 @@
 
     }
   </div>
-  } @if(message) {
+  } @if(message) { @if(isUserMessage) {
 
-  <markdown [data]="message"></markdown>
+  <p>
+    {{ message }}
+  </p>
+  } @else {
 
-  }@else {
+  <div class="bot-message-response" [innerHTML]="message"></div>
+  } }@else {
   <div class="loading-container">
     <p>Aecodito está pensando</p>
     <p class="point-1">●</p>
