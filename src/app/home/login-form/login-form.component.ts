@@ -55,10 +55,8 @@ export class LoginFormComponent {
     });
 
     this.signInForm = this.fb.group({
-      userId: new FormControl(0),
       fullname: new FormControl(''),
       email: new FormControl(''),
-      status: new FormControl('activo'),
       passwordHash: new FormControl(''),
     });
   }
@@ -71,12 +69,15 @@ export class LoginFormComponent {
       'passwordHashConfirm'
     ) as HTMLInputElement;
 
+    console.log(this.signInForm.value);
+
     if (password.value !== passwordConfirm.value) {
       this.toastService.error('Las contraseñas no coinciden', 'Error');
     } else {
-      this.logInService
-        .createUser(this.signInForm.value)
-        .subscribe((response) => {});
+      this.logInService.createUser(this.signInForm.value).subscribe(() => {});
+      this.toastService.success('Usuario creado con éxito', 'Éxito');
+      this.loginForm.patchValue({ email: this.signInForm.value.email });
+      this.signInForm.reset();
       this.isSignInForm = false;
     }
   }

@@ -1,9 +1,7 @@
 import { inject, Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ICourse } from '../../courses/interface/Course';
 import { isPlatformBrowser } from '@angular/common';
 import { BrowserService } from './browser.service';
-import { IModule } from '../../courses/interface/Module';
 import {
   ICoureAccess,
   IModuleAccess,

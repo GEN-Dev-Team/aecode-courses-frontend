@@ -45,4 +45,37 @@ export class OpenaiService {
   getThreadId() {
     return this.http.get(`${this.url}/thread`);
   }
+
+  initMessageLimit() {
+    const messageLimit = localStorage.getItem('messageLimit');
+
+    if (messageLimit) return;
+
+    localStorage.setItem('messageLimit', '0');
+  }
+
+  addMessageToLimit(isUserLogged: boolean) {
+    const messageLimit = localStorage.getItem('messageLimit');
+    if (messageLimit) {
+      if (this.checkMaxMessageLimit(isUserLogged)) {
+        localStorage.setItem('messageLimit', String(Number(messageLimit) + 1));
+      } else {
+        console.log('Limite de mensajes alcanzado');
+      }
+    }
+  }
+
+  checkMaxMessageLimit(isUserLogged: boolean): boolean {
+    const messageLimit = localStorage.getItem('messageLimit');
+
+    if (messageLimit) {
+      if (isUserLogged) {
+        return Number(messageLimit) < 10;
+      } else {
+        return Number(messageLimit) < 2;
+      }
+    }
+
+    return false;
+  }
 }

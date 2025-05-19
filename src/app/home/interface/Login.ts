@@ -9,7 +9,7 @@ export interface ILogin {
   userId: number;
   fullname: string;
   email: string;
-  password: string;
+  passwordHash: string;
   profilepicture: string;
   rol: string;
   status: string;
@@ -36,7 +36,7 @@ export const defaultLogInData: ILogin = {
   userId: 0,
   fullname: '',
   email: '',
-  password: '',
+  passwordHash: '',
   profilepicture: '',
   rol: '',
   status: '',

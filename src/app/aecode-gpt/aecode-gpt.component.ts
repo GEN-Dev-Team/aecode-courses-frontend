@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { chatMessageComponent } from './components/message/message.component';
 import { UserInputComponent } from './components/user-input/user-input.component';
 import { ManageUserDataService } from '../user-profile/services/manage-user-data.service';
+import { AuthService } from '../core/services/auth.service';
 
 interface IMessage {
   userMessage: string;
@@ -29,6 +30,7 @@ export class AecodeGptComponent {
   cd = inject(ChangeDetectorRef);
   manageUserDataService = inject(ManageUserDataService);
   zone = inject(NgZone);
+  authService = inject(AuthService);
 
   userData = this.manageUserDataService.userDataInfo;
 
@@ -54,6 +56,8 @@ export class AecodeGptComponent {
         this.threadId = (data as any).thread_id;
       },
     });
+
+    this.openAiService.initMessageLimit();
   }
 
   scrollToBottom(): void {
@@ -71,22 +75,16 @@ export class AecodeGptComponent {
       botResponse: '',
     };
 
+    // this.openAiService.addMessageToLimit(this.authService.hasToken());
     this.messageList.push(messageItem);
     this.scrollToBottom();
 
     this.openAiService.sendMessageToChatBot(prompt, this.threadId).subscribe({
       next: (token) => {
-        // messageItem.botResponse += token;
-        // this.cd.detectChanges();
-        // this.scrollToBottom();
-
-        // console.log('Respuesta recibida:', messageItem.botResponse);
-
         this.zone.run(() => {
           messageItem.botResponse += token;
           this.cd.detectChanges();
           this.scrollToBottom();
-          console.log('Respuesta recibida:', messageItem.botResponse);
         });
       },
       error: (err) => {
@@ -95,9 +93,6 @@ export class AecodeGptComponent {
         } else {
           console.error('❌ Error inesperado:', err);
         }
-      },
-      complete: () => {
-        console.log('✅ Respuesta completa');
       },
     });
   }
