@@ -2,17 +2,14 @@
   <h2>Horarios</h2>
 
   <div class="schedules-container">
+    @for (item of schedules; track $index) {
     <div>
-      Miércoles / <br />
-      6 pm GMT-5
+      {{ item }}
     </div>
-    <div>
-      Miércoles / <br />
-      6 pm GMT-5
-    </div>
+    }
   </div>
 
   <p>Agregar al calendar</p>
 
-  <button>Unirme a clases</button>
+  <a href="{{ urljoinclass }}" target="_blank">Unirme a clases</a>
 </div>

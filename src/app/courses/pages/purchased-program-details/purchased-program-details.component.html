@@ -1,25 +1,35 @@
 <app-course-overlay>
   <main class="program-details-container">
     <div class="buttons-container">
-      <button class="button-back">
+      <button class="button-back" (click)="goBack()">
         <app-caret-left-icon class="caret-icon" /> Volver
       </button>
       <button class="button-my-courses">Mis cursos</button>
     </div>
 
-    <h2>BIM PARA HOSPITALES</h2>
-    <h4>Programa especializado</h4>
-    <p>Aplicado a defensas ribereñas, diques, bocatomas, puentes y canales</p>
+    <h2>{{ coursePurchasedData().title }}</h2>
+    <h4>{{ coursePurchasedData().module }}</h4>
+    <p>{{ coursePurchasedData().description }}</p>
 
     <section class="program-bento-container">
-      <app-program-modules />
+      <app-program-modules
+        [programModules]="coursePurchasedData().studyplans"
+      />
 
       <aside class="program-extra-info-container">
-        <app-program-extra-info />
+        <app-program-extra-info
+          [urlmaterialaccess]="coursePurchasedData().urlmaterialaccess"
+          [whatsappGroupLink]="coursePurchasedData().whatsappGroupLink"
+        />
 
-        <app-program-schedules />
+        <app-program-schedules
+          [schedules]="coursePurchasedData().schedules"
+          [urljoinclass]="coursePurchasedData().urljoinclass"
+        />
 
-        <app-program-certificates />
+        <app-program-certificates
+          [certificateUrls]="coursePurchasedData().certificateUrls"
+        />
       </aside>
     </section>
   </main>

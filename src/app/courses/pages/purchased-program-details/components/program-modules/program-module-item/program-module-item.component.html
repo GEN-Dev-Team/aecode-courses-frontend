@@ -1,6 +1,6 @@
 <div class="program-module-item" (click)="openDropdown = !openDropdown">
-  <p>M1: Introducción al BIM 4D</p>
-  <span>24hrs</span>
+  <p>M1: {{ programModule.unit }}</p>
+  <span>{{ programModule.hours }} hrs</span>
 
   @if(openDropdown) {
   <app-caret-up-icon class="caret-icon" />
@@ -14,23 +14,20 @@
 @if(openDropdown) {
 <div class="program-module-item-dropdown">
   <ul>
-    <li>Contexto nacional BIM 4D</li>
-    <li>Plan BIM y proyecciones de implementacion BIM</li>
-    <li>Requerimientos BIM 4D en TDR's de proyectos</li>
-    <li>Contexto nacional BIM 4D</li>
-    <li>Plan BIM y proyecciones de implementacion BIM</li>
-    <li>Requerimientos BIM 4D en TDR's de proyectos</li>
-    <li>Contexto nacional BIM 4D</li>
-    <li>Plan BIM y proyecciones de implementacion BIM</li>
-    <li>Requerimientos BIM 4D en TDR's de proyectos</li>
-    <li>TALLER 2: DIAGRAMAS DE FLUJO DE PROCESOS</li>
+    <li>{{ programModule.sessions[0] }}</li>
   </ul>
 
   <div class="buttons-container">
     <div class="button-list">
-      <button>Ver grabación</button>
-      <button>Descargar material</button>
-      <button>Ver presentación</button>
+      <a target="_blank" href="{{ programModule.urlrecording }}"
+        >Ver grabación</a
+      >
+      <a target="_blank" href="{{ programModule.dmaterial }}"
+        >Descargar material</a
+      >
+      <a target="_blank" href="{{ programModule.viewpresentation }}"
+        >Ver presentación</a
+      >
     </div>
   </div>
 </div>

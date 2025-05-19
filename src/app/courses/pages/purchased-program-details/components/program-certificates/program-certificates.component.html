@@ -2,8 +2,8 @@
   <h2>Ver certificados</h2>
 
   <div>
-    @for (item of [1]; track $index) {
-    <span>AECODE</span>
+    @for (item of certificateUrls; track $index) {
+    <span>{{ item }}</span>
     }
   </div>
 </div>

@@ -57,6 +57,49 @@ export interface ISecondaryCourseSummary {
   tags: ICourseTag[];
 }
 
+export interface ICoursePurchased extends ISecondaryCourse {
+  urlmaterialaccess: string;
+  urljoinclass: string;
+  certificateUrls: string[];
+}
+
+export const defaultCoursePurchased: ICoursePurchased = {
+  seccourseId: 0,
+  title: '',
+  urlname: '',
+  programTitle: '',
+  description: '',
+  module: '',
+  brochureUrl: '',
+  whatsappGroupLink: '',
+  startDate: new Date(),
+  certificateHours: '',
+  priceRegular: 0,
+  discountPercentage: 0,
+  promptPaymentPrice: 0,
+  isOnSale: false,
+  achievement: '',
+  videoUrl: '',
+  principalimage: '',
+  totalHours: 0,
+  numberOfSessions: 0,
+  numberOfUnits: 0,
+  orderNumber: -1,
+  schedules: [],
+  benefits: [],
+  tools: [],
+  studyplans: [],
+  coupons: [],
+  freqquests: [],
+  requirements: [],
+  mode: '',
+  isSelectedinCart: false,
+  tags: [],
+  urlmaterialaccess: '',
+  urljoinclass: '',
+  certificateUrls: [],
+};
+
 export const defaultSecondaryCourse: ISecondaryCourse = {
   seccourseId: 0,
   title: '',

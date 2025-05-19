@@ -42,7 +42,7 @@ export const routes: Routes = [
   },
   {
     // path: 'training/e-learning/:courseId',
-    path: 'training/e-learning',
+    path: 'training/my-courses',
     title: 'AECODE COURSES',
     component: PurchasedProgramDetailsComponent,
   },

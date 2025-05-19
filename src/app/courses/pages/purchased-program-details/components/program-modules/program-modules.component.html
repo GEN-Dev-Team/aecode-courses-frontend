@@ -1,3 +1,6 @@
 <div class="program-modules-container">
-  <app-program-module-item />
+  @for (item of programModules; track $index) {
+  <app-program-module-item [programModule]="item" [key]="$index" />
+
+  }
 </div>

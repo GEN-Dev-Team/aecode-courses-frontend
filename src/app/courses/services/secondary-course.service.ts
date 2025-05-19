@@ -1,7 +1,9 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import {
+  defaultCoursePurchased,
+  ICoursePurchased,
   ISecondaryCourse,
   ISecondaryCourseSummary,
 } from '../interface/secondary-course/Secondary-Course';
@@ -15,6 +17,8 @@ export class SecondaryCourseService {
   http: HttpClient = inject(HttpClient);
 
   api_url = environment.base + '/secondarycourses';
+
+  coursePurchasedData = signal<ICoursePurchased>(defaultCoursePurchased);
 
   getAllSecondaryCourses(): Observable<ISecondaryCourse[]> {
     return this.http.get<ISecondaryCourse[]>(this.api_url);
@@ -79,6 +83,18 @@ export class SecondaryCourseService {
 
     return this.http.get<IPaginator<ISecondaryCourseSummary>>(
       `${this.api_url}/paginateByTags?tagIds=${tagIds}&page=${pageNumber}&size=${pageSize}`
+    );
+  }
+
+  getCourseListByUserId(userId: number) {
+    return this.http.get<ISecondaryCourseSummary[]>(
+      `${this.api_url}/mycourses/${userId}`
+    );
+  }
+
+  getCourseDataByUserId(userId: number, courseId: number) {
+    return this.http.get<ICoursePurchased>(
+      `${this.api_url}/mycourses/${userId}/${courseId}`
     );
   }
 }
