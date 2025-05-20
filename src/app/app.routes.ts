@@ -13,6 +13,7 @@ import { mobileAvailabilityGuard } from './core/guards/mobile-availability.guard
 import { PurchasedProgramDetailsComponent } from './courses/pages/purchased-program-details/purchased-program-details.component';
 import { CommunityInProgressComponent } from './community-in-progress/community-in-progress.component';
 import { CourseLandingDetailComponent } from './courses/pages/course-landing-detail/course-landing-detail.component';
+import { ProfileMainViewComponent } from './user-profile/profile-main-view.component';
 
 export const routes: Routes = [
   {
@@ -49,8 +50,8 @@ export const routes: Routes = [
   {
     path: 'profile/:id',
     title: 'AECODE PROFILE',
-    // component: ProfileMainViewComponent,
-    component: InProgressComponent,
+    component: ProfileMainViewComponent,
+    // component: InProgressComponent,
     canActivate: [mobileAvailabilityGuard],
   },
   {

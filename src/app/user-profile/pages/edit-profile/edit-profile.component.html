@@ -11,7 +11,7 @@
     </div>
   </app-profile-section-box>
 
-  <app-profile-section-box [boxTitle]="'Editar Información personal'">
+  <app-profile-section-box [boxTitle]="'Editar Información profesional'">
     <div class="user-info-list">
       @for (item of professionalInformationList; track $index) {
       <div class="user-info-item">
@@ -23,7 +23,7 @@
     </div>
   </app-profile-section-box>
 
-  <app-profile-section-box [boxTitle]="'Editar Información personal'">
+  <app-profile-section-box [boxTitle]="'Seguridad'">
     <div class="user-info-list">
       @for (item of userSecurityList; track $index) {
       <div class="user-info-item">
@@ -32,6 +32,20 @@
       </div>
 
       }
+    </div>
+  </app-profile-section-box>
+
+  <app-profile-section-box [boxTitle]="'Estado activo'">
+    <div class="user-status-container">
+      <p>
+        <span><app-active-status-icon /> Activo</span> Tu cuenta está activa y
+        funcionando correctamente
+      </p>
+
+      <div class="status-buttons">
+        <button>Guardar cambios</button>
+        <button>Cancelar</button>
+      </div>
     </div>
   </app-profile-section-box>
 </div>

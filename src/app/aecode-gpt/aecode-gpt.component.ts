@@ -12,6 +12,7 @@ import { chatMessageComponent } from './components/message/message.component';
 import { UserInputComponent } from './components/user-input/user-input.component';
 import { ManageUserDataService } from '../user-profile/services/manage-user-data.service';
 import { AuthService } from '../core/services/auth.service';
+import { BrowserService } from '../core/services/browser.service';
 
 interface IMessage {
   userMessage: string;
@@ -31,6 +32,8 @@ export class AecodeGptComponent {
   manageUserDataService = inject(ManageUserDataService);
   zone = inject(NgZone);
   authService = inject(AuthService);
+  openAiService = inject(OpenaiService);
+  browserService = inject(BrowserService);
 
   userData = this.manageUserDataService.userDataInfo;
 
@@ -44,8 +47,6 @@ export class AecodeGptComponent {
   ];
   threadId: string = '';
 
-  openAiService = inject(OpenaiService);
-
   ngAfterViewChecked(): void {
     this.scrollToBottom();
   }
@@ -57,7 +58,11 @@ export class AecodeGptComponent {
       },
     });
 
-    this.openAiService.initMessageLimit();
+    if (this.browserService.isBrowser()) {
+      this.openAiService.initMessageLimit();
+
+      this.openAiService.checkTimeLimit();
+    }
   }
 
   scrollToBottom(): void {
@@ -75,25 +80,27 @@ export class AecodeGptComponent {
       botResponse: '',
     };
 
-    // this.openAiService.addMessageToLimit(this.authService.hasToken());
-    this.messageList.push(messageItem);
-    this.scrollToBottom();
+    if (this.openAiService.checkMaxMessageLimit(this.authService.hasToken())) {
+      this.messageList.push(messageItem);
+      this.scrollToBottom();
+      this.openAiService.addMessageToLimit();
 
-    this.openAiService.sendMessageToChatBot(prompt, this.threadId).subscribe({
-      next: (token) => {
-        this.zone.run(() => {
-          messageItem.botResponse += token;
-          this.cd.detectChanges();
-          this.scrollToBottom();
-        });
-      },
-      error: (err) => {
-        if (err instanceof Event) {
-          console.warn('ℹ️ EventSource closed by server.');
-        } else {
-          console.error('❌ Error inesperado:', err);
-        }
-      },
-    });
+      this.openAiService.sendMessageToChatBot(prompt, this.threadId).subscribe({
+        next: (token) => {
+          this.zone.run(() => {
+            messageItem.botResponse += token;
+            this.cd.detectChanges();
+            this.scrollToBottom();
+          });
+        },
+        error: (err) => {
+          if (err instanceof Event) {
+            console.warn('ℹ️ EventSource closed by server.');
+          } else {
+            console.error('❌ Error inesperado:', err);
+          }
+        },
+      });
+    }
   }
 }

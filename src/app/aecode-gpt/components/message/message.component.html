@@ -1,4 +1,7 @@
-<div class="message-container" [class.bot-message-container]="isUserMessage">
+<div
+  class="general-message-container"
+  [class.user-message-container]="isUserMessage"
+>
   @if(isUserMessage) {
   <div class="user-profile-img-container">
     @if (userData().profilepicture !== '') {
@@ -6,25 +9,37 @@
 
     } @else {
     <span class="user-profile-first-letter">{{
-      userData().fullname.charAt(0).toUpperCase()
+      userData().userId ? userData().fullname.charAt(0).toUpperCase() : "?"
     }}</span>
 
     }
   </div>
-  } @if(message) { @if(isUserMessage) {
-
-  <p>
-    {{ message }}
-  </p>
   } @else {
-
-  <div class="bot-message-response" [innerHTML]="message"></div>
-  } }@else {
-  <div class="loading-container">
-    <p>Aecodito está pensando</p>
-    <p class="point-1">●</p>
-    <p class="point-2">●</p>
-    <p class="point-3">●</p>
+  <div class="user-profile-img-container">
+    <img
+      src="/assets/images/aecode-chatbot/Robotito chatbot.webp"
+      class="user-profile-img"
+      alt=""
+    />
   </div>
   }
+
+  <div class="message-container" [class.user-message-container]="isUserMessage">
+    @if(message) { @if(isUserMessage) {
+    <p>
+      {{ message }}
+    </p>
+
+    } @else {
+    <div class="bot-message-response" [innerHTML]="message"></div>
+
+    } }@else {
+    <div class="loading-container">
+      <p>Aecodito está pensando</p>
+      <p class="point-1">●</p>
+      <p class="point-2">●</p>
+      <p class="point-3">●</p>
+    </div>
+    }
+  </div>
 </div>

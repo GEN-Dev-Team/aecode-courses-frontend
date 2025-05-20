@@ -1,17 +1,16 @@
 import { Component, inject } from '@angular/core';
-import { UserService } from '../../home/user.service';
 import { CameraIconComponent } from '../../shared/icons/camera-icon/camera-icon.component';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ILogin, IUserDetails } from '../../home/interface/Login';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
-import { environment } from '../../../environment/environment';
 import { ModalComponent } from '../../shared/components/modal/modal.component';
 import { MessageComponent } from '../../shared/components/message/message.component';
 import { EditIconComponent } from '../../shared/icons/edit-icon/edit-icon.component';
 import { LoaderComponent } from '../../shared/components/loader/loader.component';
 import { AuthService } from '../../core/services/auth.service';
-import { HeaderComponent } from '../../shared/components/header/header.component';
+import { environment } from '../../../environments/environment';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-profile-main-view',
@@ -24,7 +23,6 @@ import { HeaderComponent } from '../../shared/components/header/header.component
     MessageComponent,
     EditIconComponent,
     LoaderComponent,
-    HeaderComponent,
   ],
   templateUrl: './profile-main-view.component.html',
   styleUrl: './profile-main-view.component.css',
@@ -116,20 +114,19 @@ export class ProfileMainViewComponent {
       .confirmPassword as string;
 
     if (newPassword === confirmPassword) {
-      this.userService
-        .updateUserPassword(userId, currentPassword, newPassword)
-        .subscribe(
-          (response) => {},
-          (error) => {
-            this.showMessageModal = true;
-            this.changePassword = false;
-            this.showChangePasswordError = false;
-
-            this.userChangePasswordForm.patchValue({
-              passwordHash: newPassword,
-            });
-          }
-        );
+      // this.userService
+      //   .updateUserPassword(userId, currentPassword, newPassword)
+      //   .subscribe(
+      //     (response) => {},
+      //     (error) => {
+      //       this.showMessageModal = true;
+      //       this.changePassword = false;
+      //       this.showChangePasswordError = false;
+      //       this.userChangePasswordForm.patchValue({
+      //         passwordHash: newPassword,
+      //       });
+      //     }
+      //   );
     } else {
       this.showMessageModal = true;
       this.showChangePasswordError = true;
@@ -137,22 +134,22 @@ export class ProfileMainViewComponent {
   }
 
   sendUserChangeImgProfile() {
-    this.userService
-      .updateUserDetails(this.userData.userId, this.profileImgFile)
-      .subscribe(
-        (response) => {
-          this.dataUpdated = true;
-          this.showMessageModal = true;
-        },
-        (error) => {
-          if (error.status === 200) {
-            this.dataUpdated = true;
-            this.showMessageModal = true;
-            this.editUserData = false;
-          } else {
-          }
-        }
-      );
+    // this.userService
+    //   .updateUserDetails(this.userData.userId, this.profileImgFile)
+    //   .subscribe(
+    //     (response) => {
+    //       this.dataUpdated = true;
+    //       this.showMessageModal = true;
+    //     },
+    //     (error) => {
+    //       if (error.status === 200) {
+    //         this.dataUpdated = true;
+    //         this.showMessageModal = true;
+    //         this.editUserData = false;
+    //       } else {
+    //       }
+    //     }
+    //   );
   }
 
   initProfileViewData() {
@@ -162,20 +159,20 @@ export class ProfileMainViewComponent {
       return;
     }
 
-    this.userService
-      .getUserDetailsImgById(this.userData.userId)
-      .subscribe((response) => {
-        this.userDetails = response;
-        if (this.userDetails.profilepicture) {
-          this.profileImgUrl = this.base_url + this.userDetails.profilepicture;
-        }
-      });
+    // this.userService
+    //   .getUserDetailsImgById(this.userData.userId)
+    //   .subscribe((response) => {
+    //     this.userDetails = response;
+    //     if (this.userDetails.profilepicture) {
+    //       this.profileImgUrl = this.base_url + this.userDetails.profilepicture;
+    //     }
+    //   });
 
     this.userData$ = this.userService.getUser(this.userData.userId);
 
-    this.userDetails$ = this.userService.getUserDetailsImgById(
-      this.userData.userId
-    );
+    // this.userDetails$ = this.userService.getUserDetailsImgById(
+    //   this.userData.userId
+    // );
 
     this.userData$.subscribe((response) => {
       this.userData = response;
@@ -258,7 +255,7 @@ export class ProfileMainViewComponent {
       birthdate: this.convertISOToSpanishDate(this.userData.birthdate),
       phoneNumber: this.userData.phoneNumber,
       gender: this.userData.gender,
-      experience: this.userData.experience,
+      // experience: this.userData.experience,
     });
   }
 

@@ -7,6 +7,7 @@ import { ProfileSectionBoxComponent } from '../../components/profile-section-box
 import { ProfileBoxItemComponent } from '../../components/profile-box-item/profile-box-item.component';
 import { UserService } from '../../services/user.service';
 import { ManageUserDataService } from '../../services/manage-user-data.service';
+import { ActiveStatusIconComponent } from '../../icons/active-status-icon/active-status-icon.component';
 
 @Component({
   selector: 'app-edit-profile',
@@ -15,6 +16,7 @@ import { ManageUserDataService } from '../../services/manage-user-data.service';
     ReactiveFormsModule,
     ProfileSectionBoxComponent,
     ProfileBoxItemComponent,
+    ActiveStatusIconComponent,
   ],
   templateUrl: './edit-profile.component.html',
   styleUrl: './edit-profile.component.scss',
