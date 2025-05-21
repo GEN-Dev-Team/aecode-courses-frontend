@@ -81,7 +81,7 @@ export class OpenaiService {
 
           this.messageService.showMessageBox(
             'Buen ritmo de trabajo',
-            'Por hoy hemos terminado. Recarga energías y vuelve mañana por más consultas.',
+            'Por hoy hemos terminado. Recarga energías y vuelve en 24:00:00 horas por más consultas.',
             false
           );
           return false;
@@ -118,19 +118,24 @@ export class OpenaiService {
       // Tiempo transcurrido desde el último mensaje en milisegundos
       const timePassed = currentTime - Number(lastMessageTime);
 
-      // Calcular el tiempo restante en milisegundos para 3 minutos
-      const remainingTime = 5 * 60 * 1000 - timePassed; // 3 minutos en milisegundos
+      const remainingTime = 24 * 60 * 60 * 1000 - timePassed; // 24 horas en milisegundos
 
-      // Si el tiempo restante es mayor a 0, calcular las horas y los minutos
       if (remainingTime > 0) {
-        const remainingMinutes = Math.floor(remainingTime / (1000 * 60)); // Minutos restantes
+        const remainingHours = Math.floor(remainingTime / (1000 * 60 * 60)); // Horas restantes
+        const remainingMinutes = Math.floor(
+          (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
+        ); // Minutos restantes
         const remainingSeconds = Math.floor(
           (remainingTime % (1000 * 60)) / 1000
         ); // Segundos restantes
 
         this.messageService.showMessageBox(
           'Buen ritmo de trabajo',
-          `Por favor espera ${remainingMinutes} minuto(s) y ${remainingSeconds} segundo(s) antes de enviar otro mensaje.`,
+          `Por hoy hemos terminado. Recarga energías y vuelve en ${remainingHours}:${remainingMinutes
+            .toString()
+            .padStart(2, '0')}:${remainingSeconds
+            .toString()
+            .padStart(2, '0')} horas por más consultas.`,
           false
         );
         return false;
@@ -143,40 +148,4 @@ export class OpenaiService {
 
     return true;
   }
-
-  // checkTimeLimit() {
-  //   const lastMessageTime = localStorage.getItem('lastMessageTime');
-
-  //   const currentTime = new Date().getTime();
-
-  //   if (lastMessageTime) {
-  //     // Tiempo transcurrido desde el último mensaje en milisegundos
-  //     const timePassed = currentTime - Number(lastMessageTime);
-
-  //     // Calcular el tiempo restante en horas y minutos
-  //     const remainingTime = 24 * 60 * 60 * 1000 - timePassed; // 24 horas en milisegundos
-
-  //     // Si el tiempo restante es mayor a 0, calcular las horas y los minutos
-  //     if (remainingTime > 0) {
-  //       const remainingHours = Math.floor(remainingTime / (1000 * 60 * 60)); // Horas restantes
-  //       const remainingMinutes = Math.floor(
-  //         (remainingTime % (1000 * 60 * 60)) / (1000 * 60)
-  //       ); // Minutos restantes
-
-  //       this.messageService.showMessageBox(
-  //         'Buen ritmo de trabajo',
-  //         `Por hoy hemos terminado. Recarga energías y vuelve en ${remainingHours} hora(s) y ${remainingMinutes} minuto(s) para más consultas.`,
-  //         false
-  //       );
-  //       return false;
-  //     } else {
-  //       // Si ya pasaron las 24 horas, permitir el mensaje
-  //       localStorage.setItem('messageLimit', '0');
-  //       localStorage.setItem('lastMessageTime', '0');
-  //       return true;
-  //     }
-  //   }
-
-  //   return true; // Si no hay tiempo registrado, no hay límite de mensajes
-  // }
 }
