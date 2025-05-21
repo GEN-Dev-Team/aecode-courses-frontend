@@ -4,7 +4,8 @@
 >
   @if(isUserMessage) {
   <div class="user-profile-img-container">
-    @if (userData().profilepicture !== '') {
+    @if (userData().profilepicture !== '' && userData().profilepicture !== null)
+    {
     <img [src]="userData().profilepicture" class="user-profile-img" alt="" />
 
     } @else {
