@@ -3,6 +3,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 import { MessageBoxService } from '../core/services/message-box.service';
+import { HeaderService } from '../core/services/header.service';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,7 @@ import { MessageBoxService } from '../core/services/message-box.service';
 export class OpenaiService {
   http = inject(HttpClient);
   messageService = inject(MessageBoxService);
+  headerService: HeaderService = inject(HeaderService);
 
   url = environment.agent_url;
 
@@ -92,6 +94,8 @@ export class OpenaiService {
             'Regístrate gratis y desbloquea más respuestas de Aecodito.',
             false
           );
+
+          this.headerService.showLogInAccess.set(true);
           return false;
         }
       }

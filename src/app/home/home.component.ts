@@ -1,7 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SendIconComponent } from '../shared/icons/send-icon/send-icon.component';
-import { ModalComponent } from '../shared/components/modal/modal.component';
-import { CourseListComponent } from '../courses/components/course-list/course-list.component';
 import { BrowserService } from '../core/services/browser.service';
 import { HomeFooterComponent } from './home-footer/home-footer.component';
 import { ZoomInDirective } from '../shared/directives/animations/zoom-in.directive';
@@ -13,8 +11,6 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [
     SendIconComponent,
-    ModalComponent,
-    CourseListComponent,
     HomeFooterComponent,
     ZoomInDirective,
     ChatbotIconComponent,
@@ -25,8 +21,6 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
-
-  openModal = false;
 
   wsspMessage =
     'https://api.whatsapp.com/send?phone=51900121245&text=Hola AECODE, quisiera conocer más detalles de los programas e iniciativas de colaboración que cuentan. Quiero contactar con un asesor.';

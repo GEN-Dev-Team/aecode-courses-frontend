@@ -1,12 +1,11 @@
 import { Component, inject, Input } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { ManageUserDataService } from '../../../user-profile/services/manage-user-data.service';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-chat-message',
   standalone: true,
-  imports: [JsonPipe],
+  imports: [],
   templateUrl: './message.component.html',
   styleUrl: './message.component.scss',
 })
