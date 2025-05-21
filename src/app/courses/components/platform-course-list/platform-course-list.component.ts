@@ -17,16 +17,11 @@ export class PlatformCourseListComponent {
   courseService: CourseService = inject(CourseService);
   secondaryCourses: SecondaryCourseService = inject(SecondaryCourseService);
 
-  // masiveCourseList$: Observable<ICourse[]> = this.courseService.getCourses();
-
   courseList = signal<any>([]);
 
   ngOnInit(): void {
-    this.secondaryCourses.getSecondaryCourseById(100).subscribe((data) => {
-      this.courseList().push(data);
-      this.secondaryCourses.getSecondaryCourseById(101).subscribe((data) => {
-        this.courseList().push(data);
-      });
+    this.secondaryCourses.getMainSecondaryCourses().subscribe((data) => {
+      this.courseList.set(data);
     });
   }
 }

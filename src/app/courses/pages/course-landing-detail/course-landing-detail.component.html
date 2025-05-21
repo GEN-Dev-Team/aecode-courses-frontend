@@ -62,13 +62,17 @@
           </div>
         </div>
 
-        <div class="video-container">
-          <img
-            (click)="showCourseVideo()"
-            class="course-video"
-            src="{{ courseData().principalimage }}"
-            alt=""
-          />
+        <div
+          class="video-container"
+          [class.video-container-masive]="courseData().type === 'mainCourse'"
+        >
+          <div class="course-image-container">
+            <img
+              class="course-image"
+              src="{{ courseData().principalimage }}"
+              alt=""
+            />
+          </div>
 
           <div
             class="course-mode"
@@ -98,11 +102,6 @@
               >GRUPOS DE WHATSAPP</a
             >
           </div>
-
-          @if (url) {
-          <app-play-icon class="play-icon" />
-
-          }
         </div>
       </div>
     </div>

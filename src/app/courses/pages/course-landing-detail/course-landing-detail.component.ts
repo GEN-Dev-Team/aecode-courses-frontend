@@ -65,7 +65,6 @@ export class CourseLandingDetailComponent {
   courseService: CourseService = inject(CourseService);
   router: ActivatedRoute = inject(ActivatedRoute);
   routing: Router = inject(Router);
-  toastService = inject(ToastrService);
   themeService: ThemeService = inject(ThemeService);
 
   secCourseUrlname = this.router.snapshot.paramMap.get('urlname');
@@ -81,7 +80,6 @@ export class CourseLandingDetailComponent {
 
   url_base = environment.base;
   showIntroVideo: boolean = false;
-  url: string = '';
   studyUnitIdSelected = -1;
 
   showMessageError: boolean = false;
@@ -118,14 +116,6 @@ export class CourseLandingDetailComponent {
       .subscribe((data) => {
         this.courseData.set(data);
       });
-  }
-
-  showCourseVideo() {
-    if (this.url) {
-      this.showIntroVideo = true;
-    } else {
-      this.toastService.warning('¡Video no disponible!');
-    }
   }
 
   goToCourseModule(module: string, program: string) {

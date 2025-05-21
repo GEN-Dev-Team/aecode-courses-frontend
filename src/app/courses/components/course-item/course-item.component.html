@@ -30,12 +30,7 @@
   }
 
   <div class="course-presentation-container">
-    <!-- @if(isMasiveCourse) { -->
-    <!-- <img class="course-img" src="{{ course.coverimage }}" alt="" /> -->
-
-    <!-- } @else { -->
     <img class="course-img" src="{{ course.principalimage }}" alt="" />
-    <!-- } -->
 
     <div class="course-tags">
       @if (!isMasiveCourse) {
@@ -110,12 +105,7 @@
           [courseId]="course.courseId"
           (click)="goToPay($event)"
         >
-          <!-- @if (isMasiveCourse) { -->
-          <!-- <app-whatsapp-icon class="wssp-icon" /> Solicitar información } @else -->
-          <!-- { -->
-
           <app-shopping-cart-icon class="shop-cart-icon" /> Añadir al carrito
-          <!-- } -->
           <span>
             @if(course.isOnSale) { ${{ discountPrice() }} } @else if(
             !isMasiveCourse){ ${{ course.priceRegular | number : "1.0-0" }}

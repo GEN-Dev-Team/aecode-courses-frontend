@@ -36,6 +36,7 @@ export interface ISecondaryCourse {
   mode: string;
   isSelectedinCart: boolean;
   tags: ICourseTag[];
+  type?: string;
 }
 
 export interface ISecondaryCourseSummary {

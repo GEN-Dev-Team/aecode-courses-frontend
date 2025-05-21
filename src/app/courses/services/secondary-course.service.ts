@@ -24,6 +24,12 @@ export class SecondaryCourseService {
     return this.http.get<ISecondaryCourse[]>(this.api_url);
   }
 
+  getMainSecondaryCourses() {
+    return this.http.get<ISecondaryCourseSummary>(
+      `${this.api_url}/listByType?type=mainCourse`
+    );
+  }
+
   getSecondaryCourseById(id: number): Observable<ISecondaryCourse> {
     return this.http.get<ISecondaryCourse>(`${this.api_url}/${id}`);
   }
