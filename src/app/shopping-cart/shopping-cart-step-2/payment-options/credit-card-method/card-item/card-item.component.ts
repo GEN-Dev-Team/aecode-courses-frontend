@@ -4,6 +4,7 @@ import { BcpIconComponent } from '../../../../icons/bcp-icon/bcp-icon.component'
 import { CopyIconComponent } from '../../../../icons/copy-icon/copy-icon.component';
 import { ThemeService } from '../../../../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
+import { BrowserService } from '../../../../../core/services/browser.service';
 
 @Component({
   selector: 'app-card-item',
@@ -21,4 +22,9 @@ export class CardItemComponent {
   @Input() cardItem: any;
 
   themeService = inject(ThemeService);
+  browserService = inject(BrowserService);
+
+  copyToClipboard(value: string) {
+    if (this.browserService.isBrowser()) navigator.clipboard.writeText(value);
+  }
 }

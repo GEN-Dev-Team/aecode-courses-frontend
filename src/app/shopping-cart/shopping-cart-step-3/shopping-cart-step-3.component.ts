@@ -1,6 +1,5 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { PaymentSuccessedIconComponent } from '../../shared/icons/payment-successed-icon/payment-successed-icon.component';
-import { Router } from '@angular/router';
 import { PaymentService } from '../services/payment.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { ThemeService } from '../../core/services/theme.service';
