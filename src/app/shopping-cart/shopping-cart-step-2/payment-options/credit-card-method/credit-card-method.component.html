@@ -1,0 +1,26 @@
+<div
+  class="payment-methods-content {{
+    themeService.getMode() | async
+  }}-payment-methods-content"
+>
+  <p class="payment-title">PAGAR POR TRANSFERENCIA</p>
+
+  <p>
+    Seleccione su banco preferido y realice la transferencia por el monto total
+    y realiza la transferencia por el monto exacto indicado en el resumen de
+    compra.
+  </p>
+
+  @for (item of cardList; track $index) {
+  <app-card-item [cardItem]="item" />
+  }
+
+  <p>Envía el comprobante a nuestro equipo de soporte.</p>
+
+  <a href="" target="_blank"><app-whatsapp-icon /> Enviar por Whatsapp</a>
+
+  <p class="payment-message">
+    <app-warning-payment-icon /> Una vez verificado el pago, activaremos tu
+    acceso al curso en un plazo máximo de 48 horas hábiles.
+  </p>
+</div>

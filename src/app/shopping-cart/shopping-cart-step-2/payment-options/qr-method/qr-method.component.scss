@@ -1,0 +1,59 @@
+.payment-methods-content {
+  .payment-title {
+    margin-block: 26px 22px;
+    color: #381187;
+    font-family: "Ruberoid-medium";
+    font-size: 18px;
+  }
+
+  .payment-qr {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 35px 0;
+
+    img {
+      height: 239px;
+    }
+  }
+
+  a {
+    border: none;
+    text-decoration: none;
+    background-color: var(--purple-2);
+    font-family: "ruberoid-medium";
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    padding: 16px 0;
+    width: 100%;
+    border-radius: 6px;
+    gap: 10px;
+  }
+
+  .payment-message {
+    width: 100%;
+    border-radius: 4px;
+    background: rgba(140, 151, 220, 0.12);
+    font-family: "plusjakartasans-light";
+    font-size: 16px;
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    align-items: center;
+    margin-block: 18px 0;
+  }
+}
+
+.dark-payment-methods-content {
+  .payment-title {
+    color: #8c97dc;
+  }
+
+  a {
+    background-color: #4a3ac1;
+  }
+}

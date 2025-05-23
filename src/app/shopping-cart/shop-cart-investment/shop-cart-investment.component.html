@@ -32,8 +32,7 @@
         <span> Descuento: </span>
         <span> {{ cardService.totalCartDiscount() }} $ </span>
       </div>
-
-      @if (isStep2) {
+      @if (isStep2 && cardService.isPaypalMethod()) {
       <div class="invest-discount">
         <span> Cargo por transacción: </span>
         <span>
@@ -47,7 +46,13 @@
         <span> Total: </span>
         <span
           >@if (!isStep2){ {{ cardService.totalWithoutTax() }} } @else {
-          {{ cardService.totalAmountWithTax().toFixed(2) }} } $
+          @if(cardService.isPaypalMethod()){
+          {{ cardService.totalAmountWithTax().toFixed(2) }}
+
+          }@else{
+          {{ cardService.totalWithoutTax() }}
+
+          } } $
         </span>
       </div>
     </div>
@@ -94,10 +99,18 @@
   @if (isStep2) {
   <div class="invest-message-reminder">
     <p>
-      Cobraremos $ {{ cardService.totalAmountWithTax().toFixed(2) }} en tu
-      tarjeta
+      Cobraremos $ @if(cardService.isPaypalMethod()){
+      {{ cardService.totalAmountWithTax().toFixed(2) }}
+
+      }@else {
+      {{ cardService.totalWithoutTax() }}
+      } en tu tarjeta
     </p>
+
+    @if(cardService.isPaypalMethod()){
     <p>Se aplicara un cargo extra por la transacción</p>
+
+    }
   </div>
   }
 </div>

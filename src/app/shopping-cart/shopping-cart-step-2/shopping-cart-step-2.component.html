@@ -24,7 +24,8 @@
       </div>
       }
     </div>
-    @if(paymentMethodSelected.id === 1) {
+
+    @if(paymentMethodSelected.id === 1){
 
     <p class="payment-title">PAGAR CON PAYPAL</p>
 
@@ -37,13 +38,14 @@
     <p class="payment-message">
       La forma rápida y segura de pagar tus compras en línea con total confianza
     </p>
-    } @else {
-    <div class="coming-soon-payment">
-      <span>Próximamente</span>
-    </div>
-    }
 
     <div class="payment-ref" #paymentRef></div>
+
+    } @else if (paymentMethodSelected.id === 2) {
+    <app-qr-method />
+    } @else {
+    <app-credit-card-method />
+    }
 
     <p class="payment-terms">
       Al hacer clic en “Completar Compra” acepto las

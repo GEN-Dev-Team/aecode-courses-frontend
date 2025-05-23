@@ -13,6 +13,7 @@ export class PaymentService {
   shopCartListSelected = signal<ISecondaryCourseSummary[]>([]);
   paymentDetails = signal<any>({});
   showPaymentModal = signal(false);
+  isPaypalMethod = signal(true);
 
   totalCartRegularPrice = computed(() => {
     if (this.shopCartListSelected().length > 0) {

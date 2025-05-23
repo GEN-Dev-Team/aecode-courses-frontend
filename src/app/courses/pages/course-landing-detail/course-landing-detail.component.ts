@@ -3,29 +3,22 @@ import { WatchIconComponent } from '../../../shared/icons/watch-icon/watch-icon.
 import { UnitCourseIconComponent } from '../../../shared/icons/unit-course-icon/unit-course-icon.component';
 
 import { CourseInvestComponent } from '../../components/course-invest/course-invest.component';
-import { ModalComponent } from '../../../shared/components/modal/modal.component';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { SecondaryCourseService } from '../../services/secondary-course.service';
-import { catchError, map, Observable, tap } from 'rxjs';
-import { ISecondaryCourse } from '../../interface/secondary-course/Secondary-Course';
 import { AsyncPipe } from '@angular/common';
 import { environment } from '../../../../environments/environment';
 import { CourseOverlayComponent } from '../../../shared/layouts/course-overlay/course-overlay.component';
 import { CourseLandingUnitComponent } from '../../components/course-landing-unit/course-landing-unit.component';
 import { LoaderComponent } from '../../../shared/components/loader/loader.component';
-import { PlayIconComponent } from '../../../shared/icons/play-icon/play-icon.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { ComnigSoonCourseIconComponent } from '../../../shared/icons/comnig-soon-course-icon/comnig-soon-course-icon.component';
 import { SyncCourseIconComponent } from '../../../shared/icons/sync-course-icon/sync-course-icon.component';
 import { AsyncCourseIconComponent } from '../../../shared/icons/async-course-icon/async-course-icon.component';
 import { BookIconComponent } from '../../icons/book-icon/book-icon.component';
 import { CustomCourseButtonDirective } from '../../../shared/directives/custom-course-button.directive';
-import { ContentBlockedComponent } from '../../../shared/components/content-blocked/content-blocked.component';
 import { DateFormatPipe } from '../../../core/pipes/date-format.pipe';
 import { ThemeService } from '../../../core/services/theme.service';
 import { CourseService } from '../../services/course.service';
-import { ICourse } from '../../interface/Course';
 import { CourseExtraInformationComponent } from '../../components/course-extra-information/course-extra-information.component';
 
 interface IModuleButton {
@@ -44,7 +37,6 @@ interface IModuleButton {
     CourseOverlayComponent,
     CourseLandingUnitComponent,
     LoaderComponent,
-    PlayIconComponent,
     ComnigSoonCourseIconComponent,
     SyncCourseIconComponent,
     AsyncCourseIconComponent,

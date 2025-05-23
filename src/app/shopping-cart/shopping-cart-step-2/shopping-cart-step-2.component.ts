@@ -1,10 +1,13 @@
 import {
+  AfterViewChecked,
   Component,
-  computed,
   ElementRef,
   EventEmitter,
   inject,
+  OnChanges,
+  OnInit,
   Output,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
 import { BrowserService } from '../../core/services/browser.service';
@@ -17,6 +20,8 @@ import { Router } from '@angular/router';
 import { ThemeService } from '../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
 import { MessageBoxService } from '../../core/services/message-box.service';
+import { CreditCardMethodComponent } from './payment-options/credit-card-method/credit-card-method.component';
+import { QrMethodComponent } from './payment-options/qr-method/qr-method.component';
 
 @Component({
   selector: 'app-shopping-cart-step-2',
@@ -27,32 +32,42 @@ import { MessageBoxService } from '../../core/services/message-box.service';
     PaypallIconComponent,
     OtherMethodsIconComponent,
     AsyncPipe,
+    CreditCardMethodComponent,
+    QrMethodComponent,
   ],
   templateUrl: './shopping-cart-step-2.component.html',
   styleUrl: './shopping-cart-step-2.component.scss',
 })
 export class ShoppingCartStep2Component {
   @Output() changeStep = new EventEmitter<string>();
-
-  @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
+  @ViewChild('paymentRef', { static: false }) paymentRef!: ElementRef;
 
   paymentService: PaymentService = inject(PaymentService);
   browserService: BrowserService = inject(BrowserService);
   themeService: ThemeService = inject(ThemeService);
   messageBoxService: MessageBoxService = inject(MessageBoxService);
   router: Router = inject(Router);
-  isPaypalMethod = true;
 
   paymentMethodList = [
-    { id: 1, name: 'PayPal' },
-    { id: 2, name: 'Tarjeta de crédito / Débito' },
+    { id: 1, name: 'PayPal / Tarjeta de crédito' },
+    { id: 2, name: 'Yape / Plin' },
     { id: 3, name: 'Otras formas de pago' },
   ];
 
   paymentMethodSelected = this.paymentMethodList[0];
+  paypalInitialized = false;
 
-  ngOnInit(): void {
-    if (this.browserService.isBrowser()) {
+  ngAfterViewChecked(): void {
+    this.initializePaypalButtons();
+  }
+
+  initializePaypalButtons(): void {
+    if (
+      this.paymentMethodSelected.id === 1 &&
+      this.browserService.isBrowser() &&
+      !this.paypalInitialized
+    ) {
+      this.paypalInitialized = true;
       window.paypal
         .Buttons({
           style: {
@@ -119,6 +134,12 @@ export class ShoppingCartStep2Component {
 
   selectPaymentMethod(item: any) {
     this.paymentMethodSelected = item;
+    this.paypalInitialized = false;
+    if (item.id === 1) {
+      this.paymentService.isPaypalMethod.set(true);
+    } else {
+      this.paymentService.isPaypalMethod.set(false);
+    }
   }
 
   emitStep(step: string) {

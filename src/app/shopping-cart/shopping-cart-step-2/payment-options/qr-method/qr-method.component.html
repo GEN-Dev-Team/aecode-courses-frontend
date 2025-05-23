@@ -1,0 +1,31 @@
+<div
+  class="payment-methods-content {{
+    themeService.getMode() | async
+  }}-payment-methods-content"
+>
+  <p class="payment-title">PAGAR CON YAPE O PLIN</p>
+
+  <p>
+    Escanea el código QR con tu app de Yape/Plin y realiza el pago al instante.
+  </p>
+
+  <div class="payment-qr">
+    <img
+      src="{{
+        (themeService.getMode() | async) === 'dark'
+          ? '/assets/images/payment/qr-method-dark.webp'
+          : '/assets/images/payment/qr-method.webp'
+      }}"
+      alt=""
+    />
+  </div>
+
+  <p>Envía el comprobante a nuestro WhatsApp para validar tu transacción.</p>
+
+  <a href="" target="_blank"><app-whatsapp-icon /> Enviar por Whatsapp</a>
+
+  <p class="payment-message">
+    <app-warning-payment-icon /> Una vez verificado el pago, activaremos tu
+    acceso al curso en un plazo máximo de 48 horas hábiles.
+  </p>
+</div>

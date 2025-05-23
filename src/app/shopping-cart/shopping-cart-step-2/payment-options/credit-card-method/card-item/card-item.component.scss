@@ -1,0 +1,95 @@
+.card-item-container {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 10px;
+  border: 1px solid rgba(140, 151, 220, 0.4);
+  margin-bottom: 30px;
+
+  .card-name-container {
+    display: flex;
+    gap: 10px;
+
+    div {
+      padding-block: 3px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+
+      .card-name-detail {
+        color: #381187;
+        font-family: "ruberoid-medium";
+        font-size: 18px;
+        margin: 0;
+      }
+
+      .card-name-description {
+        font-family: "plusjakartasans-light";
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+  }
+
+  .card-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: "plusjakartasans-medium";
+
+    h2 {
+      color: #381187;
+      font-family: "ruberoid-light";
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .card-number-detail {
+      padding: 8px 20px;
+      border-radius: 4px;
+      border: 1px solid rgba(124, 126, 223, 0.4);
+      background: #eef3f8;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .card-number {
+        margin-inline: auto 20px;
+      }
+    }
+  }
+}
+
+.dark-card-item-container {
+  border: 1px solid rgba(140, 151, 220, 0.4);
+
+  .card-name-container {
+    div {
+      .card-name-detail {
+        color: #8c97dc;
+      }
+
+      .card-name-description {
+        font-family: "plusjakartasans-light";
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+  }
+
+  .card-numbers {
+    h2 {
+      color: #8c97dc;
+    }
+
+    .card-number-detail {
+      border-radius: 4px;
+      background: rgba(34, 35, 65, 0.4);
+
+      .card-number {
+        margin-inline: auto 20px;
+      }
+    }
+  }
+}
