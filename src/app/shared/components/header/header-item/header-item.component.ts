@@ -32,7 +32,6 @@ export class HeaderItemComponent {
 
   route: Router = inject(Router);
   themeService: ThemeService = inject(ThemeService);
-  window: any;
 
   redirectToView(item: ICommunityHeaderItem) {
     this.emitHeaderItemSelected.emit(item);
