@@ -80,6 +80,8 @@ export class AecodeGptComponent {
       botResponse: '',
     };
 
+    if (prompt.length == 0) return;
+
     if (this.openAiService.checkMaxMessageLimit(this.authService.hasToken())) {
       this.messageList.push(messageItem);
       this.scrollToBottom();
