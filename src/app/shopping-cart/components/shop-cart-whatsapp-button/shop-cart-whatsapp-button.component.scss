@@ -1,0 +1,28 @@
+button {
+  border: none;
+  background-color: var(--purple-2);
+  font-family: "ruberoid-medium";
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  padding: 16px 0;
+  width: 100%;
+  border-radius: 6px;
+  gap: 10px;
+}
+
+.payment-message {
+  width: 100%;
+  border-radius: 4px;
+  background: rgba(140, 151, 220, 0.12);
+  font-family: "plusjakartasans-light";
+  font-size: 16px;
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  align-items: center;
+  margin-block: 18px 0;
+}
