@@ -17,6 +17,7 @@ import { WatchIconComponent } from '../../../shared/icons/watch-icon/watch-icon.
 import { PaymentService } from '../../../shopping-cart/services/payment.service';
 import { ShoppingCartIconComponent } from '../../icons/shopping-cart-icon/shopping-cart-icon.component';
 import { SecondaryCourseService } from '../../services/secondary-course.service';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-course-item',
@@ -48,6 +49,7 @@ export class CourseItemComponent {
   cartService: PaymentService = inject(PaymentService);
   messageBoxService: MessageBoxService = inject(MessageBoxService);
   secondaryCourseService = inject(SecondaryCourseService);
+  authService = inject(AuthService);
 
   finalPrice = signal(0);
 
@@ -88,6 +90,17 @@ export class CourseItemComponent {
 
   goToPay(event: Event) {
     event.stopPropagation();
+
+    if (!this.authService.hasToken()) {
+      this.messageBoxService.title.set('Iniciar sesión para continuar');
+      this.messageBoxService.message.set(
+        'Este paso es indispensable para añadir módulos a tu carrito de compras.'
+      );
+      this.messageBoxService.showMessageModal.set(true);
+      this.messageBoxService.redirectTo.set('login');
+
+      return;
+    }
 
     // if (this.isMasiveCourse && this.browserService.isBrowser()) {
     //   const whatsappUrl = `https://api.whatsapp.com/send?phone=51900121245&text=Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.course.title}".`;
