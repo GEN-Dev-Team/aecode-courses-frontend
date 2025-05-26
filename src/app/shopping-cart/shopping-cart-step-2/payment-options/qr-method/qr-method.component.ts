@@ -1,6 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { WhatsappIconComponent } from '../../../../shared/icons/whatsapp-icon/whatsapp-icon.component';
-import { WarningPaymentIconComponent } from '../../../icons/warning-payment-icon/warning-payment-icon.component';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
 import { ShopCartWhatsappButtonComponent } from '../../../components/shop-cart-whatsapp-button/shop-cart-whatsapp-button.component';
@@ -8,12 +6,7 @@ import { ShopCartWhatsappButtonComponent } from '../../../components/shop-cart-w
 @Component({
   selector: 'app-qr-method',
   standalone: true,
-  imports: [
-    WhatsappIconComponent,
-    WarningPaymentIconComponent,
-    AsyncPipe,
-    ShopCartWhatsappButtonComponent,
-  ],
+  imports: [AsyncPipe, ShopCartWhatsappButtonComponent],
   templateUrl: './qr-method.component.html',
   styleUrl: './qr-method.component.scss',
 })

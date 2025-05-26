@@ -1,7 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { CardItemComponent } from './card-item/card-item.component';
-import { WhatsappIconComponent } from '../../../../shared/icons/whatsapp-icon/whatsapp-icon.component';
-import { WarningPaymentIconComponent } from '../../../icons/warning-payment-icon/warning-payment-icon.component';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
 import { ShopCartWhatsappButtonComponent } from '../../../components/shop-cart-whatsapp-button/shop-cart-whatsapp-button.component';
@@ -9,13 +7,7 @@ import { ShopCartWhatsappButtonComponent } from '../../../components/shop-cart-w
 @Component({
   selector: 'app-credit-card-method',
   standalone: true,
-  imports: [
-    CardItemComponent,
-    WhatsappIconComponent,
-    WarningPaymentIconComponent,
-    AsyncPipe,
-    ShopCartWhatsappButtonComponent,
-  ],
+  imports: [CardItemComponent, AsyncPipe, ShopCartWhatsappButtonComponent],
   templateUrl: './credit-card-method.component.html',
   styleUrl: './credit-card-method.component.scss',
 })
