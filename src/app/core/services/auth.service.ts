@@ -7,12 +7,14 @@ import {
   IModuleAccess,
 } from '../../courses/interface/CourseProgress';
 import { ManageUserDataService } from '../../user-profile/services/manage-user-data.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   manageUserDataService = inject(ManageUserDataService);
+  router = inject(Router);
 
   isLoggedInStatus = new BehaviorSubject<boolean>(this.hasToken());
   private accessToCourse = new BehaviorSubject<boolean>(false);
@@ -49,6 +51,7 @@ export class AuthService {
       this.manageUserDataService.clearUserDataInfo;
       localStorage.removeItem('user');
       this.isLoggedInStatus.next(false);
+      this.router.navigate(['/']);
     }
   }
 

@@ -4,6 +4,7 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
 import { ILogin } from '../interface/Login';
 import { UserService } from '../../user-profile/services/user.service';
@@ -50,26 +51,35 @@ export class LoginFormComponent {
     private authService: AuthService
   ) {
     this.loginForm = this.fb.group({
-      email: new FormControl(''),
-      passwordHash: new FormControl(''),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      passwordHash: new FormControl('', [Validators.required]),
     });
 
     this.signInForm = this.fb.group({
-      fullname: new FormControl(''),
-      email: new FormControl(''),
-      passwordHash: new FormControl(''),
+      fullname: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^[a-zA-ZÀ-ÿ\s]+$/),
+      ]),
+      email: new FormControl('', [Validators.email, Validators.required]),
+      passwordHash: new FormControl('', [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
     });
   }
 
   createUser() {
+    if (this.signInForm.invalid) {
+      this.showFormValidationErrors(this.signInForm);
+      return;
+    }
+
     const password = this.browserService.getElementById(
       'passwordHash'
     ) as HTMLInputElement;
     const passwordConfirm = this.browserService.getElementById(
       'passwordHashConfirm'
     ) as HTMLInputElement;
-
-    console.log(this.signInForm.value);
 
     if (password.value !== passwordConfirm.value) {
       this.toastService.error('Las contraseñas no coinciden', 'Error');
@@ -83,6 +93,11 @@ export class LoginFormComponent {
   }
 
   logInUser() {
+    if (this.loginForm.invalid) {
+      this.showFormValidationErrors(this.loginForm);
+      return;
+    }
+
     this.logInService.logInUser(this.loginForm.value).subscribe(
       (response) => {
         this.authService.login(response);
@@ -129,5 +144,47 @@ export class LoginFormComponent {
   showPrivacyPolicies() {
     this.messageBoxService.showTermsModal.set(true);
     this.messageBoxService.termsMessage.set('privacy');
+  }
+
+  showFormValidationErrors(form: FormGroup) {
+    Object.keys(form.controls).forEach((key) => {
+      const control = form.get(key);
+      if (control && control.invalid) {
+        if (control.errors?.['required']) {
+          this.toastService.error(
+            `El campo "${this.formatKey(key)}" es obligatorio`,
+            'Error'
+          );
+        }
+        if (control.errors?.['email']) {
+          this.toastService.error('Ingresa un correo válido', 'Error');
+        }
+        if (control.errors?.['minlength']) {
+          const requiredLength = control.errors['minlength'].requiredLength;
+          this.toastService.error(
+            `El campo "${this.formatKey(
+              key
+            )}" debe tener al menos ${requiredLength} caracteres`,
+            'Error'
+          );
+        }
+
+        if (control.errors?.['pattern']) {
+          this.toastService.error(
+            `El campo "${this.formatKey(key)}" contiene caracteres inválidos`,
+            'Error'
+          );
+        }
+      }
+    });
+  }
+
+  formatKey(key: string): string {
+    const map: { [key: string]: string } = {
+      email: 'Correo electrónico',
+      passwordHash: 'Contraseña',
+      fullname: 'Nombre completo',
+    };
+    return map[key] || key;
   }
 }
