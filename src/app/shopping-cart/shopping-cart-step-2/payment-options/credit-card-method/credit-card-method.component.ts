@@ -4,6 +4,7 @@ import { WhatsappIconComponent } from '../../../../shared/icons/whatsapp-icon/wh
 import { WarningPaymentIconComponent } from '../../../icons/warning-payment-icon/warning-payment-icon.component';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
+import { ShopCartWhatsappButtonComponent } from '../../../components/shop-cart-whatsapp-button/shop-cart-whatsapp-button.component';
 
 @Component({
   selector: 'app-credit-card-method',
@@ -13,6 +14,7 @@ import { AsyncPipe } from '@angular/common';
     WhatsappIconComponent,
     WarningPaymentIconComponent,
     AsyncPipe,
+    ShopCartWhatsappButtonComponent,
   ],
   templateUrl: './credit-card-method.component.html',
   styleUrl: './credit-card-method.component.scss',

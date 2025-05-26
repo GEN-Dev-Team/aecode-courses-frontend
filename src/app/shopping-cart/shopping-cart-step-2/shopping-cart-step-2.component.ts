@@ -12,7 +12,6 @@ import {
 } from '@angular/core';
 import { BrowserService } from '../../core/services/browser.service';
 import { PaymentService } from '../services/payment.service';
-import { ShopCartInvestmentComponent } from '../shop-cart-investment/shop-cart-investment.component';
 import { CreditCardIconComponent } from '../../shared/icons/credit-card-icon/credit-card-icon.component';
 import { PaypallIconComponent } from '../../shared/icons/paypal-icon/paypal-icon.component';
 import { OtherMethodsIconComponent } from '../../shared/icons/other-methods-icon/other-methods-icon.component';
@@ -22,6 +21,7 @@ import { AsyncPipe } from '@angular/common';
 import { MessageBoxService } from '../../core/services/message-box.service';
 import { CreditCardMethodComponent } from './payment-options/credit-card-method/credit-card-method.component';
 import { QrMethodComponent } from './payment-options/qr-method/qr-method.component';
+import { ShopCartInvestmentComponent } from '../components/shop-cart-investment/shop-cart-investment.component';
 
 @Component({
   selector: 'app-shopping-cart-step-2',

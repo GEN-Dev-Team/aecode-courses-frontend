@@ -1,9 +1,9 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { ShopCartProductsComponent } from '../shop-cart-products/shop-cart-products.component';
-import { ShopCartInvestmentComponent } from '../shop-cart-investment/shop-cart-investment.component';
 import { AsyncPipe } from '@angular/common';
 import { PaymentService } from '../services/payment.service';
 import { ThemeService } from '../../core/services/theme.service';
+import { ShopCartInvestmentComponent } from '../components/shop-cart-investment/shop-cart-investment.component';
 
 @Component({
   selector: 'app-shopping-cart-step-1',
