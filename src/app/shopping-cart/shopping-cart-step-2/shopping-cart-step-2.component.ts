@@ -22,6 +22,9 @@ import { MessageBoxService } from '../../core/services/message-box.service';
 import { CreditCardMethodComponent } from './payment-options/credit-card-method/credit-card-method.component';
 import { QrMethodComponent } from './payment-options/qr-method/qr-method.component';
 import { ShopCartInvestmentComponent } from '../components/shop-cart-investment/shop-cart-investment.component';
+import { AuthService } from '../../core/services/auth.service';
+import { UserCourseAccessService } from '../../courses/services/user-course-access.service';
+import { error } from 'console';
 
 @Component({
   selector: 'app-shopping-cart-step-2',
@@ -47,6 +50,8 @@ export class ShoppingCartStep2Component {
   themeService: ThemeService = inject(ThemeService);
   messageBoxService: MessageBoxService = inject(MessageBoxService);
   router: Router = inject(Router);
+  authService = inject(AuthService);
+  userCourseAccess = inject(UserCourseAccessService);
 
   paymentMethodList = [
     { id: 1, name: 'PayPal / Tarjeta de crédito' },
@@ -117,6 +122,7 @@ export class ShoppingCartStep2Component {
           onApprove: (data: any, actions: any) => {
             return actions.order.capture().then((details: any) => {
               if (details.status === 'COMPLETED') {
+                this.createAccessToCourses();
                 this.emitStep('3');
                 this.paymentService.paymentDetails.set(details);
                 this.paymentService.cleanShopCartList();
@@ -154,5 +160,25 @@ export class ShoppingCartStep2Component {
   showPrivacyPolicies() {
     this.messageBoxService.showTermsModal.set(true);
     this.messageBoxService.termsMessage.set('privacy');
+  }
+
+  createAccessToCourses() {
+    const cartList = this.paymentService.shopCartListSelected();
+    const userId = this.authService.getUserDetails()?.userId;
+
+    if (cartList.length > 0 && userId) {
+      cartList.forEach((course) => {
+        this.userCourseAccess
+          .createUserCourseAccess(userId, course.seccourseId)
+          .subscribe(
+            () => {
+              console.log('Acceso creado');
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+      });
+    }
   }
 }
