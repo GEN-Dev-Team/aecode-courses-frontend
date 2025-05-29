@@ -1,0 +1,73 @@
+.user-courses-container {
+  h1 {
+    margin: 0px;
+    font-family: "ruberoid-medium";
+    color: var(--GRIS-CLARITO, #eef3f8);
+    font-size: 35px;
+  }
+
+  p {
+    margin-block: 20px 40px;
+    font-family: "plusjakartasans-medium";
+    color: var(--STROKE-DARK, #8c97dc);
+    font-size: 18px;
+  }
+
+  .filters-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    .search-container {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      width: 250px;
+      border-radius: 6px;
+      border: 1px solid var(--dark-lineas, #7c7edf);
+      padding: 10px 12px;
+
+      input {
+        color: var(--RPP-Dark-200, #d5d9e2);
+        font-family: "plusjakartasans-light";
+        font-size: 14px;
+        background-color: transparent;
+        outline: none;
+        border: none;
+
+        ::placeholder {
+          font-family: "plusjakartasans-light";
+          color: var(--RPP-Dark-200, #d5d9e2);
+          font-size: 14px;
+        }
+      }
+    }
+
+    .buttons-container {
+      display: flex;
+      gap: 30px;
+
+      button {
+        padding: 15px 20px;
+        border-radius: 6px;
+        border: 1px solid var(--dark-lineas, #7c7edf);
+        background: transparent;
+        color: white;
+        font-family: "plusjakartasans-medium";
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .button-selected {
+        border: 1px solid #4a3ac1;
+        background: #4a3ac1;
+      }
+    }
+  }
+
+  .my-courses-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+  }
+}

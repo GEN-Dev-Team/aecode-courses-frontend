@@ -1,0 +1,22 @@
+<article class="my-course-card" (click)="goToCourse()">
+  <img src="{{ course.principalimage }}" alt="" />
+
+  <h1>{{ course.programTitle }}</h1>
+
+  <div class="my-course-card-content">
+    <div class="in-progress">En progreso</div>
+
+    <h2>{{ course.title }}</h2>
+
+    <p>
+      {{ course.description }}
+    </p>
+
+    <button>Ver curso <app-arrow-right /></button>
+
+    <div class="progress-icon-container">
+      <!-- <app-course-complete-icon /> -->
+      <app-in-progress-icon />
+    </div>
+  </div>
+</article>

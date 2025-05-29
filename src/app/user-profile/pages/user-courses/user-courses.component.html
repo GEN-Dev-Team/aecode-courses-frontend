@@ -1,1 +1,42 @@
-<p>user-courses works!</p>
+<div class="user-courses-container">
+  <h1>Mis cursos</h1>
+  <p>Gestiona tus cursos actuales y continúa tu aprendizaje</p>
+
+  <div class="filters-container">
+    <div class="search-container">
+      <app-search-icon />
+      <input
+        placeholder="Buscar en mis Cursos"
+        type="text"
+        (input)="onSearch($event)"
+      />
+    </div>
+
+    <div class="buttons-container">
+      <button
+        [class.button-selected]="isSelected === 1"
+        (click)="selectButton(1)"
+      >
+        Todos
+      </button>
+      <button
+        [class.button-selected]="isSelected === 2"
+        (click)="selectButton(2)"
+      >
+        En progreso
+      </button>
+      <button
+        [class.button-selected]="isSelected === 3"
+        (click)="selectButton(3)"
+      >
+        Completados
+      </button>
+    </div>
+  </div>
+
+  <div class="my-courses-container">
+    @for (item of userCourseListFiltered(); track $index) {
+    <app-my-course-card [course]="item" />
+    }
+  </div>
+</div>

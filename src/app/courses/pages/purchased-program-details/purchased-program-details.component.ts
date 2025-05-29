@@ -8,6 +8,8 @@ import { CaretLeftIconComponent } from '../../../shared/icons/caret-left-icon/ca
 import { SecondaryCourseService } from '../../services/secondary-course.service';
 import { UserCourseAccessService } from '../../services/user-course-access.service';
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-purchased-program-details',
@@ -26,30 +28,33 @@ import { Location } from '@angular/common';
 export class PurchasedProgramDetailsComponent {
   secondaryCourseService = inject(SecondaryCourseService);
   userCourseAccessService = inject(UserCourseAccessService);
+  authService = inject(AuthService);
 
   coursePurchasedData = this.secondaryCourseService.coursePurchasedData;
 
   location = inject(Location);
+  router: ActivatedRoute = inject(ActivatedRoute);
+
+  secCourseId = Number(this.router.snapshot.paramMap.get('courseId'));
 
   ngOnInit(): void {
-    // this.userCourseAccessService.getUserCourseAccess(35).subscribe({
-    //   next: (response) => {
-    //     console.log(response);
-    //   },
-    //   error: (err) => {
-    //     console.log(err);
-    //   },
-    // });
+    this.setCourseData();
+  }
 
-    this.secondaryCourseService.getCourseDataByUserId(35, 101).subscribe({
-      next: (response) => {
-        this.coursePurchasedData.set(response);
-        console.log(this.coursePurchasedData());
-      },
-      error: (err) => {
-        console.log(err);
-      },
-    });
+  setCourseData() {
+    const userId = this.authService.getUserDetails()?.userId;
+
+    this.secondaryCourseService
+      .getCourseDataByUserId(userId, this.secCourseId)
+      .subscribe({
+        next: (response) => {
+          this.coursePurchasedData.set(response);
+          console.log(this.coursePurchasedData());
+        },
+        error: (err) => {
+          console.log(err);
+        },
+      });
   }
 
   goBack() {
