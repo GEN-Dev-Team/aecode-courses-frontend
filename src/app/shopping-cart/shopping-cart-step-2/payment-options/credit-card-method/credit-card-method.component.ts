@@ -3,6 +3,7 @@ import { CardItemComponent } from './card-item/card-item.component';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { AsyncPipe } from '@angular/common';
 import { ShopCartWhatsappButtonComponent } from '../../../components/shop-cart-whatsapp-button/shop-cart-whatsapp-button.component';
+import { PaymentService } from '../../../services/payment.service';
 
 @Component({
   selector: 'app-credit-card-method',
@@ -13,6 +14,7 @@ import { ShopCartWhatsappButtonComponent } from '../../../components/shop-cart-w
 })
 export class CreditCardMethodComponent {
   themeService = inject(ThemeService);
+  paymentService = inject(PaymentService);
 
   cardList = [
     {

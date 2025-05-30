@@ -1,23 +1,25 @@
-<div
-  class="payment-methods-content {{
+<div class="payment-methods-content {{
     themeService.getMode() | async
-  }}-payment-methods-content"
->
+  }}-payment-methods-content">
   <p class="payment-title">PAGAR CON YAPE O PLIN</p>
 
   <p>
     Escanea el código QR con tu app de Yape/Plin y realiza el pago al instante.
   </p>
 
+  <div class="payment-ref">
+    <p class="payment-total-title">Total a Pagar en soles:</p>
+    <span class="payment-total">
+      S/ {{ (paymentService.totalWithoutTax() * 3.78).toFixed(2) }}
+    </span>
+  </div>
+
   <div class="payment-qr">
-    <img
-      src="{{
+    <img src="{{
         (themeService.getMode() | async) === 'dark'
           ? '/assets/images/payment/qr-method-dark.webp'
           : '/assets/images/payment/qr-method.webp'
-      }}"
-      alt=""
-    />
+      }}" alt="" />
   </div>
 
   <app-shop-cart-whatsapp-button />

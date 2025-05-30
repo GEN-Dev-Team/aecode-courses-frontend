@@ -1,8 +1,6 @@
-<div
-  class="payment-methods-content {{
+<div class="payment-methods-content {{
     themeService.getMode() | async
-  }}-payment-methods-content"
->
+  }}-payment-methods-content">
   <p class="payment-title">PAGAR POR TRANSFERENCIA</p>
 
   <p>
@@ -11,9 +9,18 @@
     compra.
   </p>
 
-  @for (item of cardList; track $index) {
-  <app-card-item [cardItem]="item" />
-  }
+  <div class="payment-ref">
+    <p class="payment-total-title">Total a Pagar en soles:</p>
+    <span class="payment-total">
+      S/ {{ (paymentService.totalWithoutTax() * 3.78).toFixed(2) }}
+    </span>
+  </div>
+
+  <div class="bank-accounts">
+    @for (item of cardList; track $index) {
+    <app-card-item [cardItem]="item" />
+    }
+  </div>
 
   <app-shop-cart-whatsapp-button />
 </div>
