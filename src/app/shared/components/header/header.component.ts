@@ -50,6 +50,7 @@ export class HeaderComponent {
   openLoginForm = this.headerService.showLogInAccess;
   showMobileMenu = false;
   openMobileMenu = false;
+  aux = false;
   isMobile = this.browserService.isMobile();
 
   headerItemsList: ICommunityHeaderItem[] = [
@@ -105,8 +106,9 @@ export class HeaderComponent {
         this.authService.getUserDetails().userId
       );
     }
-
-    if (this.browserService.isBrowser()) {
+  }
+  ngAfterViewChecked(): void {
+    if (this.browserService.isBrowser() && !this.aux) {
       const currentUrl = this.location.path();
       const startRoute = currentUrl.split('/')[1];
 
@@ -115,6 +117,8 @@ export class HeaderComponent {
           this.headerItemSelected = item;
         }
       });
+
+      this.aux = true;
 
       if (this.headerItemSelected.id === 2) {
         this.themeService.setMode('dark');

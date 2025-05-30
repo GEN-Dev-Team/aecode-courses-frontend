@@ -1,4 +1,5 @@
 <app-course-overlay>
+  @if(coursePurchasedData().seccourseId > 0) {
   <main class="program-details-container">
     <div class="buttons-container">
       <button class="button-back" (click)="goBack()">
@@ -35,4 +36,10 @@
       </aside>
     </section>
   </main>
+  } @else {
+
+  <div class="loader-view">
+    <app-loader />
+  </div>
+  }
 </app-course-overlay>

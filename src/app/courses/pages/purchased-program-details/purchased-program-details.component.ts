@@ -10,6 +10,7 @@ import { UserCourseAccessService } from '../../services/user-course-access.servi
 import { Location } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
+import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 
 @Component({
   selector: 'app-purchased-program-details',
@@ -21,6 +22,7 @@ import { AuthService } from '../../../core/services/auth.service';
     ProgramCertificatesComponent,
     CourseOverlayComponent,
     CaretLeftIconComponent,
+    LoaderComponent,
   ],
   templateUrl: './purchased-program-details.component.html',
   styleUrl: './purchased-program-details.component.scss',
@@ -48,7 +50,6 @@ export class PurchasedProgramDetailsComponent {
       .subscribe({
         next: (response) => {
           this.coursePurchasedData.set(response);
-          console.log(this.coursePurchasedData());
         },
         error: (err) => {
           console.log(err);

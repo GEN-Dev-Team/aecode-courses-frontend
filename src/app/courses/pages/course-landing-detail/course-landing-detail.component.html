@@ -1,5 +1,5 @@
 <app-course-overlay>
-  @if (courseData()) {
+  @if (courseData().seccourseId > -1) {
   <main
     class="course-landing-detail-container {{
       themeService.getMode() | async
@@ -162,16 +162,6 @@
       />
     </div>
   </main>
-
-  <!-- <app-modal [isOpen]="showIntroVideo" (isClosed)="showIntroVideo = $event">
-    <iframe
-      [src]="courseData().videoUrl"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      class="intro-video"
-    ></iframe>
-  </app-modal> -->
 
   } @else {
   <div class="loader-view">
