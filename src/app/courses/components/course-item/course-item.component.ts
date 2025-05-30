@@ -1,4 +1,11 @@
-import { Component, computed, inject, Input, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  inject,
+  Input,
+  signal,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DateFormatPipe } from '../../../core/pipes/date-format.pipe';
@@ -18,6 +25,12 @@ import { PaymentService } from '../../../shopping-cart/services/payment.service'
 import { ShoppingCartIconComponent } from '../../icons/shopping-cart-icon/shopping-cart-icon.component';
 import { SecondaryCourseService } from '../../services/secondary-course.service';
 import { AuthService } from '../../../core/services/auth.service';
+import { UserCourseAccessService } from '../../services/user-course-access.service';
+import { ManageUserDataService } from '../../../user-profile/services/manage-user-data.service';
+import {
+  defaultSecondaryCourseSummary,
+  ISecondaryCourseSummary,
+} from '../../interface/secondary-course/Secondary-Course';
 
 @Component({
   selector: 'app-course-item',
@@ -41,7 +54,11 @@ import { AuthService } from '../../../core/services/auth.service';
 })
 export class CourseItemComponent {
   @Input() isMasiveCourse: boolean = false;
-  @Input() course!: any;
+
+  _course = signal<ISecondaryCourseSummary>(defaultSecondaryCourseSummary);
+  @Input() set course(value: ISecondaryCourseSummary) {
+    this._course.set(value);
+  }
 
   browserService: BrowserService = inject(BrowserService);
   router: Router = inject(Router);
@@ -50,27 +67,50 @@ export class CourseItemComponent {
   messageBoxService: MessageBoxService = inject(MessageBoxService);
   secondaryCourseService = inject(SecondaryCourseService);
   authService = inject(AuthService);
+  manageUserService = inject(ManageUserDataService);
 
   finalPrice = signal(0);
 
   message = 'El módulo ya se encuentra en tu carrito de compras.';
   title = '¡Módulo repetido!';
   isMessageTypeSuccess = false;
+  purchasedCourse = false;
+
+  constructor() {
+    effect(() => {
+      if (this.manageUserService.userDataInfo().userId !== 0) {
+        this.secondaryCourseService
+          .checkUserCourseAccess(
+            this.manageUserService.userDataInfo().userId,
+            this._course().seccourseId
+          )
+          .subscribe({
+            next: (res) => {
+              this.purchasedCourse = true;
+            },
+            error: (error) => {
+              this.purchasedCourse = false;
+            },
+          });
+      }
+    });
+  }
 
   discountPrice = computed(() => {
-    if (this.course.isOnSale && this.course.discountPercentage > 0) {
+    if (this._course().isOnSale && this._course().discountPercentage > 0) {
       const priceDiscounted = Math.round(
-        (this.course.priceRegular * (100 - this.course.discountPercentage)) /
+        (this._course().priceRegular *
+          (100 - this._course().discountPercentage)) /
           100
       );
       return priceDiscounted;
     } else {
-      return this.course.priceRegular;
+      return this._course().priceRegular;
     }
   });
 
   showCourseDetails() {
-    const urlname = this.course.urlname;
+    const urlname = this._course().urlname;
 
     this.browserService.navigateAndScroll(`training/${urlname}`, 0);
   }
@@ -81,9 +121,9 @@ export class CourseItemComponent {
       if (
         this.browserService.isBrowser() &&
         this.isMasiveCourse &&
-        this.course.brochureUrl
+        this._course().brochureUrl
       ) {
-        window.open(this.course.brochureUrl, '_blank');
+        window.open(this._course().brochureUrl, '_blank');
       }
     }
   }
@@ -91,24 +131,12 @@ export class CourseItemComponent {
   goToPay(event: Event) {
     event.stopPropagation();
 
-    if (!this.authService.hasToken()) {
-      this.messageBoxService.title.set('Iniciar sesión para continuar');
-      this.messageBoxService.message.set(
-        'Este paso es indispensable para añadir módulos a tu carrito de compras.'
-      );
-      this.messageBoxService.showMessageModal.set(true);
-      this.messageBoxService.redirectTo.set('login');
+    if (!this.checkIfUserIsLogged()) return;
 
-      return;
-    }
+    if (this.checkIfCourseIsPurchased()) return;
 
-    // if (this.isMasiveCourse && this.browserService.isBrowser()) {
-    //   const whatsappUrl = `https://api.whatsapp.com/send?phone=51900121245&text=Hola AECODE. Me gustaría recibir más información sobre el programa de "${this.course.title}".`;
-
-    //   window.open(whatsappUrl, '_blank');
-    // } else {
-    this.course.isSelectedinCart = false;
-    let response = this.cartService.addItemToCart(this.course);
+    this._course().isSelectedinCart = false;
+    let response = this.cartService.addItemToCart(this._course());
 
     if (response === 1) {
       this.message =
@@ -125,6 +153,29 @@ export class CourseItemComponent {
       this.message,
       this.isMessageTypeSuccess
     );
-    // }
+  }
+
+  checkIfCourseIsPurchased(): boolean {
+    if (this.purchasedCourse) {
+      return true;
+    }
+
+    return false;
+  }
+
+  checkIfUserIsLogged(): boolean {
+    if (!this.authService.hasToken()) {
+      this.messageBoxService.showMessageBox(
+        'Iniciar sesión para continuar',
+        'Este paso es indispensable para añadir módulos a tu carrito de compras.',
+        false
+      );
+
+      this.messageBoxService.redirectTo.set('login');
+
+      return false;
+    }
+
+    return true;
   }
 }

@@ -43,6 +43,8 @@ export interface ISecondaryCourseSummary {
   seccourseId: number;
   title: string;
   programTitle: string;
+  urlname: string;
+  brochureUrl: string;
   description: string;
   module: string;
   startDate: Date;
@@ -138,6 +140,8 @@ export const defaultSecondaryCourse: ISecondaryCourse = {
 export const defaultSecondaryCourseSummary: ISecondaryCourseSummary = {
   seccourseId: 0,
   title: '',
+  urlname: '',
+  brochureUrl: '',
   programTitle: '',
   description: '',
   module: '',

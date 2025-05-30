@@ -8,12 +8,12 @@
   <div
     class="course-item-mode"
     customCourseButton
-    [mode]="course.mode"
-    [courseId]="course.courseId"
+    [mode]="_course().mode"
+    [courseId]="_course().seccourseId"
   >
     @if(isMasiveCourse) {
     <app-sync-course-icon class="icon" />
-    EN VIVO}@else { @switch (course.mode) { @case ('SINCRONO') {
+    EN VIVO}@else { @switch (_course().mode) { @case ('SINCRONO') {
     <app-coming-soon-course-icon class="icon" />
     PRÓXIMOS } @case ('EN_VIVO') {
     <app-sync-course-icon class="icon" />
@@ -22,15 +22,15 @@
     ASINCRÓNICOS } } }
   </div>
 
-  @if (course.isOnSale && course.discountPercentage > 0) {
+  @if (_course().isOnSale && _course().discountPercentage > 0) {
   <div class="course-off-mode">
     <app-offerbg-icon class="icon" />
-    <span>{{ course.discountPercentage }}% OFF</span>
+    <span>{{ _course().discountPercentage }}% OFF</span>
   </div>
   }
 
   <div class="course-presentation-container">
-    <img class="course-img" src="{{ course.principalimage }}" alt="" />
+    <img class="course-img" src="{{ _course().principalimage }}" alt="" />
 
     <div class="course-tags">
       @if (!isMasiveCourse) {
@@ -39,8 +39,8 @@
         [class.static-course-icons]="isMasiveCourse"
       >
         <app-watch-icon class="icon" />
-        @if (course.mode === 'ASINCRONO') { DISPONIBLE 24/7 } @else { INICIO:
-        {{ course.startDate | dateFormat : false }}
+        @if (_course().mode === 'ASINCRONO') { DISPONIBLE 24/7 } @else { INICIO:
+        {{ _course().startDate | dateFormat : false }}
         }
       </div>
       } @if(!isMasiveCourse) {
@@ -49,17 +49,17 @@
         [class.static-course-icons]="isMasiveCourse"
       >
         <app-course-session-icon class="icon" />
-        CERTIFICADO POR {{ course.certificateHours }} HRS
+        CERTIFICADO POR {{ _course().certificateHours }} HRS
       </div>
       }
     </div>
   </div>
 
   <div class="course-details">
-    <h2 class="course-title">{{ course.title }}</h2>
+    <h2 class="course-title">{{ _course().title }}</h2>
 
     <p class="course-description">
-      {{ course.description }}
+      {{ _course().description }}
     </p>
 
     <div class="course-footer">
@@ -68,12 +68,12 @@
         <div class="course-level">
           <app-course-session-icon class="icon" />
 
-          <span>{{ course.module }}</span>
+          <span>{{ _course().module }}</span>
         </div>
 
-        @if (course.isOnSale && course.discountPercentage > 0) {
+        @if (_course().isOnSale && _course().discountPercentage > 0) {
         <span class="course-old-price"
-          >Normal <span class="price">${{ course.priceRegular }}</span></span
+          >Normal <span class="price">${{ _course().priceRegular }}</span></span
         >
         }
       </div>
@@ -86,8 +86,8 @@
         <button
           class="course-item-button"
           customCourseButton
-          [mode]="course.mode"
-          [courseId]="course.courseId"
+          [mode]="_course().mode"
+          [courseId]="_course().seccourseId"
           (click)="downloadKit($event)"
         >
           @if(isMasiveCourse){
@@ -101,16 +101,20 @@
         <button
           class="course-item-button"
           customCourseButton
-          [mode]="course.mode"
-          [courseId]="course.courseId"
+          [mode]="_course().mode"
+          [courseId]="_course().seccourseId"
           (click)="goToPay($event)"
         >
-          <app-shopping-cart-icon class="shop-cart-icon" /> Añadir al carrito
+          @if(!purchasedCourse) {
+          <app-shopping-cart-icon class="shop-cart-icon" />
+          Añadir al carrito
+
           <span>
-            @if(course.isOnSale) { ${{ discountPrice() }} } @else if(
-            !isMasiveCourse){ ${{ course.priceRegular | number : "1.0-0" }}
+            @if(_course().isOnSale) { ${{ discountPrice() }} } @else if(
+            !isMasiveCourse){ ${{ _course().priceRegular | number : "1.0-0" }}
             }
           </span>
+          }@else {Curso adquirido}
         </button>
       </div>
     </div>

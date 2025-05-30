@@ -51,7 +51,9 @@ export class AuthService {
       this.manageUserDataService.clearUserDataInfo;
       localStorage.removeItem('user');
       this.isLoggedInStatus.next(false);
-      this.router.navigate([`/${route}`]);
+      this.router.navigate([`/${route}`]).then(() => {
+        window.location.reload();
+      });
     }
   }
 

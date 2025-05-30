@@ -103,4 +103,8 @@ export class SecondaryCourseService {
       `${this.api_url}/mycourses/${userId}/${courseId}`
     );
   }
+
+  checkUserCourseAccess(userId: number, courseId: number) {
+    return this.http.get(`${this.api_url}/mycourses/${userId}/${courseId}`);
+  }
 }
