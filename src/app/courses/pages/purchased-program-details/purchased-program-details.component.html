@@ -4,7 +4,9 @@
       <button class="button-back" (click)="goBack()">
         <app-caret-left-icon class="caret-icon" /> Volver
       </button>
-      <button class="button-my-courses">Mis cursos</button>
+      <button (click)="goToMyCourses()" class="button-my-courses">
+        Mis cursos
+      </button>
     </div>
 
     <h2>{{ coursePurchasedData().title }}</h2>

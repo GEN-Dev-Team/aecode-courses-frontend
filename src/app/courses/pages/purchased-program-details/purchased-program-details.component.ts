@@ -8,7 +8,7 @@ import { CaretLeftIconComponent } from '../../../shared/icons/caret-left-icon/ca
 import { SecondaryCourseService } from '../../services/secondary-course.service';
 import { UserCourseAccessService } from '../../services/user-course-access.service';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
@@ -29,12 +29,11 @@ export class PurchasedProgramDetailsComponent {
   secondaryCourseService = inject(SecondaryCourseService);
   userCourseAccessService = inject(UserCourseAccessService);
   authService = inject(AuthService);
-
-  coursePurchasedData = this.secondaryCourseService.coursePurchasedData;
-
   location = inject(Location);
   router: ActivatedRoute = inject(ActivatedRoute);
+  routing = inject(Router);
 
+  coursePurchasedData = this.secondaryCourseService.coursePurchasedData;
   secCourseId = Number(this.router.snapshot.paramMap.get('courseId'));
 
   ngOnInit(): void {
@@ -59,5 +58,10 @@ export class PurchasedProgramDetailsComponent {
 
   goBack() {
     this.location.back();
+  }
+
+  goToMyCourses() {
+    const userId = this.authService.getUserDetails()?.userId;
+    this.routing.navigate(['/profile/' + userId + '/my-courses']);
   }
 }

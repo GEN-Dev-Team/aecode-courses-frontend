@@ -53,6 +53,12 @@ export const routes: Routes = [
     component: ProfileMainViewComponent,
     // component: InProgressComponent,
     canActivate: [mobileAvailabilityGuard],
+    children: [
+      {
+        path: 'my-courses',
+        component: ProfileMainViewComponent,
+      },
+    ],
   },
   {
     path: 'admin-panel',

@@ -1,5 +1,5 @@
 <div class="program-module-item" (click)="openDropdown = !openDropdown">
-  <p>M1: {{ programModule.unit }}</p>
+  <p>M{{ key + 1 }}: {{ programModule.unit }}</p>
   <span>{{ programModule.hours }} hrs</span>
 
   @if(openDropdown) {

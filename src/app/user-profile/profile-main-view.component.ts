@@ -7,6 +7,7 @@ import { UserProfileComponent } from './pages/user-profile/user-profile.componen
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { UserCoursesComponent } from './pages/user-courses/user-courses.component';
 import { SectionProfileInProgressComponent } from './pages/section-profile-in-progress/section-profile-in-progress.component';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-profile-main-view',
@@ -25,8 +26,18 @@ import { SectionProfileInProgressComponent } from './pages/section-profile-in-pr
   styleUrl: './profile-main-view.component.css',
 })
 export class ProfileMainViewComponent {
+  router = inject(Router);
+
   showChangePasswordError: boolean = false;
   showMessageModal: boolean = false;
   dataUpdated: boolean = false;
   currentView: number = 0;
+
+  ngAfterViewChecked(): void {
+    const url = this.router.url;
+
+    if (url.includes('my-courses')) {
+      this.currentView = 2;
+    }
+  }
 }
