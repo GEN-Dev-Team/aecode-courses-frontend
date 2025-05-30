@@ -37,7 +37,7 @@ export class ViewProfileComponent {
   }
 
   logOut() {
-    this.authService.logout();
+    this.authService.logout('home');
     this.closeModal();
   }
 

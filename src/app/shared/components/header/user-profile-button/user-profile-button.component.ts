@@ -43,8 +43,4 @@ export class UserProfileButtonComponent {
       this.isUserLoggedIn = res;
     });
   }
-
-  logout() {
-    this.authService.logout();
-  }
 }

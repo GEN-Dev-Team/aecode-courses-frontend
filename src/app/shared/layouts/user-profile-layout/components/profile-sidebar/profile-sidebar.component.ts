@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { UserPresentationComponent } from '../user-presentation/user-presentation.component';
 import { ProfileSidebarItemComponent } from '../profile-sidebar-item/profile-sidebar-item.component';
+import { AuthService } from '../../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-profile-sidebar',
@@ -11,6 +12,8 @@ import { ProfileSidebarItemComponent } from '../profile-sidebar-item/profile-sid
 })
 export class ProfileSidebarComponent {
   @Output() emitItemIndexSelected = new EventEmitter<number>();
+
+  authService = inject(AuthService);
 
   itemIndexSelected = 0;
 
@@ -44,5 +47,13 @@ export class ProfileSidebarComponent {
   selectItem(index: number) {
     this.itemIndexSelected = index;
     this.emitItemIndexSelected.emit(index);
+
+    if (this.itemIndexSelected === 5) {
+      this.logOutUser();
+    }
+  }
+
+  logOutUser() {
+    this.authService.logout('training');
   }
 }

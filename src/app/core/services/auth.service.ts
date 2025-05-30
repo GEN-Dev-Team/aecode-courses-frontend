@@ -46,12 +46,12 @@ export class AuthService {
     }
   }
 
-  logout(): void {
+  logout(route: string): void {
     if (this.browserService.isBrowser()) {
       this.manageUserDataService.clearUserDataInfo;
       localStorage.removeItem('user');
       this.isLoggedInStatus.next(false);
-      this.router.navigate(['/']);
+      this.router.navigate([`/${route}`]);
     }
   }
 
@@ -60,15 +60,6 @@ export class AuthService {
       const user = localStorage.getItem('user');
       if (user === null) return {};
       return JSON.parse(user);
-    }
-  }
-
-  setUserDetails(user: any): void {
-    if (this.browserService.isBrowser()) {
-      this.manageUserDataService.setUserDataInfo(user.userId);
-      this.logout();
-      localStorage.setItem('user', JSON.stringify(user));
-      this.isLoggedInStatus.next(true);
     }
   }
 
