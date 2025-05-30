@@ -24,7 +24,6 @@ import { QrMethodComponent } from './payment-options/qr-method/qr-method.compone
 import { ShopCartInvestmentComponent } from '../components/shop-cart-investment/shop-cart-investment.component';
 import { AuthService } from '../../core/services/auth.service';
 import { UserCourseAccessService } from '../../courses/services/user-course-access.service';
-import { error } from 'console';
 
 @Component({
   selector: 'app-shopping-cart-step-2',
