@@ -26,5 +26,5 @@ export class ProfileMainViewComponent {
   showChangePasswordError: boolean = false;
   showMessageModal: boolean = false;
   dataUpdated: boolean = false;
-  currentView: number = 2;
+  currentView: number = 0;
 }
