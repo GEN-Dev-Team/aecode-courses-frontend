@@ -1,6 +1,4 @@
-<div
-  class="invest-container {{ themeService.getMode() | async }}-invest-container"
->
+<div class="invest-container {{ themeService.getMode() | async }}-invest-container">
   @if (!isStep2) {
   <h3 class="invest-title">TOTAL A PAGAR</h3>
   }
@@ -45,19 +43,15 @@
 
       <div class="invest-item total-item">
         <span> Total: </span>
-        <span
-          >@if (!isStep2){ {{ cardService.totalWithoutTax() }} } @else {
+        <span>@if (!isStep2){ {{ cardService.totalWithoutTax() }} } @else {
           {{ cardService.totalAmountWithTax().toFixed(2) }} } $
         </span>
       </div>
     </div>
 
     @if (!isStep2) {
-    <button
-      class="invest-button"
-      (click)="goToPay()"
-      [class.isDisabled]="cardService.totalWithoutTax() > 0 ? false : true"
-    >
+    <button class="invest-button" (click)="goToPay()"
+      [class.isDisabled]="cardService.totalWithoutTax() > 0 ? false : true">
       <app-shopping-cart-icon class="shop-cart-icon" /> PAGAR
     </button>
 
@@ -68,21 +62,13 @@
     </p>
 
     <div class="invest-input-container">
-      <input
-        class="invest-input"
-        placeholder="Introducir el cupón"
-        type="text"
-      />
+      <input class="invest-input" placeholder="Introducir el cupón" type="text" />
       <button class="invest-apply-button">Aplicar</button>
     </div>
 
-    <a
-      class="invest-whatsapp-button"
-      target="_blank"
-      href="https://api.whatsapp.com/send?phone=+51900121245&text={{
+    <a class="invest-whatsapp-button" target="_blank" href="https://api.whatsapp.com/send?phone=+51900121245&text={{
         wsspMessage
-      }}"
-    >
+      }}">
       Consultar con un asesor
       <div class="whatsapp-button">
         <img src="assets\images\whatsapp-icon.png" alt="" />
@@ -97,6 +83,7 @@
       Cobraremos $ {{ cardService.totalAmountWithTax().toFixed(2) }} en tu
       tarjeta
     </p>
+    <p>Tipo de cambio Referencial: 3.78</p>
     <p>Se aplicara un cargo extra por la transacción</p>
   </div>
   }

@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
       height="19"
       viewBox="0 0 20 19"
       fill="none"
+      class="icon"
     >
       <g clip-path="url(#clip0_1795_48)" filter="url(#filter0_i_1795_48)">
         <path
@@ -71,6 +72,11 @@ import { Component } from '@angular/core';
       </defs>
     </svg>
   `,
-  styles: ``,
+  styles: `
+    .icon {
+      display: flex;
+      align-items: center;
+    }
+  `,
 })
-export class WhatsappIconComponent {}
+export class WhatsappIconComponent { }

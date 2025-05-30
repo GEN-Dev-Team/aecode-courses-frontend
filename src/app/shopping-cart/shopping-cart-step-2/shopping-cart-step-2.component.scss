@@ -52,19 +52,32 @@
     .payment-title {
       margin-block: 26px 22px;
       color: #381187;
-      font-family: "Ruberoid-medium";
+      font-family: "Ruberoid-semibold";
       font-size: 18px;
     }
 
     .payment-ref {
       padding: 15px;
       border-radius: 6px;
+      border: 1px solid #7C7EDF66;
+    }
+
+    .qr-code-container {
+      background: transparent;
+      padding: 30px 161px;
+      border: 1px solid #7C7EDF66;
+      margin-top: 35px;
+
+      .qr-code {
+        display: block;
+        margin: 0 auto;
+      }
     }
 
     .payment-message {
       font-family: "plusjakartasans-medium";
       margin-block: 50px 30px;
-      text-align: center;
+      text-align: left;
     }
 
     .payment-terms {
@@ -100,6 +113,223 @@
         font-family: "Ruberoid-medium";
         font-size: 20px;
         color: white;
+      }
+    }
+
+    .payment-title.payment-title.payment-title.payment-title {
+      color: #8C97DC;
+      font-size: 18px;
+      line-height: 20px;
+      letter-spacing: 0px;
+      margin: 40px 0 0;
+    }
+
+    .payment-instructions {
+      margin-top: 8px;
+      color: #EEF3F8;
+      font-family: "plusjakartasans-light";
+      font-weight: 300;
+      font-size: 17px;
+      line-height: 22px;
+      letter-spacing: 0px;
+    }
+
+    .payment-ref.payment-ref.payment-ref {
+      display: flex;
+      margin-top: 40px;
+      font-weight: 500;
+      font-size: 20px;
+      letter-spacing: 0px;
+      vertical-align: middle;
+      background: #222341;
+      justify-content: space-between;
+
+      .payment-total-title {
+        font-family: "plusjakartasans-semibold";
+        font-weight: 500;
+        font-size: 20px;
+        letter-spacing: 0px;
+        vertical-align: middle;
+      }
+    }
+
+    .bank-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+      margin-top: 30px;
+
+      .bank-card {
+        border: 1px solid #8c97dc;
+        background: transparent;
+        border-radius: 10px;
+        padding: 20px;
+
+        .bank-header {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          margin-bottom: 24px;
+
+          .bank-name {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 20px;
+            letter-spacing: 0px;
+            color: #8C97DC;
+          }
+
+          .bank-account-title {
+            font-weight: 300;
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: 0px;
+            color: #EEF3F8;
+          }
+
+          img {
+            width: 40px;
+            height: 40px;
+          }
+
+          p {
+            margin: 0;
+          }
+        }
+
+        .bank-currencies {
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+
+          .bank-currency {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .bank-currency-title {
+              color: #8C97DC;
+              font-weight: 450;
+              font-size: 18px;
+              line-height: 20px;
+              letter-spacing: 0px;
+            }
+
+            .bank-currency-accounts {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+
+              .bank-currency-account {
+                padding: 16px 0px 16px 20px;
+                display: flex;
+                align-items: center;
+                border: 1px solid #7C7EDF66;
+                border-radius: 4px;
+                background: #22234166;
+
+                .bank-currency-account-title {
+                  font-weight: 500;
+                  font-size: 16px;
+                  letter-spacing: 0px;
+                  vertical-align: middle;
+                  color: #EEF3F8
+                }
+
+                .bank-currency-account-wrapper {
+                  margin-left: auto;
+                  display: flex;
+                  align-items: center;
+
+                  .bank-currency-account-number {
+                    font-weight: 500;
+                    font-size: 16px;
+                    letter-spacing: 0px;
+                    vertical-align: middle;
+                    color: #EEF3F8
+                  }
+
+                  .copy-button {
+                    margin-left: 10px;
+                    background: none;
+                    border: none;
+                    color: #8c97dc;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+
+            p {
+              margin: 0;
+            }
+
+            button {
+              margin-left: 10px;
+              background: none;
+              border: none;
+              color: #8c97dc;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+
+    .send-proof.send-proof.send-proof.send-proof {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+      gap: 18px;
+
+      .instructions {
+        font-family: "plusjakartasans-light";
+        color: #EEF3F8;
+        font-weight: 300;
+        font-size: 17px;
+        line-height: 22px;
+        letter-spacing: 0px;
+      }
+
+      .whatsapp-button {
+        font-family: "ruberoid-semibold";
+        width: 100%;
+        padding: 16px;
+        text-align: center;
+        border: none;
+        border-radius: 6px;
+        background: #4A3AC1;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .payment-message-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background: #8C97DC1F;
+        border-radius: 4px;
+        padding: 10px;
+
+        .payment-message.payment-message.payment-message.payment-message {
+          font-family: "plusjakartasans-light";
+          color: #EEF3F8;
+          font-weight: 300;
+          font-size: 17px;
+          line-height: 22px;
+          letter-spacing: 0px;
+          text-align: left;
+          margin: 0
+        }
       }
     }
   }

@@ -1,18 +1,13 @@
-<div
-  class="payment-methods-container {{
+<div class="payment-methods-container {{
     themeService.getMode() | async
-  }}-payment-methods-container"
->
+  }}-payment-methods-container">
   <app-shop-cart-investment [isStep2]="true" />
 
   <div class="payment-methods-content">
     <div class="payment-options">
       @for (item of paymentMethodList; track item.id) {
-      <div
-        class="payment-button"
-        [class.payment-button-selected]="item.id === paymentMethodSelected.id"
-        (click)="selectPaymentMethod(item)"
-      >
+      <div class="payment-button" [class.payment-button-selected]="item.id === paymentMethodSelected.id"
+        (click)="selectPaymentMethod(item)">
         @switch (item.id) { @case (2) {
         <app-credit-card-icon />
         } @case (1) {
@@ -24,9 +19,11 @@
       </div>
       }
     </div>
+
     @if(paymentMethodSelected.id === 1) {
 
     <p class="payment-title">PAGAR CON PAYPAL</p>
+    <div class="payment-ref" #paymentRef></div>
 
     <p>
       Selecciona PayPal como método de pago y haz clic en 'Pagar con Paypal'.
@@ -37,22 +34,94 @@
     <p class="payment-message">
       La forma rápida y segura de pagar tus compras en línea con total confianza
     </p>
-    } @else {
-    <div class="coming-soon-payment">
-      <span>Próximamente</span>
+
+    } @else if(paymentMethodSelected.id === 2) {
+    <div>
+      <p class="payment-title">PAGAR CON YAPE O PLIN</p>
+      <p class="payment-instructions">
+        Escanea el código QR con tu app de Yape/Plin y realiza el pago al instante.
+      </p>
+      <div class="payment-ref">
+        <p class="payment-total-title">Total a Pagar en soles:</p>
+        <span class="payment-total">
+          S/ {{ (paymentService.totalAmountWithTax() * 3.78).toFixed(2) }}
+        </span>
+      </div>
+
+      <div class="qr-code-container">
+        <img class="qr-code" src="assets/images/payment/qr.png" alt="aecode qr code" />
+      </div>
+    </div>
+    } @else if(paymentMethodSelected.id === 3) {
+    <div class="bank-transfer-section">
+      <p class="payment-title">Pagar por transferencia</p>
+      <p class="payment-instructions">
+        Selecciona su banco preferido y realiza la transferencia por el monto total y exacto indicado en el resumen de
+        compra.
+      </p>
+      <div class="payment-ref">
+        <p class="payment-total-title">Total a Pagar en soles:</p>
+        <span class="payment-total">
+          S/ {{ (paymentService.totalAmountWithTax() * 3.78).toFixed(2) }}
+        </span>
+      </div>
+
+      <div class="bank-cards">
+        <div class="bank-card" *ngFor="let bank of banks">
+          <div class="bank-header">
+            <img [src]="bank.logo" [alt]="bank.name" />
+            <div>
+              <p class="bank-name"><strong>{{ bank.name }}</strong></p>
+              <p class="bank-account-title">{{ bank.title }}</p>
+            </div>
+          </div>
+          <div class="bank-currencies">
+            <div class="bank-currency" *ngFor="let acc of bank.accounts">
+              <p class="bank-currency-title">{{ acc.currency }}</p>
+              <div class="bank-currency-accounts">
+                <div class="bank-currency-account">
+                  <span class="bank-currency-account-title">Número de Cuenta: </span>
+                  <div class="bank-currency-account-wrapper">
+                    <span class="bank-currency-account-number">{{ acc.number }}</span>
+                    <button class="copy-button" (click)="copyToClipboard(acc.number)">
+                      <app-copy-icon />
+                    </button>
+                  </div>
+                </div>
+                <div class="bank-currency-account">
+                  <span class="bank-currency-account-title"> CCI:</span>
+                  <div class="bank-currency-account-wrapper">
+                    <span class="bank-currency-account-number"> {{ acc.cci }}</span>
+                    <button class="copy-button" (click)="copyToClipboard(acc.cci)">
+                      <app-copy-icon />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     }
 
-    <div class="payment-ref" #paymentRef></div>
-
+    <div class="send-proof">
+      <p class="instructions">Envía el comprobante a nuestro equipo de soporte</p>
+      <button class="whatsapp-button" (click)="openWhatsapp()">
+        <app-whatsapp-icon />
+        <span>Enviar por Whatsapp</span>
+      </button>
+      <div class="payment-message-container">
+        <app-info-icon />
+        <span class="payment-message">Una vez verificado el pago, activaremos tu acceso al curso en un plazo máximo de
+          48 horas
+          hábiles.</span>
+      </div>
+    </div>
     <p class="payment-terms">
       Al hacer clic en “Completar Compra” acepto las
-      <span class="payment-terms-link" (click)="showPaymentPolicies()"
-        >condiciones de uso </span
-      >,
-      <span class="payment-terms-link" (click)="showPrivacyPolicies()"
-        >la política de privacidad</span
-      >
+      <span class="payment-terms-link" (click)="showPaymentPolicies()">condiciones de uso</span>,
+      <span class="payment-terms-link" (click)="showPrivacyPolicies()">la política de privacidad</span>
     </p>
   </div>
 </div>
