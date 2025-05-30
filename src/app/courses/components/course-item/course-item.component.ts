@@ -112,7 +112,26 @@ export class CourseItemComponent {
   showCourseDetails() {
     const urlname = this._course().urlname;
 
-    this.browserService.navigateAndScroll(`training/${urlname}`, 0);
+    if (this.checkIfCourseIsPurchased()) {
+      if (
+        this._course().seccourseId === 101 ||
+        this._course().seccourseId === 100
+      ) {
+        this.router.navigate([
+          `/training/my-courses/${this._course().seccourseId}/${
+            this._course().urlname
+          }`,
+        ]);
+      } else {
+        this.messageBoxService.showMessageBox(
+          'Acceso restringido',
+          'Se habilitará el acceso en 48 horas',
+          false
+        );
+      }
+    } else {
+      this.browserService.navigateAndScroll(`training/${urlname}`, 0);
+    }
   }
 
   downloadKit(event: Event) {
