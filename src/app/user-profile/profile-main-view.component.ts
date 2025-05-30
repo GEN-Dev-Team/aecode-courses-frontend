@@ -6,6 +6,7 @@ import { UserProfileLayoutComponent } from '../shared/layouts/user-profile-layou
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { EditProfileComponent } from './pages/edit-profile/edit-profile.component';
 import { UserCoursesComponent } from './pages/user-courses/user-courses.component';
+import { SectionProfileInProgressComponent } from './pages/section-profile-in-progress/section-profile-in-progress.component';
 
 @Component({
   selector: 'app-profile-main-view',
@@ -18,6 +19,7 @@ import { UserCoursesComponent } from './pages/user-courses/user-courses.componen
     UserProfileComponent,
     EditProfileComponent,
     UserCoursesComponent,
+    SectionProfileInProgressComponent,
   ],
   templateUrl: './profile-main-view.component.html',
   styleUrl: './profile-main-view.component.css',

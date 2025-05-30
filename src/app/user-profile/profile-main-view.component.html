@@ -3,12 +3,19 @@
   <app-user-profile />
 
   } @case (1) {
-  <app-edit-profile />
+  <!-- <app-edit-profile /> -->
+  <app-section-profile-in-progress />
 
   } @case (2) {
   <app-user-courses />
 
-  } }
+  } @case (3) {
+  <app-section-profile-in-progress />
+
+  }@case (4) {
+  <app-section-profile-in-progress />
+
+  }}
 </app-user-profile-layout>
 
 <app-modal [isOpen]="showMessageModal" (isClosed)="showMessageModal = $event">
