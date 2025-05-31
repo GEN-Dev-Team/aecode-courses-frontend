@@ -164,20 +164,19 @@ export class ShoppingCartStep2Component {
   createAccessToCourses() {
     const cartList = this.paymentService.shopCartListSelected();
     const userId = this.authService.getUserDetails()?.userId;
+    const seccourseIds = cartList.map((course) => course.seccourseId);
 
     if (cartList.length > 0 && userId) {
-      cartList.forEach((course) => {
-        this.userCourseAccess
-          .createUserCourseAccess(userId, course.seccourseId)
-          .subscribe(
-            () => {
-              console.log('Acceso creado');
-            },
-            (error) => {
-              console.log(error);
-            }
-          );
-      });
+      this.userCourseAccess
+        .createUserCourseAccess(userId, seccourseIds)
+        .subscribe(
+          () => {
+            console.log('Acceso creado');
+          },
+          (error) => {
+            console.log(error);
+          }
+        );
     }
   }
 }

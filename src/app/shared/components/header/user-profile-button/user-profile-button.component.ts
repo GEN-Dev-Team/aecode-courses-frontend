@@ -1,4 +1,12 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment';
 import { AuthService } from '../../../../core/services/auth.service';
@@ -26,6 +34,7 @@ export class UserProfileButtonComponent {
   route: Router = inject(Router);
   themeService: ThemeService = inject(ThemeService);
   manageUserDataService = inject(ManageUserDataService);
+  elementRef = inject(ElementRef);
 
   isUserLoggedIn = false;
   openLoginForm = false;
@@ -42,5 +51,13 @@ export class UserProfileButtonComponent {
     this.authService.isLoggedInStatus.subscribe((res) => {
       this.isUserLoggedIn = res;
     });
+  }
+
+  @HostListener('document:click', ['$event'])
+  handleOutsideClick(event: Event) {
+    const clickedInside = this.elementRef.nativeElement.contains(event.target);
+    if (!clickedInside) {
+      this.showProfileMenu = false;
+    }
   }
 }

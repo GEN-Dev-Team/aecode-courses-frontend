@@ -14,9 +14,9 @@ export class UserCourseAccessService {
     return this.http.get(`${this.url}/${userId}`);
   }
 
-  createUserCourseAccess(userId: number, courseId: number) {
-    const data = { userId: userId, seccourseId: courseId };
+  createUserCourseAccess(userId: number, courseIds: number[]) {
+    const data = { userId: userId, seccourseIds: courseIds };
 
-    return this.http.post(`${this.url}`, data);
+    return this.http.post(`${this.url}/purchase`, data);
   }
 }

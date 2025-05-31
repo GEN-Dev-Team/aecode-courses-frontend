@@ -1,12 +1,12 @@
 <div class="user-presentation">
   <div class="user-img-container">
-    @if(true) {
-    <span>C</span>
+    @if (userData().profilepicture) {
+    <img [src]="userData().profilepicture" class="user-profile-img" alt="" />
 
     } @else {
-
-    <img src="" alt="" />
-
+    <span class="user-profile-first-letter">{{
+      userData().fullname.charAt(0).toUpperCase()
+    }}</span>
     }
 
     <div class="camera-icon-container">
@@ -14,5 +14,5 @@
     </div>
   </div>
 
-  <h1>Carla Rodriguez</h1>
+  <h1>{{ userData().fullname }}</h1>
 </div>

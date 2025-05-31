@@ -148,11 +148,13 @@ export class CourseItemComponent {
   }
 
   goToPay(event: Event) {
-    event.stopPropagation();
-
     if (!this.checkIfUserIsLogged()) return;
 
-    if (this.checkIfCourseIsPurchased()) return;
+    if (this.checkIfCourseIsPurchased()) {
+      return;
+    }
+
+    event.stopPropagation();
 
     this._course().isSelectedinCart = false;
     let response = this.cartService.addItemToCart(this._course());
