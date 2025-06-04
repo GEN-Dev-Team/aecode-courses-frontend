@@ -1,7 +1,9 @@
 <article class="my-course-card" (click)="goToCourse()">
   <img src="{{ course.principalimage }}" alt="" />
 
+  @if(course.programTitle){
   <h1>{{ course.programTitle }}</h1>
+  }
 
   <div class="my-course-card-content">
     <div class="in-progress">En progreso</div>

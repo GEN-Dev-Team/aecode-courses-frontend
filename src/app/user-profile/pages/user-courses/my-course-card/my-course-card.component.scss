@@ -1,11 +1,7 @@
 .my-course-card {
   border-radius: 10px 10px 6px 6px;
   border: 1px solid #7c7edf;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.72) 49.2%,
-    rgba(0, 0, 0, 0.15) 89%
-  );
+  overflow: hidden;
   color: #eef3f8;
   font-family: "ruberoid-semibold";
   position: relative;
@@ -14,29 +10,36 @@
   cursor: pointer;
 
   img {
+    height: 120px;
     width: 100%;
+    object-fit: cover;
     border-radius: 10px 10px 0px 0px;
-    position: absolute;
-    z-index: -1;
   }
 
   h1 {
+    padding-inline: 20px;
     font-size: 20px;
     margin: 0;
-    padding: 40px 20px;
-    height: 155px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.72) 49.2%,
+      rgba(0, 0, 0, 0.15) 89%
+    );
   }
 
   .my-course-card-content {
-    flex: 1;
     padding: 15px 20px;
     display: flex;
     flex-direction: column;
     gap: 15px;
-    border-radius: 10px 10px 6px 6px;
+    border-radius: 0 0 6px 6px;
     border-top: 1px solid #7c7edf;
     background: #1f2248;
     position: relative;
