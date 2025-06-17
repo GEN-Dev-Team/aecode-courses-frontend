@@ -28,6 +28,50 @@
     display: flex;
     justify-content: center;
 
+    swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-button-next,
+    .swiper-btn {
+      width: 40px;
+      height: 40px;
+      background-color: #8c97dc;
+      border-radius: 50%;
+      border: none;
+      color: white;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 2;
+      right: 0;
+      margin-inline-start: 5px;
+
+      .icon {
+        width: 15px;
+        height: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        stroke-width: 1px;
+        margin-inline-start: -3px;
+      }
+
+      .icon-right {
+        margin-inline-start: 3px;
+      }
+    }
+
+    .swiper-button-prev {
+      left: 0;
+    }
+
     .course-platform-list-content {
       width: 100%;
       display: grid;

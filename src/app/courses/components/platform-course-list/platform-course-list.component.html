@@ -2,20 +2,21 @@
   <div class="shadow-effect" hidden></div>
 
   <div class="masive-course-list-containaer">
-    @if (courseList().length > 0) {
-    <div
-      class="course-platform-list-content {{
-        themeService.getMode() | async
-      }}-course-platform-list-content"
-    >
-      @for (masiveCourseItem of courseList(); track masiveCourseItem) {
-      <app-course-item [course]="masiveCourseItem" [isMasiveCourse]="true" />
+    <swiper-container id="platform-courses-swiper" init="false">
+      @if (this.courseList().length > 2) { @for (item of courseList(); track
+      $index) { @for (masiveCourseItem of courseList(); track masiveCourseItem)
+      {
+      <swiper-slide>
+        <app-course-item [course]="masiveCourseItem" [isMasiveCourse]="true" />
+      </swiper-slide>
+      } } }
+    </swiper-container>
 
-      }
-    </div>
-
-    } @else {
-    <app-loader />
-    }
+    <button class="swiper-btn swiper-button-prev">
+      <app-angle-left-icon class="icon" />
+    </button>
+    <button class="swiper-btn swiper-button-next">
+      <app-angle-right-icon class="icon icon-right" />
+    </button>
   </div>
 </div>
