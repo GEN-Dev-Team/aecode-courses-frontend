@@ -3,7 +3,11 @@
 
   <div class="masive-course-list-containaer">
     @if (courseList().length > 0) {
-    <div class="course-platform-list-content">
+    <div
+      class="course-platform-list-content {{
+        themeService.getMode() | async
+      }}-course-platform-list-content"
+    >
       @for (masiveCourseItem of courseList(); track masiveCourseItem) {
       <app-course-item [course]="masiveCourseItem" [isMasiveCourse]="true" />
 
