@@ -31,6 +31,8 @@ import {
   defaultSecondaryCourseSummary,
   ISecondaryCourseSummary,
 } from '../../interface/secondary-course/Secondary-Course';
+import { ShopCartWhatsappButtonComponent } from '../../../shopping-cart/components/shop-cart-whatsapp-button/shop-cart-whatsapp-button.component';
+import { WhatsappIconComponent } from '../../../shared/icons/whatsapp-icon/whatsapp-icon.component';
 
 @Component({
   selector: 'app-course-item',
@@ -48,6 +50,8 @@ import {
     DownloadKitIconComponent,
     CustomCourseButtonDirective,
     DateFormatPipe,
+    ShopCartWhatsappButtonComponent,
+    WhatsappIconComponent,
   ],
   templateUrl: './course-item.component.html',
   styleUrl: './course-item.component.css',
@@ -148,13 +152,18 @@ export class CourseItemComponent {
   }
 
   goToPay(event: Event) {
+    event.stopPropagation();
+
+    if (this._course().seccourseId === 102 && this.browserService.isBrowser()) {
+      window.open('https://chat.whatsapp.com/I9M6qxSHH0R1p2KrK470Ty', '_blank');
+      return;
+    }
+
     if (!this.checkIfUserIsLogged()) return;
 
     if (this.checkIfCourseIsPurchased()) {
       return;
     }
-
-    event.stopPropagation();
 
     this._course().isSelectedinCart = false;
     let response = this.cartService.addItemToCart(this._course());

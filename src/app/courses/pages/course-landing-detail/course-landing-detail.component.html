@@ -72,21 +72,21 @@
               src="{{ courseData().principalimage }}"
               alt=""
             />
-          </div>
 
-          <div
-            class="course-mode"
-            customCourseButton
-            [mode]="courseData().mode"
-            [courseId]="courseData().seccourseId"
-          >
-            @switch (courseData().mode) { @case ('SINCRONO') {
-            <app-coming-soon-course-icon class="icon" />
-            PRÓXIMOS } @case ('EN_VIVO') {
-            <app-sync-course-icon class="icon" />
-            EN VIVO } @case ('ASINCRONO') {
-            <app-async-course-icon class="icon async-icon" />
-            ASINCRÓNICOS } }
+            <div
+              class="course-mode"
+              customCourseButton
+              [mode]="courseData().mode"
+              [courseId]="courseData().seccourseId"
+            >
+              @switch (courseData().mode) { @case ('SINCRONO') {
+              <app-coming-soon-course-icon class="icon" />
+              PRÓXIMOS } @case ('EN_VIVO') {
+              <app-sync-course-icon class="icon" />
+              EN VIVO } @case ('ASINCRONO') {
+              <app-async-course-icon class="icon async-icon" />
+              ASINCRÓNICOS } }
+            </div>
           </div>
 
           <div class="buttons-video-container">

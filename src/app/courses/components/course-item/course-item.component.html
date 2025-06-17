@@ -105,16 +105,19 @@
           [courseId]="_course().seccourseId"
           (click)="goToPay($event)"
         >
-          @if(!purchasedCourse) {
+          @if(!purchasedCourse) { @if(_course().seccourseId !==102) {
           <app-shopping-cart-icon class="shop-cart-icon" />
-          Añadir al carrito
+
+          @if(_course().seccourseId !==102){ Añadir al carrito } @else {
+          <app-shopping-cart-icon class="shop-cart-icon" />
+          Grupo de whatsapp }
 
           <span>
             @if(_course().isOnSale) { ${{ discountPrice() }} } @else if(
             !isMasiveCourse){ ${{ _course().priceRegular | number : "1.0-0" }}
             }
           </span>
-          }@else {Ver mi curso}
+          }@else {<app-whatsapp-icon /> Grupo de whatsapp} }@else {Ver mi curso}
         </button>
       </div>
     </div>
