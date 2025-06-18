@@ -17,20 +17,10 @@
     user-select: none;
 
     .paginator-icon {
+      width: 8px;
+      height: 8px;
       cursor: pointer;
       color: rgba(103, 119, 144, 1);
-    }
-  }
-}
-
-/* DARK MODE */
-.dark-paginator-container {
-  .paginator-items {
-    user-select: none;
-
-    .paginator-icon {
-      width: 36px;
-      height: 36px;
       display: flex;
       align-items: center;
       cursor: pointer;

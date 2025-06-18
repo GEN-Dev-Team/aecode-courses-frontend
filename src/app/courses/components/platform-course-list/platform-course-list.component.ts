@@ -55,11 +55,14 @@ export class PlatformCourseListComponent {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
         },
-        slidesPerView: 2,
-        slidesPerGroup: 1,
+        slidesPerView: 1,
         spaceBetween: 32,
-        // pagination: true,
         speed: 700,
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+          },
+        },
       };
 
       Object.assign(swiperElemConstructor!, swiperOptions);

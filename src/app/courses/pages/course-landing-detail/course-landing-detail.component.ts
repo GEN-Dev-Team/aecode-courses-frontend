@@ -72,7 +72,7 @@ export class CourseLandingDetailComponent {
 
   url_base = environment.base;
   showIntroVideo: boolean = false;
-  studyUnitIdSelected = -1;
+  studyUnitIdSelected = 0;
 
   showMessageError: boolean = false;
   isSecondaryCourse: boolean = false;
